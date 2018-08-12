@@ -78,11 +78,11 @@ wmi_addr
 wmi_evt_ignore
 ==============
 
-.. c:function:: void wmi_evt_ignore(struct wil6210_priv *wil, int id, void *d, int len)
+.. c:function:: void wmi_evt_ignore(struct wil6210_vif *vif, int id, void *d, int len)
 
     "unhandled events"
 
-    :param struct wil6210_priv \*wil:
+    :param struct wil6210_vif \*vif:
         *undescribed*
 
     :param int id:

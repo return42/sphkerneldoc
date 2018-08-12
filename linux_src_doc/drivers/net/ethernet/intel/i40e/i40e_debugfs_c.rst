@@ -8,13 +8,13 @@ i40e_dbg_find_vsi
 
 .. c:function:: struct i40e_vsi *i40e_dbg_find_vsi(struct i40e_pf *pf, int seid)
 
-    searches for the vsi with the given seid \ ``pf``\  - the PF structure to search for the vsi \ ``seid``\  - seid of the vsi it is searching for
+    searches for the vsi with the given seid
 
     :param struct i40e_pf \*pf:
-        *undescribed*
+        the PF structure to search for the vsi
 
     :param int seid:
-        *undescribed*
+        seid of the vsi it is searching for
 
 .. _`i40e_dbg_find_veb`:
 
@@ -23,13 +23,13 @@ i40e_dbg_find_veb
 
 .. c:function:: struct i40e_veb *i40e_dbg_find_veb(struct i40e_pf *pf, int seid)
 
-    searches for the veb with the given seid \ ``pf``\  - the PF structure to search for the veb \ ``seid``\  - seid of the veb it is searching for
+    searches for the veb with the given seid
 
     :param struct i40e_pf \*pf:
-        *undescribed*
+        the PF structure to search for the veb
 
     :param int seid:
-        *undescribed*
+        seid of the veb it is searching for
 
 .. _`i40e_dbg_command_read`:
 

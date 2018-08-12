@@ -38,10 +38,10 @@ oom_badness
         task struct of which task we should calculate
 
     :param struct mem_cgroup \*memcg:
-        *undescribed*
+        task's memory controller, if constrained
 
     :param const nodemask_t \*nodemask:
-        *undescribed*
+        nodemask passed to page allocator for mempolicy ooms
 
     :param unsigned long totalpages:
         total present RAM allowed for page allocation

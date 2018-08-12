@@ -831,37 +831,6 @@ Return
 0 on no addresses written
 X on writing X addresses to MTA
 
-.. _`ixgbe_write_uc_addr_list`:
-
-ixgbe_write_uc_addr_list
-========================
-
-.. c:function:: int ixgbe_write_uc_addr_list(struct net_device *netdev, int vfn)
-
-    write unicast addresses to RAR table
-
-    :param struct net_device \*netdev:
-        network interface device structure
-
-    :param int vfn:
-        pool to associate with unicast addresses
-
-.. _`ixgbe_write_uc_addr_list.description`:
-
-Description
------------
-
-Writes unicast address list to the RAR table.
-
-.. _`ixgbe_write_uc_addr_list.return`:
-
-Return
-------
-
--ENOMEM on failure/insufficient address space
-0 on no addresses written
-X on writing X addresses to the RAR table
-
 .. _`ixgbe_set_rx_mode`:
 
 ixgbe_set_rx_mode

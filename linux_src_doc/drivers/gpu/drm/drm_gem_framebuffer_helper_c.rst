@@ -209,6 +209,31 @@ There is no need for \ :c:type:`drm_plane_helper_funcs.cleanup_fb <drm_plane_hel
 gem based framebuffer drivers which have their buffers always pinned in
 memory.
 
+.. _`drm_gem_fb_simple_display_pipe_prepare_fb`:
+
+drm_gem_fb_simple_display_pipe_prepare_fb
+=========================================
+
+.. c:function:: int drm_gem_fb_simple_display_pipe_prepare_fb(struct drm_simple_display_pipe *pipe, struct drm_plane_state *plane_state)
+
+    prepare_fb helper for \ :c:type:`struct drm_simple_display_pipe <drm_simple_display_pipe>`\ 
+
+    :param struct drm_simple_display_pipe \*pipe:
+        Simple display pipe
+
+    :param struct drm_plane_state \*plane_state:
+        Plane state
+
+.. _`drm_gem_fb_simple_display_pipe_prepare_fb.description`:
+
+Description
+-----------
+
+This function uses \ :c:func:`drm_gem_fb_prepare_fb`\  to check if the plane FB has a
+\ :c:type:`struct dma_buf <dma_buf>`\  attached, extracts the exclusive fence and attaches it to plane
+state for the atomic helper to wait on. Drivers can use this as their
+\ :c:type:`drm_simple_display_pipe_funcs.prepare_fb <drm_simple_display_pipe_funcs>`\  callback.
+
 .. _`drm_gem_fbdev_fb_create`:
 
 drm_gem_fbdev_fb_create

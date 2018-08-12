@@ -16,15 +16,12 @@ gfs2_trans_add_data
     :param struct buffer_head \*bh:
         The buffer to add
 
-.. _`gfs2_trans_add_data.this-is-used-in-two-distinct-cases`:
+.. _`gfs2_trans_add_data.description`:
 
-This is used in two distinct cases
-----------------------------------
+Description
+-----------
 
-i) In ordered write mode
-We put the data buffer on a list so that we can ensure that it's
-synced to disk at the right time
-ii) In journaled data mode
+This is used in journaled data mode.
 We need to journal the data block in the same way as metadata in
 the functions above. The difference is that here we have a tag
 which is two \__be64's being the block number (as per meta data)

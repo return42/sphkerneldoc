@@ -236,6 +236,18 @@ Description
 This copies the protocol keys and salt to our own data tables.  The
 82599 family only supports the one algorithm.
 
+.. _`ixgbe_ipsec_check_mgmt_ip`:
+
+ixgbe_ipsec_check_mgmt_ip
+=========================
+
+.. c:function:: int ixgbe_ipsec_check_mgmt_ip(struct xfrm_state *xs)
+
+    make sure there is no clash with mgmt IP filters
+
+    :param struct xfrm_state \*xs:
+        pointer to transformer state struct
+
 .. _`ixgbe_ipsec_add_sa`:
 
 ixgbe_ipsec_add_sa
@@ -274,27 +286,6 @@ ixgbe_ipsec_offload_ok
 
     :param struct xfrm_state \*xs:
         pointer to transformer state struct
-
-.. _`ixgbe_ipsec_free`:
-
-ixgbe_ipsec_free
-================
-
-.. c:function:: void ixgbe_ipsec_free(struct xfrm_state *xs)
-
-    called by xfrm garbage collections
-
-    :param struct xfrm_state \*xs:
-        pointer to transformer state struct
-
-.. _`ixgbe_ipsec_free.description`:
-
-Description
------------
-
-We don't have any garbage to collect, so we shouldn't bother
-implementing this function, but the XFRM code doesn't check for
-existence before calling the API callback.
 
 .. _`ixgbe_ipsec_tx`:
 

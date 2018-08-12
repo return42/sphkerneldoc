@@ -65,5 +65,53 @@ regulator.
 
 Returns the number of matches found or a negative error code on failure.
 
+.. _`of_check_coupling_data`:
+
+of_check_coupling_data
+======================
+
+.. c:function:: bool of_check_coupling_data(struct regulator_dev *rdev)
+
+    Parse rdev's coupling properties and check data consistency \ ``rdev``\  - pointer to regulator_dev whose data is checked
+
+    :param struct regulator_dev \*rdev:
+        *undescribed*
+
+.. _`of_check_coupling_data.function-checks-if-all-the-following-conditions-are-met`:
+
+Function checks if all the following conditions are met
+-------------------------------------------------------
+
+- rdev's max_spread is greater than 0
+- all coupled regulators have the same max_spread
+- all coupled regulators have the same number of regulator_dev phandles
+- all regulators are linked to each other
+
+Returns true if all conditions are met.
+
+.. _`of_parse_coupled_regulator`:
+
+of_parse_coupled_regulator
+==========================
+
+.. c:function:: struct regulator_dev *of_parse_coupled_regulator(struct regulator_dev *rdev, int index)
+
+    Get regulator_dev pointer from rdev's property
+
+    :param struct regulator_dev \*rdev:
+        Pointer to regulator_dev, whose DTS is used as a source to parse
+        "regulator-coupled-with" property
+
+    :param int index:
+        Index in phandles array
+
+.. _`of_parse_coupled_regulator.description`:
+
+Description
+-----------
+
+Returns the regulator_dev pointer parsed from DTS. If it has not been yet
+registered, returns NULL
+
 .. This file was automatic generated / don't edit.
 

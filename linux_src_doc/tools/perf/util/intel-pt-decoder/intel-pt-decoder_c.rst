@@ -97,7 +97,7 @@ A pointer to the last PSB in \ ``buf``\  if found, \ ``NULL``\  otherwise.
 intel_pt_next_tsc
 =================
 
-.. c:function:: bool intel_pt_next_tsc(unsigned char *buf, size_t len, uint64_t *tsc)
+.. c:function:: bool intel_pt_next_tsc(unsigned char *buf, size_t len, uint64_t *tsc, size_t *rem)
 
     find and return next TSC.
 
@@ -109,6 +109,9 @@ intel_pt_next_tsc
 
     :param uint64_t \*tsc:
         TSC value returned
+
+    :param size_t \*rem:
+        returns remaining size when TSC is found
 
 .. _`intel_pt_next_tsc.description`:
 
@@ -164,7 +167,7 @@ after \ ``tsc2``\ .
 intel_pt_find_overlap_tsc
 =========================
 
-.. c:function:: unsigned char *intel_pt_find_overlap_tsc(unsigned char *buf_a, size_t len_a, unsigned char *buf_b, size_t len_b)
+.. c:function:: unsigned char *intel_pt_find_overlap_tsc(unsigned char *buf_a, size_t len_a, unsigned char *buf_b, size_t len_b, bool *consecutive)
 
     determine start of non-overlapped trace data using TSC.
 
@@ -179,6 +182,10 @@ intel_pt_find_overlap_tsc
 
     :param size_t len_b:
         size of second buffer
+
+    :param bool \*consecutive:
+        returns true if there is data in buf_b that is consecutive
+        to buf_a
 
 .. _`intel_pt_find_overlap_tsc.description`:
 
@@ -203,7 +210,7 @@ A pointer into \ ``buf_b``\  from where non-overlapped data starts, or
 intel_pt_find_overlap
 =====================
 
-.. c:function:: unsigned char *intel_pt_find_overlap(unsigned char *buf_a, size_t len_a, unsigned char *buf_b, size_t len_b, bool have_tsc)
+.. c:function:: unsigned char *intel_pt_find_overlap(unsigned char *buf_a, size_t len_a, unsigned char *buf_b, size_t len_b, bool have_tsc, bool *consecutive)
 
     determine start of non-overlapped trace data.
 
@@ -221,6 +228,10 @@ intel_pt_find_overlap
 
     :param bool have_tsc:
         can use TSC packets to detect overlap
+
+    :param bool \*consecutive:
+        returns true if there is data in buf_b that is consecutive
+        to buf_a
 
 .. _`intel_pt_find_overlap.description`:
 

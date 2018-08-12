@@ -439,11 +439,34 @@ Description
 -----------
 
 This function is called when \ ``css``\  is about to go away and responsible
-for shooting down all blkgs associated with \ ``css``\ .  blkgs should be
-removed while holding both q and blkcg locks.  As blkcg lock is nested
-inside q lock, this function performs reverse double lock dancing.
+for offlining all blkgs pd and killing all wbs associated with \ ``css``\ .
+blkgs pd offline should be done while holding both q and blkcg locks.
+As blkcg lock is nested inside q lock, this function performs reverse
+double lock dancing.
 
 This is the blkcg counterpart of \ :c:func:`ioc_release_fn`\ .
+
+.. _`blkcg_destroy_all_blkgs`:
+
+blkcg_destroy_all_blkgs
+=======================
+
+.. c:function:: void blkcg_destroy_all_blkgs(struct blkcg *blkcg)
+
+    destroy all blkgs associated with a blkcg
+
+    :param struct blkcg \*blkcg:
+        blkcg of interest
+
+.. _`blkcg_destroy_all_blkgs.description`:
+
+Description
+-----------
+
+This function is called when blkcg css is about to free and responsible for
+destroying all blkgs associated with \ ``blkcg``\ .
+blkgs should be removed while holding both q and blkcg locks. As blkcg lock
+is nested inside q lock, this function performs reverse double lock dancing.
 
 .. _`blkcg_init_queue`:
 

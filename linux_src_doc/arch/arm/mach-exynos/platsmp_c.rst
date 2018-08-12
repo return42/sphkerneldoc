@@ -88,5 +88,17 @@ exynos_cluster_power_state
     :param int cluster:
         the cluster to retrieve the power state from
 
+.. _`exynos_scu_enable`:
+
+exynos_scu_enable
+=================
+
+.. c:function:: void exynos_scu_enable( void)
+
+    enables SCU for Cortex-A9 based system
+
+    :param  void:
+        no arguments
+
 .. This file was automatic generated / don't edit.
 

@@ -11,16 +11,17 @@ alua_rtpg_queue
     cause RTPG to be submitted asynchronously
 
     :param struct alua_port_group \*pg:
-        *undescribed*
+        ALUA port group associated with \ ``sdev``\ .
 
     :param struct scsi_device \*sdev:
-        *undescribed*
+        SCSI device for which to submit an RTPG.
 
     :param struct alua_queue_data \*qdata:
-        *undescribed*
+        Information about the callback to invoke after the RTPG.
 
     :param bool force:
-        *undescribed*
+        Whether or not to submit an RTPG if a work item that will submit an
+        RTPG already has been scheduled.
 
 .. _`alua_rtpg_queue.description`:
 

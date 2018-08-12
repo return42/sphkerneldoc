@@ -21,6 +21,8 @@ iio
     light/index
     magnetometer/index
     pressure/index
+    resolver/index
+    temperature/index
     trigger/index
     iio_core_trigger_h
     industrialio-buffer_c

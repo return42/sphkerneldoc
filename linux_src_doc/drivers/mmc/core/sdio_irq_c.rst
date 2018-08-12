@@ -23,8 +23,8 @@ Description
 
 Claim and activate the IRQ for the given SDIO function. The provided
 handler will be called when that IRQ is asserted.  The host is always
-claimed already when the handler is called so the handler must not
-call \ :c:func:`sdio_claim_host`\  nor \ :c:func:`sdio_release_host`\ .
+claimed already when the handler is called so the handler should not
+call \ :c:func:`sdio_claim_host`\  or \ :c:func:`sdio_release_host`\ .
 
 .. _`sdio_release_irq`:
 

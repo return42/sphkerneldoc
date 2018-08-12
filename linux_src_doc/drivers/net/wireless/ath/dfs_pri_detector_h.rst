@@ -77,6 +77,7 @@ Definition
         void (*exit) (struct pri_detector *de);
         struct pri_sequence * (*add_pulse)(struct pri_detector *de, struct pulse_event *e);
         void (*reset) (struct pri_detector *de, u64 ts);
+        const struct radar_detector_specs *rs;
     }
 
 .. _`pri_detector.members`:
@@ -92,6 +93,9 @@ add_pulse
 
 reset
     clear states and reset to given time stamp
+
+rs
+    detector specs for this detector element
 
 .. This file was automatic generated / don't edit.
 

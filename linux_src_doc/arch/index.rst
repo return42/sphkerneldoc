@@ -11,18 +11,13 @@ arch
     arc/index
     arm/index
     arm64/index
-    blackfin/index
     c6x/index
-    cris/index
-    frv/index
     hexagon/index
     ia64/index
-    m32r/index
     m68k/index
-    metag/index
     microblaze/index
     mips/index
-    mn10300/index
+    nds32/index
     openrisc/index
     parisc/index
     powerpc/index
@@ -30,7 +25,6 @@ arch
     s390/index
     sh/index
     sparc/index
-    tile/index
     um/index
     unicore32/index
     x86/index

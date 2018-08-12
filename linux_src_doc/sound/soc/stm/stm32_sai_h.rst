@@ -19,6 +19,7 @@ Definition
 
     struct stm32_sai_conf {
         int version;
+        bool has_spdif;
     }
 
 .. _`stm32_sai_conf.members`:
@@ -28,6 +29,9 @@ Members
 
 version
     SAI version
+
+has_spdif
+    SAI S/PDIF support flag
 
 .. _`stm32_sai_data`:
 

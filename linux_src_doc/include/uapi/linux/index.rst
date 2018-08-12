@@ -41,6 +41,7 @@ linux
     mei_h
     membarrier_h
     mic_common_h
+    ncsi_h
     net_tstamp_h
     netlink_h
     nfc_h
@@ -58,6 +59,7 @@ linux
     stm_h
     swab_h
     sync_file_h
+    target_core_user_h
     tee_h
     uinput_h
     uvcvideo_h

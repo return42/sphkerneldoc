@@ -8,7 +8,6 @@ i915
     :maxdepth: 1
 
     gvt/index
-    dvo_ivch_c
     i915_cmd_parser_c
     i915_debugfs_c
     i915_drv_c
@@ -24,12 +23,8 @@ i915
     i915_gem_internal_c
     i915_gem_object_c
     i915_gem_object_h
-    i915_gem_request_c
-    i915_gem_request_h
     i915_gem_shrinker_c
     i915_gem_tiling_c
-    i915_gem_timeline_c
-    i915_gem_userptr_c
     i915_gpu_error_c
     i915_ioc32_c
     i915_irq_c
@@ -39,7 +34,10 @@ i915
     i915_perf_c
     i915_pmu_h
     i915_reg_h
+    i915_request_c
+    i915_request_h
     i915_syncmap_c
+    i915_timeline_c
     i915_trace_h
     i915_vgpu_c
     i915_vma_c
@@ -49,7 +47,6 @@ i915
     intel_audio_c
     intel_bios_c
     intel_cdclk_c
-    intel_crt_c
     intel_csr_c
     intel_device_info_c
     intel_display_c
@@ -58,22 +55,24 @@ i915
     intel_dpll_mgr_c
     intel_dpll_mgr_h
     intel_drv_h
-    intel_dvo_c
     intel_engine_cs_c
     intel_fbc_c
     intel_fifo_underrun_c
     intel_frontbuffer_c
     intel_frontbuffer_h
+    intel_guc_ads_c
     intel_guc_c
     intel_guc_ct_c
     intel_guc_ct_h
     intel_guc_fw_c
     intel_guc_fwif_h
+    intel_guc_h
     intel_guc_log_c
     intel_guc_submission_c
     intel_gvt_c
     intel_hotplug_c
     intel_huc_c
+    intel_huc_fw_c
     intel_i2c_c
     intel_lpe_audio_c
     intel_lrc_c
@@ -84,13 +83,14 @@ i915
     intel_panel_c
     intel_pm_c
     intel_psr_c
-    intel_ringbuffer_c
     intel_ringbuffer_h
     intel_runtime_pm_c
-    intel_sdvo_c
     intel_sprite_c
-    intel_tv_c
     intel_uc_c
     intel_uc_fw_c
+    intel_uc_fw_h
     intel_uncore_c
     intel_vbt_defs_h
+    intel_wopcm_c
+    intel_wopcm_h
+    intel_workarounds_c

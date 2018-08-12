@@ -550,6 +550,38 @@ suspend
 resume
     *undescribed*
 
+.. _`samsung_pinctrl_of_match_data`:
+
+struct samsung_pinctrl_of_match_data
+====================================
+
+.. c:type:: struct samsung_pinctrl_of_match_data
+
+    OF match device specific configuration data.
+
+.. _`samsung_pinctrl_of_match_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct samsung_pinctrl_of_match_data {
+        const struct samsung_pin_ctrl *ctrl;
+        unsigned int num_ctrl;
+    }
+
+.. _`samsung_pinctrl_of_match_data.members`:
+
+Members
+-------
+
+ctrl
+    array of pin controller data.
+
+num_ctrl
+    size of array \ ``ctrl``\ .
+
 .. _`samsung_pin_group`:
 
 struct samsung_pin_group

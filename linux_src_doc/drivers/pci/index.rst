@@ -7,10 +7,8 @@ pci
 .. toctree::
     :maxdepth: 1
 
-    cadence/index
-    dwc/index
+    controller/index
     endpoint/index
-    host/index
     hotplug/index
     pcie/index
     access_c
@@ -26,10 +24,10 @@ pci
     pci_c
     pci_h
     probe_c
-    quirks_c
     remove_c
     rom_c
     search_c
     setup-bus_c
     slot_c
     vc_c
+    vpd_c

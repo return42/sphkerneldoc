@@ -87,7 +87,7 @@ zero on success, non-zero otherwise.
 chp_get_chp_desc
 ================
 
-.. c:function:: struct channel_path_desc *chp_get_chp_desc(struct chp_id chpid)
+.. c:function:: struct channel_path_desc_fmt0 *chp_get_chp_desc(struct chp_id chpid)
 
     return newly allocated channel-path description
 

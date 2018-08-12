@@ -44,7 +44,7 @@ Return
 
 a pointer to a new \ :c:type:`struct btrfs_device <btrfs_device>`\  on success; \ :c:func:`ERR_PTR`\ 
 on error.  Returned struct is not linked onto any lists and must be
-destroyed with free_device.
+destroyed with btrfs_free_device.
 
 .. This file was automatic generated / don't edit.
 

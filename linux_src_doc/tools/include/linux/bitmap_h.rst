@@ -26,7 +26,7 @@ bitmap_alloc
     Allocate bitmap
 
     :param int nbits:
-        *undescribed*
+        Number of bits
 
 .. _`bitmap_and`:
 

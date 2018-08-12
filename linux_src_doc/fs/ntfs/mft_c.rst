@@ -219,7 +219,7 @@ written out to disk.
 NOTE
 ----
 
-We only set I_DIRTY_SYNC and I_DIRTY_DATASYNC (and not I_DIRTY_PAGES)
+We only set I_DIRTY_DATASYNC (and not I_DIRTY_PAGES)
 on the base vfs inode, because even though file data may have been modified,
 it is dirty in the inode meta data rather than the data page cache of the
 inode, and thus there are no data pages that need writing out.  Therefore, a

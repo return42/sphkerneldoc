@@ -407,7 +407,6 @@ Return
 ------
 
 0, on success.
--ENODEV, if PHY cannot be connected to
 non-zero error value on failure
 
 This is the driver open routine. It calls phy_start to start the PHY device.

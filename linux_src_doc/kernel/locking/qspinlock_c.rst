@@ -1,6 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/locking/qspinlock.c
 
+.. _`clear_pending`:
+
+clear_pending
+=============
+
+.. c:function:: void clear_pending(struct qspinlock *lock)
+
+    clear the pending bit.
+
+    :param struct qspinlock \*lock:
+        Pointer to queued spinlock structure
+
+.. _`clear_pending.description`:
+
+Description
+-----------
+
+\*,1,\* -> \*,0,\*
+
 .. _`clear_pending_set_locked`:
 
 clear_pending_set_locked
@@ -21,6 +40,25 @@ Description
 \*,1,0 -> \*,0,1
 
 Lock stealing is not allowed if this function is used.
+
+.. _`clear_pending`:
+
+clear_pending
+=============
+
+.. c:function:: void clear_pending(struct qspinlock *lock)
+
+    clear the pending bit.
+
+    :param struct qspinlock \*lock:
+        Pointer to queued spinlock structure
+
+.. _`clear_pending.description`:
+
+Description
+-----------
+
+\*,1,\* -> \*,0,\*
 
 .. _`clear_pending_set_locked`:
 

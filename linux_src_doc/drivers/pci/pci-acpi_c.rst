@@ -6,11 +6,11 @@
 pciehp_is_native
 ================
 
-.. c:function:: bool pciehp_is_native(struct pci_dev *pdev)
+.. c:function:: bool pciehp_is_native(struct pci_dev *bridge)
 
     Check whether a hotplug port is handled by the OS
 
-    :param struct pci_dev \*pdev:
+    :param struct pci_dev \*bridge:
         Hotplug port to check
 
 .. _`pciehp_is_native.description`:
@@ -18,9 +18,28 @@ pciehp_is_native
 Description
 -----------
 
-Walk up from \ ``pdev``\  to the host bridge, obtain its cached \_OSC Control Field
-and return the value of the "PCI Express Native Hot Plug control" bit.
-On failure to obtain the \_OSC Control Field return \ ``false``\ .
+Returns true if the given \ ``bridge``\  is handled by the native PCIe hotplug
+driver.
+
+.. _`shpchp_is_native`:
+
+shpchp_is_native
+================
+
+.. c:function:: bool shpchp_is_native(struct pci_dev *bridge)
+
+    Check whether a hotplug port is handled by the OS
+
+    :param struct pci_dev \*bridge:
+        Hotplug port to check
+
+.. _`shpchp_is_native.description`:
+
+Description
+-----------
+
+Returns true if the given \ ``bridge``\  is handled by the native SHPC hotplug
+driver.
 
 .. _`pci_acpi_wake_bus`:
 

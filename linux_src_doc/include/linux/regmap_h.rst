@@ -1162,6 +1162,30 @@ The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
 to a struct regmap. The regmap will be automatically freed by the
 device management code.
 
+.. _`devm_regmap_init_slimbus`:
+
+devm_regmap_init_slimbus
+========================
+
+.. c:function::  devm_regmap_init_slimbus( slimbus,  config)
+
+    Initialise managed register map
+
+    :param  slimbus:
+        Device that will be interacted with
+
+    :param  config:
+        Configuration for register map
+
+.. _`devm_regmap_init_slimbus.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
+to a struct regmap. The regmap will be automatically freed by the
+device management code.
+
 .. _`reg_field`:
 
 struct reg_field

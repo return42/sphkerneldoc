@@ -33,6 +33,7 @@ Definition
         unsigned int id;
         int dir;
         bool master;
+        bool spdif;
         int fmt;
         int sync;
         int synco;
@@ -42,6 +43,8 @@ Definition
         int slot_width;
         int slot_mask;
         int data_size;
+        unsigned int spdif_frm_cnt;
+        unsigned char spdif_status_bits[SAI_IEC60958_STATUS_BYTES];
     }
 
 .. _`stm32_sai_sub_data.members`:
@@ -94,6 +97,9 @@ dir
 master
     SAI block mode flag. (true=master, false=slave) set at init
 
+spdif
+    SAI S/PDIF iec60958 mode flag. set at init
+
 fmt
     SAI block format. relevant only for custom protocols. set at init
 
@@ -120,6 +126,12 @@ slot_mask
 
 data_size
     PCM data width. corresponds to PCM substream width.
+
+spdif_frm_cnt
+    S/PDIF playback frame counter
+
+spdif_status_bits
+    S/PDIF status bits
 
 .. This file was automatic generated / don't edit.
 

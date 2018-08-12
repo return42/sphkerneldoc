@@ -348,5 +348,45 @@ are met
   - For CVT timings: if reduced blanking v2 (vsync == 8) is true.
   - For CEA861 timings: if \ ``V4L2_DV_FL_CAN_REDUCE_FPS``\  flag is true.
 
+.. _`v4l2_hdmi_colorimetry`:
+
+struct v4l2_hdmi_colorimetry
+============================
+
+.. c:type:: struct v4l2_hdmi_colorimetry
+
+    describes the HDMI colorimetry information
+
+.. _`v4l2_hdmi_colorimetry.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct v4l2_hdmi_colorimetry {
+        enum v4l2_colorspace colorspace;
+        enum v4l2_ycbcr_encoding ycbcr_enc;
+        enum v4l2_quantization quantization;
+        enum v4l2_xfer_func xfer_func;
+    }
+
+.. _`v4l2_hdmi_colorimetry.members`:
+
+Members
+-------
+
+colorspace
+    enum v4l2_colorspace, the colorspace
+
+ycbcr_enc
+    enum v4l2_ycbcr_encoding, Y'CbCr encoding
+
+quantization
+    enum v4l2_quantization, colorspace quantization
+
+xfer_func
+    enum v4l2_xfer_func, colorspace transfer function
+
 .. This file was automatic generated / don't edit.
 

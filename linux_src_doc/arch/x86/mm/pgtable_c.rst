@@ -173,5 +173,57 @@ Description
 
 Returns 1 on success and 0 on failure (no PMD map is found).
 
+.. _`pud_free_pmd_page`:
+
+pud_free_pmd_page
+=================
+
+.. c:function:: int pud_free_pmd_page(pud_t *pud)
+
+    Clear pud entry and free pmd page.
+
+    :param pud_t \*pud:
+        Pointer to a PUD.
+
+.. _`pud_free_pmd_page.context`:
+
+Context
+-------
+
+The pud range has been unmaped and TLB purged.
+
+.. _`pud_free_pmd_page.return`:
+
+Return
+------
+
+1 if clearing the entry succeeded. 0 otherwise.
+
+.. _`pmd_free_pte_page`:
+
+pmd_free_pte_page
+=================
+
+.. c:function:: int pmd_free_pte_page(pmd_t *pmd)
+
+    Clear pmd entry and free pte page.
+
+    :param pmd_t \*pmd:
+        Pointer to a PMD.
+
+.. _`pmd_free_pte_page.context`:
+
+Context
+-------
+
+The pmd range has been unmaped and TLB purged.
+
+.. _`pmd_free_pte_page.return`:
+
+Return
+------
+
+1 if clearing the entry succeeded. 0 otherwise.
+
 .. This file was automatic generated / don't edit.
 

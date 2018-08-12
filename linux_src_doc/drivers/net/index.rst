@@ -9,6 +9,7 @@ net
 
     bonding/index
     can/index
+    dsa/index
     ethernet/index
     ieee802154/index
     phy/index
@@ -21,6 +22,7 @@ net
     macvlan_c
     mdio_c
     mii_c
+    net_failover_c
     netconsole_c
     thunderbolt_c
     tun_c

@@ -675,31 +675,31 @@ common
     Valid for all types
 
 bus_reset
-    Valid if \ ``common``\ .type == \ ``FW_CDEV_EVENT_BUS_RESET``\ 
+    Valid if \ ``common.type``\  == \ ``FW_CDEV_EVENT_BUS_RESET``\ 
 
 response
-    Valid if \ ``common``\ .type == \ ``FW_CDEV_EVENT_RESPONSE``\ 
+    Valid if \ ``common.type``\  == \ ``FW_CDEV_EVENT_RESPONSE``\ 
 
 request
-    Valid if \ ``common``\ .type == \ ``FW_CDEV_EVENT_REQUEST``\ 
+    Valid if \ ``common.type``\  == \ ``FW_CDEV_EVENT_REQUEST``\ 
 
 request2
-    Valid if \ ``common``\ .type == \ ``FW_CDEV_EVENT_REQUEST2``\ 
+    Valid if \ ``common.type``\  == \ ``FW_CDEV_EVENT_REQUEST2``\ 
 
 iso_interrupt
-    Valid if \ ``common``\ .type == \ ``FW_CDEV_EVENT_ISO_INTERRUPT``\ 
+    Valid if \ ``common.type``\  == \ ``FW_CDEV_EVENT_ISO_INTERRUPT``\ 
 
 iso_interrupt_mc
-    Valid if \ ``common``\ .type ==
+    Valid if \ ``common.type``\  ==
     \ ``FW_CDEV_EVENT_ISO_INTERRUPT_MULTICHANNEL``\ 
 
 iso_resource
-    Valid if \ ``common``\ .type ==
+    Valid if \ ``common.type``\  ==
     \ ``FW_CDEV_EVENT_ISO_RESOURCE_ALLOCATED``\  or
     \ ``FW_CDEV_EVENT_ISO_RESOURCE_DEALLOCATED``\ 
 
 phy_packet
-    Valid if \ ``common``\ .type ==
+    Valid if \ ``common.type``\  ==
     \ ``FW_CDEV_EVENT_PHY_PACKET_SENT``\  or
     \ ``FW_CDEV_EVENT_PHY_PACKET_RECEIVED``\ 
 
@@ -1323,32 +1323,32 @@ The \ ``header``\  array is empty in case of receive contexts.
 
 Context type \ ``FW_CDEV_ISO_CONTEXT_TRANSMIT``\ :
 
-\ ``control``\ .HEADER_LENGTH must be a multiple of 4.  It specifies the numbers of
+\ ``control.HEADER_LENGTH``\  must be a multiple of 4.  It specifies the numbers of
 bytes in \ ``header``\  that will be prepended to the packet's payload.  These bytes
 are copied into the kernel and will not be accessed after the ioctl has
 returned.
 
-The \ ``control``\ .SY and TAG fields are copied to the iso packet header.  These
+The \ ``control.SY``\  and TAG fields are copied to the iso packet header.  These
 fields are specified by IEEE 1394a and IEC 61883-1.
 
-The \ ``control``\ .SKIP flag specifies that no packet is to be sent in a frame.
-When using this, all other fields except \ ``control``\ .INTERRUPT must be zero.
+The \ ``control.SKIP``\  flag specifies that no packet is to be sent in a frame.
+When using this, all other fields except \ ``control.INTERRUPT``\  must be zero.
 
-When a packet with the \ ``control``\ .INTERRUPT flag set has been completed, an
+When a packet with the \ ``control.INTERRUPT``\  flag set has been completed, an
 \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\  event will be sent.
 
 Context type \ ``FW_CDEV_ISO_CONTEXT_RECEIVE``\ :
 
-\ ``control``\ .HEADER_LENGTH must be a multiple of the context's header_size.
+\ ``control.HEADER_LENGTH``\  must be a multiple of the context's header_size.
 If the HEADER_LENGTH is larger than the context's header_size, multiple
 packets are queued for this entry.
 
-The \ ``control``\ .SY and TAG fields are ignored.
+The \ ``control.SY``\  and TAG fields are ignored.
 
-If the \ ``control``\ .SYNC flag is set, the context drops all packets until a
+If the \ ``control.SYNC``\  flag is set, the context drops all packets until a
 packet with a sy field is received which matches \ :c:type:`fw_cdev_start_iso.sync <fw_cdev_start_iso>`\ .
 
-\ ``control``\ .PAYLOAD_LENGTH defines how many payload bytes can be received for
+\ ``control.PAYLOAD_LENGTH``\  defines how many payload bytes can be received for
 one packet (in addition to payload quadlets that have been defined as headers
 and are stripped and returned in the \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\  structure).
 If more bytes are received, the additional bytes are dropped.  If less bytes
@@ -1358,7 +1358,7 @@ consecutive frames will not necessarily be consecutive in memory.  If an
 entry has queued multiple packets, the PAYLOAD_LENGTH is divided equally
 among them.
 
-When a packet with the \ ``control``\ .INTERRUPT flag set has been completed, an
+When a packet with the \ ``control.INTERRUPT``\  flag set has been completed, an
 \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\  event will be sent.  An entry that has queued
 multiple receive packets is completed when its last packet is completed.
 
@@ -1368,14 +1368,14 @@ Here, \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  would be more
 it specifies a chunk of the \ :c:func:`mmap`\ 'ed buffer, while the number and alignment
 of packets to be placed into the buffer chunk is not known beforehand.
 
-\ ``control``\ .PAYLOAD_LENGTH is the size of the buffer chunk and specifies room
+\ ``control.PAYLOAD_LENGTH``\  is the size of the buffer chunk and specifies room
 for header, payload, padding, and trailer bytes of one or more packets.
 It must be a multiple of 4.
 
-\ ``control``\ .HEADER_LENGTH, TAG and SY are ignored.  SYNC is treated as described
+\ ``control.HEADER_LENGTH``\ , TAG and SY are ignored.  SYNC is treated as described
 for single-channel reception.
 
-When a buffer chunk with the \ ``control``\ .INTERRUPT flag set has been filled
+When a buffer chunk with the \ ``control.INTERRUPT``\  flag set has been filled
 entirely, an \ :c:type:`struct fw_cdev_event_iso_interrupt_mc <fw_cdev_event_iso_interrupt_mc>`\  event will be sent.
 
 .. _`fw_cdev_queue_iso`:

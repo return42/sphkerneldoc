@@ -421,7 +421,7 @@ Returns non-negative upon success, negative otherwise.
 llc_ui_getname
 ==============
 
-.. c:function:: int llc_ui_getname(struct socket *sock, struct sockaddr *uaddr, int *uaddrlen, int peer)
+.. c:function:: int llc_ui_getname(struct socket *sock, struct sockaddr *uaddr, int peer)
 
     return the address info of a socket
 
@@ -430,9 +430,6 @@ llc_ui_getname
 
     :param struct sockaddr \*uaddr:
         Address structure to return information.
-
-    :param int \*uaddrlen:
-        Length of address structure.
 
     :param int peer:
         Does user want local or remote address information.

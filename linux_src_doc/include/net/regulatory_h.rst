@@ -59,7 +59,7 @@ Definition
         int wiphy_idx;
         enum nl80211_reg_initiator initiator;
         enum nl80211_user_reg_hint_type user_reg_hint_type;
-        char alpha2[2];
+        char alpha2[3];
         enum nl80211_dfs_regions dfs_region;
         bool intersect;
         bool processed;
@@ -260,6 +260,55 @@ This flag is incompatible with the flags
 Mixing any of the above flags with this flag will result in a failure
 to register the wiphy. This flag implies
 \ ``REGULATORY_DISABLE_BEACON_HINTS``\  and \ ``REGULATORY_COUNTRY_IE_IGNORE``\ .
+
+.. _`ieee80211_wmm_ac`:
+
+struct ieee80211_wmm_ac
+=======================
+
+.. c:type:: struct ieee80211_wmm_ac
+
+    used to store per ac wmm regulatory limitation
+
+.. _`ieee80211_wmm_ac.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_wmm_ac {
+        u16 cw_min;
+        u16 cw_max;
+        u16 cot;
+        u8 aifsn;
+    }
+
+.. _`ieee80211_wmm_ac.members`:
+
+Members
+-------
+
+cw_min
+    minimum contention window [a value of the form
+    2^n-1 in the range 1..32767]
+
+cw_max
+    maximum contention window [like \ ``cw_min``\ ]
+
+cot
+    maximum burst time in units of 32 usecs, 0 meaning disabled
+
+aifsn
+    arbitration interframe space [0..255]
+
+.. _`ieee80211_wmm_ac.description`:
+
+Description
+-----------
+
+The information provided in this structure is required for QoS
+transmit queue configuration. Cf. IEEE 802.11 7.3.2.29.
 
 .. This file was automatic generated / don't edit.
 

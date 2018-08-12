@@ -19,6 +19,7 @@ misc
     ti-st/index
     atmel_tclib_c
     enclosure_c
+    ibmvmc_c
     pch_phub_c
     pci_endpoint_test_c
     pti_c

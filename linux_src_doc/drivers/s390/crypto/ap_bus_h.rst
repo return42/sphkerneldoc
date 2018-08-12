@@ -13,5 +13,17 @@ ap_init_message
     :param struct ap_message \*ap_msg:
         *undescribed*
 
+.. _`ap_release_message`:
+
+ap_release_message
+==================
+
+.. c:function:: void ap_release_message(struct ap_message *ap_msg)
+
+    Release ap_message. Releases all memory used internal within the ap_message struct Currently this is the message and private field.
+
+    :param struct ap_message \*ap_msg:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

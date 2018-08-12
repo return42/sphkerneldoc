@@ -138,19 +138,24 @@ the number of pdus that removed from queue.
 llc_conn_send_pdus
 ==================
 
-.. c:function:: void llc_conn_send_pdus(struct sock *sk)
+.. c:function:: int llc_conn_send_pdus(struct sock *sk, struct sk_buff *hold_skb)
 
     Sends queued PDUs
 
     :param struct sock \*sk:
         active connection
 
+    :param struct sk_buff \*hold_skb:
+        the skb held by caller, or NULL if does not care
+
 .. _`llc_conn_send_pdus.description`:
 
 Description
 -----------
 
-Sends queued pdus to MAC layer for transmission.
+Sends queued pdus to MAC layer for transmission. When \ ``hold_skb``\  is
+NULL, always return 0. Otherwise, return 0 if \ ``hold_skb``\  is sent
+successfully, or 1 for failure.
 
 .. _`llc_conn_service`:
 

@@ -36,6 +36,10 @@ Definition
     #define VOTABLE BIT(0)
     #define CLAMP_IO BIT(1)
     #define HW_CTRL BIT(2)
+    #define SW_RESET BIT(3)
+    #define AON_RESET BIT(4)
+    #define POLL_CFG_GDSCR BIT(5)
+    #define ALWAYS_ON BIT(6)
         struct reset_controller_dev *rcdev;
         unsigned int *resets;
         unsigned int reset_count;

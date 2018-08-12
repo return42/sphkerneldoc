@@ -130,12 +130,12 @@ Description
 We block for all BOs and unmap them by move them
 into system domain again.
 
-.. _`amdgpu_mn_invalidate_range_start`:
+.. _`amdgpu_mn_invalidate_range_start_gfx`:
 
-amdgpu_mn_invalidate_range_start
-================================
+amdgpu_mn_invalidate_range_start_gfx
+====================================
 
-.. c:function:: void amdgpu_mn_invalidate_range_start(struct mmu_notifier *mn, struct mm_struct *mm, unsigned long start, unsigned long end)
+.. c:function:: void amdgpu_mn_invalidate_range_start_gfx(struct mmu_notifier *mn, struct mm_struct *mm, unsigned long start, unsigned long end)
 
     callback to notify about mm change
 
@@ -151,13 +151,43 @@ amdgpu_mn_invalidate_range_start
     :param unsigned long end:
         end of updated range
 
-.. _`amdgpu_mn_invalidate_range_start.description`:
+.. _`amdgpu_mn_invalidate_range_start_gfx.description`:
 
 Description
 -----------
 
 We block for all BOs between start and end to be idle and
 unmap them by move them into system domain again.
+
+.. _`amdgpu_mn_invalidate_range_start_hsa`:
+
+amdgpu_mn_invalidate_range_start_hsa
+====================================
+
+.. c:function:: void amdgpu_mn_invalidate_range_start_hsa(struct mmu_notifier *mn, struct mm_struct *mm, unsigned long start, unsigned long end)
+
+    callback to notify about mm change
+
+    :param struct mmu_notifier \*mn:
+        the mm this callback is about
+
+    :param struct mm_struct \*mm:
+        *undescribed*
+
+    :param unsigned long start:
+        start of updated range
+
+    :param unsigned long end:
+        end of updated range
+
+.. _`amdgpu_mn_invalidate_range_start_hsa.description`:
+
+Description
+-----------
+
+We temporarily evict all BOs between start and end. This
+necessitates evicting all user-mode queues of the process. The BOs
+are restorted in amdgpu_mn_invalidate_range_end_hsa.
 
 .. _`amdgpu_mn_invalidate_range_end`:
 
@@ -192,12 +222,15 @@ Release the lock again to allow new command submissions.
 amdgpu_mn_get
 =============
 
-.. c:function:: struct amdgpu_mn *amdgpu_mn_get(struct amdgpu_device *adev)
+.. c:function:: struct amdgpu_mn *amdgpu_mn_get(struct amdgpu_device *adev, enum amdgpu_mn_type type)
 
     create notifier context
 
     :param struct amdgpu_device \*adev:
         amdgpu device pointer
+
+    :param enum amdgpu_mn_type type:
+        type of MMU notifier context
 
 .. _`amdgpu_mn_get.description`:
 

@@ -168,6 +168,21 @@ Managed \ :c:func:`reset_controller_register`\ . For reset controllers registere
 this function, \ :c:func:`reset_controller_unregister`\  is automatically called on
 driver detach. See \ :c:func:`reset_controller_register`\  for more information.
 
+.. _`reset_controller_add_lookup`:
+
+reset_controller_add_lookup
+===========================
+
+.. c:function:: void reset_controller_add_lookup(struct reset_control_lookup *lookup, unsigned int num_entries)
+
+    register a set of lookup entries
+
+    :param struct reset_control_lookup \*lookup:
+        array of reset lookup entries
+
+    :param unsigned int num_entries:
+        number of entries in the lookup array
+
 .. _`reset_control_reset`:
 
 reset_control_reset

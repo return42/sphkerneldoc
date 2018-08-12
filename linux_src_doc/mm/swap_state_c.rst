@@ -21,12 +21,12 @@ Description
 Allocate swap space for the page and add the page to the
 swap cache.  Caller needs to hold the page lock.
 
-.. _`swapin_readahead`:
+.. _`swap_cluster_readahead`:
 
-swapin_readahead
-================
+swap_cluster_readahead
+======================
 
-.. c:function:: struct page *swapin_readahead(swp_entry_t entry, gfp_t gfp_mask, struct vm_area_struct *vma, unsigned long addr)
+.. c:function:: struct page *swap_cluster_readahead(swp_entry_t entry, gfp_t gfp_mask, struct vm_fault *vmf)
 
     swap in pages in hope we need them soon
 
@@ -36,13 +36,10 @@ swapin_readahead
     :param gfp_t gfp_mask:
         memory allocation flags
 
-    :param struct vm_area_struct \*vma:
-        user vma this address belongs to
+    :param struct vm_fault \*vmf:
+        fault information
 
-    :param unsigned long addr:
-        target address for mempolicy
-
-.. _`swapin_readahead.description`:
+.. _`swap_cluster_readahead.description`:
 
 Description
 -----------
@@ -57,7 +54,36 @@ the 'original' request together with the readahead ones...
 This has been extended to use the NUMA policies from the mm triggering
 the readahead.
 
-Caller must hold down_read on the vma->vm_mm if vma is not NULL.
+Caller must hold down_read on the vma->vm_mm if vmf->vma is not NULL.
+
+.. _`swapin_readahead`:
+
+swapin_readahead
+================
+
+.. c:function:: struct page *swapin_readahead(swp_entry_t entry, gfp_t gfp_mask, struct vm_fault *vmf)
+
+    swap in pages in hope we need them soon
+
+    :param swp_entry_t entry:
+        swap entry of this memory
+
+    :param gfp_t gfp_mask:
+        memory allocation flags
+
+    :param struct vm_fault \*vmf:
+        fault information
+
+.. _`swapin_readahead.description`:
+
+Description
+-----------
+
+Returns the struct page for entry and addr, after queueing swapin.
+
+It's a main entry function for swap readahead. By the configuration,
+it will read ahead blocks by cluster-based(ie, physical disk based)
+or vma-based(ie, virtual address based on faulty address) readahead.
 
 .. This file was automatic generated / don't edit.
 

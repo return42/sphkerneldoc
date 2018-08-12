@@ -18,6 +18,35 @@ execution, userspace is told the location of those objects in this pass,
 but this remains just a hint as the kernel may choose a new location for
 any object in the future.
 
+At the level of talking to the hardware, submitting a batchbuffer for the
+GPU to execute is to add content to a buffer from which the HW
+command streamer is reading.
+
+1. Add a command to load the HW context. For Logical Ring Contexts, i.e.
+   Execlists, this command is not placed on the same buffer as the
+   remaining items.
+
+2. Add a command to invalidate caches to the buffer.
+
+3. Add a batchbuffer start command to the buffer; the start command is
+   essentially a token together with the GPU address of the batchbuffer
+   to be executed.
+
+4. Add a pipeline flush to the buffer.
+
+5. Add a memory write command to the buffer to record when the GPU
+   is done executing the batchbuffer. The memory write writes the
+   global sequence number of the request, ``i915_request::global_seqno``;
+   the i915 driver uses the current value in the register to determine
+   if the GPU has completed the batchbuffer.
+
+6. Add a user interrupt command to the buffer. This command instructs
+   the GPU to issue an interrupt when the command, pipeline flush and
+   memory write are completed.
+
+7. Inform the hardware of the additional commands added to the buffer
+   (by updating the tail pointer).
+
 Processing an execbuf ioctl is conceptually split up into a few phases.
 
 1. Validation - Ensure all the pointers, handles and flags are valid.
@@ -41,15 +70,15 @@ moved any buffers, all the relocation entries are valid and we can skip
 the update. (If userspace is wrong, the likely outcome is an impromptu GPU
 hang.) The requirement for using I915_EXEC_NO_RELOC are:
 
-The addresses written in the objects must match the corresponding
-reloc.presumed_offset which in turn must match the corresponding
-execobject.offset.
+     The addresses written in the objects must match the corresponding
+     reloc.presumed_offset which in turn must match the corresponding
+     execobject.offset.
 
-Any render targets written to in the batch must be flagged with
-EXEC_OBJECT_WRITE.
+     Any render targets written to in the batch must be flagged with
+     EXEC_OBJECT_WRITE.
 
-To avoid stalling, execobject.offset should match the current
-address of that object within the active context.
+     To avoid stalling, execobject.offset should match the current
+     address of that object within the active context.
 
 The reservation is done is multiple phases. First we try and keep any
 object already bound in its current location - so as long as meets the
@@ -123,21 +152,6 @@ copy the user's batchbuffer to a shadow (so that the user doesn't have
 access to it, either by the CPU or GPU as we scan it) and then parse each
 instruction. If everything is ok, we set a flag telling the hardware to run
 the batchbuffer in trusted mode, otherwise the ioctl is rejected.
-
-.. _`gen8_dispatch_bsd_engine`:
-
-gen8_dispatch_bsd_engine
-========================
-
-.. c:function:: unsigned int gen8_dispatch_bsd_engine(struct drm_i915_private *dev_priv, struct drm_file *file)
-
-    The engine index is returned.
-
-    :param struct drm_i915_private \*dev_priv:
-        *undescribed*
-
-    :param struct drm_file \*file:
-        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

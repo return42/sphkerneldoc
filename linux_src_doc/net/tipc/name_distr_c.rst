@@ -180,39 +180,6 @@ Description
 tipc_nametbl_lock must be held.
 Returns the publication item if successful, otherwise NULL.
 
-.. _`tipc_named_add_backlog`:
-
-tipc_named_add_backlog
-======================
-
-.. c:function:: void tipc_named_add_backlog(struct net *net, struct distr_item *i, u32 type, u32 node)
-
-    add a failed name table update to the backlog
-
-    :param struct net \*net:
-        *undescribed*
-
-    :param struct distr_item \*i:
-        *undescribed*
-
-    :param u32 type:
-        *undescribed*
-
-    :param u32 node:
-        *undescribed*
-
-.. _`tipc_named_process_backlog`:
-
-tipc_named_process_backlog
-==========================
-
-.. c:function:: void tipc_named_process_backlog(struct net *net)
-
-    try to process any pending name table updates from the network.
-
-    :param struct net \*net:
-        *undescribed*
-
 .. _`tipc_named_rcv`:
 
 tipc_named_rcv

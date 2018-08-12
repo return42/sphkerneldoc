@@ -24,7 +24,7 @@ xxh32
 Description
 -----------
 
-Speed on Core 2 Duo @ 3 GHz (single thread, SMHasher benchmark) : 5.4 GB/s
+Speed on Core 2 Duo \ ````\  3 GHz (single thread, SMHasher benchmark) : 5.4 GB/s
 
 .. _`xxh32.return`:
 

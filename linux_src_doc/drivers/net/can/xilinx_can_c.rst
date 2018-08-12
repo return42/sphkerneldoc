@@ -19,6 +19,7 @@ Definition
 
     struct xcan_priv {
         struct can_priv can;
+        spinlock_t tx_lock;
         unsigned int tx_head;
         unsigned int tx_tail;
         unsigned int tx_max;
@@ -39,6 +40,9 @@ Members
 
 can
     CAN private data structure.
+
+tx_lock
+    Lock for synchronizing TX interrupt handling
 
 tx_head
     Tx CAN packets ready to send on the queue
@@ -350,6 +354,81 @@ Return
 ------
 
 1 on success and 0 on failure.
+
+.. _`xcan_current_error_state`:
+
+xcan_current_error_state
+========================
+
+.. c:function:: enum can_state xcan_current_error_state(struct net_device *ndev)
+
+    Get current error state from HW
+
+    :param struct net_device \*ndev:
+        Pointer to net_device structure
+
+.. _`xcan_current_error_state.description`:
+
+Description
+-----------
+
+Checks the current CAN error state from the HW. Note that this
+only checks for ERROR_PASSIVE and ERROR_WARNING.
+
+.. _`xcan_current_error_state.return`:
+
+Return
+------
+
+ERROR_PASSIVE or ERROR_WARNING if either is active, ERROR_ACTIVE
+otherwise.
+
+.. _`xcan_set_error_state`:
+
+xcan_set_error_state
+====================
+
+.. c:function:: void xcan_set_error_state(struct net_device *ndev, enum can_state new_state, struct can_frame *cf)
+
+    Set new CAN error state
+
+    :param struct net_device \*ndev:
+        Pointer to net_device structure
+
+    :param enum can_state new_state:
+        The new CAN state to be set
+
+    :param struct can_frame \*cf:
+        Error frame to be populated or NULL
+
+.. _`xcan_set_error_state.description`:
+
+Description
+-----------
+
+Set new CAN error state for the device, updating statistics and
+populating the error frame if given.
+
+.. _`xcan_update_error_state_after_rxtx`:
+
+xcan_update_error_state_after_rxtx
+==================================
+
+.. c:function:: void xcan_update_error_state_after_rxtx(struct net_device *ndev)
+
+    Update CAN error state after RX/TX
+
+    :param struct net_device \*ndev:
+        Pointer to net_device structure
+
+.. _`xcan_update_error_state_after_rxtx.description`:
+
+Description
+-----------
+
+If the device is in a ERROR-WARNING or ERROR-PASSIVE state, check if
+the performed RX/TX has caused it to drop to a lesser state and set
+the interface state accordingly.
 
 .. _`xcan_err_interrupt`:
 

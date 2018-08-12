@@ -36,6 +36,7 @@ drivers
     firmware/index
     fmc/index
     fpga/index
+    fsi/index
     gpio/index
     gpu/index
     hid/index

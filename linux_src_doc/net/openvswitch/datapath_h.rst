@@ -236,6 +236,9 @@ Definition
     struct ovs_net {
         struct list_head dps;
         struct work_struct dp_notify_work;
+    #if IS_ENABLED(CONFIG_NETFILTER_CONNCOUNT)
+        struct ovs_ct_limit_info *ct_limit_info;
+    #endif
         bool xt_label;
     }
 
@@ -249,6 +252,9 @@ dps
     Protected by genl_mutex.
 
 dp_notify_work
+    *undescribed*
+
+ct_limit_info
     *undescribed*
 
 xt_label

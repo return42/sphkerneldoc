@@ -21,10 +21,9 @@ Definition
         const char *name;
         size_t length;
         bool is_array;
-        bool is_string;
+        enum dev_prop_type type;
         union {
             union {
-                const void *raw_data;
                 const u8 *u8_data;
                 const u16 *u16_data;
                 const u32 *u32_data;
@@ -32,7 +31,6 @@ Definition
                 const char * const *str;
             } pointer;
             union {
-                unsigned long long raw_data;
                 u8 u8_data;
                 u16 u16_data;
                 u32 u32_data;
@@ -56,8 +54,8 @@ length
 is_array
     True when the property is an array.
 
-is_string
-    True when property is a string.
+type
+    Type of the data in unions.
 
 {unnamed_union}
     anonymous

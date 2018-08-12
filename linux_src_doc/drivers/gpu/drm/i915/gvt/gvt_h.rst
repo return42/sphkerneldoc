@@ -83,5 +83,42 @@ Return
 
 True if a MMIO has a mode mask in its higher 16 bits, false if it isn't.
 
+.. _`intel_gvt_mmio_is_in_ctx`:
+
+intel_gvt_mmio_is_in_ctx
+========================
+
+.. c:function:: bool intel_gvt_mmio_is_in_ctx(struct intel_gvt *gvt, unsigned int offset)
+
+    check if a MMIO has in-ctx mask
+
+    :param struct intel_gvt \*gvt:
+        a GVT device
+
+    :param unsigned int offset:
+        register offset
+
+.. _`intel_gvt_mmio_is_in_ctx.return`:
+
+Return
+------
+
+True if a MMIO has a in-context mask, false if it isn't.
+
+.. _`intel_gvt_mmio_set_in_ctx`:
+
+intel_gvt_mmio_set_in_ctx
+=========================
+
+.. c:function:: void intel_gvt_mmio_set_in_ctx(struct intel_gvt *gvt, unsigned int offset)
+
+    mask a MMIO in logical context
+
+    :param struct intel_gvt \*gvt:
+        a GVT device
+
+    :param unsigned int offset:
+        register offset
+
 .. This file was automatic generated / don't edit.
 

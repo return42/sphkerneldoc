@@ -120,7 +120,7 @@ the shadow variable data element, NULL on failure.
 klp_shadow_alloc
 ================
 
-.. c:function:: void *klp_shadow_alloc(void *obj, unsigned long id, void *data, size_t size, gfp_t gfp_flags)
+.. c:function:: void *klp_shadow_alloc(void *obj, unsigned long id, size_t size, gfp_t gfp_flags, klp_shadow_ctor_t ctor, void *ctor_data)
 
     allocate and add a new shadow variable
 
@@ -130,28 +130,34 @@ klp_shadow_alloc
     :param unsigned long id:
         data identifier
 
-    :param void \*data:
-        pointer to data to attach to parent
-
     :param size_t size:
         size of attached data
 
     :param gfp_t gfp_flags:
         GFP mask for allocation
 
+    :param klp_shadow_ctor_t ctor:
+        custom constructor to initialize the shadow data (optional)
+
+    :param void \*ctor_data:
+        pointer to any data needed by \ ``ctor``\  (optional)
+
 .. _`klp_shadow_alloc.description`:
 
 Description
 -----------
 
-Allocates \ ``size``\  bytes for new shadow variable data using \ ``gfp_flags``\ 
-and copies \ ``size``\  bytes from \ ``data``\  into the new shadow variable's own
-data space.  If \ ``data``\  is NULL, \ ``size``\  bytes are still allocated, but
-no copy is performed.  The new shadow variable is then added to the
-global hashtable.
+Allocates \ ``size``\  bytes for new shadow variable data using \ ``gfp_flags``\ .
+The data are zeroed by default.  They are further initialized by \ ``ctor``\ 
+function if it is not NULL.  The new shadow variable is then added
+to the global hashtable.
 
-If an existing <obj, id> shadow variable can be found, this routine
-will issue a WARN, exit early and return NULL.
+If an existing <obj, id> shadow variable can be found, this routine will
+issue a WARN, exit early and return NULL.
+
+This function guarantees that the constructor function is called only when
+the variable did not exist before.  The cost is that \ ``ctor``\  is called
+in atomic context under a spin lock.
 
 .. _`klp_shadow_alloc.return`:
 
@@ -166,7 +172,7 @@ failure.
 klp_shadow_get_or_alloc
 =======================
 
-.. c:function:: void *klp_shadow_get_or_alloc(void *obj, unsigned long id, void *data, size_t size, gfp_t gfp_flags)
+.. c:function:: void *klp_shadow_get_or_alloc(void *obj, unsigned long id, size_t size, gfp_t gfp_flags, klp_shadow_ctor_t ctor, void *ctor_data)
 
     get existing or allocate a new shadow variable
 
@@ -176,14 +182,17 @@ klp_shadow_get_or_alloc
     :param unsigned long id:
         data identifier
 
-    :param void \*data:
-        pointer to data to attach to parent
-
     :param size_t size:
         size of attached data
 
     :param gfp_t gfp_flags:
         GFP mask for allocation
+
+    :param klp_shadow_ctor_t ctor:
+        custom constructor to initialize the shadow data (optional)
+
+    :param void \*ctor_data:
+        pointer to any data needed by \ ``ctor``\  (optional)
 
 .. _`klp_shadow_get_or_alloc.description`:
 
@@ -194,10 +203,10 @@ Returns a pointer to existing shadow data if an <obj, id> shadow
 variable is already present.  Otherwise, it creates a new shadow
 variable like \ :c:func:`klp_shadow_alloc`\ .
 
-This function guarantees that only one shadow variable exists with
-the given \ ``id``\  for the given \ ``obj``\ .  It also guarantees that the shadow
-variable will be initialized by the given \ ``data``\  only when it did not
-exist before.
+This function guarantees that only one shadow variable exists with the given
+\ ``id``\  for the given \ ``obj``\ .  It also guarantees that the constructor function
+will be called only when the variable did not exist before.  The cost is
+that \ ``ctor``\  is called in atomic context under a spin lock.
 
 .. _`klp_shadow_get_or_alloc.return`:
 
@@ -211,7 +220,7 @@ the shadow variable data element, NULL on failure.
 klp_shadow_free
 ===============
 
-.. c:function:: void klp_shadow_free(void *obj, unsigned long id)
+.. c:function:: void klp_shadow_free(void *obj, unsigned long id, klp_shadow_dtor_t dtor)
 
     detach and free a <obj, id> shadow variable
 
@@ -220,6 +229,10 @@ klp_shadow_free
 
     :param unsigned long id:
         data identifier
+
+    :param klp_shadow_dtor_t dtor:
+        custom callback that can be used to unregister the variable
+        and/or free data that the shadow variable points to (optional)
 
 .. _`klp_shadow_free.description`:
 
@@ -234,12 +247,16 @@ instance, callers should stop referencing it accordingly.
 klp_shadow_free_all
 ===================
 
-.. c:function:: void klp_shadow_free_all(unsigned long id)
+.. c:function:: void klp_shadow_free_all(unsigned long id, klp_shadow_dtor_t dtor)
 
     detach and free all <\*, id> shadow variables
 
     :param unsigned long id:
         data identifier
+
+    :param klp_shadow_dtor_t dtor:
+        custom callback that can be used to unregister the variable
+        and/or free data that the shadow variable points to (optional)
 
 .. _`klp_shadow_free_all.description`:
 

@@ -548,5 +548,24 @@ Description
 To be used by smem clients as a quick way to determine if any new
 allocations has been made.
 
+.. _`qcom_smem_virt_to_phys`:
+
+qcom_smem_virt_to_phys
+======================
+
+.. c:function:: phys_addr_t qcom_smem_virt_to_phys(void *p)
+
+    return the physical address associated with an smem item pointer (previously returned by \ :c:func:`qcom_smem_get`\ 
+
+    :param void \*p:
+        the virtual address to convert
+
+.. _`qcom_smem_virt_to_phys.description`:
+
+Description
+-----------
+
+Returns 0 if the pointer provided is not within any smem region.
+
 .. This file was automatic generated / don't edit.
 

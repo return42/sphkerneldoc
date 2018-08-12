@@ -27,7 +27,7 @@ Definition
         void (*wowl_config)(struct device *dev, bool enabled);
         size_t (*get_ramsize)(struct device *dev);
         int (*get_memdump)(struct device *dev, void *data, size_t len);
-        int (*get_fwname)(struct device *dev, uint chip, uint chiprev, unsigned char *fw_name);
+        int (*get_fwname)(struct device *dev, const char *ext, unsigned char *fw_name);
     }
 
 .. _`brcmf_bus_ops.members`:
@@ -241,7 +241,7 @@ ops
     *undescribed*
 
 msgbuf
-    *undescribed*
+    msgbuf protocol parameters provided by bus layer.
 
 .. This file was automatic generated / don't edit.
 

@@ -24,7 +24,7 @@ get_pkeys
 \__subn_set_opa_portinfo
 ========================
 
-.. c:function:: int __subn_set_opa_portinfo(struct opa_smp *smp, u32 am, u8 *data, struct ib_device *ibdev, u8 port, u32 *resp_len, u32 max_len)
+.. c:function:: int __subn_set_opa_portinfo(struct opa_smp *smp, u32 am, u8 *data, struct ib_device *ibdev, u8 port, u32 *resp_len, u32 max_len, int local_mad)
 
     set port information
 
@@ -47,6 +47,9 @@ get_pkeys
         *undescribed*
 
     :param u32 max_len:
+        *undescribed*
+
+    :param int local_mad:
         *undescribed*
 
 .. _`set_pkeys`:

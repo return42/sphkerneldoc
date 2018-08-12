@@ -318,6 +318,66 @@ board_type
 reserved
     reserved
 
+.. _`iwl_nvm_mac_sku_flags`:
+
+enum iwl_nvm_mac_sku_flags
+==========================
+
+.. c:type:: enum iwl_nvm_mac_sku_flags
+
+    flags in \ :c:type:`struct iwl_nvm_get_info_sku <iwl_nvm_get_info_sku>`\ 
+
+.. _`iwl_nvm_mac_sku_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_nvm_mac_sku_flags {
+        NVM_MAC_SKU_FLAGS_BAND_2_4_ENABLED,
+        NVM_MAC_SKU_FLAGS_BAND_5_2_ENABLED,
+        NVM_MAC_SKU_FLAGS_802_11N_ENABLED,
+        NVM_MAC_SKU_FLAGS_802_11AC_ENABLED,
+        NVM_MAC_SKU_FLAGS_802_11AX_ENABLED,
+        NVM_MAC_SKU_FLAGS_MIMO_DISABLED,
+        NVM_MAC_SKU_FLAGS_WAPI_ENABLED,
+        NVM_MAC_SKU_FLAGS_REG_CHECK_ENABLED,
+        NVM_MAC_SKU_FLAGS_API_LOCK_ENABLED
+    };
+
+.. _`iwl_nvm_mac_sku_flags.constants`:
+
+Constants
+---------
+
+NVM_MAC_SKU_FLAGS_BAND_2_4_ENABLED
+    true if 2.4 band enabled
+
+NVM_MAC_SKU_FLAGS_BAND_5_2_ENABLED
+    true if 5.2 band enabled
+
+NVM_MAC_SKU_FLAGS_802_11N_ENABLED
+    true if 11n enabled
+
+NVM_MAC_SKU_FLAGS_802_11AC_ENABLED
+    true if 11ac enabled
+
+NVM_MAC_SKU_FLAGS_802_11AX_ENABLED
+    true if 11ax enabled
+
+NVM_MAC_SKU_FLAGS_MIMO_DISABLED
+    true if MIMO disabled
+
+NVM_MAC_SKU_FLAGS_WAPI_ENABLED
+    true if WAPI enabled
+
+NVM_MAC_SKU_FLAGS_REG_CHECK_ENABLED
+    true if regulatory checker enabled
+
+NVM_MAC_SKU_FLAGS_API_LOCK_ENABLED
+    true if API lock enabled
+
 .. _`iwl_nvm_get_info_sku`:
 
 struct iwl_nvm_get_info_sku
@@ -335,12 +395,7 @@ Definition
 .. code-block:: c
 
     struct iwl_nvm_get_info_sku {
-        __le32 enable_24g;
-        __le32 enable_5g;
-        __le32 enable_11n;
-        __le32 enable_11ac;
-        __le32 mimo_disable;
-        __le32 ext_crypto;
+        __le32 mac_sku_flags;
     }
 
 .. _`iwl_nvm_get_info_sku.members`:
@@ -348,23 +403,8 @@ Definition
 Members
 -------
 
-enable_24g
-    band 2.4G enabled
-
-enable_5g
-    band 5G enabled
-
-enable_11n
-    11n enabled
-
-enable_11ac
-    11ac enabled
-
-mimo_disable
-    MIMO enabled
-
-ext_crypto
-    Extended crypto enabled
+mac_sku_flags
+    flags for SKU, see \ :c:type:`enum iwl_nvm_mac_sku_flags <iwl_nvm_mac_sku_flags>`\ 
 
 .. _`iwl_nvm_get_info_phy`:
 
@@ -632,6 +672,39 @@ channels
     channel control data map, DWORD for each channel. Only the first
     16bits are used.
 
+.. _`iwl_geo_information`:
+
+enum iwl_geo_information
+========================
+
+.. c:type:: enum iwl_geo_information
+
+    geographic information.
+
+.. _`iwl_geo_information.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_geo_information {
+        GEO_NO_INFO,
+        GEO_WMM_ETSI_5GHZ_INFO
+    };
+
+.. _`iwl_geo_information.constants`:
+
+Constants
+---------
+
+GEO_NO_INFO
+    no special info for this geo profile.
+
+GEO_WMM_ETSI_5GHZ_INFO
+    this geo profile limits the WMM params
+    for the 5 GHz band.
+
 .. _`iwl_mcc_update_resp`:
 
 struct iwl_mcc_update_resp
@@ -654,7 +727,7 @@ Definition
         u8 cap;
         u8 source_id;
         __le16 time;
-        __le16 reserved;
+        __le16 geo_info;
         __le32 n_channels;
         __le32 channels[0];
     }
@@ -679,8 +752,9 @@ source_id
 time
     time elapsed from the MCC test start (in 30 seconds TU)
 
-reserved
-    reserved.
+geo_info
+    geographic specific profile information
+    see \ :c:type:`enum iwl_geo_information <iwl_geo_information>`\ .
 
 n_channels
     number of channels in \ ``channels_data``\  (may be 14, 39, 50 or 51

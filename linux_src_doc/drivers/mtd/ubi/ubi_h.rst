@@ -379,6 +379,9 @@ Definition
         unsigned int updating:1;
         unsigned int changing_leb:1;
         unsigned int direct_writes:1;
+    #ifdef CONFIG_MTD_UBI_FASTMAP
+        unsigned long *checkmap;
+    #endif
     }
 
 .. _`ubi_volume.members`:
@@ -483,6 +486,10 @@ changing_leb
 
 direct_writes
     \ ``1``\  if direct writes are enabled for this volume
+
+checkmap
+    bitmap to remember which PEB->LEB mappings got checked,
+    protected by UBI LEB lock tree.
 
 .. _`ubi_volume.description`:
 

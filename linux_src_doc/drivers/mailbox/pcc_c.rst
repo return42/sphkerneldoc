@@ -128,7 +128,7 @@ parse_pcc_subspace
 
 .. c:function:: int parse_pcc_subspace(struct acpi_subtable_header *header, const unsigned long end)
 
-    Parse the PCC table and verify PCC subspace entries. There should be one entry per PCC client.
+    - Count PCC subspaces defined
 
     :param struct acpi_subtable_header \*header:
         Pointer to the ACPI subtable header under the PCCT.
@@ -141,7 +141,8 @@ parse_pcc_subspace
 Return
 ------
 
-0 for Success, else errno.
+If we find a PCC subspace entry of a valid type, return 0.
+Otherwise, return -EINVAL.
 
 This gets called for each entry in the PCC table.
 

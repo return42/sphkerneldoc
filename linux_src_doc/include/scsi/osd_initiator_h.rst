@@ -37,17 +37,12 @@ sleep.
 osd_start_request
 =================
 
-.. c:function:: struct osd_request *osd_start_request(struct osd_dev *od, gfp_t gfp)
+.. c:function:: struct osd_request *osd_start_request(struct osd_dev *od)
 
     Allocate and initialize an osd_request
 
     :param struct osd_dev \*od:
         *undescribed*
-
-    :param gfp_t gfp:
-        The allocation flags to use for request allocation, and all
-        subsequent allocations. This will be stored at
-        osd_request->alloc_flags, can be changed by user later
 
 .. _`osd_start_request.description`:
 

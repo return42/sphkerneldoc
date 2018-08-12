@@ -125,7 +125,7 @@ Definition
         struct device_driver driver;
         struct pci_epf_ops *ops;
         struct module *owner;
-        struct config_group *group;
+        struct list_head epf_group;
         const struct pci_epf_device_id *id_table;
     }
 
@@ -150,8 +150,8 @@ ops
 owner
     the owner of the module that registers the PCI EPF driver
 
-group
-    configfs group corresponding to the PCI EPF driver
+epf_group
+    list of configfs group corresponding to the PCI EPF driver
 
 id_table
     identifies EPF devices for probing
@@ -175,6 +175,8 @@ Definition
     struct pci_epf_bar {
         dma_addr_t phys_addr;
         size_t size;
+        enum pci_barno barno;
+        int flags;
     }
 
 .. _`pci_epf_bar.members`:
@@ -187,6 +189,12 @@ phys_addr
 
 size
     the size of the address space present in BAR
+
+barno
+    *undescribed*
+
+flags
+    *undescribed*
 
 .. _`pci_epf`:
 

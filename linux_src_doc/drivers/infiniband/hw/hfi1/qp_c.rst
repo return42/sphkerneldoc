@@ -85,6 +85,28 @@ Description
 This schedules qp progress and caller should hold
 the s_lock.
 
+.. _`qp_to_sdma_engine`:
+
+qp_to_sdma_engine
+=================
+
+.. c:function:: struct sdma_engine *qp_to_sdma_engine(struct rvt_qp *qp, u8 sc5)
+
+    map a qp to a send engine
+
+    :param struct rvt_qp \*qp:
+        the QP
+
+    :param u8 sc5:
+        the 5 bit sc
+
+.. _`qp_to_sdma_engine.return`:
+
+Return
+------
+
+A send engine for the qp or NULL for SMI type qp.
+
 .. _`qp_iter_print`:
 
 qp_iter_print

@@ -18,6 +18,7 @@ vc4
     vc4_hvs_c
     vc4_irq_c
     vc4_kms_c
+    vc4_perfmon_c
     vc4_plane_c
     vc4_qpu_defines_h
     vc4_render_cl_c

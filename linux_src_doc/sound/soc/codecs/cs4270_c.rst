@@ -236,11 +236,11 @@ Returns 0 for success.
 cs4270_probe
 ============
 
-.. c:function:: int cs4270_probe(struct snd_soc_codec *codec)
+.. c:function:: int cs4270_probe(struct snd_soc_component *component)
 
     ASoC probe function
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
 .. _`cs4270_probe.description`:
@@ -256,11 +256,11 @@ instantiate a sound driver.
 cs4270_remove
 =============
 
-.. c:function:: int cs4270_remove(struct snd_soc_codec *codec)
+.. c:function:: void cs4270_remove(struct snd_soc_component *component)
 
     ASoC remove function
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
 .. _`cs4270_remove.description`:
@@ -292,25 +292,6 @@ Description
 
 This function is called whenever the I2C subsystem finds a device that
 matches the device ID given via a prior call to \ :c:func:`i2c_add_driver`\ .
-
-.. _`cs4270_i2c_remove`:
-
-cs4270_i2c_remove
-=================
-
-.. c:function:: int cs4270_i2c_remove(struct i2c_client *i2c_client)
-
-    remove an I2C device
-
-    :param struct i2c_client \*i2c_client:
-        the I2C client object
-
-.. _`cs4270_i2c_remove.description`:
-
-Description
------------
-
-This function is the counterpart to \ :c:func:`cs4270_i2c_probe`\ .
 
 .. This file was automatic generated / don't edit.
 

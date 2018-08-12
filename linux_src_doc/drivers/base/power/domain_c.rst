@@ -490,12 +490,12 @@ Description
 This routine may only be called during the system core (syscore) suspend or
 resume phase for devices whose "always on" flags are set.
 
-.. _`__pm_genpd_add_device`:
+.. _`pm_genpd_add_device`:
 
-\__pm_genpd_add_device
-======================
+pm_genpd_add_device
+===================
 
-.. c:function:: int __pm_genpd_add_device(struct generic_pm_domain *genpd, struct device *dev, struct gpd_timing_data *td)
+.. c:function:: int pm_genpd_add_device(struct generic_pm_domain *genpd, struct device *dev)
 
     Add a device to an I/O PM domain.
 
@@ -505,20 +505,14 @@ resume phase for devices whose "always on" flags are set.
     :param struct device \*dev:
         Device to be added.
 
-    :param struct gpd_timing_data \*td:
-        Set of PM QoS timing parameters to attach to the device.
-
 .. _`pm_genpd_remove_device`:
 
 pm_genpd_remove_device
 ======================
 
-.. c:function:: int pm_genpd_remove_device(struct generic_pm_domain *genpd, struct device *dev)
+.. c:function:: int pm_genpd_remove_device(struct device *dev)
 
     Remove a device from an I/O PM domain.
-
-    :param struct generic_pm_domain \*genpd:
-        PM domain to remove the device from.
 
     :param struct device \*dev:
         Device to be removed.
@@ -894,13 +888,42 @@ Description
 Parse device's OF node to find a PM domain specifier. If such is found,
 attaches the device to retrieved pm_domain ops.
 
-Both generic and legacy Samsung-specific DT bindings are supported to keep
-backwards compatibility with existing DTBs.
+Returns 1 on successfully attached PM domain, 0 when the device don't need a
+PM domain or when multiple power-domains exists for it, else a negative error
+code. Note that if a power-domain exists for the device, but it cannot be
+found or turned on, then return -EPROBE_DEFER to ensure that the device is
+not probed and to re-try again later.
 
-Returns 0 on successfully attached PM domain or negative error code. Note
-that if a power-domain exists for the device, but it cannot be found or
-turned on, then return -EPROBE_DEFER to ensure that the device is not
-probed and to re-try again later.
+.. _`genpd_dev_pm_attach_by_id`:
+
+genpd_dev_pm_attach_by_id
+=========================
+
+.. c:function:: struct device *genpd_dev_pm_attach_by_id(struct device *dev, unsigned int index)
+
+    Associate a device with one of its PM domains.
+
+    :param struct device \*dev:
+        The device used to lookup the PM domain.
+
+    :param unsigned int index:
+        The index of the PM domain.
+
+.. _`genpd_dev_pm_attach_by_id.description`:
+
+Description
+-----------
+
+Parse device's OF node to find a PM domain specifier at the provided \ ``index``\ .
+If such is found, creates a virtual device and attaches it to the retrieved
+pm_domain ops. To deal with detaching of the virtual device, the ->detach()
+callback in the struct dev_pm_domain are assigned to \ :c:func:`genpd_dev_pm_detach`\ .
+
+Returns the created virtual device if successfully attached PM domain, NULL
+when the device don't need a PM domain, else an \ :c:func:`ERR_PTR`\  in case of
+failures. If a power-domain exists for the device, but cannot be found or
+turned on, then ERR_PTR(-EPROBE_DEFER) is returned to ensure that the device
+is not probed and to re-try again later.
 
 .. _`of_genpd_parse_idle_states`:
 
@@ -929,6 +952,34 @@ Returns the device states parsed from the OF node. The memory for the states
 is allocated by this function and is the responsibility of the caller to
 free the memory after use. If no domain idle states is found it returns
 -EINVAL and in case of errors, a negative error code.
+
+.. _`of_genpd_opp_to_performance_state`:
+
+of_genpd_opp_to_performance_state
+=================================
+
+.. c:function:: unsigned int of_genpd_opp_to_performance_state(struct device *dev, struct device_node *np)
+
+    Gets performance state of device's power domain corresponding to a DT node's "required-opps" property.
+
+    :param struct device \*dev:
+        Device for which the performance-state needs to be found.
+
+    :param struct device_node \*np:
+        DT node where the "required-opps" property is present. This can be
+        the device node itself (if it doesn't have an OPP table) or a node
+        within the OPP table of a device (if device has an OPP table).
+
+.. _`of_genpd_opp_to_performance_state.description`:
+
+Description
+-----------
+
+Returns performance state corresponding to the "required-opps" property of
+a DT node. This calls platform specific genpd->opp_to_performance_state()
+callback to translate power domain OPP to performance state.
+
+Returns performance state on success and 0 on failure.
 
 .. This file was automatic generated / don't edit.
 

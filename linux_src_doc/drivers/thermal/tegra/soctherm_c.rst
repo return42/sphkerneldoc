@@ -1,53 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/thermal/tegra/soctherm.c
 
-.. _`clk_writel`:
-
-clk_writel
-==========
-
-.. c:function:: void clk_writel(struct tegra_soctherm *ts, u32 value, u32 reg)
-
-    writes a value to a CAR register
-
-    :param struct tegra_soctherm \*ts:
-        pointer to a struct tegra_soctherm
-
-    :param u32 value:
-        *undescribed*
-
-    :param u32 reg:
-        the register offset
-
-.. _`clk_writel.description`:
-
-Description
------------
-
-Writes \ ``v``\  to \ ``reg``\ .  No return value.
-
-.. _`clk_readl`:
-
-clk_readl
-=========
-
-.. c:function:: u32 clk_readl(struct tegra_soctherm *ts, u32 reg)
-
-    reads specified register from CAR IP block
-
-    :param struct tegra_soctherm \*ts:
-        pointer to a struct tegra_soctherm
-
-    :param u32 reg:
-        register address to be read
-
-.. _`clk_readl.return`:
-
-Return
-------
-
-the value of the register
-
 .. _`ccroc_writel`:
 
 ccroc_writel

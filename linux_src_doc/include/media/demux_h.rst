@@ -142,7 +142,7 @@ filter_mode
     Contains a 16 bytes (128 bits) filter mode.
 
 parent
-    Pointer to struct dmx_section_feed.
+    Back-pointer to struct dmx_section_feed.
 
 priv
     Pointer to private data of the API client.
@@ -240,7 +240,7 @@ filtering TS packets on a particular TS feed.
 dmx_ts_cb
 =========
 
-.. c:function:: int dmx_ts_cb(const u8 *buffer1, size_t buffer1_length, const u8 *buffer2, size_t buffer2_length, struct dmx_ts_feed *source)
+.. c:function:: int dmx_ts_cb(const u8 *buffer1, size_t buffer1_length, const u8 *buffer2, size_t buffer2_length, struct dmx_ts_feed *source, u32 *buffer_flags)
 
     DVB demux TS filter callback function prototype
 
@@ -258,6 +258,12 @@ dmx_ts_cb
 
     :param struct dmx_ts_feed \*source:
         Indicates which TS feed is the source of the callback.
+
+    :param u32 \*buffer_flags:
+        Address where buffer flags are stored. Those are
+        used to report discontinuity users via DVB
+        memory mapped API, as defined by
+        \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
 
 .. _`dmx_ts_cb.description`:
 
@@ -320,7 +326,7 @@ Return
 dmx_section_cb
 ==============
 
-.. c:function:: int dmx_section_cb(const u8 *buffer1, size_t buffer1_len, const u8 *buffer2, size_t buffer2_len, struct dmx_section_filter *source)
+.. c:function:: int dmx_section_cb(const u8 *buffer1, size_t buffer1_len, const u8 *buffer2, size_t buffer2_len, struct dmx_section_filter *source, u32 *buffer_flags)
 
     DVB demux TS filter callback function prototype
 
@@ -344,6 +350,12 @@ dmx_section_cb
     :param struct dmx_section_filter \*source:
         Indicates which section feed is the source of the
         callback.
+
+    :param u32 \*buffer_flags:
+        Address where buffer flags are stored. Those are
+        used to report discontinuity users via DVB
+        memory mapped API, as defined by
+        \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
 
 .. _`dmx_section_cb.description`:
 

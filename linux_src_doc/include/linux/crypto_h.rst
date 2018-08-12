@@ -392,6 +392,22 @@ cra_u
     filled with callbacks. This field might be empty. This is the case
     for ahash, shash.
 
+cra_u.ablkcipher
+    Union member which contains an asynchronous block cipher
+    definition. See \ ``struct``\  \ ``ablkcipher_alg``\ .
+
+cra_u.blkcipher
+    Union member which contains a synchronous block cipher
+    definition See \ ``struct``\  \ ``blkcipher_alg``\ .
+
+cra_u.cipher
+    Union member which contains a single-block symmetric cipher
+    definition. See \ ``struct``\  \ ``cipher_alg``\ .
+
+cra_u.compress
+    Union member which contains a (de)compression algorithm.
+    See \ ``struct``\  \ ``compress_alg``\ .
+
 cra_init
     Initialize the cryptographic transformation object. This function
     is used to initialize the cryptographic transformation object.

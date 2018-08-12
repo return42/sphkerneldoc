@@ -212,6 +212,96 @@ failure can happen either because we are not able to execute the
 command or FW executes it but signals an error.  In the latter case
 the return value is the error code indicated by FW (negated).
 
+.. _`t4_memory_rw_init`:
+
+t4_memory_rw_init
+=================
+
+.. c:function:: int t4_memory_rw_init(struct adapter *adap, int win, int mtype, u32 *mem_off, u32 *mem_base, u32 *mem_aperture)
+
+    Get memory window relative offset, base, and size.
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param int win:
+        PCI-E Memory Window to use
+
+    :param int mtype:
+        memory type: MEM_EDC0, MEM_EDC1, MEM_HMA or MEM_MC
+
+    :param u32 \*mem_off:
+        memory relative offset with respect to \ ``mtype``\ .
+
+    :param u32 \*mem_base:
+        configured memory base address.
+
+    :param u32 \*mem_aperture:
+        configured memory window aperture.
+
+.. _`t4_memory_rw_init.description`:
+
+Description
+-----------
+
+Get the configured memory window's relative offset, base, and size.
+
+.. _`t4_memory_update_win`:
+
+t4_memory_update_win
+====================
+
+.. c:function:: void t4_memory_update_win(struct adapter *adap, int win, u32 addr)
+
+    Move memory window to specified address.
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param int win:
+        PCI-E Memory Window to use
+
+    :param u32 addr:
+        location to move.
+
+.. _`t4_memory_update_win.description`:
+
+Description
+-----------
+
+Move memory window to specified address.
+
+.. _`t4_memory_rw_residual`:
+
+t4_memory_rw_residual
+=====================
+
+.. c:function:: void t4_memory_rw_residual(struct adapter *adap, u32 off, u32 addr, u8 *buf, int dir)
+
+    Read/Write residual data.
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param u32 off:
+        relative offset within residual to start read/write.
+
+    :param u32 addr:
+        address within indicated memory type.
+
+    :param u8 \*buf:
+        host memory buffer
+
+    :param int dir:
+        direction of transfer T4_MEMORY_READ (1) or T4_MEMORY_WRITE (0)
+
+.. _`t4_memory_rw_residual.description`:
+
+Description
+-----------
+
+Read/Write residual data less than 32-bits.
+
 .. _`t4_memory_rw`:
 
 t4_memory_rw
@@ -992,12 +1082,12 @@ Returns the equivalent 16-bit Port Capabilities value.  Note that
 not all 32-bit Port Capabilities can be represented in the 16-bit
 Port Capabilities and some fields/values may not make it.
 
-.. _`t4_link_l1cfg`:
+.. _`t4_link_l1cfg_core`:
 
-t4_link_l1cfg
-=============
+t4_link_l1cfg_core
+==================
 
-.. c:function:: int t4_link_l1cfg(struct adapter *adapter, unsigned int mbox, unsigned int port, struct link_config *lc)
+.. c:function:: int t4_link_l1cfg_core(struct adapter *adapter, unsigned int mbox, unsigned int port, struct link_config *lc, bool sleep_ok, int timeout)
 
     apply link configuration to MAC/PHY
 
@@ -1013,7 +1103,13 @@ t4_link_l1cfg
     :param struct link_config \*lc:
         the Port's Link Configuration
 
-.. _`t4_link_l1cfg.description`:
+    :param bool sleep_ok:
+        *undescribed*
+
+    :param int timeout:
+        *undescribed*
+
+.. _`t4_link_l1cfg_core.description`:
 
 Description
 -----------
@@ -2916,6 +3012,36 @@ Description
 
 Sets Rx properties of a virtual interface.
 
+.. _`t4_free_encap_mac_filt`:
+
+t4_free_encap_mac_filt
+======================
+
+.. c:function:: int t4_free_encap_mac_filt(struct adapter *adap, unsigned int viid, int idx, bool sleep_ok)
+
+    frees MPS entry at given index
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int viid:
+        the VI id
+
+    :param int idx:
+        index of MPS entry to be freed
+
+    :param bool sleep_ok:
+        call is allowed to sleep
+
+.. _`t4_free_encap_mac_filt.description`:
+
+Description
+-----------
+
+Frees the MPS entry at supplied index
+
+Returns a negative error number or zero on success
+
 .. _`t4_free_raw_mac_filt`:
 
 t4_free_raw_mac_filt
@@ -2957,6 +3083,51 @@ Description
 Removes the mac entry at the specified index using raw mac interface.
 
 Returns a negative error number on failure.
+
+.. _`t4_alloc_encap_mac_filt`:
+
+t4_alloc_encap_mac_filt
+=======================
+
+.. c:function:: int t4_alloc_encap_mac_filt(struct adapter *adap, unsigned int viid, const u8 *addr, const u8 *mask, unsigned int vni, unsigned int vni_mask, u8 dip_hit, u8 lookup_type, bool sleep_ok)
+
+    Adds a mac entry in mps tcam with VNI support
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int viid:
+        the VI id
+
+    :param const u8 \*addr:
+        *undescribed*
+
+    :param const u8 \*mask:
+        the mask
+
+    :param unsigned int vni:
+        the VNI id for the tunnel protocol
+
+    :param unsigned int vni_mask:
+        mask for the VNI id
+
+    :param u8 dip_hit:
+        to enable DIP match for the MPS entry
+
+    :param u8 lookup_type:
+        MAC address for inner (1) or outer (0) header
+
+    :param bool sleep_ok:
+        call is allowed to sleep
+
+.. _`t4_alloc_encap_mac_filt.description`:
+
+Description
+-----------
+
+Allocates an MPS entry with specified MAC address and VNI value.
+
+Returns a negative error number or the allocated index for this mac.
 
 .. _`t4_alloc_raw_mac_filt`:
 
@@ -3230,6 +3401,44 @@ Description
 -----------
 
 Enables/disables a virtual interface.
+
+.. _`t4_enable_pi_params`:
+
+t4_enable_pi_params
+===================
+
+.. c:function:: int t4_enable_pi_params(struct adapter *adap, unsigned int mbox, struct port_info *pi, bool rx_en, bool tx_en, bool dcb_en)
+
+    enable/disable a Port's Virtual Interface
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int mbox:
+        mailbox to use for the FW command
+
+    :param struct port_info \*pi:
+        the Port Information structure
+
+    :param bool rx_en:
+        1=enable Rx, 0=disable Rx
+
+    :param bool tx_en:
+        1=enable Tx, 0=disable Tx
+
+    :param bool dcb_en:
+        1=enable delivery of Data Center Bridging messages.
+
+.. _`t4_enable_pi_params.description`:
+
+Description
+-----------
+
+Enables/disables a Port's Virtual Interface.  Note that setting DCB
+Enable only makes sense when enabling a Virtual Interface ...
+If the Virtual Interface enable/disable operation is successful,
+we notify the OS-specific code of a potential Link Status change
+via the OS Contract API \ :c:func:`t4_os_link_changed`\ .
 
 .. _`t4_identify_port`:
 

@@ -54,9 +54,12 @@ it will use i915_hotplug_work_func where this logic is handled.
 intel_hpd_pin_to_port
 =====================
 
-.. c:function:: enum port intel_hpd_pin_to_port(enum hpd_pin pin)
+.. c:function:: enum port intel_hpd_pin_to_port(struct drm_i915_private *dev_priv, enum hpd_pin pin)
 
     return port hard associated with certain pin.
+
+    :param struct drm_i915_private \*dev_priv:
+        private driver data pointer
 
     :param enum hpd_pin pin:
         the hpd pin to get associated port
@@ -69,22 +72,27 @@ Description
 Return port that is associatade with \ ``pin``\  and PORT_NONE if no port is
 hard associated with that \ ``pin``\ .
 
-.. _`intel_hpd_pin`:
+.. _`intel_hpd_pin_default`:
 
-intel_hpd_pin
-=============
+intel_hpd_pin_default
+=====================
 
-.. c:function:: enum hpd_pin intel_hpd_pin(enum port port)
+.. c:function:: enum hpd_pin intel_hpd_pin_default(struct drm_i915_private *dev_priv, enum port port)
 
-    return pin hard associated with certain port.
+    return default pin associated with certain port.
+
+    :param struct drm_i915_private \*dev_priv:
+        private driver data pointer
 
     :param enum port port:
         the hpd port to get associated pin
 
-.. _`intel_hpd_pin.description`:
+.. _`intel_hpd_pin_default.description`:
 
 Description
 -----------
+
+It is only valid and used by digital port encoder.
 
 Return pin that is associatade with \ ``port``\  and HDP_NONE if no pin is
 hard associated with that \ ``port``\ .

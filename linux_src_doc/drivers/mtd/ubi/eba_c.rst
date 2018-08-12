@@ -455,6 +455,42 @@ This function un-maps logical eraseblock \ ``lnum``\  and schedules correspondin
 physical eraseblock for erasure. Returns zero in case of success and a
 negative error code in case of failure.
 
+.. _`check_mapping`:
+
+check_mapping
+=============
+
+.. c:function:: int check_mapping(struct ubi_device *ubi, struct ubi_volume *vol, int lnum, int *pnum)
+
+    check and fixup a mapping
+
+    :param struct ubi_device \*ubi:
+        UBI device description object
+
+    :param struct ubi_volume \*vol:
+        volume description object
+
+    :param int lnum:
+        logical eraseblock number
+
+    :param int \*pnum:
+        physical eraseblock number
+
+.. _`check_mapping.description`:
+
+Description
+-----------
+
+Checks whether a given mapping is valid. Fastmap cannot track LEB unmap
+operations, if such an operation is interrupted the mapping still looks
+good, but upon first read an ECC is reported to the upper layer.
+Normaly during the full-scan at attach time this is fixed, for Fastmap
+we have to deal with it while reading.
+If the PEB behind a LEB shows this symthom we change the mapping to
+\ ``UBI_LEB_UNMAPPED``\  and schedule the PEB for erasure.
+
+Returns 0 on success, negative error code in case of failure.
+
 .. _`ubi_eba_read_leb`:
 
 ubi_eba_read_leb

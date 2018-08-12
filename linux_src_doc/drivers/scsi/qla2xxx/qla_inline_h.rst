@@ -11,7 +11,7 @@ qla24xx_calc_iocbs
     Determine number of Command Type 3 and Continuation Type 1 IOCBs to allocate.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
     :param uint16_t dsds:
         number of data segment decriptors needed

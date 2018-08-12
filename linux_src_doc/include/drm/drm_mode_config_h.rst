@@ -21,6 +21,7 @@ Definition
         struct drm_framebuffer *(*fb_create)(struct drm_device *dev,struct drm_file *file_priv, const struct drm_mode_fb_cmd2 *mode_cmd);
         const struct drm_format_info *(*get_format_info)(const struct drm_mode_fb_cmd2 *mode_cmd);
         void (*output_poll_changed)(struct drm_device *dev);
+        enum drm_mode_status (*mode_valid)(struct drm_device *dev, const struct drm_display_mode *mode);
         int (*atomic_check)(struct drm_device *dev, struct drm_atomic_state *state);
         int (*atomic_commit)(struct drm_device *dev,struct drm_atomic_state *state, bool nonblock);
         struct drm_atomic_state *(*atomic_state_alloc)(struct drm_device *dev);
@@ -78,6 +79,13 @@ output_poll_changed
 
     Except that there's no vtable for device-level helper callbacks
     there's no reason this is a core function.
+
+mode_valid
+
+    Device specific validation of display modes. Can be used to reject
+    modes that can never be supported. Only device wide constraints can
+    be checked here. crtc/encoder/bridge/connector specific constraints
+    should be checked in the .mode_valid() hook for each specific object.
 
 atomic_check
 
@@ -380,6 +388,7 @@ Definition
         uint32_t preferred_depth, prefer_shadow;
         bool async_page_flip;
         bool allow_fb_modifiers;
+        bool normalize_zpos;
         struct drm_property *modifiers_property;
         uint32_t cursor_width, cursor_height;
         struct drm_atomic_state *suspend_state;
@@ -700,6 +709,11 @@ async_page_flip
 allow_fb_modifiers
 
     Whether the driver supports fb modifiers in the ADDFB2.1 ioctl call.
+
+normalize_zpos
+
+    If true the drm core will call \ :c:func:`drm_atomic_normalize_zpos`\  as part of
+    atomic mode checking from \ :c:func:`drm_atomic_helper_check`\ 
 
 modifiers_property
     Plane property to list support modifier/formatcombination.

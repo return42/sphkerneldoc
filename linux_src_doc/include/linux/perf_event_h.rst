@@ -389,10 +389,10 @@ Definition
 
     struct perf_addr_filter {
         struct list_head entry;
-        struct inode *inode;
+        struct path path;
         unsigned long offset;
         unsigned long size;
-        unsigned int range : 1, filter : 1;
+        enum perf_addr_filter_action_t action;
     }
 
 .. _`perf_addr_filter.members`:
@@ -403,20 +403,17 @@ Members
 entry
     event's filter list linkage
 
-inode
-    object file's inode for file-based filters
+path
+    *undescribed*
 
 offset
     filter range offset
 
 size
-    filter range size
+    filter range size (size==0 means single address trigger)
 
-range
-    1: range, 0: address
-
-filter
-    1: filter/start, 0: stop
+action
+    filter/start/stop
 
 .. _`perf_addr_filter.description`:
 
@@ -537,8 +534,10 @@ Definition
     struct perf_event {
     #ifdef CONFIG_PERF_EVENTS
         struct list_head event_entry;
-        struct list_head group_entry;
         struct list_head sibling_list;
+        struct list_head active_list;
+        struct rb_node group_node;
+        u64 group_index;
         struct list_head migrate_entry;
         struct hlist_node hlist_entry;
         struct list_head active_entry;
@@ -621,10 +620,16 @@ Members
 event_entry
     *undescribed*
 
-group_entry
+sibling_list
     *undescribed*
 
-sibling_list
+active_list
+    *undescribed*
+
+group_node
+    *undescribed*
+
+group_index
     *undescribed*
 
 migrate_entry
@@ -837,9 +842,11 @@ Definition
         raw_spinlock_t lock;
         struct mutex mutex;
         struct list_head active_ctx_list;
-        struct list_head pinned_groups;
-        struct list_head flexible_groups;
+        struct perf_event_groups pinned_groups;
+        struct perf_event_groups flexible_groups;
         struct list_head event_list;
+        struct list_head pinned_active;
+        struct list_head flexible_active;
         int nr_events;
         int nr_active;
         int is_active;
@@ -885,6 +892,12 @@ flexible_groups
     *undescribed*
 
 event_list
+    *undescribed*
+
+pinned_active
+    *undescribed*
+
+flexible_active
     *undescribed*
 
 nr_events

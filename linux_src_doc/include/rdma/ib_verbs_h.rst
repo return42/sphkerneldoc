@@ -8,7 +8,7 @@ struct rdma_hw_stats
 
 .. c:type:: struct rdma_hw_stats
 
-    \ ``timestamp``\  - Used by the core code to track when the last update was \ ``lifespan``\  - Used by the core code to determine how old the counters should be before being updated again.  Stored in jiffies, defaults to 10 milliseconds, drivers can override the default be specifying their own value during their allocation routine. \ ``name``\  - Array of pointers to static names used for the counters in directory. \ ``num_counters``\  - How many hardware counters there are.  If name is shorter than this number, a kernel oops will result.  Driver authors are encouraged to leave BUILD_BUG_ON(ARRAY_SIZE(@name) < num_counters) in their code to prevent this. \ ``value``\  - Array of u64 counters that are accessed by the sysfs code and filled in by the drivers get_stats routine
+    \ ``lock``\  - Mutex to protect parallel write access to lifespan and values of counters, which are 64bits and not guaranteeed to be written atomicaly on 32bits systems. \ ``timestamp``\  - Used by the core code to track when the last update was \ ``lifespan``\  - Used by the core code to determine how old the counters should be before being updated again.  Stored in jiffies, defaults to 10 milliseconds, drivers can override the default be specifying their own value during their allocation routine. \ ``name``\  - Array of pointers to static names used for the counters in directory. \ ``num_counters``\  - How many hardware counters there are.  If name is shorter than this number, a kernel oops will result.  Driver authors are encouraged to leave BUILD_BUG_ON(ARRAY_SIZE(@name) < num_counters) in their code to prevent this. \ ``value``\  - Array of u64 counters that are accessed by the sysfs code and filled in by the drivers get_stats routine
 
 .. _`rdma_hw_stats.definition`:
 
@@ -18,6 +18,7 @@ Definition
 .. code-block:: c
 
     struct rdma_hw_stats {
+        struct mutex lock;
         unsigned long timestamp;
         unsigned long lifespan;
         const char * const *names;
@@ -29,6 +30,9 @@ Definition
 
 Members
 -------
+
+lock
+    *undescribed*
 
 timestamp
     *undescribed*
@@ -411,7 +415,7 @@ detach_mcast
 ib_modify_qp_is_ok
 ==================
 
-.. c:function:: int ib_modify_qp_is_ok(enum ib_qp_state cur_state, enum ib_qp_state next_state, enum ib_qp_type type, enum ib_qp_attr_mask mask, enum rdma_link_layer ll)
+.. c:function:: bool ib_modify_qp_is_ok(enum ib_qp_state cur_state, enum ib_qp_state next_state, enum ib_qp_type type, enum ib_qp_attr_mask mask, enum rdma_link_layer ll)
 
     Check that the supplied attribute mask contains all required attributes and no attributes not allowed for the given QP state transition.
 
@@ -1386,12 +1390,12 @@ ib_post_recv
         On an immediate failure, this parameter will reference
         the work request that failed to be posted on the QP.
 
-.. _`ib_create_cq`:
+.. _`__ib_create_cq`:
 
-ib_create_cq
-============
+\__ib_create_cq
+===============
 
-.. c:function:: struct ib_cq *ib_create_cq(struct ib_device *device, ib_comp_handler comp_handler, void (*event_handler)(struct ib_event *, void *), void *cq_context, const struct ib_cq_init_attr *cq_attr)
+.. c:function:: struct ib_cq *__ib_create_cq(struct ib_device *device, ib_comp_handler comp_handler, void (*event_handler)(struct ib_event *, void *), void *cq_context, const struct ib_cq_init_attr *cq_attr, const char *caller)
 
     Creates a CQ on the specified device.
 
@@ -1413,7 +1417,10 @@ ib_create_cq
     :param const struct ib_cq_init_attr \*cq_attr:
         The attributes the CQ should be created upon.
 
-.. _`ib_create_cq.description`:
+    :param const char \*caller:
+        *undescribed*
+
+.. _`__ib_create_cq.description`:
 
 Description
 -----------
@@ -1500,30 +1507,6 @@ Poll a CQ for (possibly multiple) completions.  If the return value
 is < 0, an error occurred.  If the return value is >= 0, it is the
 number of completions returned.  If the return value is
 non-negative and < num_entries, then the CQ was emptied.
-
-.. _`ib_peek_cq`:
-
-ib_peek_cq
-==========
-
-.. c:function:: int ib_peek_cq(struct ib_cq *cq, int wc_cnt)
-
-    Returns the number of unreaped completions currently on the specified CQ.
-
-    :param struct ib_cq \*cq:
-        The CQ to peek.
-
-    :param int wc_cnt:
-        A minimum number of unreaped completions to check for.
-
-.. _`ib_peek_cq.description`:
-
-Description
------------
-
-If the number of unreaped completions is greater than or equal to wc_cnt,
-this function returns wc_cnt, otherwise, it returns the actual number of
-unreaped completions.
 
 .. _`ib_req_notify_cq`:
 

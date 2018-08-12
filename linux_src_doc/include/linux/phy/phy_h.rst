@@ -75,6 +75,7 @@ Definition
 
     struct phy_attrs {
         u32 bus_width;
+        enum phy_mode mode;
     }
 
 .. _`phy_attrs.members`:
@@ -84,6 +85,9 @@ Members
 
 bus_width
     Data path width implemented by PHY
+
+mode
+    *undescribed*
 
 .. _`phy`:
 
@@ -136,10 +140,10 @@ power_count
     used to protect when the PHY is used by multiple consumers
 
 attrs
-    *undescribed*
+    used to specify PHY specific attributes
 
 pwr
-    *undescribed*
+    power regulator associated with the phy
 
 .. _`phy_provider`:
 
@@ -174,7 +178,7 @@ dev
     phy provider device
 
 children
-    *undescribed*
+    can be used to override the default (dev->of_node) child node
 
 owner
     the module owner having of_xlate
@@ -184,6 +188,46 @@ list
 
 of_xlate
     function pointer to obtain phy instance from phy pointer
+
+.. _`phy_lookup`:
+
+struct phy_lookup
+=================
+
+.. c:type:: struct phy_lookup
+
+    PHY association in list of phys managed by the phy driver
+
+.. _`phy_lookup.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct phy_lookup {
+        struct list_head node;
+        const char *dev_id;
+        const char *con_id;
+        struct phy *phy;
+    }
+
+.. _`phy_lookup.members`:
+
+Members
+-------
+
+node
+    list node
+
+dev_id
+    the device of the association
+
+con_id
+    connection ID string on device
+
+phy
+    the phy of the association
 
 .. This file was automatic generated / don't edit.
 

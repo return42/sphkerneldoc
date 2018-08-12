@@ -385,7 +385,7 @@ adjust_fs_space
 gfs2_stuffed_write_end
 ======================
 
-.. c:function:: int gfs2_stuffed_write_end(struct inode *inode, struct buffer_head *dibh, loff_t pos, unsigned len, unsigned copied, struct page *page)
+.. c:function:: int gfs2_stuffed_write_end(struct inode *inode, struct buffer_head *dibh, loff_t pos, unsigned copied, struct page *page)
 
     Write end for stuffed files
 
@@ -397,9 +397,6 @@ gfs2_stuffed_write_end
 
     :param loff_t pos:
         The file position
-
-    :param unsigned len:
-        The length of the write
 
     :param unsigned copied:
         How much was actually copied by the VFS
@@ -455,9 +452,8 @@ gfs2_write_end
 Description
 -----------
 
-The main write_end function for GFS2. We have a separate one for
-stuffed files as they are slightly different, otherwise we just
-put our locking around the VFS provided functions.
+The main write_end function for GFS2. We just put our locking around the VFS
+provided functions.
 
 .. _`gfs2_write_end.return`:
 
@@ -466,19 +462,19 @@ Return
 
 errno
 
-.. _`gfs2_set_page_dirty`:
+.. _`jdata_set_page_dirty`:
 
-gfs2_set_page_dirty
-===================
+jdata_set_page_dirty
+====================
 
-.. c:function:: int gfs2_set_page_dirty(struct page *page)
+.. c:function:: int jdata_set_page_dirty(struct page *page)
 
     Page dirtying function
 
     :param struct page \*page:
         The page to dirty
 
-.. _`gfs2_set_page_dirty.return`:
+.. _`jdata_set_page_dirty.return`:
 
 Return
 ------

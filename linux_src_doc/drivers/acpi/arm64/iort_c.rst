@@ -79,12 +79,15 @@ iort_node pointer on success, NULL on failure
 iort_register_domain_token
 ==========================
 
-.. c:function:: int iort_register_domain_token(int trans_id, struct fwnode_handle *fw_node)
+.. c:function:: int iort_register_domain_token(int trans_id, phys_addr_t base, struct fwnode_handle *fw_node)
 
-    register domain token and related ITS ID to the list from where we can get it back later on.
+    register domain token along with related ITS ID and base address to the list from where we can get it back later on.
 
     :param int trans_id:
         ITS ID.
+
+    :param phys_addr_t base:
+        ITS base address.
 
     :param struct fwnode_handle \*fw_node:
         Domain token.
@@ -246,6 +249,32 @@ Return
 ------
 
 the MSI domain for this device, NULL otherwise
+
+.. _`iort_iommu_msi_get_resv_regions`:
+
+iort_iommu_msi_get_resv_regions
+===============================
+
+.. c:function:: int iort_iommu_msi_get_resv_regions(struct device *dev, struct list_head *head)
+
+    Reserved region driver helper
+
+    :param struct device \*dev:
+        Device from \ :c:func:`iommu_get_resv_regions`\ 
+
+    :param struct list_head \*head:
+        Reserved region list from \ :c:func:`iommu_get_resv_regions`\ 
+
+.. _`iort_iommu_msi_get_resv_regions.return`:
+
+Return
+------
+
+Number of msi reserved regions on success (0 if platform
+doesn't require the reservation or no associated msi regions),
+appropriate error value otherwise. The ITS interrupt translation
+spaces (ITS_base + SZ_64K, SZ_64K) associated with the device
+are the msi reserved regions.
 
 .. _`iort_dma_setup`:
 

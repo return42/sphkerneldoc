@@ -83,6 +83,25 @@ and is as accurate as \ :c:func:`ktime_get`\  is.
 
 This function returns -1 if NOHZ is not enabled.
 
+.. _`tick_nohz_idle_stop_tick`:
+
+tick_nohz_idle_stop_tick
+========================
+
+.. c:function:: void tick_nohz_idle_stop_tick( void)
+
+    stop the idle tick from the idle task
+
+    :param  void:
+        no arguments
+
+.. _`tick_nohz_idle_stop_tick.description`:
+
+Description
+-----------
+
+When the next event is more than a tick into the future, stop the idle tick
+
 .. _`tick_nohz_idle_enter`:
 
 tick_nohz_idle_enter
@@ -90,7 +109,7 @@ tick_nohz_idle_enter
 
 .. c:function:: void tick_nohz_idle_enter( void)
 
-    stop the idle tick from the idle task
+    prepare for entering idle on the current CPU
 
     :param  void:
         no arguments
@@ -100,18 +119,7 @@ tick_nohz_idle_enter
 Description
 -----------
 
-When the next event is more than a tick into the future, stop the idle tick
 Called when we start the idle loop.
-
-.. _`tick_nohz_idle_enter.the-arch-is-responsible-of-calling`:
-
-The arch is responsible of calling
-----------------------------------
-
-
-- \ :c:func:`rcu_idle_enter`\  after its last use of RCU before the CPU is put
-to sleep.
-- \ :c:func:`rcu_idle_exit`\  before the first use of RCU after the CPU is woken up.
 
 .. _`tick_nohz_irq_exit`:
 
@@ -135,17 +143,29 @@ a reschedule, it may still add, modify or delete a timer, enqueue
 an RCU callback, etc...
 So we need to re-calculate and reprogram the next tick event.
 
+.. _`tick_nohz_idle_got_tick`:
+
+tick_nohz_idle_got_tick
+=======================
+
+.. c:function:: bool tick_nohz_idle_got_tick( void)
+
+    Check whether or not the tick handler has run
+
+    :param  void:
+        no arguments
+
 .. _`tick_nohz_get_sleep_length`:
 
 tick_nohz_get_sleep_length
 ==========================
 
-.. c:function:: ktime_t tick_nohz_get_sleep_length( void)
+.. c:function:: ktime_t tick_nohz_get_sleep_length(ktime_t *delta_next)
 
-    return the length of the current sleep
+    return the expected length of the current sleep
 
-    :param  void:
-        no arguments
+    :param ktime_t \*delta_next:
+        duration until the next event if the tick cannot be stopped
 
 .. _`tick_nohz_get_sleep_length.description`:
 

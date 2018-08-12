@@ -40,6 +40,7 @@ Definition
         bool leaf;
         char level;
         u8 filtered;
+        u16 callchain_size;
         union {
             struct hist_entry_diff diff;
             struct {
@@ -133,6 +134,9 @@ level
     *undescribed*
 
 filtered
+    *undescribed*
+
+callchain_size
     *undescribed*
 
 {unnamed_union}

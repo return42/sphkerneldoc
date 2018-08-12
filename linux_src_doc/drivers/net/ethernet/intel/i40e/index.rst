@@ -16,7 +16,6 @@ i40e
     i40e_debugfs_c
     i40e_diag_c
     i40e_ethtool_c
-    i40e_fcoe_c
     i40e_h
     i40e_hmc_c
     i40e_hmc_h

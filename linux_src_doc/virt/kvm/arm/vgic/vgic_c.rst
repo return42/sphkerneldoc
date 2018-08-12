@@ -62,6 +62,30 @@ The VGIC is not concerned with devices being active-LOW or active-HIGH for
 level-sensitive interrupts.  You can think of the level parameter as 1
 being HIGH and 0 being LOW and all devices being active-HIGH.
 
+.. _`kvm_vgic_reset_mapped_irq`:
+
+kvm_vgic_reset_mapped_irq
+=========================
+
+.. c:function:: void kvm_vgic_reset_mapped_irq(struct kvm_vcpu *vcpu, u32 vintid)
+
+    Reset a mapped IRQ
+
+    :param struct kvm_vcpu \*vcpu:
+        The VCPU pointer
+
+    :param u32 vintid:
+        The INTID of the interrupt
+
+.. _`kvm_vgic_reset_mapped_irq.description`:
+
+Description
+-----------
+
+Reset the active and pending states of a mapped interrupt.  Kernel
+subsystems injecting mapped interrupts should reset their interrupt lines
+when we are doing a reset of the VM.
+
 .. _`kvm_vgic_set_owner`:
 
 kvm_vgic_set_owner

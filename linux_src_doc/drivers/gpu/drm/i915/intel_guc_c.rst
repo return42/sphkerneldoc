@@ -37,12 +37,12 @@ non-zero code on error
 intel_guc_suspend
 =================
 
-.. c:function:: int intel_guc_suspend(struct drm_i915_private *dev_priv)
+.. c:function:: int intel_guc_suspend(struct intel_guc *guc)
 
     notify GuC entering suspend state
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
+    :param struct intel_guc \*guc:
+        the guc
 
 .. _`intel_guc_reset_engine`:
 
@@ -64,12 +64,69 @@ intel_guc_reset_engine
 intel_guc_resume
 ================
 
-.. c:function:: int intel_guc_resume(struct drm_i915_private *dev_priv)
+.. c:function:: int intel_guc_resume(struct intel_guc *guc)
 
     notify GuC resuming from suspend state
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
+    :param struct intel_guc \*guc:
+        the guc
+
+.. _`guc-address-space`:
+
+GuC Address Space
+=================
+
+The layout of GuC address space is shown below:
+
+::
+
+    +==============> +====================+ <== GUC_GGTT_TOP
+    ^                |                    |
+    |                |                    |
+    |                |        DRAM        |
+    |                |       Memory       |
+    |                |                    |
+   GuC               |                    |
+ Address  +========> +====================+ <== WOPCM Top
+  Space   ^          |   HW contexts RSVD |
+    |     |          |        WOPCM       |
+    |     |     +==> +--------------------+ <== GuC WOPCM Top
+    |    GuC    ^    |                    |
+    |    GGTT   |    |                    |
+    |    Pin   GuC   |        GuC         |
+    |    Bias WOPCM  |       WOPCM        |
+    |     |    Size  |                    |
+    |     |     |    |                    |
+    v     v     v    |                    |
+    +=====+=====+==> +====================+ <== GuC WOPCM Base
+                     |   Non-GuC WOPCM    |
+                     |   (HuC/Reserved)   |
+                     +====================+ <== WOPCM Base
+
+The lower part of GuC Address Space [0, ggtt_pin_bias) is mapped to WOPCM
+while upper part of GuC Address Space [ggtt_pin_bias, GUC_GGTT_TOP) is mapped
+to DRAM. The value of the GuC ggtt_pin_bias is determined by WOPCM size and
+actual GuC WOPCM size.
+
+.. _`intel_guc_init_ggtt_pin_bias`:
+
+intel_guc_init_ggtt_pin_bias
+============================
+
+.. c:function:: void intel_guc_init_ggtt_pin_bias(struct intel_guc *guc)
+
+    Initialize the GuC ggtt_pin_bias value.
+
+    :param struct intel_guc \*guc:
+        intel_guc structure.
+
+.. _`intel_guc_init_ggtt_pin_bias.description`:
+
+Description
+-----------
+
+This function will calculate and initialize the ggtt_pin_bias value based on
+overall WOPCM size and GuC WOPCM size.
 
 .. _`intel_guc_allocate_vma`:
 
@@ -94,7 +151,7 @@ Description
 This is a wrapper to create an object for use with the GuC. In order to
 use it inside the GuC, an object needs to be pinned lifetime, so we allocate
 both some backing storage and a range inside the Global GTT. We must pin
-it in the GGTT somewhere other than than [0, GUC_WOPCM_TOP) because that
+it in the GGTT somewhere other than than [0, GUC ggtt_pin_bias) because that
 range is reserved inside GuC.
 
 .. _`intel_guc_allocate_vma.return`:

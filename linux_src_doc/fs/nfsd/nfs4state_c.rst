@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/nfsd/nfs4state.c
 
-.. _`nfs4_get_existing_delegation`:
+.. _`nfs4_delegation_exists`:
 
-nfs4_get_existing_delegation
-============================
+nfs4_delegation_exists
+======================
 
-.. c:function:: int nfs4_get_existing_delegation(struct nfs4_client *clp, struct nfs4_file *fp)
+.. c:function:: bool nfs4_delegation_exists(struct nfs4_client *clp, struct nfs4_file *fp)
 
     Discover if this delegation already exists
 
@@ -16,20 +16,12 @@ nfs4_get_existing_delegation
     :param struct nfs4_file \*fp:
         a pointer to the nfs4_file we're granting a delegation on
 
-.. _`nfs4_get_existing_delegation.on-success`:
+.. _`nfs4_delegation_exists.on-success`:
 
 On success
 ----------
 
-NULL if an existing delegation was not found.
-
-.. _`nfs4_get_existing_delegation.on-error`:
-
-On error
---------
-
--EAGAIN if one was previously granted to this nfs4_client
-for this nfs4_file.
+true iff an existing delegation is found
 
 .. _`hash_delegation_locked`:
 
@@ -60,33 +52,6 @@ On error
 
 -EAGAIN if one was previously granted to this
 nfs4_client for this nfs4_file. Delegation is not hashed.
-
-.. _`nfs4_setlease`:
-
-nfs4_setlease
-=============
-
-.. c:function:: int nfs4_setlease(struct nfs4_delegation *dp)
-
-    Obtain a delegation by requesting lease from vfs layer
-
-    :param struct nfs4_delegation \*dp:
-        a pointer to the nfs4_delegation we're adding.
-
-.. _`nfs4_setlease.on-success`:
-
-On success
-----------
-
-Return code will be 0 on success.
-
-.. _`nfs4_setlease.on-error`:
-
-On error
---------
-
--EAGAIN if there was an existing delegation.
-nonzero if there is an error in other cases.
 
 .. This file was automatic generated / don't edit.
 

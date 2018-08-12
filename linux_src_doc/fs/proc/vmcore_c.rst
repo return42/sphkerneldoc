@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/proc/vmcore.c
 
-.. _`alloc_elfnotes_buf`:
+.. _`vmcore_alloc_buf`:
 
-alloc_elfnotes_buf
-==================
+vmcore_alloc_buf
+================
 
-.. c:function:: char *alloc_elfnotes_buf(size_t notes_sz)
+.. c:function:: char *vmcore_alloc_buf(size_t size)
 
-    allocate buffer for ELF note segment in vmalloc memory
+    allocate buffer in vmalloc memory
 
-    :param size_t notes_sz:
-        size of buffer
+    :param size_t size:
+        *undescribed*
 
-.. _`alloc_elfnotes_buf.description`:
+.. _`vmcore_alloc_buf.description`:
 
 Description
 -----------
@@ -189,6 +189,99 @@ It is assumed that program headers with PT_NOTE type pointed to by
 \ ``ehdr_ptr``\  has already been updated by update_note_header_size_elf32
 and each of PT_NOTE program headers has actual ELF note segment
 size in its p_memsz member.
+
+.. _`vmcoredd_write_header`:
+
+vmcoredd_write_header
+=====================
+
+.. c:function:: void vmcoredd_write_header(void *buf, struct vmcoredd_data *data, u32 size)
+
+    Write vmcore device dump header at the beginning of the dump's buffer.
+
+    :param void \*buf:
+        Output buffer where the note is written
+
+    :param struct vmcoredd_data \*data:
+        Dump info
+
+    :param u32 size:
+        Size of the dump
+
+.. _`vmcoredd_write_header.description`:
+
+Description
+-----------
+
+Fills beginning of the dump's buffer with vmcore device dump header.
+
+.. _`vmcoredd_update_program_headers`:
+
+vmcoredd_update_program_headers
+===============================
+
+.. c:function:: void vmcoredd_update_program_headers(char *elfptr, size_t elfnotesz, size_t vmcoreddsz)
+
+    Update all Elf program headers
+
+    :param char \*elfptr:
+        Pointer to elf header
+
+    :param size_t elfnotesz:
+        Size of elf notes aligned to page size
+
+    :param size_t vmcoreddsz:
+        Size of device dumps to be added to elf note header
+
+.. _`vmcoredd_update_program_headers.description`:
+
+Description
+-----------
+
+Determine type of Elf header (Elf64 or Elf32) and update the elf note size.
+Also update the offsets of all the program headers after the elf note header.
+
+.. _`vmcoredd_update_size`:
+
+vmcoredd_update_size
+====================
+
+.. c:function:: void vmcoredd_update_size(size_t dump_size)
+
+    Update the total size of the device dumps and update Elf header
+
+    :param size_t dump_size:
+        Size of the current device dump to be added to total size
+
+.. _`vmcoredd_update_size.description`:
+
+Description
+-----------
+
+Update the total size of all the device dumps and update the Elf program
+headers. Calculate the new offsets for the vmcore list and update the
+total vmcore size.
+
+.. _`vmcore_add_device_dump`:
+
+vmcore_add_device_dump
+======================
+
+.. c:function:: int vmcore_add_device_dump(struct vmcoredd_data *data)
+
+    Add a buffer containing device dump to vmcore
+
+    :param struct vmcoredd_data \*data:
+        dump info.
+
+.. _`vmcore_add_device_dump.description`:
+
+Description
+-----------
+
+Allocate a buffer and invoke the calling driver's dump collect routine.
+Write Elf note at the beginning of the buffer to indicate vmcore device
+dump and add the dump to global list.
 
 .. This file was automatic generated / don't edit.
 

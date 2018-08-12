@@ -6,7 +6,7 @@
 blk_mq_pci_map_queues
 =====================
 
-.. c:function:: int blk_mq_pci_map_queues(struct blk_mq_tag_set *set, struct pci_dev *pdev)
+.. c:function:: int blk_mq_pci_map_queues(struct blk_mq_tag_set *set, struct pci_dev *pdev, int offset)
 
     provide a default queue mapping for PCI device
 
@@ -15,6 +15,9 @@ blk_mq_pci_map_queues
 
     :param struct pci_dev \*pdev:
         PCI device associated with \ ``set``\ .
+
+    :param int offset:
+        Offset to use for the pci irq vector
 
 .. _`blk_mq_pci_map_queues.description`:
 

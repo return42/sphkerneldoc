@@ -413,7 +413,19 @@ subconnector
     selected subconnector
 
 margins
-    left/right/top/bottom margins
+    margins
+
+margins.left
+    left margin
+
+margins.right
+    right margin
+
+margins.top
+    top margin
+
+margins.bottom
+    bottom margin
 
 mode
     TV mode
@@ -462,6 +474,7 @@ Definition
         struct drm_tv_connector_state tv;
         enum hdmi_picture_aspect picture_aspect_ratio;
         unsigned int scaling_mode;
+        unsigned int content_protection;
     }
 
 .. _`drm_connector_state.members`:
@@ -501,6 +514,9 @@ picture_aspect_ratio
 
 scaling_mode
     Connector property to control theupscaling, mostly used for built-in panels.
+
+content_protection
+    Connector property to request contentprotection. This is most commonly used for HDCP.
 
 .. _`drm_connector_funcs`:
 
@@ -818,6 +834,7 @@ Definition
         struct drm_property_blob *edid_blob_ptr;
         struct drm_object_properties properties;
         struct drm_property *scaling_mode_property;
+        struct drm_property *content_protection_property;
         struct drm_property_blob *path_blob_ptr;
         struct drm_property_blob *tile_blob_ptr;
     #define DRM_CONNECTOR_POLL_HPD (1 << 0)
@@ -939,6 +956,9 @@ properties
 scaling_mode_property
     Optional atomic property to control the upscaling.
 
+content_protection_property
+    DRM ENUM property for contentprotection
+
 path_blob_ptr
 
     DRM blob property data for the DP MST path property.
@@ -1021,7 +1041,7 @@ state
 
     Current atomic state for this connector.
 
-    This is protected by \ ``drm_mode_config``\ .connection_mutex. Note that
+    This is protected by \ ``drm_mode_config.connection_mutex``\ . Note that
     nonblocking atomic commits access the current connector state without
     taking locks. Either by going through the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ 
     pointers, see \ :c:func:`for_each_oldnew_connector_in_state`\ ,

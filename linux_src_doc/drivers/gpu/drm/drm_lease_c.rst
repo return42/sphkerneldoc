@@ -34,7 +34,7 @@ drm_master at the top of the tree (i.e, with lessor NULL
         drm_master of lessor
 
     :param int lessee_id:
-        *undescribed*
+        id
 
 .. _`_drm_find_lessee.return`:
 
@@ -116,7 +116,7 @@ false           No lessee has a lease on the object.
     check drm_mode_object lease status (idr_mutex held)
 
     :param struct drm_file \*file_priv:
-        *undescribed*
+        the master drm_file
 
     :param int id:
         the object id
@@ -147,7 +147,7 @@ drm_lease_held
     check drm_mode_object lease status (idr_mutex not held)
 
     :param struct drm_file \*file_priv:
-        *undescribed*
+        the master drm_file
 
     :param int id:
         the object id
@@ -181,7 +181,7 @@ drm_lease_filter_crtcs
         requestor file
 
     :param uint32_t crtcs_in:
-        *undescribed*
+        bitmask of crtcs to check
 
 .. _`drm_lease_filter_crtcs.description`:
 
@@ -223,7 +223,7 @@ the list of lessees.
     revoke access to all leased objects (idr_mutex held)
 
     :param struct drm_master \*top:
-        *undescribed*
+        the master losing its lease
 
 .. _`drm_lease_revoke`:
 
@@ -253,7 +253,7 @@ drm_mode_create_lease_ioctl
         pointer to struct drm_mode_create_lease
 
     :param struct drm_file \*lessor_priv:
-        *undescribed*
+        the file being manipulated
 
 .. _`drm_mode_create_lease_ioctl.description`:
 
@@ -309,7 +309,7 @@ drm_mode_get_lease_ioctl
         pointer to struct drm_mode_get_lease
 
     :param struct drm_file \*lessee_priv:
-        *undescribed*
+        the file being manipulated
 
 .. _`drm_mode_get_lease_ioctl.description`:
 
@@ -334,7 +334,7 @@ drm_mode_revoke_lease_ioctl
         pointer to struct drm_mode_revoke_lease
 
     :param struct drm_file \*lessor_priv:
-        *undescribed*
+        the file being manipulated
 
 .. _`drm_mode_revoke_lease_ioctl.description`:
 

@@ -25,8 +25,6 @@ Definition
         struct drm_vma_offset_node vma_node;
         size_t size;
         int name;
-        uint32_t read_domains;
-        uint32_t write_domain;
         struct dma_buf *dma_buf;
         struct dma_buf_attachment *import_attach;
     }
@@ -83,16 +81,6 @@ name
     Global name for this object, starts at 1. 0 means unnamed.
     Access is covered by \ :c:type:`drm_device.object_name_lock <drm_device>`\ . This is used by
     the GEM_FLINK and GEM_OPEN ioctls.
-
-read_domains
-
-    Read memory domains. These monitor which caches contain read/write data
-    related to the object. When transitioning from one set of domains
-    to another, the driver is called to ensure that caches are suitably
-    flushed and invalidated.
-
-write_domain
-    Corresponding unique write memory domain.
 
 dma_buf
 

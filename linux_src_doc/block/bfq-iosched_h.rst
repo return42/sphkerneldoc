@@ -656,13 +656,11 @@ Definition
         unsigned int bfq_wr_min_idle_time;
         unsigned long bfq_wr_min_inter_arr_async;
         unsigned int bfq_wr_max_softrt_rate;
-        u64 RT_prod;
-        enum bfq_device_speed device_speed;
+        u64 rate_dur_prod;
         struct bfq_queue oom_bfqq;
         spinlock_t lock;
         struct bfq_io_cq *bio_bic;
         struct bfq_queue *bio_bfqq;
-        unsigned int sb_shift;
         unsigned int word_depths[2][2];
     }
 
@@ -827,10 +825,7 @@ bfq_wr_min_inter_arr_async
 bfq_wr_max_softrt_rate
     *undescribed*
 
-RT_prod
-    *undescribed*
-
-device_speed
+rate_dur_prod
     *undescribed*
 
 oom_bfqq
@@ -843,9 +838,6 @@ bio_bic
     *undescribed*
 
 bio_bfqq
-    *undescribed*
-
-sb_shift
     *undescribed*
 
 word_depths

@@ -48,6 +48,50 @@ Description
 
 Return 1 if the task is a registered audit daemon, 0 otherwise.
 
+.. _`audit_ctl_lock`:
+
+audit_ctl_lock
+==============
+
+.. c:function:: void audit_ctl_lock( void)
+
+    Take the audit control lock
+
+    :param  void:
+        no arguments
+
+.. _`audit_ctl_unlock`:
+
+audit_ctl_unlock
+================
+
+.. c:function:: void audit_ctl_unlock( void)
+
+    Drop the audit control lock
+
+    :param  void:
+        no arguments
+
+.. _`audit_ctl_owner_current`:
+
+audit_ctl_owner_current
+=======================
+
+.. c:function:: bool audit_ctl_owner_current( void)
+
+    Test to see if the current task owns the lock
+
+    :param  void:
+        no arguments
+
+.. _`audit_ctl_owner_current.description`:
+
+Description
+-----------
+
+Return true if the current task owns the audit control lock, false if it
+doesn't own the lock.
+
 .. _`auditd_pid_vnr`:
 
 auditd_pid_vnr
@@ -633,15 +677,12 @@ audit_log_name
 audit_log_link_denied
 =====================
 
-.. c:function:: void audit_log_link_denied(const char *operation, const struct path *link)
+.. c:function:: void audit_log_link_denied(const char *operation)
 
     report a link restriction denial
 
     :param const char \*operation:
         specific link operation
-
-    :param const struct path \*link:
-        the path that triggered the restriction
 
 .. _`audit_log_end`:
 

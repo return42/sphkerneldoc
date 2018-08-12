@@ -168,7 +168,7 @@ Description
 -----------
 
 returns GPT header on success, NULL on error.   Allocates
-and fills a GPT header starting at @ from \ ``state``\ ->bdev.
+and fills a GPT header starting at \ ````\  from \ ``state``\ ->bdev.
 
 .. _`alloc_read_gpt_header.note`:
 

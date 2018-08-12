@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/fpga/fpga-mgr.c
 
+.. _`fpga_image_info_alloc`:
+
+fpga_image_info_alloc
+=====================
+
+.. c:function:: struct fpga_image_info *fpga_image_info_alloc(struct device *dev)
+
+    Allocate a FPGA image info struct
+
+    :param struct device \*dev:
+        owning device
+
+.. _`fpga_image_info_alloc.return`:
+
+Return
+------
+
+struct fpga_image_info or NULL
+
+.. _`fpga_image_info_free`:
+
+fpga_image_info_free
+====================
+
+.. c:function:: void fpga_image_info_free(struct fpga_image_info *info)
+
+    Free a FPGA image info struct
+
+    :param struct fpga_image_info \*info:
+        FPGA image info struct to free
+
 .. _`fpga_mgr_buf_load_sg`:
 
 fpga_mgr_buf_load_sg
@@ -53,7 +84,7 @@ fpga_mgr_buf_load
         fpga manager
 
     :param struct fpga_image_info \*info:
-        *undescribed*
+        fpga image info
 
     :param const char \*buf:
         buffer contain fpga image
@@ -114,6 +145,36 @@ Return
 
 0 on success, negative error code otherwise.
 
+.. _`fpga_mgr_load`:
+
+fpga_mgr_load
+=============
+
+.. c:function:: int fpga_mgr_load(struct fpga_manager *mgr, struct fpga_image_info *info)
+
+    load FPGA from scatter/gather table, buffer, or firmware
+
+    :param struct fpga_manager \*mgr:
+        fpga manager
+
+    :param struct fpga_image_info \*info:
+        fpga image information.
+
+.. _`fpga_mgr_load.description`:
+
+Description
+-----------
+
+Load the FPGA from an image which is indicated in \ ``info``\ .  If successful, the
+FPGA ends up in operating mode.
+
+.. _`fpga_mgr_load.return`:
+
+Return
+------
+
+0 on success, negative error code otherwise.
+
 .. _`fpga_mgr_get`:
 
 fpga_mgr_get
@@ -121,17 +182,10 @@ fpga_mgr_get
 
 .. c:function:: struct fpga_manager *fpga_mgr_get(struct device *dev)
 
-    get a reference to a fpga mgr
+    Given a device, get a reference to a fpga mgr.
 
     :param struct device \*dev:
         parent device that fpga mgr was registered with
-
-.. _`fpga_mgr_get.description`:
-
-Description
------------
-
-Given a device, get a reference to a fpga mgr.
 
 .. _`fpga_mgr_get.return`:
 
@@ -147,17 +201,10 @@ of_fpga_mgr_get
 
 .. c:function:: struct fpga_manager *of_fpga_mgr_get(struct device_node *node)
 
-    get a reference to a fpga mgr
+    Given a device node, get a reference to a fpga mgr.
 
     :param struct device_node \*node:
         device node
-
-.. _`of_fpga_mgr_get.description`:
-
-Description
------------
-
-Given a device node, get a reference to a fpga mgr.
 
 .. _`of_fpga_mgr_get.return`:
 
@@ -196,7 +243,10 @@ Description
 -----------
 
 Given a pointer to FPGA Manager (from \ :c:func:`fpga_mgr_get`\  or
-\ :c:func:`of_fpga_mgr_put`\ ) attempt to get the mutex.
+\ :c:func:`of_fpga_mgr_put`\ ) attempt to get the mutex. The user should call
+\ :c:func:`fpga_mgr_lock`\  and verify that it returns 0 before attempting to
+program the FPGA.  Likewise, the user should call fpga_mgr_unlock
+when done programming the FPGA.
 
 .. _`fpga_mgr_lock.return`:
 
@@ -212,19 +262,19 @@ fpga_mgr_unlock
 
 .. c:function:: void fpga_mgr_unlock(struct fpga_manager *mgr)
 
-    Unlock FPGA manager
+    Unlock FPGA manager after done programming
 
     :param struct fpga_manager \*mgr:
         fpga manager
 
-.. _`fpga_mgr_register`:
+.. _`fpga_mgr_create`:
 
-fpga_mgr_register
-=================
+fpga_mgr_create
+===============
 
-.. c:function:: int fpga_mgr_register(struct device *dev, const char *name, const struct fpga_manager_ops *mops, void *priv)
+.. c:function:: struct fpga_manager *fpga_mgr_create(struct device *dev, const char *name, const struct fpga_manager_ops *mops, void *priv)
 
-    register a low level fpga manager driver
+    create and initialize a FPGA manager struct
 
     :param struct device \*dev:
         fpga manager device from pdev
@@ -238,6 +288,37 @@ fpga_mgr_register
     :param void \*priv:
         fpga manager private data
 
+.. _`fpga_mgr_create.return`:
+
+Return
+------
+
+pointer to struct fpga_manager or NULL
+
+.. _`fpga_mgr_free`:
+
+fpga_mgr_free
+=============
+
+.. c:function:: void fpga_mgr_free(struct fpga_manager *mgr)
+
+    deallocate a FPGA manager
+
+    :param struct fpga_manager \*mgr:
+        fpga manager struct created by fpga_mgr_create
+
+.. _`fpga_mgr_register`:
+
+fpga_mgr_register
+=================
+
+.. c:function:: int fpga_mgr_register(struct fpga_manager *mgr)
+
+    register a FPGA manager
+
+    :param struct fpga_manager \*mgr:
+        fpga manager struct created by fpga_mgr_create
+
 .. _`fpga_mgr_register.return`:
 
 Return
@@ -250,12 +331,12 @@ Return
 fpga_mgr_unregister
 ===================
 
-.. c:function:: void fpga_mgr_unregister(struct device *dev)
+.. c:function:: void fpga_mgr_unregister(struct fpga_manager *mgr)
 
-    unregister a low level fpga manager driver
+    unregister and free a FPGA manager
 
-    :param struct device \*dev:
-        fpga manager device from pdev
+    :param struct fpga_manager \*mgr:
+        fpga manager struct
 
 .. This file was automatic generated / don't edit.
 

@@ -8,7 +8,6 @@ staging
     :maxdepth: 1
 
     android/index
-    ccree/index
     clocking-wizard/index
     comedi/index
     dgnc/index
@@ -18,13 +17,10 @@ staging
     fwserial/index
     greybus/index
     iio/index
-    ipx/index
     ks7010/index
-    lustre/index
     media/index
     most/index
     mt29f_spinand/index
-    ncpfs/index
     nvec/index
     octeon/index
     octeon-usb/index

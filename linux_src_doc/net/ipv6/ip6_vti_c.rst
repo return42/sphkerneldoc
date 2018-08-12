@@ -165,7 +165,7 @@ vti6_xmit
 vti6_tnl_change
 ===============
 
-.. c:function:: int vti6_tnl_change(struct ip6_tnl *t, const struct __ip6_tnl_parm *p)
+.. c:function:: int vti6_tnl_change(struct ip6_tnl *t, const struct __ip6_tnl_parm *p, bool keep_mtu)
 
     update the tunnel parameters
 
@@ -174,6 +174,9 @@ vti6_tnl_change
 
     :param const struct __ip6_tnl_parm \*p:
         tunnel configuration parameters
+
+    :param bool keep_mtu:
+        MTU was set from userspace, don't re-compute it
 
 .. _`vti6_tnl_change.description`:
 

@@ -31,9 +31,11 @@ drm
     tinydrm/index
     ttm/index
     tve200/index
+    v3d/index
     vc4/index
     vgem/index
     vmwgfx/index
+    xen/index
     drm_agpsupport_c
     drm_atomic_c
     drm_atomic_helper_c

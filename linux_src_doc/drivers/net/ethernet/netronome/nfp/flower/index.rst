@@ -7,6 +7,7 @@ flower
 .. toctree::
     :maxdepth: 1
 
+    lag_conf_c
     main_h
     offload_c
     tunnel_conf_c

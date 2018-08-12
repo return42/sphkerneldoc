@@ -11,7 +11,7 @@ qla2x00_get_cmd_direction
     Determine control_flag data direction.
 
     :param srb_t \*sp:
-        *undescribed*
+        SCSI command
 
 .. _`qla2x00_get_cmd_direction.description`:
 
@@ -68,7 +68,7 @@ qla2x00_prep_cont_type0_iocb
     Initialize a Continuation Type 0 IOCB.
 
     :param struct scsi_qla_host \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_prep_cont_type0_iocb.description`:
 
@@ -87,10 +87,10 @@ qla2x00_prep_cont_type1_iocb
     Initialize a Continuation Type 1 IOCB.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
     :param struct req_que \*req:
-        *undescribed*
+        request queue
 
 .. _`qla2x00_prep_cont_type1_iocb.description`:
 
@@ -146,10 +146,10 @@ qla2x00_start_iocbs
     Execute the IOCB command
 
     :param struct scsi_qla_host \*vha:
-        *undescribed*
+        HA context
 
     :param struct req_que \*req:
-        *undescribed*
+        request queue
 
 .. _`__qla2x00_marker`:
 
@@ -161,13 +161,13 @@ qla2x00_start_iocbs
     Send a marker IOCB to the firmware.
 
     :param struct scsi_qla_host \*vha:
-        *undescribed*
+        HA context
 
     :param struct req_que \*req:
-        *undescribed*
+        request queue
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param uint16_t loop_id:
         loop ID

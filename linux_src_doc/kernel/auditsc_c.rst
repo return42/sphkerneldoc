@@ -496,5 +496,34 @@ Description
 If a process ends with a core dump, something fishy is going on and we
 should record the event for investigation.
 
+.. _`audit_seccomp`:
+
+audit_seccomp
+=============
+
+.. c:function:: void audit_seccomp(unsigned long syscall, long signr, int code)
+
+    record information about a seccomp action
+
+    :param unsigned long syscall:
+        syscall number
+
+    :param long signr:
+        signal value
+
+    :param int code:
+        the seccomp action
+
+.. _`audit_seccomp.description`:
+
+Description
+-----------
+
+Record the information associated with a seccomp action. Event filtering for
+seccomp actions that are not to be logged is done in \ :c:func:`seccomp_log`\ .
+Therefore, this function forces auditing independent of the audit_enabled
+and dummy context state because seccomp actions should be logged even when
+audit is not in use.
+
 .. This file was automatic generated / don't edit.
 

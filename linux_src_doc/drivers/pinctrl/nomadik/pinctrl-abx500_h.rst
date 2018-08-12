@@ -142,39 +142,6 @@ coherency on how to select the altA, altB and altC
 function between the ABx500 SOC family when using
 alternatfunc register.
 
-.. _`pullud`:
-
-struct pullud
-=============
-
-.. c:type:: struct pullud
-
-    specific pull up/down feature
-
-.. _`pullud.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct pullud {
-        unsigned first_pin;
-        unsigned last_pin;
-    }
-
-.. _`pullud.members`:
-
-Members
--------
-
-first_pin
-    The pin number of the first pins which support
-    specific pull up/down
-
-last_pin
-    The pin number of the last pins
-
 .. _`abx500_gpio_irq_cluster`:
 
 struct abx500_gpio_irq_cluster
@@ -278,7 +245,6 @@ Definition
         const struct abx500_pingroup *groups;
         unsigned ngroups;
         struct alternate_functions *alternate_functions;
-        struct pullud *pullud;
         struct abx500_gpio_irq_cluster *gpio_irq_cluster;
         unsigned ngpio_irq_cluster;
         int irq_gpio_rising_offset;
@@ -321,10 +287,6 @@ ngroups
 alternate_functions
     array describing pins which supports alternate and
     how to set it.
-
-pullud
-    array describing pins which supports pull up/down
-    specific registers.
 
 gpio_irq_cluster
     An array of GPIO interrupt capable for this SoC

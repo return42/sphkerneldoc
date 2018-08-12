@@ -92,15 +92,15 @@ Description
 smu7_thermal_set_temperature_range
 ==================================
 
-.. c:function:: int smu7_thermal_set_temperature_range(struct pp_hwmgr *hwmgr, uint32_t low_temp, uint32_t high_temp)
+.. c:function:: int smu7_thermal_set_temperature_range(struct pp_hwmgr *hwmgr, int low_temp, int high_temp)
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
 
-    :param uint32_t low_temp:
+    :param int low_temp:
         *undescribed*
 
-    :param uint32_t high_temp:
+    :param int high_temp:
         *undescribed*
 
 .. _`smu7_thermal_set_temperature_range.description`:

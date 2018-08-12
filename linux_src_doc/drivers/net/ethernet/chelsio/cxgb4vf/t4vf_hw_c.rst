@@ -95,6 +95,27 @@ fwcap_to_speed
     :param fw_port_cap32_t caps:
         *undescribed*
 
+.. _`fwcap_to_fwspeed`:
+
+fwcap_to_fwspeed
+================
+
+.. c:function:: fw_port_cap32_t fwcap_to_fwspeed(fw_port_cap32_t acaps)
+
+    return highest speed in Port Capabilities
+
+    :param fw_port_cap32_t acaps:
+        advertised Port Capabilities
+
+.. _`fwcap_to_fwspeed.description`:
+
+Description
+-----------
+
+Get the highest speed for the port from the advertised Port
+Capabilities.  It will be either the highest speed from the list of
+speeds or whatever user has set using ethtool.
+
 .. _`t4vf_port_init`:
 
 t4vf_port_init
@@ -528,6 +549,37 @@ Description
 -----------
 
 Enables/disables a virtual interface.
+
+.. _`t4vf_enable_pi`:
+
+t4vf_enable_pi
+==============
+
+.. c:function:: int t4vf_enable_pi(struct adapter *adapter, struct port_info *pi, bool rx_en, bool tx_en)
+
+    enable/disable a Port's virtual interface
+
+    :param struct adapter \*adapter:
+        the adapter
+
+    :param struct port_info \*pi:
+        the Port Information structure
+
+    :param bool rx_en:
+        1=enable Rx, 0=disable Rx
+
+    :param bool tx_en:
+        1=enable Tx, 0=disable Tx
+
+.. _`t4vf_enable_pi.description`:
+
+Description
+-----------
+
+Enables/disables a Port's virtual interface.  If the Virtual
+Interface enable/disable operation is successful, we notify the
+OS-specific code of a potential Link Status change via the OS Contract
+API \ :c:func:`t4vf_os_link_changed`\ .
 
 .. _`t4vf_identify_port`:
 

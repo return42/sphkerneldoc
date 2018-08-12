@@ -794,52 +794,6 @@ Description
 Update the charger output current for the specified charger
 Returns error code in case of failure else 0(on success)
 
-.. _`ab8540_charger_power_path_enable`:
-
-ab8540_charger_power_path_enable
-================================
-
-.. c:function:: int ab8540_charger_power_path_enable(struct ux500_charger *charger, bool enable)
-
-    enable usb power path mode
-
-    :param struct ux500_charger \*charger:
-        pointer to the ux500_charger structure
-
-    :param bool enable:
-        enable/disable flag
-
-.. _`ab8540_charger_power_path_enable.description`:
-
-Description
------------
-
-Enable or disable the power path for usb mode
-Returns error code in case of failure else 0(on success)
-
-.. _`ab8540_charger_usb_pre_chg_enable`:
-
-ab8540_charger_usb_pre_chg_enable
-=================================
-
-.. c:function:: int ab8540_charger_usb_pre_chg_enable(struct ux500_charger *charger, bool enable)
-
-    enable usb pre change
-
-    :param struct ux500_charger \*charger:
-        pointer to the ux500_charger structure
-
-    :param bool enable:
-        enable/disable flag
-
-.. _`ab8540_charger_usb_pre_chg_enable.description`:
-
-Description
------------
-
-Enable or disable the pre-chage for usb mode
-Returns error code in case of failure else 0(on success)
-
 .. _`ab8500_charger_check_vbat_work`:
 
 ab8500_charger_check_vbat_work

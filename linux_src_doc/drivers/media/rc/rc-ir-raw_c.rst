@@ -284,6 +284,29 @@ encoding. In this case all \ ``max``\  events will have been written.
 -EINVAL if the scancode is ambiguous or invalid, or if no
 compatible encoder was found.
 
+.. _`ir_raw_edge_handle`:
+
+ir_raw_edge_handle
+==================
+
+.. c:function:: void ir_raw_edge_handle(struct timer_list *t)
+
+    Handle \ :c:func:`ir_raw_event_store_edge`\  processing
+
+    :param struct timer_list \*t:
+        timer_list
+
+.. _`ir_raw_edge_handle.description`:
+
+Description
+-----------
+
+This callback is armed by \ :c:func:`ir_raw_event_store_edge`\ . It does two things:
+first of all, rather than calling \ :c:func:`ir_raw_event_handle`\  for each
+edge and waking up the rc thread, 15 ms after the first edge
+\ :c:func:`ir_raw_event_handle`\  is called. Secondly, generate a timeout event
+no more IR is received after the rc_dev timeout.
+
 .. _`ir_raw_encode_carrier`:
 
 ir_raw_encode_carrier

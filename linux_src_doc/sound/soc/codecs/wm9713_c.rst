@@ -6,11 +6,11 @@
 wm9713_set_pll
 ==============
 
-.. c:function:: int wm9713_set_pll(struct snd_soc_codec *codec, int pll_id, unsigned int freq_in, unsigned int freq_out)
+.. c:function:: int wm9713_set_pll(struct snd_soc_component *component, int pll_id, unsigned int freq_in, unsigned int freq_out)
 
     resynchronisation with the AC97 controller.
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param int pll_id:

@@ -47,5 +47,31 @@ Return
 - zero or error code from injecting if \ ``rc``\  was positive
 (program check injected to \ ``vcpu``\ )
 
+.. _`kvm_s390_vcpu_crypto_reset_all`:
+
+kvm_s390_vcpu_crypto_reset_all
+==============================
+
+.. c:function:: void kvm_s390_vcpu_crypto_reset_all(struct kvm *kvm)
+
+    :param struct kvm \*kvm:
+        the KVM guest
+
+.. _`kvm_s390_vcpu_crypto_reset_all.description`:
+
+Description
+-----------
+
+Reset the crypto attributes for each vcpu. This can be done while the vcpus
+are running as each vcpu will be removed from SIE before resetting the crypt
+attributes and restored to SIE afterward.
+
+.. _`kvm_s390_vcpu_crypto_reset_all.note`:
+
+Note
+----
+
+The kvm->lock must be held while calling this function
+
 .. This file was automatic generated / don't edit.
 

@@ -153,12 +153,12 @@ return cross talk sidetone gain
 nau8825_enable_jack_detect
 ==========================
 
-.. c:function:: int nau8825_enable_jack_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+.. c:function:: int nau8825_enable_jack_detect(struct snd_soc_component *component, struct snd_soc_jack *jack)
 
     Specify a jack for event reporting
 
-    :param struct snd_soc_codec \*codec:
-        *undescribed*
+    :param struct snd_soc_component \*component:
+        component to register the jack with
 
     :param struct snd_soc_jack \*jack:
         jack to use to report headset and button events on

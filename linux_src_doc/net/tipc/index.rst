@@ -7,7 +7,6 @@ tipc
 .. toctree::
     :maxdepth: 1
 
-    addr_c
     bcast_c
     bearer_c
     bearer_h
@@ -19,9 +18,8 @@ tipc
     name_table_c
     name_table_h
     node_c
-    server_c
-    server_h
     socket_c
     subscr_c
     subscr_h
+    topsrv_c
     udp_media_c

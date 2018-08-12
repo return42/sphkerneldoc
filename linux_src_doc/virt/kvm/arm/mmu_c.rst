@@ -113,10 +113,10 @@ Description
 
 Assumes hyp_pgd is a page table used strictly in Hyp-mode and
 therefore contains either mappings in the kernel memory area (above
-PAGE_OFFSET), or device mappings in the vmalloc range (from
-VMALLOC_START to VMALLOC_END).
+PAGE_OFFSET), or device mappings in the idmap range.
 
-boot_hyp_pgd should only map two pages for the init code.
+boot_hyp_pgd should only map the idmap range, and is only used in
+the extended idmap case.
 
 .. _`create_hyp_mappings`:
 
@@ -150,26 +150,39 @@ physical pages.
 create_hyp_io_mappings
 ======================
 
-.. c:function:: int create_hyp_io_mappings(void *from, void *to, phys_addr_t phys_addr)
+.. c:function:: int create_hyp_io_mappings(phys_addr_t phys_addr, size_t size, void __iomem **kaddr, void __iomem **haddr)
 
-    duplicate a kernel IO mapping into Hyp mode
-
-    :param void \*from:
-        The kernel start VA of the range
-
-    :param void \*to:
-        The kernel end VA of the range (exclusive)
+    Map IO into both kernel and HYP
 
     :param phys_addr_t phys_addr:
         The physical start address which gets mapped
 
-.. _`create_hyp_io_mappings.description`:
+    :param size_t size:
+        Size of the region being mapped
 
-Description
------------
+    :param void __iomem \*\*kaddr:
+        Kernel VA for this mapping
 
-The resulting HYP VA is the same as the kernel VA, modulo
-HYP_PAGE_OFFSET.
+    :param void __iomem \*\*haddr:
+        HYP VA for this mapping
+
+.. _`create_hyp_exec_mappings`:
+
+create_hyp_exec_mappings
+========================
+
+.. c:function:: int create_hyp_exec_mappings(phys_addr_t phys_addr, size_t size, void **haddr)
+
+    Map an executable range into HYP
+
+    :param phys_addr_t phys_addr:
+        The physical start address which gets mapped
+
+    :param size_t size:
+        Size of the region being mapped
+
+    :param void \*\*haddr:
+        HYP VA for this mapping
 
 .. _`kvm_alloc_stage2_pgd`:
 

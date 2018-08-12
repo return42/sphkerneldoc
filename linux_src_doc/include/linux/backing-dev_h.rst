@@ -128,7 +128,7 @@ Description
 -----------
 
 Returns the wb \ ``inode``\  is currently associated with.  The caller must be
-holding either \ ``inode``\ ->i_lock, \ ``inode``\ ->i_mapping->tree_lock, or the
+holding either \ ``inode``\ ->i_lock, the i_pages lock, or the
 associated wb's list_lock.
 
 .. _`unlocked_inode_to_wb_begin`:
@@ -136,15 +136,15 @@ associated wb's list_lock.
 unlocked_inode_to_wb_begin
 ==========================
 
-.. c:function:: struct bdi_writeback *unlocked_inode_to_wb_begin(struct inode *inode, bool *lockedp)
+.. c:function:: struct bdi_writeback *unlocked_inode_to_wb_begin(struct inode *inode, struct wb_lock_cookie *cookie)
 
     begin unlocked inode wb access transaction
 
     :param struct inode \*inode:
         target inode
 
-    :param bool \*lockedp:
-        temp bool output param, to be passed to the end function
+    :param struct wb_lock_cookie \*cookie:
+        output param, to be passed to the end function
 
 .. _`unlocked_inode_to_wb_begin.description`:
 
@@ -152,29 +152,29 @@ Description
 -----------
 
 The caller wants to access the wb associated with \ ``inode``\  but isn't
-holding inode->i_lock, mapping->tree_lock or wb->list_lock.  This
+holding inode->i_lock, the i_pages lock or wb->list_lock.  This
 function determines the wb associated with \ ``inode``\  and ensures that the
 association doesn't change until the transaction is finished with
 \ :c:func:`unlocked_inode_to_wb_end`\ .
 
-The caller must call \ :c:func:`unlocked_inode_to_wb_end`\  with \*@lockdep
-afterwards and can't sleep during transaction.  IRQ may or may not be
-disabled on return.
+The caller must call \ :c:func:`unlocked_inode_to_wb_end`\  with \*@cookie afterwards and
+can't sleep during the transaction.  IRQs may or may not be disabled on
+return.
 
 .. _`unlocked_inode_to_wb_end`:
 
 unlocked_inode_to_wb_end
 ========================
 
-.. c:function:: void unlocked_inode_to_wb_end(struct inode *inode, bool locked)
+.. c:function:: void unlocked_inode_to_wb_end(struct inode *inode, struct wb_lock_cookie *cookie)
 
     end inode wb access transaction
 
     :param struct inode \*inode:
         target inode
 
-    :param bool locked:
-        \*@lockedp from \ :c:func:`unlocked_inode_to_wb_begin`\ 
+    :param struct wb_lock_cookie \*cookie:
+        \ ``cookie``\  from \ :c:func:`unlocked_inode_to_wb_begin`\ 
 
 .. This file was automatic generated / don't edit.
 

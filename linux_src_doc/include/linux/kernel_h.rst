@@ -266,7 +266,7 @@ Please refrain from leaving trace_printks scattered around in
 your code. (Extra memory is used for special buffers that are
 allocated when \ :c:func:`trace_printk`\  is used.)
 
-A little optization trick is done here. If there's only one
+A little optimization trick is done here. If there's only one
 argument, there's no need to scan the string for printf formats.
 The \ :c:func:`trace_puts`\  will suffice. But how can we take advantage of
 using \ :c:func:`trace_puts`\  when \ :c:func:`trace_printk`\  has only one argument?
@@ -552,6 +552,31 @@ container_of
 
     :param  member:
         the name of the member within the struct.
+
+.. _`container_of_safe`:
+
+container_of_safe
+=================
+
+.. c:function::  container_of_safe( ptr,  type,  member)
+
+    cast a member of a structure out to the containing structure
+
+    :param  ptr:
+        the pointer to the member.
+
+    :param  type:
+        the type of the container struct this is embedded in.
+
+    :param  member:
+        the name of the member within the struct.
+
+.. _`container_of_safe.description`:
+
+Description
+-----------
+
+If IS_ERR_OR_NULL(ptr), ptr is returned unchanged.
 
 .. This file was automatic generated / don't edit.
 

@@ -40,6 +40,25 @@ Return
 
 1 if count updated successfully or 0 if count was zero
 
+.. _`lockref_put_not_zero`:
+
+lockref_put_not_zero
+====================
+
+.. c:function:: int lockref_put_not_zero(struct lockref *lockref)
+
+    Decrements count unless count <= 1 before decrement
+
+    :param struct lockref \*lockref:
+        pointer to lockref structure
+
+.. _`lockref_put_not_zero.return`:
+
+Return
+------
+
+1 if count updated successfully or 0 if count would become zero
+
 .. _`lockref_get_or_lock`:
 
 lockref_get_or_lock

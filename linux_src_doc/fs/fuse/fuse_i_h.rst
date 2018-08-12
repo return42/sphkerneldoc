@@ -350,9 +350,12 @@ fuse_conn_get
 fuse_conn_init
 ==============
 
-.. c:function:: void fuse_conn_init(struct fuse_conn *fc)
+.. c:function:: void fuse_conn_init(struct fuse_conn *fc, struct user_namespace *user_ns)
 
     :param struct fuse_conn \*fc:
+        *undescribed*
+
+    :param struct user_namespace \*user_ns:
         *undescribed*
 
 .. _`fuse_conn_put`:

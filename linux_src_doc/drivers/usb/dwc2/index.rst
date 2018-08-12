@@ -10,7 +10,6 @@ dwc2
     core_c
     core_h
     core_intr_c
-    debug_h
     debugfs_c
     gadget_c
     hcd_c
@@ -20,4 +19,5 @@ dwc2
     hcd_queue_c
     hw_h
     params_c
+    pci_c
     platform_c

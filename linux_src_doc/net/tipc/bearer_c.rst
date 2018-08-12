@@ -85,7 +85,7 @@ tipc_bearer_find
 tipc_enable_bearer
 ==================
 
-.. c:function:: int tipc_enable_bearer(struct net *net, const char *name, u32 disc_domain, u32 priority, struct nlattr  *attr)
+.. c:function:: int tipc_enable_bearer(struct net *net, const char *name, u32 disc_domain, u32 prio, struct nlattr  *attr)
 
     enable bearer with the given name
 
@@ -98,7 +98,7 @@ tipc_enable_bearer
     :param u32 disc_domain:
         *undescribed*
 
-    :param u32 priority:
+    :param u32 prio:
         *undescribed*
 
     :param struct nlattr  \*attr:

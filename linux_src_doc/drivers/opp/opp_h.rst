@@ -174,7 +174,6 @@ Definition
         bool genpd_performance_state;
         int (*set_opp)(struct dev_pm_set_opp_data *data);
         struct dev_pm_set_opp_data *set_opp_data;
-        int (*get_pstate)(struct device *dev, unsigned long rate);
     #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
         char dentry_name[NAME_MAX];
@@ -247,9 +246,6 @@ set_opp
 
 set_opp_data
     Data to be passed to set_opp callback
-
-get_pstate
-    Platform specific get_pstate callback
 
 dentry
     debugfs dentry pointer of the real device directory (not links).

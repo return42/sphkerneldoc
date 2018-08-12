@@ -225,7 +225,7 @@ Definition
         struct list_head head_global;
         struct list_head head_file;
         size_t length;
-        unsigned char data[];
+        void *data;
     }
 
 .. _`drm_property_blob.members`:
@@ -285,46 +285,6 @@ Description
 
 This is a helper function becauase the uapi encoding of property types is
 a bit special for historical reasons.
-
-.. _`drm_property_reference_blob`:
-
-drm_property_reference_blob
-===========================
-
-.. c:function:: struct drm_property_blob *drm_property_reference_blob(struct drm_property_blob *blob)
-
-    acquire a blob property reference
-
-    :param struct drm_property_blob \*blob:
-        DRM blob property
-
-.. _`drm_property_reference_blob.description`:
-
-Description
------------
-
-This is a compatibility alias for \ :c:func:`drm_property_blob_get`\  and should not be
-used by new code.
-
-.. _`drm_property_unreference_blob`:
-
-drm_property_unreference_blob
-=============================
-
-.. c:function:: void drm_property_unreference_blob(struct drm_property_blob *blob)
-
-    release a blob property reference
-
-    :param struct drm_property_blob \*blob:
-        DRM blob property
-
-.. _`drm_property_unreference_blob.description`:
-
-Description
------------
-
-This is a compatibility alias for \ :c:func:`drm_property_blob_put`\  and should not be
-used by new code.
 
 .. _`drm_property_find`:
 

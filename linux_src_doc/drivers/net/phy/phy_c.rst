@@ -391,6 +391,42 @@ or write error, and tells the controller the link is down.
 Must not be called from interrupt context, or while the
 phydev->lock is held.
 
+.. _`phy_disable_interrupts`:
+
+phy_disable_interrupts
+======================
+
+.. c:function:: int phy_disable_interrupts(struct phy_device *phydev)
+
+    Disable the PHY interrupts from the PHY side
+
+    :param struct phy_device \*phydev:
+        target phy_device struct
+
+.. _`phy_change`:
+
+phy_change
+==========
+
+.. c:function:: irqreturn_t phy_change(struct phy_device *phydev)
+
+    Called by the phy_interrupt to handle PHY changes
+
+    :param struct phy_device \*phydev:
+        phy_device struct that interrupted
+
+.. _`phy_change_work`:
+
+phy_change_work
+===============
+
+.. c:function:: void phy_change_work(struct work_struct *work)
+
+    Scheduled by the phy_mac_interrupt to handle PHY changes
+
+    :param struct work_struct \*work:
+        work_struct that describes the work to be done
+
 .. _`phy_interrupt`:
 
 phy_interrupt
@@ -422,18 +458,6 @@ phy_enable_interrupts
 .. c:function:: int phy_enable_interrupts(struct phy_device *phydev)
 
     Enable the interrupts from the PHY side
-
-    :param struct phy_device \*phydev:
-        target phy_device struct
-
-.. _`phy_disable_interrupts`:
-
-phy_disable_interrupts
-======================
-
-.. c:function:: int phy_disable_interrupts(struct phy_device *phydev)
-
-    Disable the PHY interrupts from the PHY side
 
     :param struct phy_device \*phydev:
         target phy_device struct
@@ -472,30 +496,6 @@ phy_stop_interrupts
 
     :param struct phy_device \*phydev:
         target phy_device struct
-
-.. _`phy_change`:
-
-phy_change
-==========
-
-.. c:function:: void phy_change(struct phy_device *phydev)
-
-    Called by the phy_interrupt to handle PHY changes
-
-    :param struct phy_device \*phydev:
-        phy_device struct that interrupted
-
-.. _`phy_change_work`:
-
-phy_change_work
-===============
-
-.. c:function:: void phy_change_work(struct work_struct *work)
-
-    Scheduled by the phy_mac_interrupt to handle PHY changes
-
-    :param struct work_struct \*work:
-        work_struct that describes the work to be done
 
 .. _`phy_stop`:
 

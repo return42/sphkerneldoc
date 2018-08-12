@@ -19,11 +19,15 @@ Definition
 
     struct vsp1_dl_body {
         struct list_head list;
+        struct list_head free;
+        refcount_t refcnt;
+        struct vsp1_dl_body_pool *pool;
         struct vsp1_device *vsp1;
         struct vsp1_dl_entry *entries;
         dma_addr_t dma;
         size_t size;
         unsigned int num_entries;
+        unsigned int max_entries;
     }
 
 .. _`vsp1_dl_body.members`:
@@ -33,6 +37,15 @@ Members
 
 list
     entry in the display list list of bodies
+
+free
+    entry in the pool free body list
+
+refcnt
+    *undescribed*
+
+pool
+    pool to which this body belongs
 
 vsp1
     the VSP1 device
@@ -48,6 +61,61 @@ size
 
 num_entries
     number of stored entries
+
+max_entries
+    number of entries available
+
+.. _`vsp1_dl_body_pool`:
+
+struct vsp1_dl_body_pool
+========================
+
+.. c:type:: struct vsp1_dl_body_pool
+
+    display list body pool
+
+.. _`vsp1_dl_body_pool.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vsp1_dl_body_pool {
+        dma_addr_t dma;
+        size_t size;
+        void *mem;
+        struct vsp1_dl_body *bodies;
+        struct list_head free;
+        spinlock_t lock;
+        struct vsp1_device *vsp1;
+    }
+
+.. _`vsp1_dl_body_pool.members`:
+
+Members
+-------
+
+dma
+    DMA address of the entries
+
+size
+    size of the full DMA memory pool in bytes
+
+mem
+    CPU memory pointer for the pool
+
+bodies
+    Array of DLB structures for the pool
+
+free
+    List of free DLB entries
+
+lock
+    Protects the free list
+
+vsp1
+    the VSP1 device
 
 .. _`vsp1_dl_list`:
 
@@ -70,10 +138,11 @@ Definition
         struct vsp1_dl_manager *dlm;
         struct vsp1_dl_header *header;
         dma_addr_t dma;
-        struct vsp1_dl_body body0;
-        struct list_head fragments;
+        struct vsp1_dl_body *body0;
+        struct list_head bodies;
         bool has_chain;
         struct list_head chain;
+        bool internal;
     }
 
 .. _`vsp1_dl_list.members`:
@@ -96,7 +165,7 @@ dma
 body0
     first display list body
 
-fragments
+bodies
     list of extra display list bodies
 
 has_chain
@@ -104,6 +173,9 @@ has_chain
 
 chain
     entry in the display list partition chain
+
+internal
+    whether the display list is used for internal purpose
 
 .. _`vsp1_dl_manager`:
 
@@ -131,8 +203,7 @@ Definition
         struct vsp1_dl_list *active;
         struct vsp1_dl_list *queued;
         struct vsp1_dl_list *pending;
-        struct work_struct gc_work;
-        struct list_head gc_fragments;
+        struct vsp1_dl_body_pool *pool;
     }
 
 .. _`vsp1_dl_manager.members`:
@@ -153,7 +224,7 @@ vsp1
     the VSP1 device
 
 lock
-    protects the free, active, queued, pending and gc_fragments lists
+    protects the free, active, queued, and pending lists
 
 free
     array of all free display lists
@@ -167,76 +238,110 @@ queued
 pending
     list waiting to be queued to the hardware
 
-gc_work
-    fragments garbage collector work struct
+pool
+    body pool for the display list bodies
 
-gc_fragments
-    array of display list fragments waiting to be freed
+.. _`vsp1_dl_body_pool_create`:
 
-.. _`vsp1_dl_fragment_alloc`:
+vsp1_dl_body_pool_create
+========================
 
-vsp1_dl_fragment_alloc
-======================
+.. c:function:: struct vsp1_dl_body_pool *vsp1_dl_body_pool_create(struct vsp1_device *vsp1, unsigned int num_bodies, unsigned int num_entries, size_t extra_size)
 
-.. c:function:: struct vsp1_dl_body *vsp1_dl_fragment_alloc(struct vsp1_device *vsp1, unsigned int num_entries)
-
-    Allocate a display list fragment
+    Create a pool of bodies from a single allocation
 
     :param struct vsp1_device \*vsp1:
         The VSP1 device
 
+    :param unsigned int num_bodies:
+        The number of bodies to allocate
+
     :param unsigned int num_entries:
-        The maximum number of entries that the fragment can contain
+        The maximum number of entries that a body can contain
 
-.. _`vsp1_dl_fragment_alloc.description`:
+    :param size_t extra_size:
+        Extra allocation provided for the bodies
 
-Description
------------
-
-Allocate a display list fragment with enough memory to contain the requested
-number of entries.
-
-Return a pointer to a fragment on success or NULL if memory can't be
-allocated.
-
-.. _`vsp1_dl_fragment_free`:
-
-vsp1_dl_fragment_free
-=====================
-
-.. c:function:: void vsp1_dl_fragment_free(struct vsp1_dl_body *dlb)
-
-    Free a display list fragment
-
-    :param struct vsp1_dl_body \*dlb:
-        The fragment
-
-.. _`vsp1_dl_fragment_free.description`:
+.. _`vsp1_dl_body_pool_create.description`:
 
 Description
 -----------
 
-Free the given display list fragment and the associated DMA memory.
+Allocate a pool of display list bodies each with enough memory to contain the
+requested number of entries plus the \ ``extra_size``\ .
 
-Fragments must only be freed explicitly if they are not added to a display
-list, as the display list will take ownership of them and free them
-otherwise. Manual free typically happens at cleanup time for fragments that
-have been allocated but not used.
+Return a pointer to a pool on success or NULL if memory can't be allocated.
 
-Passing a NULL pointer to this function is safe, in that case no operation
-will be performed.
+.. _`vsp1_dl_body_pool_destroy`:
 
-.. _`vsp1_dl_fragment_write`:
+vsp1_dl_body_pool_destroy
+=========================
 
-vsp1_dl_fragment_write
-======================
+.. c:function:: void vsp1_dl_body_pool_destroy(struct vsp1_dl_body_pool *pool)
 
-.. c:function:: void vsp1_dl_fragment_write(struct vsp1_dl_body *dlb, u32 reg, u32 data)
+    Release a body pool
 
-    Write a register to a display list fragment
+    :param struct vsp1_dl_body_pool \*pool:
+        The body pool
+
+.. _`vsp1_dl_body_pool_destroy.description`:
+
+Description
+-----------
+
+Release all components of a pool allocation.
+
+.. _`vsp1_dl_body_get`:
+
+vsp1_dl_body_get
+================
+
+.. c:function:: struct vsp1_dl_body *vsp1_dl_body_get(struct vsp1_dl_body_pool *pool)
+
+    Obtain a body from a pool
+
+    :param struct vsp1_dl_body_pool \*pool:
+        The body pool
+
+.. _`vsp1_dl_body_get.description`:
+
+Description
+-----------
+
+Obtain a body from the pool without blocking.
+
+Returns a display list body or NULL if there are none available.
+
+.. _`vsp1_dl_body_put`:
+
+vsp1_dl_body_put
+================
+
+.. c:function:: void vsp1_dl_body_put(struct vsp1_dl_body *dlb)
+
+    Return a body back to its pool
 
     :param struct vsp1_dl_body \*dlb:
-        The fragment
+        The display list body
+
+.. _`vsp1_dl_body_put.description`:
+
+Description
+-----------
+
+Return a body back to the pool, and reset the num_entries to clear the list.
+
+.. _`vsp1_dl_body_write`:
+
+vsp1_dl_body_write
+==================
+
+.. c:function:: void vsp1_dl_body_write(struct vsp1_dl_body *dlb, u32 reg, u32 data)
+
+    Write a register to a display list body
+
+    :param struct vsp1_dl_body \*dlb:
+        The body
 
     :param u32 reg:
         The register address
@@ -244,14 +349,14 @@ vsp1_dl_fragment_write
     :param u32 data:
         The register value
 
-.. _`vsp1_dl_fragment_write.description`:
+.. _`vsp1_dl_body_write.description`:
 
 Description
 -----------
 
-Write the given register and value to the display list fragment. The maximum
-number of entries that can be written in a fragment is specified when the
-fragment is allocated by \ :c:func:`vsp1_dl_fragment_alloc`\ .
+Write the given register and value to the display list body. The maximum
+number of entries that can be written in a body is specified when the body is
+allocated by \ :c:func:`vsp1_dl_body_alloc`\ .
 
 .. _`vsp1_dl_list_get`:
 
@@ -296,62 +401,59 @@ Release the display list and return it to the pool of free lists.
 Passing a NULL pointer to this function is safe, in that case no operation
 will be performed.
 
-.. _`vsp1_dl_list_write`:
+.. _`vsp1_dl_list_get_body0`:
 
-vsp1_dl_list_write
-==================
+vsp1_dl_list_get_body0
+======================
 
-.. c:function:: void vsp1_dl_list_write(struct vsp1_dl_list *dl, u32 reg, u32 data)
+.. c:function:: struct vsp1_dl_body *vsp1_dl_list_get_body0(struct vsp1_dl_list *dl)
 
-    Write a register to the display list
+    Obtain the default body for the display list
 
     :param struct vsp1_dl_list \*dl:
         The display list
 
-    :param u32 reg:
-        The register address
-
-    :param u32 data:
-        The register value
-
-.. _`vsp1_dl_list_write.description`:
+.. _`vsp1_dl_list_get_body0.description`:
 
 Description
 -----------
 
-Write the given register and value to the display list. Up to 256 registers
-can be written per display list.
+Obtain a pointer to the internal display list body allowing this to be passed
+directly to configure operations.
 
-.. _`vsp1_dl_list_add_fragment`:
+.. _`vsp1_dl_list_add_body`:
 
-vsp1_dl_list_add_fragment
-=========================
+vsp1_dl_list_add_body
+=====================
 
-.. c:function:: int vsp1_dl_list_add_fragment(struct vsp1_dl_list *dl, struct vsp1_dl_body *dlb)
+.. c:function:: int vsp1_dl_list_add_body(struct vsp1_dl_list *dl, struct vsp1_dl_body *dlb)
 
-    Add a fragment to the display list
+    Add a body to the display list
 
     :param struct vsp1_dl_list \*dl:
         The display list
 
     :param struct vsp1_dl_body \*dlb:
-        The fragment
+        The body
 
-.. _`vsp1_dl_list_add_fragment.description`:
+.. _`vsp1_dl_list_add_body.description`:
 
 Description
 -----------
 
-Add a display list body as a fragment to a display list. Registers contained
-in fragments are processed after registers contained in the main display
-list, in the order in which fragments are added.
+Add a display list body to a display list. Registers contained in bodies are
+processed after registers contained in the main display list, in the order in
+which bodies are added.
 
-Adding a fragment to a display list passes ownership of the fragment to the
-list. The caller must not touch the fragment after this call, and must not
-free it explicitly with \ :c:func:`vsp1_dl_fragment_free`\ .
+Adding a body to a display list passes ownership of the body to the list. The
+caller retains its reference to the fragment when adding it to the display
+list, but is not allowed to add new entries to the body.
 
-Fragments are only usable for display lists in header mode. Attempt to
-add a fragment to a header-less display list will return an error.
+The reference must be explicitly released by a call to \ :c:func:`vsp1_dl_body_put`\ 
+when the body isn't needed anymore.
+
+Additional bodies are only usable for display lists in header mode.
+Attempting to add a body to a header-less display list will return an error.
 
 .. _`vsp1_dl_list_add_chain`:
 
@@ -390,7 +492,7 @@ display list to a chain in header-less mode will return an error.
 vsp1_dlm_irq_frame_end
 ======================
 
-.. c:function:: bool vsp1_dlm_irq_frame_end(struct vsp1_dl_manager *dlm)
+.. c:function:: unsigned int vsp1_dlm_irq_frame_end(struct vsp1_dl_manager *dlm)
 
     Display list handler for the frame end interrupt
 
@@ -402,10 +504,18 @@ vsp1_dlm_irq_frame_end
 Description
 -----------
 
-Return true if the previous display list has completed at frame end, or false
-if it has been delayed by one frame because the display list commit raced
-with the frame end interrupt. The function always returns true in header mode
-as display list processing is then not continuous and races never occur.
+Return a set of flags that indicates display list completion status.
+
+The VSP1_DL_FRAME_END_COMPLETED flag indicates that the previous display list
+has completed at frame end. If the flag is not returned display list
+completion has been delayed by one frame because the display list commit
+raced with the frame end interrupt. The function always returns with the flag
+set in header mode as display list processing is then not continuous and
+races never occur.
+
+The VSP1_DL_FRAME_END_INTERNAL flag indicates that the previous display list
+has completed and had been queued with the internal notification flag.
+Internal notification is only supported for continuous mode.
 
 .. This file was automatic generated / don't edit.
 

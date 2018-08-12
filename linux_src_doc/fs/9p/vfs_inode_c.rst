@@ -142,6 +142,30 @@ v9fs_at_to_dotl_flags
     :param int flags:
         flags to convert
 
+.. _`v9fs_dec_count`:
+
+v9fs_dec_count
+==============
+
+.. c:function:: void v9fs_dec_count(struct inode *inode)
+
+    helper functon to drop i_nlink.
+
+    :param struct inode \*inode:
+        inode whose nlink is being dropped
+
+.. _`v9fs_dec_count.description`:
+
+Description
+-----------
+
+If a directory had nlink <= 2 (including . and ..), then we should not drop
+the link count, which indicates the underlying exported fs doesn't maintain
+nlink accurately. e.g.
+- overlayfs sets nlink to 1 for merged dir
+- ext4 (with dir_nlink feature enabled) sets nlink to 1 if a dir has more
+than EXT4_LINK_MAX (65000) links.
+
 .. _`v9fs_remove`:
 
 v9fs_remove

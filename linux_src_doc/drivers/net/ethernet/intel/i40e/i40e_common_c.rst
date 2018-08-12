@@ -452,6 +452,21 @@ i40e_get_media_type
     :param struct i40e_hw \*hw:
         pointer to the hardware structure
 
+.. _`i40e_poll_globr`:
+
+i40e_poll_globr
+===============
+
+.. c:function:: i40e_status i40e_poll_globr(struct i40e_hw *hw, u32 retry_limit)
+
+    Poll for Global Reset completion
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
+    :param u32 retry_limit:
+        how many times to retry before failure
+
 .. _`i40e_pf_reset`:
 
 i40e_pf_reset
@@ -656,10 +671,10 @@ i40e_set_fc
         pointer to the hw struct
 
     :param u8 \*aq_failures:
-        *undescribed*
+        buffer to return AdminQ failure information
 
     :param bool atomic_restart:
-        *undescribed*
+        whether to enable atomic link restart
 
 .. _`i40e_set_fc.description`:
 
@@ -1368,10 +1383,10 @@ i40e_mirrorrule_op
         Rule ID returned from FW
 
     :param u16 \*rules_used:
-        *undescribed*
+        Number of rules used in internal switch
 
     :param u16 \*rules_free:
-        *undescribed*
+        Number of rules free in internal switch
 
 .. _`i40e_mirrorrule_op.description`:
 
@@ -1415,10 +1430,10 @@ i40e_aq_add_mirrorrule
         Rule ID returned from FW
 
     :param u16 \*rules_used:
-        *undescribed*
+        Number of rules used in internal switch
 
     :param u16 \*rules_free:
-        *undescribed*
+        Number of rules free in internal switch
 
 .. _`i40e_aq_add_mirrorrule.description`:
 
@@ -1459,10 +1474,10 @@ i40e_aq_delete_mirrorrule
         pointer to command details structure or NULL
 
     :param u16 \*rules_used:
-        *undescribed*
+        Number of rules used in internal switch
 
     :param u16 \*rules_free:
-        *undescribed*
+        Number of rules free in internal switch
 
 .. _`i40e_aq_delete_mirrorrule.description`:
 
@@ -2120,7 +2135,7 @@ i40e_aq_config_switch_comp_ets
         Buffer holding ETS parameters
 
     :param enum i40e_admin_queue_opc opcode:
-        *undescribed*
+        Tx scheduler AQ command opcode
 
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
@@ -2343,14 +2358,20 @@ This command will Add or Remove control packet filter for a control VSI.
 In return it will update the total number of perfect filter count in
 the stats member.
 
-.. _`i40e_flow_control_ethtype`:
+.. _`i40e_add_filter_to_drop_tx_flow_control_frames`:
 
-I40E_FLOW_CONTROL_ETHTYPE
-=========================
+i40e_add_filter_to_drop_tx_flow_control_frames
+==============================================
 
-.. c:function::  I40E_FLOW_CONTROL_ETHTYPE()
+.. c:function:: void i40e_add_filter_to_drop_tx_flow_control_frames(struct i40e_hw *hw, u16 seid)
 
     filter to drop flow control
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u16 seid:
+        VSI seid to add ethertype filter from
 
 .. _`i40e_aq_alternate_read`:
 
@@ -2460,7 +2481,7 @@ i40e_aq_debug_dump
         next index to read
 
     :param struct i40e_asq_cmd_details \*cmd_details:
-        *undescribed*
+        pointer to command details structure or NULL
 
 .. _`i40e_aq_debug_dump.description`:
 
@@ -2535,7 +2556,7 @@ i40e_read_phy_register_clause22
         register address in the page
 
     :param u8 phy_addr:
-        *undescribed*
+        PHY address on MDIO interface
 
     :param u16 \*value:
         PHY register value
@@ -2561,7 +2582,7 @@ i40e_write_phy_register_clause22
         register address in the page
 
     :param u8 phy_addr:
-        *undescribed*
+        PHY address on MDIO interface
 
     :param u16 value:
         PHY register value
@@ -2590,7 +2611,7 @@ i40e_read_phy_register_clause45
         register address in the page
 
     :param u8 phy_addr:
-        *undescribed*
+        PHY address on MDIO interface
 
     :param u16 \*value:
         PHY register value
@@ -2619,7 +2640,7 @@ i40e_write_phy_register_clause45
         register address in the page
 
     :param u8 phy_addr:
-        *undescribed*
+        PHY address on MDIO interface
 
     :param u16 value:
         PHY register value
@@ -2648,7 +2669,7 @@ i40e_write_phy_register
         register address in the page
 
     :param u8 phy_addr:
-        *undescribed*
+        PHY address on MDIO interface
 
     :param u16 value:
         PHY register value
@@ -2677,7 +2698,7 @@ i40e_read_phy_register
         register address in the page
 
     :param u8 phy_addr:
-        *undescribed*
+        PHY address on MDIO interface
 
     :param u16 \*value:
         PHY register value
@@ -2800,11 +2821,17 @@ i40e_led_set_phy
         true or false
 
     :param u16 led_addr:
-        *undescribed*
+        address of led register to use
 
     :param u32 mode:
         original val plus bit for set or ignore
-        Set led's on or off when controlled by the PHY
+
+.. _`i40e_led_set_phy.description`:
+
+Description
+-----------
+
+Set led's on or off when controlled by the PHY
 
 .. _`i40e_aq_rx_ctl_read_register`:
 
@@ -3008,7 +3035,7 @@ i40e_aq_get_ddp_list
         buffer size in bytes
 
     :param u8 flags:
-        *undescribed*
+        AdminQ command flags
 
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
@@ -3117,7 +3144,7 @@ of the function.
 i40e_aq_add_cloud_filters_bb
 ============================
 
-.. c:function:: i40e_status i40e_aq_add_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
+.. c:function:: enum i40e_status_code i40e_aq_add_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
 
     :param struct i40e_hw \*hw:
         pointer to the hardware structure
@@ -3173,7 +3200,7 @@ of the function.
 i40e_aq_rem_cloud_filters_bb
 ============================
 
-.. c:function:: i40e_status i40e_aq_rem_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
+.. c:function:: enum i40e_status_code i40e_aq_rem_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
 
     :param struct i40e_hw \*hw:
         pointer to the hardware structure

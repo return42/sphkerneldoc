@@ -372,36 +372,10 @@ uvd_v6_0_ring_emit_hdp_flush
 
 .. c:function:: void uvd_v6_0_ring_emit_hdp_flush(struct amdgpu_ring *ring)
 
-    emit an hdp flush
+    skip HDP flushing
 
     :param struct amdgpu_ring \*ring:
         amdgpu_ring pointer
-
-.. _`uvd_v6_0_ring_emit_hdp_flush.description`:
-
-Description
------------
-
-Emits an hdp flush.
-
-.. _`uvd_v6_0_ring_emit_hdp_invalidate`:
-
-uvd_v6_0_ring_emit_hdp_invalidate
-=================================
-
-.. c:function:: void uvd_v6_0_ring_emit_hdp_invalidate(struct amdgpu_ring *ring)
-
-    emit an hdp invalidate
-
-    :param struct amdgpu_ring \*ring:
-        amdgpu_ring pointer
-
-.. _`uvd_v6_0_ring_emit_hdp_invalidate.description`:
-
-Description
------------
-
-Emits an hdp invalidate.
 
 .. _`uvd_v6_0_ring_test_ring`:
 

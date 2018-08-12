@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/md/bcache/closure.c
 
-.. _`closure_put`:
-
-closure_put
-===========
-
-.. c:function:: void closure_put(struct closure *cl)
-
-    decrement a closure's refcount
-
-    :param struct closure \*cl:
-        *undescribed*
-
-.. _`__closure_wake_up`:
-
-\__closure_wake_up
-==================
-
-.. c:function:: void __closure_wake_up(struct closure_waitlist *wait_list)
-
-    wake up all closures on a wait list, without memory barrier
-
-    :param struct closure_waitlist \*wait_list:
-        *undescribed*
-
 .. _`closure_wait`:
 
 closure_wait
@@ -35,18 +11,11 @@ closure_wait
     add a closure to a waitlist
 
     :param struct closure_waitlist \*waitlist:
-        *undescribed*
+        will own a ref on \ ``cl``\ , which will be released when
+        \ :c:func:`closure_wake_up`\  is called on \ ``waitlist``\ .
 
     :param struct closure \*cl:
-        *undescribed*
-
-.. _`closure_wait.description`:
-
-Description
------------
-
-\ ``waitlist``\  will own a ref on \ ``cl``\ , which will be released when
-\ :c:func:`closure_wake_up`\  is called on \ ``waitlist``\ .
+        closure pointer.
 
 .. This file was automatic generated / don't edit.
 

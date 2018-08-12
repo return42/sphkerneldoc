@@ -562,6 +562,38 @@ phy
 sas_port_list
     list of ports attached to this sas_host/expander
 
+.. _`_enclosure_node`:
+
+struct \_enclosure_node
+=======================
+
+.. c:type:: struct _enclosure_node
+
+    enclosure information
+
+.. _`_enclosure_node.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct _enclosure_node {
+        struct list_head list;
+        Mpi2SasEnclosurePage0_t pg0;
+    }
+
+.. _`_enclosure_node.members`:
+
+Members
+-------
+
+list
+    list of enclosures
+
+pg0
+    enclosure pg0;
+
 .. _`reset_type`:
 
 enum reset_type
@@ -645,7 +677,6 @@ Definition
     struct chain_tracker {
         void *chain_buffer;
         dma_addr_t chain_buffer_dma;
-        struct list_head tracker_list;
     }
 
 .. _`chain_tracker.members`:
@@ -658,9 +689,6 @@ chain_buffer
 
 chain_buffer_dma
     physical address
-
-tracker_list
-    list of free request (ioc->free_chain_list)
 
 .. _`scsiio_tracker`:
 
@@ -832,8 +860,8 @@ Definition
 
     struct _event_ack_list {
         struct list_head list;
-        u16 Event;
-        u32 EventContext;
+        U16 Event;
+        U32 EventContext;
     }
 
 .. _`_event_ack_list.members`:
@@ -928,7 +956,7 @@ Definition
         char tmp_string[MPT_STRING_LENGTH];
         struct pci_dev *pdev;
         Mpi2SystemInterfaceRegs_t __iomem *chip;
-        resource_size_t chip_phys;
+        phys_addr_t chip_phys;
         int logging_level;
         int fwfault_debug;
         u8 ir_firmware;
@@ -998,6 +1026,8 @@ Definition
         u32 event_context;
         void *event_log;
         u32 event_masks[MPI2_EVENT_NOTIFY_EVENTMASK_WORDS];
+        u8 tm_custom_handling;
+        u8 nvme_abort_timeout;
         struct mpt3sas_facts facts;
         struct mpt3sas_port_facts *pfacts;
         Mpi2ManufacturingPage0_t manu_pg0;
@@ -1014,6 +1044,7 @@ Definition
         struct _boot_device current_boot_device;
         struct _sas_node sas_hba;
         struct list_head sas_expander_list;
+        struct list_head enclosure_list;
         spinlock_t sas_node_lock;
         struct list_head sas_device_list;
         struct list_head sas_device_init_list;
@@ -1035,6 +1066,7 @@ Definition
         u16 config_page_sz;
         void *config_page;
         dma_addr_t config_page_dma;
+        void *config_vaddr;
         u16 hba_queue_depth;
         u16 sge_size;
         u16 scsiio_depth;
@@ -1048,7 +1080,7 @@ Definition
         wait_queue_head_t reset_wq;
         struct dma_pool *pcie_sgl_dma_pool;
         u32 page_size;
-        struct chain_tracker *chain_lookup;
+        struct chain_lookup *chain_lookup;
         struct list_head free_chain_list;
         struct dma_pool *chain_dma_pool;
         ulong chain_pages;
@@ -1090,6 +1122,9 @@ Definition
         u8 rdpq_array_enable;
         u8 rdpq_array_enable_assigned;
         struct dma_pool *reply_post_free_dma_pool;
+        struct dma_pool *reply_post_free_array_dma_pool;
+        Mpi2IOCInitRDPQArrayEntry *reply_post_free_array;
+        dma_addr_t reply_post_free_array_dma;
         u8 reply_queue_count;
         struct list_head reply_queue_list;
         u8 combined_reply_queue;
@@ -1111,6 +1146,7 @@ Definition
         u32 ring_buffer_offset;
         u32 ring_buffer_sz;
         u8 is_warpdrive;
+        u8 is_mcpu_endpoint;
         u8 hide_ir_msg;
         u8 mfg_pg10_hide_flag;
         u8 hide_drives;
@@ -1123,12 +1159,7 @@ Definition
         void *device_remove_in_progress;
         u16 device_remove_in_progress_sz;
         u8 is_gen35_ioc;
-        u8 atomic_desc_capable;
         PUT_SMID_IO_FP_HIP put_smid_scsi_io;
-        PUT_SMID_IO_FP_HIP put_smid_fast_path;
-        PUT_SMID_IO_FP_HIP put_smid_hi_priority;
-        PUT_SMID_DEFAULT put_smid_default;
-        PUT_SMID_DEFAULT put_smid_nvme_encap;
     }
 
 .. _`mpt3sas_adapter.members`:
@@ -1374,6 +1405,12 @@ event_log
 event_masks
     events that are masked
 
+tm_custom_handling
+    *undescribed*
+
+nvme_abort_timeout
+    *undescribed*
+
 facts
     static facts data
 
@@ -1421,6 +1458,9 @@ sas_hba
 
 sas_expander_list
     expander object list
+
+enclosure_list
+    enclosure object list
 
 sas_node_lock
     *undescribed*
@@ -1483,6 +1523,9 @@ config_page
     reserve memory for config page payload
 
 config_page_dma
+    *undescribed*
+
+config_vaddr
     *undescribed*
 
 hba_queue_depth
@@ -1652,6 +1695,15 @@ rdpq_array_enable_assigned
 reply_post_free_dma_pool
     *undescribed*
 
+reply_post_free_array_dma_pool
+    *undescribed*
+
+reply_post_free_array
+    *undescribed*
+
+reply_post_free_array_dma
+    *undescribed*
+
 reply_queue_count
     number of reply queue's
 
@@ -1720,6 +1772,9 @@ ring_buffer_sz
 is_warpdrive
     *undescribed*
 
+is_mcpu_endpoint
+    *undescribed*
+
 hide_ir_msg
     *undescribed*
 
@@ -1756,22 +1811,7 @@ device_remove_in_progress_sz
 is_gen35_ioc
     *undescribed*
 
-atomic_desc_capable
-    *undescribed*
-
 put_smid_scsi_io
-    *undescribed*
-
-put_smid_fast_path
-    *undescribed*
-
-put_smid_hi_priority
-    *undescribed*
-
-put_smid_default
-    *undescribed*
-
-put_smid_nvme_encap
     *undescribed*
 
 .. This file was automatic generated / don't edit.

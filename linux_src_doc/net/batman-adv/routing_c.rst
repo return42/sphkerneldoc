@@ -262,12 +262,15 @@ this interface, or NULL if not available.
 batadv_reroute_unicast_packet
 =============================
 
-.. c:function:: bool batadv_reroute_unicast_packet(struct batadv_priv *bat_priv, struct batadv_unicast_packet *unicast_packet, u8 *dst_addr, unsigned short vid)
+.. c:function:: bool batadv_reroute_unicast_packet(struct batadv_priv *bat_priv, struct sk_buff *skb, struct batadv_unicast_packet *unicast_packet, u8 *dst_addr, unsigned short vid)
 
     update the unicast header for re-routing
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
+
+    :param struct sk_buff \*skb:
+        unicast packet to process
 
     :param struct batadv_unicast_packet \*unicast_packet:
         the unicast header to be updated

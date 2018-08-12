@@ -259,7 +259,7 @@ Description
 -----------
 
 After the DMA transfer has been completed we free the memory for
-the sgl and the cached pages. Data is being transfered from cached
+the sgl and the cached pages. Data is being transferred from cached
 pages into user-space buffers.
 
 .. _`genwqe_free_user_pages`:

@@ -83,12 +83,12 @@ Look up the amount of vram, vram width, and decide how to place
 vram and gart within the GPU's physical address space (CIK).
 Returns 0 for success.
 
-.. _`gmc_v8_0_gart_flush_gpu_tlb`:
+.. _`gmc_v8_0_flush_gpu_tlb`:
 
-gmc_v8_0_gart_flush_gpu_tlb
-===========================
+gmc_v8_0_flush_gpu_tlb
+======================
 
-.. c:function:: void gmc_v8_0_gart_flush_gpu_tlb(struct amdgpu_device *adev, uint32_t vmid)
+.. c:function:: void gmc_v8_0_flush_gpu_tlb(struct amdgpu_device *adev, uint32_t vmid)
 
     gart tlb flush callback
 
@@ -98,19 +98,19 @@ gmc_v8_0_gart_flush_gpu_tlb
     :param uint32_t vmid:
         vm instance to flush
 
-.. _`gmc_v8_0_gart_flush_gpu_tlb.description`:
+.. _`gmc_v8_0_flush_gpu_tlb.description`:
 
 Description
 -----------
 
 Flush the TLB for the requested page table (CIK).
 
-.. _`gmc_v8_0_gart_set_pte_pde`:
+.. _`gmc_v8_0_set_pte_pde`:
 
-gmc_v8_0_gart_set_pte_pde
-=========================
+gmc_v8_0_set_pte_pde
+====================
 
-.. c:function:: int gmc_v8_0_gart_set_pte_pde(struct amdgpu_device *adev, void *cpu_pt_addr, uint32_t gpu_page_idx, uint64_t addr, uint64_t flags)
+.. c:function:: int gmc_v8_0_set_pte_pde(struct amdgpu_device *adev, void *cpu_pt_addr, uint32_t gpu_page_idx, uint64_t addr, uint64_t flags)
 
     update the page tables using MMIO
 
@@ -129,7 +129,7 @@ gmc_v8_0_gart_set_pte_pde
     :param uint64_t flags:
         access flags
 
-.. _`gmc_v8_0_gart_set_pte_pde.description`:
+.. _`gmc_v8_0_set_pte_pde.description`:
 
 Description
 -----------
@@ -232,7 +232,7 @@ Tears down the driver GART/VM setup (CIK).
 gmc_v8_0_vm_decode_fault
 ========================
 
-.. c:function:: void gmc_v8_0_vm_decode_fault(struct amdgpu_device *adev, u32 status, u32 addr, u32 mc_client)
+.. c:function:: void gmc_v8_0_vm_decode_fault(struct amdgpu_device *adev, u32 status, u32 addr, u32 mc_client, unsigned pasid)
 
     print human readable fault info
 
@@ -246,6 +246,9 @@ gmc_v8_0_vm_decode_fault
         VM_CONTEXT1_PROTECTION_FAULT_ADDR register value
 
     :param u32 mc_client:
+        *undescribed*
+
+    :param unsigned pasid:
         *undescribed*
 
 .. _`gmc_v8_0_vm_decode_fault.description`:

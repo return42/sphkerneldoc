@@ -280,6 +280,7 @@ Definition
         unsigned int chn_real_count;
         struct tasklet_struct tasklet;
         struct imx_dma_data data;
+        bool enabled;
     }
 
 .. _`sdma_channel.members`:
@@ -378,6 +379,9 @@ tasklet
     *undescribed*
 
 data
+    *undescribed*
+
+enabled
     *undescribed*
 
 .. _`sdma_channel.description`:

@@ -11,3 +11,4 @@ ath10k
     hw_c
     spectral_h
     wmi_h
+    wow_c

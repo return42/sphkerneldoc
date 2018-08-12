@@ -21,6 +21,25 @@ Description
 Caller must hold rcu_read_lock or RTNL, because this function
 does not take a reference on the inet6_dev.
 
+.. _`__in6_dev_get_safely`:
+
+\__in6_dev_get_safely
+=====================
+
+.. c:function:: struct inet6_dev *__in6_dev_get_safely(const struct net_device *dev)
+
+    get inet6_dev pointer from netdevice
+
+    :param const struct net_device \*dev:
+        network device
+
+.. _`__in6_dev_get_safely.description`:
+
+Description
+-----------
+
+This is a safer version of \__in6_dev_get
+
 .. _`in6_dev_get`:
 
 in6_dev_get

@@ -380,9 +380,6 @@ Checks to see of the link status of the hardware has changed.  If a
 change in link status has been detected, then we read the PHY registers
 to get the current speed/duplex if link exists.
 
-Returns a negative error code (-E1000_ERR\_\*) or 0 (link down) or 1 (link
-up).
-
 .. _`e1000_acquire_nvm_ich8lan`:
 
 e1000_acquire_nvm_ich8lan

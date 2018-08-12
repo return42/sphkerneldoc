@@ -14,7 +14,7 @@ acpi_parse_entries_array
         table id (for debugging purposes)
 
     :param unsigned long table_size:
-        single entry size
+        size of the root table
 
     :param struct acpi_table_header \*table_header:
         where does the table start?
@@ -37,6 +37,11 @@ Description
 For each proc_num find a subtable with proc->id and run proc->handler
 on it. Assumption is that there's only single handler for particular
 entry id.
+
+The table_size is not the size of the complete ACPI table (the length
+field in the header struct), but only the size of the root table; i.e.,
+the offset from the very first byte of the complete ACPI table, to the
+first byte of the very first subtable.
 
 On success returns sum of all matching entries for all proc handlers.
 Otherwise, -ENODEV or -EINVAL is returned.

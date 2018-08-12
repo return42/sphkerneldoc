@@ -86,12 +86,15 @@ Successfully skb.
 rsi_read_pkt
 ============
 
-.. c:function:: int rsi_read_pkt(struct rsi_common *common, s32 rcv_pkt_len)
+.. c:function:: int rsi_read_pkt(struct rsi_common *common, u8 *rx_pkt, s32 rcv_pkt_len)
 
     This function reads frames from the card.
 
     :param struct rsi_common \*common:
         Pointer to the driver private structure.
+
+    :param u8 \*rx_pkt:
+        *undescribed*
 
     :param s32 rcv_pkt_len:
         Received pkt length. In case of USB it is 0.
@@ -127,12 +130,12 @@ None.
 rsi_91x_init
 ============
 
-.. c:function:: struct rsi_hw *rsi_91x_init( void)
+.. c:function:: struct rsi_hw *rsi_91x_init(u16 oper_mode)
 
     This function initializes os interface operations.
 
-    :param  void:
-        no arguments
+    :param u16 oper_mode:
+        *undescribed*
 
 .. _`rsi_91x_init.return`:
 

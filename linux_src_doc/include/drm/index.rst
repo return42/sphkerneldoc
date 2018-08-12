@@ -16,6 +16,7 @@ drm
     drm_atomic_helper_h
     drm_auth_h
     drm_bridge_h
+    drm_color_mgmt_h
     drm_connector_h
     drm_crtc_h
     drm_debugfs_crc_h

@@ -33,27 +33,5 @@ cases where bitflags are manipulated non-atomically under a lock, one
 may need to use a less regular barrier, such fs/inode.c's \ :c:func:`smp_mb`\ ,
 because \ :c:func:`spin_unlock`\  does not guarantee a memory barrier.
 
-.. _`wake_up_atomic_t`:
-
-wake_up_atomic_t
-================
-
-.. c:function:: void wake_up_atomic_t(atomic_t *p)
-
-    Wake up a waiter on a atomic_t
-
-    :param atomic_t \*p:
-        The atomic_t being waited on, a kernel virtual address
-
-.. _`wake_up_atomic_t.description`:
-
-Description
------------
-
-Wake up anyone waiting for the atomic_t to go to zero.
-
-Abuse the bit-waker function and its waitqueue hash table set (the atomic_t
-check is done by the waiter's wake function, not the by the waker itself).
-
 .. This file was automatic generated / don't edit.
 

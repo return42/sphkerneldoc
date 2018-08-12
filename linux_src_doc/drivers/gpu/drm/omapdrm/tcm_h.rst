@@ -28,7 +28,7 @@ manager.
 tcm_reserve_2d
 ==============
 
-.. c:function:: s32 tcm_reserve_2d(struct tcm *tcm, u16 width, u16 height, u16 align, int16_t offset, uint16_t slot_bytes, struct tcm_area *area)
+.. c:function:: s32 tcm_reserve_2d(struct tcm *tcm, u16 width, u16 height, u16 align, s16 offset, u16 slot_bytes, struct tcm_area *area)
 
     :param struct tcm \*tcm:
         *undescribed*
@@ -42,10 +42,10 @@ tcm_reserve_2d
     :param u16 align:
         *undescribed*
 
-    :param int16_t offset:
+    :param s16 offset:
         *undescribed*
 
-    :param uint16_t slot_bytes:
+    :param u16 slot_bytes:
         *undescribed*
 
     :param struct tcm_area \*area:

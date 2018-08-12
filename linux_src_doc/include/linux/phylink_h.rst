@@ -82,8 +82,8 @@ Definition
         int (*mac_link_state)(struct net_device *ndev, struct phylink_link_state *state);
         void (*mac_config)(struct net_device *ndev, unsigned int mode, const struct phylink_link_state *state);
         void (*mac_an_restart)(struct net_device *ndev);
-        void (*mac_link_down)(struct net_device *ndev, unsigned int mode);
-        void (*mac_link_up)(struct net_device *ndev, unsigned int mode, struct phy_device *phy);
+        void (*mac_link_down)(struct net_device *ndev, unsigned int mode, phy_interface_t interface);
+        void (*mac_link_up)(struct net_device *ndev, unsigned int mode,phy_interface_t interface, struct phy_device *phy);
     }
 
 .. _`phylink_mac_ops.members`:
@@ -244,7 +244,7 @@ mac_an_restart
 mac_link_down
 =============
 
-.. c:function:: void mac_link_down(struct net_device *ndev, unsigned int mode)
+.. c:function:: void mac_link_down(struct net_device *ndev, unsigned int mode, phy_interface_t interface)
 
     take the link down
 
@@ -254,6 +254,9 @@ mac_link_down
     :param unsigned int mode:
         link autonegotiation mode
 
+    :param phy_interface_t interface:
+        link \ :c:type:`typedef phy_interface_t <phy_interface_t>`\  mode
+
 .. _`mac_link_down.description`:
 
 Description
@@ -261,14 +264,15 @@ Description
 
 If \ ``mode``\  is not an in-band negotiation mode (as defined by
 \ :c:func:`phylink_autoneg_inband`\ ), force the link down and disable any
-Energy Efficient Ethernet MAC configuration.
+Energy Efficient Ethernet MAC configuration. Interface type
+selection must be done in \ :c:func:`mac_config`\ .
 
 .. _`mac_link_up`:
 
 mac_link_up
 ===========
 
-.. c:function:: void mac_link_up(struct net_device *ndev, unsigned int mode, struct phy_device *phy)
+.. c:function:: void mac_link_up(struct net_device *ndev, unsigned int mode, phy_interface_t interface, struct phy_device *phy)
 
     allow the link to come up
 
@@ -277,6 +281,9 @@ mac_link_up
 
     :param unsigned int mode:
         link autonegotiation mode
+
+    :param phy_interface_t interface:
+        link \ :c:type:`typedef phy_interface_t <phy_interface_t>`\  mode
 
     :param struct phy_device \*phy:
         any attached phy
@@ -290,6 +297,7 @@ If \ ``mode``\  is not an in-band negotiation mode (as defined by
 \ :c:func:`phylink_autoneg_inband`\ ), allow the link to come up. If \ ``phy``\ 
 is non-%NULL, configure Energy Efficient Ethernet by calling
 \ :c:func:`phy_init_eee`\  and perform appropriate MAC configuration for EEE.
+Interface type selection must be done in \ :c:func:`mac_config`\ .
 
 .. This file was automatic generated / don't edit.
 

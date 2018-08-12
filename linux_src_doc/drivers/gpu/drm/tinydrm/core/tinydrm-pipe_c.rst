@@ -25,31 +25,6 @@ This function does a full framebuffer flush if the plane framebuffer
 has changed. It also handles vblank events. Drivers can use this as their
 \ :c:type:`drm_simple_display_pipe_funcs->update <drm_simple_display_pipe_funcs>`\  callback.
 
-.. _`tinydrm_display_pipe_prepare_fb`:
-
-tinydrm_display_pipe_prepare_fb
-===============================
-
-.. c:function:: int tinydrm_display_pipe_prepare_fb(struct drm_simple_display_pipe *pipe, struct drm_plane_state *plane_state)
-
-    Display pipe prepare_fb helper
-
-    :param struct drm_simple_display_pipe \*pipe:
-        Simple display pipe
-
-    :param struct drm_plane_state \*plane_state:
-        Plane state
-
-.. _`tinydrm_display_pipe_prepare_fb.description`:
-
-Description
------------
-
-This function uses \ :c:func:`drm_gem_fb_prepare_fb`\  to check if the plane FB has an
-dma-buf attached, extracts the exclusive fence and attaches it to plane
-state for the atomic helper to wait on. Drivers can use this as their
-\ :c:type:`drm_simple_display_pipe_funcs->prepare_fb <drm_simple_display_pipe_funcs>`\  callback.
-
 .. _`tinydrm_display_pipe_init`:
 
 tinydrm_display_pipe_init

@@ -1,38 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/clk/keystone/sci-clk.c
 
-.. _`sci_clk_data`:
-
-struct sci_clk_data
-===================
-
-.. c:type:: struct sci_clk_data
-
-    TI SCI clock data
-
-.. _`sci_clk_data.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct sci_clk_data {
-        u16 dev;
-        u16 num_clks;
-    }
-
-.. _`sci_clk_data.members`:
-
-Members
--------
-
-dev
-    device index
-
-num_clks
-    number of clocks for this device
-
 .. _`sci_clk_provider`:
 
 struct sci_clk_provider
@@ -53,8 +21,7 @@ Definition
         const struct ti_sci_handle *sci;
         const struct ti_sci_clk_ops *ops;
         struct device *dev;
-        const struct sci_clk_data *clk_data;
-        struct clk_hw **clocks;
+        struct sci_clk **clocks;
         int num_clocks;
     }
 
@@ -71,9 +38,6 @@ ops
 
 dev
     Device pointer for the clock provider
-
-clk_data
-    Clock data
 
 clocks
     Clocks array for this device
@@ -101,6 +65,7 @@ Definition
         struct clk_hw hw;
         u16 dev_id;
         u8 clk_id;
+        u8 num_parents;
         struct sci_clk_provider *provider;
         u8 flags;
     }
@@ -118,6 +83,9 @@ dev_id
 
 clk_id
     Clock index
+
+num_parents
+    Number of parents for this clock
 
 provider
     Master clock provider
@@ -303,18 +271,15 @@ Sets the parent of a TI SCI clock. Return TI SCI protocol status.
 \_sci_clk_build
 ===============
 
-.. c:function:: struct clk_hw *_sci_clk_build(struct sci_clk_provider *provider, u16 dev_id, u8 clk_id)
+.. c:function:: int _sci_clk_build(struct sci_clk_provider *provider, struct sci_clk *sci_clk)
 
     Gets a handle for an SCI clock
 
     :param struct sci_clk_provider \*provider:
         Handle to SCI clock provider
 
-    :param u16 dev_id:
-        device ID for the clock to register
-
-    :param u8 clk_id:
-        clock ID for the clock to register
+    :param struct sci_clk \*sci_clk:
+        Handle to the SCI clock to populate
 
 .. _`_sci_clk_build.description`:
 
@@ -325,7 +290,7 @@ Gets a handle to an existing TI SCI hw clock, or builds a new clock
 entry and registers it with the common clock framework. Called from
 the common clock framework, when a corresponding of_clk_get call is
 executed, or recursively from itself when parsing parent clocks.
-Returns a pointer to the hw clock struct, or ERR_PTR value in failure.
+Returns 0 on success, negative error code on failure.
 
 .. _`sci_clk_get`:
 

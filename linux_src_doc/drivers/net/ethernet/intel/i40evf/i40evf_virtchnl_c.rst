@@ -93,7 +93,7 @@ i40evf_get_vf_config
 .. c:function:: int i40evf_get_vf_config(struct i40evf_adapter *adapter)
 
     :param struct i40evf_adapter \*adapter:
-        *undescribed*
+        private adapter structure
 
 .. _`i40evf_get_vf_config.description`:
 
@@ -420,6 +420,97 @@ Description
 -----------
 
 Log a message telling the world of our wonderous link status
+
+.. _`i40evf_enable_channels`:
+
+i40evf_enable_channels
+======================
+
+.. c:function:: void i40evf_enable_channels(struct i40evf_adapter *adapter)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+.. _`i40evf_enable_channels.description`:
+
+Description
+-----------
+
+Request that the PF enable channels as specified by
+the user via tc tool.
+
+.. _`i40evf_disable_channels`:
+
+i40evf_disable_channels
+=======================
+
+.. c:function:: void i40evf_disable_channels(struct i40evf_adapter *adapter)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+.. _`i40evf_disable_channels.description`:
+
+Description
+-----------
+
+Request that the PF disable channels that are configured
+
+.. _`i40evf_print_cloud_filter`:
+
+i40evf_print_cloud_filter
+=========================
+
+.. c:function:: void i40evf_print_cloud_filter(struct i40evf_adapter *adapter, struct virtchnl_filter *f)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+    :param struct virtchnl_filter \*f:
+        cloud filter to print
+
+.. _`i40evf_print_cloud_filter.description`:
+
+Description
+-----------
+
+Print the cloud filter
+
+.. _`i40evf_add_cloud_filter`:
+
+i40evf_add_cloud_filter
+=======================
+
+.. c:function:: void i40evf_add_cloud_filter(struct i40evf_adapter *adapter)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+.. _`i40evf_add_cloud_filter.description`:
+
+Description
+-----------
+
+Request that the PF add cloud filters as specified
+by the user via tc tool.
+
+.. _`i40evf_del_cloud_filter`:
+
+i40evf_del_cloud_filter
+=======================
+
+.. c:function:: void i40evf_del_cloud_filter(struct i40evf_adapter *adapter)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+.. _`i40evf_del_cloud_filter.description`:
+
+Description
+-----------
+
+Request that the PF delete cloud filters as specified
+by the user via tc tool.
 
 .. _`i40evf_request_reset`:
 

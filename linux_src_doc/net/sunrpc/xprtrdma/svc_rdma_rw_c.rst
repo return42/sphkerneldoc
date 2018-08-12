@@ -118,7 +118,7 @@ Returns a non-negative number of bytes the chunk consumed, or
 svc_rdma_recv_read_chunk
 ========================
 
-.. c:function:: int svc_rdma_recv_read_chunk(struct svcxprt_rdma *rdma, struct svc_rqst *rqstp, struct svc_rdma_op_ctxt *head, __be32 *p)
+.. c:function:: int svc_rdma_recv_read_chunk(struct svcxprt_rdma *rdma, struct svc_rqst *rqstp, struct svc_rdma_recv_ctxt *head, __be32 *p)
 
     Pull a Read chunk from the client
 
@@ -128,7 +128,7 @@ svc_rdma_recv_read_chunk
     :param struct svc_rqst \*rqstp:
         set of pages to use as Read sink buffers
 
-    :param struct svc_rdma_op_ctxt \*head:
+    :param struct svc_rdma_recv_ctxt \*head:
         pages under I/O collect here
 
     :param __be32 \*p:

@@ -81,7 +81,7 @@ This function frees the backing memory of the CMA GEM object, cleans up the
 GEM object state and frees the memory used to store the object itself using
 \ :c:func:`drm_gem_cma_free_object`\ . It also handles PRIME buffers which has the kernel
 virtual address set by \ :c:func:`tinydrm_gem_cma_prime_import_sg_table`\ . Drivers
-can use this as their \ :c:type:`drm_driver->gem_free_object <drm_driver>`\  callback.
+can use this as their \ :c:type:`drm_driver->gem_free_object_unlocked <drm_driver>`\  callback.
 
 .. _`devm_tinydrm_init`:
 

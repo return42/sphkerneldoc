@@ -542,6 +542,87 @@ Return
 
 always 0
 
+.. _`batadv_dat_cache_dump_entry`:
+
+batadv_dat_cache_dump_entry
+===========================
+
+.. c:function:: int batadv_dat_cache_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_dat_entry *dat_entry)
+
+    dump one entry of the DAT cache table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_dat_entry \*dat_entry:
+        entry to dump
+
+.. _`batadv_dat_cache_dump_entry.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_dat_cache_dump_bucket`:
+
+batadv_dat_cache_dump_bucket
+============================
+
+.. c:function:: int batadv_dat_cache_dump_bucket(struct sk_buff *msg, u32 portid, u32 seq, struct hlist_head *head, int *idx_skip)
+
+    dump one bucket of the DAT cache table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct hlist_head \*head:
+        bucket to dump
+
+    :param int \*idx_skip:
+        How many entries to skip
+
+.. _`batadv_dat_cache_dump_bucket.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_dat_cache_dump`:
+
+batadv_dat_cache_dump
+=====================
+
+.. c:function:: int batadv_dat_cache_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    dump DAT cache table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param struct netlink_callback \*cb:
+        callback structure containing arguments
+
+.. _`batadv_dat_cache_dump.return`:
+
+Return
+------
+
+message length.
+
 .. _`batadv_arp_get_type`:
 
 batadv_arp_get_type

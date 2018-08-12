@@ -1,6 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/mempool.c
 
+.. _`mempool_exit`:
+
+mempool_exit
+============
+
+.. c:function:: void mempool_exit(mempool_t *pool)
+
+    exit a mempool initialized with \ :c:func:`mempool_init`\ 
+
+    :param mempool_t \*pool:
+        pointer to the memory pool which was initialized with
+        \ :c:func:`mempool_init`\ .
+
+.. _`mempool_exit.description`:
+
+Description
+-----------
+
+Free all reserved elements in \ ``pool``\  and \ ``pool``\  itself.  This function
+only sleeps if the \ :c:func:`free_fn`\  function sleeps.
+
+May be called on a zeroed but uninitialized mempool (i.e. allocated with
+\ :c:func:`kzalloc`\ ).
+
 .. _`mempool_destroy`:
 
 mempool_destroy
@@ -21,6 +45,39 @@ Description
 
 Free all reserved elements in \ ``pool``\  and \ ``pool``\  itself.  This function
 only sleeps if the \ :c:func:`free_fn`\  function sleeps.
+
+.. _`mempool_init`:
+
+mempool_init
+============
+
+.. c:function:: int mempool_init(mempool_t *pool, int min_nr, mempool_alloc_t *alloc_fn, mempool_free_t *free_fn, void *pool_data)
+
+    initialize a memory pool
+
+    :param mempool_t \*pool:
+        *undescribed*
+
+    :param int min_nr:
+        the minimum number of elements guaranteed to be
+        allocated for this pool.
+
+    :param mempool_alloc_t \*alloc_fn:
+        user-defined element-allocation function.
+
+    :param mempool_free_t \*free_fn:
+        user-defined element-freeing function.
+
+    :param void \*pool_data:
+        optional private data available to the user-defined functions.
+
+.. _`mempool_init.description`:
+
+Description
+-----------
+
+Like \ :c:func:`mempool_create`\ , but initializes the pool in (i.e. embedded in another
+structure).
 
 .. _`mempool_create`:
 

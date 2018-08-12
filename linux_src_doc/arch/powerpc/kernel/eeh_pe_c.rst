@@ -111,14 +111,14 @@ hierarchy PE tree.
 eeh_pe_traverse
 ===============
 
-.. c:function:: void *eeh_pe_traverse(struct eeh_pe *root, eeh_traverse_func fn, void *flag)
+.. c:function:: void *eeh_pe_traverse(struct eeh_pe *root, eeh_pe_traverse_func fn, void *flag)
 
     Traverse PEs in the specified PHB
 
     :param struct eeh_pe \*root:
         root PE
 
-    :param eeh_traverse_func fn:
+    :param eeh_pe_traverse_func fn:
         callback
 
     :param void \*flag:
@@ -139,14 +139,14 @@ to be traversed.
 eeh_pe_dev_traverse
 ===================
 
-.. c:function:: void *eeh_pe_dev_traverse(struct eeh_pe *root, eeh_traverse_func fn, void *flag)
+.. c:function:: void *eeh_pe_dev_traverse(struct eeh_pe *root, eeh_edev_traverse_func fn, void *flag)
 
     Traverse the devices from the PE
 
     :param struct eeh_pe \*root:
         EEH PE
 
-    :param eeh_traverse_func fn:
+    :param eeh_edev_traverse_func fn:
         function callback
 
     :param void \*flag:
@@ -288,12 +288,12 @@ handle, we needn't account for errors happened in last hour.
 \__eeh_pe_state_mark
 ====================
 
-.. c:function:: void *__eeh_pe_state_mark(void *data, void *flag)
+.. c:function:: void *__eeh_pe_state_mark(struct eeh_pe *pe, void *flag)
 
     Mark the state for the PE
 
-    :param void \*data:
-        EEH PE
+    :param struct eeh_pe \*pe:
+        *undescribed*
 
     :param void \*flag:
         state
@@ -358,12 +358,12 @@ Mark specific state for all child devices of the PE.
 \__eeh_pe_state_clear
 =====================
 
-.. c:function:: void *__eeh_pe_state_clear(void *data, void *flag)
+.. c:function:: void *__eeh_pe_state_clear(struct eeh_pe *pe, void *flag)
 
     Clear state for the PE
 
-    :param void \*data:
-        EEH PE
+    :param struct eeh_pe \*pe:
+        *undescribed*
 
     :param void \*flag:
         state
@@ -432,12 +432,12 @@ config space.
 eeh_restore_one_device_bars
 ===========================
 
-.. c:function:: void *eeh_restore_one_device_bars(void *data, void *flag)
+.. c:function:: void *eeh_restore_one_device_bars(struct eeh_dev *edev, void *flag)
 
     Restore the Base Address Registers for one device
 
-    :param void \*data:
-        EEH device
+    :param struct eeh_dev \*edev:
+        *undescribed*
 
     :param void \*flag:
         Unused

@@ -54,7 +54,7 @@ nes_nic_send
 nes_netdev_start_xmit
 =====================
 
-.. c:function:: int nes_netdev_start_xmit(struct sk_buff *skb, struct net_device *netdev)
+.. c:function:: netdev_tx_t nes_netdev_start_xmit(struct sk_buff *skb, struct net_device *netdev)
 
     :param struct sk_buff \*skb:
         *undescribed*

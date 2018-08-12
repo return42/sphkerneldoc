@@ -54,6 +54,20 @@ Description
 
 If set to 1, the DRM core will expose atomic properties to userspace
 
+.. _`drm_client_cap_aspect_ratio`:
+
+DRM_CLIENT_CAP_ASPECT_RATIO
+===========================
+
+.. c:function::  DRM_CLIENT_CAP_ASPECT_RATIO()
+
+.. _`drm_client_cap_aspect_ratio.description`:
+
+Description
+-----------
+
+If set to 1, the DRM core will provide aspect ratio information in modes.
+
 .. _`drm_command_base`:
 
 DRM_COMMAND_BASE

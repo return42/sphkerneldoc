@@ -448,28 +448,6 @@ Description
 The USB charger will be turned on/off with the requested charge voltage and
 current
 
-.. _`ab8540_chargalg_usb_pre_chg_en`:
-
-ab8540_chargalg_usb_pre_chg_en
-==============================
-
-.. c:function:: int ab8540_chargalg_usb_pre_chg_en(struct abx500_chargalg *di, bool enable)
-
-    Enable/ disable USB pre-charge
-
-    :param struct abx500_chargalg \*di:
-        pointer to the abx500_chargalg structure
-
-    :param bool enable:
-        USB pre-charge enable/disable
-
-.. _`ab8540_chargalg_usb_pre_chg_en.description`:
-
-Description
------------
-
-The USB USB pre-charge will be enable/ disable
-
 .. _`abx500_chargalg_update_chg_curr`:
 
 abx500_chargalg_update_chg_curr

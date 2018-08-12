@@ -10,6 +10,7 @@ hfi1
     chip_c
     driver_c
     exp_rcv_c
+    exp_rcv_h
     file_ops_c
     hfi_h
     init_c

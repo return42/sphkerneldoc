@@ -104,7 +104,7 @@ match.device_name
 
 match.i2c
     embedded struct with I2C parameters to be matched.
-    Both \ ``match``\ .i2c.adapter_id and \ ``match``\ .i2c.address
+    Both \ ``match.i2c.adapter_id``\  and \ ``match.i2c.address``\ 
     should be matched.
     Used if \ ``match_type``\  is \ ``V4L2_ASYNC_MATCH_I2C``\ .
 

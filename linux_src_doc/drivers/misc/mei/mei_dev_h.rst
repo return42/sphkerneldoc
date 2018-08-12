@@ -239,6 +239,7 @@ Definition
         u8 timer_count;
         u8 notify_en;
         u8 notify_ev;
+        u8 tx_cb_queued;
         enum mei_file_transaction_states writing_state;
         struct list_head rd_pending;
         struct list_head rd_completed;
@@ -300,6 +301,9 @@ notify_en
 
 notify_ev
     pending notification event
+
+tx_cb_queued
+    number of tx callbacks in queue
 
 writing_state
     state of the tx
@@ -517,6 +521,7 @@ Definition
         struct list_head write_waiting_list;
         struct list_head ctrl_wr_list;
         struct list_head ctrl_rd_list;
+        u8 tx_queue_limit;
         struct list_head file_list;
         long open_handle_count;
         struct mutex device_lock;
@@ -587,6 +592,9 @@ ctrl_wr_list
 
 ctrl_rd_list
     pending control read list
+
+tx_queue_limit
+    tx queues per client linit
 
 file_list
     list of opened handles

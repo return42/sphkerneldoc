@@ -769,7 +769,7 @@ it with an increased refcounter, NULL if not found
 batadv_tt_global_entry_has_orig
 ===============================
 
-.. c:function:: bool batadv_tt_global_entry_has_orig(const struct batadv_tt_global_entry *entry, const struct batadv_orig_node *orig_node)
+.. c:function:: bool batadv_tt_global_entry_has_orig(const struct batadv_tt_global_entry *entry, const struct batadv_orig_node *orig_node, u8 *flags)
 
     check if a TT global entry is also handled by a given originator
 
@@ -778,6 +778,10 @@ batadv_tt_global_entry_has_orig
 
     :param const struct batadv_orig_node \*orig_node:
         the originator to search in the list
+
+    :param u8 \*flags:
+        a pointer to store TT flags for the given \ ``entry``\  received
+        from \ ``orig_node``\ 
 
 .. _`batadv_tt_global_entry_has_orig.description`:
 
@@ -1356,9 +1360,9 @@ has already been issued for this orig_node, NULL otherwise.
 batadv_tt_local_valid
 =====================
 
-.. c:function:: bool batadv_tt_local_valid(const void *entry_ptr, const void *data_ptr)
+.. c:function:: bool batadv_tt_local_valid(const void *entry_ptr, const void *data_ptr, u8 *flags)
 
-    verify that given tt entry is a valid one
+    verify local tt entry and get flags
 
     :param const void \*entry_ptr:
         to be checked local tt entry
@@ -1366,7 +1370,52 @@ batadv_tt_local_valid
     :param const void \*data_ptr:
         not used but definition required to satisfy the callback prototype
 
+    :param u8 \*flags:
+        a pointer to store TT flags for this client to
+
+.. _`batadv_tt_local_valid.description`:
+
+Description
+-----------
+
+Checks the validity of the given local TT entry. If it is, then the provided
+flags pointer is updated.
+
 .. _`batadv_tt_local_valid.return`:
+
+Return
+------
+
+true if the entry is a valid, false otherwise.
+
+.. _`batadv_tt_global_valid`:
+
+batadv_tt_global_valid
+======================
+
+.. c:function:: bool batadv_tt_global_valid(const void *entry_ptr, const void *data_ptr, u8 *flags)
+
+    verify global tt entry and get flags
+
+    :param const void \*entry_ptr:
+        to be checked global tt entry
+
+    :param const void \*data_ptr:
+        an orig_node object (may be NULL)
+
+    :param u8 \*flags:
+        a pointer to store TT flags for this client to
+
+.. _`batadv_tt_global_valid.description`:
+
+Description
+-----------
+
+Checks the validity of the given global TT entry. If it is, then the provided
+flags pointer is updated either with the common (summed) TT flags if data_ptr
+is NULL or the specific, per originator TT flags otherwise.
+
+.. _`batadv_tt_global_valid.return`:
 
 Return
 ------
@@ -1378,7 +1427,7 @@ true if the entry is a valid, false otherwise.
 batadv_tt_tvlv_generate
 =======================
 
-.. c:function:: void batadv_tt_tvlv_generate(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, void *tvlv_buff, u16 tt_len, bool (*valid_cb)(const void *, const void *), void *cb_data)
+.. c:function:: void batadv_tt_tvlv_generate(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, void *tvlv_buff, u16 tt_len, bool (*valid_cb)(const void *, const void *, u8 *flags), void *cb_data)
 
     fill the tvlv buff with the tt entries from the specified tt hash
 
@@ -1394,11 +1443,19 @@ batadv_tt_tvlv_generate
     :param u16 tt_len:
         expected tvlv tt data buffer length in number of bytes
 
-    :param bool (\*valid_cb)(const void \*, const void \*):
-        function to filter tt change entries
+    :param bool (\*valid_cb)(const void \*, const void \*, u8 \*flags):
+        function to filter tt change entries and to return TT flags
 
     :param void \*cb_data:
         data passed to the filter function as argument
+
+.. _`batadv_tt_tvlv_generate.description`:
+
+Description
+-----------
+
+Fills the tvlv buff with the tt entries from the specified hash. If valid_cb
+is not provided then this becomes a no-op.
 
 .. _`batadv_tt_global_check_crc`:
 

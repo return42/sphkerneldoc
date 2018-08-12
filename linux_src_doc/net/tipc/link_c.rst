@@ -217,7 +217,7 @@ stats
 tipc_link_create
 ================
 
-.. c:function:: bool tipc_link_create(struct net *net, char *if_name, int bearer_id, int tolerance, char net_plane, u32 mtu, int priority, int window, u32 session, u32 ownnode, u32 peer, u16 peer_caps, struct tipc_link *bc_sndlink, struct tipc_link *bc_rcvlink, struct sk_buff_head *inputq, struct sk_buff_head *namedq, struct tipc_link **link)
+.. c:function:: bool tipc_link_create(struct net *net, char *if_name, int bearer_id, int tolerance, char net_plane, u32 mtu, int priority, int window, u32 session, u32 self, u32 peer, u8 *peer_id, u16 peer_caps, struct tipc_link *bc_sndlink, struct tipc_link *bc_rcvlink, struct sk_buff_head *inputq, struct sk_buff_head *namedq, struct tipc_link **link)
 
     create a new link
 
@@ -248,11 +248,14 @@ tipc_link_create
     :param u32 session:
         session to be used by link
 
-    :param u32 ownnode:
-        identity of own node
+    :param u32 self:
+        *undescribed*
 
     :param u32 peer:
         node id of peer node
+
+    :param u8 \*peer_id:
+        *undescribed*
 
     :param u16 peer_caps:
         bitmap describing peer node capabilities

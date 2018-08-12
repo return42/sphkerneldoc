@@ -336,6 +336,28 @@ Return
 
 zero on success, else a negative error code.
 
+.. _`spi_flush_queue`:
+
+spi_flush_queue
+===============
+
+.. c:function:: void spi_flush_queue(struct spi_controller *ctlr)
+
+    Send all pending messages in the queue from the callers' context
+
+    :param struct spi_controller \*ctlr:
+        controller to process queue for
+
+.. _`spi_flush_queue.description`:
+
+Description
+-----------
+
+This should be used when one wants to ensure all pending messages have been
+sent before doing something. Is used by the spi-mem code to make sure SPI
+memory operations do not preempt regular SPI transfers that have been queued
+before the spi-mem operation.
+
 .. _`of_register_spi_devices`:
 
 of_register_spi_devices

@@ -1,24 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_display.c
 
-.. _`intel_pll_is_valid`:
-
-intel_PLL_is_valid
-==================
-
-.. c:function:: bool intel_PLL_is_valid(struct drm_i915_private *dev_priv, const struct intel_limit *limit, const struct dpll *clock)
-
-    the given connectors.
-
-    :param struct drm_i915_private \*dev_priv:
-        *undescribed*
-
-    :param const struct intel_limit \*limit:
-        *undescribed*
-
-    :param const struct dpll \*clock:
-        *undescribed*
-
 .. _`skl_update_scaler_crtc`:
 
 skl_update_scaler_crtc
@@ -50,7 +32,7 @@ skl_update_scaler_plane
     Stages update to scaler state for a given plane.
 
     :param struct intel_crtc_state \*crtc_state:
-        *undescribed*
+        crtc's scaler state
 
     :param struct intel_plane_state \*plane_state:
         atomic plane state to update
@@ -77,7 +59,7 @@ intel_post_enable_primary
         the CRTC whose primary plane was just enabled
 
     :param const struct intel_crtc_state \*new_crtc_state:
-        *undescribed*
+        the enabling state
 
 .. _`intel_post_enable_primary.description`:
 
@@ -222,7 +204,7 @@ intel_prepare_plane_fb
         drm plane to prepare for
 
     :param struct drm_plane_state \*new_state:
-        *undescribed*
+        the plane state being prepared
 
 .. _`intel_prepare_plane_fb.description`:
 
@@ -251,7 +233,7 @@ intel_cleanup_plane_fb
         drm plane to clean up for
 
     :param struct drm_plane_state \*old_state:
-        *undescribed*
+        the state from the previous modeset
 
 .. _`intel_cleanup_plane_fb.description`:
 

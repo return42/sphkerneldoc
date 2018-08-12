@@ -42,7 +42,7 @@ vblanks after a timer has expired, which can be configured through the
 drm_crtc_accurate_vblank_count
 ==============================
 
-.. c:function:: u32 drm_crtc_accurate_vblank_count(struct drm_crtc *crtc)
+.. c:function:: u64 drm_crtc_accurate_vblank_count(struct drm_crtc *crtc)
 
     retrieve the master vblank counter
 
@@ -570,6 +570,57 @@ This functions restores the vblank interrupt state captured with
 that calls to \ :c:func:`drm_crtc_vblank_on`\  and \ :c:func:`drm_crtc_vblank_off`\  can be
 unbalanced and so can also be unconditionally called in driver load code to
 reflect the current hardware state of the crtc.
+
+.. _`drm_vblank_restore`:
+
+drm_vblank_restore
+==================
+
+.. c:function:: void drm_vblank_restore(struct drm_device *dev, unsigned int pipe)
+
+    estimate missed vblanks and update vblank count.
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param unsigned int pipe:
+        CRTC index
+
+.. _`drm_vblank_restore.description`:
+
+Description
+-----------
+
+Power manamement features can cause frame counter resets between vblank
+disable and enable. Drivers can use this function in their
+\ :c:type:`drm_crtc_funcs.enable_vblank <drm_crtc_funcs>`\  implementation to estimate missed vblanks since
+the last \ :c:type:`drm_crtc_funcs.disable_vblank <drm_crtc_funcs>`\  using timestamps and update the
+vblank counter.
+
+This function is the legacy version of \ :c:func:`drm_crtc_vblank_restore`\ .
+
+.. _`drm_crtc_vblank_restore`:
+
+drm_crtc_vblank_restore
+=======================
+
+.. c:function:: void drm_crtc_vblank_restore(struct drm_crtc *crtc)
+
+    estimate missed vblanks and update vblank count.
+
+    :param struct drm_crtc \*crtc:
+        CRTC in question
+
+.. _`drm_crtc_vblank_restore.description`:
+
+Description
+-----------
+
+Power manamement features can cause frame counter resets between vblank
+disable and enable. Drivers can use this function in their
+\ :c:type:`drm_crtc_funcs.enable_vblank <drm_crtc_funcs>`\  implementation to estimate missed vblanks since
+the last \ :c:type:`drm_crtc_funcs.disable_vblank <drm_crtc_funcs>`\  using timestamps and update the
+vblank counter.
 
 .. _`drm_handle_vblank`:
 

@@ -1,26 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/powerpc/kernel/eeh_driver.c
 
-.. _`eeh_pcid_name`:
-
-eeh_pcid_name
-=============
-
-.. c:function:: const char *eeh_pcid_name(struct pci_dev *pdev)
-
-    Retrieve name of PCI device driver
-
-    :param struct pci_dev \*pdev:
-        PCI device
-
-.. _`eeh_pcid_name.description`:
-
-Description
------------
-
-This routine is used to retrieve the name of PCI device driver
-if that's valid.
-
 .. _`eeh_pcid_get`:
 
 eeh_pcid_get
@@ -68,12 +48,12 @@ driver of the indicated PCI device.
 eeh_disable_irq
 ===============
 
-.. c:function:: void eeh_disable_irq(struct pci_dev *dev)
+.. c:function:: void eeh_disable_irq(struct eeh_dev *edev)
 
     Disable interrupt for the recovering device
 
-    :param struct pci_dev \*dev:
-        PCI device
+    :param struct eeh_dev \*edev:
+        *undescribed*
 
 .. _`eeh_disable_irq.description`:
 
@@ -91,12 +71,12 @@ devices encountering EEH errors, which includes MSI or MSI-X.
 eeh_enable_irq
 ==============
 
-.. c:function:: void eeh_enable_irq(struct pci_dev *dev)
+.. c:function:: void eeh_enable_irq(struct eeh_dev *edev)
 
     Enable interrupt for the recovering device
 
-    :param struct pci_dev \*dev:
-        PCI device
+    :param struct eeh_dev \*edev:
+        *undescribed*
 
 .. _`eeh_enable_irq.description`:
 
@@ -111,39 +91,37 @@ device could be resumed.
 eeh_report_error
 ================
 
-.. c:function:: void *eeh_report_error(void *data, void *userdata)
+.. c:function:: enum pci_ers_result eeh_report_error(struct eeh_dev *edev, struct pci_driver *driver)
 
     Report pci error to each device driver
 
-    :param void \*data:
+    :param struct eeh_dev \*edev:
         eeh device
 
-    :param void \*userdata:
-        return value
+    :param struct pci_driver \*driver:
+        device's PCI driver
 
 .. _`eeh_report_error.description`:
 
 Description
 -----------
 
-Report an EEH error to each device driver, collect up and
-merge the device driver responses. Cumulative response
-passed back in "userdata".
+Report an EEH error to each device driver.
 
 .. _`eeh_report_mmio_enabled`:
 
 eeh_report_mmio_enabled
 =======================
 
-.. c:function:: void *eeh_report_mmio_enabled(void *data, void *userdata)
+.. c:function:: enum pci_ers_result eeh_report_mmio_enabled(struct eeh_dev *edev, struct pci_driver *driver)
 
     Tell drivers that MMIO has been enabled
 
-    :param void \*data:
+    :param struct eeh_dev \*edev:
         eeh device
 
-    :param void \*userdata:
-        return value
+    :param struct pci_driver \*driver:
+        device's PCI driver
 
 .. _`eeh_report_mmio_enabled.description`:
 
@@ -151,23 +129,22 @@ Description
 -----------
 
 Tells each device driver that IO ports, MMIO and config space I/O
-are now enabled. Collects up and merges the device driver responses.
-Cumulative response passed back in "userdata".
+are now enabled.
 
 .. _`eeh_report_reset`:
 
 eeh_report_reset
 ================
 
-.. c:function:: void *eeh_report_reset(void *data, void *userdata)
+.. c:function:: enum pci_ers_result eeh_report_reset(struct eeh_dev *edev, struct pci_driver *driver)
 
     Tell device that slot has been reset
 
-    :param void \*data:
+    :param struct eeh_dev \*edev:
         eeh device
 
-    :param void \*userdata:
-        return value
+    :param struct pci_driver \*driver:
+        device's PCI driver
 
 .. _`eeh_report_reset.description`:
 
@@ -184,15 +161,15 @@ driver can work again while the device is recovered.
 eeh_report_resume
 =================
 
-.. c:function:: void *eeh_report_resume(void *data, void *userdata)
+.. c:function:: enum pci_ers_result eeh_report_resume(struct eeh_dev *edev, struct pci_driver *driver)
 
     Tell device to resume normal operations
 
-    :param void \*data:
+    :param struct eeh_dev \*edev:
         eeh device
 
-    :param void \*userdata:
-        return value
+    :param struct pci_driver \*driver:
+        device's PCI driver
 
 .. _`eeh_report_resume.description`:
 
@@ -208,15 +185,15 @@ to make the recovered device work again.
 eeh_report_failure
 ==================
 
-.. c:function:: void *eeh_report_failure(void *data, void *userdata)
+.. c:function:: enum pci_ers_result eeh_report_failure(struct eeh_dev *edev, struct pci_driver *driver)
 
     Tell device driver that device is dead.
 
-    :param void \*data:
+    :param struct eeh_dev \*edev:
         eeh device
 
-    :param void \*userdata:
-        return value
+    :param struct pci_driver \*driver:
+        device's PCI driver
 
 .. _`eeh_report_failure.description`:
 
@@ -231,7 +208,7 @@ dead, and that no further recovery attempts will be made on it.
 eeh_reset_device
 ================
 
-.. c:function:: int eeh_reset_device(struct eeh_pe *pe, struct pci_bus *bus, struct eeh_rmv_data *rmv_data)
+.. c:function:: int eeh_reset_device(struct eeh_pe *pe, struct pci_bus *bus, struct eeh_rmv_data *rmv_data, bool driver_eeh_aware)
 
     Perform actual reset of a pci slot
 
@@ -242,7 +219,10 @@ eeh_reset_device
         PCI bus corresponding to the isolcated slot
 
     :param struct eeh_rmv_data \*rmv_data:
-        *undescribed*
+        Optional, list to record removed devices
+
+    :param bool driver_eeh_aware:
+        Does the device's driver provide EEH support?
 
 .. _`eeh_reset_device.description`:
 
@@ -258,12 +238,13 @@ PCI devices will be removed and then added.
 eeh_handle_normal_event
 =======================
 
-.. c:function:: bool eeh_handle_normal_event(struct eeh_pe *pe)
+.. c:function:: void eeh_handle_normal_event(struct eeh_pe *pe)
 
     Handle EEH events on a specific PE
 
     :param struct eeh_pe \*pe:
-        EEH PE
+        EEH PE - which should not be used after we return, as it may
+        have been invalidated.
 
 .. _`eeh_handle_normal_event.description`:
 
@@ -273,7 +254,18 @@ Description
 Attempts to recover the given PE.  If recovery fails or the PE has failed
 too many times, remove the PE.
 
-Returns true if \ ``pe``\  should no longer be used, else false.
+While PHB detects address or data parity errors on particular PCI
+slot, the associated PE will be frozen. Besides, DMA's occurring
+to wild addresses (which usually happen due to bugs in device
+drivers or in PCI adapter firmware) can cause EEH error. #SERR,
+#PERR or other misc PCI-related errors also can trigger EEH errors.
+
+Recovery process consists of unplugging the device driver (which
+generated hotplug events to userspace), then issuing a PCI #RST to
+the device, then reconfiguring the PCI config space for all bridges
+& devices under this slot, and then finally restarting the device
+drivers (which cause a second set of hotplug events to go out to
+userspace).
 
 .. _`eeh_handle_special_event`:
 
@@ -295,36 +287,6 @@ Description
 Called when an EEH event is detected but can't be narrowed down to a
 specific PE.  Iterates through possible failures and handles them as
 necessary.
-
-.. _`eeh_handle_event`:
-
-eeh_handle_event
-================
-
-.. c:function:: void eeh_handle_event(struct eeh_pe *pe)
-
-    Reset a PCI device after hard lockup.
-
-    :param struct eeh_pe \*pe:
-        EEH PE
-
-.. _`eeh_handle_event.description`:
-
-Description
------------
-
-While PHB detects address or data parity errors on particular PCI
-slot, the associated PE will be frozen. Besides, DMA's occurring
-to wild addresses (which usually happen due to bugs in device
-drivers or in PCI adapter firmware) can cause EEH error. #SERR,
-#PERR or other misc PCI-related errors also can trigger EEH errors.
-
-Recovery process consists of unplugging the device driver (which
-generated hotplug events to userspace), then issuing a PCI #RST to
-the device, then reconfiguring the PCI config space for all bridges
-& devices under this slot, and then finally restarting the device
-drivers (which cause a second set of hotplug events to go out to
-userspace).
 
 .. This file was automatic generated / don't edit.
 

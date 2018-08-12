@@ -190,6 +190,13 @@ FUSE_POSIX_ACL
 
 filesystem supports posix acls
 
+.. _`fuse_async_read.fuse_abort_error`:
+
+FUSE_ABORT_ERROR
+----------------
+
+reading the device after abort returns ECONNABORTED
+
 .. _`cuse_unrestricted_ioctl`:
 
 CUSE_UNRESTRICTED_IOCTL

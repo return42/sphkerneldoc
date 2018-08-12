@@ -109,6 +109,7 @@ Definition
         s64 ntp_error;
         u32 ntp_error_shift;
         u32 ntp_err_mult;
+        u32 skip_second_overflow;
     #ifdef CONFIG_DEBUG_TIMEKEEPING
         long last_warning;
         int underflow_seen;
@@ -186,6 +187,9 @@ ntp_error_shift
     ntp shifted nano seconds.
 
 ntp_err_mult
+    *undescribed*
+
+skip_second_overflow
     *undescribed*
 
 last_warning

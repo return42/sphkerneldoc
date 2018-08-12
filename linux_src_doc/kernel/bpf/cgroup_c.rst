@@ -141,6 +141,37 @@ filtering. No further check is performed to assert that.
 This function will return \ ``-EPERM``\  if any if an attached program was found
 and if it returned != 1 during execution. In all other cases, 0 is returned.
 
+.. _`__cgroup_bpf_run_filter_sock_addr`:
+
+\__cgroup_bpf_run_filter_sock_addr
+==================================
+
+.. c:function:: int __cgroup_bpf_run_filter_sock_addr(struct sock *sk, struct sockaddr *uaddr, enum bpf_attach_type type, void *t_ctx)
+
+    Run a program on a sock and provided by user sockaddr
+
+    :param struct sock \*sk:
+        sock struct that will use sockaddr
+
+    :param struct sockaddr \*uaddr:
+        sockaddr struct provided by user
+
+    :param enum bpf_attach_type type:
+        The type of program to be exectuted
+
+    :param void \*t_ctx:
+        Pointer to attach type specific context
+
+.. _`__cgroup_bpf_run_filter_sock_addr.description`:
+
+Description
+-----------
+
+socket is expected to be of type INET or INET6.
+
+This function will return \ ``-EPERM``\  if an attached program is found and
+returned value != 1 during execution. In all other cases, 0 is returned.
+
 .. _`__cgroup_bpf_run_filter_sock_ops`:
 
 \__cgroup_bpf_run_filter_sock_ops

@@ -8,26 +8,24 @@ i915_compat_ioctl
 
 .. c:function:: long i915_compat_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
-    bit process running under a 64-bit kernel performs an ioctl on /dev/dri/card<n>.
+    handle the mistakes of the past
 
     :param struct file \*filp:
-        *undescribed*
+        the file pointer
 
     :param unsigned int cmd:
-        *undescribed*
+        the ioctl command (and encoded flags)
 
     :param unsigned long arg:
-        *undescribed*
+        the ioctl argument (from userspace)
 
 .. _`i915_compat_ioctl.description`:
 
 Description
 -----------
 
-\param filp file pointer.
-\param cmd command.
-\param arg user argument.
-\return zero on success or negative number on failure.
+Called whenever a 32-bit process running under a 64-bit kernel
+performs an ioctl on /dev/dri/card<n>.
 
 .. This file was automatic generated / don't edit.
 

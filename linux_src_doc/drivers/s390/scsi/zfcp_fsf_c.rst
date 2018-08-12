@@ -311,6 +311,21 @@ Return
 
 0 on success, error otherwise
 
+.. _`zfcp_fsf_fcp_handler_common`:
+
+zfcp_fsf_fcp_handler_common
+===========================
+
+.. c:function:: void zfcp_fsf_fcp_handler_common(struct zfcp_fsf_req *req, struct scsi_device *sdev)
+
+    FCP response handler common to I/O and TMF.
+
+    :param struct zfcp_fsf_req \*req:
+        Pointer to FSF request.
+
+    :param struct scsi_device \*sdev:
+        Pointer to SCSI device as request context.
+
 .. _`zfcp_fsf_fcp_cmnd`:
 
 zfcp_fsf_fcp_cmnd
@@ -328,22 +343,22 @@ zfcp_fsf_fcp_cmnd
 zfcp_fsf_fcp_task_mgmt
 ======================
 
-.. c:function:: struct zfcp_fsf_req *zfcp_fsf_fcp_task_mgmt(struct scsi_cmnd *scmnd, u8 tm_flags)
+.. c:function:: struct zfcp_fsf_req *zfcp_fsf_fcp_task_mgmt(struct scsi_device *sdev, u8 tm_flags)
 
-    send SCSI task management command
+    Send SCSI task management command (TMF).
 
-    :param struct scsi_cmnd \*scmnd:
-        SCSI command to send the task management command for
+    :param struct scsi_device \*sdev:
+        Pointer to SCSI device to send the task management command to.
 
     :param u8 tm_flags:
-        unsigned byte for task management flags
+        Unsigned byte for task management flags.
 
 .. _`zfcp_fsf_fcp_task_mgmt.return`:
 
 Return
 ------
 
-on success pointer to struct fsf_req, NULL otherwise
+On success pointer to struct zfcp_fsf_req, \ ``NULL``\  otherwise.
 
 .. _`zfcp_fsf_reqid_check`:
 

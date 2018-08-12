@@ -1,6 +1,46 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/s390/scsi/zfcp_scsi.c
 
+.. _`zfcp_scsi_task_mgmt_function`:
+
+zfcp_scsi_task_mgmt_function
+============================
+
+.. c:function:: int zfcp_scsi_task_mgmt_function(struct scsi_device *sdev, u8 tm_flags)
+
+    Send a task management function (sync).
+
+    :param struct scsi_device \*sdev:
+        Pointer to SCSI device to send the task management command to.
+
+    :param u8 tm_flags:
+        Task management flags,
+        here we only handle \ ``FCP_TMF_TGT_RESET``\  or \ ``FCP_TMF_LUN_RESET``\ .
+
+.. _`zfcp_scsi_sysfs_host_reset`:
+
+zfcp_scsi_sysfs_host_reset
+==========================
+
+.. c:function:: int zfcp_scsi_sysfs_host_reset(struct Scsi_Host *shost, int reset_type)
+
+    Support scsi_host sysfs attribute host_reset.
+
+    :param struct Scsi_Host \*shost:
+        Pointer to Scsi_Host to perform action on.
+
+    :param int reset_type:
+        We support \ ``SCSI_ADAPTER_RESET``\  but not \ ``SCSI_FIRMWARE_RESET``\ .
+
+.. _`zfcp_scsi_sysfs_host_reset.return`:
+
+Return
+------
+
+0 on \ ``SCSI_ADAPTER_RESET``\ , -%EOPNOTSUPP otherwise.
+
+This is similar to \ :c:func:`zfcp_sysfs_adapter_failed_store`\ .
+
 .. _`zfcp_scsi_adapter_register`:
 
 zfcp_scsi_adapter_register

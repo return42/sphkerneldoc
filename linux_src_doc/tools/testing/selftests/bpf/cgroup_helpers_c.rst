@@ -98,5 +98,26 @@ file descriptor. It is idempotent.
 On success, it returns the file descriptor. On failure it returns 0.
 If there is a failure, it prints the error to stderr.
 
+.. _`get_cgroup_id`:
+
+get_cgroup_id
+=============
+
+.. c:function:: unsigned long long get_cgroup_id(char *path)
+
+    Get cgroup id for a particular cgroup path
+
+    :param char \*path:
+        The cgroup path, relative to the workdir, to join
+
+.. _`get_cgroup_id.description`:
+
+Description
+-----------
+
+On success, it returns the cgroup id. On failure it returns 0,
+which is an invalid cgroup id.
+If there is a failure, it prints the error to stderr.
+
 .. This file was automatic generated / don't edit.
 

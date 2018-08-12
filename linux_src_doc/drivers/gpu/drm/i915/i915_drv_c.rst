@@ -14,7 +14,7 @@ i915_driver_init_early
         device private
 
     :param const struct pci_device_id \*ent:
-        *undescribed*
+        the matching pci_device_id
 
 .. _`i915_driver_init_early.description`:
 
@@ -192,15 +192,18 @@ up any GEM state.
 i915_reset
 ==========
 
-.. c:function:: void i915_reset(struct drm_i915_private *i915, unsigned int flags)
+.. c:function:: void i915_reset(struct drm_i915_private *i915, unsigned int stalled_mask, const char *reason)
 
     reset chip after a hang
 
     :param struct drm_i915_private \*i915:
         #drm_i915_private to reset
 
-    :param unsigned int flags:
-        Instructions
+    :param unsigned int stalled_mask:
+        mask of the stalled engines with the guilty requests
+
+    :param const char \*reason:
+        user error message for why we are resetting
 
 .. _`i915_reset.description`:
 
@@ -229,15 +232,15 @@ Procedure is fairly simple
 i915_reset_engine
 =================
 
-.. c:function:: int i915_reset_engine(struct intel_engine_cs *engine, unsigned int flags)
+.. c:function:: int i915_reset_engine(struct intel_engine_cs *engine, const char *msg)
 
     reset GPU engine to recover from a hang
 
     :param struct intel_engine_cs \*engine:
         engine to reset
 
-    :param unsigned int flags:
-        options
+    :param const char \*msg:
+        reason for GPU reset; or NULL for no \ :c:func:`dev_notice`\ 
 
 .. _`i915_reset_engine.description`:
 

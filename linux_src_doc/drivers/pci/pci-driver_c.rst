@@ -332,5 +332,40 @@ Description
 Must be called when a user of a device is finished with it.  When the last
 user of the device calls this function, the memory of the device is freed.
 
+.. _`pci_uevent_ers`:
+
+pci_uevent_ers
+==============
+
+.. c:function:: void pci_uevent_ers(struct pci_dev *pdev, enum pci_ers_result err_type)
+
+    emit a uevent during recovery path of PCI device
+
+    :param struct pci_dev \*pdev:
+        PCI device undergoing error recovery
+
+    :param enum pci_ers_result err_type:
+        type of error event
+
+.. _`pci_dma_configure`:
+
+pci_dma_configure
+=================
+
+.. c:function:: int pci_dma_configure(struct device *dev)
+
+    Setup DMA configuration
+
+    :param struct device \*dev:
+        ptr to dev structure
+
+.. _`pci_dma_configure.description`:
+
+Description
+-----------
+
+Function to update PCI devices's DMA configuration using the same
+info from the OF node or ACPI node of host bridge's parent (if any).
+
 .. This file was automatic generated / don't edit.
 

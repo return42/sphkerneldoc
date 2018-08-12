@@ -11,4 +11,4 @@ mtrr
     centaur_c
     cleanup_c
     generic_c
-    main_c
+    mtrr_c

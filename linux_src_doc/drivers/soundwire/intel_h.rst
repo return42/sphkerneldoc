@@ -22,6 +22,8 @@ Definition
         void __iomem *shim;
         void __iomem *alh;
         int irq;
+        const struct sdw_intel_ops *ops;
+        void *arg;
     }
 
 .. _`sdw_intel_link_res.members`:
@@ -40,6 +42,12 @@ alh
 
 irq
     Interrupt line
+
+ops
+    Shim callback ops
+
+arg
+    Shim callback ops argument
 
 .. _`sdw_intel_link_res.description`:
 

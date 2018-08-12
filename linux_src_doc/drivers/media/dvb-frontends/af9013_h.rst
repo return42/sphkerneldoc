@@ -51,6 +51,9 @@ Definition
     #define AF9013_GPIO_TUNER_OFF (AF9013_GPIO_ON|AF9013_GPIO_EN|AF9013_GPIO_O)
         u8 gpio[4];
         struct dvb_frontend* (*get_dvb_frontend)(struct i2c_client *);
+        struct i2c_adapter* (*get_i2c_adapter)(struct i2c_client *);
+        int (*pid_filter_ctrl)(struct dvb_frontend *, int);
+        int (*pid_filter)(struct dvb_frontend *, u8, u16, int);
     }
 
 .. _`af9013_platform_data.members`:
@@ -85,37 +88,14 @@ gpio
 get_dvb_frontend
     Get DVB frontend callback.
 
-.. _`af9013_platform_data.description`:
+get_i2c_adapter
+    Get I2C adapter.
 
-Description
------------
+pid_filter_ctrl
+    Control PID filter.
 
-AF9013/5 GPIOs (mostly guessed):
-  * demod#1-gpio#0 - set demod#2 i2c-addr for dual devices
-  * demod#1-gpio#1 - xtal setting (?)
-  * demod#1-gpio#3 - tuner#1
-  * demod#2-gpio#0 - tuner#2
-  * demod#2-gpio#1 - xtal setting (?)
-
-.. _`af9013_attach`:
-
-af9013_attach
-=============
-
-.. c:function:: struct dvb_frontend *af9013_attach(const struct af9013_config *config, struct i2c_adapter *i2c)
-
-    :param const struct af9013_config \*config:
-        pointer to \ :c:type:`struct af9013_config <af9013_config>`\  with demod configuration.
-
-    :param struct i2c_adapter \*i2c:
-        i2c adapter to use.
-
-.. _`af9013_attach.return`:
-
-Return
-------
-
-FE pointer on success, NULL on failure.
+pid_filter
+    Set PID to PID filter.
 
 .. This file was automatic generated / don't edit.
 

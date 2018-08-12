@@ -133,12 +133,12 @@ seccomp filter.
 seccomp_sync_threads
 ====================
 
-.. c:function:: void seccomp_sync_threads( void)
+.. c:function:: void seccomp_sync_threads(unsigned long flags)
 
     sets all threads to use current's filter
 
-    :param  void:
-        no arguments
+    :param unsigned long flags:
+        *undescribed*
 
 .. _`seccomp_sync_threads.description`:
 

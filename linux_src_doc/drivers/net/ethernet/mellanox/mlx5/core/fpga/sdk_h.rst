@@ -8,6 +8,38 @@ Innova SDK
 
 This header defines the in-kernel API for Innova FPGA client drivers.
 
+.. _`mlx5_fpga_access_type`:
+
+enum mlx5_fpga_access_type
+==========================
+
+.. c:type:: enum mlx5_fpga_access_type
+
+    Enumerated the different methods possible for accessing the device memory address space
+
+.. _`mlx5_fpga_access_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mlx5_fpga_access_type {
+        MLX5_FPGA_ACCESS_TYPE_I2C,
+        MLX5_FPGA_ACCESS_TYPE_DONTCARE
+    };
+
+.. _`mlx5_fpga_access_type.constants`:
+
+Constants
+---------
+
+MLX5_FPGA_ACCESS_TYPE_I2C
+    *undescribed*
+
+MLX5_FPGA_ACCESS_TYPE_DONTCARE
+    *undescribed*
+
 .. _`mlx5_fpga_dma_entry`:
 
 struct mlx5_fpga_dma_entry

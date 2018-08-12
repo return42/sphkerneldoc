@@ -12,6 +12,4 @@ iio
     frequency/index
     gyro/index
     impedance-analyzer/index
-    light/index
     meter/index
-    trigger/index

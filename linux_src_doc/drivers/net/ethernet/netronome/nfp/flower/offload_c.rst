@@ -41,7 +41,7 @@ negative value on error, 0 if configured successfully.
 nfp_flower_del_offload
 ======================
 
-.. c:function:: int nfp_flower_del_offload(struct nfp_app *app, struct net_device *netdev, struct tc_cls_flower_offload *flow)
+.. c:function:: int nfp_flower_del_offload(struct nfp_app *app, struct net_device *netdev, struct tc_cls_flower_offload *flow, bool egress)
 
     Removes a flow from hardware.
 
@@ -53,6 +53,9 @@ nfp_flower_del_offload
 
     :param struct tc_cls_flower_offload \*flow:
         TC flower classifier offload structure
+
+    :param bool egress:
+        Netdev is the egress dev.
 
 .. _`nfp_flower_del_offload.description`:
 
@@ -74,15 +77,21 @@ negative value on error, 0 if removed successfully.
 nfp_flower_get_stats
 ====================
 
-.. c:function:: int nfp_flower_get_stats(struct nfp_app *app, struct tc_cls_flower_offload *flow)
+.. c:function:: int nfp_flower_get_stats(struct nfp_app *app, struct net_device *netdev, struct tc_cls_flower_offload *flow, bool egress)
 
     Populates flow stats obtained from hardware.
 
     :param struct nfp_app \*app:
         Pointer to the APP handle
 
+    :param struct net_device \*netdev:
+        Netdev structure.
+
     :param struct tc_cls_flower_offload \*flow:
         TC flower classifier offload structure
+
+    :param bool egress:
+        Netdev is the egress dev.
 
 .. _`nfp_flower_get_stats.description`:
 

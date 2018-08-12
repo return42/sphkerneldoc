@@ -308,6 +308,7 @@ Definition
         struct page_frag sk_frag;
         netdev_features_t sk_route_caps;
         netdev_features_t sk_route_nocaps;
+        netdev_features_t sk_route_forced_caps;
         int sk_gso_type;
         unsigned int sk_gso_max_size;
         gfp_t sk_allocation;
@@ -355,6 +356,9 @@ Definition
         void (*sk_write_space)(struct sock *sk);
         void (*sk_error_report)(struct sock *sk);
         int (*sk_backlog_rcv)(struct sock *sk, struct sk_buff *skb);
+    #ifdef CONFIG_SOCK_VALIDATE_XMIT
+        struct sk_buff* (*sk_validate_xmit_skb)(struct sock *sk,struct net_device *dev, struct sk_buff *skb);
+    #endif
         void (*sk_destruct)(struct sock *sk);
         struct sock_reuseport __rcu *sk_reuseport_cb;
         struct rcu_head sk_rcu;
@@ -485,6 +489,9 @@ sk_route_caps
 sk_route_nocaps
     forbidden route capabilities (e.g NETIF_F_GSO_MASK)
 
+sk_route_forced_caps
+    *undescribed*
+
 sk_gso_type
     GSO type (e.g. \ ``SKB_GSO_TCPV4``\ )
 
@@ -606,6 +613,9 @@ sk_error_report
 
 sk_backlog_rcv
     callback to process the backlog
+
+sk_validate_xmit_skb
+    *undescribed*
 
 sk_destruct
     called at sock freeing time, i.e. when all refcnt == 0

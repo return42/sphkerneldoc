@@ -686,20 +686,20 @@ print_wakeup_source_stats
     :param struct wakeup_source \*ws:
         Wakeup source object to print the statistics for.
 
-.. _`wakeup_sources_stats_show`:
+.. _`wakeup_sources_stats_seq_show`:
 
-wakeup_sources_stats_show
-=========================
+wakeup_sources_stats_seq_show
+=============================
 
-.. c:function:: int wakeup_sources_stats_show(struct seq_file *m, void *unused)
+.. c:function:: int wakeup_sources_stats_seq_show(struct seq_file *m, void *v)
 
     Print wakeup sources statistics information.
 
     :param struct seq_file \*m:
         seq_file to print the statistics into.
 
-    :param void \*unused:
-        *undescribed*
+    :param void \*v:
+        wakeup_source of each iteration
 
 .. This file was automatic generated / don't edit.
 

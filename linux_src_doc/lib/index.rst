@@ -32,7 +32,7 @@ lib
     devres_c
     digsig_c
     div64_c
-    dma-debug_c
+    dump_stack_c
     earlycpio_c
     errseq_c
     flex_array_c
@@ -54,6 +54,7 @@ lib
     list_sort_c
     llist_c
     lockref_c
+    logic_pio_c
     lru_cache_c
     memweight_c
     nlattr_c

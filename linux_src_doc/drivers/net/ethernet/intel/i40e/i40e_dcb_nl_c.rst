@@ -33,7 +33,7 @@ i40e_dcbnl_ieee_getets
     retrieve local IEEE ETS configuration
 
     :param struct net_device \*dev:
-        *undescribed*
+        the corresponding netdev
 
     :param struct ieee_ets \*ets:
         structure to hold the ETS information
@@ -55,10 +55,10 @@ i40e_dcbnl_ieee_getpfc
     retrieve local IEEE PFC configuration
 
     :param struct net_device \*dev:
-        *undescribed*
+        the corresponding netdev
 
     :param struct ieee_pfc \*pfc:
-        *undescribed*
+        structure to hold the PFC information
 
 .. _`i40e_dcbnl_ieee_getpfc.description`:
 
@@ -77,7 +77,7 @@ i40e_dcbnl_getdcbx
     retrieve current DCBx capability
 
     :param struct net_device \*dev:
-        *undescribed*
+        the corresponding netdev
 
 .. _`i40e_dcbnl_getdcbx.description`:
 
@@ -96,10 +96,10 @@ i40e_dcbnl_get_perm_hw_addr
     MAC address used by DCBx
 
     :param struct net_device \*dev:
-        *undescribed*
+        the corresponding netdev
 
     :param u8 \*perm_addr:
-        *undescribed*
+        buffer to store the MAC address
 
 .. _`i40e_dcbnl_get_perm_hw_addr.description`:
 

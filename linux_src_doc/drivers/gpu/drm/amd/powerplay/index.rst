@@ -8,4 +8,5 @@ powerplay
     :maxdepth: 1
 
     hwmgr/index
+    inc/index
     smumgr/index

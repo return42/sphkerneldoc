@@ -253,6 +253,47 @@ values from/to the user buffer, treated as an ASCII string.
 
 Returns 0 on success.
 
+.. _`do_proc_dointvec_minmax_conv_param`:
+
+struct do_proc_dointvec_minmax_conv_param
+=========================================
+
+.. c:type:: struct do_proc_dointvec_minmax_conv_param
+
+    \ :c:func:`proc_dointvec_minmax`\  range checking structure
+
+.. _`do_proc_dointvec_minmax_conv_param.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct do_proc_dointvec_minmax_conv_param {
+        int *min;
+        int *max;
+    }
+
+.. _`do_proc_dointvec_minmax_conv_param.members`:
+
+Members
+-------
+
+min
+    pointer to minimum allowable value
+
+max
+    pointer to maximum allowable value
+
+.. _`do_proc_dointvec_minmax_conv_param.description`:
+
+Description
+-----------
+
+The do_proc_dointvec_minmax_conv_param structure provides the
+minimum and maximum values for doing range checking for those sysctl
+parameters that use the \ :c:func:`proc_dointvec_minmax`\  handler.
+
 .. _`proc_dointvec_minmax`:
 
 proc_dointvec_minmax
@@ -288,7 +329,48 @@ values from/to the user buffer, treated as an ASCII string.
 This routine will ensure the values are within the range specified by
 table->extra1 (min) and table->extra2 (max).
 
-Returns 0 on success.
+Returns 0 on success or -EINVAL on write when the range check fails.
+
+.. _`do_proc_douintvec_minmax_conv_param`:
+
+struct do_proc_douintvec_minmax_conv_param
+==========================================
+
+.. c:type:: struct do_proc_douintvec_minmax_conv_param
+
+    \ :c:func:`proc_douintvec_minmax`\  range checking structure
+
+.. _`do_proc_douintvec_minmax_conv_param.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct do_proc_douintvec_minmax_conv_param {
+        unsigned int *min;
+        unsigned int *max;
+    }
+
+.. _`do_proc_douintvec_minmax_conv_param.members`:
+
+Members
+-------
+
+min
+    pointer to minimum allowable value
+
+max
+    pointer to maximum allowable value
+
+.. _`do_proc_douintvec_minmax_conv_param.description`:
+
+Description
+-----------
+
+The do_proc_douintvec_minmax_conv_param structure provides the
+minimum and maximum values for doing range checking for those sysctl
+parameters that use the \ :c:func:`proc_douintvec_minmax`\  handler.
 
 .. _`proc_douintvec_minmax`:
 
@@ -328,7 +410,7 @@ table->extra1 (min) and table->extra2 (max). There is a final sanity
 check for UINT_MAX to avoid having to support wrap around uses from
 userspace.
 
-Returns 0 on success.
+Returns 0 on success or -ERANGE on write when the range check fails.
 
 .. _`proc_doulongvec_minmax`:
 

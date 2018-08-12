@@ -215,7 +215,7 @@ page_add_file_rmap
         the page to add the mapping to
 
     :param bool compound:
-        *undescribed*
+        charge the page as compound or small page
 
 .. _`page_add_file_rmap.description`:
 

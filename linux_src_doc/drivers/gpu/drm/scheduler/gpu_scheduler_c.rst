@@ -25,7 +25,7 @@ Try to find a ready entity, returns NULL if none found.
 drm_sched_entity_init
 =====================
 
-.. c:function:: int drm_sched_entity_init(struct drm_gpu_scheduler *sched, struct drm_sched_entity *entity, struct drm_sched_rq *rq, uint32_t jobs, atomic_t *guilty)
+.. c:function:: int drm_sched_entity_init(struct drm_gpu_scheduler *sched, struct drm_sched_entity *entity, struct drm_sched_rq *rq, atomic_t *guilty)
 
     :param struct drm_gpu_scheduler \*sched:
         *undescribed*
@@ -34,9 +34,6 @@ drm_sched_entity_init
         *undescribed*
 
     :param struct drm_sched_rq \*rq:
-        *undescribed*
-
-    :param uint32_t jobs:
         *undescribed*
 
     :param atomic_t \*guilty:
@@ -50,8 +47,8 @@ Description
 \ ``sched``\        The pointer to the scheduler
 \ ``entity``\       The pointer to a valid drm_sched_entity
 \ ``rq``\           The run queue this entity belongs
-\ ``kernel``\       If this is an entity for the kernel
-\ ``jobs``\         The max number of jobs in the job queue
+\ ``guilty``\       atomic_t set to 1 when a job on this queue
+is found to be guilty causing a timeout
 
 return 0 if succeed. negative error code on failure
 
@@ -116,12 +113,12 @@ Description
 
 Return true if entity could provide a job.
 
-.. _`drm_sched_entity_fini`:
+.. _`drm_sched_entity_do_release`:
 
-drm_sched_entity_fini
-=====================
+drm_sched_entity_do_release
+===========================
 
-.. c:function:: void drm_sched_entity_fini(struct drm_gpu_scheduler *sched, struct drm_sched_entity *entity)
+.. c:function:: void drm_sched_entity_do_release(struct drm_gpu_scheduler *sched, struct drm_sched_entity *entity)
 
     :param struct drm_gpu_scheduler \*sched:
         *undescribed*
@@ -129,7 +126,7 @@ drm_sched_entity_fini
     :param struct drm_sched_entity \*entity:
         *undescribed*
 
-.. _`drm_sched_entity_fini.description`:
+.. _`drm_sched_entity_do_release.description`:
 
 Description
 -----------
@@ -137,7 +134,31 @@ Description
 \ ``sched``\        Pointer to scheduler instance
 \ ``entity``\       The pointer to a valid scheduler entity
 
-Cleanup and free the allocated resources.
+Splitting \ :c:func:`drm_sched_entity_fini`\  into two functions, The first one is does the waiting,
+removes the entity from the runqueue and returns an error when the process was killed.
+
+.. _`drm_sched_entity_cleanup`:
+
+drm_sched_entity_cleanup
+========================
+
+.. c:function:: void drm_sched_entity_cleanup(struct drm_gpu_scheduler *sched, struct drm_sched_entity *entity)
+
+    :param struct drm_gpu_scheduler \*sched:
+        *undescribed*
+
+    :param struct drm_sched_entity \*entity:
+        *undescribed*
+
+.. _`drm_sched_entity_cleanup.description`:
+
+Description
+-----------
+
+\ ``sched``\        Pointer to scheduler instance
+\ ``entity``\       The pointer to a valid scheduler entity
+
+The second one then goes over the entity and signals all jobs with an error code.
 
 .. _`drm_sched_entity_push_job`:
 
@@ -159,7 +180,43 @@ Description
 
 \ ``sched_job``\            The pointer to job required to submit
 
+.. _`drm_sched_entity_push_job.note`:
+
+Note
+----
+
+To guarantee that the order of insertion to queue matches
+the job's fence sequence number this function should be
+called with drm_sched_job_init under common lock.
+
 Returns 0 for success, negative error code otherwise.
+
+.. _`drm_sched_job_init`:
+
+drm_sched_job_init
+==================
+
+.. c:function:: int drm_sched_job_init(struct drm_sched_job *job, struct drm_gpu_scheduler *sched, struct drm_sched_entity *entity, void *owner)
+
+    :param struct drm_sched_job \*job:
+        *undescribed*
+
+    :param struct drm_gpu_scheduler \*sched:
+        *undescribed*
+
+    :param struct drm_sched_entity \*entity:
+        *undescribed*
+
+    :param void \*owner:
+        *undescribed*
+
+.. _`drm_sched_job_init.note`:
+
+Note
+----
+
+Refer to drm_sched_entity_push_job documentation
+for locking considerations.
 
 .. _`drm_sched_ready`:
 

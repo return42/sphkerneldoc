@@ -51,6 +51,7 @@ Definition
         s64 timer;
         s64 state_timer[PWRDM_MAX_PWRSTS];
     #endif
+        u32 context;
     }
 
 .. _`powerdomain.members`:
@@ -144,6 +145,9 @@ timer
 state_timer
     *undescribed*
 
+context
+    *undescribed*
+
 .. _`powerdomain.description`:
 
 Description
@@ -187,6 +191,8 @@ Definition
         int (*pwrdm_set_lowpwrstchange)(struct powerdomain *pwrdm);
         int (*pwrdm_wait_transition)(struct powerdomain *pwrdm);
         int (*pwrdm_has_voltdm)(void);
+        void (*pwrdm_save_context)(struct powerdomain *pwrdm);
+        void (*pwrdm_restore_context)(struct powerdomain *pwrdm);
     }
 
 .. _`pwrdm_ops.members`:
@@ -250,6 +256,12 @@ pwrdm_wait_transition
 
 pwrdm_has_voltdm
     Check if a voltdm association is needed
+
+pwrdm_save_context
+    *undescribed*
+
+pwrdm_restore_context
+    *undescribed*
 
 .. _`pwrdm_ops.description`:
 

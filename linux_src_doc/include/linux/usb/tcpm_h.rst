@@ -24,11 +24,9 @@ Definition
         unsigned int nr_snk_pdo;
         const u32 *snk_vdo;
         unsigned int nr_snk_vdo;
-        unsigned int max_snk_mv;
-        unsigned int max_snk_ma;
-        unsigned int max_snk_mw;
         unsigned int operating_snk_mw;
         enum typec_port_type type;
+        enum typec_port_data data;
         enum typec_role default_role;
         bool try_role_hw;
         const struct typec_altmode_desc *alt_modes;
@@ -59,21 +57,15 @@ snk_vdo
 nr_snk_vdo
     *undescribed*
 
-max_snk_mv
-    Maximum acceptable sink voltage in mV
-
-max_snk_ma
-    Maximum sink current in mA
-
-max_snk_mw
-    Maximum required sink power in mW
-
 operating_snk_mw
     Required operating sink power in mW
 
 type
     Port type (TYPEC_PORT_DFP, TYPEC_PORT_UFP, or
     TYPEC_PORT_DRP)
+
+data
+    *undescribed*
 
 default_role
     Default port role (TYPEC_SINK or TYPEC_SOURCE).
@@ -117,7 +109,6 @@ Definition
         int (*start_drp_toggling)(struct tcpc_dev *dev, enum typec_cc_status cc);
         int (*try_role)(struct tcpc_dev *dev, int role);
         int (*pd_transmit)(struct tcpc_dev *dev, enum tcpm_transmit_type type, const struct pd_message *msg);
-        struct tcpc_mux_dev *mux;
     }
 
 .. _`tcpc_dev.members`:
@@ -176,9 +167,6 @@ try_role
 
 pd_transmit
     Called to transmit PD message
-
-mux
-    Pointer to multiplexer data
 
 .. This file was automatic generated / don't edit.
 

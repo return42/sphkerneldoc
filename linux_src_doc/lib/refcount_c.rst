@@ -352,5 +352,39 @@ Return
 true and hold spinlock if able to decrement refcount to 0, false
         otherwise
 
+.. _`refcount_dec_and_lock_irqsave`:
+
+refcount_dec_and_lock_irqsave
+=============================
+
+.. c:function:: bool refcount_dec_and_lock_irqsave(refcount_t *r, spinlock_t *lock, unsigned long *flags)
+
+    return holding spinlock with disabled interrupts if able to decrement refcount to 0
+
+    :param refcount_t \*r:
+        the refcount
+
+    :param spinlock_t \*lock:
+        the spinlock to be locked
+
+    :param unsigned long \*flags:
+        saved IRQ-flags if the is acquired
+
+.. _`refcount_dec_and_lock_irqsave.description`:
+
+Description
+-----------
+
+Same as \ :c:func:`refcount_dec_and_lock`\  above except that the spinlock is acquired
+with disabled interupts.
+
+.. _`refcount_dec_and_lock_irqsave.return`:
+
+Return
+------
+
+true and hold spinlock if able to decrement refcount to 0, false
+        otherwise
+
 .. This file was automatic generated / don't edit.
 

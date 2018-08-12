@@ -24,5 +24,6 @@ gvt
     mmio_context_c
     mpt_h
     opregion_c
+    page_track_c
     scheduler_c
     vgpu_c

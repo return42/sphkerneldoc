@@ -117,6 +117,7 @@ Definition
         wait_queue_head_t pend_8021x_wait;
         struct in6_addr ipv6_addr_tbl[NDOL_MAX_ENTRIES];
         u8 ipv6addr_idx;
+        bool fwil_fwerr;
     }
 
 .. _`brcmf_if.members`:
@@ -168,6 +169,9 @@ ipv6_addr_tbl
 
 ipv6addr_idx
     *undescribed*
+
+fwil_fwerr
+    flag indicating fwil layer should return firmware error codes.
 
 .. This file was automatic generated / don't edit.
 

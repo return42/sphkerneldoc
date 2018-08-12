@@ -160,63 +160,6 @@ Context
 
  Interrupts disabled, ccw device lock held
 
-.. _`ccw_device_start_key`:
-
-ccw_device_start_key
-====================
-
-.. c:function:: int ccw_device_start_key(struct ccw_device *cdev, struct ccw1 *cpa, unsigned long intparm, __u8 lpm, __u8 key, unsigned long flags)
-
-    start a s390 channel program with key
-
-    :param struct ccw_device \*cdev:
-        target ccw device
-
-    :param struct ccw1 \*cpa:
-        logical start address of channel program
-
-    :param unsigned long intparm:
-        user specific interruption parameter; will be presented back to
-        \ ``cdev``\ 's interrupt handler. Allows a device driver to associate
-        the interrupt with a particular I/O request.
-
-    :param __u8 lpm:
-        defines the channel path to be used for a specific I/O request. A
-        value of 0 will make cio use the opm.
-
-    :param __u8 key:
-        storage key to be used for the I/O
-
-    :param unsigned long flags:
-        additional flags; defines the action to be performed for I/O
-        processing.
-
-.. _`ccw_device_start_key.description`:
-
-Description
------------
-
-Start a S/390 channel program. When the interrupt arrives, the
-IRQ handler is called, either immediately, delayed (dev-end missing,
-or sense required) or never (no IRQ handler registered).
-
-.. _`ccw_device_start_key.return`:
-
-Return
-------
-
- \ ``0``\ , if the operation was successful;
- -%EBUSY, if the device is busy, or status pending;
- -%EACCES, if no path specified in \ ``lpm``\  is operational;
- -%ENODEV, if the device is not operational.
-
-.. _`ccw_device_start_key.context`:
-
-Context
--------
-
- Interrupts disabled, ccw device lock held
-
 .. _`ccw_device_start_timeout_key`:
 
 ccw_device_start_timeout_key
@@ -275,6 +218,63 @@ Return
  -%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start_timeout_key.context`:
+
+Context
+-------
+
+ Interrupts disabled, ccw device lock held
+
+.. _`ccw_device_start_key`:
+
+ccw_device_start_key
+====================
+
+.. c:function:: int ccw_device_start_key(struct ccw_device *cdev, struct ccw1 *cpa, unsigned long intparm, __u8 lpm, __u8 key, unsigned long flags)
+
+    start a s390 channel program with key
+
+    :param struct ccw_device \*cdev:
+        target ccw device
+
+    :param struct ccw1 \*cpa:
+        logical start address of channel program
+
+    :param unsigned long intparm:
+        user specific interruption parameter; will be presented back to
+        \ ``cdev``\ 's interrupt handler. Allows a device driver to associate
+        the interrupt with a particular I/O request.
+
+    :param __u8 lpm:
+        defines the channel path to be used for a specific I/O request. A
+        value of 0 will make cio use the opm.
+
+    :param __u8 key:
+        storage key to be used for the I/O
+
+    :param unsigned long flags:
+        additional flags; defines the action to be performed for I/O
+        processing.
+
+.. _`ccw_device_start_key.description`:
+
+Description
+-----------
+
+Start a S/390 channel program. When the interrupt arrives, the
+IRQ handler is called, either immediately, delayed (dev-end missing,
+or sense required) or never (no IRQ handler registered).
+
+.. _`ccw_device_start_key.return`:
+
+Return
+------
+
+ \ ``0``\ , if the operation was successful;
+ -%EBUSY, if the device is busy, or status pending;
+ -%EACCES, if no path specified in \ ``lpm``\  is operational;
+ -%ENODEV, if the device is not operational.
+
+.. _`ccw_device_start_key.context`:
 
 Context
 -------
@@ -532,7 +532,7 @@ Return
 ccw_device_get_chp_desc
 =======================
 
-.. c:function:: struct channel_path_desc *ccw_device_get_chp_desc(struct ccw_device *cdev, int chp_idx)
+.. c:function:: struct channel_path_desc_fmt0 *ccw_device_get_chp_desc(struct ccw_device *cdev, int chp_idx)
 
     return newly allocated channel-path descriptor
 
@@ -550,6 +550,29 @@ Description
 On success return a newly allocated copy of the channel-path description
 data associated with the given channel path. Return \ ``NULL``\  on error.
 
+.. _`ccw_device_get_util_str`:
+
+ccw_device_get_util_str
+=======================
+
+.. c:function:: u8 *ccw_device_get_util_str(struct ccw_device *cdev, int chp_idx)
+
+    return newly allocated utility strings
+
+    :param struct ccw_device \*cdev:
+        device to obtain the utility strings for
+
+    :param int chp_idx:
+        index of the channel path
+
+.. _`ccw_device_get_util_str.description`:
+
+Description
+-----------
+
+On success return a newly allocated copy of the utility strings
+associated with the given channel path. Return \ ``NULL``\  on error.
+
 .. _`ccw_device_get_id`:
 
 ccw_device_get_id
@@ -564,38 +587,6 @@ ccw_device_get_id
 
     :param struct ccw_dev_id \*dev_id:
         where to fill in the values
-
-.. _`ccw_device_tm_start_key`:
-
-ccw_device_tm_start_key
-=======================
-
-.. c:function:: int ccw_device_tm_start_key(struct ccw_device *cdev, struct tcw *tcw, unsigned long intparm, u8 lpm, u8 key)
-
-    perform start function
-
-    :param struct ccw_device \*cdev:
-        ccw device on which to perform the start function
-
-    :param struct tcw \*tcw:
-        transport-command word to be started
-
-    :param unsigned long intparm:
-        user defined parameter to be passed to the interrupt handler
-
-    :param u8 lpm:
-        mask of paths to use
-
-    :param u8 key:
-        storage key to use for storage access
-
-.. _`ccw_device_tm_start_key.description`:
-
-Description
------------
-
-Start the tcw on the given ccw device. Return zero on success, non-zero
-otherwise.
 
 .. _`ccw_device_tm_start_timeout_key`:
 
@@ -625,6 +616,38 @@ ccw_device_tm_start_timeout_key
         time span in jiffies after which to abort request
 
 .. _`ccw_device_tm_start_timeout_key.description`:
+
+Description
+-----------
+
+Start the tcw on the given ccw device. Return zero on success, non-zero
+otherwise.
+
+.. _`ccw_device_tm_start_key`:
+
+ccw_device_tm_start_key
+=======================
+
+.. c:function:: int ccw_device_tm_start_key(struct ccw_device *cdev, struct tcw *tcw, unsigned long intparm, u8 lpm, u8 key)
+
+    perform start function
+
+    :param struct ccw_device \*cdev:
+        ccw device on which to perform the start function
+
+    :param struct tcw \*tcw:
+        transport-command word to be started
+
+    :param unsigned long intparm:
+        user defined parameter to be passed to the interrupt handler
+
+    :param u8 lpm:
+        mask of paths to use
+
+    :param u8 key:
+        storage key to use for storage access
+
+.. _`ccw_device_tm_start_key.description`:
 
 Description
 -----------

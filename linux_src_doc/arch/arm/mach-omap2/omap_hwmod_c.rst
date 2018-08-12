@@ -1916,6 +1916,199 @@ Resolves the struct clk names to struct clk pointers for each
 registered omap_hwmod.  Also calls \_setup() on each hwmod.  Returns
 -EINVAL upon error or 0 upon success.
 
+.. _`omap_hwmod_check_sysc`:
+
+omap_hwmod_check_sysc
+=====================
+
+.. c:function:: int omap_hwmod_check_sysc(struct device *dev, const struct ti_sysc_module_data *data, struct sysc_regbits *sysc_fields)
+
+    check sysc against platform sysc
+
+    :param struct device \*dev:
+        struct device
+
+    :param const struct ti_sysc_module_data \*data:
+        module data
+
+    :param struct sysc_regbits \*sysc_fields:
+        new sysc configuration
+
+.. _`omap_hwmod_init_regbits`:
+
+omap_hwmod_init_regbits
+=======================
+
+.. c:function:: int omap_hwmod_init_regbits(struct device *dev, const struct ti_sysc_module_data *data, struct sysc_regbits **sysc_fields)
+
+    init sysconfig specific register bits
+
+    :param struct device \*dev:
+        struct device
+
+    :param const struct ti_sysc_module_data \*data:
+        module data
+
+    :param struct sysc_regbits \*\*sysc_fields:
+        new sysc configuration
+
+.. _`omap_hwmod_init_reg_offs`:
+
+omap_hwmod_init_reg_offs
+========================
+
+.. c:function:: int omap_hwmod_init_reg_offs(struct device *dev, const struct ti_sysc_module_data *data, s32 *rev_offs, s32 *sysc_offs, s32 *syss_offs)
+
+    initialize sysconfig register offsets
+
+    :param struct device \*dev:
+        struct device
+
+    :param const struct ti_sysc_module_data \*data:
+        module data
+
+    :param s32 \*rev_offs:
+        revision register offset
+
+    :param s32 \*sysc_offs:
+        sysc register offset
+
+    :param s32 \*syss_offs:
+        syss register offset
+
+.. _`omap_hwmod_init_sysc_flags`:
+
+omap_hwmod_init_sysc_flags
+==========================
+
+.. c:function:: int omap_hwmod_init_sysc_flags(struct device *dev, const struct ti_sysc_module_data *data, u32 *sysc_flags)
+
+    initialize sysconfig features
+
+    :param struct device \*dev:
+        struct device
+
+    :param const struct ti_sysc_module_data \*data:
+        module data
+
+    :param u32 \*sysc_flags:
+        module configuration
+
+.. _`omap_hwmod_init_idlemodes`:
+
+omap_hwmod_init_idlemodes
+=========================
+
+.. c:function:: int omap_hwmod_init_idlemodes(struct device *dev, const struct ti_sysc_module_data *data, u32 *idlemodes)
+
+    initialize module idle modes
+
+    :param struct device \*dev:
+        struct device
+
+    :param const struct ti_sysc_module_data \*data:
+        module data
+
+    :param u32 \*idlemodes:
+        module supported idle modes
+
+.. _`omap_hwmod_check_module`:
+
+omap_hwmod_check_module
+=======================
+
+.. c:function:: int omap_hwmod_check_module(struct device *dev, struct omap_hwmod *oh, const struct ti_sysc_module_data *data, struct sysc_regbits *sysc_fields, s32 rev_offs, s32 sysc_offs, s32 syss_offs, u32 sysc_flags, u32 idlemodes)
+
+    check new module against platform data
+
+    :param struct device \*dev:
+        struct device
+
+    :param struct omap_hwmod \*oh:
+        module
+
+    :param const struct ti_sysc_module_data \*data:
+        new module data
+
+    :param struct sysc_regbits \*sysc_fields:
+        sysc register bits
+
+    :param s32 rev_offs:
+        revision register offset
+
+    :param s32 sysc_offs:
+        sysconfig register offset
+
+    :param s32 syss_offs:
+        sysstatus register offset
+
+    :param u32 sysc_flags:
+        sysc specific flags
+
+    :param u32 idlemodes:
+        sysc supported idlemodes
+
+.. _`omap_hwmod_allocate_module`:
+
+omap_hwmod_allocate_module
+==========================
+
+.. c:function:: int omap_hwmod_allocate_module(struct device *dev, struct omap_hwmod *oh, const struct ti_sysc_module_data *data, struct sysc_regbits *sysc_fields, s32 rev_offs, s32 sysc_offs, s32 syss_offs, u32 sysc_flags, u32 idlemodes)
+
+    allocate new module
+
+    :param struct device \*dev:
+        struct device
+
+    :param struct omap_hwmod \*oh:
+        module
+
+    :param const struct ti_sysc_module_data \*data:
+        *undescribed*
+
+    :param struct sysc_regbits \*sysc_fields:
+        sysc register bits
+
+    :param s32 rev_offs:
+        revision register offset
+
+    :param s32 sysc_offs:
+        sysconfig register offset
+
+    :param s32 syss_offs:
+        sysstatus register offset
+
+    :param u32 sysc_flags:
+        sysc specific flags
+
+    :param u32 idlemodes:
+        sysc supported idlemodes
+
+.. _`omap_hwmod_allocate_module.description`:
+
+Description
+-----------
+
+Note that the allocations here cannot use devm as ti-sysc can rebind.
+
+.. _`omap_hwmod_init_module`:
+
+omap_hwmod_init_module
+======================
+
+.. c:function:: int omap_hwmod_init_module(struct device *dev, const struct ti_sysc_module_data *data, struct ti_sysc_cookie *cookie)
+
+    initialize new module
+
+    :param struct device \*dev:
+        struct device
+
+    :param const struct ti_sysc_module_data \*data:
+        module data
+
+    :param struct ti_sysc_cookie \*cookie:
+        cookie for the caller to use for later calls
+
 .. _`omap_hwmod_setup_earlycon_flags`:
 
 omap_hwmod_setup_earlycon_flags

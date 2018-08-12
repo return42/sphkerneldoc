@@ -377,12 +377,10 @@ Definition
         int (*prepare_message)(struct spi_controller *ctlr, struct spi_message *message);
         int (*unprepare_message)(struct spi_controller *ctlr, struct spi_message *message);
         int (*slave_abort)(struct spi_controller *ctlr);
-        int (*spi_flash_read)(struct spi_device *spi, struct spi_flash_read_message *msg);
-        bool (*spi_flash_can_dma)(struct spi_device *spi, struct spi_flash_read_message *msg);
-        bool (*flash_read_supported)(struct spi_device *spi);
         void (*set_cs)(struct spi_device *spi, bool enable);
         int (*transfer_one)(struct spi_controller *ctlr, struct spi_device *spi, struct spi_transfer *transfer);
         void (*handle_err)(struct spi_controller *ctlr, struct spi_message *message);
+        const struct spi_controller_mem_ops *mem_ops;
         int *cs_gpios;
         struct spi_statistics statistics;
         struct dma_chan *dma_tx;
@@ -553,17 +551,6 @@ unprepare_message
 slave_abort
     abort the ongoing transfer request on an SPI slave controller
 
-spi_flash_read
-    to support spi-controller hardwares that provide
-    accelerated interface to read from flash devices.
-
-spi_flash_can_dma
-    analogous to \ :c:func:`can_dma`\  interface, but for
-    controllers implementing spi_flash_read.
-
-flash_read_supported
-    spi device supports flash read
-
 set_cs
     set the logic level of the chip select line.  May be called
     from interrupt context.
@@ -582,6 +569,11 @@ transfer_one
 handle_err
     the subsystem calls the driver to handle an error that occurs
     in the generic implementation of \ :c:func:`transfer_one_message`\ .
+
+mem_ops
+    optimized/dedicated operations for interactions with SPI memory.
+    This field is optional and should only be implemented if the
+    controller has native support for memory like operations.
 
 cs_gpios
     Array of GPIOs to use as chip select lines; one per CS
@@ -719,10 +711,10 @@ len
     size of rx and tx buffers (in bytes)
 
 tx_dma
-    DMA address of tx_buf, if \ ``spi_message``\ .is_dma_mapped
+    DMA address of tx_buf, if \ ``spi_message.is_dma_mapped``\ 
 
 rx_dma
-    DMA address of rx_buf, if \ ``spi_message``\ .is_dma_mapped
+    DMA address of rx_buf, if \ ``spi_message.is_dma_mapped``\ 
 
 tx_sg
     Scatterlist for transmit, currently not for client use
@@ -755,7 +747,7 @@ speed_hz
     transfer. If 0 the default (from \ ``spi_device``\ ) is used.
 
 transfer_list
-    transfers are sequenced through \ ``spi_message``\ .transfers
+    transfers are sequenced through \ ``spi_message.transfers``\ 
 
 .. _`spi_transfer.description`:
 
@@ -1229,78 +1221,6 @@ Return
 
 the (unsigned) sixteen bit number returned by the device in cpu
 endianness, or else a negative error code.
-
-.. _`spi_flash_read_message`:
-
-struct spi_flash_read_message
-=============================
-
-.. c:type:: struct spi_flash_read_message
-
-    flash specific information for spi-masters that provide accelerated flash read interfaces
-
-.. _`spi_flash_read_message.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct spi_flash_read_message {
-        void *buf;
-        loff_t from;
-        size_t len;
-        size_t retlen;
-        u8 read_opcode;
-        u8 addr_width;
-        u8 dummy_bytes;
-        u8 opcode_nbits;
-        u8 addr_nbits;
-        u8 data_nbits;
-        struct sg_table rx_sg;
-        bool cur_msg_mapped;
-    }
-
-.. _`spi_flash_read_message.members`:
-
-Members
--------
-
-buf
-    buffer to read data
-
-from
-    offset within the flash from where data is to be read
-
-len
-    length of data to be read
-
-retlen
-    actual length of data read
-
-read_opcode
-    read_opcode to be used to communicate with flash
-
-addr_width
-    number of address bytes
-
-dummy_bytes
-    number of dummy bytes
-
-opcode_nbits
-    number of lines to send opcode
-
-addr_nbits
-    number of lines to send address
-
-data_nbits
-    number of lines for data
-
-rx_sg
-    Scatterlist for receive data read from flash
-
-cur_msg_mapped
-    message has been mapped for DMA
 
 .. _`spi_board_info`:
 

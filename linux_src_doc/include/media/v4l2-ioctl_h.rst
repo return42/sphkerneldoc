@@ -752,28 +752,6 @@ Description
    If prefix != %NULL, then it will issue a
    ``printk(KERN_DEBUG "%s: ", prefix)`` first.
 
-.. _`v4l2_ioctl_get_lock`:
-
-v4l2_ioctl_get_lock
-===================
-
-.. c:function:: struct mutex *v4l2_ioctl_get_lock(struct video_device *vdev, unsigned int cmd)
-
-    get the mutex (if any) that it is need to lock for a given command.
-
-    :param struct video_device \*vdev:
-        Pointer to struct \ :c:type:`struct video_device <video_device>`\ .
-
-    :param unsigned int cmd:
-        Ioctl name.
-
-.. _`v4l2_ioctl_get_lock.description`:
-
-Description
------------
-
-.. note:: Internal use only. Should not be used outside V4L2 core.
-
 .. _`v4l2_compat_ioctl32`:
 
 v4l2_compat_ioctl32

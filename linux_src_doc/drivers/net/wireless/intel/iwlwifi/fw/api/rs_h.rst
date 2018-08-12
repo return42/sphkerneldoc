@@ -18,12 +18,8 @@ Definition
 .. code-block:: c
 
     enum iwl_tlc_mng_cfg_flags {
-        IWL_TLC_MNG_CFG_FLAGS_CCK_MSK,
-        IWL_TLC_MNG_CFG_FLAGS_DD_MSK,
         IWL_TLC_MNG_CFG_FLAGS_STBC_MSK,
-        IWL_TLC_MNG_CFG_FLAGS_LDPC_MSK,
-        IWL_TLC_MNG_CFG_FLAGS_BF_MSK,
-        IWL_TLC_MNG_CFG_FLAGS_DCM_MSK
+        IWL_TLC_MNG_CFG_FLAGS_LDPC_MSK
     };
 
 .. _`iwl_tlc_mng_cfg_flags.constants`:
@@ -31,23 +27,11 @@ Definition
 Constants
 ---------
 
-IWL_TLC_MNG_CFG_FLAGS_CCK_MSK
-    CCK support
-
-IWL_TLC_MNG_CFG_FLAGS_DD_MSK
-    enable DD
-
 IWL_TLC_MNG_CFG_FLAGS_STBC_MSK
     enable STBC
 
 IWL_TLC_MNG_CFG_FLAGS_LDPC_MSK
     enable LDPC
-
-IWL_TLC_MNG_CFG_FLAGS_BF_MSK
-    enable BFER
-
-IWL_TLC_MNG_CFG_FLAGS_DCM_MSK
-    enable DCM
 
 .. _`iwl_tlc_mng_cfg_cw`:
 
@@ -66,11 +50,11 @@ Definition
 .. code-block:: c
 
     enum iwl_tlc_mng_cfg_cw {
-        IWL_TLC_MNG_MAX_CH_WIDTH_20MHZ,
-        IWL_TLC_MNG_MAX_CH_WIDTH_40MHZ,
-        IWL_TLC_MNG_MAX_CH_WIDTH_80MHZ,
-        IWL_TLC_MNG_MAX_CH_WIDTH_160MHZ,
-        IWL_TLC_MNG_MAX_CH_WIDTH_LAST
+        IWL_TLC_MNG_CH_WIDTH_20MHZ,
+        IWL_TLC_MNG_CH_WIDTH_40MHZ,
+        IWL_TLC_MNG_CH_WIDTH_80MHZ,
+        IWL_TLC_MNG_CH_WIDTH_160MHZ,
+        IWL_TLC_MNG_CH_WIDTH_LAST
     };
 
 .. _`iwl_tlc_mng_cfg_cw.constants`:
@@ -78,19 +62,19 @@ Definition
 Constants
 ---------
 
-IWL_TLC_MNG_MAX_CH_WIDTH_20MHZ
+IWL_TLC_MNG_CH_WIDTH_20MHZ
     20MHZ channel
 
-IWL_TLC_MNG_MAX_CH_WIDTH_40MHZ
+IWL_TLC_MNG_CH_WIDTH_40MHZ
     40MHZ channel
 
-IWL_TLC_MNG_MAX_CH_WIDTH_80MHZ
+IWL_TLC_MNG_CH_WIDTH_80MHZ
     80MHZ channel
 
-IWL_TLC_MNG_MAX_CH_WIDTH_160MHZ
+IWL_TLC_MNG_CH_WIDTH_160MHZ
     160MHZ channel
 
-IWL_TLC_MNG_MAX_CH_WIDTH_LAST
+IWL_TLC_MNG_CH_WIDTH_LAST
     maximum value
 
 .. _`iwl_tlc_mng_cfg_chains`:
@@ -111,8 +95,7 @@ Definition
 
     enum iwl_tlc_mng_cfg_chains {
         IWL_TLC_MNG_CHAIN_A_MSK,
-        IWL_TLC_MNG_CHAIN_B_MSK,
-        IWL_TLC_MNG_CHAIN_C_MSK
+        IWL_TLC_MNG_CHAIN_B_MSK
     };
 
 .. _`iwl_tlc_mng_cfg_chains.constants`:
@@ -125,49 +108,6 @@ IWL_TLC_MNG_CHAIN_A_MSK
 
 IWL_TLC_MNG_CHAIN_B_MSK
     chain B
-
-IWL_TLC_MNG_CHAIN_C_MSK
-    chain C
-
-.. _`iwl_tlc_mng_cfg_gi`:
-
-enum iwl_tlc_mng_cfg_gi
-=======================
-
-.. c:type:: enum iwl_tlc_mng_cfg_gi
-
-    guard interval options
-
-.. _`iwl_tlc_mng_cfg_gi.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum iwl_tlc_mng_cfg_gi {
-        IWL_TLC_MNG_SGI_20MHZ_MSK,
-        IWL_TLC_MNG_SGI_40MHZ_MSK,
-        IWL_TLC_MNG_SGI_80MHZ_MSK,
-        IWL_TLC_MNG_SGI_160MHZ_MSK
-    };
-
-.. _`iwl_tlc_mng_cfg_gi.constants`:
-
-Constants
----------
-
-IWL_TLC_MNG_SGI_20MHZ_MSK
-    enable short GI for 20MHZ
-
-IWL_TLC_MNG_SGI_40MHZ_MSK
-    enable short GI for 40MHZ
-
-IWL_TLC_MNG_SGI_80MHZ_MSK
-    enable short GI for 80MHZ
-
-IWL_TLC_MNG_SGI_160MHZ_MSK
-    enable short GI for 160MHZ
 
 .. _`iwl_tlc_mng_cfg_mode`:
 
@@ -225,50 +165,6 @@ IWL_TLC_MNG_MODE_INVALID
 IWL_TLC_MNG_MODE_NUM
     a count of possible modes
 
-.. _`iwl_tlc_mng_vht_he_types`:
-
-enum iwl_tlc_mng_vht_he_types
-=============================
-
-.. c:type:: enum iwl_tlc_mng_vht_he_types
-
-    VHT HE types
-
-.. _`iwl_tlc_mng_vht_he_types.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum iwl_tlc_mng_vht_he_types {
-        IWL_TLC_MNG_VALID_VHT_HE_TYPES_SU,
-        IWL_TLC_MNG_VALID_VHT_HE_TYPES_SU_EXT,
-        IWL_TLC_MNG_VALID_VHT_HE_TYPES_MU,
-        IWL_TLC_MNG_VALID_VHT_HE_TYPES_TRIG_BASED,
-        IWL_TLC_MNG_VALID_VHT_HE_TYPES_NUM
-    };
-
-.. _`iwl_tlc_mng_vht_he_types.constants`:
-
-Constants
----------
-
-IWL_TLC_MNG_VALID_VHT_HE_TYPES_SU
-    VHT HT single user
-
-IWL_TLC_MNG_VALID_VHT_HE_TYPES_SU_EXT
-    VHT HT single user extended
-
-IWL_TLC_MNG_VALID_VHT_HE_TYPES_MU
-    VHT HT multiple users
-
-IWL_TLC_MNG_VALID_VHT_HE_TYPES_TRIG_BASED
-    trigger based
-
-IWL_TLC_MNG_VALID_VHT_HE_TYPES_NUM
-    a count of possible types
-
 .. _`iwl_tlc_mng_ht_rates`:
 
 enum iwl_tlc_mng_ht_rates
@@ -276,7 +172,7 @@ enum iwl_tlc_mng_ht_rates
 
 .. c:type:: enum iwl_tlc_mng_ht_rates
 
-    HT/VHT rates
+    HT/VHT/HE rates
 
 .. _`iwl_tlc_mng_ht_rates.definition`:
 
@@ -296,6 +192,8 @@ Definition
         IWL_TLC_MNG_HT_RATE_MCS7,
         IWL_TLC_MNG_HT_RATE_MCS8,
         IWL_TLC_MNG_HT_RATE_MCS9,
+        IWL_TLC_MNG_HT_RATE_MCS10,
+        IWL_TLC_MNG_HT_RATE_MCS11,
         IWL_TLC_MNG_HT_RATE_MAX
     };
 
@@ -334,6 +232,12 @@ IWL_TLC_MNG_HT_RATE_MCS8
 IWL_TLC_MNG_HT_RATE_MCS9
     index of MCS9
 
+IWL_TLC_MNG_HT_RATE_MCS10
+    index of MCS10
+
+IWL_TLC_MNG_HT_RATE_MCS11
+    index of MCS11
+
 IWL_TLC_MNG_HT_RATE_MAX
     maximal rate for HT/VHT
 
@@ -356,19 +260,16 @@ Definition
     struct iwl_tlc_config_cmd {
         u8 sta_id;
         u8 reserved1[3];
-        u8 max_supp_ch_width;
-        u8 chains;
-        u8 max_supp_ss;
-        u8 valid_vht_he_types;
-        __le16 flags;
-        __le16 non_ht_supp_rates;
-        __le16 ht_supp_rates[MAX_RS_ANT_NUM];
+        u8 max_ch_width;
         u8 mode;
-        u8 reserved2;
-        __le16 he_supp_rates;
+        u8 chains;
+        u8 amsdu;
+        __le16 flags;
+        __le16 non_ht_rates;
+        __le16 ht_rates[MAX_NSS][2];
+        __le16 max_mpdu_len;
         u8 sgi_ch_width_supp;
-        u8 he_gi_support;
-        __le32 max_ampdu_cnt;
+        u8 reserved2[1];
     }
 
 .. _`iwl_tlc_config_cmd.members`:
@@ -382,88 +283,69 @@ sta_id
 reserved1
     reserved
 
-max_supp_ch_width
-    channel width
-
-chains
-    bitmask of \ :c:type:`enum iwl_tlc_mng_cfg_chains <iwl_tlc_mng_cfg_chains>`\ 
-
-max_supp_ss
-    valid values are 0-3, 0 - spatial streams are not supported
-
-valid_vht_he_types
-    bitmap of \ :c:type:`enum iwl_tlc_mng_vht_he_types <iwl_tlc_mng_vht_he_types>`\ 
-
-flags
-    bitmask of \ :c:type:`enum iwl_tlc_mng_cfg_flags <iwl_tlc_mng_cfg_flags>`\ 
-
-non_ht_supp_rates
-    bitmap of supported legacy rates
-
-ht_supp_rates
-    bitmap of supported HT/VHT rates, valid bits are 0-9
+max_ch_width
+    max supported channel width from \ ``enum``\  iwl_tlc_mng_cfg_cw
 
 mode
     \ :c:type:`enum iwl_tlc_mng_cfg_mode <iwl_tlc_mng_cfg_mode>`\ 
 
-reserved2
-    reserved
+chains
+    bitmask of \ :c:type:`enum iwl_tlc_mng_cfg_chains <iwl_tlc_mng_cfg_chains>`\ 
 
-he_supp_rates
-    bitmap of supported HE rates
+amsdu
+    TX amsdu is supported
+
+flags
+    bitmask of \ :c:type:`enum iwl_tlc_mng_cfg_flags <iwl_tlc_mng_cfg_flags>`\ 
+
+non_ht_rates
+    bitmap of supported legacy rates
+
+ht_rates
+    bitmap of \ :c:type:`enum iwl_tlc_mng_ht_rates <iwl_tlc_mng_ht_rates>`\ , per <nss, channel-width>
+    pair (0 - 80mhz width and below, 1 - 160mhz).
+
+max_mpdu_len
+    max MPDU length, in bytes
 
 sgi_ch_width_supp
     bitmap of SGI support per channel width
+    use BIT(@enum iwl_tlc_mng_cfg_cw)
 
-he_gi_support
-    11ax HE guard interval
+reserved2
+    reserved
 
-max_ampdu_cnt
-    max AMPDU size (frames count)
+.. _`iwl_tlc_update_flags`:
 
-.. _`iwl_tlc_notif_req_config_cmd`:
+enum iwl_tlc_update_flags
+=========================
 
-struct iwl_tlc_notif_req_config_cmd
-===================================
+.. c:type:: enum iwl_tlc_update_flags
 
-.. c:type:: struct iwl_tlc_notif_req_config_cmd
+    updated fields
 
-    request notif on specific changes
-
-.. _`iwl_tlc_notif_req_config_cmd.definition`:
+.. _`iwl_tlc_update_flags.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_tlc_notif_req_config_cmd {
-        u8 sta_id;
-        u8 reserved1;
-        __le16 flags;
-        __le16 interval;
-        __le16 reserved2;
-    }
+    enum iwl_tlc_update_flags {
+        IWL_TLC_NOTIF_FLAG_RATE,
+        IWL_TLC_NOTIF_FLAG_AMSDU
+    };
 
-.. _`iwl_tlc_notif_req_config_cmd.members`:
+.. _`iwl_tlc_update_flags.constants`:
 
-Members
--------
+Constants
+---------
 
-sta_id
-    relevant station
+IWL_TLC_NOTIF_FLAG_RATE
+    last initial rate update
 
-reserved1
-    reserved
-
-flags
-    bitmap of requested notifications \ ``IWL_TLC_NOTIF_INIT_``\ \\*
-
-interval
-    minimum time between notifications from TLC to the driver (msec)
-
-reserved2
-    reserved
+IWL_TLC_NOTIF_FLAG_AMSDU
+    umsdu parameters update
 
 .. _`iwl_tlc_update_notif`:
 
@@ -483,9 +365,11 @@ Definition
 
     struct iwl_tlc_update_notif {
         u8 sta_id;
-        u8 reserved;
-        __le16 flags;
-        __le32 values[16];
+        u8 reserved[3];
+        __le32 flags;
+        __le32 rate;
+        __le32 amsdu_size;
+        __le32 amsdu_enabled;
     }
 
 .. _`iwl_tlc_update_notif.members`:
@@ -502,8 +386,14 @@ reserved
 flags
     bitmap of notifications reported
 
-values
-    field per flag in struct iwl_tlc_notif_req_config_cmd
+rate
+    current initial rate
+
+amsdu_size
+    Max AMSDU size, in bytes
+
+amsdu_enabled
+    bitmap for per-TID AMSDU enablement
 
 .. _`iwl_tlc_debug_flags`:
 

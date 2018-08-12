@@ -1,29 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/ide/ide-lib.c
 
-.. _`ide_toggle_bounce`:
-
-ide_toggle_bounce
-=================
-
-.. c:function:: void ide_toggle_bounce(ide_drive_t *drive, int on)
-
-    handle bounce buffering
-
-    :param ide_drive_t \*drive:
-        drive to update
-
-    :param int on:
-        on/off boolean
-
-.. _`ide_toggle_bounce.description`:
-
-Description
------------
-
-Enable or disable bounce buffering for the device. Drives move
-between PIO and DMA and that changes the rules we need.
-
 .. _`ide_dump_status`:
 
 ide_dump_status

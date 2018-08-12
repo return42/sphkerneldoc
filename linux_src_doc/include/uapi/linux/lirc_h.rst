@@ -40,7 +40,8 @@ Definition
         RC_PROTO_RC6_MCE,
         RC_PROTO_SHARP,
         RC_PROTO_XMP,
-        RC_PROTO_CEC
+        RC_PROTO_CEC,
+        RC_PROTO_IMON
     };
 
 .. _`rc_proto.constants`:
@@ -116,6 +117,9 @@ RC_PROTO_XMP
 
 RC_PROTO_CEC
     CEC protocol
+
+RC_PROTO_IMON
+    iMon Pad protocol
 
 .. This file was automatic generated / don't edit.
 

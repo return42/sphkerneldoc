@@ -1,19 +1,49 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/lpfc/lpfc_sli.c
 
+.. _`lpfc_sli4_pcimem_bcopy`:
+
+lpfc_sli4_pcimem_bcopy
+======================
+
+.. c:function:: void lpfc_sli4_pcimem_bcopy(void *srcp, void *destp, uint32_t cnt)
+
+    SLI4 memory copy function
+
+    :param void \*srcp:
+        Source memory pointer.
+
+    :param void \*destp:
+        Destination memory pointer.
+
+    :param uint32_t cnt:
+        Number of words required to be copied.
+        Must be a multiple of sizeof(uint64_t)
+
+.. _`lpfc_sli4_pcimem_bcopy.description`:
+
+Description
+-----------
+
+This function is used for copying data between driver memory
+and the SLI WQ. This function also changes the endianness
+of each word if native endianness is different from SLI
+endianness. This function can be called with or without
+lock.
+
 .. _`lpfc_sli4_wq_put`:
 
 lpfc_sli4_wq_put
 ================
 
-.. c:function:: int lpfc_sli4_wq_put(struct lpfc_queue *q, union lpfc_wqe *wqe)
+.. c:function:: int lpfc_sli4_wq_put(struct lpfc_queue *q, union lpfc_wqe128 *wqe)
 
     Put a Work Queue Entry on an Work Queue
 
     :param struct lpfc_queue \*q:
         The Work Queue to operate on.
 
-    :param union lpfc_wqe \*wqe:
+    :param union lpfc_wqe128 \*wqe:
         The work Queue Entry to put on the Work queue.
 
 .. _`lpfc_sli4_wq_put.description`:
@@ -138,6 +168,18 @@ lpfc_sli4_eq_clr_intr
     :param struct lpfc_queue \*q:
         The Event Queue to disable interrupts
 
+.. _`lpfc_sli4_if6_eq_clr_intr`:
+
+lpfc_sli4_if6_eq_clr_intr
+=========================
+
+.. c:function:: void lpfc_sli4_if6_eq_clr_intr(struct lpfc_queue *q)
+
+    Turn off interrupts from this EQ
+
+    :param struct lpfc_queue \*q:
+        The Event Queue to disable interrupts
+
 .. _`lpfc_sli4_eq_release`:
 
 lpfc_sli4_eq_release
@@ -154,6 +196,36 @@ lpfc_sli4_eq_release
         Indicates whether the host wants to arms this CQ.
 
 .. _`lpfc_sli4_eq_release.description`:
+
+Description
+-----------
+
+This routine will mark all Event Queue Entries on \ ``q``\ , from the last
+known completed entry to the last entry that was processed, as completed
+by clearing the valid bit for each completion queue entry. Then it will
+notify the HBA, by ringing the doorbell, that the EQEs have been processed.
+The internal host index in the \ ``q``\  will be updated by this routine to indicate
+that the host has finished processing the entries. The \ ``arm``\  parameter
+indicates that the queue should be rearmed when ringing the doorbell.
+
+This function will return the number of EQEs that were popped.
+
+.. _`lpfc_sli4_if6_eq_release`:
+
+lpfc_sli4_if6_eq_release
+========================
+
+.. c:function:: uint32_t lpfc_sli4_if6_eq_release(struct lpfc_queue *q, bool arm)
+
+    Indicates the host has finished processing an EQ
+
+    :param struct lpfc_queue \*q:
+        The Event Queue that the host has completed processing for.
+
+    :param bool arm:
+        Indicates whether the host wants to arms this CQ.
+
+.. _`lpfc_sli4_if6_eq_release.description`:
 
 Description
 -----------
@@ -206,6 +278,36 @@ lpfc_sli4_cq_release
         Indicates whether the host wants to arms this CQ.
 
 .. _`lpfc_sli4_cq_release.description`:
+
+Description
+-----------
+
+This routine will mark all Completion queue entries on \ ``q``\ , from the last
+known completed entry to the last entry that was processed, as completed
+by clearing the valid bit for each completion queue entry. Then it will
+notify the HBA, by ringing the doorbell, that the CQEs have been processed.
+The internal host index in the \ ``q``\  will be updated by this routine to indicate
+that the host has finished processing the entries. The \ ``arm``\  parameter
+indicates that the queue should be rearmed when ringing the doorbell.
+
+This function will return the number of CQEs that were released.
+
+.. _`lpfc_sli4_if6_cq_release`:
+
+lpfc_sli4_if6_cq_release
+========================
+
+.. c:function:: uint32_t lpfc_sli4_if6_cq_release(struct lpfc_queue *q, bool arm)
+
+    Indicates the host has finished processing a CQ
+
+    :param struct lpfc_queue \*q:
+        The Completion Queue that the host has completed processing for.
+
+    :param bool arm:
+        Indicates whether the host wants to arms this CQ.
+
+.. _`lpfc_sli4_if6_cq_release.description`:
 
 Description
 -----------
@@ -3250,7 +3352,7 @@ Returns valid XRI = Success, NO_XRI = Failure.
 lpfc_sli4_iocb2wqe
 ==================
 
-.. c:function:: int lpfc_sli4_iocb2wqe(struct lpfc_hba *phba, struct lpfc_iocbq *iocbq, union lpfc_wqe *wqe)
+.. c:function:: int lpfc_sli4_iocb2wqe(struct lpfc_hba *phba, struct lpfc_iocbq *iocbq, union lpfc_wqe128 *wqe)
 
     Convert the IOCB to a work queue entry.
 
@@ -3260,7 +3362,7 @@ lpfc_sli4_iocb2wqe
     :param struct lpfc_iocbq \*iocbq:
         *undescribed*
 
-    :param union lpfc_wqe \*wqe:
+    :param union lpfc_wqe128 \*wqe:
         Pointer to the work queue entry.
 
 .. _`lpfc_sli4_iocb2wqe.description`:

@@ -257,7 +257,7 @@ BLIT_SURFACE_TO_SCREEN command.
 vmw_kms_sou_do_surface_dirty
 ============================
 
-.. c:function:: int vmw_kms_sou_do_surface_dirty(struct vmw_private *dev_priv, struct vmw_framebuffer *framebuffer, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, struct vmw_resource *srf, s32 dest_x, s32 dest_y, unsigned num_clips, int inc, struct vmw_fence_obj **out_fence)
+.. c:function:: int vmw_kms_sou_do_surface_dirty(struct vmw_private *dev_priv, struct vmw_framebuffer *framebuffer, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, struct vmw_resource *srf, s32 dest_x, s32 dest_y, unsigned num_clips, int inc, struct vmw_fence_obj **out_fence, struct drm_crtc *crtc)
 
     Dirty part of a surface backed framebuffer
 
@@ -294,6 +294,9 @@ vmw_kms_sou_do_surface_dirty
         If non-NULL, will return a ref-counted pointer to a
         struct vmw_fence_obj. The returned fence pointer may be NULL in which
         case the device has already synchronized.
+
+    :param struct drm_crtc \*crtc:
+        If crtc is passed, perform surface dirty on that crtc only.
 
 .. _`vmw_kms_sou_do_surface_dirty.description`:
 
@@ -346,7 +349,7 @@ Encodes a BLIT_GMRFB_TO_SCREEN cliprect.
 vmw_kms_sou_do_dmabuf_dirty
 ===========================
 
-.. c:function:: int vmw_kms_sou_do_dmabuf_dirty(struct vmw_private *dev_priv, struct vmw_framebuffer *framebuffer, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, unsigned num_clips, int increment, bool interruptible, struct vmw_fence_obj **out_fence)
+.. c:function:: int vmw_kms_sou_do_dmabuf_dirty(struct vmw_private *dev_priv, struct vmw_framebuffer *framebuffer, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, unsigned num_clips, int increment, bool interruptible, struct vmw_fence_obj **out_fence, struct drm_crtc *crtc)
 
     Dirty part of a dma-buffer backed framebuffer
 
@@ -376,6 +379,9 @@ vmw_kms_sou_do_dmabuf_dirty
         If non-NULL, will return a ref-counted pointer to a
         struct vmw_fence_obj. The returned fence pointer may be NULL in which
         case the device has already synchronized.
+
+    :param struct drm_crtc \*crtc:
+        If crtc is passed, perform dmabuf dirty on that crtc only.
 
 .. _`vmw_kms_sou_do_dmabuf_dirty.description`:
 
@@ -428,7 +434,7 @@ Encodes a BLIT_SCREEN_TO_GMRFB cliprect.
 vmw_kms_sou_readback
 ====================
 
-.. c:function:: int vmw_kms_sou_readback(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_framebuffer *vfb, struct drm_vmw_fence_rep __user *user_fence_rep, struct drm_vmw_rect *vclips, uint32_t num_clips)
+.. c:function:: int vmw_kms_sou_readback(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_framebuffer *vfb, struct drm_vmw_fence_rep __user *user_fence_rep, struct drm_vmw_rect *vclips, uint32_t num_clips, struct drm_crtc *crtc)
 
     Perform a readback from the screen object system to a dma-buffer backed framebuffer.
 
@@ -451,6 +457,9 @@ vmw_kms_sou_readback
 
     :param uint32_t num_clips:
         Number of clip rects in \ ``vclips``\ .
+
+    :param struct drm_crtc \*crtc:
+        If crtc is passed, readback on that crtc only.
 
 .. _`vmw_kms_sou_readback.description`:
 

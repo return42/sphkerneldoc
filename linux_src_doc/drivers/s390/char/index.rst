@@ -17,3 +17,4 @@ char
     sclp_cmd_c
     sclp_diag_h
     sclp_ftp_c
+    sclp_sd_c

@@ -15,6 +15,7 @@ brcmfmac
     cfg80211_h
     chip_h
     common_h
+    core_c
     core_h
     feature_c
     feature_h

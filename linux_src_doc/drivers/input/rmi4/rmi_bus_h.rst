@@ -23,6 +23,7 @@ Definition
         struct device dev;
         struct list_head node;
         unsigned int num_of_irqs;
+        int irq[RMI_FN_MAX_IRQS];
         unsigned int irq_pos;
         unsigned long irq_mask[];
     }
@@ -46,6 +47,9 @@ node
 
 num_of_irqs
     The number of irqs needed by this function
+
+irq
+    *undescribed*
 
 irq_pos
     The position in the irq bitfield this function holds
@@ -77,7 +81,7 @@ Definition
         void (*remove)(struct rmi_function *fn);
         int (*config)(struct rmi_function *fn);
         int (*reset)(struct rmi_function *fn);
-        int (*attention)(struct rmi_function *fn, unsigned long *irq_bits);
+        irqreturn_t (*attention)(int irq, void *ctx);
         int (*suspend)(struct rmi_function *fn);
         int (*resume)(struct rmi_function *fn);
     }

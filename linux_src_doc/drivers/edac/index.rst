@@ -7,6 +7,7 @@ edac
 .. toctree::
     :maxdepth: 1
 
+    altera_edac_c
     amd76x_edac_c
     edac_device_h
     edac_mc_c

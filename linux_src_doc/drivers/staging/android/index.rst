@@ -10,3 +10,4 @@ android
     ion/index
     uapi/index
     ashmem_c
+    vsoc_c

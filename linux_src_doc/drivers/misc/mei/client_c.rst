@@ -374,6 +374,47 @@ mei_io_cb_free
     :param struct mei_cl_cb \*cb:
         mei callback struct
 
+.. _`mei_tx_cb_enqueue`:
+
+mei_tx_cb_enqueue
+=================
+
+.. c:function:: void mei_tx_cb_enqueue(struct mei_cl_cb *cb, struct list_head *head)
+
+    queue tx callback
+
+    :param struct mei_cl_cb \*cb:
+        mei callback struct
+
+    :param struct list_head \*head:
+        an instance of list to queue on
+
+.. _`mei_tx_cb_enqueue.locking`:
+
+Locking
+-------
+
+called under "dev->device_lock" lock
+
+.. _`mei_tx_cb_dequeue`:
+
+mei_tx_cb_dequeue
+=================
+
+.. c:function:: void mei_tx_cb_dequeue(struct mei_cl_cb *cb)
+
+    dequeue tx callback
+
+    :param struct mei_cl_cb \*cb:
+        mei callback struct to dequeue and free
+
+.. _`mei_tx_cb_dequeue.locking`:
+
+Locking
+-------
+
+called under "dev->device_lock" lock
+
 .. _`mei_io_cb_init`:
 
 mei_io_cb_init
@@ -399,24 +440,6 @@ Return
 
 mei_cl_cb pointer or NULL;
 
-.. _`__mei_io_list_flush_cl`:
-
-\__mei_io_list_flush_cl
-=======================
-
-.. c:function:: void __mei_io_list_flush_cl(struct list_head *head, const struct mei_cl *cl, bool free)
-
-    removes and frees cbs belonging to cl.
-
-    :param struct list_head \*head:
-        an instance of our list structure
-
-    :param const struct mei_cl \*cl:
-        host client, can be NULL for flushing the whole list
-
-    :param bool free:
-        whether to free the cbs
-
 .. _`mei_io_list_flush_cl`:
 
 mei_io_list_flush_cl
@@ -424,22 +447,22 @@ mei_io_list_flush_cl
 
 .. c:function:: void mei_io_list_flush_cl(struct list_head *head, const struct mei_cl *cl)
 
-    removes list entry belonging to cl.
+    removes cbs belonging to the cl.
 
     :param struct list_head \*head:
-        An instance of our list structure
+        an instance of our list structure
 
     :param const struct mei_cl \*cl:
         host client
 
-.. _`mei_io_list_free_cl`:
+.. _`mei_io_tx_list_free_cl`:
 
-mei_io_list_free_cl
-===================
+mei_io_tx_list_free_cl
+======================
 
-.. c:function:: void mei_io_list_free_cl(struct list_head *head, const struct mei_cl *cl)
+.. c:function:: void mei_io_tx_list_free_cl(struct list_head *head, const struct mei_cl *cl)
 
-    removes cb belonging to cl and free them
+    removes cb belonging to the cl and free them
 
     :param struct list_head \*head:
         An instance of our list structure

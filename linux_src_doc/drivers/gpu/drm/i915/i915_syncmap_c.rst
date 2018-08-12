@@ -8,10 +8,10 @@ i915_syncmap_init
 
 .. c:function:: void i915_syncmap_init(struct i915_syncmap **root)
 
-    - initialise the #i915_syncmap \ ``root``\  - pointer to the #i915_syncmap
+    - initialise the #i915_syncmap
 
     :param struct i915_syncmap \*\*root:
-        *undescribed*
+        pointer to the #i915_syncmap
 
 .. _`i915_syncmap_is_later`:
 
@@ -20,16 +20,16 @@ i915_syncmap_is_later
 
 .. c:function:: bool i915_syncmap_is_later(struct i915_syncmap **root, u64 id, u32 seqno)
 
-    - compare against the last know sync point \ ``root``\  - pointer to the #i915_syncmap \ ``id``\  - the context id (other timeline) we are synchronising to \ ``seqno``\  - the sequence number along the other timeline
+    - compare against the last know sync point
 
     :param struct i915_syncmap \*\*root:
-        *undescribed*
+        pointer to the #i915_syncmap
 
     :param u64 id:
-        *undescribed*
+        the context id (other timeline) we are synchronising to
 
     :param u32 seqno:
-        *undescribed*
+        the sequence number along the other timeline
 
 .. _`i915_syncmap_is_later.description`:
 
@@ -51,16 +51,16 @@ i915_syncmap_set
 
 .. c:function:: int i915_syncmap_set(struct i915_syncmap **root, u64 id, u32 seqno)
 
-    - mark the most recent syncpoint between contexts \ ``root``\  - pointer to the #i915_syncmap \ ``id``\  - the context id (other timeline) we have synchronised to \ ``seqno``\  - the sequence number along the other timeline
+    - mark the most recent syncpoint between contexts
 
     :param struct i915_syncmap \*\*root:
-        *undescribed*
+        pointer to the #i915_syncmap
 
     :param u64 id:
-        *undescribed*
+        the context id (other timeline) we have synchronised to
 
     :param u32 seqno:
-        *undescribed*
+        the sequence number along the other timeline
 
 .. _`i915_syncmap_set.description`:
 
@@ -81,10 +81,10 @@ i915_syncmap_free
 
 .. c:function:: void i915_syncmap_free(struct i915_syncmap **root)
 
-    - free all memory associated with the syncmap \ ``root``\  - pointer to the #i915_syncmap
+    - free all memory associated with the syncmap
 
     :param struct i915_syncmap \*\*root:
-        *undescribed*
+        pointer to the #i915_syncmap
 
 .. _`i915_syncmap_free.description`:
 

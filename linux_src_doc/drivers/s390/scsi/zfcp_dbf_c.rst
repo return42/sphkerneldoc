@@ -119,6 +119,40 @@ Description
 
 The adapter->erp_lock has to be held.
 
+.. _`zfcp_dbf_rec_trig_lock`:
+
+zfcp_dbf_rec_trig_lock
+======================
+
+.. c:function:: void zfcp_dbf_rec_trig_lock(char *tag, struct zfcp_adapter *adapter, struct zfcp_port *port, struct scsi_device *sdev, u8 want, u8 need)
+
+    trace event related to triggered recovery with lock
+
+    :param char \*tag:
+        identifier for event
+
+    :param struct zfcp_adapter \*adapter:
+        adapter on which the erp_action should run
+
+    :param struct zfcp_port \*port:
+        remote port involved in the erp_action
+
+    :param struct scsi_device \*sdev:
+        scsi device involved in the erp_action
+
+    :param u8 want:
+        wanted erp_action
+
+    :param u8 need:
+        required erp_action
+
+.. _`zfcp_dbf_rec_trig_lock.description`:
+
+Description
+-----------
+
+The adapter->erp_lock must not be held.
+
 .. _`zfcp_dbf_rec_run_lvl`:
 
 zfcp_dbf_rec_run_lvl
@@ -225,26 +259,57 @@ zfcp_dbf_san_in_els
     :param struct zfcp_fsf_req \*fsf:
         *undescribed*
 
-.. _`zfcp_dbf_scsi`:
+.. _`zfcp_dbf_scsi_common`:
 
-zfcp_dbf_scsi
-=============
+zfcp_dbf_scsi_common
+====================
 
-.. c:function:: void zfcp_dbf_scsi(char *tag, int level, struct scsi_cmnd *sc, struct zfcp_fsf_req *fsf)
+.. c:function:: void zfcp_dbf_scsi_common(char *tag, int level, struct scsi_device *sdev, struct scsi_cmnd *sc, struct zfcp_fsf_req *fsf)
 
-    trace event for scsi commands
+    Common trace event helper for scsi.
 
     :param char \*tag:
-        identifier for event
+        Identifier for event.
 
     :param int level:
-        *undescribed*
+        trace level of event.
+
+    :param struct scsi_device \*sdev:
+        Pointer to SCSI device as context for this event.
 
     :param struct scsi_cmnd \*sc:
-        pointer to struct scsi_cmnd
+        Pointer to SCSI command, or NULL with task management function (TMF).
 
     :param struct zfcp_fsf_req \*fsf:
-        pointer to struct zfcp_fsf_req
+        Pointer to FSF request, or NULL.
+
+.. _`zfcp_dbf_scsi_eh`:
+
+zfcp_dbf_scsi_eh
+================
+
+.. c:function:: void zfcp_dbf_scsi_eh(char *tag, struct zfcp_adapter *adapter, unsigned int scsi_id, int ret)
+
+    Trace event for special cases of scsi_eh callbacks.
+
+    :param char \*tag:
+        Identifier for event.
+
+    :param struct zfcp_adapter \*adapter:
+        Pointer to zfcp adapter as context for this event.
+
+    :param unsigned int scsi_id:
+        SCSI ID/target to indicate scope of task management function (TMF).
+
+    :param int ret:
+        Return value of calling function.
+
+.. _`zfcp_dbf_scsi_eh.this-scsi-trace-variant-does-not-depend-on-any-of`:
+
+This SCSI trace variant does not depend on any of
+-------------------------------------------------
+
+scsi_cmnd, zfcp_fsf_req, scsi_device.
 
 .. _`zfcp_dbf_adapter_register`:
 

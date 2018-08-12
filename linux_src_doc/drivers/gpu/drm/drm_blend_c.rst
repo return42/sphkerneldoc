@@ -59,19 +59,58 @@ scaling is unspecified.
 On top of this basic transformation additional properties can be exposed by
 the driver:
 
-- Rotation is set up with \ :c:func:`drm_plane_create_rotation_property`\ . It adds a
-  rotation and reflection step between the source and destination rectangles.
-  Without this property the rectangle is only scaled, but not rotated or
-  reflected.
+alpha:
+     Alpha is setup with \ :c:func:`drm_plane_create_alpha_property`\ . It controls the
+     plane-wide opacity, from transparent (0) to opaque (0xffff). It can be
+     combined with pixel alpha.
+     The pixel values in the framebuffers are expected to not be
+     pre-multiplied by the global alpha associated to the plane.
 
-- Z position is set up with \ :c:func:`drm_plane_create_zpos_immutable_property`\  and
-  \ :c:func:`drm_plane_create_zpos_property`\ . It controls the visibility of overlapping
-  planes. Without this property the primary plane is always below the cursor
-  plane, and ordering between all other planes is undefined.
+rotation:
+     Rotation is set up with \ :c:func:`drm_plane_create_rotation_property`\ . It adds a
+     rotation and reflection step between the source and destination rectangles.
+     Without this property the rectangle is only scaled, but not rotated or
+     reflected.
+
+zpos:
+     Z position is set up with \ :c:func:`drm_plane_create_zpos_immutable_property`\  and
+     \ :c:func:`drm_plane_create_zpos_property`\ . It controls the visibility of overlapping
+     planes. Without this property the primary plane is always below the cursor
+     plane, and ordering between all other planes is undefined.
 
 Note that all the property extensions described here apply either to the
 plane or the CRTC (e.g. for the background color, which currently is not
 exposed and assumed to be black).
+
+.. _`drm_plane_create_alpha_property`:
+
+drm_plane_create_alpha_property
+===============================
+
+.. c:function:: int drm_plane_create_alpha_property(struct drm_plane *plane)
+
+    create a new alpha property
+
+    :param struct drm_plane \*plane:
+        drm plane
+
+.. _`drm_plane_create_alpha_property.description`:
+
+Description
+-----------
+
+This function creates a generic, mutable, alpha property and enables support
+for it in the DRM core. It is attached to \ ``plane``\ .
+
+The alpha property will be allowed to be within the bounds of 0
+(transparent) to 0xffff (opaque).
+
+.. _`drm_plane_create_alpha_property.return`:
+
+Return
+------
+
+0 on success, negative error code on failure.
 
 .. _`drm_plane_create_rotation_property`:
 

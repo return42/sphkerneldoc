@@ -140,6 +140,8 @@ Definition
         int buf_siz;
         int buf_cnt;
         int nonblocking;
+        enum dmx_buffer_flags flags;
+        u32 count;
         char name[DVB_VB2_NAME_MAX + 1];
     }
 
@@ -182,6 +184,15 @@ buf_cnt
 nonblocking
     If different than zero, device is operating on non-blocking
     mode.
+
+flags
+    buffer flags as defined by \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
+    Filled only at \ :c:type:`struct DMX_DQBUF <DMX_DQBUF>`\ . \ :c:type:`struct DMX_QBUF <DMX_QBUF>`\  should zero this field.
+
+count
+    monotonic counter for filled buffers. Helps to identify
+    data stream loses. Filled only at \ :c:type:`struct DMX_DQBUF <DMX_DQBUF>`\ . \ :c:type:`struct DMX_QBUF <DMX_QBUF>`\  should
+    zero this field.
 
 name
     name of the device type. Currently, it can either be
@@ -241,7 +252,7 @@ Return
 dvb_vb2_fill_buffer
 ===================
 
-.. c:function:: int dvb_vb2_fill_buffer(struct dvb_vb2_ctx *ctx, const unsigned char *src, int len)
+.. c:function:: int dvb_vb2_fill_buffer(struct dvb_vb2_ctx *ctx, const unsigned char *src, int len, enum dmx_buffer_flags *buffer_flags)
 
     fills a VB2 buffer
 
@@ -253,6 +264,10 @@ dvb_vb2_fill_buffer
 
     :param int len:
         number of bytes to be copied from \ ``src``\ 
+
+    :param enum dmx_buffer_flags \*buffer_flags:
+        pointer to buffer flags as defined by \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
+        can be NULL.
 
 .. _`dvb_vb2_poll`:
 

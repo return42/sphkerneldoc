@@ -7,5 +7,6 @@ common
 .. toctree::
     :maxdepth: 1
 
+    cros_ec_sensors_core_h
     ssp_sensors_h
     st_sensors_h

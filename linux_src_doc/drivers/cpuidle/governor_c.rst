@@ -45,5 +45,17 @@ cpuidle_register_governor
     :param struct cpuidle_governor \*gov:
         the governor
 
+.. _`cpuidle_governor_latency_req`:
+
+cpuidle_governor_latency_req
+============================
+
+.. c:function:: int cpuidle_governor_latency_req(unsigned int cpu)
+
+    Compute a latency constraint for CPU
+
+    :param unsigned int cpu:
+        Target CPU
+
 .. This file was automatic generated / don't edit.
 

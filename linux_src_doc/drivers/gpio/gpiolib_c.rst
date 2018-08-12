@@ -620,6 +620,16 @@ gpiochip_add_pingroup_range
     :param const char \*pin_group:
         name of the pin group inside the pin controller
 
+.. _`gpiochip_add_pingroup_range.description`:
+
+Description
+-----------
+
+Calling this function directly from a DeviceTree-supported
+pinctrl driver is DEPRECATED. Please see Section 2.1 of
+Documentation/devicetree/bindings/gpio/gpio.txt on how to
+bind pinctrl and gpio drivers via the "gpio-ranges" property.
+
 .. _`gpiochip_add_pin_range`:
 
 gpiochip_add_pin_range
@@ -651,6 +661,11 @@ Return
 ------
 
 0 on success, or a negative error-code on failure.
+
+Calling this function directly from a DeviceTree-supported
+pinctrl driver is DEPRECATED. Please see Section 2.1 of
+Documentation/devicetree/bindings/gpio/gpio.txt on how to
+bind pinctrl and gpio drivers via the "gpio-ranges" property.
 
 .. _`gpiochip_remove_pin_ranges`:
 
@@ -1074,7 +1089,7 @@ complain if the GPIO chip functions potentially sleep.
 gpiod_set_raw_array_value
 =========================
 
-.. c:function:: void gpiod_set_raw_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_set_raw_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
 
     assign values to an array of GPIOs
 
@@ -1361,7 +1376,7 @@ This function is to be called from contexts that can sleep.
 gpiod_set_raw_array_value_cansleep
 ==================================
 
-.. c:function:: void gpiod_set_raw_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_set_raw_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
 
     assign values to an array of GPIOs
 
@@ -1450,6 +1465,18 @@ gpiod_remove_lookup_table
 
     :param struct gpiod_lookup_table \*table:
         table of consumers to unregister
+
+.. _`gpiod_add_hogs`:
+
+gpiod_add_hogs
+==============
+
+.. c:function:: void gpiod_add_hogs(struct gpiod_hog *hogs)
+
+    register a set of GPIO hogs from machine code
+
+    :param struct gpiod_hog \*hogs:
+        table of gpio hog entries with a zeroed sentinel at the end
 
 .. _`gpiod_count`:
 

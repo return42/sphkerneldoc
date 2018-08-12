@@ -216,5 +216,37 @@ Description
 
 Move \ ``ring``\  to the tail of the lru list
 
+.. _`amdgpu_ring_emit_reg_write_reg_wait_helper`:
+
+amdgpu_ring_emit_reg_write_reg_wait_helper
+==========================================
+
+.. c:function:: void amdgpu_ring_emit_reg_write_reg_wait_helper(struct amdgpu_ring *ring, uint32_t reg0, uint32_t reg1, uint32_t ref, uint32_t mask)
+
+    ring helper
+
+    :param struct amdgpu_ring \*ring:
+        *undescribed*
+
+    :param uint32_t reg0:
+        register to write
+
+    :param uint32_t reg1:
+        register to wait on
+
+    :param uint32_t ref:
+        reference value to write/wait on
+
+    :param uint32_t mask:
+        mask to wait on
+
+.. _`amdgpu_ring_emit_reg_write_reg_wait_helper.description`:
+
+Description
+-----------
+
+Helper for rings that don't support write and wait in a
+single oneshot packet.
+
 .. This file was automatic generated / don't edit.
 

@@ -12,6 +12,7 @@ remoteproc
     keystone_remoteproc_c
     omap_remoteproc_c
     qcom_common_c
+    qcom_sysmon_c
     remoteproc_core_c
     remoteproc_elf_loader_c
     remoteproc_virtio_c

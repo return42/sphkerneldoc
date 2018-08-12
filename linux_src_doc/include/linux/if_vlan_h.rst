@@ -234,6 +234,37 @@ Description
 
 Returns true if the ether type is a vlan ether type.
 
+.. _`__vlan_insert_inner_tag`:
+
+\__vlan_insert_inner_tag
+========================
+
+.. c:function:: int __vlan_insert_inner_tag(struct sk_buff *skb, __be16 vlan_proto, u16 vlan_tci, unsigned int mac_len)
+
+    inner VLAN tag inserting
+
+    :param struct sk_buff \*skb:
+        skbuff to tag
+
+    :param __be16 vlan_proto:
+        VLAN encapsulation protocol
+
+    :param u16 vlan_tci:
+        VLAN TCI to insert
+
+    :param unsigned int mac_len:
+        MAC header length including outer vlan headers
+
+.. _`__vlan_insert_inner_tag.description`:
+
+Description
+-----------
+
+Inserts the VLAN tag into \ ``skb``\  as part of the payload at offset mac_len
+Returns error if skb_cow_head fails.
+
+Does not change skb->protocol so this function can be used during receive.
+
 .. _`__vlan_insert_tag`:
 
 \__vlan_insert_tag
@@ -258,7 +289,41 @@ Description
 -----------
 
 Inserts the VLAN tag into \ ``skb``\  as part of the payload
-Returns error if skb_cow_head failes.
+Returns error if skb_cow_head fails.
+
+Does not change skb->protocol so this function can be used during receive.
+
+.. _`vlan_insert_inner_tag`:
+
+vlan_insert_inner_tag
+=====================
+
+.. c:function:: struct sk_buff *vlan_insert_inner_tag(struct sk_buff *skb, __be16 vlan_proto, u16 vlan_tci, unsigned int mac_len)
+
+    inner VLAN tag inserting
+
+    :param struct sk_buff \*skb:
+        skbuff to tag
+
+    :param __be16 vlan_proto:
+        VLAN encapsulation protocol
+
+    :param u16 vlan_tci:
+        VLAN TCI to insert
+
+    :param unsigned int mac_len:
+        MAC header length including outer vlan headers
+
+.. _`vlan_insert_inner_tag.description`:
+
+Description
+-----------
+
+Inserts the VLAN tag into \ ``skb``\  as part of the payload at offset mac_len
+Returns a VLAN tagged skb. If a new skb is created, \ ``skb``\  is freed.
+
+Following the \ :c:func:`skb_unshare`\  example, in case of error, the calling function
+doesn't have to worry about freeing the original skb.
 
 Does not change skb->protocol so this function can be used during receive.
 
@@ -484,11 +549,11 @@ accelerated or not.
 skb_vlan_tagged_multi
 =====================
 
-.. c:function:: bool skb_vlan_tagged_multi(const struct sk_buff *skb)
+.. c:function:: bool skb_vlan_tagged_multi(struct sk_buff *skb)
 
     check if skb is vlan tagged with multiple headers.
 
-    :param const struct sk_buff \*skb:
+    :param struct sk_buff \*skb:
         skbuff to query
 
 .. _`skb_vlan_tagged_multi.description`:
@@ -504,11 +569,11 @@ of whether it is hardware accelerated or not.
 vlan_features_check
 ===================
 
-.. c:function:: netdev_features_t vlan_features_check(const struct sk_buff *skb, netdev_features_t features)
+.. c:function:: netdev_features_t vlan_features_check(struct sk_buff *skb, netdev_features_t features)
 
     drop unsafe features for skb with multiple tags.
 
-    :param const struct sk_buff \*skb:
+    :param struct sk_buff \*skb:
         skbuff to query
 
     :param netdev_features_t features:

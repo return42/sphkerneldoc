@@ -6,7 +6,7 @@
 crb_go_idle
 ===========
 
-.. c:function:: int __maybe_unused crb_go_idle(struct device *dev, struct crb_priv *priv)
+.. c:function:: int crb_go_idle(struct device *dev, struct crb_priv *priv)
 
     request tpm crb device to go the idle state
 
@@ -41,7 +41,7 @@ Return
 crb_cmd_ready
 =============
 
-.. c:function:: int __maybe_unused crb_cmd_ready(struct device *dev, struct crb_priv *priv)
+.. c:function:: int crb_cmd_ready(struct device *dev, struct crb_priv *priv)
 
     request tpm crb device to enter ready state
 

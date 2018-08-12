@@ -347,7 +347,7 @@ i40evf_request_traffic_irqs
         board private structure
 
     :param char \*basename:
-        *undescribed*
+        device basename
 
 .. _`i40evf_request_traffic_irqs.description`:
 
@@ -527,7 +527,7 @@ i40evf_vlan_rx_add_vid
         network device struct
 
     :param __always_unused __be16 proto:
-        *undescribed*
+        unused protocol data
 
     :param u16 vid:
         VLAN tag
@@ -545,7 +545,7 @@ i40evf_vlan_rx_kill_vid
         network device struct
 
     :param __always_unused __be16 proto:
-        *undescribed*
+        unused protocol data
 
     :param u16 vid:
         VLAN tag
@@ -555,14 +555,14 @@ i40evf_vlan_rx_kill_vid
 i40evf_find_filter
 ==================
 
-.. c:function:: struct i40evf_mac_filter *i40evf_find_filter(struct i40evf_adapter *adapter, u8 *macaddr)
+.. c:function:: struct i40evf_mac_filter *i40evf_find_filter(struct i40evf_adapter *adapter, const u8 *macaddr)
 
     Search filter list for specific mac filter
 
     :param struct i40evf_adapter \*adapter:
         board private structure
 
-    :param u8 \*macaddr:
+    :param const u8 \*macaddr:
         the MAC address
 
 .. _`i40evf_find_filter.description`:
@@ -578,14 +578,14 @@ mac_vlan_list_lock.
 i40evf_add_filter
 =================
 
-.. c:function:: struct i40evf_mac_filter *i40evf_add_filter(struct i40evf_adapter *adapter, u8 *macaddr)
+.. c:function:: struct i40evf_mac_filter *i40evf_add_filter(struct i40evf_adapter *adapter, const u8 *macaddr)
 
     Add a mac filter to the filter list
 
     :param struct i40evf_adapter \*adapter:
         board private structure
 
-    :param u8 \*macaddr:
+    :param const u8 \*macaddr:
         the MAC address
 
 .. _`i40evf_add_filter.description`:
@@ -616,6 +616,52 @@ Description
 -----------
 
 Returns 0 on success, negative on failure
+
+.. _`i40evf_addr_sync`:
+
+i40evf_addr_sync
+================
+
+.. c:function:: int i40evf_addr_sync(struct net_device *netdev, const u8 *addr)
+
+    Callback for dev_(mc\|uc)_sync to add address
+
+    :param struct net_device \*netdev:
+        the netdevice
+
+    :param const u8 \*addr:
+        address to add
+
+.. _`i40evf_addr_sync.description`:
+
+Description
+-----------
+
+Called by \__dev_(mc\|uc)_sync when an address needs to be added. We call
+\__dev_(uc\|mc)_sync from .set_rx_mode and guarantee to hold the hash lock.
+
+.. _`i40evf_addr_unsync`:
+
+i40evf_addr_unsync
+==================
+
+.. c:function:: int i40evf_addr_unsync(struct net_device *netdev, const u8 *addr)
+
+    Callback for dev_(mc\|uc)_sync to remove address
+
+    :param struct net_device \*netdev:
+        the netdevice
+
+    :param const u8 \*addr:
+        address to add
+
+.. _`i40evf_addr_unsync.description`:
+
+Description
+-----------
+
+Called by \__dev_(mc\|uc)_sync when an address needs to be removed. We call
+\__dev_(uc\|mc)_sync from .set_rx_mode and guarantee to hold the hash lock.
 
 .. _`i40evf_set_rx_mode`:
 
@@ -1132,6 +1178,240 @@ Description
 
 Free all receive software resources
 
+.. _`i40evf_validate_tx_bandwidth`:
+
+i40evf_validate_tx_bandwidth
+============================
+
+.. c:function:: int i40evf_validate_tx_bandwidth(struct i40evf_adapter *adapter, u64 max_tx_rate)
+
+    validate the max Tx bandwidth
+
+    :param struct i40evf_adapter \*adapter:
+        board private structure
+
+    :param u64 max_tx_rate:
+        max Tx bw for a tc
+
+.. _`i40evf_validate_ch_config`:
+
+i40evf_validate_ch_config
+=========================
+
+.. c:function:: int i40evf_validate_ch_config(struct i40evf_adapter *adapter, struct tc_mqprio_qopt_offload *mqprio_qopt)
+
+    validate queue mapping info
+
+    :param struct i40evf_adapter \*adapter:
+        board private structure
+
+    :param struct tc_mqprio_qopt_offload \*mqprio_qopt:
+        queue parameters
+
+.. _`i40evf_validate_ch_config.description`:
+
+Description
+-----------
+
+This function validates if the config provided by the user to
+configure queue channels is valid or not. Returns 0 on a valid
+config.
+
+.. _`i40evf_del_all_cloud_filters`:
+
+i40evf_del_all_cloud_filters
+============================
+
+.. c:function:: void i40evf_del_all_cloud_filters(struct i40evf_adapter *adapter)
+
+    delete all cloud filters on the traffic classes
+
+    :param struct i40evf_adapter \*adapter:
+        *undescribed*
+
+.. _`__i40evf_setup_tc`:
+
+\__i40evf_setup_tc
+==================
+
+.. c:function:: int __i40evf_setup_tc(struct net_device *netdev, void *type_data)
+
+    configure multiple traffic classes
+
+    :param struct net_device \*netdev:
+        network interface device structure
+
+    :param void \*type_data:
+        *undescribed*
+
+.. _`__i40evf_setup_tc.description`:
+
+Description
+-----------
+
+This function processes the config information provided by the
+user to configure traffic classes/queue channels and packages the
+information to request the PF to setup traffic classes.
+
+Returns 0 on success.
+
+.. _`i40evf_parse_cls_flower`:
+
+i40evf_parse_cls_flower
+=======================
+
+.. c:function:: int i40evf_parse_cls_flower(struct i40evf_adapter *adapter, struct tc_cls_flower_offload *f, struct i40evf_cloud_filter *filter)
+
+    Parse tc flower filters provided by kernel
+
+    :param struct i40evf_adapter \*adapter:
+        board private structure
+
+    :param struct tc_cls_flower_offload \*f:
+        *undescribed*
+
+    :param struct i40evf_cloud_filter \*filter:
+        pointer to cloud filter structure
+
+.. _`i40evf_handle_tclass`:
+
+i40evf_handle_tclass
+====================
+
+.. c:function:: int i40evf_handle_tclass(struct i40evf_adapter *adapter, u32 tc, struct i40evf_cloud_filter *filter)
+
+    Forward to a traffic class on the device
+
+    :param struct i40evf_adapter \*adapter:
+        board private structure
+
+    :param u32 tc:
+        traffic class index on the device
+
+    :param struct i40evf_cloud_filter \*filter:
+        pointer to cloud filter structure
+
+.. _`i40evf_configure_clsflower`:
+
+i40evf_configure_clsflower
+==========================
+
+.. c:function:: int i40evf_configure_clsflower(struct i40evf_adapter *adapter, struct tc_cls_flower_offload *cls_flower)
+
+    Add tc flower filters
+
+    :param struct i40evf_adapter \*adapter:
+        board private structure
+
+    :param struct tc_cls_flower_offload \*cls_flower:
+        Pointer to struct tc_cls_flower_offload
+
+.. _`i40evf_delete_clsflower`:
+
+i40evf_delete_clsflower
+=======================
+
+.. c:function:: int i40evf_delete_clsflower(struct i40evf_adapter *adapter, struct tc_cls_flower_offload *cls_flower)
+
+    Remove tc flower filters
+
+    :param struct i40evf_adapter \*adapter:
+        board private structure
+
+    :param struct tc_cls_flower_offload \*cls_flower:
+        Pointer to struct tc_cls_flower_offload
+
+.. _`i40evf_setup_tc_cls_flower`:
+
+i40evf_setup_tc_cls_flower
+==========================
+
+.. c:function:: int i40evf_setup_tc_cls_flower(struct i40evf_adapter *adapter, struct tc_cls_flower_offload *cls_flower)
+
+    flower classifier offloads
+
+    :param struct i40evf_adapter \*adapter:
+        *undescribed*
+
+    :param struct tc_cls_flower_offload \*cls_flower:
+        *undescribed*
+
+.. _`i40evf_setup_tc_block_cb`:
+
+i40evf_setup_tc_block_cb
+========================
+
+.. c:function:: int i40evf_setup_tc_block_cb(enum tc_setup_type type, void *type_data, void *cb_priv)
+
+    block callback for tc
+
+    :param enum tc_setup_type type:
+        type of offload
+
+    :param void \*type_data:
+        offload data
+
+    :param void \*cb_priv:
+        *undescribed*
+
+.. _`i40evf_setup_tc_block_cb.description`:
+
+Description
+-----------
+
+This function is the block callback for traffic classes
+
+.. _`i40evf_setup_tc_block`:
+
+i40evf_setup_tc_block
+=====================
+
+.. c:function:: int i40evf_setup_tc_block(struct net_device *dev, struct tc_block_offload *f)
+
+    register callbacks for tc
+
+    :param struct net_device \*dev:
+        *undescribed*
+
+    :param struct tc_block_offload \*f:
+        tc offload data
+
+.. _`i40evf_setup_tc_block.description`:
+
+Description
+-----------
+
+This function registers block callbacks for tc
+offloads
+
+.. _`i40evf_setup_tc`:
+
+i40evf_setup_tc
+===============
+
+.. c:function:: int i40evf_setup_tc(struct net_device *netdev, enum tc_setup_type type, void *type_data)
+
+    configure multiple traffic classes
+
+    :param struct net_device \*netdev:
+        network interface device structure
+
+    :param enum tc_setup_type type:
+        type of offload
+
+    :param void \*type_data:
+        *undescribed*
+
+.. _`i40evf_setup_tc.description`:
+
+Description
+-----------
+
+This function is the callback to ndo_setup_tc in the
+netdev_ops.
+
+Returns 0 on success
+
 .. _`i40evf_open`:
 
 i40evf_open
@@ -1238,7 +1518,7 @@ i40evf_features_check
         skb buff
 
     :param struct net_device \*dev:
-        *undescribed*
+        This physical port's netdev
 
     :param netdev_features_t features:
         Offload features that the stack believes apply

@@ -21,7 +21,7 @@ workingset_eviction
 Description
 -----------
 
-Returns a shadow entry to be stored in \ ``mapping``\ ->page_tree in place
+Returns a shadow entry to be stored in \ ``mapping``\ ->i_pages in place
 of the evicted \ ``page``\  so that a later refault can be detected.
 
 .. _`workingset_refault`:

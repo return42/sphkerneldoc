@@ -287,46 +287,6 @@ LOCKING
 
      EH context.
 
-.. _`ata_scsi_timed_out`:
-
-ata_scsi_timed_out
-==================
-
-.. c:function:: enum blk_eh_timer_return ata_scsi_timed_out(struct scsi_cmnd *cmd)
-
-    SCSI layer time out callback
-
-    :param struct scsi_cmnd \*cmd:
-        timed out SCSI command
-
-.. _`ata_scsi_timed_out.description`:
-
-Description
------------
-
-     Handles SCSI layer timeout.  We race with normal completion of
-     the qc for \ ``cmd``\ .  If the qc is already gone, we lose and let
-     the scsi command finish (EH_HANDLED).  Otherwise, the qc has
-     timed out and EH should be invoked.  Prevent \ :c:func:`ata_qc_complete`\ 
-     from finishing it by setting EH_SCHEDULED and return
-     EH_NOT_HANDLED.
-
-     TODO: kill this function once old EH is gone.
-
-.. _`ata_scsi_timed_out.locking`:
-
-LOCKING
--------
-
-     Called from timer context
-
-.. _`ata_scsi_timed_out.return`:
-
-Return
-------
-
-     EH_HANDLED or EH_NOT_HANDLED
-
 .. _`ata_scsi_error`:
 
 ata_scsi_error
@@ -1371,6 +1331,26 @@ Description
      might be useful or not.  We don't want to retry media errors
      because the drive itself has probably already taken 10-30 seconds
      doing its own internal retries before reporting the failure.
+
+.. _`ata_eh_quiet`:
+
+ata_eh_quiet
+============
+
+.. c:function:: bool ata_eh_quiet(struct ata_queued_cmd *qc)
+
+    check if we need to be quiet about a command error
+
+    :param struct ata_queued_cmd \*qc:
+        qc to check
+
+.. _`ata_eh_quiet.description`:
+
+Description
+-----------
+
+     Look at the qc flags anbd its scsi command request flags to determine
+     if we need to be quiet about the command failure.
 
 .. _`ata_eh_link_autopsy`:
 

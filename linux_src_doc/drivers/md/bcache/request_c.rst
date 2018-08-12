@@ -11,7 +11,7 @@ bch_data_insert
     stick some data in the cache
 
     :param struct closure \*cl:
-        *undescribed*
+        closure pointer.
 
 .. _`bch_data_insert.description`:
 

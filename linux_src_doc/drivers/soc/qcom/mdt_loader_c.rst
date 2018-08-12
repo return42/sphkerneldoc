@@ -25,7 +25,7 @@ Returns size of the loaded firmware blob, or -EINVAL on failure.
 qcom_mdt_load
 =============
 
-.. c:function:: int qcom_mdt_load(struct device *dev, const struct firmware *fw, const char *firmware, int pas_id, void *mem_region, phys_addr_t mem_phys, size_t mem_size)
+.. c:function:: int qcom_mdt_load(struct device *dev, const struct firmware *fw, const char *firmware, int pas_id, void *mem_region, phys_addr_t mem_phys, size_t mem_size, phys_addr_t *reloc_base)
 
     load the firmware which header is loaded as fw
 
@@ -49,6 +49,9 @@ qcom_mdt_load
 
     :param size_t mem_size:
         size of the allocated memory region
+
+    :param phys_addr_t \*reloc_base:
+        adjusted physical address after relocation
 
 .. _`qcom_mdt_load.description`:
 

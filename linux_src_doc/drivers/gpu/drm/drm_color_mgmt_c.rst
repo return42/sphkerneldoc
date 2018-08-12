@@ -66,6 +66,20 @@ There is also support for a legacy gamma table, which is set up by calling
 \ :c:func:`drm_atomic_helper_legacy_gamma_set`\  to alias the legacy gamma ramp with the
 "GAMMA_LUT" property above.
 
+Support for different non RGB color encodings is controlled through
+\ :c:type:`struct drm_plane <drm_plane>`\  specific COLOR_ENCODING and COLOR_RANGE properties. They
+are set up by calling \ :c:func:`drm_plane_create_color_properties`\ .
+
+"COLOR_ENCODING"
+     Optional plane enum property to support different non RGB
+     color encodings. The driver can provide a subset of standard
+     enum values supported by the DRM plane.
+
+"COLOR_RANGE"
+     Optional plane enum property to support different non RGB
+     color parameter ranges. The driver can provide a subset of
+     standard enum values supported by the DRM plane.
+
 .. _`drm_color_lut_extract`:
 
 drm_color_lut_extract
@@ -228,6 +242,81 @@ Return
 ------
 
 Zero on success, negative errno on failure.
+
+.. _`drm_get_color_encoding_name`:
+
+drm_get_color_encoding_name
+===========================
+
+.. c:function:: const char *drm_get_color_encoding_name(enum drm_color_encoding encoding)
+
+    return a string for color encoding
+
+    :param enum drm_color_encoding encoding:
+        color encoding to compute name of
+
+.. _`drm_get_color_encoding_name.description`:
+
+Description
+-----------
+
+In contrast to the other drm_get_*_name functions this one here returns a
+const pointer and hence is threadsafe.
+
+.. _`drm_get_color_range_name`:
+
+drm_get_color_range_name
+========================
+
+.. c:function:: const char *drm_get_color_range_name(enum drm_color_range range)
+
+    return a string for color range
+
+    :param enum drm_color_range range:
+        color range to compute name of
+
+.. _`drm_get_color_range_name.description`:
+
+Description
+-----------
+
+In contrast to the other drm_get_*_name functions this one here returns a
+const pointer and hence is threadsafe.
+
+.. _`drm_plane_create_color_properties`:
+
+drm_plane_create_color_properties
+=================================
+
+.. c:function:: int drm_plane_create_color_properties(struct drm_plane *plane, u32 supported_encodings, u32 supported_ranges, enum drm_color_encoding default_encoding, enum drm_color_range default_range)
+
+    color encoding related plane properties
+
+    :param struct drm_plane \*plane:
+        plane object
+
+    :param u32 supported_encodings:
+        bitfield indicating supported color encodings
+
+    :param u32 supported_ranges:
+        bitfileld indicating supported color ranges
+
+    :param enum drm_color_encoding default_encoding:
+        default color encoding
+
+    :param enum drm_color_range default_range:
+        default color range
+
+.. _`drm_plane_create_color_properties.description`:
+
+Description
+-----------
+
+Create and attach plane specific COLOR_ENCODING and COLOR_RANGE
+properties to \ ``plane``\ . The supported encodings and ranges should
+be provided in supported_encodings and supported_ranges bitmasks.
+Each bit set in the bitmask indicates that its number as enum
+value is supported.
 
 .. This file was automatic generated / don't edit.
 

@@ -67,6 +67,18 @@ Parse and initialize settings from the Video BIOS Tables (VBT). If the VBT
 was not found in ACPI OpRegion, try to find it in PCI ROM first. Also
 initialize some defaults if the VBT is not present at all.
 
+.. _`intel_bios_cleanup`:
+
+intel_bios_cleanup
+==================
+
+.. c:function:: void intel_bios_cleanup(struct drm_i915_private *dev_priv)
+
+    Free any resources allocated by \ :c:func:`intel_bios_init`\ 
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
 .. _`intel_bios_is_tv_present`:
 
 intel_bios_is_tv_present

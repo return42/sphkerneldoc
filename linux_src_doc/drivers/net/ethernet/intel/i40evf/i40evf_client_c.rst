@@ -269,7 +269,7 @@ i40evf_client_setup_qvlist
         Client pointer.
 
     :param struct i40e_qvlist_info \*qvlist_info:
-        *undescribed*
+        queue and vector list
 
 .. _`i40evf_client_setup_qvlist.description`:
 

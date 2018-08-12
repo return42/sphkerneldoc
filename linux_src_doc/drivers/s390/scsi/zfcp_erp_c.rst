@@ -1,6 +1,60 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/s390/scsi/zfcp_erp.c
 
+.. _`zfcp_erp_act_type`:
+
+enum zfcp_erp_act_type
+======================
+
+.. c:type:: enum zfcp_erp_act_type
+
+    Type of ERP action object.
+
+.. _`zfcp_erp_act_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum zfcp_erp_act_type {
+        ZFCP_ERP_ACTION_REOPEN_LUN,
+        ZFCP_ERP_ACTION_REOPEN_PORT,
+        ZFCP_ERP_ACTION_REOPEN_PORT_FORCED,
+        ZFCP_ERP_ACTION_REOPEN_ADAPTER,
+        ZFCP_ERP_ACTION_NONE,
+        ZFCP_ERP_ACTION_FAILED
+    };
+
+.. _`zfcp_erp_act_type.constants`:
+
+Constants
+---------
+
+ZFCP_ERP_ACTION_REOPEN_LUN
+    LUN recovery.
+
+ZFCP_ERP_ACTION_REOPEN_PORT
+    Port recovery.
+
+ZFCP_ERP_ACTION_REOPEN_PORT_FORCED
+    Forced port recovery.
+
+ZFCP_ERP_ACTION_REOPEN_ADAPTER
+    Adapter recovery.
+
+ZFCP_ERP_ACTION_NONE
+    Eyecatcher pseudo flag to bitwise or-combine with
+    either of the first four enum values.
+    Used to indicate that an ERP action could not be
+    set up despite a detected need for some recovery.
+
+ZFCP_ERP_ACTION_FAILED
+    Eyecatcher pseudo flag to bitwise or-combine with
+    either of the first four enum values.
+    Used to indicate that ERP not needed because
+    the object has ZFCP_STATUS_COMMON_ERP_FAILED.
+
 .. _`zfcp_erp_adapter_reopen`:
 
 zfcp_erp_adapter_reopen
@@ -78,7 +132,7 @@ zfcp_erp_port_forced_reopen
 zfcp_erp_port_reopen
 ====================
 
-.. c:function:: int zfcp_erp_port_reopen(struct zfcp_port *port, int clear, char *id)
+.. c:function:: void zfcp_erp_port_reopen(struct zfcp_port *port, int clear, char *id)
 
     trigger remote port recovery
 
@@ -90,13 +144,6 @@ zfcp_erp_port_reopen
 
     :param char \*id:
         Id for debug trace event.
-
-.. _`zfcp_erp_port_reopen.description`:
-
-Description
------------
-
-Returns 0 if recovery has been triggered, < 0 if not.
 
 .. _`zfcp_erp_lun_reopen`:
 
@@ -375,6 +422,21 @@ zfcp_erp_clear_lun_status
 
     :param u32 mask:
         status bits to change
+
+.. _`zfcp_erp_adapter_reset_sync`:
+
+zfcp_erp_adapter_reset_sync
+===========================
+
+.. c:function:: void zfcp_erp_adapter_reset_sync(struct zfcp_adapter *adapter, char *id)
+
+    Really reopen adapter and wait.
+
+    :param struct zfcp_adapter \*adapter:
+        Pointer to zfcp_adapter to reopen.
+
+    :param char \*id:
+        Trace tag string of length \ ``ZFCP_DBF_TAG_LEN``\ .
 
 .. This file was automatic generated / don't edit.
 

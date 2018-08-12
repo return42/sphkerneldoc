@@ -436,6 +436,32 @@ Description
 Continue to iterate over list of given type, continuing after
 the current position.
 
+.. _`list_for_each_entry_from_rcu`:
+
+list_for_each_entry_from_rcu
+============================
+
+.. c:function::  list_for_each_entry_from_rcu( pos,  head,  member)
+
+    iterate over a list from current point
+
+    :param  pos:
+        the type * to use as a loop cursor.
+
+    :param  head:
+        the head for your list.
+
+    :param  member:
+        the name of the list_node within the struct.
+
+.. _`list_for_each_entry_from_rcu.description`:
+
+Description
+-----------
+
+Iterate over the tail of a list starting from a given position,
+which must have been in the list when the RCU read lock was taken.
+
 .. _`hlist_del_rcu`:
 
 hlist_del_rcu

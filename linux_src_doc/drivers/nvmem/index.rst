@@ -8,3 +8,4 @@ nvmem
     :maxdepth: 1
 
     core_c
+    rave-sp-eeprom_c

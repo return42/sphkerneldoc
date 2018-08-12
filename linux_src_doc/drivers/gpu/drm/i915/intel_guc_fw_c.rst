@@ -27,7 +27,7 @@ intel_guc_fw_upload
 
 .. c:function:: int intel_guc_fw_upload(struct intel_guc *guc)
 
-    finish preparing the GuC for activity
+    load GuC uCode to device
 
     :param struct intel_guc \*guc:
         intel_guc structure
@@ -37,12 +37,11 @@ intel_guc_fw_upload
 Description
 -----------
 
-Called during driver loading and also after a GPU reset.
+Called from \ :c:func:`intel_uc_init_hw`\  during driver load, resume from sleep and
+after a GPU reset.
 
-The main action required here it to load the GuC uCode into the device.
-The firmware image should have already been fetched into memory by the
-earlier call to \ :c:func:`intel_guc_init`\ , so here we need only check that
-worked, and then transfer the image to the h/w.
+The firmware image should have already been fetched into memory, so only
+check that fetch succeeded, and then transfer the image to the h/w.
 
 .. _`intel_guc_fw_upload.return`:
 

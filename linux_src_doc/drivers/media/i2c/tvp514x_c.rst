@@ -387,44 +387,44 @@ Description
 If the requested control is supported, sets the control's current
 value in HW. Otherwise, returns -EINVAL if the control is not supported.
 
-.. _`tvp514x_g_parm`:
+.. _`tvp514x_g_frame_interval`:
 
-tvp514x_g_parm
-==============
+tvp514x_g_frame_interval
+========================
 
-.. c:function:: int tvp514x_g_parm(struct v4l2_subdev *sd, struct v4l2_streamparm *a)
+.. c:function:: int tvp514x_g_frame_interval(struct v4l2_subdev *sd, struct v4l2_subdev_frame_interval *ival)
 
-    V4L2 decoder interface handler for g_parm
+    V4L2 decoder interface handler
 
     :param struct v4l2_subdev \*sd:
         pointer to standard V4L2 sub-device structure
 
-    :param struct v4l2_streamparm \*a:
-        pointer to standard V4L2 VIDIOC_G_PARM ioctl structure
+    :param struct v4l2_subdev_frame_interval \*ival:
+        pointer to a v4l2_subdev_frame_interval structure
 
-.. _`tvp514x_g_parm.description`:
+.. _`tvp514x_g_frame_interval.description`:
 
 Description
 -----------
 
 Returns the decoder's video CAPTURE parameters.
 
-.. _`tvp514x_s_parm`:
+.. _`tvp514x_s_frame_interval`:
 
-tvp514x_s_parm
-==============
+tvp514x_s_frame_interval
+========================
 
-.. c:function:: int tvp514x_s_parm(struct v4l2_subdev *sd, struct v4l2_streamparm *a)
+.. c:function:: int tvp514x_s_frame_interval(struct v4l2_subdev *sd, struct v4l2_subdev_frame_interval *ival)
 
-    V4L2 decoder interface handler for s_parm
+    V4L2 decoder interface handler
 
     :param struct v4l2_subdev \*sd:
         pointer to standard V4L2 sub-device structure
 
-    :param struct v4l2_streamparm \*a:
-        pointer to standard V4L2 VIDIOC_S_PARM ioctl structure
+    :param struct v4l2_subdev_frame_interval \*ival:
+        pointer to a v4l2_subdev_frame_interval structure
 
-.. _`tvp514x_s_parm.description`:
+.. _`tvp514x_s_frame_interval.description`:
 
 Description
 -----------

@@ -52,8 +52,17 @@ errseq_sample
 Description
 -----------
 
-This function allows callers to sample an errseq_t value, marking it as
-"seen" if required.
+This function allows callers to initialise their errseq_t variable.
+If the error has been "seen", new callers will not see an old error.
+If there is an unseen error in \ ``eseq``\ , the caller of this function will
+see it the next time it checks for an error.
+
+.. _`errseq_sample.context`:
+
+Context
+-------
+
+Any context.
 
 .. _`errseq_sample.return`:
 

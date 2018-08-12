@@ -11,13 +11,13 @@ walk_page_range
     walk page table with caller specific callbacks
 
     :param unsigned long start:
-        *undescribed*
+        start address of the virtual address range
 
     :param unsigned long end:
-        *undescribed*
+        end address of the virtual address range
 
     :param struct mm_walk \*walk:
-        *undescribed*
+        mm_walk structure defining the callbacks and the target address space
 
 .. _`walk_page_range.description`:
 

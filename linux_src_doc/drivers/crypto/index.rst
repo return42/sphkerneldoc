@@ -12,6 +12,7 @@ crypto
     caam/index
     cavium/index
     ccp/index
+    ccree/index
     chelsio/index
     marvell/index
     mediatek/index
@@ -21,6 +22,5 @@ crypto
     ux500/index
     vmx/index
     atmel-ecc_c
-    bfin_crc_c
     s5p-sss_c
     talitos_c

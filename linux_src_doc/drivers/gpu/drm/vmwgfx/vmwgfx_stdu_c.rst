@@ -91,7 +91,6 @@ Definition
         enum stdu_content_type content_fb_type;
         s32 display_width, display_height;
         bool defined;
-        struct ttm_bo_kmap_obj host_map;
         unsigned int cpp;
     }
 
@@ -121,9 +120,6 @@ display_height
 
 defined
     true if the current display unit has been initialized
-
-host_map
-    *undescribed*
 
 cpp
     *undescribed*
@@ -424,7 +420,7 @@ For the special case when we cannot create a proxy surface in a
 vmw_kms_stdu_dma
 ================
 
-.. c:function:: int vmw_kms_stdu_dma(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_framebuffer *vfb, struct drm_vmw_fence_rep __user *user_fence_rep, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, uint32_t num_clips, int increment, bool to_surface, bool interruptible)
+.. c:function:: int vmw_kms_stdu_dma(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_framebuffer *vfb, struct drm_vmw_fence_rep __user *user_fence_rep, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, uint32_t num_clips, int increment, bool to_surface, bool interruptible, struct drm_crtc *crtc)
 
     Perform a DMA transfer between a dma-buffer backed framebuffer and the screen target system.
 
@@ -460,6 +456,9 @@ vmw_kms_stdu_dma
 
     :param bool interruptible:
         Whether to perform waits interruptible if possible.
+
+    :param struct drm_crtc \*crtc:
+        If crtc is passed, perform stdu dma on that crtc only.
 
 .. _`vmw_kms_stdu_dma.description`:
 
@@ -517,7 +516,7 @@ target update command.
 vmw_kms_stdu_surface_dirty
 ==========================
 
-.. c:function:: int vmw_kms_stdu_surface_dirty(struct vmw_private *dev_priv, struct vmw_framebuffer *framebuffer, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, struct vmw_resource *srf, s32 dest_x, s32 dest_y, unsigned num_clips, int inc, struct vmw_fence_obj **out_fence)
+.. c:function:: int vmw_kms_stdu_surface_dirty(struct vmw_private *dev_priv, struct vmw_framebuffer *framebuffer, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, struct vmw_resource *srf, s32 dest_x, s32 dest_y, unsigned num_clips, int inc, struct vmw_fence_obj **out_fence, struct drm_crtc *crtc)
 
     Dirty part of a surface backed framebuffer
 
@@ -554,6 +553,9 @@ vmw_kms_stdu_surface_dirty
         If non-NULL, will return a ref-counted pointer to a
         struct vmw_fence_obj. The returned fence pointer may be NULL in which
         case the device has already synchronized.
+
+    :param struct drm_crtc \*crtc:
+        If crtc is passed, perform surface dirty on that crtc only.
 
 .. _`vmw_kms_stdu_surface_dirty.description`:
 

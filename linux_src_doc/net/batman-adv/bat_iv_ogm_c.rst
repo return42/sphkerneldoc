@@ -95,14 +95,14 @@ batadv_iv_ogm_orig_free
 batadv_iv_ogm_orig_add_if
 =========================
 
-.. c:function:: int batadv_iv_ogm_orig_add_if(struct batadv_orig_node *orig_node, int max_if_num)
+.. c:function:: int batadv_iv_ogm_orig_add_if(struct batadv_orig_node *orig_node, unsigned int max_if_num)
 
     change the private structures of the orig_node to include the new hard-interface
 
     :param struct batadv_orig_node \*orig_node:
         the orig_node that has to be changed
 
-    :param int max_if_num:
+    :param unsigned int max_if_num:
         the current amount of interfaces
 
 .. _`batadv_iv_ogm_orig_add_if.return`:
@@ -117,17 +117,17 @@ Return
 batadv_iv_ogm_drop_bcast_own_entry
 ==================================
 
-.. c:function:: void batadv_iv_ogm_drop_bcast_own_entry(struct batadv_orig_node *orig_node, int max_if_num, int del_if_num)
+.. c:function:: void batadv_iv_ogm_drop_bcast_own_entry(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num)
 
     drop section of bcast_own
 
     :param struct batadv_orig_node \*orig_node:
         the orig_node that has to be changed
 
-    :param int max_if_num:
+    :param unsigned int max_if_num:
         the current amount of interfaces
 
-    :param int del_if_num:
+    :param unsigned int del_if_num:
         the index of the interface being removed
 
 .. _`batadv_iv_ogm_drop_bcast_own_sum_entry`:
@@ -135,17 +135,17 @@ batadv_iv_ogm_drop_bcast_own_entry
 batadv_iv_ogm_drop_bcast_own_sum_entry
 ======================================
 
-.. c:function:: void batadv_iv_ogm_drop_bcast_own_sum_entry(struct batadv_orig_node *orig_node, int max_if_num, int del_if_num)
+.. c:function:: void batadv_iv_ogm_drop_bcast_own_sum_entry(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num)
 
     drop section of bcast_own_sum
 
     :param struct batadv_orig_node \*orig_node:
         the orig_node that has to be changed
 
-    :param int max_if_num:
+    :param unsigned int max_if_num:
         the current amount of interfaces
 
-    :param int del_if_num:
+    :param unsigned int del_if_num:
         the index of the interface being removed
 
 .. _`batadv_iv_ogm_orig_del_if`:
@@ -153,17 +153,17 @@ batadv_iv_ogm_drop_bcast_own_sum_entry
 batadv_iv_ogm_orig_del_if
 =========================
 
-.. c:function:: int batadv_iv_ogm_orig_del_if(struct batadv_orig_node *orig_node, int max_if_num, int del_if_num)
+.. c:function:: int batadv_iv_ogm_orig_del_if(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num)
 
     change the private structures of the orig_node to exclude the removed interface
 
     :param struct batadv_orig_node \*orig_node:
         the orig_node that has to be changed
 
-    :param int max_if_num:
+    :param unsigned int max_if_num:
         the current amount of interfaces
 
-    :param int del_if_num:
+    :param unsigned int del_if_num:
         the index of the interface being removed
 
 .. _`batadv_iv_ogm_orig_del_if.return`:

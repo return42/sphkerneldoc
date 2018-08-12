@@ -271,7 +271,7 @@ access any non-constant socket information.
 tipc_getname
 ============
 
-.. c:function:: int tipc_getname(struct socket *sock, struct sockaddr *uaddr, int *uaddr_len, int peer)
+.. c:function:: int tipc_getname(struct socket *sock, struct sockaddr *uaddr, int peer)
 
     get port ID of socket or peer socket
 
@@ -280,9 +280,6 @@ tipc_getname
 
     :param struct sockaddr \*uaddr:
         area for returned socket address
-
-    :param int \*uaddr_len:
-        area for returned length of socket address
 
     :param int peer:
         0 = own ID, 1 = current peer ID, 2 = current/former peer ID

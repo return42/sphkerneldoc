@@ -22,6 +22,7 @@ Definition
         struct drm_simple_display_pipe pipe;
         struct mutex dirty_lock;
         const struct drm_framebuffer_funcs *fb_funcs;
+        int (*fb_dirty)(struct drm_framebuffer *framebuffer,struct drm_file *file_priv, unsigned flags,unsigned color, struct drm_clip_rect *clips, unsigned num_clips);
     }
 
 .. _`tinydrm_device.members`:
@@ -40,6 +41,9 @@ dirty_lock
 
 fb_funcs
     Framebuffer functions used when creating framebuffers
+
+fb_dirty
+    *undescribed*
 
 .. _`tinydrm_gem_driver_ops`:
 

@@ -80,7 +80,7 @@ nfs_setattr_update_inode
         pointer to struct iattr
 
     :param struct nfs_fattr \*fattr:
-        *undescribed*
+        pointer to struct nfs_fattr
 
 .. _`nfs_setattr_update_inode.note`:
 

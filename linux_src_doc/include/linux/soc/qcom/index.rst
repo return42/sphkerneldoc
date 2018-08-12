@@ -7,4 +7,5 @@ qcom
 .. toctree::
     :maxdepth: 1
 
+    apr_h
     qmi_h

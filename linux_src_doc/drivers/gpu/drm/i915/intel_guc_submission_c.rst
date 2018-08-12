@@ -48,13 +48,6 @@ represents in-order queue. The kernel driver packs ring tail pointer and an
 ELSP context descriptor dword into Work Item.
 See \ :c:func:`guc_add_request`\ 
 
-ADS:
-The Additional Data Struct (ADS) has pointers for different buffers used by
-the GuC. One single gem object contains the ADS struct itself (guc_ads), the
-scheduling policies (guc_policies), a structure describing a collection of
-register sets (guc_mmio_reg_state) and some extra pages for the GuC to save
-its internal state for sleep.
-
 .. _`guc_submit`:
 
 guc_submit

@@ -7,5 +7,4 @@ media
 .. toctree::
     :maxdepth: 1
 
-    atomisp/index
     davinci_vpfe/index

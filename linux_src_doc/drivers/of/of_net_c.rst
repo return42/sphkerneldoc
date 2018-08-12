@@ -50,5 +50,20 @@ addresses.  Some older U-Boots only initialized 'local-mac-address'.  In
 this case, the real MAC is in 'local-mac-address', and 'mac-address' exists
 but is all zeros.
 
+.. _`of_get_nvmem_mac_address`:
+
+of_get_nvmem_mac_address
+========================
+
+.. c:function:: int of_get_nvmem_mac_address(struct device_node *np, void *addr)
+
+    address' through device tree. On success, copies the new address into memory pointed to by addr and returns 0. Returns a negative error code otherwise.
+
+    :param struct device_node \*np:
+        Device tree node containing the nvmem-cells phandle
+
+    :param void \*addr:
+        Pointer to receive the MAC address using \ :c:func:`ether_addr_copy`\ 
+
 .. This file was automatic generated / don't edit.
 

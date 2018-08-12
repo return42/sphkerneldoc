@@ -541,6 +541,38 @@ Return
 
 Pointer to duplicated mode on success, NULL on error.
 
+.. _`drm_mode_match`:
+
+drm_mode_match
+==============
+
+.. c:function:: bool drm_mode_match(const struct drm_display_mode *mode1, const struct drm_display_mode *mode2, unsigned int match_flags)
+
+    test modes for (partial) equality
+
+    :param const struct drm_display_mode \*mode1:
+        first mode
+
+    :param const struct drm_display_mode \*mode2:
+        second mode
+
+    :param unsigned int match_flags:
+        which parts need to match (DRM_MODE_MATCH_*)
+
+.. _`drm_mode_match.description`:
+
+Description
+-----------
+
+Check to see if \ ``mode1``\  and \ ``mode2``\  are equivalent.
+
+.. _`drm_mode_match.return`:
+
+Return
+------
+
+True if the modes are (partially) equal, false otherwise.
+
 .. _`drm_mode_equal`:
 
 drm_mode_equal
@@ -630,27 +662,31 @@ Return
 
 True if the modes are equal, false otherwise.
 
-.. _`drm_mode_validate_basic`:
+.. _`drm_mode_validate_driver`:
 
-drm_mode_validate_basic
-=======================
+drm_mode_validate_driver
+========================
 
-.. c:function:: enum drm_mode_status drm_mode_validate_basic(const struct drm_display_mode *mode)
+.. c:function:: enum drm_mode_status drm_mode_validate_driver(struct drm_device *dev, const struct drm_display_mode *mode)
 
     make sure the mode is somewhat sane
+
+    :param struct drm_device \*dev:
+        drm device
 
     :param const struct drm_display_mode \*mode:
         mode to check
 
-.. _`drm_mode_validate_basic.description`:
+.. _`drm_mode_validate_driver.description`:
 
 Description
 -----------
 
-Check that the mode timings are at least somewhat reasonable.
-Any hardware specific limits are left up for each driver to check.
+First do basic validation on the mode, and then allow the driver
+to check for device/driver specific limitations via the optional
+\ :c:type:`drm_mode_config_helper_funcs.mode_valid <drm_mode_config_helper_funcs>`\  hook.
 
-.. _`drm_mode_validate_basic.return`:
+.. _`drm_mode_validate_driver.return`:
 
 Return
 ------
@@ -855,9 +891,9 @@ configure the connector. If \ ``mode_option``\  is NULL the default command line
 modeline in fb_mode_option will be parsed instead.
 
 This uses the same parameters as the fb modedb.c, except for an extra
-force-enable, force-enable-digital and force-disable bit at the end:
+force-enable, force-enable-digital and force-disable bit at the end::
 
-<xres>x<yres>[M][R][-<bpp>][@<refresh>][i][m][eDd]
+     <xres>x<yres>[M][R][-<bpp>][@<refresh>][i][m][eDd]
 
 The intermediate drm_cmdline_mode structure is required to store additional
 options from the command line modline like the force-enable/disable flag.
@@ -919,9 +955,12 @@ the user.
 drm_mode_convert_umode
 ======================
 
-.. c:function:: int drm_mode_convert_umode(struct drm_display_mode *out, const struct drm_mode_modeinfo *in)
+.. c:function:: int drm_mode_convert_umode(struct drm_device *dev, struct drm_display_mode *out, const struct drm_mode_modeinfo *in)
 
     convert a modeinfo into a drm_display_mode
+
+    :param struct drm_device \*dev:
+        drm device
 
     :param struct drm_display_mode \*out:
         drm_display_mode to return to the user

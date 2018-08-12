@@ -97,17 +97,17 @@ of_pci_check_probe_only
     :param  void:
         no arguments
 
-.. _`of_pci_get_host_bridge_resources`:
+.. _`devm_of_pci_get_host_bridge_resources`:
 
-of_pci_get_host_bridge_resources
-================================
+devm_of_pci_get_host_bridge_resources
+=====================================
 
-.. c:function:: int of_pci_get_host_bridge_resources(struct device_node *dev, unsigned char busno, unsigned char bus_max, struct list_head *resources, resource_size_t *io_base)
+.. c:function:: int devm_of_pci_get_host_bridge_resources(struct device *dev, unsigned char busno, unsigned char bus_max, struct list_head *resources, resource_size_t *io_base)
 
-    Parse PCI host bridge resources from DT
+    Resource-managed parsing of PCI host bridge resources from DT
 
-    :param struct device_node \*dev:
-        device node of the host bridge having the range property
+    :param struct device \*dev:
+        host bridge device
 
     :param unsigned char busno:
         bus number associated with the bridge root bus
@@ -123,12 +123,10 @@ of_pci_get_host_bridge_resources
         address for the start of the I/O range. Can be NULL if the caller doesn't
         expect I/O ranges to be present in the device tree.
 
-.. _`of_pci_get_host_bridge_resources.description`:
+.. _`devm_of_pci_get_host_bridge_resources.description`:
 
 Description
 -----------
-
-It is the caller's job to free the \ ``resources``\  list.
 
 This function will parse the "ranges" property of a PCI host bridge device
 node and setup the resource mapping based on its content. It is expected

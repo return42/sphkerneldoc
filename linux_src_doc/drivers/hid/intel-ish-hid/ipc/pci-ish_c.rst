@@ -104,7 +104,7 @@ This function does cleanup of ISH on pci remove callback
 ish_resume_handler
 ==================
 
-.. c:function:: void ish_resume_handler(struct work_struct *work)
+.. c:function:: void __maybe_unused ish_resume_handler(struct work_struct *work)
 
     Work function to complete resume
 
@@ -126,7 +126,7 @@ a reset sequence.
 ish_suspend
 ===========
 
-.. c:function:: int ish_suspend(struct device *device)
+.. c:function:: int __maybe_unused ish_suspend(struct device *device)
 
     ISH suspend callback
 
@@ -152,7 +152,7 @@ Return
 ish_resume
 ==========
 
-.. c:function:: int ish_resume(struct device *device)
+.. c:function:: int __maybe_unused ish_resume(struct device *device)
 
     ISH resume callback
 

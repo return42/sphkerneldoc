@@ -161,7 +161,7 @@ Definition
         struct work_struct rx_work;
         spinlock_t rx_lock;
         struct list_head rx_queue;
-        struct mutex tx_lock;
+        spinlock_t tx_lock;
         spinlock_t idr_lock;
         struct idr lcids;
         struct idr rcids;
@@ -277,7 +277,7 @@ refcount
     refcount for the channel object
 
 recv_lock
-    guard for \ ``ept``\ .cb
+    guard for \ ``ept.cb``\ 
 
 name
     unique channel name/identifier

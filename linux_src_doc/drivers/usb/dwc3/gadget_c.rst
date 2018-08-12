@@ -196,12 +196,9 @@ Caller should handle locking. This function will issue \ ``cmd``\  with given
 dwc3_gadget_start_config
 ========================
 
-.. c:function:: int dwc3_gadget_start_config(struct dwc3 *dwc, struct dwc3_ep *dep)
+.. c:function:: int dwc3_gadget_start_config(struct dwc3_ep *dep)
 
     configure ep resources
-
-    :param struct dwc3 \*dwc:
-        pointer to our controller context structure
 
     :param struct dwc3_ep \*dep:
         endpoint that is being enabled
@@ -249,18 +246,15 @@ should only happen in one of the above conditions.
 __dwc3_gadget_ep_enable
 =======================
 
-.. c:function:: int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, bool modify, bool restore)
+.. c:function:: int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, unsigned int action)
 
     initializes a hw endpoint
 
     :param struct dwc3_ep \*dep:
         endpoint to be initialized
 
-    :param bool modify:
-        if true, modify existing endpoint configuration
-
-    :param bool restore:
-        if true, restore endpoint configuration from scratch buffer
+    :param unsigned int action:
+        one of INIT, MODIFY or RESTORE
 
 .. _`__dwc3_gadget_ep_enable.description`:
 
@@ -293,27 +287,6 @@ are not yet scheduled.
 
 Caller should take care of locking.
 
-.. _`dwc3_prepare_one_trb`:
-
-dwc3_prepare_one_trb
-====================
-
-.. c:function:: void dwc3_prepare_one_trb(struct dwc3_ep *dep, struct dwc3_request *req, unsigned chain, unsigned node)
-
-    setup one TRB from one request
-
-    :param struct dwc3_ep \*dep:
-        endpoint for which this request is prepared
-
-    :param struct dwc3_request \*req:
-        dwc3_request pointer
-
-    :param unsigned chain:
-        should this TRB be chained to the next?
-
-    :param unsigned node:
-        only for isochronous endpoints. First TRB needs different type.
-
 .. _`dwc3_ep_prev_trb`:
 
 dwc3_ep_prev_trb
@@ -337,6 +310,27 @@ Description
 Returns the TRB prior to the one pointed to by the index. If the
 index is 0, we will wrap backwards, skip the link TRB, and return
 the one just before that.
+
+.. _`dwc3_prepare_one_trb`:
+
+dwc3_prepare_one_trb
+====================
+
+.. c:function:: void dwc3_prepare_one_trb(struct dwc3_ep *dep, struct dwc3_request *req, unsigned chain, unsigned node)
+
+    setup one TRB from one request
+
+    :param struct dwc3_ep \*dep:
+        endpoint for which this request is prepared
+
+    :param struct dwc3_request \*req:
+        dwc3_request pointer
+
+    :param unsigned chain:
+        should this TRB be chained to the next?
+
+    :param unsigned node:
+        only for isochronous endpoints. First TRB needs different type.
 
 .. _`dwc3_gadget_setup_nump`:
 

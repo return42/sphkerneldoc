@@ -117,6 +117,70 @@ oca_cert_address
 oca_cert_len
     *undescribed*
 
+.. _`sev_data_download_firmware`:
+
+struct sev_data_download_firmware
+=================================
+
+.. c:type:: struct sev_data_download_firmware
+
+    DOWNLOAD_FIRMWARE command parameters
+
+.. _`sev_data_download_firmware.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sev_data_download_firmware {
+        u64 address;
+        u32 len;
+    }
+
+.. _`sev_data_download_firmware.members`:
+
+Members
+-------
+
+address
+    physical address of firmware image
+
+len
+    len of the firmware image
+
+.. _`sev_data_get_id`:
+
+struct sev_data_get_id
+======================
+
+.. c:type:: struct sev_data_get_id
+
+    GET_ID command parameters
+
+.. _`sev_data_get_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sev_data_get_id {
+        u64 address;
+        u32 len;
+    }
+
+.. _`sev_data_get_id.members`:
+
+Members
+-------
+
+address
+    physical address of region to place unique CPU ID(s)
+
+len
+    len of the region
+
 .. _`sev_data_pdh_cert_export`:
 
 struct sev_data_pdh_cert_export

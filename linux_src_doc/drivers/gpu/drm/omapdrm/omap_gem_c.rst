@@ -58,7 +58,7 @@ to reference it.
 omap_gem_dumb_map_offset
 ========================
 
-.. c:function:: int omap_gem_dumb_map_offset(struct drm_file *file, struct drm_device *dev, uint32_t handle, uint64_t *offset)
+.. c:function:: int omap_gem_dumb_map_offset(struct drm_file *file, struct drm_device *dev, u32 handle, u64 *offset)
 
     buffer mapping for dumb interface
 
@@ -68,10 +68,10 @@ omap_gem_dumb_map_offset
     :param struct drm_device \*dev:
         drm device
 
-    :param uint32_t handle:
+    :param u32 handle:
         GEM handle to the object (from dumb_create)
 
-    :param uint64_t \*offset:
+    :param u64 \*offset:
         *undescribed*
 
 .. _`omap_gem_dumb_map_offset.description`:

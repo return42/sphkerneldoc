@@ -249,6 +249,8 @@ Definition
         u32 ucode_ver;
         char fw_version[ETHTOOL_FWVERS_LEN];
         struct fw_img img[IWL_UCODE_TYPE_MAX];
+        size_t iml_len;
+        u8 *iml;
         struct iwl_ucode_capabilities ucode_capa;
         bool enhance_sensitivity_table;
         u32 init_evtlog_ptr, init_evtlog_size, init_errlog_ptr;
@@ -284,6 +286,12 @@ fw_version
 
 img
     ucode image like ucode_rt, ucode_init, ucode_wowlan.
+
+iml_len
+    length of the image loader image
+
+iml
+    image loader fw image
 
 ucode_capa
     capabilities parsed from the ucode file.

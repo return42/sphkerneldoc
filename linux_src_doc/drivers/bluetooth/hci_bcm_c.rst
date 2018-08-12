@@ -28,6 +28,8 @@ Definition
         int (*set_shutdown)(struct bcm_device *, bool);
     #ifdef CONFIG_ACPI
         acpi_handle btlp, btpu, btpd;
+        int gpio_count;
+        int gpio_int_idx;
     #endif
         struct clk *clk;
         bool clk_enabled;
@@ -83,6 +85,12 @@ btpu
 
 btpd
     Apple ACPI method to drive BT_REG_ON pin low ("Bluetooth Power Down")
+
+gpio_count
+    *undescribed*
+
+gpio_int_idx
+    *undescribed*
 
 clk
     clock used by Bluetooth device

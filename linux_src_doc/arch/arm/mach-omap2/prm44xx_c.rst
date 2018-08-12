@@ -265,5 +265,45 @@ see the actual value.  In every other case, the logic is
 retained. Returns either PWRDM_POWER_OFF or PWRDM_POWER_RET
 depending whether logic was retained or not.
 
+.. _`omap4_pwrdm_save_context`:
+
+omap4_pwrdm_save_context
+========================
+
+.. c:function:: void omap4_pwrdm_save_context(struct powerdomain *pwrdm)
+
+    Saves the powerdomain state
+
+    :param struct powerdomain \*pwrdm:
+        pointer to individual powerdomain
+
+.. _`omap4_pwrdm_save_context.description`:
+
+Description
+-----------
+
+The function saves the powerdomain state control information.
+This is needed in rtc+ddr modes where we lose powerdomain context.
+
+.. _`omap4_pwrdm_restore_context`:
+
+omap4_pwrdm_restore_context
+===========================
+
+.. c:function:: void omap4_pwrdm_restore_context(struct powerdomain *pwrdm)
+
+    Restores the powerdomain state
+
+    :param struct powerdomain \*pwrdm:
+        pointer to individual powerdomain
+
+.. _`omap4_pwrdm_restore_context.description`:
+
+Description
+-----------
+
+The function restores the powerdomain state control information.
+This is needed in rtc+ddr modes where we lose powerdomain context.
+
 .. This file was automatic generated / don't edit.
 

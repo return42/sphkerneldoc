@@ -11,7 +11,7 @@ qla2100_pci_config
     Setup ISP21xx PCI configuration registers.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2100_pci_config.description`:
 
@@ -30,7 +30,7 @@ qla2300_pci_config
     Setup ISP23xx PCI configuration registers.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2300_pci_config.description`:
 
@@ -49,7 +49,7 @@ qla24xx_pci_config
     Setup ISP24xx PCI configuration registers.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla24xx_pci_config.description`:
 
@@ -68,7 +68,7 @@ qla25xx_pci_config
     Setup ISP25xx PCI configuration registers.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla25xx_pci_config.description`:
 
@@ -87,7 +87,7 @@ qla2x00_isp_firmware
     Choose firmware image.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_isp_firmware.description`:
 
@@ -106,7 +106,7 @@ qla2x00_reset_chip
     Reset ISP chip.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_reset_chip.description`:
 
@@ -125,7 +125,7 @@ qla81xx_reset_mpi
     Reset's MPI FW via Write MPI Register MBC.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla81xx_reset_mpi.description`:
 
@@ -144,7 +144,7 @@ qla24xx_reset_risc
     Perform full reset of ISP24xx RISC.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla24xx_reset_risc.description`:
 
@@ -163,7 +163,7 @@ qla24xx_reset_chip
     Reset ISP24xx chip.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla24xx_reset_chip.description`:
 
@@ -182,7 +182,7 @@ qla2x00_chip_diag
     Test chip for proper operation.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_chip_diag.description`:
 
@@ -201,7 +201,7 @@ qla24xx_chip_diag
     Test ISP24xx for proper operation.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla24xx_chip_diag.description`:
 
@@ -220,7 +220,7 @@ qla2x00_setup_chip
     Load and start RISC firmware.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_setup_chip.description`:
 
@@ -239,7 +239,7 @@ qla2x00_init_response_q_entries
     Initializes response queue entries.
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
 .. _`qla2x00_init_response_q_entries.description`:
 
@@ -261,7 +261,7 @@ qla2x00_update_fw_options
     Read and process firmware options.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_update_fw_options.description`:
 
@@ -280,7 +280,7 @@ qla2x00_init_rings
     Initializes firmware.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_init_rings.description`:
 
@@ -302,7 +302,7 @@ qla2x00_fw_ready
     Waits for firmware ready.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla2x00_fw_ready.description`:
 
@@ -321,7 +321,7 @@ qla2x00_alloc_fcport
     Allocate a generic fcport.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
     :param gfp_t flags:
         allocation flags

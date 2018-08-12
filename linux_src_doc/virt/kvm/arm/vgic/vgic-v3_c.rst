@@ -13,6 +13,59 @@ vgic_v3_save_pending_tables
     :param struct kvm \*kvm:
         *undescribed*
 
+.. _`vgic_v3_rdist_overlap`:
+
+vgic_v3_rdist_overlap
+=====================
+
+.. c:function:: bool vgic_v3_rdist_overlap(struct kvm *kvm, gpa_t base, size_t size)
+
+    check if a region overlaps with any existing redistributor region
+
+    :param struct kvm \*kvm:
+        kvm handle
+
+    :param gpa_t base:
+        base of the region
+
+    :param size_t size:
+        size of region
+
+.. _`vgic_v3_rdist_overlap.return`:
+
+Return
+------
+
+true if there is an overlap
+
+.. _`vgic_v3_rdist_free_slot`:
+
+vgic_v3_rdist_free_slot
+=======================
+
+.. c:function:: struct vgic_redist_region *vgic_v3_rdist_free_slot(struct list_head *rd_regions)
+
+    Look up registered rdist regions and identify one which has free space to put a new rdist region.
+
+    :param struct list_head \*rd_regions:
+        redistributor region list head
+
+.. _`vgic_v3_rdist_free_slot.description`:
+
+Description
+-----------
+
+A redistributor regions maps n redistributors, n = region size / (2 x 64kB).
+Stride between redistributors is 0 and regions are filled in the index order.
+
+.. _`vgic_v3_rdist_free_slot.return`:
+
+Return
+------
+
+the redist region handle, if any, that has space to map a new rdist
+region.
+
 .. _`vgic_v3_probe`:
 
 vgic_v3_probe

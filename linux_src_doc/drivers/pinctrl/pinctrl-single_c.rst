@@ -313,11 +313,13 @@ Definition
     struct pcs_device {
         struct resource *res;
         void __iomem *base;
+        void *saved_vals;
         unsigned size;
         struct device *dev;
         struct device_node *np;
         struct pinctrl_dev *pctl;
         unsigned flags;
+    #define PCS_CONTEXT_LOSS_OFF (1 << 3)
     #define PCS_QUIRK_SHARED_IRQ (1 << 2)
     #define PCS_FEAT_IRQ (1 << 1)
     #define PCS_FEAT_PINCONF (1 << 0)
@@ -352,6 +354,9 @@ res
 
 base
     virtual address of the controller
+
+saved_vals
+    saved values for the controller
 
 size
     size of the ioremapped area

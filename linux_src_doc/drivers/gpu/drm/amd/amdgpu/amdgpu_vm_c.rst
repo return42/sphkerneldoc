@@ -140,12 +140,43 @@ Description
 
 Check if all VM PDs/PTs are ready for updates
 
+.. _`amdgpu_vm_clear_bo`:
+
+amdgpu_vm_clear_bo
+==================
+
+.. c:function:: int amdgpu_vm_clear_bo(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_bo *bo, unsigned level, bool pte_support_ats)
+
+    initially clear the PDs/PTs
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_vm \*vm:
+        *undescribed*
+
+    :param struct amdgpu_bo \*bo:
+        BO to clear
+
+    :param unsigned level:
+        level this BO is at
+
+    :param bool pte_support_ats:
+        *undescribed*
+
+.. _`amdgpu_vm_clear_bo.description`:
+
+Description
+-----------
+
+Root PD needs to be reserved when calling this.
+
 .. _`amdgpu_vm_alloc_levels`:
 
 amdgpu_vm_alloc_levels
 ======================
 
-.. c:function:: int amdgpu_vm_alloc_levels(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_vm_pt *parent, uint64_t saddr, uint64_t eaddr, unsigned level)
+.. c:function:: int amdgpu_vm_alloc_levels(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_vm_pt *parent, uint64_t saddr, uint64_t eaddr, unsigned level, bool ats)
 
     allocate the PD/PT levels
 
@@ -165,6 +196,9 @@ amdgpu_vm_alloc_levels
         end of the address range
 
     :param unsigned level:
+        *undescribed*
+
+    :param bool ats:
         *undescribed*
 
 .. _`amdgpu_vm_alloc_levels.description`:
@@ -270,12 +304,15 @@ Object has to be reserved!
 amdgpu_vm_do_set_ptes
 =====================
 
-.. c:function:: void amdgpu_vm_do_set_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
+.. c:function:: void amdgpu_vm_do_set_ptes(struct amdgpu_pte_update_params *params, struct amdgpu_bo *bo, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
     helper to call the right asic function
 
     :param struct amdgpu_pte_update_params \*params:
         see amdgpu_pte_update_params definition
+
+    :param struct amdgpu_bo \*bo:
+        PD/PT to update
 
     :param uint64_t pe:
         addr of the page entry
@@ -305,12 +342,15 @@ to setup the page table using the DMA.
 amdgpu_vm_do_copy_ptes
 ======================
 
-.. c:function:: void amdgpu_vm_do_copy_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
+.. c:function:: void amdgpu_vm_do_copy_ptes(struct amdgpu_pte_update_params *params, struct amdgpu_bo *bo, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
     copy the PTEs from the GART
 
     :param struct amdgpu_pte_update_params \*params:
         see amdgpu_pte_update_params definition
+
+    :param struct amdgpu_bo \*bo:
+        PD/PT to update
 
     :param uint64_t pe:
         addr of the page entry
@@ -362,12 +402,15 @@ to and return the pointer for the page table entry.
 amdgpu_vm_cpu_set_ptes
 ======================
 
-.. c:function:: void amdgpu_vm_cpu_set_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
+.. c:function:: void amdgpu_vm_cpu_set_ptes(struct amdgpu_pte_update_params *params, struct amdgpu_bo *bo, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
     helper to update page tables via CPU
 
     :param struct amdgpu_pte_update_params \*params:
         see amdgpu_pte_update_params definition
+
+    :param struct amdgpu_bo \*bo:
+        PD/PT to update
 
     :param uint64_t pe:
         kmap addr of the page entry
@@ -1075,6 +1118,44 @@ Description
 -----------
 
 Init \ ``vm``\  fields.
+
+.. _`amdgpu_vm_make_compute`:
+
+amdgpu_vm_make_compute
+======================
+
+.. c:function:: int amdgpu_vm_make_compute(struct amdgpu_device *adev, struct amdgpu_vm *vm)
+
+    Turn a GFX VM into a compute VM
+
+    :param struct amdgpu_device \*adev:
+        *undescribed*
+
+    :param struct amdgpu_vm \*vm:
+        *undescribed*
+
+.. _`amdgpu_vm_make_compute.description`:
+
+Description
+-----------
+
+This only works on GFX VMs that don't have any BOs added and no
+page tables allocated yet.
+
+.. _`amdgpu_vm_make_compute.changes-the-following-vm-parameters`:
+
+Changes the following VM parameters
+-----------------------------------
+
+- use_cpu_for_update
+- pte_supports_ats
+- pasid (old PASID is released, because compute manages its own PASIDs)
+
+Reinitializes the page directory to reflect the changed ATS
+setting. May leave behind an unused shadow BO for the page
+directory when switching from SDMA updates to CPU updates.
+
+Returns 0 for success, -errno for errors.
 
 .. _`amdgpu_vm_free_levels`:
 

@@ -88,6 +88,7 @@ Definition
         bool has_pool;
         dma_addr_t handle;
         size_t size;
+        u32 num_contexts;
     }
 
 .. _`vmw_cmdbuf_man.members`:
@@ -187,6 +188,9 @@ handle
 
 size
     The size of the command buffer space. Immutable.
+
+num_contexts
+    Number of contexts actually enabled.
 
 .. _`vmw_cmdbuf_header`:
 

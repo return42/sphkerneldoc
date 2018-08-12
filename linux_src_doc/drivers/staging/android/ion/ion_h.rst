@@ -371,45 +371,6 @@ systems the only heap is regular system memory allocated via vmalloc.
 On others, some blocks might require large physically contiguous buffers
 that are allocated from a specially reserved heap.
 
-.. _`ion_buffer_cached`:
-
-ion_buffer_cached
-=================
-
-.. c:function:: bool ion_buffer_cached(struct ion_buffer *buffer)
-
-    this ion buffer is cached
-
-    :param struct ion_buffer \*buffer:
-        buffer
-
-.. _`ion_buffer_cached.description`:
-
-Description
------------
-
-indicates whether this ion buffer is cached
-
-.. _`ion_buffer_fault_user_mappings`:
-
-ion_buffer_fault_user_mappings
-==============================
-
-.. c:function:: bool ion_buffer_fault_user_mappings(struct ion_buffer *buffer)
-
-    fault in user mappings of this buffer
-
-    :param struct ion_buffer \*buffer:
-        buffer
-
-.. _`ion_buffer_fault_user_mappings.description`:
-
-Description
------------
-
-indicates whether userspace mappings of this buffer will be faulted
-in, this can affect how buffers are allocated from the heap.
-
 .. _`ion_device_add_heap`:
 
 ion_device_add_heap

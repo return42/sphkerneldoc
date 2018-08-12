@@ -24,6 +24,7 @@ Definition
         struct vmw_private *dev_priv;
         struct vmw_display_unit *unit;
         void *cmd;
+        struct drm_crtc *crtc;
         u32 num_hits;
         s32 fb_x;
         s32 fb_y;
@@ -60,6 +61,9 @@ unit
 cmd
     The allocated fifo space. Set up by the helper before the first \ ``clip``\ 
     call.
+
+crtc
+    The crtc for which to build dirty commands.
 
 num_hits
     Number of clip rect commands for this display unit.

@@ -104,10 +104,12 @@ Definition
         IWL_UCODE_TLV_API_STA_TYPE,
         IWL_UCODE_TLV_API_NAN2_VER2,
         IWL_UCODE_TLV_API_ADAPTIVE_DWELL,
+        IWL_UCODE_TLV_API_OCE,
         IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE,
         IWL_UCODE_TLV_API_NEW_RX_STATS,
         IWL_UCODE_TLV_API_QUOTA_LOW_LATENCY,
         IWL_UCODE_TLV_API_DEPRECATE_TTAK,
+        IWL_UCODE_TLV_API_ADAPTIVE_DWELL_V2,
         NUM_IWL_UCODE_TLV_API
     };
 
@@ -148,6 +150,9 @@ IWL_UCODE_TLV_API_NAN2_VER2
 IWL_UCODE_TLV_API_ADAPTIVE_DWELL
     *undescribed*
 
+IWL_UCODE_TLV_API_OCE
+    *undescribed*
+
 IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE
     *undescribed*
 
@@ -162,8 +167,18 @@ IWL_UCODE_TLV_API_DEPRECATE_TTAK
     RX status flag TTAK ok (bit 7) is
     deprecated.
 
+IWL_UCODE_TLV_API_ADAPTIVE_DWELL_V2
+    This ucode supports version 8
+
 NUM_IWL_UCODE_TLV_API
     number of bits used
+
+.. _`iwl_ucode_tlv_api.of-scan-request`:
+
+of scan request
+---------------
+
+SCAN_REQUEST_CMD_UMAC_API_S_VER_8
 
 .. _`iwl_ucode_tlv_capa`:
 
@@ -761,6 +776,34 @@ IWL_FW_DBG_TRIGGER_MONITOR_ONLY
     when trigger occurs trigger is set to
     collect only monitor data
 
+.. _`iwl_fw_dbg_trigger_flags`:
+
+enum iwl_fw_dbg_trigger_flags
+=============================
+
+.. c:type:: enum iwl_fw_dbg_trigger_flags
+
+    the flags supported by wrt triggers
+
+.. _`iwl_fw_dbg_trigger_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_fw_dbg_trigger_flags {
+        IWL_FW_DBG_FORCE_RESTART
+    };
+
+.. _`iwl_fw_dbg_trigger_flags.constants`:
+
+Constants
+---------
+
+IWL_FW_DBG_FORCE_RESTART
+    force a firmware restart
+
 .. _`iwl_fw_dbg_trigger_vif_type`:
 
 enum iwl_fw_dbg_trigger_vif_type
@@ -838,7 +881,8 @@ Definition
         u8 start_conf_id;
         __le16 occurrences;
         __le16 trig_dis_ms;
-        __le16 reserved[3];
+        u8 flags;
+        u8 reserved[5];
         u8 data[0];
     }
 
@@ -876,6 +920,9 @@ occurrences
 trig_dis_ms
     the time, in milliseconds, after an occurrence of this
     trigger in which another occurrence should be ignored.
+
+flags
+    \ :c:type:`enum iwl_fw_dbg_trigger_flags <iwl_fw_dbg_trigger_flags>`\ 
 
 reserved
     *undescribed*

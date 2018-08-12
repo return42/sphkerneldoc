@@ -9,3 +9,4 @@ microchip
 
     encx24j600-regmap_c
     encx24j600_c
+    lan743x_main_c

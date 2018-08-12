@@ -7,6 +7,7 @@ kvm
 .. toctree::
     :maxdepth: 1
 
+    hyp/index
     debug_c
     guest_c
     handle_exit_c

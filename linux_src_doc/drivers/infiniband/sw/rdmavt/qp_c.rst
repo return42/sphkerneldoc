@@ -587,6 +587,31 @@ Return
 
 0 on success else errno
 
+.. _`rvt_get_rwqe`:
+
+rvt_get_rwqe
+============
+
+.. c:function:: int rvt_get_rwqe(struct rvt_qp *qp, bool wr_id_only)
+
+    copy the next RWQE into the QP's RWQE
+
+    :param struct rvt_qp \*qp:
+        the QP
+
+    :param bool wr_id_only:
+        update qp->r_wr_id only, not qp->r_sge
+
+.. _`rvt_get_rwqe.description`:
+
+Description
+-----------
+
+Return -1 if there is a local error, 0 if no RWQE is available,
+otherwise return 1.
+
+Can be called from interrupt level.
+
 .. _`rvt_comm_est`:
 
 rvt_comm_est

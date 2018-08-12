@@ -1,6 +1,67 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/ksm.c
 
+.. _`overview`:
+
+Overview
+========
+
+A few notes about the KSM scanning process,
+to make it easier to understand the data structures below:
+
+In order to reduce excessive scanning, KSM sorts the memory pages by their
+contents into a data structure that holds pointers to the pages' locations.
+
+Since the contents of the pages may change at any moment, KSM cannot just
+insert the pages into a normal sorted tree and expect it to find anything.
+Therefore KSM uses two data structures - the stable and the unstable tree.
+
+The stable tree holds pointers to all the merged pages (ksm pages), sorted
+by their contents.  Because each such page is write-protected, searching on
+this tree is fully assured to be working (except when pages are unmapped),
+and therefore this tree is called the stable tree.
+
+The stable tree node includes information required for reverse
+mapping from a KSM page to virtual addresses that map this page.
+
+In order to avoid large latencies of the rmap walks on KSM pages,
+KSM maintains two types of nodes in the stable tree:
+
+* the regular nodes that keep the reverse mapping structures in a
+  linked list
+* the "chains" that link nodes ("dups") that represent the same
+  write protected memory content, but each "dup" corresponds to a
+  different KSM page copy of that content
+
+Internally, the regular nodes, "dups" and "chains" are represented
+using the same :c:type:`struct stable_node` structure.
+
+In addition to the stable tree, KSM uses a second data structure called the
+unstable tree: this tree holds pointers to pages which have been found to
+be "unchanged for a period of time".  The unstable tree sorts these pages
+by their contents, but since they are not write-protected, KSM cannot rely
+upon the unstable tree to work correctly - the unstable tree is liable to
+be corrupted as its contents are modified, and so it is called unstable.
+
+KSM solves this problem by several techniques:
+
+1) The unstable tree is flushed every time KSM completes scanning all
+   memory areas, and then the tree is rebuilt again from the beginning.
+2) KSM will only insert into the unstable tree, pages whose hash value
+   has not changed since the previous scan of all memory areas.
+3) The unstable tree is a RedBlack Tree - so its balancing is based on the
+   colors of the nodes and not on their contents, assuring that even when
+   the tree gets "corrupted" it won't get out of balance, so scanning time
+   remains the same (also, searching and inserting nodes in an rbtree uses
+   the same algorithm, so we have no overhead when we flush and rebuild).
+4) KSM never flushes the stable tree, which means that even if it were to
+   take 10 attempts to find a page in the unstable tree, once it is found,
+   it is secured in the stable tree.  (When we scan a new page, we first
+   compare it against the stable tree, and then against the unstable tree.)
+
+If the merge_across_nodes tunable is unset, then KSM maintains multiple
+stable trees and multiple unstable trees: one of each for each NUMA node.
+
 .. _`mm_slot`:
 
 struct mm_slot

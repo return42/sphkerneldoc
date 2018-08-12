@@ -93,7 +93,7 @@ fm10k_tlv_attr_put_mac_vlan
         MAC address to be stored
 
     :param u16 vlan:
-        *undescribed*
+        VLAN to be stored
 
 .. _`fm10k_tlv_attr_put_mac_vlan.description`:
 
@@ -120,7 +120,7 @@ fm10k_tlv_attr_get_mac_vlan
         location of buffer to store MAC address
 
     :param u16 \*vlan:
-        *undescribed*
+        location of buffer to store VLAN
 
 .. _`fm10k_tlv_attr_get_mac_vlan.description`:
 
@@ -395,7 +395,7 @@ fm10k_tlv_msg_parse
         Pointer to mailbox information structure
 
     :param const struct fm10k_msg_data \*data:
-        *undescribed*
+        Pointer to message handler data structure
 
 .. _`fm10k_tlv_msg_parse.description`:
 

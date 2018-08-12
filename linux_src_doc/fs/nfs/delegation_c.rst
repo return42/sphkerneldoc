@@ -40,7 +40,7 @@ Returns one if inode has the indicated delegation, otherwise zero.
 nfs_inode_reclaim_delegation
 ============================
 
-.. c:function:: void nfs_inode_reclaim_delegation(struct inode *inode, struct rpc_cred *cred, struct nfs_openres *res)
+.. c:function:: void nfs_inode_reclaim_delegation(struct inode *inode, struct rpc_cred *cred, fmode_t type, const nfs4_stateid *stateid, unsigned long pagemod_limit)
 
     process a delegation reclaim request
 
@@ -50,15 +50,21 @@ nfs_inode_reclaim_delegation
     :param struct rpc_cred \*cred:
         credential to use for request
 
-    :param struct nfs_openres \*res:
-        new delegation state from server
+    :param fmode_t type:
+        delegation type
+
+    :param const nfs4_stateid \*stateid:
+        delegation stateid
+
+    :param unsigned long pagemod_limit:
+        write delegation "space_limit"
 
 .. _`nfs_inode_set_delegation`:
 
 nfs_inode_set_delegation
 ========================
 
-.. c:function:: int nfs_inode_set_delegation(struct inode *inode, struct rpc_cred *cred, struct nfs_openres *res)
+.. c:function:: int nfs_inode_set_delegation(struct inode *inode, struct rpc_cred *cred, fmode_t type, const nfs4_stateid *stateid, unsigned long pagemod_limit)
 
     set up a delegation on an inode
 
@@ -68,8 +74,14 @@ nfs_inode_set_delegation
     :param struct rpc_cred \*cred:
         cred to use for subsequent delegation processing
 
-    :param struct nfs_openres \*res:
-        new delegation state from server
+    :param fmode_t type:
+        delegation type
+
+    :param const nfs4_stateid \*stateid:
+        delegation stateid
+
+    :param unsigned long pagemod_limit:
+        write delegation "space_limit"
 
 .. _`nfs_inode_set_delegation.description`:
 
@@ -141,6 +153,25 @@ Description
 This routine will always flush any dirty data to disk on the
 assumption that if we need to return the delegation, then
 we should stop caching.
+
+Returns zero on success, or a negative errno value.
+
+.. _`nfs4_inode_make_writeable`:
+
+nfs4_inode_make_writeable
+=========================
+
+.. c:function:: int nfs4_inode_make_writeable(struct inode *inode)
+
+    :param struct inode \*inode:
+        pointer to inode
+
+.. _`nfs4_inode_make_writeable.description`:
+
+Description
+-----------
+
+Make the inode writeable by returning the delegation if necessary
 
 Returns zero on success, or a negative errno value.
 

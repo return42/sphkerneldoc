@@ -1,6 +1,87 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/sunrpc/xprtrdma/svc_rdma_recvfrom.c
 
+.. _`svc_rdma_recv_ctxts_destroy`:
+
+svc_rdma_recv_ctxts_destroy
+===========================
+
+.. c:function:: void svc_rdma_recv_ctxts_destroy(struct svcxprt_rdma *rdma)
+
+    Release all recv_ctxt's for an xprt
+
+    :param struct svcxprt_rdma \*rdma:
+        svcxprt_rdma being torn down
+
+.. _`svc_rdma_recv_ctxt_put`:
+
+svc_rdma_recv_ctxt_put
+======================
+
+.. c:function:: void svc_rdma_recv_ctxt_put(struct svcxprt_rdma *rdma, struct svc_rdma_recv_ctxt *ctxt)
+
+    Return recv_ctxt to free list
+
+    :param struct svcxprt_rdma \*rdma:
+        controlling svcxprt_rdma
+
+    :param struct svc_rdma_recv_ctxt \*ctxt:
+        object to return to the free list
+
+.. _`svc_rdma_post_recvs`:
+
+svc_rdma_post_recvs
+===================
+
+.. c:function:: bool svc_rdma_post_recvs(struct svcxprt_rdma *rdma)
+
+    Post initial set of Recv WRs
+
+    :param struct svcxprt_rdma \*rdma:
+        fresh svcxprt_rdma
+
+.. _`svc_rdma_post_recvs.description`:
+
+Description
+-----------
+
+Returns true if successful, otherwise false.
+
+.. _`svc_rdma_wc_receive`:
+
+svc_rdma_wc_receive
+===================
+
+.. c:function:: void svc_rdma_wc_receive(struct ib_cq *cq, struct ib_wc *wc)
+
+    Invoked by RDMA provider for each polled Receive WC
+
+    :param struct ib_cq \*cq:
+        Completion Queue context
+
+    :param struct ib_wc \*wc:
+        Work Completion object
+
+.. _`svc_rdma_wc_receive.description`:
+
+Description
+-----------
+
+NB: The svc_xprt/svcxprt_rdma is pinned whenever it's possible that
+the Receive completion handler could be running.
+
+.. _`svc_rdma_flush_recv_queues`:
+
+svc_rdma_flush_recv_queues
+==========================
+
+.. c:function:: void svc_rdma_flush_recv_queues(struct svcxprt_rdma *rdma)
+
+    Drain pending Receive work
+
+    :param struct svcxprt_rdma \*rdma:
+        svcxprt_rdma being shut down
+
 .. _`svc_rdma_recvfrom`:
 
 svc_rdma_recvfrom

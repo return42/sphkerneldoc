@@ -413,6 +413,7 @@ Definition
         struct device_attribute enable_attr;
         bool is_enabled;
         int active_reqs;
+        struct workqueue_struct *clk_gating_workq;
     }
 
 .. _`ufs_clk_gating.members`:
@@ -450,6 +451,9 @@ is_enabled
 active_reqs
     number of requests that are pending and should be waited for
     completion before gating clocks.
+
+clk_gating_workq
+    *undescribed*
 
 .. _`ufs_clk_scaling`:
 
@@ -678,6 +682,7 @@ Definition
         struct device_attribute rpm_lvl_attr;
         struct device_attribute spm_lvl_attr;
         int pm_op_in_progress;
+        u32 ahit;
         struct ufshcd_lrb *lrb;
         unsigned long lrb_in_use;
         unsigned long outstanding_tasks;
@@ -697,6 +702,9 @@ Definition
     #define UFSHCD_QUIRK_DME_PEER_ACCESS_AUTO_MODE 0x10
     #define UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION 0x20
     #define UFSHCD_QUIRK_PRDT_BYTE_GRAN 0x80
+    #define UFSHCI_QUIRK_BROKEN_REQ_LIST_CLR 0x100
+    #define UFSHCI_QUIRK_SKIP_RESET_INTR_AGGR 0x200
+    #define UFSHCI_QUIRK_BROKEN_HCE 0x400
         unsigned int quirks;
         unsigned int dev_quirks;
         wait_queue_head_t tm_wq;
@@ -746,6 +754,7 @@ Definition
         bool is_urgent_bkops_lvl_checked;
         struct rw_semaphore clk_scaling_lock;
         struct ufs_desc_size desc_size;
+        atomic_t scsi_block_reqs_cnt;
     }
 
 .. _`ufs_hba.members`:
@@ -802,6 +811,9 @@ spm_lvl_attr
     *undescribed*
 
 pm_op_in_progress
+    *undescribed*
+
+ahit
     *undescribed*
 
 lrb
@@ -969,6 +981,9 @@ clk_scaling_lock
 
 desc_size
     descriptor sizes reported by device
+
+scsi_block_reqs_cnt
+    reference counting for scsi block requests
 
 .. _`ufshcd_rmwl`:
 

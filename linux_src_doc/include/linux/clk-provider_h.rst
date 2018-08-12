@@ -84,7 +84,7 @@ Definition
         int (*get_phase)(struct clk_hw *hw);
         int (*set_phase)(struct clk_hw *hw, int degrees);
         void (*init)(struct clk_hw *hw);
-        int (*debug_init)(struct clk_hw *hw, struct dentry *dentry);
+        void (*debug_init)(struct clk_hw *hw, struct dentry *dentry);
     }
 
 .. _`clk_ops.members`:
@@ -553,10 +553,10 @@ reg
     register controlling multiplexer
 
 table
-    *undescribed*
+    array of register values corresponding to the parent index
 
 mask
-    *undescribed*
+    mask of mutliplexer bit field
 
 shift
     shift to multiplexer bit field

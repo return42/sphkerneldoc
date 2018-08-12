@@ -173,7 +173,9 @@ Returns 0 on success or a negative error code.
 Description
 -----------
 
-The caller must hold the rtnl_mutex.
+The caller must hold the rtnl_mutex and guarantee net_namespace_list
+integrity (hold pernet_ops_rwsem for writing to close the race
+with \ :c:func:`setup_net`\  and \ :c:func:`cleanup_net`\ ).
 
 .. _`rtnl_link_unregister`:
 

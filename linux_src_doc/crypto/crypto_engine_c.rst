@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: crypto/crypto_engine.c
 
+.. _`crypto_finalize_request`:
+
+crypto_finalize_request
+=======================
+
+.. c:function:: void crypto_finalize_request(struct crypto_engine *engine, struct crypto_async_request *req, int err)
+
+    finalize one request if the request is done
+
+    :param struct crypto_engine \*engine:
+        the hardware engine
+
+    :param struct crypto_async_request \*req:
+        the request need to be finalized
+
+    :param int err:
+        error number
+
 .. _`crypto_pump_requests`:
 
 crypto_pump_requests
@@ -25,56 +43,90 @@ This function checks if there is any request in the engine queue that
 needs processing and if so call out to the driver to initialize hardware
 and handle each request.
 
-.. _`crypto_transfer_cipher_request`:
+.. _`crypto_transfer_request`:
 
-crypto_transfer_cipher_request
-==============================
+crypto_transfer_request
+=======================
 
-.. c:function:: int crypto_transfer_cipher_request(struct crypto_engine *engine, struct ablkcipher_request *req, bool need_pump)
+.. c:function:: int crypto_transfer_request(struct crypto_engine *engine, struct crypto_async_request *req, bool need_pump)
 
-    transfer the new request into the enginequeue
+    transfer the new request into the engine queue
 
     :param struct crypto_engine \*engine:
         the hardware engine
 
-    :param struct ablkcipher_request \*req:
+    :param struct crypto_async_request \*req:
         the request need to be listed into the engine queue
 
     :param bool need_pump:
         *undescribed*
 
-.. _`crypto_transfer_cipher_request_to_engine`:
+.. _`crypto_transfer_request_to_engine`:
 
-crypto_transfer_cipher_request_to_engine
-========================================
+crypto_transfer_request_to_engine
+=================================
 
-.. c:function:: int crypto_transfer_cipher_request_to_engine(struct crypto_engine *engine, struct ablkcipher_request *req)
+.. c:function:: int crypto_transfer_request_to_engine(struct crypto_engine *engine, struct crypto_async_request *req)
 
     transfer one request to list into the engine queue
 
     :param struct crypto_engine \*engine:
         the hardware engine
 
-    :param struct ablkcipher_request \*req:
+    :param struct crypto_async_request \*req:
         the request need to be listed into the engine queue
 
-.. _`crypto_transfer_hash_request`:
+.. _`crypto_transfer_ablkcipher_request_to_engine`:
 
-crypto_transfer_hash_request
-============================
+crypto_transfer_ablkcipher_request_to_engine
+============================================
 
-.. c:function:: int crypto_transfer_hash_request(struct crypto_engine *engine, struct ahash_request *req, bool need_pump)
+.. c:function:: int crypto_transfer_ablkcipher_request_to_engine(struct crypto_engine *engine, struct ablkcipher_request *req)
 
-    transfer the new request into the enginequeue
+    transfer one ablkcipher_request to list into the engine queue
 
     :param struct crypto_engine \*engine:
         the hardware engine
 
-    :param struct ahash_request \*req:
+    :param struct ablkcipher_request \*req:
         the request need to be listed into the engine queue
 
-    :param bool need_pump:
-        *undescribed*
+.. _`crypto_transfer_ablkcipher_request_to_engine.todo`:
+
+TODO
+----
+
+Remove this function when skcipher conversion is finished
+
+.. _`crypto_transfer_aead_request_to_engine`:
+
+crypto_transfer_aead_request_to_engine
+======================================
+
+.. c:function:: int crypto_transfer_aead_request_to_engine(struct crypto_engine *engine, struct aead_request *req)
+
+    transfer one aead_request to list into the engine queue
+
+    :param struct crypto_engine \*engine:
+        the hardware engine
+
+    :param struct aead_request \*req:
+        the request need to be listed into the engine queue
+
+.. _`crypto_transfer_akcipher_request_to_engine`:
+
+crypto_transfer_akcipher_request_to_engine
+==========================================
+
+.. c:function:: int crypto_transfer_akcipher_request_to_engine(struct crypto_engine *engine, struct akcipher_request *req)
+
+    transfer one akcipher_request to list into the engine queue
+
+    :param struct crypto_engine \*engine:
+        the hardware engine
+
+    :param struct akcipher_request \*req:
+        the request need to be listed into the engine queue
 
 .. _`crypto_transfer_hash_request_to_engine`:
 
@@ -83,7 +135,7 @@ crypto_transfer_hash_request_to_engine
 
 .. c:function:: int crypto_transfer_hash_request_to_engine(struct crypto_engine *engine, struct ahash_request *req)
 
-    transfer one request to list into the engine queue
+    transfer one ahash_request to list into the engine queue
 
     :param struct crypto_engine \*engine:
         the hardware engine
@@ -91,19 +143,77 @@ crypto_transfer_hash_request_to_engine
     :param struct ahash_request \*req:
         the request need to be listed into the engine queue
 
-.. _`crypto_finalize_cipher_request`:
+.. _`crypto_transfer_skcipher_request_to_engine`:
 
-crypto_finalize_cipher_request
-==============================
+crypto_transfer_skcipher_request_to_engine
+==========================================
 
-.. c:function:: void crypto_finalize_cipher_request(struct crypto_engine *engine, struct ablkcipher_request *req, int err)
+.. c:function:: int crypto_transfer_skcipher_request_to_engine(struct crypto_engine *engine, struct skcipher_request *req)
 
-    finalize one request if the request is done
+    transfer one skcipher_request to list into the engine queue
+
+    :param struct crypto_engine \*engine:
+        the hardware engine
+
+    :param struct skcipher_request \*req:
+        the request need to be listed into the engine queue
+
+.. _`crypto_finalize_ablkcipher_request`:
+
+crypto_finalize_ablkcipher_request
+==================================
+
+.. c:function:: void crypto_finalize_ablkcipher_request(struct crypto_engine *engine, struct ablkcipher_request *req, int err)
+
+    finalize one ablkcipher_request if the request is done
 
     :param struct crypto_engine \*engine:
         the hardware engine
 
     :param struct ablkcipher_request \*req:
+        the request need to be finalized
+
+    :param int err:
+        error number
+
+.. _`crypto_finalize_ablkcipher_request.todo`:
+
+TODO
+----
+
+Remove this function when skcipher conversion is finished
+
+.. _`crypto_finalize_aead_request`:
+
+crypto_finalize_aead_request
+============================
+
+.. c:function:: void crypto_finalize_aead_request(struct crypto_engine *engine, struct aead_request *req, int err)
+
+    finalize one aead_request if the request is done
+
+    :param struct crypto_engine \*engine:
+        the hardware engine
+
+    :param struct aead_request \*req:
+        the request need to be finalized
+
+    :param int err:
+        error number
+
+.. _`crypto_finalize_akcipher_request`:
+
+crypto_finalize_akcipher_request
+================================
+
+.. c:function:: void crypto_finalize_akcipher_request(struct crypto_engine *engine, struct akcipher_request *req, int err)
+
+    finalize one akcipher_request if the request is done
+
+    :param struct crypto_engine \*engine:
+        the hardware engine
+
+    :param struct akcipher_request \*req:
         the request need to be finalized
 
     :param int err:
@@ -116,12 +226,30 @@ crypto_finalize_hash_request
 
 .. c:function:: void crypto_finalize_hash_request(struct crypto_engine *engine, struct ahash_request *req, int err)
 
-    finalize one request if the request is done
+    finalize one ahash_request if the request is done
 
     :param struct crypto_engine \*engine:
         the hardware engine
 
     :param struct ahash_request \*req:
+        the request need to be finalized
+
+    :param int err:
+        error number
+
+.. _`crypto_finalize_skcipher_request`:
+
+crypto_finalize_skcipher_request
+================================
+
+.. c:function:: void crypto_finalize_skcipher_request(struct crypto_engine *engine, struct skcipher_request *req, int err)
+
+    finalize one skcipher_request if the request is done
+
+    :param struct crypto_engine \*engine:
+        the hardware engine
+
+    :param struct skcipher_request \*req:
         the request need to be finalized
 
     :param int err:

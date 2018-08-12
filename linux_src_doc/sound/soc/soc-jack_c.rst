@@ -1,31 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/soc/soc-jack.c
 
-.. _`snd_soc_codec_set_jack`:
-
-snd_soc_codec_set_jack
-======================
-
-.. c:function:: int snd_soc_codec_set_jack(struct snd_soc_codec *codec, struct snd_soc_jack *jack, void *data)
-
-    configure codec jack.
-
-    :param struct snd_soc_codec \*codec:
-        CODEC
-
-    :param struct snd_soc_jack \*jack:
-        structure to use for the jack
-
-    :param void \*data:
-        can be used if codec driver need extra data for configuring jack
-
-.. _`snd_soc_codec_set_jack.description`:
-
-Description
------------
-
-Configures and enables jack detection function.
-
 .. _`snd_soc_component_set_jack`:
 
 snd_soc_component_set_jack

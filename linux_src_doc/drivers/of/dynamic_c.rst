@@ -116,29 +116,26 @@ Returns the newly allocated property or NULL on out of memory error.
 \__of_node_dup
 ==============
 
-.. c:function:: struct device_node *__of_node_dup(const struct device_node *np, const char *fmt,  ...)
+.. c:function:: struct device_node *__of_node_dup(const struct device_node *np, const char *full_name)
 
     Duplicate or create an empty device node dynamically.
 
     :param const struct device_node \*np:
-        *undescribed*
+        if not NULL, contains properties to be duplicated in new node
 
-    :param const char \*fmt:
-        Format string (plus vargs) for new full name of the device node
-
-    :param ellipsis ellipsis:
-        variable arguments
+    :param const char \*full_name:
+        string value to be duplicated into new node's full_name field
 
 .. _`__of_node_dup.description`:
 
 Description
 -----------
 
-Create an device tree node, either by duplicating an empty node or by allocating
-an empty one suitable for further modification.  The node data are
-dynamically allocated and all the node flags have the OF_DYNAMIC &
-OF_DETACHED bits set. Returns the newly allocated node or NULL on out of
-memory error.
+Create a device tree node, optionally duplicating the properties of
+another node.  The node data are dynamically allocated and all the node
+flags have the OF_DYNAMIC & OF_DETACHED bits set.
+
+Returns the newly allocated node or NULL on out of memory error.
 
 .. _`of_changeset_init`:
 

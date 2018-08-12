@@ -28,10 +28,21 @@ Description
 This function attempts to lock an hwspinlock, and will immediately
 fail if the hwspinlock is already taken.
 
-Upon a successful return from this function, preemption (and possibly
-interrupts) is disabled, so the caller must not sleep, and is advised to
-release the hwspinlock as soon as possible. This is required in order to
-minimize remote cores polling on the hardware interconnect.
+.. _`__hwspin_trylock.caution`:
+
+Caution
+-------
+
+If the mode is HWLOCK_RAW, that means user must protect the routine
+of getting hardware lock with mutex or spinlock. Since in some scenarios,
+user need some time-consuming or sleepable operations under the hardware
+lock, they need one sleepable lock (like mutex) to protect the operations.
+
+If the mode is not HWLOCK_RAW, upon a successful return from this function,
+preemption (and possibly interrupts) is disabled, so the caller must not
+sleep, and is advised to release the hwspinlock as soon as possible. This is
+required in order to minimize remote cores polling on the hardware
+interconnect.
 
 The user decides whether local interrupts are disabled or not, and if yes,
 whether he wants their previous state to be saved. It is up to the user
@@ -74,9 +85,19 @@ This function locks the given \ ``hwlock``\ . If the \ ``hwlock``\
 is already taken, the function will busy loop waiting for it to
 be released, but give up after \ ``timeout``\  msecs have elapsed.
 
-Upon a successful return from this function, preemption is disabled
-(and possibly local interrupts, too), so the caller must not sleep,
-and is advised to release the hwspinlock as soon as possible.
+.. _`__hwspin_lock_timeout.caution`:
+
+Caution
+-------
+
+If the mode is HWLOCK_RAW, that means user must protect the routine
+of getting hardware lock with mutex or spinlock. Since in some scenarios,
+user need some time-consuming or sleepable operations under the hardware
+lock, they need one sleepable lock (like mutex) to protect the operations.
+
+If the mode is not HWLOCK_RAW, upon a successful return from this function,
+preemption is disabled (and possibly local interrupts, too), so the caller
+must not sleep, and is advised to release the hwspinlock as soon as possible.
 This is required in order to minimize remote cores polling on the
 hardware interconnect.
 

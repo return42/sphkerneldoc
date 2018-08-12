@@ -188,8 +188,6 @@ Definition
         IFF_LIVE_ADDR_CHANGE,
         IFF_MACVLAN,
         IFF_XMIT_DST_RELEASE_PERM,
-        IFF_IPVLAN_MASTER,
-        IFF_IPVLAN_SLAVE,
         IFF_L3MDEV_MASTER,
         IFF_NO_QUEUE,
         IFF_OPENVSWITCH,
@@ -197,7 +195,10 @@ Definition
         IFF_TEAM,
         IFF_RXFH_CONFIGURED,
         IFF_PHONY_HEADROOM,
-        IFF_MACSEC
+        IFF_MACSEC,
+        IFF_NO_RX_HANDLER,
+        IFF_FAILOVER,
+        IFF_FAILOVER_SLAVE
     };
 
 .. _`netdev_priv_flags.constants`:
@@ -262,12 +263,6 @@ IFF_XMIT_DST_RELEASE_PERM
     IFF_XMIT_DST_RELEASE not taking into account
     underlying stacked devices
 
-IFF_IPVLAN_MASTER
-    IPvlan master device
-
-IFF_IPVLAN_SLAVE
-    IPvlan slave device
-
 IFF_L3MDEV_MASTER
     device is an L3 master device
 
@@ -292,6 +287,15 @@ IFF_PHONY_HEADROOM
 
 IFF_MACSEC
     device is a MACsec device
+
+IFF_NO_RX_HANDLER
+    device doesn't support the rx_handler hook
+
+IFF_FAILOVER
+    device is a failover master device
+
+IFF_FAILOVER_SLAVE
+    device is lower dev of a failover master device
 
 .. _`netdev_priv_flags.description`:
 
@@ -373,6 +377,9 @@ Definition
     #ifdef CONFIG_XFRM_OFFLOAD
         const struct xfrmdev_ops *xfrmdev_ops;
     #endif
+    #if IS_ENABLED(CONFIG_TLS_DEVICE)
+        const struct tlsdev_ops *tlsdev_ops;
+    #endif
         const struct header_ops *header_ops;
         unsigned int flags;
         unsigned int priv_flags;
@@ -416,11 +423,17 @@ Definition
     #if IS_ENABLED(CONFIG_TIPC)
         struct tipc_bearer __rcu *tipc_ptr;
     #endif
+    #if IS_ENABLED(CONFIG_IRDA) || IS_ENABLED(CONFIG_ATALK)
         void *atalk_ptr;
+    #endif
         struct in_device __rcu *ip_ptr;
+    #if IS_ENABLED(CONFIG_DECNET)
         struct dn_dev __rcu *dn_ptr;
+    #endif
         struct inet6_dev __rcu *ip6_ptr;
+    #if IS_ENABLED(CONFIG_AX25)
         void *ax25_ptr;
+    #endif
         struct wireless_dev *ieee80211_ptr;
         struct wpan_dev *ieee802154_ptr;
     #if IS_ENABLED(CONFIG_MPLS_ROUTING)
@@ -519,6 +532,7 @@ Definition
         struct netprio_map __rcu *priomap;
     #endif
         struct phy_device *phydev;
+        struct sfp_bus *sfp_bus;
         struct lock_class_key *qdisc_tx_busylock;
         struct lock_class_key *qdisc_running_key;
         bool proto_down;
@@ -655,6 +669,9 @@ ndisc_ops
     discovery handling. Necessary for e.g. 6LoWPAN.
 
 xfrmdev_ops
+    *undescribed*
+
+tlsdev_ops
     *undescribed*
 
 header_ops
@@ -977,6 +994,9 @@ priomap
 phydev
     Physical device may attach itself
     for hardware timestamping
+
+sfp_bus
+    attached \ :c:type:`struct sfp_bus <sfp_bus>`\  structure.
 
 qdisc_tx_busylock
     lockdep class annotating Qdisc->busylock spinlock

@@ -114,6 +114,48 @@ Description
 Uninitialize CDCLK for BXT and derivatives. This is done only
 during the display core uninitialization sequence.
 
+.. _`icl_init_cdclk`:
+
+icl_init_cdclk
+==============
+
+.. c:function:: void icl_init_cdclk(struct drm_i915_private *dev_priv)
+
+    Initialize CDCLK on ICL
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
+
+.. _`icl_init_cdclk.description`:
+
+Description
+-----------
+
+Initialize CDCLK for ICL. This consists mainly of initializing
+dev_priv->cdclk.hw and sanitizing the state of the hardware if needed. This
+is generally done only during the display core initialization sequence, after
+which the DMC will take care of turning CDCLK off/on as needed.
+
+.. _`icl_uninit_cdclk`:
+
+icl_uninit_cdclk
+================
+
+.. c:function:: void icl_uninit_cdclk(struct drm_i915_private *dev_priv)
+
+    Uninitialize CDCLK on ICL
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
+
+.. _`icl_uninit_cdclk.description`:
+
+Description
+-----------
+
+Uninitialize CDCLK for ICL. This is done only during the display core
+uninitialization sequence.
+
 .. _`cnl_init_cdclk`:
 
 cnl_init_cdclk

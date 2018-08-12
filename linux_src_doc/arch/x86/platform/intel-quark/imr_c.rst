@@ -129,21 +129,6 @@ imr_dbgfs_state_show
     :param void \*unused:
         unused parameter.
 
-.. _`imr_state_open`:
-
-imr_state_open
-==============
-
-.. c:function:: int imr_state_open(struct inode *inode, struct file *file)
-
-    debugfs open callback.
-
-    :param struct inode \*inode:
-        pointer to struct inode.
-
-    :param struct file \*file:
-        pointer to struct file.
-
 .. _`imr_debugfs_register`:
 
 imr_debugfs_register

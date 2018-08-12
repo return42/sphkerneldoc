@@ -148,10 +148,10 @@ Members
 -------
 
 node
-    *undescribed*
+    List entry
 
 presc
-    *undescribed*
+    Prescaler value
 
 scldel
     Data setup time
@@ -160,10 +160,10 @@ sdadel
     Data hold time
 
 sclh
-    SCL low period (master mode)
+    SCL high period (master mode)
 
 scll
-    *undescribed*
+    SCL low period (master mode)
 
 .. _`stm32f7_i2c_msg`:
 
@@ -182,11 +182,15 @@ Definition
 .. code-block:: c
 
     struct stm32f7_i2c_msg {
-        u8 addr;
+        u16 addr;
         u32 count;
         u8 *buf;
         int result;
         bool stop;
+        bool smbus;
+        int size;
+        char read_write;
+        u8 smbus_buf[I2C_SMBUS_BLOCK_MAX + 3] __aligned(4);
     }
 
 .. _`stm32f7_i2c_msg.members`:
@@ -195,7 +199,7 @@ Members
 -------
 
 addr
-    8-bit slave addr, including r/w bit
+    8-bit or 10-bit slave addr, including r/w bit
 
 count
     number of bytes to be transferred
@@ -208,6 +212,22 @@ result
 
 stop
     last I2C msg to be sent, i.e. STOP to be generated
+
+smbus
+    boolean to know if the I2C IP is used in SMBus mode
+
+size
+    type of SMBus protocol
+
+read_write
+    direction of SMBus protocol
+    SMBus block read and SMBus block write - block read process call protocols
+
+smbus_buf
+    buffer to be used for SMBus protocol transfer. It will
+    contain a maximum of 32 bytes of data + byte command + byte count + PEC
+    This buffer has to be 32-bit aligned to be compliant with memory address
+    register in DMA mode.
 
 .. _`stm32f7_i2c_dev`:
 
@@ -238,6 +258,12 @@ Definition
         struct stm32f7_i2c_msg f7_msg;
         struct stm32f7_i2c_setup setup;
         struct stm32f7_i2c_timings timing;
+        struct i2c_client *slave[STM32F7_I2C_MAX_SLAVE];
+        struct i2c_client *slave_running;
+        u32 slave_dir;
+        bool master_mode;
+        struct stm32_i2c_dma *dma;
+        bool use_dma;
     }
 
 .. _`stm32f7_i2c_dev.members`:
@@ -280,6 +306,25 @@ setup
 
 timing
     I2C computed timings
+
+slave
+    list of slave devices registered on the I2C bus
+
+slave_running
+    slave device currently used
+
+slave_dir
+    transfer direction for the current slave device
+
+master_mode
+    boolean to know in which mode the I2C is running (master or
+    slave)
+
+dma
+    dma data
+
+use_dma
+    boolean to know if dma is used in the current transfer
 
 .. This file was automatic generated / don't edit.
 

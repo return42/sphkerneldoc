@@ -25,6 +25,7 @@ Definition
         struct completion cleanup_done;
         struct list_head commit_entry;
         struct drm_pending_vblank_event *event;
+        bool abort_completion;
     }
 
 .. _`drm_crtc_commit.members`:
@@ -78,6 +79,12 @@ commit_entry
 event
 
     \ :c:type:`struct drm_pending_vblank_event <drm_pending_vblank_event>`\  pointer to clean up private events.
+
+abort_completion
+
+    A flag that's set after drm_atomic_helper_setup_commit takes a second
+    reference for the completion of \ ``$drm_crtc_state``\ .event. It's used by
+    the free code to remove the second reference if commit fails.
 
 .. _`drm_crtc_commit.description`:
 
@@ -922,6 +929,39 @@ Description
 This iterates over all planes in an atomic update, tracking both old and
 new state. This is useful in places where the state delta needs to be
 considered, for example in atomic check functions.
+
+.. _`for_each_oldnew_plane_in_state_reverse`:
+
+for_each_oldnew_plane_in_state_reverse
+======================================
+
+.. c:function::  for_each_oldnew_plane_in_state_reverse( __state,  plane,  old_plane_state,  new_plane_state,  __i)
+
+    iterate over all planes in an atomic update in reverse order
+
+    :param  __state:
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+
+    :param  plane:
+        \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
+
+    :param  old_plane_state:
+        \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the old state
+
+    :param  new_plane_state:
+        \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the new state
+
+    :param  __i:
+        int iteration cursor, for macro-internal use
+
+.. _`for_each_oldnew_plane_in_state_reverse.description`:
+
+Description
+-----------
+
+This iterates over all planes in an atomic update in reverse order,
+tracking both old and  new state. This is useful in places where the
+state delta needs to be considered, for example in atomic check functions.
 
 .. _`for_each_old_plane_in_state`:
 

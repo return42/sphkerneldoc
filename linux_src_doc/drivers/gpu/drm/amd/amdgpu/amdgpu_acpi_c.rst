@@ -6,12 +6,12 @@
 amdgpu_atif_call
 ================
 
-.. c:function:: union acpi_object *amdgpu_atif_call(acpi_handle handle, int function, struct acpi_buffer *params)
+.. c:function:: union acpi_object *amdgpu_atif_call(struct amdgpu_atif *atif, int function, struct acpi_buffer *params)
 
     call an ATIF method
 
-    :param acpi_handle handle:
-        acpi handle
+    :param struct amdgpu_atif \*atif:
+        *undescribed*
 
     :param int function:
         the ATIF function to execute
@@ -80,12 +80,9 @@ are supported (all asics).
 amdgpu_atif_verify_interface
 ============================
 
-.. c:function:: int amdgpu_atif_verify_interface(acpi_handle handle, struct amdgpu_atif *atif)
+.. c:function:: int amdgpu_atif_verify_interface(struct amdgpu_atif *atif)
 
     verify ATIF
-
-    :param acpi_handle handle:
-        acpi handle
 
     :param struct amdgpu_atif \*atif:
         amdgpu atif struct
@@ -105,15 +102,12 @@ returns 0 on success, error on failure.
 amdgpu_atif_get_notification_params
 ===================================
 
-.. c:function:: int amdgpu_atif_get_notification_params(acpi_handle handle, struct amdgpu_atif_notification_cfg *n)
+.. c:function:: int amdgpu_atif_get_notification_params(struct amdgpu_atif *atif)
 
     determine notify configuration
 
-    :param acpi_handle handle:
-        acpi handle
-
-    :param struct amdgpu_atif_notification_cfg \*n:
-        atif notification configuration struct
+    :param struct amdgpu_atif \*atif:
+        *undescribed*
 
 .. _`amdgpu_atif_get_notification_params.description`:
 
@@ -131,12 +125,12 @@ Returns 0 on success, error on failure.
 amdgpu_atif_get_sbios_requests
 ==============================
 
-.. c:function:: int amdgpu_atif_get_sbios_requests(acpi_handle handle, struct atif_sbios_requests *req)
+.. c:function:: int amdgpu_atif_get_sbios_requests(struct amdgpu_atif *atif, struct atif_sbios_requests *req)
 
     get requested sbios event
 
-    :param acpi_handle handle:
-        acpi handle
+    :param struct amdgpu_atif \*atif:
+        *undescribed*
 
     :param struct atif_sbios_requests \*req:
         atif sbios request struct

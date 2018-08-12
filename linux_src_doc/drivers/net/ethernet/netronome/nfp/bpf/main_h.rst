@@ -27,6 +27,7 @@ Definition
         struct list_head map_list;
         unsigned int maps_in_use;
         unsigned int map_elems_in_use;
+        struct rhashtable maps_neutral;
         struct nfp_bpf_cap_adjust_head {
             u32 flags;
             int off_min;
@@ -44,7 +45,12 @@ Definition
         } maps;
         struct {
             u32 map_lookup;
+            u32 map_update;
+            u32 map_delete;
+            u32 perf_event_output;
         } helpers;
+        bool pseudo_random;
+        bool queue_select;
     }
 
 .. _`nfp_app_bpf.members`:
@@ -78,6 +84,9 @@ maps_in_use
 
 map_elems_in_use
     number of elements allocated to offloaded maps
+
+maps_neutral
+    hash table of offload-neutral maps (on pointer)
 
 adjust_head
     adjust head capability
@@ -124,6 +133,21 @@ helpers
 helpers.map_lookup
     map lookup helper address
 
+helpers.map_update
+    map update helper address
+
+helpers.map_delete
+    map delete helper address
+
+helpers.perf_event_output
+    output perf event to a ring buffer
+
+pseudo_random
+    FW initialized the pseudo-random machinery (CSRs)
+
+queue_select
+    BPF can set the RX queue ID in packet vector
+
 .. _`nfp_bpf_map`:
 
 struct nfp_bpf_map
@@ -145,6 +169,7 @@ Definition
         struct nfp_app_bpf *bpf;
         u32 tid;
         struct list_head l;
+        enum nfp_bpf_map_use use_map[];
     }
 
 .. _`nfp_bpf_map.members`:
@@ -163,6 +188,41 @@ tid
 
 l
     link on the nfp_app_bpf->map_list list
+
+use_map
+    map of how the value is used (in 4B chunks)
+
+.. _`nfp_bpf_reg_state`:
+
+struct nfp_bpf_reg_state
+========================
+
+.. c:type:: struct nfp_bpf_reg_state
+
+    register state for calls
+
+.. _`nfp_bpf_reg_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nfp_bpf_reg_state {
+        struct bpf_reg_state reg;
+        bool var_off;
+    }
+
+.. _`nfp_bpf_reg_state.members`:
+
+Members
+-------
+
+reg
+    BPF register state from latest path
+
+var_off
+    for stack arg - changes stack offset on different paths
 
 .. _`nfp_insn_meta`:
 
@@ -188,13 +248,26 @@ Definition
                 struct bpf_insn *paired_st;
                 s16 ldst_gather_len;
                 bool ptr_not_const;
+                struct {
+                    s16 range_start;
+                    s16 range_end;
+                    bool do_init;
+                } pkt_cache;
+                bool xadd_over_16bit;
+                bool xadd_maybe_16bit;
             } ;
-            struct nfp_insn_meta *jmp_dst;
+            struct {
+                struct nfp_insn_meta *jmp_dst;
+                bool jump_neg_op;
+            } ;
             struct {
                 u32 func_id;
                 struct bpf_reg_state arg1;
-                struct bpf_reg_state arg2;
-                bool arg2_var_off;
+                struct nfp_bpf_reg_state arg2;
+            } ;
+            struct {
+                u64 umin;
+                u64 umax;
             } ;
         } ;
         unsigned int off;
@@ -231,8 +304,32 @@ ldst_gather_len
 ptr_not_const
     pointer is not always constant
 
+pkt_cache
+    packet data cache information
+
+pkt_cache.range_start
+    start offset for associated packet data cache
+
+pkt_cache.range_end
+    end offset for associated packet data cache
+
+pkt_cache.do_init
+    this read needs to initialize packet data cache
+
+xadd_over_16bit
+    16bit immediate is not guaranteed
+
+xadd_maybe_16bit
+    16bit immediate is possible
+
+{unnamed_struct}
+    anonymous
+
 jmp_dst
     destination info for jump instructions
+
+jump_neg_op
+    jump instruction has inverted immediate, use ADD instead of SUB
 
 {unnamed_struct}
     anonymous
@@ -246,8 +343,14 @@ arg1
 arg2
     arg2 for call instructions
 
-arg2_var_off
-    arg2 changes stack offset on different paths
+{unnamed_struct}
+    anonymous
+
+umin
+    copy of core verifier umin_value.
+
+umax
+    copy of core verifier umax_value.
 
 off
     index of first generated machine instruction (in nfp_prog.prog)
@@ -297,6 +400,8 @@ Definition
         int error;
         unsigned int stack_depth;
         unsigned int adjust_head_location;
+        unsigned int map_records_cnt;
+        struct nfp_bpf_neutral_map **map_records;
         struct list_head insns;
     }
 
@@ -343,6 +448,12 @@ stack_depth
 
 adjust_head_location
     if program has single adjust head call - the insn no.
+
+map_records_cnt
+    the number of map pointers recorded for this prog
+
+map_records
+    the map record pointers from bpf->maps_neutral
 
 insns
     list of BPF instruction wrappers (struct nfp_insn_meta)

@@ -187,14 +187,14 @@ Definition
 
     struct rhashtable {
         struct bucket_table __rcu *tbl;
-        atomic_t nelems;
         unsigned int key_len;
-        struct rhashtable_params p;
         unsigned int max_elems;
+        struct rhashtable_params p;
         bool rhlist;
         struct work_struct run_work;
         struct mutex mutex;
         spinlock_t lock;
+        atomic_t nelems;
     }
 
 .. _`rhashtable.members`:
@@ -205,17 +205,14 @@ Members
 tbl
     Bucket table
 
-nelems
-    Number of elements in table
-
 key_len
     Key length for hashfn
 
-p
-    Configuration parameters
-
 max_elems
     Maximum number of elements in table
+
+p
+    Configuration parameters
 
 rhlist
     True if this is an rhltable
@@ -228,6 +225,9 @@ mutex
 
 lock
     Spin lock to protect walker list
+
+nelems
+    Number of elements in table
 
 .. _`rhltable`:
 
@@ -825,9 +825,8 @@ they map to the same bucket lock.
 
 It is safe to call this function from atomic context.
 
-Will trigger an automatic deferred table resizing if the size grows
-beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
-to \ :c:func:`rhashtable_init`\ .
+Will trigger an automatic deferred table resizing if residency in the
+table grows beyond 70%.
 
 .. _`rhltable_insert_key`:
 
@@ -861,9 +860,8 @@ they map to the same bucket lock.
 
 It is safe to call this function from atomic context.
 
-Will trigger an automatic deferred table resizing if the size grows
-beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
-to \ :c:func:`rhashtable_init`\ .
+Will trigger an automatic deferred table resizing if residency in the
+table grows beyond 70%.
 
 .. _`rhltable_insert`:
 
@@ -894,9 +892,8 @@ they map to the same bucket lock.
 
 It is safe to call this function from atomic context.
 
-Will trigger an automatic deferred table resizing if the size grows
-beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
-to \ :c:func:`rhashtable_init`\ .
+Will trigger an automatic deferred table resizing if residency in the
+table grows beyond 70%.
 
 .. _`rhashtable_lookup_insert_fast`:
 
@@ -932,9 +929,8 @@ parameter set). It will \ :c:func:`BUG`\  if used inappropriately.
 
 It is safe to call this function from atomic context.
 
-Will trigger an automatic deferred table resizing if the size grows
-beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
-to \ :c:func:`rhashtable_init`\ .
+Will trigger an automatic deferred table resizing if residency in the
+table grows beyond 70%.
 
 .. _`rhashtable_lookup_get_insert_fast`:
 
@@ -997,9 +993,8 @@ a resize is in progress.
 
 Lookups may occur in parallel with hashtable mutations and resizing.
 
-Will trigger an automatic deferred table resizing if the size grows
-beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
-to \ :c:func:`rhashtable_init`\ .
+Will trigger an automatic deferred table resizing if residency in the
+table grows beyond 70%.
 
 Returns zero on success.
 
@@ -1060,8 +1055,8 @@ Since the hash chain is single linked, the removal operation needs to
 walk the bucket chain upon removal. The removal operation is thus
 considerable slow if the hash table is not correctly sized.
 
-Will automatically shrink the table via \ :c:func:`rhashtable_expand`\  if the
-shrink_decision function specified at \ :c:func:`rhashtable_init`\  returns true.
+Will automatically shrink the table if permitted when residency drops
+below 30%.
 
 Returns zero on success, -ENOENT if the entry could not be found.
 
@@ -1092,8 +1087,8 @@ Since the hash chain is single linked, the removal operation needs to
 walk the bucket chain upon removal. The removal operation is thus
 considerable slow if the hash table is not correctly sized.
 
-Will automatically shrink the table via \ :c:func:`rhashtable_expand`\  if the
-shrink_decision function specified at \ :c:func:`rhashtable_init`\  returns true.
+Will automatically shrink the table if permitted when residency drops
+below 30%
 
 Returns zero on success, -ENOENT if the entry could not be found.
 
@@ -1160,8 +1155,9 @@ call to rhashtable_walk_start.
 For a completely stable walk you should construct your own data
 structure outside the hash table.
 
-This function may sleep so you must not call it from interrupt
-context or with spin locks held.
+This function may be called from any process context, including
+non-preemptable context, but cannot be called from softirq or
+hardirq context.
 
 You must call rhashtable_walk_exit after this function returns.
 

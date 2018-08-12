@@ -55,7 +55,7 @@ bsg_softirq_done
 bsg_prepare_job
 ===============
 
-.. c:function:: int bsg_prepare_job(struct device *dev, struct request *req)
+.. c:function:: bool bsg_prepare_job(struct device *dev, struct request *req)
 
     create the bsg_job structure for the bsg request
 
@@ -92,7 +92,7 @@ Drivers/subsys should pass this to the queue init function.
 bsg_setup_queue
 ===============
 
-.. c:function:: struct request_queue *bsg_setup_queue(struct device *dev, const char *name, bsg_job_fn *job_fn, int dd_job_size, void (*release)(struct device *))
+.. c:function:: struct request_queue *bsg_setup_queue(struct device *dev, const char *name, bsg_job_fn *job_fn, int dd_job_size)
 
     Create and add the bsg hooks so we can receive requests
 
@@ -107,9 +107,6 @@ bsg_setup_queue
 
     :param int dd_job_size:
         size of LLD data needed for each job
-
-    :param void (\*release)(struct device \*):
-        \ ``dev``\  release function
 
 .. This file was automatic generated / don't edit.
 

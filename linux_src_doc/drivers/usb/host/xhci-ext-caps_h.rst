@@ -25,7 +25,8 @@ Description
 \ ``base``\         PCI MMIO registers base address.
 \ ``start``\        address at which to start looking, (0 or HCC_PARAMS to start at
 beginning of list)
-\ ``id``\           Extended capability ID to search for.
+\ ``id``\           Extended capability ID to search for, or 0 for the next
+capability
 
 Returns the offset of the next matching extended capability structure.
 Some capabilities can occur several times, e.g., the XHCI_EXT_CAPS_PROTOCOL,

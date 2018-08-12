@@ -549,7 +549,7 @@ i40evf_aq_get_ddp_list
         buffer size in bytes
 
     :param u8 flags:
-        *undescribed*
+        AdminQ command flags
 
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL

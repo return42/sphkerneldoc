@@ -43,27 +43,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-.. _`omap_usbhs_get_dt_port_mode`:
-
-omap_usbhs_get_dt_port_mode
-===========================
-
-.. c:function:: int omap_usbhs_get_dt_port_mode(const char *mode)
-
-    Get the 'enum usbhs_omap_port_mode' from the port mode string.
-
-    :param const char \*mode:
-        The port mode string, usually obtained from device tree.
-
-.. _`omap_usbhs_get_dt_port_mode.description`:
-
-Description
------------
-
-The function returns the 'enum usbhs_omap_port_mode' that matches the
-provided port mode string as per the port_modes table.
-If no match is found it returns -ENODEV
-
 .. _`usbhs_omap_probe`:
 
 usbhs_omap_probe

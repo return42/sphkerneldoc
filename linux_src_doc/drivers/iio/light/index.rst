@@ -15,5 +15,6 @@ light
     si1145_c
     st_uvis25_h
     stk3310_c
+    tsl2772_c
     us5182d_c
     vl6180_c

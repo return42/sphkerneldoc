@@ -11,18 +11,15 @@ bch_hprint
     formats \ ``v``\  to human readable string for sysfs.
 
     :param char \*buf:
-        *undescribed*
+        the (at least 8 byte) buffer to format the result into.
 
     :param int64_t v:
-        *undescribed*
+        signed 64 bit integer
 
 .. _`bch_hprint.description`:
 
 Description
 -----------
-
-\ ``v``\  - signed 64 bit integer
-\ ``buf``\  - the (at least 8 byte) buffer to format the result into.
 
 Returns the number of bytes used by format.
 
@@ -33,23 +30,21 @@ bch_next_delay
 
 .. c:function:: uint64_t bch_next_delay(struct bch_ratelimit *d, uint64_t done)
 
-    increment \ ``d``\  by the amount of work done, and return how long to delay until the next time to do some work.
+    update ratelimiting statistics and calculate next delay
 
     :param struct bch_ratelimit \*d:
-        *undescribed*
+        the struct bch_ratelimit to update
 
     :param uint64_t done:
-        *undescribed*
+        the amount of work done, in arbitrary units
 
 .. _`bch_next_delay.description`:
 
 Description
 -----------
 
-\ ``d``\  - the struct bch_ratelimit to update
-\ ``done``\  - the amount of work done, in arbitrary units
-
-Returns the amount of time to delay by, in jiffies
+Increment \ ``d``\  by the amount of work done, and return how long to delay in
+jiffies until the next time to do some work.
 
 .. _`bch_bio_alloc_pages`:
 

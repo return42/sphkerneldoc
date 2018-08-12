@@ -75,7 +75,6 @@ Definition
         DRM_AUTH,
         DRM_MASTER,
         DRM_ROOT_ONLY,
-        DRM_CONTROL_ALLOW,
         DRM_UNLOCKED,
         DRM_RENDER_ALLOW
     };
@@ -109,11 +108,6 @@ DRM_ROOT_ONLY
     master (display compositor) into compliance.
 
     This is equivalent to callers with the SYSADMIN capability.
-
-DRM_CONTROL_ALLOW
-
-    Deprecated, do not use. Control nodes are in the process of getting
-    removed.
 
 DRM_UNLOCKED
 

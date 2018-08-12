@@ -19,7 +19,6 @@ Definition
 
     struct exynos_tmu_data {
         int id;
-        struct exynos_tmu_platform_data *pdata;
         void __iomem *base;
         void __iomem *base_second;
         int irq;
@@ -27,11 +26,20 @@ Definition
         struct work_struct irq_work;
         struct mutex lock;
         struct clk *clk, *clk_sec, *sclk;
+        u32 cal_type;
+        u32 efuse_value;
+        u32 min_efuse_value;
+        u32 max_efuse_value;
         u16 temp_error1, temp_error2;
+        u8 gain;
+        u8 reference_voltage;
         struct regulator *regulator;
         struct thermal_zone_device *tzd;
         unsigned int ntrip;
-        int (*tmu_initialize)(struct platform_device *pdev);
+        bool enabled;
+        void (*tmu_set_trip_temp)(struct exynos_tmu_data *data, int trip, u8 temp);
+        void (*tmu_set_trip_hyst)(struct exynos_tmu_data *data, int trip, u8 temp, u8 hyst);
+        void (*tmu_initialize)(struct platform_device *pdev);
         void (*tmu_control)(struct platform_device *pdev, bool on);
         int (*tmu_read)(struct exynos_tmu_data *data);
         void (*tmu_set_emulation)(struct exynos_tmu_data *data, int temp);
@@ -45,9 +53,6 @@ Members
 
 id
     identifier of the one instance of the TMU controller.
-
-pdata
-    pointer to the tmu platform/configuration data
 
 base
     base address of the single instance of the TMU controller.
@@ -76,11 +81,32 @@ clk_sec
 sclk
     pointer to the clock structure for accessing the tmu special clk.
 
+cal_type
+    calibration type for temperature
+
+efuse_value
+    SoC defined fuse value
+
+min_efuse_value
+    minimum valid trimming data
+
+max_efuse_value
+    maximum valid trimming data
+
 temp_error1
     fused value of the first point trim.
 
 temp_error2
     fused value of the second point trim.
+
+gain
+    gain of amplifier in the positive-TC generator block
+    0 < gain <= 15
+
+reference_voltage
+    reference voltage of amplifier
+    in the positive-TC generator block
+    0 < reference_voltage <= 31
 
 regulator
     pointer to the TMU regulator structure.
@@ -90,6 +116,15 @@ tzd
 
 ntrip
     number of supported trip points.
+
+enabled
+    current status of TMU device
+
+tmu_set_trip_temp
+    *undescribed*
+
+tmu_set_trip_hyst
+    *undescribed*
 
 tmu_initialize
     SoC specific TMU initialization method

@@ -261,56 +261,6 @@ Return
 
 0 for success, else error.
 
-.. _`snd_soc_add_codec_controls`:
-
-snd_soc_add_codec_controls
-==========================
-
-.. c:function:: int snd_soc_add_codec_controls(struct snd_soc_codec *codec, const struct snd_kcontrol_new *controls, unsigned int num_controls)
-
-    add an array of controls to a codec. Convenience function to add a list of controls. Many codecs were duplicating this code.
-
-    :param struct snd_soc_codec \*codec:
-        codec to add controls to
-
-    :param const struct snd_kcontrol_new \*controls:
-        array of controls to add
-
-    :param unsigned int num_controls:
-        number of elements in the array
-
-.. _`snd_soc_add_codec_controls.description`:
-
-Description
------------
-
-Return 0 for success, else error.
-
-.. _`snd_soc_add_platform_controls`:
-
-snd_soc_add_platform_controls
-=============================
-
-.. c:function:: int snd_soc_add_platform_controls(struct snd_soc_platform *platform, const struct snd_kcontrol_new *controls, unsigned int num_controls)
-
-    add an array of controls to a platform. Convenience function to add a list of controls.
-
-    :param struct snd_soc_platform \*platform:
-        platform to add controls to
-
-    :param const struct snd_kcontrol_new \*controls:
-        array of controls to add
-
-    :param unsigned int num_controls:
-        number of elements in the array
-
-.. _`snd_soc_add_platform_controls.description`:
-
-Description
------------
-
-Return 0 for success, else error.
-
 .. _`snd_soc_add_card_controls`:
 
 snd_soc_add_card_controls
@@ -388,37 +338,6 @@ Description
 -----------
 
 Configures the DAI master (MCLK) or system (SYSCLK) clocking.
-
-.. _`snd_soc_codec_set_sysclk`:
-
-snd_soc_codec_set_sysclk
-========================
-
-.. c:function:: int snd_soc_codec_set_sysclk(struct snd_soc_codec *codec, int clk_id, int source, unsigned int freq, int dir)
-
-    configure CODEC system or master clock.
-
-    :param struct snd_soc_codec \*codec:
-        CODEC
-
-    :param int clk_id:
-        DAI specific clock ID
-
-    :param int source:
-        Source for the clock
-
-    :param unsigned int freq:
-        new clock frequency in Hz
-
-    :param int dir:
-        new clock direction - input/output.
-
-.. _`snd_soc_codec_set_sysclk.description`:
-
-Description
------------
-
-Configures the CODEC master (MCLK) or system (SYSCLK) clocking.
 
 .. _`snd_soc_component_set_sysclk`:
 
@@ -743,7 +662,7 @@ snd_soc_unregister_dais
 snd_soc_register_dais
 =====================
 
-.. c:function:: int snd_soc_register_dais(struct snd_soc_component *component, struct snd_soc_dai_driver *dai_drv, size_t count, bool legacy_dai_naming)
+.. c:function:: int snd_soc_register_dais(struct snd_soc_component *component, struct snd_soc_dai_driver *dai_drv, size_t count)
 
     Register a DAI with the ASoC core
 
@@ -755,10 +674,6 @@ snd_soc_register_dais
 
     :param size_t count:
         Number of DAIs
-
-    :param bool legacy_dai_naming:
-        Use the legacy naming scheme and let the DAI inherit the
-        parent's name.
 
 .. _`snd_soc_register_dai`:
 
@@ -843,96 +758,6 @@ __snd_soc_unregister_component
 
     :param struct device \*dev:
         The device to unregister
-
-.. _`snd_soc_add_platform`:
-
-snd_soc_add_platform
-====================
-
-.. c:function:: int snd_soc_add_platform(struct device *dev, struct snd_soc_platform *platform, const struct snd_soc_platform_driver *platform_drv)
-
-    Add a platform to the ASoC core
-
-    :param struct device \*dev:
-        The parent device for the platform
-
-    :param struct snd_soc_platform \*platform:
-        The platform to add
-
-    :param const struct snd_soc_platform_driver \*platform_drv:
-        The driver for the platform
-
-.. _`snd_soc_register_platform`:
-
-snd_soc_register_platform
-=========================
-
-.. c:function:: int snd_soc_register_platform(struct device *dev, const struct snd_soc_platform_driver *platform_drv)
-
-    Register a platform with the ASoC core
-
-    :param struct device \*dev:
-        The device for the platform
-
-    :param const struct snd_soc_platform_driver \*platform_drv:
-        The driver for the platform
-
-.. _`snd_soc_remove_platform`:
-
-snd_soc_remove_platform
-=======================
-
-.. c:function:: void snd_soc_remove_platform(struct snd_soc_platform *platform)
-
-    Remove a platform from the ASoC core
-
-    :param struct snd_soc_platform \*platform:
-        the platform to remove
-
-.. _`snd_soc_unregister_platform`:
-
-snd_soc_unregister_platform
-===========================
-
-.. c:function:: void snd_soc_unregister_platform(struct device *dev)
-
-    Unregister a platform from the ASoC core
-
-    :param struct device \*dev:
-        platform to unregister
-
-.. _`snd_soc_register_codec`:
-
-snd_soc_register_codec
-======================
-
-.. c:function:: int snd_soc_register_codec(struct device *dev, const struct snd_soc_codec_driver *codec_drv, struct snd_soc_dai_driver *dai_drv, int num_dai)
-
-    Register a codec with the ASoC core
-
-    :param struct device \*dev:
-        The parent device for this codec
-
-    :param const struct snd_soc_codec_driver \*codec_drv:
-        Codec driver
-
-    :param struct snd_soc_dai_driver \*dai_drv:
-        The associated DAI driver
-
-    :param int num_dai:
-        Number of DAIs
-
-.. _`snd_soc_unregister_codec`:
-
-snd_soc_unregister_codec
-========================
-
-.. c:function:: void snd_soc_unregister_codec(struct device *dev)
-
-    Unregister a codec from the ASoC core
-
-    :param struct device \*dev:
-        codec to unregister
 
 .. This file was automatic generated / don't edit.
 

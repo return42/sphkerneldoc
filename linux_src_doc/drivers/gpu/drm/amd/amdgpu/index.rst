@@ -10,10 +10,13 @@ amdgpu
     amdgpu_acp_c
     amdgpu_acpi_c
     amdgpu_amdkfd_c
+    amdgpu_amdkfd_fence_c
+    amdgpu_amdkfd_gpuvm_c
     amdgpu_atombios_c
     amdgpu_atpx_handler_c
     amdgpu_bios_c
     amdgpu_cs_c
+    amdgpu_debugfs_c
     amdgpu_device_c
     amdgpu_display_c
     amdgpu_fence_c
@@ -31,6 +34,7 @@ amdgpu
     amdgpu_object_c
     amdgpu_object_h
     amdgpu_pll_c
+    amdgpu_pm_c
     amdgpu_queue_mgr_c
     amdgpu_ring_c
     amdgpu_sa_c

@@ -21,8 +21,6 @@ Definition
         struct drm_plane_state state;
         const struct rcar_du_format_info *format;
         struct sg_table sg_tables[3];
-        unsigned int alpha;
-        unsigned int zpos;
     }
 
 .. _`rcar_du_vsp_plane_state.members`:
@@ -38,12 +36,6 @@ format
 
 sg_tables
     scatter-gather tables for the frame buffer memory
-
-alpha
-    value of the plane alpha property
-
-zpos
-    value of the plane zpos property
 
 .. This file was automatic generated / don't edit.
 

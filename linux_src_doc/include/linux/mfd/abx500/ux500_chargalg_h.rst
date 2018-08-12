@@ -8,7 +8,7 @@ struct ux500_charger
 
 .. c:type:: struct ux500_charger
 
-    power supply ux500 charger sub class \ ``psy``\                  power supply base class \ ``ops``\                  ux500 charger operations \ ``max_out_volt``\         maximum output charger voltage in mV \ ``max_out_curr``\         maximum output charger current in mA \ ``enabled``\              indicates if this charger is used or not \ ``external``\             external charger unit (pm2xxx) \ ``power_path``\           USB power path support
+    power supply ux500 charger sub class \ ``psy``\                  power supply base class \ ``ops``\                  ux500 charger operations \ ``max_out_volt``\         maximum output charger voltage in mV \ ``max_out_curr``\         maximum output charger current in mA \ ``enabled``\              indicates if this charger is used or not \ ``external``\             external charger unit (pm2xxx)
 
 .. _`ux500_charger.definition`:
 
@@ -25,7 +25,6 @@ Definition
         int wdt_refresh;
         bool enabled;
         bool external;
-        bool power_path;
     }
 
 .. _`ux500_charger.members`:
@@ -52,9 +51,6 @@ enabled
     *undescribed*
 
 external
-    *undescribed*
-
-power_path
     *undescribed*
 
 .. This file was automatic generated / don't edit.

@@ -112,7 +112,7 @@ sg_miter
     PIO mapping scatterlist iterator.
 
 mrq
-    The request currently being processed on \ ``cur_slot``\ ,
+    The request currently being processed on \ ``slot``\ ,
     or NULL if the controller is idle.
 
 cmd
@@ -286,16 +286,16 @@ Locking
 =======
 
 \ ``lock``\  is a softirq-safe spinlock protecting \ ``queue``\  as well as
+\ ``slot``\ , \ ``mrq``\  and \ ``state``\ . These must always be updated
 at the same time while holding \ ``lock``\ .
+The \ ``mrq``\  field of struct dw_mci_slot is also protected by \ ``lock``\ ,
+and must always be written at the same time as the slot is added to
+\ ``queue``\ .
 
 \ ``irq_lock``\  is an irq-safe spinlock protecting the INTMASK register
 to allow the interrupt handler to modify it directly.  Held for only long
 enough to read-modify-write INTMASK and no other locks are grabbed when
 holding this one.
-
-The \ ``mrq``\  field of struct dw_mci_slot is also protected by \ ``lock``\ ,
-and must always be written at the same time as the slot is added to
-\ ``queue``\ .
 
 \ ``pending_events``\  and \ ``completed_events``\  are accessed using atomic bit
 operations, so they don't need any locking.

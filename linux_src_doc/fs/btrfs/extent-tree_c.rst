@@ -124,11 +124,14 @@ tracepoint for the reserved amount.
 btrfs_inode_rsv_release
 =======================
 
-.. c:function:: void btrfs_inode_rsv_release(struct btrfs_inode *inode)
+.. c:function:: void btrfs_inode_rsv_release(struct btrfs_inode *inode, bool qgroup_free)
 
-    release any excessive reservation. \ ``inode``\  - the inode we need to release from.
+    release any excessive reservation. \ ``inode``\  - the inode we need to release from. \ ``qgroup_free``\  - free or convert qgroup meta. Unlike normal operation, qgroup meta reservation needs to know if we are freeing qgroup reservation or just converting it into per-trans.  Normally \ ``qgroup_free``\  is true for error handling, and false for normal release.
 
     :param struct btrfs_inode \*inode:
+        *undescribed*
+
+    :param bool qgroup_free:
         *undescribed*
 
 .. _`btrfs_inode_rsv_release.description`:
@@ -144,7 +147,7 @@ tracepoint for the reservation.
 btrfs_delalloc_release_metadata
 ===============================
 
-.. c:function:: void btrfs_delalloc_release_metadata(struct btrfs_inode *inode, u64 num_bytes)
+.. c:function:: void btrfs_delalloc_release_metadata(struct btrfs_inode *inode, u64 num_bytes, bool qgroup_free)
 
     release a metadata reservation for an inode
 
@@ -153,6 +156,9 @@ btrfs_delalloc_release_metadata
 
     :param u64 num_bytes:
         the number of bytes we are releasing.
+
+    :param bool qgroup_free:
+        free qgroup reservation or convert it to per-trans reservation
 
 .. _`btrfs_delalloc_release_metadata.description`:
 
@@ -168,7 +174,7 @@ reservations, or on error for the same reason.
 btrfs_delalloc_release_extents
 ==============================
 
-.. c:function:: void btrfs_delalloc_release_extents(struct btrfs_inode *inode, u64 num_bytes)
+.. c:function:: void btrfs_delalloc_release_extents(struct btrfs_inode *inode, u64 num_bytes, bool qgroup_free)
 
     release our outstanding_extents
 
@@ -177,6 +183,9 @@ btrfs_delalloc_release_extents
 
     :param u64 num_bytes:
         the number of bytes we originally reserved with
+
+    :param bool qgroup_free:
+        do we need to free qgroup meta reservation or convert them.
 
 .. _`btrfs_delalloc_release_extents.description`:
 
@@ -237,7 +246,7 @@ Return <0 for error(-ENOSPC or -EQUOT)
 btrfs_delalloc_release_space
 ============================
 
-.. c:function:: void btrfs_delalloc_release_space(struct inode *inode, struct extent_changeset *reserved, u64 start, u64 len)
+.. c:function:: void btrfs_delalloc_release_space(struct inode *inode, struct extent_changeset *reserved, u64 start, u64 len, bool qgroup_free)
 
     release data and metadata space for delalloc
 
@@ -252,6 +261,9 @@ btrfs_delalloc_release_space
 
     :param u64 len:
         the len of the space already reserved
+
+    :param bool qgroup_free:
+        *undescribed*
 
 .. _`btrfs_delalloc_release_space.description`:
 

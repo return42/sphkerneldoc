@@ -351,6 +351,7 @@ Definition
     struct ti_clk_ll_ops {
         u32 (*clk_readl)(const struct clk_omap_reg *reg);
         void (*clk_writel)(u32 val, const struct clk_omap_reg *reg);
+        void (*clk_rmw)(u32 val, u32 mask, const struct clk_omap_reg *reg);
         int (*clkdm_clk_enable)(struct clockdomain *clkdm, struct clk *clk);
         int (*clkdm_clk_disable)(struct clockdomain *clkdm, struct clk *clk);
         struct clockdomain * (*clkdm_lookup)(const char *name);
@@ -368,6 +369,9 @@ clk_readl
 
 clk_writel
     pointer to register write function
+
+clk_rmw
+    pointer to register read-modify-write function
 
 clkdm_clk_enable
     pointer to clockdomain enable function

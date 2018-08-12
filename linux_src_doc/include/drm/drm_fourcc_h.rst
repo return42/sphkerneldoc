@@ -24,6 +24,7 @@ Definition
         u8 cpp[3];
         u8 hsub;
         u8 vsub;
+        bool has_alpha;
     }
 
 .. _`drm_format_info.members`:
@@ -50,6 +51,9 @@ hsub
 
 vsub
     Vertical chroma subsampling factor
+
+has_alpha
+    Does the format embeds an alpha component?
 
 .. _`drm_format_name_buf`:
 

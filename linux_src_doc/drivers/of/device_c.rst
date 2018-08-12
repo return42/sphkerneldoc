@@ -29,7 +29,7 @@ system is in its list of supported devices.
 of_dma_configure
 ================
 
-.. c:function:: int of_dma_configure(struct device *dev, struct device_node *np)
+.. c:function:: int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
 
     Setup DMA configuration
 
@@ -38,6 +38,10 @@ of_dma_configure
 
     :param struct device_node \*np:
         Pointer to OF node having DMA configuration
+
+    :param bool force_dma:
+        Whether device is to be set up by \ :c:func:`of_dma_configure`\  even if
+        DMA capability is not explicitly described by firmware.
 
 .. _`of_dma_configure.description`:
 

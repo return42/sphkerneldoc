@@ -6,12 +6,12 @@
 max98090_mic_detect
 ===================
 
-.. c:function:: int max98090_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+.. c:function:: int max98090_mic_detect(struct snd_soc_component *component, struct snd_soc_jack *jack)
 
     Enable microphone detection via the MAX98090 IRQ
 
-    :param struct snd_soc_codec \*codec:
-        MAX98090 codec
+    :param struct snd_soc_component \*component:
+        MAX98090 component
 
     :param struct snd_soc_jack \*jack:
         jack to report detection events on

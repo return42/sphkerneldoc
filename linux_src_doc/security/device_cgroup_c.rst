@@ -209,7 +209,7 @@ Description
 This is one of the three key functions for hierarchy implementation.
 This function is responsible for re-evaluating all the cgroup's active
 exceptions due to a parent's exception change.
-Refer to Documentation/cgroups/devices.txt for more details.
+Refer to Documentation/cgroup-v1/devices.txt for more details.
 
 .. _`propagate_exception`:
 

@@ -84,9 +84,9 @@ vchnl_vf_send_del_hmc_objs_req
 
     :param struct i40iw_virtchnl_req \*vchnl_req:
         Virtual channel message request pointer
-        @ rsrc_type - resource type to delete
-        @ start_index - starting index for resource
-        @ rsrc_count - number of resource type to delete
+        \ ````\  rsrc_type - resource type to delete
+        \ ````\  start_index - starting index for resource
+        \ ````\  rsrc_count - number of resource type to delete
 
     :param enum i40iw_hmc_rsrc_type rsrc_type:
         *undescribed*

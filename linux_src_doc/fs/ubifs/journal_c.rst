@@ -62,9 +62,8 @@ Description
 
 This function reserves space in journal head \ ``head``\ . If the reservation
 succeeded, the journal head stays locked and later has to be unlocked using
-'release_head()'. 'write_node()' and 'write_head()' functions also unlock
-it. Returns zero in case of success, \ ``-EAGAIN``\  if commit has to be done, and
-other negative error codes in case of other failures.
+'release_head()'. Returns zero in case of success, \ ``-EAGAIN``\  if commit has to
+be done, and other negative error codes in case of other failures.
 
 .. _`write_node`:
 

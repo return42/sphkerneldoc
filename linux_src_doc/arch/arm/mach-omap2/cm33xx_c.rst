@@ -303,5 +303,43 @@ Description
 
 No return value.
 
+.. _`am33xx_clkdm_save_context`:
+
+am33xx_clkdm_save_context
+=========================
+
+.. c:function:: int am33xx_clkdm_save_context(struct clockdomain *clkdm)
+
+    Save the clockdomain transition context
+
+    :param struct clockdomain \*clkdm:
+        The clockdomain pointer whose context needs to be saved
+
+.. _`am33xx_clkdm_save_context.description`:
+
+Description
+-----------
+
+Save the clockdomain transition context.
+
+.. _`am33xx_clkdm_restore_context`:
+
+am33xx_clkdm_restore_context
+============================
+
+.. c:function:: int am33xx_clkdm_restore_context(struct clockdomain *clkdm)
+
+    Restore the clockdomain transition context
+
+    :param struct clockdomain \*clkdm:
+        The clockdomain pointer whose context needs to be restored
+
+.. _`am33xx_clkdm_restore_context.description`:
+
+Description
+-----------
+
+Restore the clockdomain transition context.
+
 .. This file was automatic generated / don't edit.
 

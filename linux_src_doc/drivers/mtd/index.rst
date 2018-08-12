@@ -10,7 +10,6 @@ mtd
     devices/index
     maps/index
     nand/index
-    onenand/index
     parsers/index
     spi-nor/index
     ubi/index

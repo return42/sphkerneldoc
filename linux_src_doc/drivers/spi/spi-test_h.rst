@@ -84,14 +84,14 @@ iterate_len
     list of length to iterate on
 
 iterate_tx_align
-    change the alignment of \ ``spi_transfer``\ .tx_buf
+    change the alignment of \ ``spi_transfer.tx_buf``\ 
     for all values in the below range if set.
     the ranges are:
-    [0 : \ ``spi_master``\ .dma_alignment[ if set
+    [0 : \ ``spi_master.dma_alignment``\ [ if set
     [0 : iterate_tx_align[ if unset
 
 iterate_rx_align
-    change the alignment of \ ``spi_transfer``\ .rx_buf
+    change the alignment of \ ``spi_transfer.rx_buf``\ 
     see \ ``iterate_tx_align``\  for details
 
 iterate_transfer_mask

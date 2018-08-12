@@ -7,7 +7,6 @@ watchdog
 .. toctree::
     :maxdepth: 1
 
-    bfin_wdt_c
     booke_wdt_c
     cadence_wdt_c
     eurotechwdt_c

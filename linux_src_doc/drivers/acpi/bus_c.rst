@@ -69,7 +69,7 @@ Note that the caller have to provide valid \ ``adev``\  pointer.
 acpi_of_match_device
 ====================
 
-.. c:function:: bool acpi_of_match_device(struct acpi_device *adev, const struct of_device_id *of_match_table)
+.. c:function:: bool acpi_of_match_device(struct acpi_device *adev, const struct of_device_id *of_match_table, const struct of_device_id **of_id)
 
     Match device object using the "compatible" property.
 
@@ -78,6 +78,9 @@ acpi_of_match_device
 
     :param const struct of_device_id \*of_match_table:
         List of device IDs to match against.
+
+    :param const struct of_device_id \*\*of_id:
+        OF ID if matched
 
 .. _`acpi_of_match_device.description`:
 

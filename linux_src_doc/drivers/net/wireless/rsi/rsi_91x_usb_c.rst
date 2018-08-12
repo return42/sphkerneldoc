@@ -8,34 +8,26 @@ rsi_usb_card_write
 
 .. c:function:: int rsi_usb_card_write(struct rsi_hw *adapter, u8 *buf, u16 len, u8 endpoint)
 
+    This function writes to the USB Card.
+
     :param struct rsi_hw \*adapter:
-        *undescribed*
+        Pointer to the adapter structure.
 
     :param u8 \*buf:
-        *undescribed*
+        Pointer to the buffer from where the data has to be taken.
 
     :param u16 len:
-        *undescribed*
+        Length to be written.
 
     :param u8 endpoint:
-        *undescribed*
+        Type of endpoint.
 
-.. _`rsi_usb_card_write.description`:
+.. _`rsi_usb_card_write.return`:
 
-Description
------------
+Return
+------
 
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+status: 0 on success, a negative error code on failure.
 
 .. _`rsi_write_multiple`:
 
@@ -139,12 +131,15 @@ None.
 rsi_rx_urb_submit
 =================
 
-.. c:function:: int rsi_rx_urb_submit(struct rsi_hw *adapter)
+.. c:function:: int rsi_rx_urb_submit(struct rsi_hw *adapter, u8 ep_num)
 
     This function submits the given URB to the USB stack.
 
     :param struct rsi_hw \*adapter:
         Pointer to the adapter structure.
+
+    :param u8 ep_num:
+        *undescribed*
 
 .. _`rsi_rx_urb_submit.return`:
 

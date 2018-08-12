@@ -435,25 +435,6 @@ Return
 
 the modem control state
 
-.. _`cdns_uart_get_port`:
-
-cdns_uart_get_port
-==================
-
-.. c:function:: struct uart_port *cdns_uart_get_port(int id)
-
-    Configure the port from platform device resource info
-
-    :param int id:
-        Port id
-
-.. _`cdns_uart_get_port.return`:
-
-Return
-------
-
-a pointer to a uart_port or NULL for failure
-
 .. _`cdns_uart_console_wait_tx`:
 
 cdns_uart_console_wait_tx
@@ -520,25 +501,6 @@ Return
 ------
 
 0 on success, negative errno otherwise.
-
-.. _`cdns_uart_console_init`:
-
-cdns_uart_console_init
-======================
-
-.. c:function:: int cdns_uart_console_init( void)
-
-    Initialization call
-
-    :param  void:
-        no arguments
-
-.. _`cdns_uart_console_init.return`:
-
-Return
-------
-
-0 on success, negative errno otherwise
 
 .. _`cdns_uart_suspend`:
 

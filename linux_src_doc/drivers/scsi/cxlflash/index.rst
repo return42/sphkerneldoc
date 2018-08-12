@@ -9,5 +9,6 @@ cxlflash
 
     lunmgt_c
     main_c
+    ocxl_hw_c
     superpipe_c
     vlun_c

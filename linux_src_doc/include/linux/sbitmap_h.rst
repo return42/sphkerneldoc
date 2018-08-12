@@ -136,6 +136,7 @@ Definition
         atomic_t wake_index;
         struct sbq_wait_state *ws;
         bool round_robin;
+        unsigned int min_shallow_depth;
     }
 
 .. _`sbitmap_queue.members`:
@@ -160,6 +161,9 @@ ws
 
 round_robin
     Allocate bits in strict round-robin order.
+
+min_shallow_depth
+    The minimum shallow depth which may be passed \ :c:func:`tosbitmap_queue_get_shallow`\  or \__sbitmap_queue_get_shallow().
 
 .. _`sbitmap_queue.description`:
 
@@ -257,6 +261,13 @@ sbitmap_get
         If true, be stricter about allocation order; always allocate
         starting from the last allocated bit. This is less efficient
         than the default behavior (false).
+
+.. _`sbitmap_get.description`:
+
+Description
+-----------
+
+This operation provides acquire barrier semantics if it succeeds.
 
 .. _`sbitmap_get.return`:
 
@@ -537,6 +548,14 @@ Non-negative allocated bit number if successful, -1 otherwise.
         The maximum number of bits to allocate from a single word.
         See \ :c:func:`sbitmap_get_shallow`\ .
 
+.. _`__sbitmap_queue_get_shallow.description`:
+
+Description
+-----------
+
+If you call this, make sure to call \ :c:func:`sbitmap_queue_min_shallow_depth`\  after
+initializing \ ``sbq``\ .
+
 .. _`__sbitmap_queue_get_shallow.return`:
 
 Return
@@ -587,12 +606,48 @@ sbitmap_queue_get_shallow
         The maximum number of bits to allocate from a single word.
         See \ :c:func:`sbitmap_get_shallow`\ .
 
+.. _`sbitmap_queue_get_shallow.description`:
+
+Description
+-----------
+
+If you call this, make sure to call \ :c:func:`sbitmap_queue_min_shallow_depth`\  after
+initializing \ ``sbq``\ .
+
 .. _`sbitmap_queue_get_shallow.return`:
 
 Return
 ------
 
 Non-negative allocated bit number if successful, -1 otherwise.
+
+.. _`sbitmap_queue_min_shallow_depth`:
+
+sbitmap_queue_min_shallow_depth
+===============================
+
+.. c:function:: void sbitmap_queue_min_shallow_depth(struct sbitmap_queue *sbq, unsigned int min_shallow_depth)
+
+    Inform a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\  of the minimum shallow depth that will be used.
+
+    :param struct sbitmap_queue \*sbq:
+        Bitmap queue in question.
+
+    :param unsigned int min_shallow_depth:
+        The minimum shallow depth that will be passed to
+        \ :c:func:`sbitmap_queue_get_shallow`\  or \__sbitmap_queue_get_shallow().
+
+.. _`sbitmap_queue_min_shallow_depth.description`:
+
+Description
+-----------
+
+\ :c:func:`sbitmap_queue_clear`\  batches wakeups as an optimization. The batch size
+depends on the depth of the bitmap. Since the shallow allocation functions
+effectively operate with a different depth, the shallow depth must be taken
+into account when calculating the batch size. This function must be called
+with the minimum shallow depth that will be used. Failure to do so can result
+in missed wakeups.
 
 .. _`sbitmap_queue_clear`:
 
@@ -635,6 +690,18 @@ sbitmap_queue_wake_all
 .. c:function:: void sbitmap_queue_wake_all(struct sbitmap_queue *sbq)
 
     Wake up everything waiting on a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
+
+    :param struct sbitmap_queue \*sbq:
+        Bitmap queue to wake up.
+
+.. _`sbitmap_queue_wake_up`:
+
+sbitmap_queue_wake_up
+=====================
+
+.. c:function:: void sbitmap_queue_wake_up(struct sbitmap_queue *sbq)
+
+    Wake up some of waiters in one waitqueue on a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
     :param struct sbitmap_queue \*sbq:
         Bitmap queue to wake up.

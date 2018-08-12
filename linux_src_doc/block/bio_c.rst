@@ -237,6 +237,67 @@ Description
 
      This should only be used by REQ_PC bios.
 
+.. _`__bio_try_merge_page`:
+
+__bio_try_merge_page
+====================
+
+.. c:function:: bool __bio_try_merge_page(struct bio *bio, struct page *page, unsigned int len, unsigned int off)
+
+    try appending data to an existing bvec.
+
+    :param struct bio \*bio:
+        destination bio
+
+    :param struct page \*page:
+        page to add
+
+    :param unsigned int len:
+        length of the data to add
+
+    :param unsigned int off:
+        offset of the data in \ ``page``\ 
+
+.. _`__bio_try_merge_page.description`:
+
+Description
+-----------
+
+Try to add the data at \ ``page``\  + \ ``off``\  to the last bvec of \ ``bio``\ .  This is a
+a useful optimisation for file systems with a block size smaller than the
+page size.
+
+Return \ ``true``\  on success or \ ``false``\  on failure.
+
+.. _`__bio_add_page`:
+
+__bio_add_page
+==============
+
+.. c:function:: void __bio_add_page(struct bio *bio, struct page *page, unsigned int len, unsigned int off)
+
+    add page to a bio in a new segment
+
+    :param struct bio \*bio:
+        destination bio
+
+    :param struct page \*page:
+        page to add
+
+    :param unsigned int len:
+        length of the data to add
+
+    :param unsigned int off:
+        offset of the data in \ ``page``\ 
+
+.. _`__bio_add_page.description`:
+
+Description
+-----------
+
+Add the data at \ ``page``\  + \ ``off``\  to \ ``bio``\  as a new bvec.  The caller must ensure
+that \ ``bio``\  has space for another bvec.
+
 .. _`bio_add_page`:
 
 bio_add_page
@@ -266,6 +327,31 @@ Description
      Attempt to add a page to the bio_vec maplist. This will only fail
      if either bio->bi_vcnt == bio->bi_max_vecs or it's a cloned bio.
 
+.. _`__bio_iov_iter_get_pages`:
+
+__bio_iov_iter_get_pages
+========================
+
+.. c:function:: int __bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
+
+    pin user or kernel pages and add them to a bio
+
+    :param struct bio \*bio:
+        bio to add pages to
+
+    :param struct iov_iter \*iter:
+        iov iterator describing the region to be mapped
+
+.. _`__bio_iov_iter_get_pages.description`:
+
+Description
+-----------
+
+Pins pages from *iter and appends them to \ ``bio``\ 's bvec array. The
+pages will have to be released using \ :c:func:`put_page`\  when done.
+For multi-segment *iter, this function only adds pages from the
+the next non-empty segment of the iov iterator.
+
 .. _`bio_iov_iter_get_pages`:
 
 bio_iov_iter_get_pages
@@ -286,8 +372,12 @@ bio_iov_iter_get_pages
 Description
 -----------
 
-Pins as many pages from *iter and appends them to \ ``bio``\ 's bvec array. The
+Pins pages from *iter and appends them to \ ``bio``\ 's bvec array. The
 pages will have to be released using \ :c:func:`put_page`\  when done.
+The function tries, but does not guarantee, to pin as many pages as
+fit into the bio, or are requested in *iter, whatever is smaller.
+If MM encounters an error pinning the requested pages, it stops.
+Error is returned only if 0 pages could be pinned.
 
 .. _`submit_bio_wait`:
 
@@ -346,6 +436,29 @@ bio_copy_data
 
 .. c:function:: void bio_copy_data(struct bio *dst, struct bio *src)
 
+    copy contents of data buffers from one bio to another
+
+    :param struct bio \*dst:
+        destination bio
+
+    :param struct bio \*src:
+        source bio
+
+.. _`bio_copy_data.description`:
+
+Description
+-----------
+
+Stops when it reaches the end of either \ ``src``\  or \ ``dst``\  - that is, copies
+min(src->bi_size, dst->bi_size) bytes (or the equivalent for lists of bios).
+
+.. _`bio_list_copy_data`:
+
+bio_list_copy_data
+==================
+
+.. c:function:: void bio_list_copy_data(struct bio *dst, struct bio *src)
+
     copy contents of data buffers from one chain of bios to another
 
     :param struct bio \*dst:
@@ -354,16 +467,14 @@ bio_copy_data
     :param struct bio \*src:
         source bio list
 
-.. _`bio_copy_data.description`:
+.. _`bio_list_copy_data.description`:
 
 Description
 -----------
 
-If \ ``src``\  and \ ``dst``\  are single bios, bi_next must be NULL - otherwise, treats
-\ ``src``\  and \ ``dst``\  as linked lists of bios.
-
-Stops when it reaches the end of either \ ``src``\  or \ ``dst``\  - that is, copies
-min(src->bi_size, dst->bi_size) bytes (or the equivalent for lists of bios).
+Stops when it reaches the end of either the \ ``src``\  list or \ ``dst``\  list - that is,
+copies min(src->bi_size, dst->bi_size) bytes (or the equivalent for lists of
+bios).
 
 .. _`bio_copy_from_iter`:
 
@@ -647,14 +758,17 @@ bio_trim
     :param int size:
         size we want to trim \ ``bio``\  to, in sectors
 
-.. _`bioset_create`:
+.. _`bioset_init`:
 
-bioset_create
-=============
+bioset_init
+===========
 
-.. c:function:: struct bio_set *bioset_create(unsigned int pool_size, unsigned int front_pad, int flags)
+.. c:function:: int bioset_init(struct bio_set *bs, unsigned int pool_size, unsigned int front_pad, int flags)
 
-    Create a bio_set
+    Initialize a bio_set
+
+    :param struct bio_set \*bs:
+        pool to initialize
 
     :param unsigned int pool_size:
         Number of bio and bio_vecs to cache in the mempool
@@ -666,7 +780,7 @@ bioset_create
         Flags to modify behavior, currently \ ``BIOSET_NEED_BVECS``\ 
         and \ ``BIOSET_NEED_RESCUER``\ 
 
-.. _`bioset_create.description`:
+.. _`bioset_init.description`:
 
 Description
 -----------

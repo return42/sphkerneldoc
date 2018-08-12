@@ -404,6 +404,7 @@ Definition
         u16 tid_disable_agg;
         u8 max_agg_bufsize;
         enum iwl_sta_type sta_type;
+        enum ieee80211_sta_state sta_state;
         bool bt_reduced_txpower;
         bool next_status_eosp;
         spinlock_t lock;
@@ -421,9 +422,9 @@ Definition
         s8 tx_protection;
         bool tt_tx_protection;
         bool disable_tx;
-        bool tlc_amsdu;
+        u16 amsdu_enabled;
+        u16 max_amsdu_len;
         bool sleeping;
-        bool associated;
         u8 agg_tids;
         u8 sleep_tx_count;
         u8 avg_energy;
@@ -452,6 +453,9 @@ max_agg_bufsize
 
 sta_type
     station type
+
+sta_state
+    station state according to enum \ ``ieee80211_sta_state``\ 
 
 bt_reduced_txpower
     is reduced tx power enabled for this station
@@ -500,13 +504,14 @@ tt_tx_protection
 disable_tx
     is tx to this STA disabled?
 
-tlc_amsdu
-    true if A-MSDU is allowed
+amsdu_enabled
+    bitmap of TX AMSDU allowed TIDs.
+    In case TLC offload is not active it is either 0xFFFF or 0.
+
+max_amsdu_len
+    max AMSDU length
 
 sleeping
-    *undescribed*
-
-associated
     *undescribed*
 
 agg_tids

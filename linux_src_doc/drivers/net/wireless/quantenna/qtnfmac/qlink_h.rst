@@ -104,7 +104,8 @@ Definition
 
     enum qlink_hw_capab {
         QLINK_HW_CAPAB_REG_UPDATE,
-        QLINK_HW_CAPAB_STA_INACT_TIMEOUT
+        QLINK_HW_CAPAB_STA_INACT_TIMEOUT,
+        QLINK_HW_CAPAB_DFS_OFFLOAD
     };
 
 .. _`qlink_hw_capab.constants`:
@@ -119,6 +120,9 @@ QLINK_HW_CAPAB_STA_INACT_TIMEOUT
     device implements a logic to kick-out
     associated STAs due to inactivity. Inactivity timeout period is taken
     from QLINK_CMD_START_AP parameters.
+
+QLINK_HW_CAPAB_DFS_OFFLOAD
+    device implements DFS offload functionality
 
 .. _`qlink_intf_info`:
 

@@ -270,7 +270,7 @@ fm10k_udp_tunnel_add
 .. c:function:: void fm10k_udp_tunnel_add(struct net_device *dev, struct udp_tunnel_info *ti)
 
     :param struct net_device \*dev:
-        *undescribed*
+        network interface device structure
 
     :param struct udp_tunnel_info \*ti:
         Tunnel endpoint information
@@ -292,10 +292,10 @@ fm10k_udp_tunnel_del
 .. c:function:: void fm10k_udp_tunnel_del(struct net_device *dev, struct udp_tunnel_info *ti)
 
     :param struct net_device \*dev:
-        *undescribed*
+        network interface device structure
 
     :param struct udp_tunnel_info \*ti:
-        Tunnel endpoint information
+        Tunnel end point information
 
 .. _`fm10k_udp_tunnel_del.description`:
 
@@ -443,7 +443,7 @@ fm10k_queue_mac_request
         the vid to update
 
     :param bool set:
-        *undescribed*
+        whether to add or remove
 
 .. _`fm10k_queue_mac_request.description`:
 

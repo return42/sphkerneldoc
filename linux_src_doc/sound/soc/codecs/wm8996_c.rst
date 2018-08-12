@@ -6,11 +6,11 @@
 wm8996_detect
 =============
 
-.. c:function:: int wm8996_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, wm8996_polarity_fn polarity_cb)
+.. c:function:: int wm8996_detect(struct snd_soc_component *component, struct snd_soc_jack *jack, wm8996_polarity_fn polarity_cb)
 
     Enable default WM8996 jack detection
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param struct snd_soc_jack \*jack:

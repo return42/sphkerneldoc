@@ -62,10 +62,8 @@ clocksource_mark_unstable
 Description
 -----------
 
-This function is called instead of clocksource_change_rating from
-cpu hotplug code to avoid a deadlock between the clocksource mutex
-and the cpu hotplug mutex. It defers the update of the clocksource
-to the watchdog thread.
+This function is called by the x86 TSC code to mark clocksources as unstable;
+it defers demotion and re-selection to a work.
 
 .. _`clocksource_suspend`:
 
@@ -278,12 +276,12 @@ clocksource_unregister
     :param struct clocksource \*cs:
         clocksource to be unregistered
 
-.. _`sysfs_show_current_clocksources`:
+.. _`current_clocksource_show`:
 
-sysfs_show_current_clocksources
-===============================
+current_clocksource_show
+========================
 
-.. c:function:: ssize_t sysfs_show_current_clocksources(struct device *dev, struct device_attribute *attr, char *buf)
+.. c:function:: ssize_t current_clocksource_show(struct device *dev, struct device_attribute *attr, char *buf)
 
     sysfs interface for current clocksource
 
@@ -296,19 +294,19 @@ sysfs_show_current_clocksources
     :param char \*buf:
         char buffer to be filled with clocksource list
 
-.. _`sysfs_show_current_clocksources.description`:
+.. _`current_clocksource_show.description`:
 
 Description
 -----------
 
 Provides sysfs interface for listing current clocksource.
 
-.. _`sysfs_override_clocksource`:
+.. _`current_clocksource_store`:
 
-sysfs_override_clocksource
-==========================
+current_clocksource_store
+=========================
 
-.. c:function:: ssize_t sysfs_override_clocksource(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+.. c:function:: ssize_t current_clocksource_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
 
     interface for manually overriding clocksource
 
@@ -324,7 +322,7 @@ sysfs_override_clocksource
     :param size_t count:
         length of buffer
 
-.. _`sysfs_override_clocksource.description`:
+.. _`current_clocksource_store.description`:
 
 Description
 -----------
@@ -332,12 +330,12 @@ Description
 Takes input from sysfs interface for manually overriding the default
 clocksource selection.
 
-.. _`sysfs_unbind_clocksource`:
+.. _`unbind_clocksource_store`:
 
-sysfs_unbind_clocksource
+unbind_clocksource_store
 ========================
 
-.. c:function:: ssize_t sysfs_unbind_clocksource(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+.. c:function:: ssize_t unbind_clocksource_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
 
     interface for manually unbinding clocksource
 
@@ -353,19 +351,19 @@ sysfs_unbind_clocksource
     :param size_t count:
         length of buffer
 
-.. _`sysfs_unbind_clocksource.description`:
+.. _`unbind_clocksource_store.description`:
 
 Description
 -----------
 
 Takes input from sysfs interface for manually unbinding a clocksource.
 
-.. _`sysfs_show_available_clocksources`:
+.. _`available_clocksource_show`:
 
-sysfs_show_available_clocksources
-=================================
+available_clocksource_show
+==========================
 
-.. c:function:: ssize_t sysfs_show_available_clocksources(struct device *dev, struct device_attribute *attr, char *buf)
+.. c:function:: ssize_t available_clocksource_show(struct device *dev, struct device_attribute *attr, char *buf)
 
     sysfs interface for listing clocksource
 
@@ -378,7 +376,7 @@ sysfs_show_available_clocksources
     :param char \*buf:
         char buffer to be filled with clocksource list
 
-.. _`sysfs_show_available_clocksources.description`:
+.. _`available_clocksource_show.description`:
 
 Description
 -----------

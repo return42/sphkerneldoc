@@ -111,19 +111,22 @@ Description
      and initialised. The socket is then returned. If we are out of inodes
      NULL is returned.
 
-.. _`sock_release`:
+.. _`__sock_release`:
 
-sock_release
-============
+__sock_release
+==============
 
-.. c:function:: void sock_release(struct socket *sock)
+.. c:function:: void __sock_release(struct socket *sock, struct inode *inode)
 
     close a socket
 
     :param struct socket \*sock:
         socket to close
 
-.. _`sock_release.description`:
+    :param struct inode \*inode:
+        *undescribed*
+
+.. _`__sock_release.description`:
 
 Description
 -----------

@@ -7,6 +7,7 @@ ata
 .. toctree::
     :maxdepth: 1
 
+    ahci_mvebu_c
     ahci_xgene_c
     ata_generic_c
     ata_piix_c
@@ -24,7 +25,6 @@ ata
     pata_amd_c
     pata_artop_c
     pata_atiixp_c
-    pata_bf54x_c
     pata_cmd640_c
     pata_cmd64x_c
     pata_cs5520_c

@@ -502,11 +502,11 @@ sys_rt_sigqueueinfo
 sys_sigpending
 ==============
 
-.. c:function:: long sys_sigpending(old_sigset_t __user *set)
+.. c:function:: long sys_sigpending(old_sigset_t __user *uset)
 
     examine pending signals
 
-    :param old_sigset_t __user \*set:
+    :param old_sigset_t __user \*uset:
         where mask of pending signal is returned
 
 .. _`sys_sigprocmask`:

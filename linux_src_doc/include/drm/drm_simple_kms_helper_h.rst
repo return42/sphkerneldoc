@@ -18,18 +18,52 @@ Definition
 .. code-block:: c
 
     struct drm_simple_display_pipe_funcs {
-        void (*enable)(struct drm_simple_display_pipe *pipe, struct drm_crtc_state *crtc_state);
+        enum drm_mode_status (*mode_valid)(struct drm_crtc *crtc, const struct drm_display_mode *mode);
+        void (*enable)(struct drm_simple_display_pipe *pipe,struct drm_crtc_state *crtc_state, struct drm_plane_state *plane_state);
         void (*disable)(struct drm_simple_display_pipe *pipe);
         int (*check)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state, struct drm_crtc_state *crtc_state);
         void (*update)(struct drm_simple_display_pipe *pipe, struct drm_plane_state *old_plane_state);
         int (*prepare_fb)(struct drm_simple_display_pipe *pipe, struct drm_plane_state *plane_state);
         void (*cleanup_fb)(struct drm_simple_display_pipe *pipe, struct drm_plane_state *plane_state);
+        int (*enable_vblank)(struct drm_simple_display_pipe *pipe);
+        void (*disable_vblank)(struct drm_simple_display_pipe *pipe);
     }
 
 .. _`drm_simple_display_pipe_funcs.members`:
 
 Members
 -------
+
+mode_valid
+
+    This callback is used to check if a specific mode is valid in the
+    crtc used in this simple display pipe. This should be implemented
+    if the display pipe has some sort of restriction in the modes
+    it can display. For example, a given display pipe may be responsible
+    to set a clock value. If the clock can not produce all the values
+    for the available modes then this callback can be used to restrict
+    the number of modes to only the ones that can be displayed. Another
+    reason can be bandwidth mitigation: the memory port on the display
+    controller can have bandwidth limitations not allowing pixel data
+    to be fetched at any rate.
+
+    This hook is used by the probe helpers to filter the mode list in
+    \ :c:func:`drm_helper_probe_single_connector_modes`\ , and it is used by the
+    atomic helpers to validate modes supplied by userspace in
+    \ :c:func:`drm_atomic_helper_check_modeset`\ .
+
+    This function is optional.
+
+    NOTE:
+
+    Since this function is both called from the check phase of an atomic
+    commit, and the mode validation in the probe paths it is not allowed
+    to look at anything else but the passed-in mode, and validate it
+    against configuration-invariant hardware constraints.
+
+    RETURNS:
+
+    drm_mode_status Enum
 
 enable
 
@@ -76,10 +110,25 @@ prepare_fb
     the documentation for the \ :c:type:`drm_plane_helper_funcs.prepare_fb <drm_plane_helper_funcs>`\  hook for
     more details.
 
+    Drivers which always have their buffers pinned should use
+    \ :c:func:`drm_gem_fb_simple_display_pipe_prepare_fb`\  for this hook.
+
 cleanup_fb
 
     Optional, called by \ :c:type:`drm_plane_helper_funcs.cleanup_fb <drm_plane_helper_funcs>`\ .  Please read
     the documentation for the \ :c:type:`drm_plane_helper_funcs.cleanup_fb <drm_plane_helper_funcs>`\  hook for
+    more details.
+
+enable_vblank
+
+    Optional, called by \ :c:type:`drm_crtc_funcs.enable_vblank <drm_crtc_funcs>`\ . Please read
+    the documentation for the \ :c:type:`drm_crtc_funcs.enable_vblank <drm_crtc_funcs>`\  hook for
+    more details.
+
+disable_vblank
+
+    Optional, called by \ :c:type:`drm_crtc_funcs.disable_vblank <drm_crtc_funcs>`\ . Please read
+    the documentation for the \ :c:type:`drm_crtc_funcs.disable_vblank <drm_crtc_funcs>`\  hook for
     more details.
 
 .. _`drm_simple_display_pipe`:

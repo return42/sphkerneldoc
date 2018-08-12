@@ -7,4 +7,5 @@ auxdisplay
 .. toctree::
     :maxdepth: 1
 
+    arm-charlcd_c
     img-ascii-lcd_c

@@ -33,8 +33,9 @@ new certificate as being trusted.
 
 Returns 0 if the new certificate was accepted, -ENOKEY if we couldn't find a
 matching parent certificate in the trusted list, -EKEYREJECTED if the
-signature check fails or the key is blacklisted and some other error if
-there is a matching certificate but the signature check cannot be performed.
+signature check fails or the key is blacklisted, -ENOPKG if the signature
+uses unsupported crypto, or some other error if there is a matching
+certificate but the signature check cannot be performed.
 
 .. _`restrict_link_by_key_or_keyring`:
 
@@ -68,9 +69,9 @@ certificate, then mark the new certificate as being ok to link.
 
 Returns 0 if the new certificate was accepted, -ENOKEY if we
 couldn't find a matching parent certificate in the trusted list,
--EKEYREJECTED if the signature check fails, and some other error if
-there is a matching certificate but the signature check cannot be
-performed.
+-EKEYREJECTED if the signature check fails, -ENOPKG if the signature uses
+unsupported crypto, or some other error if there is a matching certificate
+but the signature check cannot be performed.
 
 .. _`restrict_link_by_key_or_keyring_chain`:
 
@@ -104,9 +105,9 @@ certificate, then mark the new certificate as being ok to link.
 
 Returns 0 if the new certificate was accepted, -ENOKEY if we
 couldn't find a matching parent certificate in the trusted list,
--EKEYREJECTED if the signature check fails, and some other error if
-there is a matching certificate but the signature check cannot be
-performed.
+-EKEYREJECTED if the signature check fails, -ENOPKG if the signature uses
+unsupported crypto, or some other error if there is a matching certificate
+but the signature check cannot be performed.
 
 .. This file was automatic generated / don't edit.
 

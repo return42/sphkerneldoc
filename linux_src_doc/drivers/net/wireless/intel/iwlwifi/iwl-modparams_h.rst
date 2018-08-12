@@ -36,6 +36,7 @@ Definition
         bool lar_disable;
         bool fw_monitor;
         bool disable_11ac;
+        bool remove_when_gone;
     }
 
 .. _`iwl_mod_params.members`:
@@ -96,6 +97,9 @@ fw_monitor
 
 disable_11ac
     disable VHT capabilities, default = false.
+
+remove_when_gone
+    remove an inaccessible device from the PCIe bus.
 
 .. _`iwl_mod_params.description`:
 

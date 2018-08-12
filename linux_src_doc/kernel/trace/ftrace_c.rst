@@ -20,26 +20,6 @@ Description
 
 Returns the number of ftrace_ops registered and tracing functions
 
-.. _`clear_ftrace_function`:
-
-clear_ftrace_function
-=====================
-
-.. c:function:: void clear_ftrace_function( void)
-
-    reset the ftrace function
-
-    :param  void:
-        no arguments
-
-.. _`clear_ftrace_function.description`:
-
-Description
------------
-
-This NULLs the ftrace function and in essence stops
-tracing.  There may be lag
-
 .. _`ftrace_lookup_ip`:
 
 ftrace_lookup_ip

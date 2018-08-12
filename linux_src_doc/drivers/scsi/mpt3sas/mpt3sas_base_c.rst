@@ -16,6 +16,194 @@
     :param const struct kernel_param \*kp:
         *undescribed*
 
+.. _`_base_clone_reply_to_sys_mem`:
+
+\_base_clone_reply_to_sys_mem
+=============================
+
+.. c:function:: void _base_clone_reply_to_sys_mem(struct MPT3SAS_ADAPTER *ioc, u32 reply, u32 index)
+
+    copies reply to reply free iomem in BAR0 space.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u32 reply:
+        reply message frame(lower 32bit addr)
+
+    :param u32 index:
+        System request message index.
+
+.. _`_base_clone_reply_to_sys_mem.description`:
+
+Description
+-----------
+
+\ ``Returns``\  - Nothing
+
+.. _`_base_clone_mpi_to_sys_mem`:
+
+\_base_clone_mpi_to_sys_mem
+===========================
+
+.. c:function:: void _base_clone_mpi_to_sys_mem(void *dst_iomem, void *src, u32 size)
+
+    Writes/copies MPI frames to system/BAR0 region.
+
+    :param void \*dst_iomem:
+        Pointer to the destinaltion location in BAR0 space.
+
+    :param void \*src:
+        Pointer to the Source data.
+
+    :param u32 size:
+        Size of data to be copied.
+
+.. _`_base_clone_to_sys_mem`:
+
+\_base_clone_to_sys_mem
+=======================
+
+.. c:function:: void _base_clone_to_sys_mem(void __iomem *dst_iomem, void *src, u32 size)
+
+    Writes/copies data to system/BAR0 region
+
+    :param void __iomem \*dst_iomem:
+        Pointer to the destination location in BAR0 space.
+
+    :param void \*src:
+        Pointer to the Source data.
+
+    :param u32 size:
+        Size of data to be copied.
+
+.. _`_base_get_chain`:
+
+\_base_get_chain
+================
+
+.. c:function:: void __iomem*_base_get_chain(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 sge_chain_count)
+
+    Calculates and Returns virtual chain address for the provided smid in BAR0 space.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+    :param u8 sge_chain_count:
+        Scatter gather chain count.
+
+.. _`_base_get_chain_phys`:
+
+\_base_get_chain_phys
+=====================
+
+.. c:function:: phys_addr_t _base_get_chain_phys(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 sge_chain_count)
+
+    Calculates and Returns physical address in BAR0 for scatter gather chains, for the provided smid.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+    :param u8 sge_chain_count:
+        Scatter gather chain count.
+
+.. _`_base_get_chain_phys.description`:
+
+Description
+-----------
+
+\ ``Return``\  - Physical chain address.
+
+.. _`_base_get_buffer_bar0`:
+
+\_base_get_buffer_bar0
+======================
+
+.. c:function:: void __iomem *_base_get_buffer_bar0(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    Calculates and Returns BAR0 mapped Host buffer address for the provided smid. (Each smid can have 64K starts from 17024)
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`_base_get_buffer_bar0.description`:
+
+Description
+-----------
+
+\ ``Returns``\  - Pointer to buffer location in BAR0.
+
+.. _`_base_get_buffer_phys_bar0`:
+
+\_base_get_buffer_phys_bar0
+===========================
+
+.. c:function:: phys_addr_t _base_get_buffer_phys_bar0(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    Calculates and Returns BAR0 mapped Host buffer Physical address for the provided smid. (Each smid can have 64K starts from 17024)
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`_base_get_buffer_phys_bar0.description`:
+
+Description
+-----------
+
+\ ``Returns``\  - Pointer to buffer location in BAR0.
+
+.. _`_base_get_chain_buffer_dma_to_chain_buffer`:
+
+\_base_get_chain_buffer_dma_to_chain_buffer
+===========================================
+
+.. c:function:: void *_base_get_chain_buffer_dma_to_chain_buffer(struct MPT3SAS_ADAPTER *ioc, dma_addr_t chain_buffer_dma)
+
+    Iterates chain lookup list and Provides chain_buffer address for the matching dma address. (Each smid can have 64K starts from 17024)
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param dma_addr_t chain_buffer_dma:
+        Chain buffer dma address.
+
+.. _`_base_get_chain_buffer_dma_to_chain_buffer.description`:
+
+Description
+-----------
+
+\ ``Returns``\  - Pointer to chain buffer. Or Null on Failure.
+
+.. _`_clone_sg_entries`:
+
+\_clone_sg_entries
+==================
+
+.. c:function:: void _clone_sg_entries(struct MPT3SAS_ADAPTER *ioc, void *mpi_request, u16 smid)
+
+    MPI EP's scsiio and config requests are handled here. Base function for double buffering, before submitting the requests.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object.
+
+    :param void \*mpi_request:
+        mf request pointer.
+
+    :param u16 smid:
+        system request message index.
+
 .. _`mpt3sas_remove_dead_ioc_func`:
 
 mpt3sas_remove_dead_ioc_func
@@ -587,7 +775,8 @@ Return nothing.
 Description
 -----------
 
-Returns chain tracker(from ioc->free_chain_list)
+Returns chain tracker from chain_lookup table using key as
+smid and smid's chain_offset.
 
 .. _`_base_build_sg`:
 
@@ -1301,6 +1490,33 @@ Description
 
 Return nothing.
 
+.. _`_base_mpi_ep_writeq`:
+
+\_base_mpi_ep_writeq
+====================
+
+.. c:function:: void _base_mpi_ep_writeq(__u64 b, volatile void __iomem *addr, spinlock_t *writeq_lock)
+
+    32 bit write to MMIO
+
+    :param __u64 b:
+        data payload
+
+    :param volatile void __iomem \*addr:
+        address in MMIO space
+
+    :param spinlock_t \*writeq_lock:
+        spin lock
+
+.. _`_base_mpi_ep_writeq.description`:
+
+Description
+-----------
+
+This special handling for MPI EP to take care of 32 bit
+environment where its not quarenteed to send the entire word
+in one transfer.
+
 .. _`_base_writeq`:
 
 \_base_writeq
@@ -1328,6 +1544,31 @@ Glue for handling an atomic 64 bit word to MMIO. This special handling takes
 care of 32 bit environment where its not quarenteed to send the entire word
 in one transfer.
 
+.. _`_base_put_smid_mpi_ep_scsi_io`:
+
+\_base_put_smid_mpi_ep_scsi_io
+==============================
+
+.. c:function:: void _base_put_smid_mpi_ep_scsi_io(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
+
+    send SCSI_IO request to firmware
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+    :param u16 handle:
+        device handle
+
+.. _`_base_put_smid_mpi_ep_scsi_io.description`:
+
+Description
+-----------
+
+Return nothing.
+
 .. _`_base_put_smid_scsi_io`:
 
 \_base_put_smid_scsi_io
@@ -1353,12 +1594,12 @@ Description
 
 Return nothing.
 
-.. _`_base_put_smid_fast_path`:
+.. _`mpt3sas_base_put_smid_fast_path`:
 
-\_base_put_smid_fast_path
-=========================
+mpt3sas_base_put_smid_fast_path
+===============================
 
-.. c:function:: void _base_put_smid_fast_path(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
+.. c:function:: void mpt3sas_base_put_smid_fast_path(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
     send fast path request to firmware
 
@@ -1371,19 +1612,19 @@ Return nothing.
     :param u16 handle:
         device handle
 
-.. _`_base_put_smid_fast_path.description`:
+.. _`mpt3sas_base_put_smid_fast_path.description`:
 
 Description
 -----------
 
 Return nothing.
 
-.. _`_base_put_smid_hi_priority`:
+.. _`mpt3sas_base_put_smid_hi_priority`:
 
-\_base_put_smid_hi_priority
-===========================
+mpt3sas_base_put_smid_hi_priority
+=================================
 
-.. c:function:: void _base_put_smid_hi_priority(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
+.. c:function:: void mpt3sas_base_put_smid_hi_priority(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
 
     send Task Management request to firmware
 
@@ -1397,12 +1638,12 @@ Return nothing.
         msix_task will be same as msix of IO incase of task abort else 0.
         Return nothing.
 
-.. _`_base_put_smid_nvme_encap`:
+.. _`mpt3sas_base_put_smid_nvme_encap`:
 
-\_base_put_smid_nvme_encap
-==========================
+mpt3sas_base_put_smid_nvme_encap
+================================
 
-.. c:function:: void _base_put_smid_nvme_encap(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+.. c:function:: void mpt3sas_base_put_smid_nvme_encap(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
     send NVMe encapsulated request to firmware
 
@@ -1412,19 +1653,19 @@ Return nothing.
     :param u16 smid:
         system request message index
 
-.. _`_base_put_smid_nvme_encap.description`:
+.. _`mpt3sas_base_put_smid_nvme_encap.description`:
 
 Description
 -----------
 
 Return nothing.
 
-.. _`_base_put_smid_default`:
+.. _`mpt3sas_base_put_smid_default`:
 
-\_base_put_smid_default
-=======================
+mpt3sas_base_put_smid_default
+=============================
 
-.. c:function:: void _base_put_smid_default(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+.. c:function:: void mpt3sas_base_put_smid_default(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
     Default, primarily used for config pages
 
@@ -1434,120 +1675,7 @@ Return nothing.
     :param u16 smid:
         system request message index
 
-.. _`_base_put_smid_default.description`:
-
-Description
------------
-
-Return nothing.
-
-.. _`_base_put_smid_scsi_io_atomic`:
-
-\_base_put_smid_scsi_io_atomic
-==============================
-
-.. c:function:: void _base_put_smid_scsi_io_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
-
-    send SCSI_IO request to firmware using Atomic Request Descriptor
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-    :param u16 handle:
-        device handle, unused in this function, for function type match
-
-.. _`_base_put_smid_scsi_io_atomic.description`:
-
-Description
------------
-
-Return nothing.
-
-.. _`_base_put_smid_fast_path_atomic`:
-
-\_base_put_smid_fast_path_atomic
-================================
-
-.. c:function:: void _base_put_smid_fast_path_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
-
-    send fast path request to firmware using Atomic Request Descriptor
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-    :param u16 handle:
-        device handle, unused in this function, for function type match
-        Return nothing
-
-.. _`_base_put_smid_hi_priority_atomic`:
-
-\_base_put_smid_hi_priority_atomic
-==================================
-
-.. c:function:: void _base_put_smid_hi_priority_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
-
-    send Task Management request to firmware using Atomic Request Descriptor
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-    :param u16 msix_task:
-        msix_task will be same as msix of IO incase of task abort else 0
-
-.. _`_base_put_smid_hi_priority_atomic.description`:
-
-Description
------------
-
-Return nothing.
-
-.. _`_base_put_smid_nvme_encap_atomic`:
-
-\_base_put_smid_nvme_encap_atomic
-=================================
-
-.. c:function:: void _base_put_smid_nvme_encap_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid)
-
-    send NVMe encapsulated request to firmware using Atomic Request Descriptor
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-.. _`_base_put_smid_nvme_encap_atomic.description`:
-
-Description
------------
-
-Return nothing.
-
-.. _`_base_put_smid_default_atomic`:
-
-\_base_put_smid_default_atomic
-==============================
-
-.. c:function:: void _base_put_smid_default_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid)
-
-    Default, primarily used for config pages use Atomic Request Descriptor
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-.. _`_base_put_smid_default_atomic.description`:
+.. _`mpt3sas_base_put_smid_default.description`:
 
 Description
 -----------
@@ -1572,6 +1700,25 @@ Description
 -----------
 
 Return nothing.
+
+.. _`_base_display_fwpkg_version`:
+
+\_base_display_fwpkg_version
+============================
+
+.. c:function:: int _base_display_fwpkg_version(struct MPT3SAS_ADAPTER *ioc)
+
+    sends FWUpload request to pull FWPkg version from FW Image Header.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+.. _`_base_display_fwpkg_version.description`:
+
+Description
+-----------
+
+Returns 0 for success, non-zero for failure.
 
 .. _`_base_display_ioc_capabilities`:
 
@@ -1640,6 +1787,27 @@ Description
 
 Return nothing.
 
+.. _`mpt3sas_free_enclosure_list`:
+
+mpt3sas_free_enclosure_list
+===========================
+
+.. c:function:: void mpt3sas_free_enclosure_list(struct MPT3SAS_ADAPTER *ioc)
+
+    release memory
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+.. _`mpt3sas_free_enclosure_list.description`:
+
+Description
+-----------
+
+Free memory allocated during encloure add.
+
+Return nothing.
+
 .. _`_base_release_memory_pools`:
 
 \_base_release_memory_pools
@@ -1660,6 +1828,30 @@ Description
 Free memory allocated from \_base_allocate_memory_pools.
 
 Return nothing.
+
+.. _`is_msb_are_same`:
+
+is_MSB_are_same
+===============
+
+.. c:function:: int is_MSB_are_same(long reply_pool_start_address, u32 pool_sz)
+
+    checks whether all reply queues in a set are having same upper 32bits in their base memory address.
+
+    :param long reply_pool_start_address:
+        Base address of a reply queue set
+
+    :param u32 pool_sz:
+        Size of single Reply Descriptor Post Queues pool size
+
+.. _`is_msb_are_same.description`:
+
+Description
+-----------
+
+Returns 1 if reply queues in a set have a same upper 32bits
+in their base memory address,
+else 0
 
 .. _`_base_allocate_memory_pools`:
 
@@ -2303,19 +2495,19 @@ MPT3_IOC_DONE_RESET
 
 Return nothing.
 
-.. _`_wait_for_commands_to_complete`:
+.. _`mpt3sas_wait_for_commands_to_complete`:
 
-\_wait_for_commands_to_complete
-===============================
+mpt3sas_wait_for_commands_to_complete
+=====================================
 
-.. c:function:: void _wait_for_commands_to_complete(struct MPT3SAS_ADAPTER *ioc)
+.. c:function:: void mpt3sas_wait_for_commands_to_complete(struct MPT3SAS_ADAPTER *ioc)
 
     reset controller
 
     :param struct MPT3SAS_ADAPTER \*ioc:
         Pointer to MPT_ADAPTER structure
 
-.. _`_wait_for_commands_to_complete.description`:
+.. _`mpt3sas_wait_for_commands_to_complete.description`:
 
 Description
 -----------

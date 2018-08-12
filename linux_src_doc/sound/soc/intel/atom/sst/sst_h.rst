@@ -76,8 +76,10 @@ Definition
     struct stream_info {
         unsigned int status;
         unsigned int prev;
-        unsigned int ops;
+        unsigned int resume_status;
+        unsigned int resume_prev;
         struct mutex lock;
+        struct snd_sst_alloc_mrfld alloc_param;
         void *pcm_substream;
         void (*period_elapsed)(void *pcm_substream);
         unsigned int sfreq;
@@ -88,7 +90,6 @@ Definition
         void (*drain_notify)(void *drain_cb_param);
         unsigned int num_ch;
         unsigned int pipe_id;
-        unsigned int str_id;
         unsigned int task_id;
     }
 
@@ -103,11 +104,17 @@ status
 prev
     stream prev state
 
-ops
-    stream operation pb/cp/drm...
+resume_status
+    stream current state to restore on resume
+
+resume_prev
+    stream prev state to restore on resume
 
 lock
     stream mutex for protecting state
+
+alloc_param
+    parameters used for stream (re-)allocation
 
 pcm_substream
     PCM substream
@@ -137,9 +144,6 @@ num_ch
     *undescribed*
 
 pipe_id
-    *undescribed*
-
-str_id
     *undescribed*
 
 task_id

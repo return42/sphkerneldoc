@@ -34,8 +34,6 @@ Definition
         int (*input_mapped)(struct hid_device *hdev,struct hid_input *hidinput, struct hid_field *field, struct hid_usage *usage, unsigned long **bit, int *max);
         int (*input_configured)(struct hid_device *hdev, struct hid_input *hidinput);
         void (*feature_mapping)(struct hid_device *hdev,struct hid_field *field, struct hid_usage *usage);
-        void (*bus_add_driver)(struct hid_driver *driver);
-        void (*bus_removed_driver)(struct hid_driver *driver);
     #ifdef CONFIG_PM
         int (*suspend)(struct hid_device *hdev, pm_message_t message);
         int (*resume)(struct hid_device *hdev);
@@ -99,12 +97,6 @@ input_configured
 
 feature_mapping
     invoked on feature registering
-
-bus_add_driver
-    invoked when a HID driver is about to be added
-
-bus_removed_driver
-    invoked when a HID driver has been removed
 
 suspend
     invoked on suspend (NULL means nop)
@@ -420,7 +412,7 @@ hid_hw_wait
 hid_report_len
 ==============
 
-.. c:function:: int hid_report_len(struct hid_report *report)
+.. c:function:: u32 hid_report_len(struct hid_report *report)
 
     calculate the report length
 

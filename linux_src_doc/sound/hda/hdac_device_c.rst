@@ -657,5 +657,30 @@ Description
 
 Return true if state matches, false if not
 
+.. _`snd_hdac_sync_power_state`:
+
+snd_hdac_sync_power_state
+=========================
+
+.. c:function:: unsigned int snd_hdac_sync_power_state(struct hdac_device *codec, hda_nid_t nid, unsigned int power_state)
+
+    wait until actual power state matches with the target state
+
+    :param struct hdac_device \*codec:
+        *undescribed*
+
+    :param hda_nid_t nid:
+        NID to send the command
+
+    :param unsigned int power_state:
+        *undescribed*
+
+.. _`snd_hdac_sync_power_state.description`:
+
+Description
+-----------
+
+Return power state or PS_ERROR if codec rejects GET verb.
+
 .. This file was automatic generated / don't edit.
 

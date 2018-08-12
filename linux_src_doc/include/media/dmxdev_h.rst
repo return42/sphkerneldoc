@@ -180,7 +180,7 @@ filter.sec
 feed
     a union describing a dmxdev feed.
     Depending on the filter type, it can be either
-    \ ``feed``\ .ts or \ ``feed``\ .sec.
+    \ ``feed.ts``\  or \ ``feed.sec``\ .
 
 feed.ts
     a \ :c:type:`struct list_head <list_head>`\  list.
@@ -193,7 +193,7 @@ feed.sec
 params
     a union describing dmxdev filter parameters.
     Depending on the filter type, it can be either
-    \ ``params``\ .sec or \ ``params``\ .pes.
+    \ ``params.sec``\  or \ ``params.pes``\ .
 
 params.sec
     a \ :c:type:`struct dmx_sct_filter_params <dmx_sct_filter_params>`\  embedded struct.
@@ -257,6 +257,7 @@ Definition
         struct dmx_demux *demux;
         int filternum;
         int capabilities;
+        unsigned int may_do_mmap:1;
         unsigned int exit:1;
     #define DMXDEV_CAP_DUPLEX 1
         struct dmx_frontend *dvr_orig_fe;
@@ -291,6 +292,9 @@ filternum
 
 capabilities
     demux capabilities as defined by \ :c:type:`enum dmx_demux_caps <dmx_demux_caps>`\ .
+
+may_do_mmap
+    flag used to indicate if the device may do mmap.
 
 exit
     flag to indicate that the demux is being released.

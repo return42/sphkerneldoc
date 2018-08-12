@@ -682,6 +682,82 @@ list = <&phandle1 1 2 \ :c:type:`struct phandle2 <phandle2>`\  3>;
 To get a device_node of the \`node2' node you may call this:
 of_parse_phandle_with_args(node3, "list", "#list-cells", 1, \ :c:type:`struct args <args>`\ );
 
+.. _`of_parse_phandle_with_args_map`:
+
+of_parse_phandle_with_args_map
+==============================
+
+.. c:function:: int of_parse_phandle_with_args_map(const struct device_node *np, const char *list_name, const char *stem_name, int index, struct of_phandle_args *out_args)
+
+    Find a node pointed by phandle in a list and remap it
+
+    :param const struct device_node \*np:
+        pointer to a device tree node containing a list
+
+    :param const char \*list_name:
+        property name that contains a list
+
+    :param const char \*stem_name:
+        stem of property names that specify phandles' arguments count
+
+    :param int index:
+        index of a phandle to parse out
+
+    :param struct of_phandle_args \*out_args:
+        optional pointer to output arguments structure (will be filled)
+
+.. _`of_parse_phandle_with_args_map.description`:
+
+Description
+-----------
+
+This function is useful to parse lists of phandles and their arguments.
+Returns 0 on success and fills out_args, on error returns appropriate errno
+value. The difference between this function and \ :c:func:`of_parse_phandle_with_args`\ 
+is that this API remaps a phandle if the node the phandle points to has
+a <@stem_name>-map property.
+
+Caller is responsible to call \ :c:func:`of_node_put`\  on the returned out_args->np
+pointer.
+
+.. _`of_parse_phandle_with_args_map.phandle1`:
+
+phandle1
+--------
+
+node1 {
+#list-cells = <2>;
+}
+
+.. _`of_parse_phandle_with_args_map.phandle2`:
+
+phandle2
+--------
+
+node2 {
+#list-cells = <1>;
+}
+
+.. _`of_parse_phandle_with_args_map.phandle3`:
+
+phandle3
+--------
+
+node3 {
+#list-cells = <1>;
+list-map = <0 \ :c:type:`struct phandle2 <phandle2>`\  3>,
+<1 \ :c:type:`struct phandle2 <phandle2>`\  2>,
+<2 \ :c:type:`struct phandle1 <phandle1>`\  5 1>;
+list-map-mask = <0x3>;
+};
+
+node4 {
+list = <&phandle1 1 2 \ :c:type:`struct phandle3 <phandle3>`\  0>;
+}
+
+To get a device_node of the \`node2' node you may call this:
+of_parse_phandle_with_args(node4, "list", "list", 1, \ :c:type:`struct args <args>`\ );
+
 .. _`of_parse_phandle_with_fixed_args`:
 
 of_parse_phandle_with_fixed_args

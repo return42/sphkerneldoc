@@ -22,26 +22,6 @@ Only do initialization of static structures that don't require any
 allocation or sizing information from userspace.  \ :c:func:`vgic_init`\  called
 \ :c:func:`kvm_vgic_dist_init`\  which takes care of the rest.
 
-.. _`kvm_vgic_vcpu_early_init`:
-
-kvm_vgic_vcpu_early_init
-========================
-
-.. c:function:: void kvm_vgic_vcpu_early_init(struct kvm_vcpu *vcpu)
-
-    Initialize static VGIC VCPU data structures
-
-    :param struct kvm_vcpu \*vcpu:
-        The VCPU whose VGIC data structures whould be initialized
-
-.. _`kvm_vgic_vcpu_early_init.description`:
-
-Description
------------
-
-Only do initialization, but do not actually enable the VGIC CPU interface
-yet.
-
 .. _`kvm_vgic_create`:
 
 kvm_vgic_create
@@ -79,10 +59,18 @@ kvm_vgic_vcpu_init
 
 .. c:function:: int kvm_vgic_vcpu_init(struct kvm_vcpu *vcpu)
 
-    Register VCPU-specific KVM iodevs
+    Initialize static VGIC VCPU data structures and register VCPU-specific KVM iodevs
 
     :param struct kvm_vcpu \*vcpu:
         pointer to the VCPU being created and initialized
+
+.. _`kvm_vgic_vcpu_init.description`:
+
+Description
+-----------
+
+Only do initialization, but do not actually enable the
+VGIC CPU interface
 
 .. _`vgic_lazy_init`:
 

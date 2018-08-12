@@ -21,7 +21,8 @@ Definition
         TB_SECURITY_NONE,
         TB_SECURITY_USER,
         TB_SECURITY_SECURE,
-        TB_SECURITY_DPONLY
+        TB_SECURITY_DPONLY,
+        TB_SECURITY_USBONLY
     };
 
 .. _`tb_security_level.constants`:
@@ -40,6 +41,11 @@ TB_SECURITY_SECURE
 
 TB_SECURITY_DPONLY
     Only tunnel Display port (and USB)
+
+TB_SECURITY_USBONLY
+    Only tunnel USB controller of the connected
+    Thunderbolt dock (and Display Port). All PCIe
+    links downstream of the dock are removed.
 
 .. _`tb`:
 
@@ -67,6 +73,7 @@ Definition
         const struct tb_cm_ops *cm_ops;
         int index;
         enum tb_security_level security_level;
+        size_t nboot_acl;
         unsigned long privdata[0];
     }
 
@@ -102,6 +109,9 @@ index
 
 security_level
     Current security level
+
+nboot_acl
+    Number of boot ACLs the domain supports
 
 privdata
     Private connection manager specific data

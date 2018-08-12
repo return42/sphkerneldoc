@@ -35,7 +35,7 @@ v9fs_get_trans_by_name
     get transport with the matching name
 
     :param char \*s:
-        *undescribed*
+        string identifying transport
 
 .. _`v9fs_get_default_trans`:
 

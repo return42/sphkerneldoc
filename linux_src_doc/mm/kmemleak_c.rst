@@ -272,16 +272,17 @@ kmemleak_alloc_phys
     similar to kmemleak_alloc but taking a physical address argument
 
     :param phys_addr_t phys:
-        *undescribed*
+        physical address of the object
 
     :param size_t size:
-        *undescribed*
+        size of the object
 
     :param int min_count:
-        *undescribed*
+        minimum number of references to this object.
+        See \ :c:func:`kmemleak_alloc`\ 
 
     :param gfp_t gfp:
-        *undescribed*
+        \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
 
 .. _`kmemleak_free_part_phys`:
 
@@ -293,10 +294,11 @@ kmemleak_free_part_phys
     similar to kmemleak_free_part but taking a physical address argument
 
     :param phys_addr_t phys:
-        *undescribed*
+        physical address if the beginning or inside an object. This
+        also represents the start of the range to be freed
 
     :param size_t size:
-        *undescribed*
+        size to be unregistered
 
 .. _`kmemleak_not_leak_phys`:
 
@@ -308,7 +310,7 @@ kmemleak_not_leak_phys
     similar to kmemleak_not_leak but taking a physical address argument
 
     :param phys_addr_t phys:
-        *undescribed*
+        physical address of the object
 
 .. _`kmemleak_ignore_phys`:
 
@@ -320,7 +322,7 @@ kmemleak_ignore_phys
     similar to kmemleak_ignore but taking a physical address argument
 
     :param phys_addr_t phys:
-        *undescribed*
+        physical address of the object
 
 .. This file was automatic generated / don't edit.
 

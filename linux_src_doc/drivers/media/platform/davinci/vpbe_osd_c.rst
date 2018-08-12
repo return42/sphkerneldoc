@@ -8,19 +8,19 @@
 
 .. c:function:: int _osd_dm6446_vid0_pingpong(struct osd_state *sd, int field_inversion, unsigned long fb_base_phys, const struct osd_layer_config *lconfig)
 
-    field inversion fix for DM6446 \ ``sd``\  - ptr to struct osd_state \ ``field_inversion``\  - inversion flag \ ``fb_base_phys``\  - frame buffer address \ ``lconfig``\  - ptr to layer config
+    field inversion fix for DM6446
 
     :param struct osd_state \*sd:
-        *undescribed*
+        ptr to struct osd_state
 
     :param int field_inversion:
-        *undescribed*
+        inversion flag
 
     :param unsigned long fb_base_phys:
-        *undescribed*
+        frame buffer address
 
     :param const struct osd_layer_config \*lconfig:
-        *undescribed*
+        ptr to layer config
 
 .. _`_osd_dm6446_vid0_pingpong.description`:
 
@@ -48,16 +48,16 @@ try_layer_config
 
 .. c:function:: int try_layer_config(struct osd_state *sd, enum osd_layer layer, struct osd_layer_config *lconfig)
 
-    Try a specific configuration for the layer \ ``sd``\   - ptr to struct osd_state \ ``layer``\  - layer to configure \ ``lconfig``\  - layer configuration to try
+    Try a specific configuration for the layer
 
     :param struct osd_state \*sd:
-        *undescribed*
+        ptr to struct osd_state
 
     :param enum osd_layer layer:
-        *undescribed*
+        layer to configure
 
     :param struct osd_layer_config \*lconfig:
-        *undescribed*
+        layer configuration to try
 
 .. _`try_layer_config.description`:
 

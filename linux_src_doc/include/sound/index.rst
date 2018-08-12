@@ -23,5 +23,6 @@ sound
     pcm_h
     pcm_params_h
     soc-acpi_h
+    soc-dai_h
     soc-dapm_h
     soc_h

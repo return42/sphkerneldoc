@@ -31,30 +31,6 @@ a2p
     :param struct pci_dev \*pdev:
         PCI device (must be hosted within the connext)
 
-.. _`sta2x11_swiotlb_alloc_coherent`:
-
-sta2x11_swiotlb_alloc_coherent
-==============================
-
-.. c:function:: void *sta2x11_swiotlb_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags, unsigned long attrs)
-
-    Allocate swiotlb bounce buffers returns virtual address. This is the only "special" function here.
-
-    :param struct device \*dev:
-        PCI device
-
-    :param size_t size:
-        Size of the buffer
-
-    :param dma_addr_t \*dma_handle:
-        DMA address
-
-    :param gfp_t flags:
-        memory flags
-
-    :param unsigned long attrs:
-        *undescribed*
-
 .. _`dma_capable`:
 
 dma_capable
@@ -73,12 +49,12 @@ dma_capable
     :param size_t size:
         DMA size
 
-.. _`phys_to_dma`:
+.. _`__phys_to_dma`:
 
-phys_to_dma
-===========
+\__phys_to_dma
+==============
 
-.. c:function:: dma_addr_t phys_to_dma(struct device *dev, phys_addr_t paddr)
+.. c:function:: dma_addr_t __phys_to_dma(struct device *dev, phys_addr_t paddr)
 
     Return the DMA AMBA address used for this STA2x11 device
 
@@ -88,12 +64,12 @@ phys_to_dma
     :param phys_addr_t paddr:
         Physical address
 
-.. _`dma_to_phys`:
+.. _`__dma_to_phys`:
 
-dma_to_phys
-===========
+\__dma_to_phys
+==============
 
-.. c:function:: phys_addr_t dma_to_phys(struct device *dev, dma_addr_t daddr)
+.. c:function:: phys_addr_t __dma_to_phys(struct device *dev, dma_addr_t daddr)
 
     Return the physical address used for this STA2x11 DMA address
 

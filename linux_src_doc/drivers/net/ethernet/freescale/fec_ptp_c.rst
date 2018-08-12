@@ -167,21 +167,6 @@ fec_ptp_enable
     :param int on:
         whether to enable or disable the feature
 
-.. _`fec_ptp_set`:
-
-fec_ptp_set
-===========
-
-.. c:function:: int fec_ptp_set(struct net_device *ndev, struct ifreq *ifr)
-
-    control hardware time stamping
-
-    :param struct net_device \*ndev:
-        pointer to net_device
-
-    :param struct ifreq \*ifr:
-        *undescribed*
-
 .. _`fec_time_keep`:
 
 fec_time_keep

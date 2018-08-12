@@ -93,7 +93,7 @@ Definition
         struct fwnode_handle *(*get)(struct fwnode_handle *fwnode);
         void (*put)(struct fwnode_handle *fwnode);
         bool (*device_is_available)(const struct fwnode_handle *fwnode);
-        void *(*device_get_match_data)(const struct fwnode_handle *fwnode, const struct device *dev);
+        const void *(*device_get_match_data)(const struct fwnode_handle *fwnode, const struct device *dev);
         bool (*property_present)(const struct fwnode_handle *fwnode, const char *propname);
         int (*property_read_int_array)(const struct fwnode_handle *fwnode,const char *propname,unsigned int elem_size, void *val, size_t nval);
         int(*property_read_string_array)(const struct fwnode_handle *fwnode_handle,const char *propname, const char **val, size_t nval);

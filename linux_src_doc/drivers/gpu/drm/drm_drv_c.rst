@@ -66,6 +66,57 @@ instead to make sure that the device isn't userspace accessible any more
 while teardown is in progress, ensuring that userspace can't access an
 inconsistent state.
 
+.. _`drm_dev_enter`:
+
+drm_dev_enter
+=============
+
+.. c:function:: bool drm_dev_enter(struct drm_device *dev, int *idx)
+
+    Enter device critical section
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param int \*idx:
+        Pointer to index that will be passed to the matching \ :c:func:`drm_dev_exit`\ 
+
+.. _`drm_dev_enter.description`:
+
+Description
+-----------
+
+This function marks and protects the beginning of a section that should not
+be entered after the device has been unplugged. The section end is marked
+with \ :c:func:`drm_dev_exit`\ . Calls to this function can be nested.
+
+.. _`drm_dev_enter.return`:
+
+Return
+------
+
+True if it is OK to enter the section, false otherwise.
+
+.. _`drm_dev_exit`:
+
+drm_dev_exit
+============
+
+.. c:function:: void drm_dev_exit(int idx)
+
+    Exit device critical section
+
+    :param int idx:
+        index returned from \ :c:func:`drm_dev_enter`\ 
+
+.. _`drm_dev_exit.description`:
+
+Description
+-----------
+
+This function marks the end of a section that should not be entered after
+the device has been unplugged.
+
 .. _`drm_dev_unplug`:
 
 drm_dev_unplug
@@ -84,7 +135,8 @@ Description
 -----------
 
 This unplugs a hotpluggable DRM device, which makes it inaccessible to
-userspace operations. Entry-points can use \ :c:func:`drm_dev_is_unplugged`\ . This
+userspace operations. Entry-points can use \ :c:func:`drm_dev_enter`\  and
+\ :c:func:`drm_dev_exit`\  to protect device resources in a race free manner. This
 essentially unregisters the device like \ :c:func:`drm_dev_unregister`\ , but can be
 called while there are still open users of \ ``dev``\ .
 

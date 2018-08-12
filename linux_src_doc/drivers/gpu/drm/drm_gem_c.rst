@@ -229,9 +229,12 @@ drm_gem_handle_create
 Description
 -----------
 
-Create a handle for this object. This adds a handle reference
-to the object, which includes a regular reference count. Callers
-will likely want to dereference the object afterwards.
+Create a handle for this object. This adds a handle reference to the object,
+which includes a regular reference count. Callers will likely want to
+dereference the object afterwards.
+
+Since this publishes \ ``obj``\  to userspace it must be fully set up by this point,
+drivers must call this last in their buffer object creation callbacks.
 
 .. _`drm_gem_free_mmap_offset`:
 

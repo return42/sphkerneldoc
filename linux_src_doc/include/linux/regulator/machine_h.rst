@@ -87,6 +87,7 @@ Definition
         int max_uA;
         int ilim_uA;
         int system_load;
+        int max_spread;
         unsigned int valid_modes_mask;
         unsigned int valid_ops_mask;
         int input_uV;
@@ -139,6 +140,9 @@ ilim_uA
 
 system_load
     Load that isn't captured by any consumer requests.
+
+max_spread
+    Max possible spread between coupled regulators
 
 valid_modes_mask
     Mask of modes which may be configured by consumers.

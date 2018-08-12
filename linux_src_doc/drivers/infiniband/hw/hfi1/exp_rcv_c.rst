@@ -1,16 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/exp_rcv.c
 
+.. _`hfi1_exp_tid_set_init`:
+
+hfi1_exp_tid_set_init
+=====================
+
+.. c:function:: void hfi1_exp_tid_set_init(struct exp_tid_set *set)
+
+    initialize exp_tid_set \ ``set``\  - the set
+
+    :param struct exp_tid_set \*set:
+        *undescribed*
+
 .. _`hfi1_exp_tid_group_init`:
 
 hfi1_exp_tid_group_init
 =======================
 
-.. c:function:: void hfi1_exp_tid_group_init(struct exp_tid_set *set)
+.. c:function:: void hfi1_exp_tid_group_init(struct hfi1_ctxtdata *rcd)
 
-    initialize exp_tid_set \ ``set``\  - the set
+    initialize rcd expected receive \ ``rcd``\  - the rcd
 
-    :param struct exp_tid_set \*set:
+    :param struct hfi1_ctxtdata \*rcd:
         *undescribed*
 
 .. _`hfi1_alloc_ctxt_rcv_groups`:

@@ -73,7 +73,7 @@ apm_bios_call
 Description
 -----------
 
-If there is an error, it is returned in \ ``call``\ .err.
+If there is an error, it is returned in \ ``call.err``\ .
 
 .. _`__apm_bios_call_simple`:
 

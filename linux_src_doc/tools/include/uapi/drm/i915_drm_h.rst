@@ -24,6 +24,13 @@ I915_RESET_UEVENT - Event is generated just before an attempt to reset the
 the GPU. The value supplied with the event is always 1. NOTE: Disable
 reset via module parameter will cause this event to not be seen.
 
+.. _`perf_events-exposed-by-i915-through--sys-bus-event_sources-drivers-i915`:
+
+perf_events exposed by i915 through /sys/bus/event_sources/drivers/i915
+=======================================================================
+
+
+
 .. _`i915_caching_none`:
 
 I915_CACHING_NONE

@@ -24,9 +24,9 @@ vsp1_du_setup_lif
 Description
 -----------
 
-Configure the output part of VSP DRM pipeline for the given frame \ ``cfg``\ .width
-and \ ``cfg``\ .height. This sets up formats on the blend unit (BRU or BRS) source
-pad, the WPF sink and source pads, and the LIF sink pad.
+Configure the output part of VSP DRM pipeline for the given frame \ ``cfg.width``\ 
+and \ ``cfg.height``\ . This sets up formats on the BRx source pad, the WPF sink and
+source pads, and the LIF sink pad.
 
 The \ ``pipe_index``\  argument selects which DRM pipeline to setup. The number of
 available pipelines depend on the VSP instance.
@@ -82,21 +82,21 @@ Description
 
 Configure the VSP to perform image composition through RPF \ ``rpf_index``\  as
 described by the \ ``cfg``\  configuration. The image to compose is referenced by
-\ ``cfg``\ .mem and composed using the \ ``cfg``\ .src crop rectangle and the \ ``cfg``\ .dst
+\ ``cfg.mem``\  and composed using the \ ``cfg.src``\  crop rectangle and the \ ``cfg.dst``\ 
 composition rectangle. The Z-order is configurable with higher \ ``zpos``\  values
 displayed on top.
 
 If the \ ``cfg``\  configuration is NULL, the RPF will be disabled. Calling the
 function on a disabled RPF is allowed.
 
-Image format as stored in memory is expressed as a V4L2 \ ``cfg``\ .pixelformat
+Image format as stored in memory is expressed as a V4L2 \ ``cfg.pixelformat``\ 
 value. The memory pitch is configurable to allow for padding at end of lines,
 or simply for images that extend beyond the crop rectangle boundaries. The
-\ ``cfg``\ .pitch value is expressed in bytes and applies to all planes for
+\ ``cfg.pitch``\  value is expressed in bytes and applies to all planes for
 multiplanar formats.
 
 The source memory buffer is referenced by the DMA address of its planes in
-the \ ``cfg``\ .mem array. Up to two planes are supported. The second plane DMA
+the \ ``cfg.mem``\  array. Up to two planes are supported. The second plane DMA
 address is ignored for formats using a single plane.
 
 This function isn't reentrant, the caller needs to serialize calls.
@@ -108,7 +108,7 @@ Return 0 on success or a negative error code on failure.
 vsp1_du_atomic_flush
 ====================
 
-.. c:function:: void vsp1_du_atomic_flush(struct device *dev, unsigned int pipe_index)
+.. c:function:: void vsp1_du_atomic_flush(struct device *dev, unsigned int pipe_index, const struct vsp1_du_atomic_pipe_config *cfg)
 
     Commit an atomic update
 
@@ -117,6 +117,9 @@ vsp1_du_atomic_flush
 
     :param unsigned int pipe_index:
         the DRM pipeline index
+
+    :param const struct vsp1_du_atomic_pipe_config \*cfg:
+        atomic pipe configuration
 
 .. This file was automatic generated / don't edit.
 

@@ -109,6 +109,7 @@ Definition
                 union {
                     struct net_device *dev;
                     unsigned long dev_scratch;
+                    int ip_defrag_offset;
                 } ;
             } ;
             struct rb_node rbnode;
@@ -145,7 +146,7 @@ Definition
     #endif
     #define CLONED_OFFSET() offsetof(struct sk_buff, __cloned_offset)
         __u8 __cloned_offset[0];
-        __u8 cloned:1,nohdr:1,fclone:2,peeked:1,head_frag:1,xmit_more:1, __unused:1;
+        __u8 cloned:1,nohdr:1,fclone:2,peeked:1,head_frag:1,xmit_more:1, pfmemalloc:1;
     #ifdef __BIG_ENDIAN_BITFIELD
     #define PKT_TYPE_MAX (7 << 5)
     #else
@@ -154,7 +155,6 @@ Definition
     #define PKT_TYPE_OFFSET() offsetof(struct sk_buff, __pkt_type_offset)
         __u8 __pkt_type_offset[0];
         __u8 pkt_type:3;
-        __u8 pfmemalloc:1;
         __u8 ignore_df:1;
         __u8 nf_trace:1;
         __u8 ip_summed:2;
@@ -259,6 +259,9 @@ dev
 dev_scratch
     *undescribed*
 
+ip_defrag_offset
+    *undescribed*
+
 rbnode
     RB tree node, alternative to next/prev for netem/tcp
 
@@ -338,17 +341,14 @@ head_frag
 xmit_more
     More SKBs are pending for this queue
 
-__unused
-    *undescribed*
+pfmemalloc
+    skbuff was allocated from PFMEMALLOC reserves
 
 __pkt_type_offset
     *undescribed*
 
 pkt_type
     Packet class
-
-pfmemalloc
-    *undescribed*
 
 ignore_df
     allow local fragmentation
@@ -2331,49 +2331,6 @@ The head on skbs build around a head frag can be removed if they are
 not cloned.  This function returns true if the skb head is locked down
 due to either being allocated via kmalloc, or by being a clone with
 multiple references to the head.
-
-.. _`skb_gso_network_seglen`:
-
-skb_gso_network_seglen
-======================
-
-.. c:function:: unsigned int skb_gso_network_seglen(const struct sk_buff *skb)
-
-    Return length of individual segments of a gso packet
-
-    :param const struct sk_buff \*skb:
-        GSO skb
-
-.. _`skb_gso_network_seglen.description`:
-
-Description
------------
-
-skb_gso_network_seglen is used to determine the real size of the
-individual segments, including Layer3 (IP, IPv6) and L4 headers (TCP/UDP).
-
-The MAC/L2 header is not accounted for.
-
-.. _`skb_gso_mac_seglen`:
-
-skb_gso_mac_seglen
-==================
-
-.. c:function:: unsigned int skb_gso_mac_seglen(const struct sk_buff *skb)
-
-    Return length of individual segments of a gso packet
-
-    :param const struct sk_buff \*skb:
-        GSO skb
-
-.. _`skb_gso_mac_seglen.description`:
-
-Description
------------
-
-skb_gso_mac_seglen is used to determine the real size of the
-individual segments, including MAC/L2, Layer3 (IP, IPv6) and L4
-headers (TCP/UDP).
 
 .. This file was automatic generated / don't edit.
 

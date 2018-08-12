@@ -6,7 +6,7 @@
 GuC firmware log
 ================
 
-Firmware log is enabled by setting i915.guc_log_level to non-negative level.
+Firmware log is enabled by setting i915.guc_log_level to the positive level.
 Log data is printed out via reading debugfs i915_guc_log_dump. Reading from
 i915_guc_load_status will print out firmware loading status and scratch
 registers value.

@@ -48,10 +48,12 @@ RINGBUF_TYPE_TIME_EXTEND
     size = 8 bytes
 
 RINGBUF_TYPE_TIME_STAMP
-    Sync time stamp with external clock
-    array[0]    = tv_nsec
-    array[1..2] = tv_sec
-    size = 16 bytes
+    Absolute timestamp
+    Same format as TIME_EXTEND except that the
+    value is an absolute timestamp, not a delta
+    event.time_delta contains bottom 27 bits
+    array[0] = top (28 .. 59) bits
+    size = 8 bytes
 
 .. _`ring_buffer_type.description`:
 

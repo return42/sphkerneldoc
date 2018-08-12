@@ -27,6 +27,8 @@ Definition
         struct regmap *ipc_regmap;
         int ipc_offset;
         int ipc_bit;
+        struct mbox_client mbox_client;
+        struct mbox_chan *mbox_chan;
         struct list_head channels;
         spinlock_t channels_lock;
         DECLARE_BITMAP(allocated[SMD_ALLOC_TBL_COUNT], SMD_ALLOC_TBL_SIZE);
@@ -67,6 +69,12 @@ ipc_offset
 
 ipc_bit
     bit in the register at \ ``ipc_offset``\  of \ ``ipc_regmap``\ 
+
+mbox_client
+    mailbox client handle
+
+mbox_chan
+    apcs ipc mailbox channel handle
 
 channels
     list of all channels detected on this edge
@@ -115,7 +123,7 @@ Definition
         wait_queue_head_t state_change_event;
         struct smd_channel_info_pair *info;
         struct smd_channel_info_word_pair *info_word;
-        struct mutex tx_lock;
+        spinlock_t tx_lock;
         wait_queue_head_t fblockread_event;
         void *tx_fifo;
         void *rx_fifo;

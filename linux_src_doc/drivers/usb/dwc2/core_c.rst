@@ -25,12 +25,12 @@ dwc2_restore_global_registers
     :param struct dwc2_hsotg \*hsotg:
         Programming view of the DWC_otg controller
 
-.. _`dwc2_exit_hibernation`:
+.. _`dwc2_exit_partial_power_down`:
 
-dwc2_exit_hibernation
-=====================
+dwc2_exit_partial_power_down
+============================
 
-.. c:function:: int dwc2_exit_hibernation(struct dwc2_hsotg *hsotg, bool restore)
+.. c:function:: int dwc2_exit_partial_power_down(struct dwc2_hsotg *hsotg, bool restore)
 
     Exit controller from Partial Power Down.
 
@@ -40,17 +40,53 @@ dwc2_exit_hibernation
     :param bool restore:
         Controller registers need to be restored
 
-.. _`dwc2_enter_hibernation`:
+.. _`dwc2_enter_partial_power_down`:
 
-dwc2_enter_hibernation
-======================
+dwc2_enter_partial_power_down
+=============================
 
-.. c:function:: int dwc2_enter_hibernation(struct dwc2_hsotg *hsotg)
+.. c:function:: int dwc2_enter_partial_power_down(struct dwc2_hsotg *hsotg)
 
     Put controller in Partial Power Down.
 
     :param struct dwc2_hsotg \*hsotg:
         Programming view of the DWC_otg controller
+
+.. _`dwc2_restore_essential_regs`:
+
+dwc2_restore_essential_regs
+===========================
+
+.. c:function:: void dwc2_restore_essential_regs(struct dwc2_hsotg *hsotg, int rmode, int is_host)
+
+    Restore essiential regs of core.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of the DWC_otg controller
+
+    :param int rmode:
+        Restore mode, enabled in case of remote-wakeup.
+
+    :param int is_host:
+        Host or device mode.
+
+.. _`dwc2_hib_restore_common`:
+
+dwc2_hib_restore_common
+=======================
+
+.. c:function:: void dwc2_hib_restore_common(struct dwc2_hsotg *hsotg, int rem_wakeup, int is_host)
+
+    Common part of restore routine.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of the DWC_otg controller
+
+    :param int rem_wakeup:
+        Remote-wakeup, enabled in case of remote-wakeup.
+
+    :param int is_host:
+        Host or device mode.
 
 .. _`dwc2_wait_for_mode`:
 
@@ -77,7 +113,47 @@ dwc2_iddig_filter_enabled
     Returns true if the IDDIG debounce filter is enabled.
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of DWC_otg controller
+
+.. _`dwc2_force_mode`:
+
+dwc2_force_mode
+===============
+
+.. c:function:: void dwc2_force_mode(struct dwc2_hsotg *hsotg, bool host)
+
+    Force the mode of the controller.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of DWC_otg controller
+
+    :param bool host:
+        Host mode flag
+
+.. _`dwc2_force_mode.forcing-the-mode-is-needed-for-two-cases`:
+
+Forcing the mode is needed for two cases
+----------------------------------------
+
+
+1) If the dr_mode is set to either HOST or PERIPHERAL we force the
+controller to stay in a particular mode regardless of ID pin
+changes. We do this once during probe.
+
+2) During probe we want to read reset values of the hw
+configuration registers that are only available in either host or
+device mode. We may need to force the mode if the current mode does
+not allow us to access the register in the mode that we want.
+
+In either case it only makes sense to force the mode if the
+controller hardware is OTG capable.
+
+Checks are done in this function to determine whether doing a force
+would be valid or not.
+
+If a force is done, it requires a IDDIG debounce filter delay if
+the filter is configured and enabled. We poll the current mode of
+the controller to account for this delay.
 
 .. _`dwc2_clear_force_mode`:
 
@@ -89,7 +165,7 @@ dwc2_clear_force_mode
     Clears the force mode bits.
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of DWC_otg controller
 
 .. _`dwc2_clear_force_mode.description`:
 
@@ -192,6 +268,62 @@ dwc2_disable_global_interrupts
 
     :param struct dwc2_hsotg \*hsotg:
         Programming view of DWC_otg controller
+
+.. _`dwc2_hsotg_wait_bit_set`:
+
+dwc2_hsotg_wait_bit_set
+=======================
+
+.. c:function:: int dwc2_hsotg_wait_bit_set(struct dwc2_hsotg *hsotg, u32 offset, u32 mask, u32 timeout)
+
+    Waits for bit to be set.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of DWC_otg controller.
+
+    :param u32 offset:
+        Register's offset where bit/bits must be set.
+
+    :param u32 mask:
+        Mask of the bit/bits which must be set.
+
+    :param u32 timeout:
+        Timeout to wait.
+
+.. _`dwc2_hsotg_wait_bit_set.return`:
+
+Return
+------
+
+0 if bit/bits are set or -ETIMEDOUT in case of timeout.
+
+.. _`dwc2_hsotg_wait_bit_clear`:
+
+dwc2_hsotg_wait_bit_clear
+=========================
+
+.. c:function:: int dwc2_hsotg_wait_bit_clear(struct dwc2_hsotg *hsotg, u32 offset, u32 mask, u32 timeout)
+
+    Waits for bit to be clear.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of DWC_otg controller.
+
+    :param u32 offset:
+        Register's offset where bit/bits must be set.
+
+    :param u32 mask:
+        Mask of the bit/bits which must be set.
+
+    :param u32 timeout:
+        Timeout to wait.
+
+.. _`dwc2_hsotg_wait_bit_clear.return`:
+
+Return
+------
+
+0 if bit/bits are set or -ETIMEDOUT in case of timeout.
 
 .. This file was automatic generated / don't edit.
 

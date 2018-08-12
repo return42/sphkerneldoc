@@ -1,62 +1,63 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/rockchip/rockchip_drm_psr.c
 
-.. _`rockchip_drm_psr_activate`:
+.. _`rockchip_drm_psr_inhibit_put`:
 
-rockchip_drm_psr_activate
-=========================
+rockchip_drm_psr_inhibit_put
+============================
 
-.. c:function:: int rockchip_drm_psr_activate(struct drm_crtc *crtc)
+.. c:function:: int rockchip_drm_psr_inhibit_put(struct drm_encoder *encoder)
 
-    activate PSR on the given pipe
+    release PSR inhibit on given encoder
 
-    :param struct drm_crtc \*crtc:
-        CRTC to obtain the PSR encoder
+    :param struct drm_encoder \*encoder:
+        encoder to obtain the PSR encoder
 
-.. _`rockchip_drm_psr_activate.return`:
+.. _`rockchip_drm_psr_inhibit_put.description`:
 
-Return
-------
+Description
+-----------
 
-Zero on success, negative errno on failure.
+Decrements PSR inhibit count on given encoder. Should be called only
+for a PSR inhibit count increment done before. If PSR inhibit counter
+reaches zero, PSR flush work is scheduled to make the hardware enter
+PSR mode in PSR_FLUSH_TIMEOUT_MS.
 
-.. _`rockchip_drm_psr_deactivate`:
-
-rockchip_drm_psr_deactivate
-===========================
-
-.. c:function:: int rockchip_drm_psr_deactivate(struct drm_crtc *crtc)
-
-    deactivate PSR on the given pipe
-
-    :param struct drm_crtc \*crtc:
-        CRTC to obtain the PSR encoder
-
-.. _`rockchip_drm_psr_deactivate.return`:
+.. _`rockchip_drm_psr_inhibit_put.return`:
 
 Return
 ------
 
 Zero on success, negative errno on failure.
 
-.. _`rockchip_drm_psr_flush`:
+.. _`rockchip_drm_psr_inhibit_get`:
 
-rockchip_drm_psr_flush
-======================
+rockchip_drm_psr_inhibit_get
+============================
 
-.. c:function:: int rockchip_drm_psr_flush(struct drm_crtc *crtc)
+.. c:function:: int rockchip_drm_psr_inhibit_get(struct drm_encoder *encoder)
 
-    flush a single pipe
+    acquire PSR inhibit on given encoder
 
-    :param struct drm_crtc \*crtc:
-        CRTC of the pipe to flush
+    :param struct drm_encoder \*encoder:
+        encoder to obtain the PSR encoder
 
-.. _`rockchip_drm_psr_flush.return`:
+.. _`rockchip_drm_psr_inhibit_get.description`:
+
+Description
+-----------
+
+Increments PSR inhibit count on given encoder. This function guarantees
+that after it returns PSR is turned off on given encoder and no PSR-related
+hardware state change occurs at least until a matching call to
+\ :c:func:`rockchip_drm_psr_inhibit_put`\  is done.
+
+.. _`rockchip_drm_psr_inhibit_get.return`:
 
 Return
 ------
 
-0 on success, -errno on fail
+Zero on success, negative errno on failure.
 
 .. _`rockchip_drm_psr_flush_all`:
 
@@ -92,15 +93,25 @@ Zero on success, negative errno on failure.
 rockchip_drm_psr_register
 =========================
 
-.. c:function:: int rockchip_drm_psr_register(struct drm_encoder *encoder, void (*psr_set)(struct drm_encoder *, bool enable))
+.. c:function:: int rockchip_drm_psr_register(struct drm_encoder *encoder, int (*psr_set)(struct drm_encoder *, bool enable))
 
     register encoder to psr driver
 
     :param struct drm_encoder \*encoder:
         encoder that obtain the PSR function
 
-    :param void (\*psr_set)(struct drm_encoder \*, bool enable):
+    :param int (\*psr_set)(struct drm_encoder \*, bool enable):
         call back to set PSR state
+
+.. _`rockchip_drm_psr_register.description`:
+
+Description
+-----------
+
+The function returns with PSR inhibit counter initialized with one
+and the caller (typically encoder driver) needs to call
+\ :c:func:`rockchip_drm_psr_inhibit_put`\  when it becomes ready to accept PSR
+enable request.
 
 .. _`rockchip_drm_psr_register.return`:
 
@@ -120,6 +131,16 @@ rockchip_drm_psr_unregister
 
     :param struct drm_encoder \*encoder:
         encoder that obtain the PSR function
+
+.. _`rockchip_drm_psr_unregister.description`:
+
+Description
+-----------
+
+It is expected that the PSR inhibit counter is 1 when this function is
+called, which corresponds to a state when related encoder has been
+disconnected from any CRTCs and its driver called
+\ :c:func:`rockchip_drm_psr_inhibit_get`\  to stop the PSR logic.
 
 .. _`rockchip_drm_psr_unregister.return`:
 

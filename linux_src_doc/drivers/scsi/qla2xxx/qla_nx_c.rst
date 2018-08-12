@@ -11,7 +11,7 @@ qla82xx_pci_config
     Setup ISP82xx PCI configuration registers.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla82xx_pci_config.description`:
 
@@ -30,7 +30,7 @@ qla82xx_reset_chip
     Setup ISP82xx PCI configuration registers.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qla82xx_reset_chip.description`:
 
@@ -38,6 +38,30 @@ Description
 -----------
 
 Returns 0 on success.
+
+.. _`qla82xx_intr_handler`:
+
+qla82xx_intr_handler
+====================
+
+.. c:function:: irqreturn_t qla82xx_intr_handler(int irq, void *dev_id)
+
+    Process interrupts for the ISP23xx and ISP63xx.
+
+    :param int irq:
+        *undescribed*
+
+    :param void \*dev_id:
+        SCSI driver HA context
+
+.. _`qla82xx_intr_handler.description`:
+
+Description
+-----------
+
+Called by system whenever the host adapter generates an interrupt.
+
+Returns handled flag.
 
 .. This file was automatic generated / don't edit.
 

@@ -52,12 +52,12 @@ Return
 wm8960_configure_pll
 ====================
 
-.. c:function:: int wm8960_configure_pll(struct snd_soc_codec *codec, int freq_in, int *sysclk_idx, int *dac_idx, int *bclk_idx)
+.. c:function:: int wm8960_configure_pll(struct snd_soc_component *component, int freq_in, int *sysclk_idx, int *dac_idx, int *bclk_idx)
 
     checks if there is a PLL out frequency available
 
-    :param struct snd_soc_codec \*codec:
-        codec structure
+    :param struct snd_soc_component \*component:
+        component structure
 
     :param int freq_in:
         input frequency used to derive freq out via PLL

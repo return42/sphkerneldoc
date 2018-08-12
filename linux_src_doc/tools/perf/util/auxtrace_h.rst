@@ -211,7 +211,7 @@ process_event
     lets the decoder see all session events
 
 process_auxtrace_event
-    *undescribed*
+    process a PERF_RECORD_AUXTRACE event
 
 flush_events
     process any remaining data
@@ -647,7 +647,7 @@ read_finish
     called after reading from an auxtrace mmap
 
 alignment
-    *undescribed*
+    alignment (if any) for AUX area data
 
 .. _`addr_filter`:
 

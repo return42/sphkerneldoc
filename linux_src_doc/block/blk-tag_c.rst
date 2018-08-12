@@ -206,26 +206,5 @@ Description
    the request queue, so it's the drivers responsibility to readd
    it if it should need to be restarted for some reason.
 
-.. _`blk_queue_invalidate_tags`:
-
-blk_queue_invalidate_tags
-=========================
-
-.. c:function:: void blk_queue_invalidate_tags(struct request_queue *q)
-
-    invalidate all pending tags
-
-    :param struct request_queue \*q:
-        the request queue for the device
-
-.. _`blk_queue_invalidate_tags.description`:
-
-Description
------------
-
-  Hardware conditions may dictate a need to stop all pending requests.
-  In this case, we will safely clear the block side of the tag queue and
-  readd all requests to the request queue in the right order.
-
 .. This file was automatic generated / don't edit.
 

@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/dax.c
 
+.. _`dax_layout_busy_page`:
+
+dax_layout_busy_page
+====================
+
+.. c:function:: struct page *dax_layout_busy_page(struct address_space *mapping)
+
+    find first pinned page in \ ``mapping``\ 
+
+    :param struct address_space \*mapping:
+        address space to scan for a page with ref count > 1
+
+.. _`dax_layout_busy_page.description`:
+
+Description
+-----------
+
+DAX requires ZONE_DEVICE mapped pages. These pages are never
+'onlined' to the page allocator so they are considered idle when
+page->count == 1. A filesystem uses this interface to determine if
+any page in the mapping is busy, i.e. for DMA, or other
+\ :c:func:`get_user_pages`\  usages.
+
+It is expected that the filesystem is holding locks to block the
+establishment of new mappings in this address_space. I.e. it expects
+to be able to run \ :c:func:`unmap_mapping_range`\  and subsequently not race
+\ :c:func:`mapping_mapped`\  becoming true.
+
 .. _`dax_iomap_rw`:
 
 dax_iomap_rw
@@ -33,7 +61,7 @@ and evicting any page cache pages in the region under I/O.
 dax_iomap_fault
 ===============
 
-.. c:function:: int dax_iomap_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t *pfnp, int *iomap_errp, const struct iomap_ops *ops)
+.. c:function:: vm_fault_t dax_iomap_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t *pfnp, int *iomap_errp, const struct iomap_ops *ops)
 
     handle a page fault on a DAX file
 
@@ -67,7 +95,7 @@ successfully.
 dax_insert_pfn_mkwrite
 ======================
 
-.. c:function:: int dax_insert_pfn_mkwrite(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t pfn)
+.. c:function:: vm_fault_t dax_insert_pfn_mkwrite(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t pfn)
 
     insert PTE or PMD entry into page tables
 
@@ -94,7 +122,7 @@ as well.
 dax_finish_sync_fault
 =====================
 
-.. c:function:: int dax_finish_sync_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t pfn)
+.. c:function:: vm_fault_t dax_finish_sync_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t pfn)
 
     finish synchronous page fault
 

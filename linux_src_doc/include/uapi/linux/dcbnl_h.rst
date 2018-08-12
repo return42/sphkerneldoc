@@ -401,6 +401,7 @@ Definition
         DCB_ATTR_IEEE_MAXRATE,
         DCB_ATTR_IEEE_QCN,
         DCB_ATTR_IEEE_QCN_STATS,
+        DCB_ATTR_DCB_BUFFER,
         __DCB_ATTR_IEEE_MAX
     };
 
@@ -437,6 +438,9 @@ DCB_ATTR_IEEE_QCN
     *undescribed*
 
 DCB_ATTR_IEEE_QCN_STATS
+    *undescribed*
+
+DCB_ATTR_DCB_BUFFER
     *undescribed*
 
 \__DCB_ATTR_IEEE_MAX

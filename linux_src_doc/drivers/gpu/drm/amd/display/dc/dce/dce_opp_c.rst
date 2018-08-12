@@ -23,7 +23,7 @@ set_spatial_dither
 
 .. c:function:: void set_spatial_dither(struct dce110_opp *opp110, const struct bit_depth_reduction_params *params)
 
-    1) set spatial dithering mode: pattern of seed 2) set spatical dithering depth: 0 for 18bpp or 1 for 24bpp 3) set random seed 4) set random mode lfsr is reset every frame or not reset RGB dithering method 0: RGB data are all dithered with x^28+x^3+1 1: R data is dithered with x^28+x^3+1 G data is dithered with x^28+X^9+1 B data is dithered with x^28+x^13+1 enable high pass filter or not 5) enable spatical dithering
+    1) set spatial dithering mode: pattern of seed 2) set spatial dithering depth: 0 for 18bpp or 1 for 24bpp 3) set random seed 4) set random mode lfsr is reset every frame or not reset RGB dithering method 0: RGB data are all dithered with x^28+x^3+1 1: R data is dithered with x^28+x^3+1 G data is dithered with x^28+X^9+1 B data is dithered with x^28+x^13+1 enable high pass filter or not 5) enable spatical dithering
 
     :param struct dce110_opp \*opp110:
         *undescribed*

@@ -145,7 +145,7 @@ Description
 
 If a timeout occurs while an rport is in the blocked state, ask the SCSI
 EH to continue waiting (BLK_EH_RESET_TIMER). Otherwise let the SCSI core
-handle the timeout (BLK_EH_NOT_HANDLED).
+handle the timeout (BLK_EH_DONE).
 
 .. _`srp_timed_out.note`:
 

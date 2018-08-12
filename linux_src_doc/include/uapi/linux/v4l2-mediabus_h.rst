@@ -35,10 +35,10 @@ Members
 -------
 
 width
-    frame width
+    image width
 
 height
-    frame height
+    image height
 
 code
     data format code (from enum v4l2_mbus_pixelcode)

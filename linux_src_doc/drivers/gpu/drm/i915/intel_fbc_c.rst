@@ -41,6 +41,26 @@ This function is used to verify the current state of FBC.
 FIXME: This should be tracked in the plane config eventually
 instead of queried at runtime for most callers.
 
+.. _`__intel_fbc_disable`:
+
+__intel_fbc_disable
+===================
+
+.. c:function:: void __intel_fbc_disable(struct drm_i915_private *dev_priv)
+
+    disable FBC
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+.. _`__intel_fbc_disable.description`:
+
+Description
+-----------
+
+This is the low level function that actually disables FBC. Callers should
+grab the FBC lock.
+
 .. _`intel_fbc_choose_crtc`:
 
 intel_fbc_choose_crtc
@@ -95,26 +115,6 @@ This function checks if the given CRTC was chosen for FBC, then enables it if
 possible. Notice that it doesn't activate FBC. It is valid to call
 intel_fbc_enable multiple times for the same pipe without an
 intel_fbc_disable in the middle, as long as it is deactivated.
-
-.. _`__intel_fbc_disable`:
-
-__intel_fbc_disable
-===================
-
-.. c:function:: void __intel_fbc_disable(struct drm_i915_private *dev_priv)
-
-    disable FBC
-
-    :param struct drm_i915_private \*dev_priv:
-        i915 device instance
-
-.. _`__intel_fbc_disable.description`:
-
-Description
------------
-
-This is the low level function that actually disables FBC. Callers should
-grab the FBC lock.
 
 .. _`intel_fbc_disable`:
 

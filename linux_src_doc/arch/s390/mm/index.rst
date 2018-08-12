@@ -9,4 +9,5 @@ mm
 
     gmap_c
     gup_c
+    pgalloc_c
     pgtable_c

@@ -34,5 +34,23 @@ The match criteria is
 
 vendor, ec and bios much match.
 
+.. _`tpacpi_battery_acpi_eval`:
+
+tpacpi_battery_acpi_eval
+========================
+
+.. c:function:: acpi_status tpacpi_battery_acpi_eval(char *method, int *ret, int param)
+
+    ACPI extension. The specifics are that an error is marked in the 32rd bit of the response, so we just check that here.
+
+    :param char \*method:
+        *undescribed*
+
+    :param int \*ret:
+        *undescribed*
+
+    :param int param:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

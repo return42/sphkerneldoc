@@ -1,0 +1,49 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/resolver/ad2s1200.c
+
+.. _`ad2s1200_state`:
+
+struct ad2s1200_state
+=====================
+
+.. c:type:: struct ad2s1200_state
+
+    driver instance specific data.
+
+.. _`ad2s1200_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad2s1200_state {
+        struct mutex lock;
+        struct spi_device *sdev;
+        struct gpio_desc *sample;
+        struct gpio_desc *rdvel;
+        __be16 rx ____cacheline_aligned;
+    }
+
+.. _`ad2s1200_state.members`:
+
+Members
+-------
+
+lock
+    protects both the GPIO pins and the rx buffer.
+
+sdev
+    spi device.
+
+sample
+    GPIO pin SAMPLE.
+
+rdvel
+    GPIO pin RDVEL.
+
+\____cacheline_aligned
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

@@ -1964,6 +1964,18 @@ and 3 or 4 addresses of length ETH_ALEN.
 
 2 + 2 + 2 + 4\*6 = 30
 
+.. _`ieee80211_get_tid`:
+
+ieee80211_get_tid
+=================
+
+.. c:function:: u8 ieee80211_get_tid(struct ieee80211_hdr *hdr)
+
+    get qos TID
+
+    :param struct ieee80211_hdr \*hdr:
+        the frame
+
 .. _`ieee80211_get_sa`:
 
 ieee80211_get_SA

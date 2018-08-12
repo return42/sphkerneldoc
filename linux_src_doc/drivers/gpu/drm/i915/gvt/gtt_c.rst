@@ -1,98 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/gvt/gtt.c
 
-.. _`intel_vgpu_init_page_track`:
-
-intel_vgpu_init_page_track
-==========================
-
-.. c:function:: int intel_vgpu_init_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t, unsigned long gfn, int (*handler)(void *, u64, void *, int), void *data)
-
-    init a page track data structure
-
-    :param struct intel_vgpu \*vgpu:
-        a vGPU
-
-    :param struct intel_vgpu_page_track \*t:
-        a page track data structure
-
-    :param unsigned long gfn:
-        guest memory page frame number
-
-    :param int (\*handler)(void \*, u64, void \*, int):
-        the function will be called when target guest memory page has
-        been modified.
-
-    :param void \*data:
-        *undescribed*
-
-.. _`intel_vgpu_init_page_track.description`:
-
-Description
------------
-
-This function is called when a user wants to prepare a page track data
-structure to track a guest memory page.
-
-.. _`intel_vgpu_init_page_track.return`:
-
-Return
-------
-
-Zero on success, negative error code if failed.
-
-.. _`intel_vgpu_clean_page_track`:
-
-intel_vgpu_clean_page_track
-===========================
-
-.. c:function:: void intel_vgpu_clean_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t)
-
-    release a page track data structure
-
-    :param struct intel_vgpu \*vgpu:
-        a vGPU
-
-    :param struct intel_vgpu_page_track \*t:
-        a page track data structure
-
-.. _`intel_vgpu_clean_page_track.description`:
-
-Description
------------
-
-This function is called before a user frees a page track data structure.
-
-.. _`intel_vgpu_find_tracked_page`:
-
-intel_vgpu_find_tracked_page
-============================
-
-.. c:function:: struct intel_vgpu_page_track *intel_vgpu_find_tracked_page(struct intel_vgpu *vgpu, unsigned long gfn)
-
-    find a tracked guest page
-
-    :param struct intel_vgpu \*vgpu:
-        a vGPU
-
-    :param unsigned long gfn:
-        guest memory page frame number
-
-.. _`intel_vgpu_find_tracked_page.description`:
-
-Description
------------
-
-This function is called when the emulation layer wants to figure out if a
-trapped GFN is a tracked guest page.
-
-.. _`intel_vgpu_find_tracked_page.return`:
-
-Return
-------
-
-Pointer to page track data structure, NULL if not found.
-
 .. _`intel_vgpu_sync_oos_pages`:
 
 intel_vgpu_sync_oos_pages
@@ -147,63 +55,56 @@ Return
 
 Zero on success, negative error code if failed.
 
-.. _`intel_vgpu_destroy_mm`:
+.. _`intel_vgpu_create_ppgtt_mm`:
 
-intel_vgpu_destroy_mm
-=====================
+intel_vgpu_create_ppgtt_mm
+==========================
 
-.. c:function:: void intel_vgpu_destroy_mm(struct kref *mm_ref)
+.. c:function:: struct intel_vgpu_mm *intel_vgpu_create_ppgtt_mm(struct intel_vgpu *vgpu, intel_gvt_gtt_type_t root_entry_type, u64 pdps)
 
-    destroy a mm object
-
-    :param struct kref \*mm_ref:
-        *undescribed*
-
-.. _`intel_vgpu_destroy_mm.description`:
-
-Description
------------
-
-This function is used to destroy a mm object for vGPU
-
-.. _`intel_vgpu_create_mm`:
-
-intel_vgpu_create_mm
-====================
-
-.. c:function:: struct intel_vgpu_mm *intel_vgpu_create_mm(struct intel_vgpu *vgpu, int mm_type, void *virtual_page_table, int page_table_level, u32 pde_base_index)
-
-    create a mm object for a vGPU
+    create a ppgtt mm object for a vGPU
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param int mm_type:
-        mm object type, should be PPGTT or GGTT
+    :param intel_gvt_gtt_type_t root_entry_type:
+        ppgtt root entry type
 
-    :param void \*virtual_page_table:
-        page table root pointers. Could be NULL if user wants
-        to populate shadow later.
+    :param u64 pdps:
+        guest pdps.
 
-    :param int page_table_level:
-        describe the page table level of the mm object
-
-    :param u32 pde_base_index:
-        pde root pointer base in GGTT MMIO.
-
-.. _`intel_vgpu_create_mm.description`:
+.. _`intel_vgpu_create_ppgtt_mm.description`:
 
 Description
 -----------
 
-This function is used to create a mm object for a vGPU.
+This function is used to create a ppgtt mm object for a vGPU.
 
-.. _`intel_vgpu_create_mm.return`:
+.. _`intel_vgpu_create_ppgtt_mm.return`:
 
 Return
 ------
 
 Zero on success, negative error code in pointer if failed.
+
+.. _`_intel_vgpu_mm_release`:
+
+\_intel_vgpu_mm_release
+=======================
+
+.. c:function:: void _intel_vgpu_mm_release(struct kref *mm_ref)
+
+    destroy a mm object
+
+    :param struct kref \*mm_ref:
+        a kref object
+
+.. _`_intel_vgpu_mm_release.description`:
+
+Description
+-----------
+
+This function is used to destroy a mm object for vGPU
 
 .. _`intel_vgpu_unpin_mm`:
 
@@ -282,12 +183,12 @@ Return
 
 Guest physical address on success, INTEL_GVT_INVALID_ADDR if failed.
 
-.. _`intel_vgpu_emulate_gtt_mmio_read`:
+.. _`intel_vgpu_emulate_ggtt_mmio_read`:
 
-intel_vgpu_emulate_gtt_mmio_read
-================================
+intel_vgpu_emulate_ggtt_mmio_read
+=================================
 
-.. c:function:: int intel_vgpu_emulate_gtt_mmio_read(struct intel_vgpu *vgpu, unsigned int off, void *p_data, unsigned int bytes)
+.. c:function:: int intel_vgpu_emulate_ggtt_mmio_read(struct intel_vgpu *vgpu, unsigned int off, void *p_data, unsigned int bytes)
 
     emulate GTT MMIO register read
 
@@ -303,14 +204,14 @@ intel_vgpu_emulate_gtt_mmio_read
     :param unsigned int bytes:
         data length
 
-.. _`intel_vgpu_emulate_gtt_mmio_read.description`:
+.. _`intel_vgpu_emulate_ggtt_mmio_read.description`:
 
 Description
 -----------
 
 This function is used to emulate the GTT MMIO register read
 
-.. _`intel_vgpu_emulate_gtt_mmio_read.return`:
+.. _`intel_vgpu_emulate_ggtt_mmio_read.return`:
 
 Return
 ------
@@ -376,18 +277,15 @@ Zero on success, error code if failed.
 intel_vgpu_find_ppgtt_mm
 ========================
 
-.. c:function:: struct intel_vgpu_mm *intel_vgpu_find_ppgtt_mm(struct intel_vgpu *vgpu, int page_table_level, void *root_entry)
+.. c:function:: struct intel_vgpu_mm *intel_vgpu_find_ppgtt_mm(struct intel_vgpu *vgpu, u64 pdps)
 
     find a PPGTT mm object
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param int page_table_level:
-        PPGTT page table level
-
-    :param void \*root_entry:
-        PPGTT page table root pointers
+    :param u64 pdps:
+        *undescribed*
 
 .. _`intel_vgpu_find_ppgtt_mm.description`:
 
@@ -403,60 +301,61 @@ Return
 
 pointer to mm object on success, NULL if failed.
 
-.. _`intel_vgpu_g2v_create_ppgtt_mm`:
+.. _`intel_vgpu_get_ppgtt_mm`:
 
-intel_vgpu_g2v_create_ppgtt_mm
-==============================
+intel_vgpu_get_ppgtt_mm
+=======================
 
-.. c:function:: int intel_vgpu_g2v_create_ppgtt_mm(struct intel_vgpu *vgpu, int page_table_level)
+.. c:function:: struct intel_vgpu_mm *intel_vgpu_get_ppgtt_mm(struct intel_vgpu *vgpu, intel_gvt_gtt_type_t root_entry_type, u64 pdps)
 
-    create a PPGTT mm object from g2v notification
+    get or create a PPGTT mm object.
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param int page_table_level:
-        PPGTT page table level
+    :param intel_gvt_gtt_type_t root_entry_type:
+        ppgtt root entry type
 
-.. _`intel_vgpu_g2v_create_ppgtt_mm.description`:
+    :param u64 pdps:
+        guest pdps
+
+.. _`intel_vgpu_get_ppgtt_mm.description`:
 
 Description
 -----------
 
-This function is used to create a PPGTT mm object from a guest to GVT-g
-notification.
+This function is used to find or create a PPGTT mm object from a guest.
 
-.. _`intel_vgpu_g2v_create_ppgtt_mm.return`:
+.. _`intel_vgpu_get_ppgtt_mm.return`:
 
 Return
 ------
 
 Zero on success, negative error code if failed.
 
-.. _`intel_vgpu_g2v_destroy_ppgtt_mm`:
+.. _`intel_vgpu_put_ppgtt_mm`:
 
-intel_vgpu_g2v_destroy_ppgtt_mm
-===============================
+intel_vgpu_put_ppgtt_mm
+=======================
 
-.. c:function:: int intel_vgpu_g2v_destroy_ppgtt_mm(struct intel_vgpu *vgpu, int page_table_level)
+.. c:function:: int intel_vgpu_put_ppgtt_mm(struct intel_vgpu *vgpu, u64 pdps)
 
-    destroy a PPGTT mm object from g2v notification
+    find and put a PPGTT mm object.
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param int page_table_level:
-        PPGTT page table level
+    :param u64 pdps:
+        guest pdps
 
-.. _`intel_vgpu_g2v_destroy_ppgtt_mm.description`:
+.. _`intel_vgpu_put_ppgtt_mm.description`:
 
 Description
 -----------
 
-This function is used to create a PPGTT mm object from a guest to GVT-g
-notification.
+This function is used to find a PPGTT mm object from a guest and destroy it.
 
-.. _`intel_vgpu_g2v_destroy_ppgtt_mm.return`:
+.. _`intel_vgpu_put_ppgtt_mm.return`:
 
 Return
 ------
@@ -510,17 +409,39 @@ Description
 This function is called at the driver unloading stage, to clean up the
 the mm components of a GVT device.
 
+.. _`intel_vgpu_invalidate_ppgtt`:
+
+intel_vgpu_invalidate_ppgtt
+===========================
+
+.. c:function:: void intel_vgpu_invalidate_ppgtt(struct intel_vgpu *vgpu)
+
+    invalidate PPGTT instances
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_vgpu_invalidate_ppgtt.description`:
+
+Description
+-----------
+
+This function is called when invalidate all PPGTT instances of a vGPU.
+
 .. _`intel_vgpu_reset_ggtt`:
 
 intel_vgpu_reset_ggtt
 =====================
 
-.. c:function:: void intel_vgpu_reset_ggtt(struct intel_vgpu *vgpu)
+.. c:function:: void intel_vgpu_reset_ggtt(struct intel_vgpu *vgpu, bool invalidate_old)
 
     reset the GGTT entry
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
+
+    :param bool invalidate_old:
+        invalidate old entries
 
 .. _`intel_vgpu_reset_ggtt.description`:
 

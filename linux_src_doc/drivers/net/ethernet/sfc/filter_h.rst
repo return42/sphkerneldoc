@@ -242,7 +242,9 @@ dmaq_id
     an RX drop filter
 
 rss_context
-    RSS context to use, if \ ``EFX_FILTER_FLAG_RX_RSS``\  is set
+    RSS context to use, if \ ``EFX_FILTER_FLAG_RX_RSS``\  is set.  This
+    is a user_id (with 0 meaning the driver/default RSS context), not an
+    MCFW context_id.
 
 outer_vid
     Outer VLAN ID to match, if \ ``EFX_FILTER_MATCH_OUTER_VID``\  is set

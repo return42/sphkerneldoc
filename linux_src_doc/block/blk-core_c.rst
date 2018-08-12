@@ -1,6 +1,82 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: block/blk-core.c
 
+.. _`blk_queue_flag_set`:
+
+blk_queue_flag_set
+==================
+
+.. c:function:: void blk_queue_flag_set(unsigned int flag, struct request_queue *q)
+
+    atomically set a queue flag
+
+    :param unsigned int flag:
+        flag to be set
+
+    :param struct request_queue \*q:
+        request queue
+
+.. _`blk_queue_flag_clear`:
+
+blk_queue_flag_clear
+====================
+
+.. c:function:: void blk_queue_flag_clear(unsigned int flag, struct request_queue *q)
+
+    atomically clear a queue flag
+
+    :param unsigned int flag:
+        flag to be cleared
+
+    :param struct request_queue \*q:
+        request queue
+
+.. _`blk_queue_flag_test_and_set`:
+
+blk_queue_flag_test_and_set
+===========================
+
+.. c:function:: bool blk_queue_flag_test_and_set(unsigned int flag, struct request_queue *q)
+
+    atomically test and set a queue flag
+
+    :param unsigned int flag:
+        flag to be set
+
+    :param struct request_queue \*q:
+        request queue
+
+.. _`blk_queue_flag_test_and_set.description`:
+
+Description
+-----------
+
+Returns the previous value of \ ``flag``\  - 0 if the flag was not set and 1 if
+the flag was already set.
+
+.. _`blk_queue_flag_test_and_clear`:
+
+blk_queue_flag_test_and_clear
+=============================
+
+.. c:function:: bool blk_queue_flag_test_and_clear(unsigned int flag, struct request_queue *q)
+
+    atomically test and clear a queue flag
+
+    :param unsigned int flag:
+        flag to be cleared
+
+    :param struct request_queue \*q:
+        request queue
+
+.. _`blk_queue_flag_test_and_clear.description`:
+
+Description
+-----------
+
+Returns the previous value of \ ``flag``\  - 0 if the flag was not set and 1 if
+the flag was set.
+
 .. _`blk_delay_queue`:
 
 blk_delay_queue
@@ -342,6 +418,36 @@ blk_queue_enter
     :param blk_mq_req_flags_t flags:
         BLK_MQ_REQ_NOWAIT and/or BLK_MQ_REQ_PREEMPT
 
+.. _`blk_alloc_queue_node`:
+
+blk_alloc_queue_node
+====================
+
+.. c:function:: struct request_queue *blk_alloc_queue_node(gfp_t gfp_mask, int node_id, spinlock_t *lock)
+
+    allocate a request queue
+
+    :param gfp_t gfp_mask:
+        memory allocation flags
+
+    :param int node_id:
+        NUMA node to allocate memory from
+
+    :param spinlock_t \*lock:
+        For legacy queues, pointer to a spinlock that will be used to e.g.
+        serialize calls to the legacy .request_fn() callback. Ignored for
+        blk-mq request queues.
+
+.. _`blk_alloc_queue_node.note`:
+
+Note
+----
+
+pass the queue lock as the third argument to this function instead of
+setting the queue lock pointer explicitly to avoid triggering a sporadic
+crash in the blkcg code. This function namely calls \ :c:func:`blkcg_init_queue`\  and
+the queue lock pointer must be set before \ :c:func:`blkcg_init_queue`\  is called.
+
 .. _`blk_init_queue`:
 
 blk_init_queue
@@ -397,7 +503,7 @@ Note
 __get_request
 =============
 
-.. c:function:: struct request *__get_request(struct request_list *rl, unsigned int op, struct bio *bio, blk_mq_req_flags_t flags)
+.. c:function:: struct request *__get_request(struct request_list *rl, unsigned int op, struct bio *bio, blk_mq_req_flags_t flags, gfp_t gfp_mask)
 
     get a free request
 
@@ -412,6 +518,9 @@ __get_request
 
     :param blk_mq_req_flags_t flags:
         BLQ_MQ_REQ_* flags
+
+    :param gfp_t gfp_mask:
+        allocator flags
 
 .. _`__get_request.description`:
 
@@ -430,7 +539,7 @@ Returns request pointer on success, with \ ``q``\ ->queue_lock *not held*.
 get_request
 ===========
 
-.. c:function:: struct request *get_request(struct request_queue *q, unsigned int op, struct bio *bio, blk_mq_req_flags_t flags)
+.. c:function:: struct request *get_request(struct request_queue *q, unsigned int op, struct bio *bio, blk_mq_req_flags_t flags, gfp_t gfp)
 
     get a free request
 
@@ -446,24 +555,27 @@ get_request
     :param blk_mq_req_flags_t flags:
         BLK_MQ_REQ_* flags.
 
+    :param gfp_t gfp:
+        allocator flags
+
 .. _`get_request.description`:
 
 Description
 -----------
 
-Get a free request from \ ``q``\ .  If \ ``__GFP_DIRECT_RECLAIM``\  is set in \ ``gfp_mask``\ ,
+Get a free request from \ ``q``\ .  If \ ``BLK_MQ_REQ_NOWAIT``\  is set in \ ``flags``\ ,
 this function keeps retrying under memory pressure and fails iff \ ``q``\  is dead.
 
 Must be called with \ ``q``\ ->queue_lock held and,
 Returns ERR_PTR on failure, with \ ``q``\ ->queue_lock held.
 Returns request pointer on success, with \ ``q``\ ->queue_lock *not held*.
 
-.. _`blk_get_request_flags`:
+.. _`blk_get_request`:
 
-blk_get_request_flags
-=====================
+blk_get_request
+===============
 
-.. c:function:: struct request *blk_get_request_flags(struct request_queue *q, unsigned int op, blk_mq_req_flags_t flags)
+.. c:function:: struct request *blk_get_request(struct request_queue *q, unsigned int op, blk_mq_req_flags_t flags)
 
     allocate a request
 

@@ -9,4 +9,4 @@ skylake
 
     skl-i2s_h
     skl-sst-utils_c
-    skl-tplg-interface_h
+    skl_c

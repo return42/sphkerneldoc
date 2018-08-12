@@ -121,7 +121,7 @@ condition before calling this function as no test is made here.
 fscache_check_aux
 =================
 
-.. c:function:: enum fscache_checkaux fscache_check_aux(struct fscache_object *object, const void *data, uint16_t datalen)
+.. c:function:: enum fscache_checkaux fscache_check_aux(struct fscache_object *object, const void *data, uint16_t datalen, loff_t object_size)
 
     Ask the netfs whether an object on disk is still valid
 
@@ -133,6 +133,9 @@ fscache_check_aux
 
     :param uint16_t datalen:
         The size of the auxiliary data
+
+    :param loff_t object_size:
+        *undescribed*
 
 .. _`fscache_check_aux.description`:
 

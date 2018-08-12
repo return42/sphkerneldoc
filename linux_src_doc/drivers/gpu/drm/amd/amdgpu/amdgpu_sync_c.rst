@@ -206,6 +206,29 @@ Description
 
 Get and removes the next fence from the sync object not signaled yet.
 
+.. _`amdgpu_sync_clone`:
+
+amdgpu_sync_clone
+=================
+
+.. c:function:: int amdgpu_sync_clone(struct amdgpu_sync *source, struct amdgpu_sync *clone)
+
+    clone a sync object
+
+    :param struct amdgpu_sync \*source:
+        sync object to clone
+
+    :param struct amdgpu_sync \*clone:
+        pointer to destination sync object
+
+.. _`amdgpu_sync_clone.description`:
+
+Description
+-----------
+
+Adds references to all unsignaled fences in \ ``source``\  to \ ``clone``\ . Also
+removes signaled fences from \ ``source``\  while at it.
+
 .. _`amdgpu_sync_free`:
 
 amdgpu_sync_free

@@ -234,9 +234,6 @@ Definition
     #endif
     #ifdef CONFIG_USB_GADGET_DEBUG_FS
         struct dentry *debugfs_root;
-        struct dentry *debugfs_state;
-        struct dentry *debugfs_queues;
-        struct dentry *debugfs_eps;
     #endif
     }
 
@@ -310,15 +307,6 @@ udccsr0
 
 debugfs_root
     root entry of debug filesystem
-
-debugfs_state
-    debugfs entry for "udcstate"
-
-debugfs_queues
-    debugfs entry for "queues"
-
-debugfs_eps
-    debugfs entry for "epstate"
 
 .. This file was automatic generated / don't edit.
 

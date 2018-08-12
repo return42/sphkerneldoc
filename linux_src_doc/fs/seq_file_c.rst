@@ -220,6 +220,67 @@ Description
 
 return the absolute path to the file.
 
+.. _`seq_put_decimal_ull_width`:
+
+seq_put_decimal_ull_width
+=========================
+
+.. c:function:: void seq_put_decimal_ull_width(struct seq_file *m, const char *delimiter, unsigned long long num, unsigned int width)
+
+    only 'unsigned long long' is supported.
+
+    :param struct seq_file \*m:
+        seq_file identifying the buffer to which data should be written
+
+    :param const char \*delimiter:
+        a string which is printed before the number
+
+    :param unsigned long long num:
+        the number
+
+    :param unsigned int width:
+        a minimum field width
+
+.. _`seq_put_decimal_ull_width.description`:
+
+Description
+-----------
+
+This routine will put strlen(delimiter) + number into seq_filed.
+This routine is very quick when you show lots of numbers.
+In usual cases, it will be better to use \ :c:func:`seq_printf`\ . It's easier to read.
+
+.. _`seq_put_hex_ll`:
+
+seq_put_hex_ll
+==============
+
+.. c:function:: void seq_put_hex_ll(struct seq_file *m, const char *delimiter, unsigned long long v, unsigned int width)
+
+    put a number in hexadecimal notation
+
+    :param struct seq_file \*m:
+        seq_file identifying the buffer to which data should be written
+
+    :param const char \*delimiter:
+        a string which is printed before the number
+
+    :param unsigned long long v:
+        the number
+
+    :param unsigned int width:
+        a minimum field width
+
+.. _`seq_put_hex_ll.description`:
+
+Description
+-----------
+
+seq_put_hex_ll(m, "", v, 8) is equal to seq_printf(m, "%08llx", v)
+
+This routine is very quick when you show lots of numbers.
+In usual cases, it will be better to use \ :c:func:`seq_printf`\ . It's easier to read.
+
 .. _`seq_write`:
 
 seq_write

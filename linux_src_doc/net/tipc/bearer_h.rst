@@ -64,6 +64,7 @@ Definition
         u32 priority;
         u32 tolerance;
         u32 window;
+        u32 mtu;
         u32 type_id;
         u32 hwaddr_len;
         char name[TIPC_MAX_MEDIA_NAME];
@@ -104,6 +105,10 @@ tolerance
 window
     default window (in packets) before declaring link congestion
 
+mtu
+    max packet size bearer can support for media type not dependent on
+    underlying device MTU
+
 type_id
     TIPC media identifier
 
@@ -143,7 +148,7 @@ Definition
         u32 tolerance;
         u32 domain;
         u32 identity;
-        struct tipc_link_req *link_req;
+        struct tipc_discoverer *disc;
         char net_plane;
         unsigned long up;
     }
@@ -192,8 +197,8 @@ domain
 identity
     array index of this bearer within TIPC bearer array
 
-link_req
-    ptr to (optional) structure making periodic link setup requests
+disc
+    *undescribed*
 
 net_plane
     network plane ('A' through 'H') currently associated with bearer

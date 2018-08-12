@@ -147,20 +147,31 @@ devlink_port_type_clear
     :param struct devlink_port \*devlink_port:
         devlink port
 
-.. _`devlink_port_split_set`:
+.. _`devlink_port_attrs_set`:
 
-devlink_port_split_set
+devlink_port_attrs_set
 ======================
 
-.. c:function:: void devlink_port_split_set(struct devlink_port *devlink_port, u32 split_group)
+.. c:function:: void devlink_port_attrs_set(struct devlink_port *devlink_port, enum devlink_port_flavour flavour, u32 port_number, bool split, u32 split_subport_number)
 
-    Set port is split
+    Set port attributes
 
     :param struct devlink_port \*devlink_port:
         devlink port
 
-    :param u32 split_group:
-        split group - identifies group split port is part of
+    :param enum devlink_port_flavour flavour:
+        flavour of the port
+
+    :param u32 port_number:
+        number of the port that is facing user, for example
+        the front panel port number
+
+    :param bool split:
+        indicates if this is split port
+
+    :param u32 split_subport_number:
+        if the port is split, this is the number
+        of subport.
 
 .. _`devlink_dpipe_headers_register`:
 
@@ -275,7 +286,7 @@ devlink_dpipe_table_unregister
 devlink_resource_register
 =========================
 
-.. c:function:: int devlink_resource_register(struct devlink *devlink, const char *resource_name, bool top_hierarchy, u64 resource_size, u64 resource_id, u64 parent_resource_id, struct devlink_resource_size_params *size_params, const struct devlink_resource_ops *resource_ops)
+.. c:function:: int devlink_resource_register(struct devlink *devlink, const char *resource_name, u64 resource_size, u64 resource_id, u64 parent_resource_id, const struct devlink_resource_size_params *size_params)
 
     devlink resource register
 
@@ -284,9 +295,6 @@ devlink_resource_register
 
     :param const char \*resource_name:
         resource's name
-
-    :param bool top_hierarchy:
-        top hierarchy
 
     :param u64 resource_size:
         resource's size
@@ -297,11 +305,8 @@ devlink_resource_register
     :param u64 parent_resource_id:
         *undescribed*
 
-    :param struct devlink_resource_size_params \*size_params:
+    :param const struct devlink_resource_size_params \*size_params:
         *undescribed*
-
-    :param const struct devlink_resource_ops \*resource_ops:
-        resource ops
 
 .. _`devlink_resources_unregister`:
 
@@ -356,6 +361,42 @@ devlink_dpipe_table_resource_set
 
     :param u64 resource_units:
         number of resource's units consumed per table's entry
+
+.. _`devlink_resource_occ_get_register`:
+
+devlink_resource_occ_get_register
+=================================
+
+.. c:function:: void devlink_resource_occ_get_register(struct devlink *devlink, u64 resource_id, devlink_resource_occ_get_t *occ_get, void *occ_get_priv)
+
+    register occupancy getter
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param u64 resource_id:
+        resource id
+
+    :param devlink_resource_occ_get_t \*occ_get:
+        occupancy getter callback
+
+    :param void \*occ_get_priv:
+        occupancy getter callback priv
+
+.. _`devlink_resource_occ_get_unregister`:
+
+devlink_resource_occ_get_unregister
+===================================
+
+.. c:function:: void devlink_resource_occ_get_unregister(struct devlink *devlink, u64 resource_id)
+
+    unregister occupancy getter
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param u64 resource_id:
+        resource id
 
 .. This file was automatic generated / don't edit.
 

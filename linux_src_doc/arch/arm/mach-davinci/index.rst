@@ -10,4 +10,5 @@ mach-davinci
     aemif_c
     board-dm646x-evm_c
     clock_c
+    devices-da8xx_c
     usb-da8xx_c

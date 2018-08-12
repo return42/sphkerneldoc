@@ -118,45 +118,5 @@ values
     and \ :c:func:`drm_object_property_get_value`\  on mutable objects, i.e. those
     without the DRM_MODE_PROP_IMMUTABLE flag set.
 
-.. _`drm_mode_object_reference`:
-
-drm_mode_object_reference
-=========================
-
-.. c:function:: void drm_mode_object_reference(struct drm_mode_object *obj)
-
-    acquire a mode object reference
-
-    :param struct drm_mode_object \*obj:
-        DRM mode object
-
-.. _`drm_mode_object_reference.description`:
-
-Description
------------
-
-This is a compatibility alias for \ :c:func:`drm_mode_object_get`\  and should not be
-used by new code.
-
-.. _`drm_mode_object_unreference`:
-
-drm_mode_object_unreference
-===========================
-
-.. c:function:: void drm_mode_object_unreference(struct drm_mode_object *obj)
-
-    release a mode object reference
-
-    :param struct drm_mode_object \*obj:
-        DRM mode object
-
-.. _`drm_mode_object_unreference.description`:
-
-Description
------------
-
-This is a compatibility alias for \ :c:func:`drm_mode_object_put`\  and should not be
-used by new code.
-
 .. This file was automatic generated / don't edit.
 

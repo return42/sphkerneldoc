@@ -9,4 +9,5 @@ hns3
 
     hns3pf/index
     hns3vf/index
+    hns3_enet_c
     hns3_ethtool_c

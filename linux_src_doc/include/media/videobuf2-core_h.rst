@@ -534,12 +534,12 @@ start_streaming
     driver can return an error if hardware fails, in that
     case all buffers that have been already given by
     the \ ``buf_queue``\  callback are to be returned by the driver
-    by calling \ :c:func:`vb2_buffer_done`\  with \ ``VB2_BUF_STATE_QUEUED``\ .
-    If you need a minimum number of buffers before you can
-    start streaming, then set
-    \ :c:type:`vb2_queue->min_buffers_needed <vb2_queue>`\ . If that is non-zero then
-    \ ``start_streaming``\  won't be called until at least that
-    many buffers have been queued up by userspace.
+    by calling \ :c:func:`vb2_buffer_done`\  with \ ``VB2_BUF_STATE_QUEUED``\ 
+    or \ ``VB2_BUF_STATE_REQUEUEING``\ . If you need a minimum
+    number of buffers before you can start streaming, then
+    set \ :c:type:`vb2_queue->min_buffers_needed <vb2_queue>`\ . If that is non-zero
+    then \ ``start_streaming``\  won't be called until at least
+    that many buffers have been queued up by userspace.
 
 stop_streaming
     called when 'streaming' state must be disabled; driver
@@ -557,6 +557,14 @@ buf_queue
     ioctl; might be called before \ ``start_streaming``\  callback
     if user pre-queued buffers before calling
     \ :c:func:`VIDIOC_STREAMON`\ .
+
+.. _`vb2_ops.description`:
+
+Description
+-----------
+
+These operations are not called from interrupt context except where
+mentioned specifically.
 
 .. _`vb2_buf_ops`:
 
@@ -671,10 +679,9 @@ vb2_buffer_done
         state of the buffer, as defined by \ :c:type:`enum vb2_buffer_state <vb2_buffer_state>`\ .
         Either \ ``VB2_BUF_STATE_DONE``\  if the operation finished
         successfully, \ ``VB2_BUF_STATE_ERROR``\  if the operation finished
-        with an error or \ ``VB2_BUF_STATE_QUEUED``\  if the driver wants to
-        requeue buffers. If start_streaming fails then it should return
-        buffers with state \ ``VB2_BUF_STATE_QUEUED``\  to put them back into
-        the queue.
+        with an error or any of \ ``VB2_BUF_STATE_QUEUED``\  or
+        \ ``VB2_BUF_STATE_REQUEUEING``\  if the driver wants to
+        requeue buffers (see below).
 
 .. _`vb2_buffer_done.description`:
 
@@ -688,9 +695,14 @@ by the means of \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  callback. Only buffer
 to the driver by \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  can be passed to this function.
 
 While streaming a buffer can only be returned in state DONE or ERROR.
-The start_streaming op can also return them in case the DMA engine cannot
-be started for some reason. In that case the buffers should be returned with
-state QUEUED.
+The \ :c:type:`vb2_ops->start_streaming <vb2_ops>`\  op can also return them in case the DMA engine
+cannot be started for some reason. In that case the buffers should be
+returned with state QUEUED or REQUEUEING to put them back into the queue.
+
+\ ``VB2_BUF_STATE_REQUEUEING``\  is like \ ``VB2_BUF_STATE_QUEUED``\ , but it also calls
+\ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  to queue buffers back to the driver. Note that calling
+vb2_buffer_done(..., VB2_BUF_STATE_REQUEUEING) from interrupt context will
+result in \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  being called in interrupt context as well.
 
 .. _`vb2_discard_done`:
 

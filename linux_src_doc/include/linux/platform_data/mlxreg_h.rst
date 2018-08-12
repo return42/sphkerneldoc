@@ -83,7 +83,7 @@ Members
 -------
 
 label
-    attribute register offset;
+    attribute label;
 
 reg
     attribute register;
@@ -93,11 +93,11 @@ mask
 
 bit
     attribute effective bit;
-    \ ``np``\  - pointer to node platform associated with attribute;
-    \ ``hpdev``\  - hotplug device data;
 
 mode
     access mode;
+    \ ``np``\  - pointer to node platform associated with attribute;
+    \ ``hpdev``\  - hotplug device data;
 
 np
     *undescribed*
@@ -232,6 +232,8 @@ Definition
         u32 mask;
         u32 cell_low;
         u32 mask_low;
+        int deferred_nr;
+        int shift_nr;
     }
 
 .. _`mlxreg_core_hotplug_platform_data.members`:
@@ -262,6 +264,12 @@ cell_low
 
 mask_low
     low aggregation interrupt common mask;
+
+deferred_nr
+    I2C adapter number must be exist prior probing execution;
+
+shift_nr
+    I2C adapter numbers must be incremented by this value;
 
 .. This file was automatic generated / don't edit.
 

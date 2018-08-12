@@ -20,7 +20,7 @@
         number of pages to remove (must be multiple of section size)
 
     :param struct vmem_altmap \*altmap:
-        *undescribed*
+        alternative device page map or \ ``NULL``\  if default memmap is used
 
 .. _`__remove_pages.description`:
 
@@ -42,7 +42,7 @@ try_online_node
     online a node if offlined
 
     :param int nid:
-        *undescribed*
+        the node ID
 
 .. _`try_online_node.description`:
 
@@ -90,7 +90,7 @@ try_offline_node
 .. c:function:: void try_offline_node(int nid)
 
     :param int nid:
-        *undescribed*
+        the node ID
 
 .. _`try_offline_node.description`:
 
@@ -115,13 +115,13 @@ remove_memory
 .. c:function:: void __ref remove_memory(int nid, u64 start, u64 size)
 
     :param int nid:
-        *undescribed*
+        the node ID
 
     :param u64 start:
-        *undescribed*
+        physical address of the region to remove
 
     :param u64 size:
-        *undescribed*
+        size of the region to remove
 
 .. _`remove_memory.note`:
 

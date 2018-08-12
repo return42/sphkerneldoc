@@ -69,9 +69,9 @@ This file implements the Linux crypto algorithms.
 crypto4xx_setkey_aes
 ====================
 
-.. c:function:: int crypto4xx_setkey_aes(struct crypto_ablkcipher *cipher, const u8 *key, unsigned int keylen, unsigned char cm, u8 fb)
+.. c:function:: int crypto4xx_setkey_aes(struct crypto_skcipher *cipher, const u8 *key, unsigned int keylen, unsigned char cm, u8 fb)
 
-    :param struct crypto_ablkcipher \*cipher:
+    :param struct crypto_skcipher \*cipher:
         *undescribed*
 
     :param const u8 \*key:

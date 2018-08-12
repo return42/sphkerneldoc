@@ -60,6 +60,123 @@ Return
 
 The sum associated with field i for elt.
 
+.. _`tracing_map_set_var`:
+
+tracing_map_set_var
+===================
+
+.. c:function:: void tracing_map_set_var(struct tracing_map_elt *elt, unsigned int i, u64 n)
+
+    Assign a tracing_map_elt's variable field
+
+    :param struct tracing_map_elt \*elt:
+        The tracing_map_elt
+
+    :param unsigned int i:
+        The index of the given variable associated with the tracing_map_elt
+
+    :param u64 n:
+        The value to assign
+
+.. _`tracing_map_set_var.description`:
+
+Description
+-----------
+
+Assign n to variable i associated with the specified tracing_map_elt
+instance.  The index i is the index returned by the call to
+\ :c:func:`tracing_map_add_var`\  when the tracing map was set up.
+
+.. _`tracing_map_var_set`:
+
+tracing_map_var_set
+===================
+
+.. c:function:: bool tracing_map_var_set(struct tracing_map_elt *elt, unsigned int i)
+
+    Return whether or not a variable has been set
+
+    :param struct tracing_map_elt \*elt:
+        The tracing_map_elt
+
+    :param unsigned int i:
+        The index of the given variable associated with the tracing_map_elt
+
+.. _`tracing_map_var_set.description`:
+
+Description
+-----------
+
+Return true if the variable has been set, false otherwise.  The
+index i is the index returned by the call to \ :c:func:`tracing_map_add_var`\ 
+when the tracing map was set up.
+
+.. _`tracing_map_read_var`:
+
+tracing_map_read_var
+====================
+
+.. c:function:: u64 tracing_map_read_var(struct tracing_map_elt *elt, unsigned int i)
+
+    Return the value of a tracing_map_elt's variable field
+
+    :param struct tracing_map_elt \*elt:
+        The tracing_map_elt
+
+    :param unsigned int i:
+        The index of the given variable associated with the tracing_map_elt
+
+.. _`tracing_map_read_var.description`:
+
+Description
+-----------
+
+Retrieve the value of the variable i associated with the specified
+tracing_map_elt instance.  The index i is the index returned by the
+call to \ :c:func:`tracing_map_add_var`\  when the tracing map was set
+up.
+
+.. _`tracing_map_read_var.return`:
+
+Return
+------
+
+The variable value associated with field i for elt.
+
+.. _`tracing_map_read_var_once`:
+
+tracing_map_read_var_once
+=========================
+
+.. c:function:: u64 tracing_map_read_var_once(struct tracing_map_elt *elt, unsigned int i)
+
+    Return and reset a tracing_map_elt's variable field
+
+    :param struct tracing_map_elt \*elt:
+        The tracing_map_elt
+
+    :param unsigned int i:
+        The index of the given variable associated with the tracing_map_elt
+
+.. _`tracing_map_read_var_once.description`:
+
+Description
+-----------
+
+Retrieve the value of the variable i associated with the specified
+tracing_map_elt instance, and reset the variable to the 'not set'
+state.  The index i is the index returned by the call to
+\ :c:func:`tracing_map_add_var`\  when the tracing map was set up.  The reset
+essentially makes the variable a read-once variable if it's only
+accessed using this function.
+
+.. _`tracing_map_read_var_once.return`:
+
+Return
+------
+
+The variable value associated with field i for elt.
+
 .. _`tracing_map_add_sum_field`:
 
 tracing_map_add_sum_field
@@ -88,6 +205,36 @@ Return
 ------
 
 The index identifying the field in the map and associated
+tracing_map_elts, or -EINVAL on error.
+
+.. _`tracing_map_add_var`:
+
+tracing_map_add_var
+===================
+
+.. c:function:: int tracing_map_add_var(struct tracing_map *map)
+
+    Add a field describing a tracing_map var
+
+    :param struct tracing_map \*map:
+        The tracing_map
+
+.. _`tracing_map_add_var.description`:
+
+Description
+-----------
+
+Add a var to the map and return the index identifying it in the map
+and associated tracing_map_elts.  This is the index used for
+instance to update a var for a particular tracing_map_elt using
+\ :c:func:`tracing_map_update_var`\  or reading it via \ :c:func:`tracing_map_read_var`\ .
+
+.. _`tracing_map_add_var.return`:
+
+Return
+------
+
+The index identifying the var in the map and associated
 tracing_map_elts, or -EINVAL on error.
 
 .. _`tracing_map_add_key_field`:

@@ -234,10 +234,10 @@ p9_virtio_zc_request
         read buffer size
 
     :param int outlen:
-        *undescribed*
+        write buffer size
 
     :param int in_hdr_len:
-        *undescribed*
+        reader header size, This is the size of response protocol data
 
 .. _`p9_virtio_probe`:
 

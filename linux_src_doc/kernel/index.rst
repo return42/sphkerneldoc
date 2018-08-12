@@ -10,6 +10,7 @@ kernel
     bpf/index
     cgroup/index
     debug/index
+    dma/index
     events/index
     gcov/index
     irq/index
@@ -38,6 +39,7 @@ kernel
     freezer_c
     futex_c
     groups_c
+    iomem_c
     kallsyms_c
     kexec_file_c
     kmod_c

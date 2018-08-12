@@ -1,94 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_huc.c
 
-.. _`huc-firmware`:
-
-HuC Firmware
-============
-
-Motivation:
-GEN9 introduces a new dedicated firmware for usage in media HEVC (High
-Efficiency Video Coding) operations. Userspace can use the firmware
-capabilities by adding HuC specific commands to batch buffers.
-
-Implementation:
-The same firmware loader is used as the GuC. However, the actual
-loading to HW is deferred until GEM initialization is done.
-
-Note that HuC firmware loading must be done before GuC loading.
-
-.. _`intel_huc_init_early`:
-
-intel_huc_init_early
-====================
-
-.. c:function:: void intel_huc_init_early(struct intel_huc *huc)
-
-    initializes HuC struct
-
-    :param struct intel_huc \*huc:
-        intel_huc struct
-
-.. _`intel_huc_init_early.description`:
-
-Description
------------
-
-On platforms with HuC selects firmware for uploading
-
-.. _`huc_ucode_xfer`:
-
-huc_ucode_xfer
-==============
-
-.. c:function:: int huc_ucode_xfer(struct intel_uc_fw *huc_fw, struct i915_vma *vma)
-
-    DMA's the firmware
-
-    :param struct intel_uc_fw \*huc_fw:
-        *undescribed*
-
-    :param struct i915_vma \*vma:
-        *undescribed*
-
-.. _`huc_ucode_xfer.description`:
-
-Description
------------
-
-Transfer the firmware image to RAM for execution by the microcontroller.
-
-.. _`huc_ucode_xfer.return`:
-
-Return
-------
-
-0 on success, non-zero on failure
-
-.. _`intel_huc_init_hw`:
-
-intel_huc_init_hw
-=================
-
-.. c:function:: int intel_huc_init_hw(struct intel_huc *huc)
-
-    load HuC uCode to device
-
-    :param struct intel_huc \*huc:
-        intel_huc structure
-
-.. _`intel_huc_init_hw.description`:
-
-Description
------------
-
-Called from \ :c:func:`intel_uc_init_hw`\  during driver loading and also after a GPU
-reset. Be note that HuC loading must be done before GuC loading.
-
-The firmware image should have already been fetched into memory by the
-earlier call to \ :c:func:`intel_uc_init_fw`\ , so here we need only check that
-is succeeded, and then transfer the image to the h/w.
-
 .. _`intel_huc_auth`:
 
 intel_huc_auth
@@ -112,6 +24,29 @@ This function pins HuC firmware image object into GGTT.
 Then it invokes GuC action to authenticate passing the offset to RSA
 signature through \ :c:func:`intel_guc_auth_huc`\ . It then waits for 50ms for
 firmware verification ACK and unpins the object.
+
+.. _`intel_huc_check_status`:
+
+intel_huc_check_status
+======================
+
+.. c:function:: int intel_huc_check_status(struct intel_huc *huc)
+
+    check HuC status
+
+    :param struct intel_huc \*huc:
+        intel_huc structure
+
+.. _`intel_huc_check_status.description`:
+
+Description
+-----------
+
+This function reads status register to verify if HuC
+firmware was successfully loaded.
+
+Returns positive value if HuC firmware is loaded and verified
+and -ENODEV if HuC is not present.
 
 .. This file was automatic generated / don't edit.
 

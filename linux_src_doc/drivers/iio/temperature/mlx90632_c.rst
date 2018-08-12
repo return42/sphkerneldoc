@@ -1,0 +1,26 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/temperature/mlx90632.c
+
+.. _`mlx90632_perform_measurement`:
+
+mlx90632_perform_measurement
+============================
+
+.. c:function:: int mlx90632_perform_measurement(struct mlx90632_data *data)
+
+    Trigger and retrieve current measurement cycle \ ````\ \*data: pointer to mlx90632_data object containing regmap information
+
+    :param struct mlx90632_data \*data:
+        *undescribed*
+
+.. _`mlx90632_perform_measurement.description`:
+
+Description
+-----------
+
+Perform a measurement and return latest measurement cycle position reported
+by sensor. This is a blocking function for 500ms, as that is default sensor
+refresh rate.
+
+.. This file was automatic generated / don't edit.
+

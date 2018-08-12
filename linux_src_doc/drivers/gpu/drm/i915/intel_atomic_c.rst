@@ -133,7 +133,7 @@ intel_crtc_destroy_state
         drm crtc
 
     :param struct drm_crtc_state \*state:
-        *undescribed*
+        the state to destroy
 
 .. _`intel_crtc_destroy_state.description`:
 
@@ -156,7 +156,7 @@ intel_atomic_setup_scalers
         i915 device
 
     :param struct intel_crtc \*intel_crtc:
-        *undescribed*
+        intel crtc
 
     :param struct intel_crtc_state \*crtc_state:
         incoming crtc_state to validate and setup scalers

@@ -94,6 +94,7 @@ Definition
         void __iomem *dma_base;
         void __iomem *glob_base;
         struct clk *clk;
+        struct clk *reg_clk;
         struct tasklet_struct irq_tasklet;
         struct list_head free_sw_desc;
         struct dma_device dmadev;
@@ -121,6 +122,9 @@ glob_base
     memory mapped global register base
 
 clk
+    *undescribed*
+
+reg_clk
     *undescribed*
 
 irq_tasklet

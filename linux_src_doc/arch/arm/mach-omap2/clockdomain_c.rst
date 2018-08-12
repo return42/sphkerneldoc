@@ -968,5 +968,88 @@ Returns -EINVAL if passed null pointers; -ERANGE if the \ ``clkdm``\  usecount
 underflows; or returns 0 upon success or if the clockdomain is in hwsup
 idle mode.
 
+.. _`_clkdm_save_context`:
+
+\_clkdm_save_context
+====================
+
+.. c:function:: int _clkdm_save_context(struct clockdomain *clkdm, void *ununsed)
+
+    save the context for the control of this clkdm
+
+    :param struct clockdomain \*clkdm:
+        *undescribed*
+
+    :param void \*ununsed:
+        *undescribed*
+
+.. _`_clkdm_save_context.description`:
+
+Description
+-----------
+
+Due to a suspend or hibernation operation, the state of the registers
+controlling this clkdm will be lost, save their context.
+
+.. _`_clkdm_restore_context`:
+
+\_clkdm_restore_context
+=======================
+
+.. c:function:: int _clkdm_restore_context(struct clockdomain *clkdm, void *ununsed)
+
+    restore context for control of this clkdm
+
+    :param struct clockdomain \*clkdm:
+        *undescribed*
+
+    :param void \*ununsed:
+        *undescribed*
+
+.. _`_clkdm_restore_context.description`:
+
+Description
+-----------
+
+Restore the register values for this clockdomain.
+
+.. _`clkdm_save_context`:
+
+clkdm_save_context
+==================
+
+.. c:function:: void clkdm_save_context( void)
+
+    Saves the context for each registered clkdm
+
+    :param  void:
+        no arguments
+
+.. _`clkdm_save_context.description`:
+
+Description
+-----------
+
+Save the context for each registered clockdomain.
+
+.. _`clkdm_restore_context`:
+
+clkdm_restore_context
+=====================
+
+.. c:function:: void clkdm_restore_context( void)
+
+    Restores the context for each registered clkdm
+
+    :param  void:
+        no arguments
+
+.. _`clkdm_restore_context.description`:
+
+Description
+-----------
+
+Restore the context for each registered clockdomain.
+
 .. This file was automatic generated / don't edit.
 

@@ -23,6 +23,39 @@ provided.
 
 Return 0 on success, -ERRNO otherwise.
 
+.. _`vgic_v3_insert_redist_region`:
+
+vgic_v3_insert_redist_region
+============================
+
+.. c:function:: int vgic_v3_insert_redist_region(struct kvm *kvm, uint32_t index, gpa_t base, uint32_t count)
+
+    Insert a new redistributor region
+
+    :param struct kvm \*kvm:
+        kvm handle
+
+    :param uint32_t index:
+        redist region index
+
+    :param gpa_t base:
+        base of the new rdist region
+
+    :param uint32_t count:
+        number of redistributors the region is made of (0 in the old style
+        single region, whose size is induced from the number of vcpus)
+
+.. _`vgic_v3_insert_redist_region.description`:
+
+Description
+-----------
+
+Performs various checks before inserting the rdist region in the list.
+Those tests depend on whether the size of the rdist region is known
+(ie. count != 0). The list is sorted by rdist region index.
+
+Return 0 on success, < 0 otherwise
+
 .. _`vgic_v3_dispatch_sgi`:
 
 vgic_v3_dispatch_sgi

@@ -79,6 +79,30 @@ unable to print.  When an error occur, instead of printing an error message
 and calling `abort(3)`, the test process call `_exit(2)` with the assert
 number as argument, which is then printed by the parent process.
 
+.. _`xfail`:
+
+XFAIL
+=====
+
+.. c:function::  XFAIL( statement,  fmt,  ...)
+
+    :param  statement:
+        statement to run after reporting XFAIL
+
+    :param  fmt:
+        format string
+
+    :param ellipsis ellipsis:
+        optional arguments
+
+.. _`xfail.description`:
+
+Description
+-----------
+
+This forces a "pass" after reporting a failure with an XFAIL prefix,
+and runs "statement", which is usually "return" or "goto skip".
+
 .. _`test`:
 
 TEST
@@ -195,7 +219,7 @@ FIXTURE_SETUP
 
 .. c:function::  FIXTURE_SETUP( fixture_name)
 
-    Prepares the setup function for the fixture. *_metadata* is included so that ASSERT_* work as a convenience
+    Prepares the setup function for the fixture. *_metadata* is included so that EXPECT_* and ASSERT_* work correctly.
 
     :param  fixture_name:
         fixture name
@@ -224,6 +248,8 @@ FIXTURE_TEARDOWN
 ================
 
 .. c:function::  FIXTURE_TEARDOWN( fixture_name)
+
+    *_metadata* is included so that EXPECT_* and ASSERT_* work correctly.
 
     :param  fixture_name:
         fixture name
@@ -270,6 +296,8 @@ Description
 Defines a test that depends on a fixture (e.g., is part of a test case).
 Very similar to \ :c:func:`TEST`\  except that *self* is the setup instance of fixture's
 datatype exposed for use by the implementation.
+
+Warning: use of ASSERT_* here will skip TEARDOWN.
 
 .. _`test_harness_main`:
 

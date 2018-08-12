@@ -139,6 +139,26 @@ Description
 
 Returns the next expiry time or KTIME_MAX if no timer is pending.
 
+.. _`hrtimer_next_event_without`:
+
+hrtimer_next_event_without
+==========================
+
+.. c:function:: u64 hrtimer_next_event_without(const struct hrtimer *exclude)
+
+    time until next expiry event w/o one timer
+
+    :param const struct hrtimer \*exclude:
+        timer to exclude
+
+.. _`hrtimer_next_event_without.description`:
+
+Description
+-----------
+
+Returns the next expiry time over all timers except for the \ ``exclude``\  one or
+KTIME_MAX if none of them is pending.
+
 .. _`hrtimer_init`:
 
 hrtimer_init

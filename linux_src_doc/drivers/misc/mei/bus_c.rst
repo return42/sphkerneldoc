@@ -336,6 +336,37 @@ Return
 
 true if me client is initialized and connected
 
+.. _`mei_cl_bus_module_get`:
+
+mei_cl_bus_module_get
+=====================
+
+.. c:function:: bool mei_cl_bus_module_get(struct mei_cl_device *cldev)
+
+    acquire module of the underlying hw driver.
+
+    :param struct mei_cl_device \*cldev:
+        mei client device
+
+.. _`mei_cl_bus_module_get.return`:
+
+Return
+------
+
+true on success; false if the module was removed.
+
+.. _`mei_cl_bus_module_put`:
+
+mei_cl_bus_module_put
+=====================
+
+.. c:function:: void mei_cl_bus_module_put(struct mei_cl_device *cldev)
+
+    release the underlying hw module.
+
+    :param struct mei_cl_device \*cldev:
+        mei client device
+
 .. _`mei_cldev_enable`:
 
 mei_cldev_enable
@@ -385,37 +416,6 @@ Return
 ------
 
 0 on success and < 0 on error
-
-.. _`mei_cl_bus_module_get`:
-
-mei_cl_bus_module_get
-=====================
-
-.. c:function:: bool mei_cl_bus_module_get(struct mei_cl *cl)
-
-    acquire module of the underlying hw module.
-
-    :param struct mei_cl \*cl:
-        host client
-
-.. _`mei_cl_bus_module_get.return`:
-
-Return
-------
-
-true on success; false if the module was removed.
-
-.. _`mei_cl_bus_module_put`:
-
-mei_cl_bus_module_put
-=====================
-
-.. c:function:: void mei_cl_bus_module_put(struct mei_cl *cl)
-
-    release the underlying hw module.
-
-    :param struct mei_cl \*cl:
-        host client
 
 .. _`mei_cl_device_find`:
 

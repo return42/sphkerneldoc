@@ -199,14 +199,42 @@ permission set
 currently only matches full label A//&B//&C or individual components A, B, C
 not arbitrary combinations. Eg. A//&B, C
 
+.. _`aa_xattrs_match`:
+
+aa_xattrs_match
+===============
+
+.. c:function:: int aa_xattrs_match(const struct linux_binprm *bprm, struct aa_profile *profile, unsigned int state)
+
+    check whether a file matches the xattrs defined in profile
+
+    :param const struct linux_binprm \*bprm:
+        binprm struct for the process to validate
+
+    :param struct aa_profile \*profile:
+        profile to match against (NOT NULL)
+
+    :param unsigned int state:
+        state to start match in
+
+.. _`aa_xattrs_match.return`:
+
+Return
+------
+
+number of extended attributes that matched, or < 0 on error
+
 .. _`__attach_match`:
 
 \__attach_match
 ===============
 
-.. c:function:: struct aa_profile *__attach_match(const char *name, struct list_head *head, const char **info)
+.. c:function:: struct aa_profile *__attach_match(const struct linux_binprm *bprm, const char *name, struct list_head *head, const char **info)
 
-    find an attachment match \ ``name``\  - to match against  (NOT NULL) \ ``head``\  - profile list to walk  (NOT NULL) \ ``info``\  - info message if there was an error (NOT NULL)
+    find an attachment match \ ``bprm``\  - binprm structure of transitioning task \ ``name``\  - to match against  (NOT NULL) \ ``head``\  - profile list to walk  (NOT NULL) \ ``info``\  - info message if there was an error (NOT NULL)
+
+    :param const struct linux_binprm \*bprm:
+        *undescribed*
 
     :param const char \*name:
         *undescribed*
@@ -246,9 +274,12 @@ profile or NULL if no match found
 find_attach
 ===========
 
-.. c:function:: struct aa_label *find_attach(struct aa_ns *ns, struct list_head *list, const char *name, const char **info)
+.. c:function:: struct aa_label *find_attach(const struct linux_binprm *bprm, struct aa_ns *ns, struct list_head *list, const char *name, const char **info)
 
-    do attachment search for unconfined processes
+    do attachment search for unconfined processes \ ``bprm``\  - binprm structure of transitioning task
+
+    :param const struct linux_binprm \*bprm:
+        *undescribed*
 
     :param struct aa_ns \*ns:
         the current namespace  (NOT NULL)
@@ -299,12 +330,15 @@ refcounted label, or NULL on failure (MAYBE NULL)
 x_to_label
 ==========
 
-.. c:function:: struct aa_label *x_to_label(struct aa_profile *profile, const char *name, u32 xindex, const char **lookupname, const char **info)
+.. c:function:: struct aa_label *x_to_label(struct aa_profile *profile, const struct linux_binprm *bprm, const char *name, u32 xindex, const char **lookupname, const char **info)
 
     get target label for a given xindex
 
     :param struct aa_profile \*profile:
         current profile  (NOT NULL)
+
+    :param const struct linux_binprm \*bprm:
+        binprm structure of transitioning task
 
     :param const char \*name:
         name to lookup (NOT NULL)

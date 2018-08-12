@@ -168,6 +168,7 @@ Definition
         u16 pid;
         ktime_t timeout;
         struct dvb_demux_filter *filter;
+        u32 buffer_flags;
         enum ts_filter_type ts_type;
         enum dmx_ts_pes pes_type;
         int cc;
@@ -185,7 +186,7 @@ Members
 feed
     a union describing a digital TV feed.
     Depending on the feed type, it can be either
-    \ ``feed``\ .ts or \ ``feed``\ .sec.
+    \ ``feed.ts``\  or \ ``feed.sec``\ .
 
 feed.ts
     a \ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`\  pointer.
@@ -198,7 +199,7 @@ feed.sec
 cb
     a union describing digital TV callbacks.
     Depending on the feed type, it can be either
-    \ ``cb``\ .ts or \ ``cb``\ .sec.
+    \ ``cb.ts``\  or \ ``cb.sec``\ .
 
 cb.ts
     a \ :c:func:`dmx_ts_cb`\  calback function pointer.
@@ -228,6 +229,10 @@ timeout
 
 filter
     pointer to \ :c:type:`struct dvb_demux_filter <dvb_demux_filter>`\ .
+
+buffer_flags
+    Buffer flags used to report discontinuity users via DVB
+    memory mapped API, as defined by \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
 
 ts_type
     type of TS, as defined by \ :c:type:`enum ts_filter_type <ts_filter_type>`\ .

@@ -71,7 +71,7 @@ fm10k_service_timer
     Timer Call-back
 
     :param struct timer_list \*t:
-        *undescribed*
+        pointer to timer data
 
 .. _`fm10k_prepare_for_reset`:
 
@@ -187,10 +187,10 @@ fm10k_watchdog_flush_tx
 
 .. c:function:: void fm10k_watchdog_flush_tx(struct fm10k_intfc *interface)
 
-    flush queues on host not ready \ ``interface``\  - pointer to the device interface structure
+    flush queues on host not ready
 
     :param struct fm10k_intfc \*interface:
-        *undescribed*
+        pointer to the device interface structure
 
 .. _`fm10k_watchdog_subtask`:
 
@@ -199,10 +199,10 @@ fm10k_watchdog_subtask
 
 .. c:function:: void fm10k_watchdog_subtask(struct fm10k_intfc *interface)
 
-    check and bring link up \ ``interface``\  - pointer to the device interface structure
+    check and bring link up
 
     :param struct fm10k_intfc \*interface:
-        *undescribed*
+        pointer to the device interface structure
 
 .. _`fm10k_check_hang_subtask`:
 
@@ -211,10 +211,10 @@ fm10k_check_hang_subtask
 
 .. c:function:: void fm10k_check_hang_subtask(struct fm10k_intfc *interface)
 
-    check for hung queues and dropped interrupts \ ``interface``\  - pointer to the device interface structure
+    check for hung queues and dropped interrupts
 
     :param struct fm10k_intfc \*interface:
-        *undescribed*
+        pointer to the device interface structure
 
 .. _`fm10k_check_hang_subtask.description`:
 
@@ -476,7 +476,7 @@ fm10k_sw_init
         host interface private structure to initialize
 
     :param const struct pci_device_id \*ent:
-        *undescribed*
+        PCI device ID entry
 
 .. _`fm10k_sw_init.description`:
 

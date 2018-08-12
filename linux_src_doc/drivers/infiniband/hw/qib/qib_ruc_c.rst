@@ -1,31 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/qib/qib_ruc.c
 
-.. _`qib_get_rwqe`:
-
-qib_get_rwqe
-============
-
-.. c:function:: int qib_get_rwqe(struct rvt_qp *qp, int wr_id_only)
-
-    copy the next RWQE into the QP's RWQE
-
-    :param struct rvt_qp \*qp:
-        the QP
-
-    :param int wr_id_only:
-        update qp->r_wr_id only, not qp->r_sge
-
-.. _`qib_get_rwqe.description`:
-
-Description
------------
-
-Return -1 if there is a local error, 0 if no RWQE is available,
-otherwise return 1.
-
-Can be called from interrupt level.
-
 .. _`qib_ruc_loopback`:
 
 qib_ruc_loopback

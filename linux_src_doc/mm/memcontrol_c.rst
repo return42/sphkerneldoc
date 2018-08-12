@@ -81,9 +81,9 @@ Caller must pass the return value in \ ``prev``\  on subsequent
 invocations for reference counting, or use \ :c:func:`mem_cgroup_iter_break`\ 
 to cancel a hierarchy walk before the round-trip is complete.
 
-Reclaimers can specify a zone and a priority level in \ ``reclaim``\  to
+Reclaimers can specify a node and a priority level in \ ``reclaim``\  to
 divide up the memcgs in the hierarchy among all concurrent
-reclaimers operating on the same zone and priority.
+reclaimers operating on the same node and priority.
 
 .. _`mem_cgroup_iter_break`:
 
@@ -668,14 +668,14 @@ See Documentations/vm/hmm.txt and include/linux/hmm.h
 
 Called with pte lock held.
 
-.. _`mem_cgroup_low`:
+.. _`mem_cgroup_protected`:
 
-mem_cgroup_low
-==============
+mem_cgroup_protected
+====================
 
-.. c:function:: bool mem_cgroup_low(struct mem_cgroup *root, struct mem_cgroup *memcg)
+.. c:function:: enum mem_cgroup_protection mem_cgroup_protected(struct mem_cgroup *root, struct mem_cgroup *memcg)
 
-    check if memory consumption is below the normal range
+    check if memory consumption is in the normal range
 
     :param struct mem_cgroup \*root:
         the top ancestor of the sub-tree being checked
@@ -683,38 +683,96 @@ mem_cgroup_low
     :param struct mem_cgroup \*memcg:
         the memory cgroup to check
 
-.. _`mem_cgroup_low.description`:
+.. _`mem_cgroup_protected.warning`:
 
-Description
------------
+WARNING
+-------
 
-Returns \ ``true``\  if memory consumption of \ ``memcg``\ , and that of all
-ancestors up to (but not including) \ ``root``\ , is below the normal range.
+This function is not stateless! It can only be used as part
+of a top-down tree iteration, not for isolated queries.
 
-\ ``root``\  is exclusive; it is never low when looked at directly and isn't
-checked when traversing the hierarchy.
+.. _`mem_cgroup_protected.memcg_prot_none`:
 
-Excluding \ ``root``\  enables using memory.low to prioritize memory usage
-between cgroups within a subtree of the hierarchy that is limited by
-memory.high or memory.max.
+MEMCG_PROT_NONE
+---------------
 
-For example, given cgroup A with children B and C:
+cgroup memory is not protected
 
-A
-/ \
-B   C
+.. _`mem_cgroup_protected.memcg_prot_low`:
 
-and
+MEMCG_PROT_LOW
+--------------
 
-1. A/memory.current > A/memory.high
-2. A/B/memory.current < A/B/memory.low
-3. A/C/memory.current >= A/C/memory.low
+cgroup memory is protected as long there is
+an unprotected supply of reclaimable memory from other cgroups.
 
-As 'A' is high, i.e. triggers reclaim from 'A', and 'B' is low, we
-should reclaim from 'C' until 'A' is no longer high or until we can
-no longer reclaim from 'C'.  If 'A', i.e. \ ``root``\ , isn't excluded by
-mem_cgroup_low when reclaming from 'A', then 'B' won't be considered
-low and we will reclaim indiscriminately from both 'B' and 'C'.
+.. _`mem_cgroup_protected.memcg_prot_min`:
+
+MEMCG_PROT_MIN
+--------------
+
+cgroup memory is protected
+
+\ ``root``\  is exclusive; it is never protected when looked at directly
+
+To provide a proper hierarchical behavior, effective memory.min/low values
+are used. Below is the description of how effective memory.low is calculated.
+Effective memory.min values is calculated in the same way.
+
+Effective memory.low is always equal or less than the original memory.low.
+If there is no memory.low overcommittment (which is always true for
+top-level memory cgroups), these two values are equal.
+Otherwise, it's a part of parent's effective memory.low,
+calculated as a cgroup's memory.low usage divided by sum of sibling's
+memory.low usages, where memory.low usage is the size of actually
+protected memory.
+
+low_usage
+elow = min( memory.low, parent->elow \* ------------------ ),
+siblings_low_usage
+
+\| memory.current, if memory.current < memory.low
+low_usage = \|
+
+
+Such definition of the effective memory.low provides the expected
+
+.. _`mem_cgroup_protected.hierarchical-behavior`:
+
+hierarchical behavior
+---------------------
+
+parent's memory.low value is limiting
+children, unprotected memory is reclaimed first and cgroups,
+which are not using their guarantee do not affect actual memory
+distribution.
+
+For example, if there are memcgs A, A/B, A/C, A/D and A/E:
+
+A      A/memory.low = 2G, A/memory.current = 6G
+//\\
+BC  DE   B/memory.low = 3G  B/memory.current = 2G
+C/memory.low = 1G  C/memory.current = 2G
+D/memory.low = 0   D/memory.current = 2G
+E/memory.low = 10G E/memory.current = 0
+
+and the memory pressure is applied, the following memory distribution
+is expected (approximately):
+
+A/memory.current = 2G
+
+B/memory.current = 1.3G
+C/memory.current = 0.6G
+D/memory.current = 0
+E/memory.current = 0
+
+These calculations require constant tracking of the actual low usages
+(see \ :c:func:`propagate_protected_usage`\ ), as well as recursive calculation of
+effective memory.low values. But as we do call \ :c:func:`mem_cgroup_protected`\ 
+path for each memory cgroup top-down from the reclaim,
+it's possible to optimize this part, and save calculated elow
+for next usage. This part is intentionally racy, but it's ok,
+as memory.low is a best-effort mechanism.
 
 .. _`mem_cgroup_try_charge`:
 

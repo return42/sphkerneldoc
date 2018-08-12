@@ -17,7 +17,7 @@ dwc2_hcd_qh_init_ddma
         The QH to init
 
     :param gfp_t mem_flags:
-        *undescribed*
+        Indicates the type of memory allocation
 
 .. _`dwc2_hcd_qh_init_ddma.return`:
 

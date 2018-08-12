@@ -217,36 +217,6 @@ schedule_tail
     :param struct task_struct \*prev:
         the thread we just switched away from.
 
-.. _`scheduler_tick_max_deferment`:
-
-scheduler_tick_max_deferment
-============================
-
-.. c:function:: u64 scheduler_tick_max_deferment( void)
-
-    :param  void:
-        no arguments
-
-.. _`scheduler_tick_max_deferment.description`:
-
-Description
------------
-
-Keep at least one tick per second when a single
-active task is running because the scheduler doesn't
-yet completely support full dynticks environment.
-
-This makes sure that uptime, CFS vruntime, load
-balancing, etc... continue to move forward, even
-with a very low granularity.
-
-.. _`scheduler_tick_max_deferment.return`:
-
-Return
-------
-
-Maximum deferment in nanoseconds.
-
 .. _`schedule_preempt_disabled`:
 
 schedule_preempt_disabled
@@ -328,6 +298,25 @@ idle_cpu
         the processor in question.
 
 .. _`idle_cpu.return`:
+
+Return
+------
+
+1 if the CPU is currently idle. 0 otherwise.
+
+.. _`available_idle_cpu`:
+
+available_idle_cpu
+==================
+
+.. c:function:: int available_idle_cpu(int cpu)
+
+    is a given CPU idle for enqueuing work.
+
+    :param int cpu:
+        the CPU in question.
+
+.. _`available_idle_cpu.return`:
 
 Return
 ------
@@ -614,19 +603,19 @@ Return
 size of CPU mask copied to user_mask_ptr on success. An
 error code otherwise.
 
-.. _`sys_sched_yield`:
+.. _`do_sched_yield`:
 
-sys_sched_yield
-===============
+do_sched_yield
+==============
 
-.. c:function:: long sys_sched_yield( void)
+.. c:function:: void do_sched_yield( void)
 
     yield the current processor to other threads.
 
     :param  void:
         no arguments
 
-.. _`sys_sched_yield.description`:
+.. _`do_sched_yield.description`:
 
 Description
 -----------
@@ -634,7 +623,7 @@ Description
 This function yields the current CPU to other tasks. If there are no
 other threads running on this CPU then this function will return.
 
-.. _`sys_sched_yield.return`:
+.. _`do_sched_yield.return`:
 
 Return
 ------

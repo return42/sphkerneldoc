@@ -20,4 +20,3 @@ iommu
     omap-iommu_c
     omap-iommu_h
     omap-iopgtable_h
-    rockchip-iommu_c

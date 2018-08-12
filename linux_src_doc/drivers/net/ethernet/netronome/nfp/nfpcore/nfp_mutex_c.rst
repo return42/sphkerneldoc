@@ -151,5 +151,38 @@ Return
 
 0 if the lock succeeded, -errno on failure
 
+.. _`nfp_cpp_mutex_reclaim`:
+
+nfp_cpp_mutex_reclaim
+=====================
+
+.. c:function:: int nfp_cpp_mutex_reclaim(struct nfp_cpp *cpp, int target, unsigned long long address)
+
+    Unlock mutex if held by local endpoint
+
+    :param struct nfp_cpp \*cpp:
+        NFP CPP handle
+
+    :param int target:
+        NFP CPP target ID (ie NFP_CPP_TARGET_CLS or NFP_CPP_TARGET_MU)
+
+    :param unsigned long long address:
+        Offset into the address space of the NFP CPP target ID
+
+.. _`nfp_cpp_mutex_reclaim.description`:
+
+Description
+-----------
+
+Release lock if held by local system.  Extreme care is advised, call only
+when no local lock users can exist.
+
+.. _`nfp_cpp_mutex_reclaim.return`:
+
+Return
+------
+
+0 if the lock was OK, 1 if locked by us, -errno on invalid mutex
+
 .. This file was automatic generated / don't edit.
 

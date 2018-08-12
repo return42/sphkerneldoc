@@ -187,14 +187,14 @@ struct for DMA buffers.
 iio_dma_buffer_set_length
 =========================
 
-.. c:function:: int iio_dma_buffer_set_length(struct iio_buffer *buffer, int length)
+.. c:function:: int iio_dma_buffer_set_length(struct iio_buffer *buffer, unsigned int length)
 
     DMA buffer set_length callback
 
     :param struct iio_buffer \*buffer:
         Buffer to set the length for
 
-    :param int length:
+    :param unsigned int length:
         The new buffer length
 
 .. _`iio_dma_buffer_set_length.description`:

@@ -183,7 +183,7 @@ What are the failure codes.
 lpfc_nvme_prep_io_cmd
 =====================
 
-.. c:function:: int lpfc_nvme_prep_io_cmd(struct lpfc_vport *vport, struct lpfc_nvme_buf *lpfc_ncmd, struct lpfc_nodelist *pnode)
+.. c:function:: int lpfc_nvme_prep_io_cmd(struct lpfc_vport *vport, struct lpfc_nvme_buf *lpfc_ncmd, struct lpfc_nodelist *pnode, struct lpfc_nvme_ctrl_stat *cstat)
 
     Issue an NVME-over-FCP IO
 
@@ -194,6 +194,9 @@ lpfc_nvme_prep_io_cmd
         *undescribed*
 
     :param struct lpfc_nodelist \*pnode:
+        *undescribed*
+
+    :param struct lpfc_nvme_ctrl_stat \*cstat:
         *undescribed*
 
 .. _`lpfc_nvme_prep_io_cmd.description`:

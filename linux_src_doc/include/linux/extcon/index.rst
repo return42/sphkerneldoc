@@ -8,4 +8,3 @@ extcon
     :maxdepth: 1
 
     extcon-adc-jack_h
-    extcon-gpio_h

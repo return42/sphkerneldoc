@@ -262,7 +262,7 @@ rtc_read_offset
 
 .. c:function:: int rtc_read_offset(struct rtc_device *rtc, long *offset)
 
-    Read the amount of rtc offset in parts per billion @ rtc: rtc device to be used @ offset: the offset in parts per billion
+    Read the amount of rtc offset in parts per billion \ ````\  rtc: rtc device to be used \ ````\  offset: the offset in parts per billion
 
     :param struct rtc_device \*rtc:
         *undescribed*
@@ -288,7 +288,7 @@ rtc_set_offset
 
 .. c:function:: int rtc_set_offset(struct rtc_device *rtc, long offset)
 
-    Adjusts the duration of the average second @ rtc: rtc device to be used @ offset: the offset in parts per billion
+    Adjusts the duration of the average second \ ````\  rtc: rtc device to be used \ ````\  offset: the offset in parts per billion
 
     :param struct rtc_device \*rtc:
         *undescribed*

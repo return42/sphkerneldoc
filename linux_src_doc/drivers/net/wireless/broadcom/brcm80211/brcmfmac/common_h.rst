@@ -50,6 +50,7 @@ Definition
         unsigned int feature_disable;
         int fcmode;
         bool roamoff;
+        bool iapp;
         bool ignore_probe_fail;
         struct brcmfmac_pd_cc *country_codes;
         union {
@@ -73,6 +74,9 @@ fcmode
 
 roamoff
     Firmware roaming off?
+
+iapp
+    *undescribed*
 
 ignore_probe_fail
     Ignore probe failure.

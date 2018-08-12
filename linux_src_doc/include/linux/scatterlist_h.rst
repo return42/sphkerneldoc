@@ -179,6 +179,21 @@ This calls \ :c:func:`page_address`\  on the page in this sg entry, and adds the
 sg offset. The caller must know that the sg page has a valid virtual
 mapping.
 
+.. _`sg_init_marker`:
+
+sg_init_marker
+==============
+
+.. c:function:: void sg_init_marker(struct scatterlist *sgl, unsigned int nents)
+
+    Initialize markers in sg table
+
+    :param struct scatterlist \*sgl:
+        The SG table
+
+    :param unsigned int nents:
+        Number of entries in table
+
 .. _`sg_page_iter_page`:
 
 sg_page_iter_page

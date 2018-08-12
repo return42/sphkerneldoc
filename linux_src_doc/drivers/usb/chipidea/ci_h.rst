@@ -214,10 +214,8 @@ Definition
         u8 test_mode;
         struct ci_hdrc_platform_data *platdata;
         int vbus_active;
-    #ifdef CONFIG_USB_CHIPIDEA_ULPI
         struct ulpi *ulpi;
         struct ulpi_ops ulpi_ops;
-    #endif
         struct phy *phy;
         struct usb_phy *usb_phy;
         struct usb_hcd *hcd;

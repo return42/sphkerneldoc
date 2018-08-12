@@ -113,6 +113,7 @@ Definition
         u16 extra_len;
         u16 subbuffer_size;
         u16 packets_per_xact;
+        u16 dbr_size;
     }
 
 .. _`most_channel_config.members`:
@@ -144,6 +145,9 @@ subbuffer_size
 packets_per_xact
     number of MOST frames that are packet inside one USB
     packet. This is USB specific
+
+dbr_size
+    *undescribed*
 
 .. _`most_channel_config.description`:
 

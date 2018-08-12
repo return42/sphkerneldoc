@@ -1,35 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/tipc/discover.c
 
-.. _`tipc_link_req`:
+.. _`tipc_discoverer`:
 
-struct tipc_link_req
-====================
+struct tipc_discoverer
+======================
 
-.. c:type:: struct tipc_link_req
+.. c:type:: struct tipc_discoverer
 
     information about an ongoing link setup request
 
-.. _`tipc_link_req.definition`:
+.. _`tipc_discoverer.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct tipc_link_req {
+    struct tipc_discoverer {
         u32 bearer_id;
         struct tipc_media_addr dest;
         struct net *net;
         u32 domain;
         int num_nodes;
         spinlock_t lock;
-        struct sk_buff *buf;
+        struct sk_buff *skb;
         struct timer_list timer;
         unsigned long timer_intv;
     }
 
-.. _`tipc_link_req.members`:
+.. _`tipc_discoverer.members`:
 
 Members
 -------
@@ -52,7 +52,7 @@ num_nodes
 lock
     spinlock for controlling access to requests
 
-buf
+skb
     request message to be (repeatedly) sent
 
 timer
@@ -66,18 +66,18 @@ timer_intv
 tipc_disc_init_msg
 ==================
 
-.. c:function:: void tipc_disc_init_msg(struct net *net, struct sk_buff *buf, u32 type, struct tipc_bearer *b)
+.. c:function:: void tipc_disc_init_msg(struct net *net, struct sk_buff *skb, u32 mtyp, struct tipc_bearer *b)
 
     initialize a link setup message
 
     :param struct net \*net:
         the applicable net namespace
 
-    :param struct sk_buff \*buf:
+    :param struct sk_buff \*skb:
         *undescribed*
 
-    :param u32 type:
-        message type (request or response)
+    :param u32 mtyp:
+        *undescribed*
 
     :param struct tipc_bearer \*b:
         ptr to bearer issuing message
@@ -105,81 +105,18 @@ disc_dupl_alert
 tipc_disc_rcv
 =============
 
-.. c:function:: void tipc_disc_rcv(struct net *net, struct sk_buff *skb, struct tipc_bearer *bearer)
+.. c:function:: void tipc_disc_rcv(struct net *net, struct sk_buff *skb, struct tipc_bearer *b)
 
     handle incoming discovery message (request or response)
 
     :param struct net \*net:
-        the applicable net namespace
+        applicable net namespace
 
     :param struct sk_buff \*skb:
-        *undescribed*
+        buffer containing message
 
-    :param struct tipc_bearer \*bearer:
+    :param struct tipc_bearer \*b:
         bearer that message arrived on
-
-.. _`disc_update`:
-
-disc_update
-===========
-
-.. c:function:: void disc_update(struct tipc_link_req *req)
-
-    update frequency of periodic link setup requests
-
-    :param struct tipc_link_req \*req:
-        ptr to link request structure
-
-.. _`disc_update.description`:
-
-Description
------------
-
-Reinitiates discovery process if discovery object has no associated nodes
-and is either not currently searching or is searching at a slow rate
-
-.. _`tipc_disc_add_dest`:
-
-tipc_disc_add_dest
-==================
-
-.. c:function:: void tipc_disc_add_dest(struct tipc_link_req *req)
-
-    increment set of discovered nodes
-
-    :param struct tipc_link_req \*req:
-        ptr to link request structure
-
-.. _`tipc_disc_remove_dest`:
-
-tipc_disc_remove_dest
-=====================
-
-.. c:function:: void tipc_disc_remove_dest(struct tipc_link_req *req)
-
-    decrement set of discovered nodes
-
-    :param struct tipc_link_req \*req:
-        ptr to link request structure
-
-.. _`disc_timeout`:
-
-disc_timeout
-============
-
-.. c:function:: void disc_timeout(struct timer_list *t)
-
-    send a periodic link setup request
-
-    :param struct timer_list \*t:
-        *undescribed*
-
-.. _`disc_timeout.description`:
-
-Description
------------
-
-Called whenever a link setup request timer associated with a bearer expires.
 
 .. _`tipc_disc_create`:
 
@@ -214,12 +151,12 @@ Returns 0 if successful, otherwise -errno.
 tipc_disc_delete
 ================
 
-.. c:function:: void tipc_disc_delete(struct tipc_link_req *req)
+.. c:function:: void tipc_disc_delete(struct tipc_discoverer *d)
 
     destroy object sending periodic link setup requests
 
-    :param struct tipc_link_req \*req:
-        ptr to link request structure
+    :param struct tipc_discoverer \*d:
+        ptr to link duest structure
 
 .. _`tipc_disc_reset`:
 

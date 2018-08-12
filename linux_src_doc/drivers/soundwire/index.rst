@@ -15,3 +15,4 @@ soundwire
     intel_h
     intel_init_c
     mipi_disco_c
+    stream_c

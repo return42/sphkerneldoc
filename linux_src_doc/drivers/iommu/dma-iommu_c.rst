@@ -89,8 +89,9 @@ Description
 -----------
 
 IOMMU drivers can use this to implement their .get_resv_regions callback
-for general non-IOMMU-specific reservations. Currently, this covers host
-bridge windows for PCI devices.
+for general non-IOMMU-specific reservations. Currently, this covers GICv3
+ITS region reservation on ACPI based ARM platforms that may require HW MSI
+reservation.
 
 .. _`iommu_dma_init_domain`:
 

@@ -54,6 +54,7 @@ fs
     block_dev_c
     buffer_c
     char_dev_c
+    d_path_c
     dax_c
     dcache_c
     direct-io_c

@@ -447,5 +447,27 @@ batadv_hardif_remove_interfaces
     :param  void:
         no arguments
 
+.. _`batadv_hard_if_event_softif`:
+
+batadv_hard_if_event_softif
+===========================
+
+.. c:function:: int batadv_hard_if_event_softif(unsigned long event, struct net_device *net_dev)
+
+    Handle events for soft interfaces
+
+    :param unsigned long event:
+        NETDEV\_\* event to handle
+
+    :param struct net_device \*net_dev:
+        net_device which generated an event
+
+.. _`batadv_hard_if_event_softif.return`:
+
+Return
+------
+
+NOTIFY\_\* result
+
 .. This file was automatic generated / don't edit.
 

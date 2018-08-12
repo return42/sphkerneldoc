@@ -224,7 +224,7 @@ Definition
 .. code-block:: c
 
     struct event_trigger_ops {
-        void (*func)(struct event_trigger_data *data, void *rec);
+        void (*func)(struct event_trigger_data *data,void *rec, struct ring_buffer_event *rbe);
         int (*init)(struct event_trigger_ops *ops, struct event_trigger_data *data);
         void (*free)(struct event_trigger_ops *ops, struct event_trigger_data *data);
         int (*print)(struct seq_file *m,struct event_trigger_ops *ops, struct event_trigger_data *data);

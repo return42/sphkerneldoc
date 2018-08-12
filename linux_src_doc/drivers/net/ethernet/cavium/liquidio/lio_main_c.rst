@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/cavium/liquidio/lio_main.c
 
-.. _`list_delete_head`:
-
-list_delete_head
-================
-
-.. c:function:: struct list_head *list_delete_head(struct list_head *root)
-
-    the end of this call if there are no more nodes in the list.
-
-    :param struct list_head \*root:
-        *undescribed*
-
 .. _`lio_sync_octeon_time_cb`:
 
 lio_sync_octeon_time_cb

@@ -25,6 +25,7 @@ kernel
     pci-hotplug_c
     pci_dn_c
     pci_of_scan_c
+    process_c
     prom_c
     ptrace_c
     rtas_c

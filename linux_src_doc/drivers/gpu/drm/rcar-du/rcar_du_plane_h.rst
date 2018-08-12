@@ -22,7 +22,6 @@ Definition
         const struct rcar_du_format_info *format;
         int hwindex;
         enum rcar_du_plane_source source;
-        unsigned int alpha;
         unsigned int colorkey;
     }
 
@@ -42,9 +41,6 @@ hwindex
 
 source
     *undescribed*
-
-alpha
-    value of the plane alpha property
 
 colorkey
     value of the plane colorkey property

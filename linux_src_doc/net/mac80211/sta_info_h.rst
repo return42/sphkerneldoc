@@ -752,6 +752,9 @@ Definition
             u64 msdu_retries[IEEE80211_NUM_TIDS + 1];
             u64 msdu_failed[IEEE80211_NUM_TIDS + 1];
             unsigned long last_ack;
+            s8 last_ack_signal;
+            bool ack_signal_filled;
+            struct ewma_avg_signal avg_ack_signal;
         } status_stats;
         struct {
             u64 packets[IEEE80211_NUM_ACS];

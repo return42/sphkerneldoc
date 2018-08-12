@@ -127,7 +127,7 @@ The range must fit into one VMA.
 zap_vma_ptes
 ============
 
-.. c:function:: int zap_vma_ptes(struct vm_area_struct *vma, unsigned long address, unsigned long size)
+.. c:function:: void zap_vma_ptes(struct vm_area_struct *vma, unsigned long address, unsigned long size)
 
     remove ptes mapping the vma
 
@@ -148,8 +148,6 @@ Description
 This function only unmaps ptes assigned to VM_PFNMAP vmas.
 
 The entire address range must be fully contained within the vma.
-
-Returns 0 if successful.
 
 .. _`vm_insert_page`:
 

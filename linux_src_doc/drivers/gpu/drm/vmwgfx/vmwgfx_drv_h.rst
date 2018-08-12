@@ -481,6 +481,50 @@ vmw_overlay_init
     :param struct vmw_private \*dev_priv:
         *undescribed*
 
+.. _`vmw_diff_cpy`:
+
+struct vmw_diff_cpy
+===================
+
+.. c:type:: struct vmw_diff_cpy
+
+    CPU blit information structure
+
+.. _`vmw_diff_cpy.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vmw_diff_cpy {
+        struct drm_rect rect;
+        size_t line;
+        size_t line_offset;
+        int cpp;
+        void (*do_cpy)(struct vmw_diff_cpy *diff, u8 *dest, const u8 *src, size_t n);
+    }
+
+.. _`vmw_diff_cpy.members`:
+
+Members
+-------
+
+rect
+    The output bounding box rectangle.
+
+line
+    The current line of the blit.
+
+line_offset
+    Offset of the current line segment.
+
+cpp
+    Bytes per pixel (granularity information).
+
+do_cpy
+    *undescribed*
+
 .. _`vmw_surface_unreference`:
 
 vmw_surface_unreference

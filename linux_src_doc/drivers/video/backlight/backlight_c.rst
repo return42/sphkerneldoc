@@ -208,5 +208,58 @@ This function obtains a reference on the backlight device and it is the
 caller's responsibility to drop the reference by calling \ :c:func:`put_device`\  on
 the backlight device's .dev field.
 
+.. _`of_find_backlight`:
+
+of_find_backlight
+=================
+
+.. c:function:: struct backlight_device *of_find_backlight(struct device *dev)
+
+    Get backlight device
+
+    :param struct device \*dev:
+        Device
+
+.. _`of_find_backlight.description`:
+
+Description
+-----------
+
+This function looks for a property named 'backlight' on the DT node
+connected to \ ``dev``\  and looks up the backlight device.
+
+Call \ :c:func:`backlight_put`\  to drop the reference on the backlight device.
+
+.. _`of_find_backlight.return`:
+
+Return
+------
+
+A pointer to the backlight device if found.
+Error pointer -EPROBE_DEFER if the DT property is set, but no backlight
+device is found.
+NULL if there's no backlight property.
+
+.. _`devm_of_find_backlight`:
+
+devm_of_find_backlight
+======================
+
+.. c:function:: struct backlight_device *devm_of_find_backlight(struct device *dev)
+
+    Resource-managed \ :c:func:`of_find_backlight`\ 
+
+    :param struct device \*dev:
+        Device
+
+.. _`devm_of_find_backlight.description`:
+
+Description
+-----------
+
+Device managed version of \ :c:func:`of_find_backlight`\ .
+The reference on the backlight device is automatically
+dropped on driver detach.
+
 .. This file was automatic generated / don't edit.
 

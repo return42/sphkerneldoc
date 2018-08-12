@@ -8,6 +8,7 @@ rc
     :maxdepth: 1
 
     img-ir/index
+    ir-imon-decoder_c
     ir-jvc-decoder_c
     ir-mce_kbd-decoder_c
     ir-nec-decoder_c

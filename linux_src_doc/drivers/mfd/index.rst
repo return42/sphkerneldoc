@@ -23,6 +23,7 @@ mfd
     rave-sp_c
     si476x-cmd_c
     si476x-i2c_c
+    stm32-timers_c
     stmpe_c
     stmpe_h
     stw481x_c

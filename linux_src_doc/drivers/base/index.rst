@@ -7,6 +7,7 @@ base
 .. toctree::
     :maxdepth: 1
 
+    firmware_loader/index
     power/index
     regmap/index
     attribute_container_c
@@ -15,13 +16,10 @@ base
     class_c
     core_c
     dd_c
+    devcon_c
     devcoredump_c
     devres_c
-    dma-coherent_c
-    dma-contiguous_c
-    dma-mapping_c
     driver_c
-    firmware_class_c
     init_c
     node_c
     pinctrl_c

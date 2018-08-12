@@ -6,11 +6,11 @@
 rt5514_calc_dmic_clk
 ====================
 
-.. c:function:: int rt5514_calc_dmic_clk(struct snd_soc_codec *codec, int rate)
+.. c:function:: int rt5514_calc_dmic_clk(struct snd_soc_component *component, int rate)
 
     Calculate the frequency divider parameter of dmic.
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param int rate:

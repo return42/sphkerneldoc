@@ -23,6 +23,7 @@ asm
     msr_h
     ptrace_h
     qspinlock_h
+    spec-ctrl_h
     string_64_h
     sync_bitops_h
     uaccess_h

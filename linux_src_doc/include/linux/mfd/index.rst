@@ -35,6 +35,7 @@ mfd
     si476x-platform_h
     si476x-reports_h
     stm32-lptimer_h
+    stm32-timers_h
     stmpe_h
     stw481x_h
     tc3589x_h

@@ -6,17 +6,17 @@
 qedf_dbg_host_init
 ==================
 
-.. c:function:: void qedf_dbg_host_init(struct qedf_dbg_ctx *qedf, struct qedf_debugfs_ops *dops, struct file_operations *fops)
+.. c:function:: void qedf_dbg_host_init(struct qedf_dbg_ctx *qedf, const struct qedf_debugfs_ops *dops, const struct file_operations *fops)
 
     setup the debugfs file for the pf
 
     :param struct qedf_dbg_ctx \*qedf:
         *undescribed*
 
-    :param struct qedf_debugfs_ops \*dops:
+    :param const struct qedf_debugfs_ops \*dops:
         *undescribed*
 
-    :param struct file_operations \*fops:
+    :param const struct file_operations \*fops:
         *undescribed*
 
 .. _`qedf_dbg_host_exit`:

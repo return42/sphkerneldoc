@@ -32,7 +32,7 @@ profile_cmp
 
 .. c:function:: int profile_cmp(struct aa_profile *a, struct aa_profile *b)
 
-    profile comparision for set ordering
+    profile comparison for set ordering
 
     :param struct aa_profile \*a:
         profile to compare (NOT NULL)
@@ -56,7 +56,7 @@ vec_cmp
 
 .. c:function:: int vec_cmp(struct aa_profile **a, int an, struct aa_profile **b, int bn)
 
-    label comparision for set ordering
+    label comparison for set ordering
 
     :param struct aa_profile \*\*a:
         label to compare (NOT NULL)
@@ -140,7 +140,7 @@ label_cmp
 
 .. c:function:: int label_cmp(struct aa_label *a, struct aa_label *b)
 
-    label comparision for set ordering
+    label comparison for set ordering
 
     :param struct aa_label \*a:
         label to compare (NOT NULL)
@@ -1011,12 +1011,12 @@ Return
 size of name written or would be written if larger than
 available buffer
 
-.. _`aa_label_parse`:
+.. _`aa_label_strn_parse`:
 
-aa_label_parse
-==============
+aa_label_strn_parse
+===================
 
-.. c:function:: struct aa_label *aa_label_parse(struct aa_label *base, const char *str, gfp_t gfp, bool create, bool force_stack)
+.. c:function:: struct aa_label *aa_label_strn_parse(struct aa_label *base, const char *str, size_t n, gfp_t gfp, bool create, bool force_stack)
 
     parse, validate and convert a text string to a label
 
@@ -1025,6 +1025,9 @@ aa_label_parse
 
     :param const char \*str:
         null terminated text string (NOT NULL)
+
+    :param size_t n:
+        length of str to parse, will stop at \0 if encountered before n
 
     :param gfp_t gfp:
         allocation type
@@ -1035,7 +1038,7 @@ aa_label_parse
     :param bool force_stack:
         true if should stack even if no leading &
 
-.. _`aa_label_parse.return`:
+.. _`aa_label_strn_parse.return`:
 
 Return
 ------
@@ -1070,7 +1073,7 @@ being destroyed depending on their reference counting
 
 .. c:function:: struct aa_label *__label_update(struct aa_label *label)
 
-    insert updated version of \ ``label``\  into labelset \ ``label``\  - the label to update/repace
+    insert updated version of \ ``label``\  into labelset \ ``label``\  - the label to update/replace
 
     :param struct aa_label \*label:
         *undescribed*

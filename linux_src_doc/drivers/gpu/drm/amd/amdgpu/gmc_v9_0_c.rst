@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/gmc_v9_0.c
 
-.. _`gmc_v9_0_gart_flush_gpu_tlb`:
+.. _`gmc_v9_0_flush_gpu_tlb`:
 
-gmc_v9_0_gart_flush_gpu_tlb
-===========================
+gmc_v9_0_flush_gpu_tlb
+======================
 
-.. c:function:: void gmc_v9_0_gart_flush_gpu_tlb(struct amdgpu_device *adev, uint32_t vmid)
+.. c:function:: void gmc_v9_0_flush_gpu_tlb(struct amdgpu_device *adev, uint32_t vmid)
 
     gart tlb flush callback
 
@@ -16,19 +16,19 @@ gmc_v9_0_gart_flush_gpu_tlb
     :param uint32_t vmid:
         vm instance to flush
 
-.. _`gmc_v9_0_gart_flush_gpu_tlb.description`:
+.. _`gmc_v9_0_flush_gpu_tlb.description`:
 
 Description
 -----------
 
 Flush the TLB for the requested page table.
 
-.. _`gmc_v9_0_gart_set_pte_pde`:
+.. _`gmc_v9_0_set_pte_pde`:
 
-gmc_v9_0_gart_set_pte_pde
-=========================
+gmc_v9_0_set_pte_pde
+====================
 
-.. c:function:: int gmc_v9_0_gart_set_pte_pde(struct amdgpu_device *adev, void *cpu_pt_addr, uint32_t gpu_page_idx, uint64_t addr, uint64_t flags)
+.. c:function:: int gmc_v9_0_set_pte_pde(struct amdgpu_device *adev, void *cpu_pt_addr, uint32_t gpu_page_idx, uint64_t addr, uint64_t flags)
 
     update the page tables using MMIO
 
@@ -47,7 +47,7 @@ gmc_v9_0_gart_set_pte_pde
     :param uint64_t flags:
         access flags
 
-.. _`gmc_v9_0_gart_set_pte_pde.description`:
+.. _`gmc_v9_0_set_pte_pde.description`:
 
 Description
 -----------

@@ -42,8 +42,6 @@ Definition
         void (*writeb)(void __iomem *addr, unsigned offset, u8 data);
         u16 (*readw)(const void __iomem *addr, unsigned offset);
         void (*writew)(void __iomem *addr, unsigned offset, u16 data);
-        u32 (*readl)(const void __iomem *addr, unsigned offset);
-        void (*writel)(void __iomem *addr, unsigned offset, u32 data);
         void (*read_fifo)(struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
         void (*write_fifo)(struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
         struct dma_controller * (*dma_init) (struct musb *musb, void __iomem *base);
@@ -53,7 +51,6 @@ Definition
         int (*recover)(struct musb *musb);
         int (*vbus_status)(struct musb *musb);
         void (*set_vbus)(struct musb *musb, int on);
-        int (*adjust_channel_params)(struct dma_channel *channel,u16 packet_sz, u8 *mode, dma_addr_t *dma_addr, u32 *len);
         void (*pre_root_reset_end)(struct musb *musb);
         void (*post_root_reset_end)(struct musb *musb);
         int (*phy_callback)(enum musb_vbus_id_status status);
@@ -107,12 +104,6 @@ readw
 writew
     write 16 bits
 
-readl
-    read 32 bits
-
-writel
-    write 32 bits
-
 read_fifo
     reads the fifo
 
@@ -139,9 +130,6 @@ vbus_status
 
 set_vbus
     forces vbus status
-
-adjust_channel_params
-    pre check for standard dma channel_program func
 
 pre_root_reset_end
     called before the root usb port reset flag gets cleared

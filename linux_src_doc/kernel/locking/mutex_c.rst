@@ -90,22 +90,98 @@ mutex_lock_interruptible
 
 .. c:function:: int __sched mutex_lock_interruptible(struct mutex *lock)
 
-    acquire the mutex, interruptible
+    Acquire the mutex, interruptible by signals.
 
     :param struct mutex \*lock:
-        the mutex to be acquired
+        The mutex to be acquired.
 
 .. _`mutex_lock_interruptible.description`:
 
 Description
 -----------
 
-Lock the mutex like \ :c:func:`mutex_lock`\ , and return 0 if the mutex has
-been acquired or sleep until the mutex becomes available. If a
-signal arrives while waiting for the lock then this function
-returns -EINTR.
+Lock the mutex like \ :c:func:`mutex_lock`\ .  If a signal is delivered while the
+process is sleeping, this function will return without acquiring the
+mutex.
 
-This function is similar to (but not equivalent to) \ :c:func:`down_interruptible`\ .
+.. _`mutex_lock_interruptible.context`:
+
+Context
+-------
+
+Process context.
+
+.. _`mutex_lock_interruptible.return`:
+
+Return
+------
+
+0 if the lock was successfully acquired or \ ``-EINTR``\  if a
+signal arrived.
+
+.. _`mutex_lock_killable`:
+
+mutex_lock_killable
+===================
+
+.. c:function:: int __sched mutex_lock_killable(struct mutex *lock)
+
+    Acquire the mutex, interruptible by fatal signals.
+
+    :param struct mutex \*lock:
+        The mutex to be acquired.
+
+.. _`mutex_lock_killable.description`:
+
+Description
+-----------
+
+Lock the mutex like \ :c:func:`mutex_lock`\ .  If a signal which will be fatal to
+the current process is delivered while the process is sleeping, this
+function will return without acquiring the mutex.
+
+.. _`mutex_lock_killable.context`:
+
+Context
+-------
+
+Process context.
+
+.. _`mutex_lock_killable.return`:
+
+Return
+------
+
+0 if the lock was successfully acquired or \ ``-EINTR``\  if a
+fatal signal arrived.
+
+.. _`mutex_lock_io`:
+
+mutex_lock_io
+=============
+
+.. c:function:: void __sched mutex_lock_io(struct mutex *lock)
+
+    Acquire the mutex and mark the process as waiting for I/O
+
+    :param struct mutex \*lock:
+        The mutex to be acquired.
+
+.. _`mutex_lock_io.description`:
+
+Description
+-----------
+
+Lock the mutex like \ :c:func:`mutex_lock`\ .  While the task is waiting for this
+mutex, it will be accounted as being in the IO wait state by the
+scheduler.
+
+.. _`mutex_lock_io.context`:
+
+Context
+-------
+
+Process context.
 
 .. _`mutex_trylock`:
 

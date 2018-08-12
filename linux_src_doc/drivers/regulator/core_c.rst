@@ -1,6 +1,52 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/regulator/core.c
 
+.. _`regulator_lock_nested`:
+
+regulator_lock_nested
+=====================
+
+.. c:function:: void regulator_lock_nested(struct regulator_dev *rdev, unsigned int subclass)
+
+    lock a single regulator
+
+    :param struct regulator_dev \*rdev:
+        regulator source
+
+    :param unsigned int subclass:
+        mutex subclass used for lockdep
+
+.. _`regulator_lock_nested.description`:
+
+Description
+-----------
+
+This function can be called many times by one task on
+a single regulator and its mutex will be locked only
+once. If a task, which is calling this function is other
+than the one, which initially locked the mutex, it will
+wait on mutex.
+
+.. _`regulator_unlock`:
+
+regulator_unlock
+================
+
+.. c:function:: void regulator_unlock(struct regulator_dev *rdev)
+
+    unlock a single regulator
+
+    :param struct regulator_dev \*rdev:
+        regulator_source
+
+.. _`regulator_unlock.description`:
+
+Description
+-----------
+
+This function unlocks the mutex when the
+reference counter reaches 0.
+
 .. _`regulator_lock_supply`:
 
 regulator_lock_supply

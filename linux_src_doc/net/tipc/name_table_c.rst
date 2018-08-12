@@ -1,284 +1,108 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/tipc/name_table.c
 
-.. _`name_info`:
+.. _`service_range`:
 
-struct name_info
-================
+struct service_range
+====================
 
-.. c:type:: struct name_info
+.. c:type:: struct service_range
 
-    name sequence publication info
+    container for all bindings of a service range
 
-.. _`name_info.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct name_info {
-        struct list_head node_list;
-        struct list_head cluster_list;
-        struct list_head zone_list;
-        u32 node_list_size;
-        u32 cluster_list_size;
-        u32 zone_list_size;
-    }
-
-.. _`name_info.members`:
-
-Members
--------
-
-node_list
-    circular list of publications made by own node
-
-cluster_list
-    circular list of publications made by own cluster
-
-zone_list
-    circular list of publications made by own zone
-
-node_list_size
-    number of entries in "node_list"
-
-cluster_list_size
-    number of entries in "cluster_list"
-
-zone_list_size
-    number of entries in "zone_list"
-
-.. _`name_info.note`:
-
-Note
-----
-
-The zone list always contains at least one entry, since all
-publications of the associated name sequence belong to it.
-(The cluster and node lists may be empty.)
-
-.. _`sub_seq`:
-
-struct sub_seq
-==============
-
-.. c:type:: struct sub_seq
-
-    container for all published instances of a name sequence
-
-.. _`sub_seq.definition`:
+.. _`service_range.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct sub_seq {
+    struct service_range {
         u32 lower;
         u32 upper;
-        struct name_info *info;
+        struct rb_node tree_node;
+        struct list_head local_publ;
+        struct list_head all_publ;
     }
 
-.. _`sub_seq.members`:
+.. _`service_range.members`:
 
 Members
 -------
 
 lower
-    name sequence lower bound
+    service range lower bound
 
 upper
-    name sequence upper bound
+    service range upper bound
 
-info
-    pointer to name sequence publication info
+tree_node
+    member of service range RB tree
 
-.. _`name_seq`:
+local_publ
+    list of identical publications made from this node
+    Used by closest_first lookup and multicast lookup algorithm
 
-struct name_seq
-===============
+all_publ
+    all publications identical to this one, whatever node and scope
+    Used by round-robin lookup algorithm
 
-.. c:type:: struct name_seq
+.. _`tipc_service`:
 
-    container for all published instances of a name type
+struct tipc_service
+===================
 
-.. _`name_seq.definition`:
+.. c:type:: struct tipc_service
+
+    container for all published instances of a service type
+
+.. _`tipc_service.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct name_seq {
+    struct tipc_service {
         u32 type;
-        struct sub_seq *sseqs;
-        u32 alloc;
-        u32 first_free;
-        struct hlist_node ns_list;
+        struct rb_root ranges;
+        struct hlist_node service_list;
         struct list_head subscriptions;
         spinlock_t lock;
         struct rcu_head rcu;
     }
 
-.. _`name_seq.members`:
+.. _`tipc_service.members`:
 
 Members
 -------
 
 type
-    32 bit 'type' value for name sequence
+    32 bit 'type' value for service
 
-sseqs
-    *undescribed*
+ranges
+    rb tree containing all service ranges for this service
 
-alloc
-    number of sub-sequences currently in array
-
-first_free
-    array index of first unused sub-sequence entry
-
-ns_list
-    links to adjacent name sequences in hash chain
+service_list
+    links to adjacent name ranges in hash chain
 
 subscriptions
-    list of subscriptions for this 'type'
+    list of subscriptions for this service type
 
 lock
-    spinlock controlling access to publication lists of all sub-sequences
+    spinlock controlling access to pertaining service ranges/publications
 
 rcu
     RCU callback head used for deferred freeing
 
-.. _`publ_create`:
+.. _`tipc_publ_create`:
 
-publ_create
-===========
+tipc_publ_create
+================
 
-.. c:function:: struct publication *publ_create(u32 type, u32 lower, u32 upper, u32 scope, u32 node, u32 port_ref, u32 key)
+.. c:function:: struct publication *tipc_publ_create(u32 type, u32 lower, u32 upper, u32 scope, u32 node, u32 port, u32 key)
 
     create a publication structure
-
-    :param u32 type:
-        *undescribed*
-
-    :param u32 lower:
-        *undescribed*
-
-    :param u32 upper:
-        *undescribed*
-
-    :param u32 scope:
-        *undescribed*
-
-    :param u32 node:
-        *undescribed*
-
-    :param u32 port_ref:
-        *undescribed*
-
-    :param u32 key:
-        *undescribed*
-
-.. _`tipc_subseq_alloc`:
-
-tipc_subseq_alloc
-=================
-
-.. c:function:: struct sub_seq *tipc_subseq_alloc(u32 cnt)
-
-    allocate a specified number of sub-sequence structures
-
-    :param u32 cnt:
-        *undescribed*
-
-.. _`tipc_nameseq_create`:
-
-tipc_nameseq_create
-===================
-
-.. c:function:: struct name_seq *tipc_nameseq_create(u32 type, struct hlist_head *seq_head)
-
-    create a name sequence structure for the specified 'type'
-
-    :param u32 type:
-        *undescribed*
-
-    :param struct hlist_head \*seq_head:
-        *undescribed*
-
-.. _`tipc_nameseq_create.description`:
-
-Description
------------
-
-Allocates a single sub-sequence structure and sets it to all 0's.
-
-.. _`nameseq_find_subseq`:
-
-nameseq_find_subseq
-===================
-
-.. c:function:: struct sub_seq *nameseq_find_subseq(struct name_seq *nseq, u32 instance)
-
-    find sub-sequence (if any) matching a name instance
-
-    :param struct name_seq \*nseq:
-        *undescribed*
-
-    :param u32 instance:
-        *undescribed*
-
-.. _`nameseq_find_subseq.description`:
-
-Description
------------
-
-Very time-critical, so binary searches through sub-sequence array.
-
-.. _`nameseq_locate_subseq`:
-
-nameseq_locate_subseq
-=====================
-
-.. c:function:: u32 nameseq_locate_subseq(struct name_seq *nseq, u32 instance)
-
-    determine position of name instance in sub-sequence
-
-    :param struct name_seq \*nseq:
-        *undescribed*
-
-    :param u32 instance:
-        *undescribed*
-
-.. _`nameseq_locate_subseq.description`:
-
-Description
------------
-
-Returns index in sub-sequence array of the entry that contains the specified
-instance value; if no entry contains that value, returns the position
-where a new entry for it would be inserted in the array.
-
-.. _`nameseq_locate_subseq.note`:
-
-Note
-----
-
-Similar to binary search code for locating a sub-sequence.
-
-.. _`tipc_nameseq_insert_publ`:
-
-tipc_nameseq_insert_publ
-========================
-
-.. c:function:: struct publication *tipc_nameseq_insert_publ(struct net *net, struct name_seq *nseq, u32 type, u32 lower, u32 upper, u32 scope, u32 node, u32 port, u32 key)
-
-    :param struct net \*net:
-        *undescribed*
-
-    :param struct name_seq \*nseq:
-        *undescribed*
 
     :param u32 type:
         *undescribed*
@@ -301,60 +125,81 @@ tipc_nameseq_insert_publ
     :param u32 key:
         *undescribed*
 
-.. _`tipc_nameseq_remove_publ`:
+.. _`tipc_service_create`:
 
-tipc_nameseq_remove_publ
+tipc_service_create
+===================
+
+.. c:function:: struct tipc_service *tipc_service_create(u32 type, struct hlist_head *hd)
+
+    create a service structure for the specified 'type'
+
+    :param u32 type:
+        *undescribed*
+
+    :param struct hlist_head \*hd:
+        *undescribed*
+
+.. _`tipc_service_create.description`:
+
+Description
+-----------
+
+Allocates a single range structure and sets it to all 0's.
+
+.. _`tipc_service_first_range`:
+
+tipc_service_first_range
 ========================
 
-.. c:function:: struct publication *tipc_nameseq_remove_publ(struct net *net, struct name_seq *nseq, u32 inst, u32 node, u32 ref, u32 key)
+.. c:function:: struct service_range *tipc_service_first_range(struct tipc_service *sc, u32 instance)
 
-    :param struct net \*net:
+    find first service range in tree matching instance
+
+    :param struct tipc_service \*sc:
         *undescribed*
 
-    :param struct name_seq \*nseq:
+    :param u32 instance:
         *undescribed*
 
-    :param u32 inst:
+.. _`tipc_service_first_range.description`:
+
+Description
+-----------
+
+Very time-critical, so binary search through range rb tree
+
+.. _`tipc_service_remove_publ`:
+
+tipc_service_remove_publ
+========================
+
+.. c:function:: struct publication *tipc_service_remove_publ(struct service_range *sr, u32 node, u32 key)
+
+    remove a publication from a service
+
+    :param struct service_range \*sr:
         *undescribed*
 
     :param u32 node:
         *undescribed*
 
-    :param u32 ref:
-        *undescribed*
-
     :param u32 key:
         *undescribed*
 
-.. _`tipc_nameseq_remove_publ.note`:
+.. _`tipc_service_subscribe`:
 
-NOTE
-----
-
-There may be cases where TIPC is asked to remove a publication
-that is not in the name table.  For example, if another node issues a
-publication for a name sequence that overlaps an existing name sequence
-the publication will not be recorded, which means the publication won't
-be found when the name sequence is later withdrawn by that node.
-A failed withdraw request simply returns a failure indication and lets the
-caller issue any error or warning messages associated with such a problem.
-
-.. _`tipc_nameseq_subscribe`:
-
-tipc_nameseq_subscribe
+tipc_service_subscribe
 ======================
 
-.. c:function:: void tipc_nameseq_subscribe(struct name_seq *nseq, struct tipc_subscription *s, bool status)
+.. c:function:: void tipc_service_subscribe(struct tipc_service *service, struct tipc_subscription *sub)
 
-    attach a subscription, and optionally issue the prescribed number of events if there is any sub- sequence overlapping with the requested sequence
+    attach a subscription, and optionally issue the prescribed number of events if there is any service range overlapping with the requested range
 
-    :param struct name_seq \*nseq:
+    :param struct tipc_service \*service:
         *undescribed*
 
-    :param struct tipc_subscription \*s:
-        *undescribed*
-
-    :param bool status:
+    :param struct tipc_subscription \*sub:
         *undescribed*
 
 .. _`tipc_nametbl_translate`:
@@ -362,9 +207,9 @@ tipc_nameseq_subscribe
 tipc_nametbl_translate
 ======================
 
-.. c:function:: u32 tipc_nametbl_translate(struct net *net, u32 type, u32 instance, u32 *destnode)
+.. c:function:: u32 tipc_nametbl_translate(struct net *net, u32 type, u32 instance, u32 *dnode)
 
-    perform name translation
+    perform service instance to socket translation
 
     :param struct net \*net:
         *undescribed*
@@ -375,7 +220,7 @@ tipc_nametbl_translate
     :param u32 instance:
         *undescribed*
 
-    :param u32 \*destnode:
+    :param u32 \*dnode:
         *undescribed*
 
 .. _`tipc_nametbl_translate.description`:
@@ -383,28 +228,31 @@ tipc_nametbl_translate
 Description
 -----------
 
-On entry, 'destnode' is the search domain used during translation.
+On entry, 'dnode' is the search domain used during translation.
 
 .. _`tipc_nametbl_translate.on-exit`:
 
 On exit
 -------
 
-- if name translation is deferred to another node/cluster/zone,
-leaves 'destnode' unchanged (will be non-zero) and returns 0
-- if name translation is attempted and succeeds, sets 'destnode'
-to publishing node and returns port reference (will be non-zero)
-- if name translation is attempted and fails, sets 'destnode' to 0
-and returns 0
+- if translation is deferred to another node, leave 'dnode' unchanged and
+return 0
+- if translation is attempted and succeeds, set 'dnode' to the publishing
+node and return the published (non-zero) port number
+- if translation is attempted and fails, set 'dnode' to 0 and return 0
+
+Note that for legacy users (node configured with Z.C.N address format) the
+'closest-first' lookup algorithm must be maintained, i.e., if dnode is 0
+we must look in the local binding list first
 
 .. _`tipc_nametbl_withdraw`:
 
 tipc_nametbl_withdraw
 =====================
 
-.. c:function:: int tipc_nametbl_withdraw(struct net *net, u32 type, u32 lower, u32 ref, u32 key)
+.. c:function:: int tipc_nametbl_withdraw(struct net *net, u32 type, u32 lower, u32 upper, u32 key)
 
-    withdraw name publication from network name tables
+    withdraw a service binding
 
     :param struct net \*net:
         *undescribed*
@@ -415,7 +263,7 @@ tipc_nametbl_withdraw
     :param u32 lower:
         *undescribed*
 
-    :param u32 ref:
+    :param u32 upper:
         *undescribed*
 
     :param u32 key:
@@ -426,14 +274,11 @@ tipc_nametbl_withdraw
 tipc_nametbl_subscribe
 ======================
 
-.. c:function:: void tipc_nametbl_subscribe(struct tipc_subscription *s, bool status)
+.. c:function:: bool tipc_nametbl_subscribe(struct tipc_subscription *sub)
 
     add a subscription object to the name table
 
-    :param struct tipc_subscription \*s:
-        *undescribed*
-
-    :param bool status:
+    :param struct tipc_subscription \*sub:
         *undescribed*
 
 .. _`tipc_nametbl_unsubscribe`:
@@ -441,34 +286,27 @@ tipc_nametbl_subscribe
 tipc_nametbl_unsubscribe
 ========================
 
-.. c:function:: void tipc_nametbl_unsubscribe(struct tipc_subscription *s)
+.. c:function:: void tipc_nametbl_unsubscribe(struct tipc_subscription *sub)
 
     remove a subscription object from name table
 
-    :param struct tipc_subscription \*s:
+    :param struct tipc_subscription \*sub:
         *undescribed*
 
-.. _`tipc_purge_publications`:
+.. _`tipc_service_delete`:
 
-tipc_purge_publications
-=======================
+tipc_service_delete
+===================
 
-.. c:function:: void tipc_purge_publications(struct net *net, struct name_seq *seq)
+.. c:function:: void tipc_service_delete(struct net *net, struct tipc_service *sc)
 
-    remove all publications for a given type
+    purge all publications for a service and delete it
 
     :param struct net \*net:
         *undescribed*
 
-    :param struct name_seq \*seq:
+    :param struct tipc_service \*sc:
         *undescribed*
-
-.. _`tipc_purge_publications.description`:
-
-Description
------------
-
-tipc_nametbl_lock must be held when calling this function
 
 .. This file was automatic generated / don't edit.
 

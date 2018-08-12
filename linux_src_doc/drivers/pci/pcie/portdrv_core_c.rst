@@ -161,6 +161,50 @@ pcie_port_device_resume
     :param struct device \*dev:
         PCI Express port to handle
 
+.. _`pcie_port_find_service`:
+
+pcie_port_find_service
+======================
+
+.. c:function:: struct pcie_port_service_driver *pcie_port_find_service(struct pci_dev *dev, u32 service)
+
+    find the service driver
+
+    :param struct pci_dev \*dev:
+        PCI Express port the service is associated with
+
+    :param u32 service:
+        Service to find
+
+.. _`pcie_port_find_service.description`:
+
+Description
+-----------
+
+Find PCI Express port service driver associated with given service
+
+.. _`pcie_port_find_device`:
+
+pcie_port_find_device
+=====================
+
+.. c:function:: struct device *pcie_port_find_device(struct pci_dev *dev, u32 service)
+
+    find the struct device
+
+    :param struct pci_dev \*dev:
+        PCI Express port the service is associated with
+
+    :param u32 service:
+        For the service to find
+
+.. _`pcie_port_find_device.description`:
+
+Description
+-----------
+
+Find the struct device associated with given service on a pci_dev
+
 .. _`pcie_port_device_remove`:
 
 pcie_port_device_remove

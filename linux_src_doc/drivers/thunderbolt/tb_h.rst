@@ -94,6 +94,7 @@ Definition
         struct tb_switch_nvm *nvm;
         bool no_nvm_upgrade;
         bool safe_mode;
+        bool boot;
         unsigned int authorized;
         struct work_struct work;
         enum tb_security_level security_level;
@@ -165,6 +166,9 @@ no_nvm_upgrade
 
 safe_mode
     The switch is in safe-mode
+
+boot
+    Whether the switch was already authorized on boot or not
 
 authorized
     Whether the switch is authorized by user or policy
@@ -467,6 +471,8 @@ Definition
         int (*suspend)(struct tb *tb);
         void (*complete)(struct tb *tb);
         void (*handle_event)(struct tb *tb, enum tb_cfg_pkg_type, const void *buf, size_t size);
+        int (*get_boot_acl)(struct tb *tb, uuid_t *uuids, size_t nuuids);
+        int (*set_boot_acl)(struct tb *tb, const uuid_t *uuids, size_t nuuids);
         int (*approve_switch)(struct tb *tb, struct tb_switch *sw);
         int (*add_switch_key)(struct tb *tb, struct tb_switch *sw);
         int (*challenge_switch_key)(struct tb *tb, struct tb_switch *sw, const u8 *challenge, u8 *response);
@@ -504,6 +510,12 @@ complete
 
 handle_event
     Handle thunderbolt event
+
+get_boot_acl
+    Get boot ACL list
+
+set_boot_acl
+    Set boot ACL list
 
 approve_switch
     Approve switch

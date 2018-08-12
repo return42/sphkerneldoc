@@ -2400,6 +2400,36 @@ Return
 zero if val is in range
 -EINVAL val out of range
 
+.. _`lpfc_tgt_queue_depth_set`:
+
+lpfc_tgt_queue_depth_set
+========================
+
+.. c:function:: int lpfc_tgt_queue_depth_set(struct lpfc_vport *vport, uint val)
+
+    Sets an attribute value.
+
+    :param struct lpfc_vport \*vport:
+        *undescribed*
+
+    :param uint val:
+        integer attribute value.
+
+.. _`lpfc_tgt_queue_depth_set.description`:
+
+Description
+-----------
+
+Sets the parameter to the new value.
+
+.. _`lpfc_tgt_queue_depth_set.return`:
+
+Return
+------
+
+zero on success
+-EINVAL if val is invalid
+
 .. _`lpfc_restrict_login_init`:
 
 lpfc_restrict_login_init

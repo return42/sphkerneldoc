@@ -1,31 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/ruc.c
 
-.. _`hfi1_rvt_get_rwqe`:
-
-hfi1_rvt_get_rwqe
-=================
-
-.. c:function:: int hfi1_rvt_get_rwqe(struct rvt_qp *qp, int wr_id_only)
-
-    copy the next RWQE into the QP's RWQE
-
-    :param struct rvt_qp \*qp:
-        the QP
-
-    :param int wr_id_only:
-        update qp->r_wr_id only, not qp->r_sge
-
-.. _`hfi1_rvt_get_rwqe.description`:
-
-Description
------------
-
-Return -1 if there is a local error, 0 if no RWQE is available,
-otherwise return 1.
-
-Can be called from interrupt level.
-
 .. _`ruc_loopback`:
 
 ruc_loopback
@@ -106,6 +81,78 @@ copy of the first middle.
 
 Subsequent middles use the copied entry, editing the
 PSN with 1 or 2 edits.
+
+.. _`hfi1_make_ruc_header_16b`:
+
+hfi1_make_ruc_header_16B
+========================
+
+.. c:function:: void hfi1_make_ruc_header_16B(struct rvt_qp *qp, struct ib_other_headers *ohdr, u32 bth0, u32 bth2, int middle, struct hfi1_pkt_state *ps)
+
+    build a 16B header
+
+    :param struct rvt_qp \*qp:
+        the queue pair
+
+    :param struct ib_other_headers \*ohdr:
+        a pointer to the destination header memory
+
+    :param u32 bth0:
+        bth0 passed in from the RC/UC builder
+
+    :param u32 bth2:
+        bth2 passed in from the RC/UC builder
+
+    :param int middle:
+        non zero implies indicates ahg "could" be used
+
+    :param struct hfi1_pkt_state \*ps:
+        the current packet state
+
+.. _`hfi1_make_ruc_header_16b.this-routine-may-disarm-ahg-under-these-situations`:
+
+This routine may disarm ahg under these situations
+--------------------------------------------------
+
+- packet needs a GRH
+- BECN needed
+- migration state not IB_MIG_MIGRATED
+
+.. _`hfi1_make_ruc_header_9b`:
+
+hfi1_make_ruc_header_9B
+=======================
+
+.. c:function:: void hfi1_make_ruc_header_9B(struct rvt_qp *qp, struct ib_other_headers *ohdr, u32 bth0, u32 bth2, int middle, struct hfi1_pkt_state *ps)
+
+    build a 9B header
+
+    :param struct rvt_qp \*qp:
+        the queue pair
+
+    :param struct ib_other_headers \*ohdr:
+        a pointer to the destination header memory
+
+    :param u32 bth0:
+        bth0 passed in from the RC/UC builder
+
+    :param u32 bth2:
+        bth2 passed in from the RC/UC builder
+
+    :param int middle:
+        non zero implies indicates ahg "could" be used
+
+    :param struct hfi1_pkt_state \*ps:
+        the current packet state
+
+.. _`hfi1_make_ruc_header_9b.this-routine-may-disarm-ahg-under-these-situations`:
+
+This routine may disarm ahg under these situations
+--------------------------------------------------
+
+- packet needs a GRH
+- BECN needed
+- migration state not IB_MIG_MIGRATED
 
 .. _`schedule_send_yield`:
 

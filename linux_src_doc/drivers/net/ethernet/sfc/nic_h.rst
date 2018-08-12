@@ -94,6 +94,7 @@ Definition
         unsigned int vi_base;
         unsigned int n_allocated_vis;
         bool must_realloc_vis;
+        bool must_restore_rss_contexts;
         bool must_restore_filters;
         unsigned int n_piobufs;
         void __iomem *wc_membase, *pio_write_base;
@@ -101,7 +102,6 @@ Definition
         unsigned int piobuf_handle[EF10_TX_PIOBUF_COUNT];
         u16 piobuf_size;
         bool must_restore_piobufs;
-        u32 rx_rss_context;
         bool rx_rss_context_exclusive;
         u64 stats[EF10_STAT_COUNT];
         bool workaround_35388;
@@ -149,6 +149,10 @@ n_allocated_vis
 must_realloc_vis
     Flag: VIs have yet to be reallocated after MC reboot
 
+must_restore_rss_contexts
+    Flag: RSS contexts have yet to be restored after
+    MC reboot
+
 must_restore_filters
     Flag: filters have yet to be restored after MC reboot
 
@@ -173,9 +177,6 @@ piobuf_size
 must_restore_piobufs
     Flag: PIO buffers have yet to be restored after MC
     reboot
-
-rx_rss_context
-    Firmware handle for our RSS context
 
 rx_rss_context_exclusive
     Whether our RSS context is exclusive or shared

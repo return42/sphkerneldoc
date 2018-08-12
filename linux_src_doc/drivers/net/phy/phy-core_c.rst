@@ -47,7 +47,7 @@ phy_resolve_aneg_linkmode
 
 .. c:function:: void phy_resolve_aneg_linkmode(struct phy_device *phydev)
 
-    resolve the advertisments into phy settings
+    resolve the advertisements into phy settings
 
     :param struct phy_device \*phydev:
         The phy_device struct
@@ -57,7 +57,7 @@ phy_resolve_aneg_linkmode
 Description
 -----------
 
-Resolve our and the link partner advertisments into their corresponding
+Resolve our and the link partner advertisements into their corresponding
 speed and duplex. If full duplex was negotiated, extract the pause mode
 from the link partner mask.
 

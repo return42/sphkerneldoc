@@ -10,4 +10,3 @@ netfilter
     nf_conntrack_core_c
     nf_tables_api_c
     x_tables_c
-    xt_TPROXY_c

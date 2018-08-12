@@ -6,12 +6,15 @@
 nfp_net_get_mac_addr
 ====================
 
-.. c:function:: void nfp_net_get_mac_addr(struct nfp_pf *pf, struct nfp_port *port)
+.. c:function:: void nfp_net_get_mac_addr(struct nfp_pf *pf, struct net_device *netdev, struct nfp_port *port)
 
     Get the MAC address.
 
     :param struct nfp_pf \*pf:
         NFP PF handle
+
+    :param struct net_device \*netdev:
+        net_device to set MAC address on
 
     :param struct nfp_port \*port:
         NFP port structure

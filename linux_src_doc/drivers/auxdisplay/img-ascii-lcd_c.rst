@@ -120,7 +120,7 @@ img_ascii_lcd_scroll
     scroll the display by a character
 
     :param struct timer_list \*t:
-        *undescribed*
+        really a pointer to the private data structure
 
 .. _`img_ascii_lcd_scroll.description`:
 

@@ -139,7 +139,7 @@ rdma_create_trans
 
 .. c:function:: int rdma_create_trans(struct p9_client *client, const char *addr, char *args)
 
-    Transport method for creating atransport instance
+    Transport method for creating a transport instance
 
     :param struct p9_client \*client:
         client instance

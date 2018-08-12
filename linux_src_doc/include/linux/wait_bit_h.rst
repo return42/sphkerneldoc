@@ -238,32 +238,28 @@ Returns zero if the bit was (eventually) found to be clear and was
 set.  Returns non-zero if a signal was delivered to the process and
 the \ ``mode``\  allows that signal to wake the process.
 
-.. _`wait_on_atomic_t`:
+.. _`clear_and_wake_up_bit`:
 
-wait_on_atomic_t
-================
+clear_and_wake_up_bit
+=====================
 
-.. c:function:: int wait_on_atomic_t(atomic_t *val, wait_atomic_t_action_f action, unsigned mode)
+.. c:function:: void clear_and_wake_up_bit(int bit, void *word)
 
-    Wait for an atomic_t to become 0
+    clear a bit and wake up anyone waiting on that bit
 
-    :param atomic_t \*val:
-        The atomic value being waited on, a kernel virtual address
+    :param int bit:
+        the bit of the word being waited on
 
-    :param wait_atomic_t_action_f action:
-        the function used to sleep, which may take special actions
+    :param void \*word:
+        the word being waited on, a kernel virtual address
 
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_atomic_t.description`:
+.. _`clear_and_wake_up_bit.description`:
 
 Description
 -----------
 
-Wait for an atomic_t to become 0.  We abuse the bit-wait waitqueue table for
-the purpose of getting a waitqueue, but we set the key to a bit number
-outside of the target 'word'.
+You can use this helper if bitflags are manipulated atomically rather than
+non-atomically under a lock.
 
 .. This file was automatic generated / don't edit.
 

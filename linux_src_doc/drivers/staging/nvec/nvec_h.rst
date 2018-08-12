@@ -191,7 +191,7 @@ Definition
 
     struct nvec_chip {
         struct device *dev;
-        int gpio;
+        struct gpio_desc *gpiod;
         int irq;
         u32 i2c_addr;
         void __iomem *base;
@@ -223,8 +223,8 @@ Members
 dev
     The device
 
-gpio
-    The same as for \ :c:type:`struct nvec_platform_data <nvec_platform_data>`\ 
+gpiod
+    *undescribed*
 
 irq
     The IRQ of the I2C device

@@ -103,7 +103,7 @@ fm10k_read_hw_stats_32b
         address of register containing a 32-bit value
 
     :param struct fm10k_hw_stat \*stat:
-        *undescribed*
+        pointer to structure holding hw stat information
 
 .. _`fm10k_read_hw_stats_32b.description`:
 
@@ -129,7 +129,7 @@ fm10k_read_hw_stats_48b
         address of register containing the lower 32-bit value
 
     :param struct fm10k_hw_stat \*stat:
-        *undescribed*
+        pointer to structure holding hw stat information
 
 .. _`fm10k_read_hw_stats_48b.description`:
 

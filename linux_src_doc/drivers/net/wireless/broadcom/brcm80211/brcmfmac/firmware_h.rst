@@ -20,8 +20,7 @@ Definition
     struct brcmf_firmware_mapping {
         u32 chipid;
         u32 revmask;
-        const char *fw;
-        const char *nvram;
+        const char *fw_base;
     }
 
 .. _`brcmf_firmware_mapping.members`:
@@ -35,11 +34,8 @@ chipid
 revmask
     bitmask of revisions, e.g. 0x10 means rev 4 only, 0xf means rev 0-3
 
-fw
-    name of the firmware file.
-
-nvram
-    name of nvram file.
+fw_base
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

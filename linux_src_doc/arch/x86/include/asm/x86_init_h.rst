@@ -323,6 +323,7 @@ Definition
         void (*guest_late_init)(void);
         bool (*x2apic_available)(void);
         void (*init_mem_mapping)(void);
+        void (*init_after_bootmem)(void);
     }
 
 .. _`x86_hyper_init.members`:
@@ -341,6 +342,41 @@ x2apic_available
 
 init_mem_mapping
     setup early mappings during \ :c:func:`init_mem_mapping`\ 
+
+init_after_bootmem
+    guest init after boot allocator is finished
+
+.. _`x86_init_acpi`:
+
+struct x86_init_acpi
+====================
+
+.. c:type:: struct x86_init_acpi
+
+    x86 ACPI init functions
+
+.. _`x86_init_acpi.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct x86_init_acpi {
+        u64 (*get_root_pointer)(void);
+        void (*reduced_hw_early_init)(void);
+    }
+
+.. _`x86_init_acpi.members`:
+
+Members
+-------
+
+get_root_pointer
+    get RSDP address
+
+reduced_hw_early_init
+    hardware reduced platform early init
 
 .. _`x86_init_ops`:
 
@@ -368,6 +404,7 @@ Definition
         struct x86_init_iommu iommu;
         struct x86_init_pci pci;
         struct x86_hyper_init hyper;
+        struct x86_init_acpi acpi;
     }
 
 .. _`x86_init_ops.members`:
@@ -400,6 +437,9 @@ pci
     *undescribed*
 
 hyper
+    *undescribed*
+
+acpi
     *undescribed*
 
 .. _`x86_cpuinit_ops`:
@@ -622,8 +662,8 @@ Definition
     struct x86_platform_ops {
         unsigned long (*calibrate_cpu)(void);
         unsigned long (*calibrate_tsc)(void);
-        void (*get_wallclock)(struct timespec *ts);
-        int (*set_wallclock)(const struct timespec *ts);
+        void (*get_wallclock)(struct timespec64 *ts);
+        int (*set_wallclock)(const struct timespec64 *ts);
         void (*iommu_shutdown)(void);
         bool (*is_untracked_pat_range)(u64 start, u64 end);
         void (*nmi_init)(void);

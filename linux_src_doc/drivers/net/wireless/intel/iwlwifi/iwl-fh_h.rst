@@ -549,7 +549,7 @@ struct iwl_tfh_tfd
 
 .. c:type:: struct iwl_tfh_tfd
 
-    Transmit Frame Descriptor (TFD) @ num_tbs 0-4 number of active tbs 5 -15   reserved @ tbs[25]    transmit frame buffer descriptors @ \__pad      padding
+    Transmit Frame Descriptor (TFD) \ ````\  num_tbs 0-4 number of active tbs 5 -15   reserved \ ````\  tbs[25]    transmit frame buffer descriptors \ ````\  \__pad      padding
 
 .. _`iwl_tfh_tfd.definition`:
 

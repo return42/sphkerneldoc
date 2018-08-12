@@ -37,80 +37,77 @@ fsl_ssi_isr
     :param void \*dev_id:
         *undescribed*
 
-.. _`fsl_ssi_rxtx_config`:
+.. _`fsl_ssi_config_enable`:
 
-fsl_ssi_rxtx_config
-===================
+fsl_ssi_config_enable
+=====================
 
-.. c:function:: void fsl_ssi_rxtx_config(struct fsl_ssi *ssi, bool enable)
-
-    :param struct fsl_ssi \*ssi:
-        *undescribed*
-
-    :param bool enable:
-        *undescribed*
-
-.. _`fsl_ssi_fifo_clear`:
-
-fsl_ssi_fifo_clear
-==================
-
-.. c:function:: void fsl_ssi_fifo_clear(struct fsl_ssi *ssi, bool is_rx)
+.. c:function:: void fsl_ssi_config_enable(struct fsl_ssi *ssi, bool tx)
 
     :param struct fsl_ssi \*ssi:
         *undescribed*
 
-    :param bool is_rx:
+    :param bool tx:
         *undescribed*
 
-.. _`fsl_ssi_disable_val`:
+.. _`fsl_ssi_config_enable.notes`:
 
-fsl_ssi_disable_val
-===================
+Notes
+-----
 
-.. c:function::  fsl_ssi_disable_val( vals_disable,  vals_stream,  stream_active)
+1) For offline_config SoCs, enable all necessary bits of both streams
+when 1st stream starts, even if the opposite stream will not start
+2) It also clears FIFO before setting regvals; SOR is safe to set online
 
-    getting disabled. This keeps the bits enabled that are necessary for the second stream to work if 'stream_active' is true.
+.. _`_ssi_xor_shared_bits`:
 
-    :param  vals_disable:
-        *undescribed*
+\_ssi_xor_shared_bits
+=====================
 
-    :param  vals_stream:
-        *undescribed*
+.. c:function::  _ssi_xor_shared_bits( vals,  avals,  aactive)
 
-    :param  stream_active:
-        *undescribed*
+    :param  vals:
+        regvals of the current stream
 
-.. _`fsl_ssi_disable_val.detailed-calculation`:
+    :param  avals:
+        regvals of the opposite stream
 
-Detailed calculation
---------------------
+    :param  aactive:
+        active state of the opposite stream
 
-These are the values that need to be active after disabling. For non-active
-second stream, this is 0:
-vals_stream \* !!stream_active
+.. _`_ssi_xor_shared_bits.description`:
 
-The following computes the overall differences between the setup for the
-to-disable stream and the active stream, a simple XOR:
-vals_disable ^ (vals_stream \* !!(stream_active))
+Description
+-----------
 
-The full expression adds a mask on all values we care about
+When both streams are active, disabling some bits for the current stream
+might break the other stream if these bits are used by it.
 
-.. _`fsl_ssi_config`:
+1) XOR vals and avals to get the differences if the other stream is active;
+Otherwise, return current vals if the other stream is not active
+2) AND the result of 1) with the current vals
 
-fsl_ssi_config
-==============
+.. _`fsl_ssi_config_disable`:
 
-.. c:function:: void fsl_ssi_config(struct fsl_ssi *ssi, bool enable, struct fsl_ssi_regvals *vals)
+fsl_ssi_config_disable
+======================
+
+.. c:function:: void fsl_ssi_config_disable(struct fsl_ssi *ssi, bool tx)
 
     :param struct fsl_ssi \*ssi:
         *undescribed*
 
-    :param bool enable:
+    :param bool tx:
         *undescribed*
 
-    :param struct fsl_ssi_regvals \*vals:
-        *undescribed*
+.. _`fsl_ssi_config_disable.notes`:
+
+Notes
+-----
+
+1) For offline_config SoCs, to avoid online reconfigurations, disable all
+bits of both streams at once when the last stream is abort to end
+2) It also clears FIFO after unsetting regvals; SOR is safe to set online
 
 .. _`fsl_ssi_setup_regvals`:
 
@@ -239,6 +236,26 @@ Description
 
 The DMA channel is in external master start and pause mode, which
 means the SSI completely controls the flow of data.
+
+.. _`fsl_ssi_hw_init`:
+
+fsl_ssi_hw_init
+===============
+
+.. c:function:: int fsl_ssi_hw_init(struct fsl_ssi *ssi)
+
+    :param struct fsl_ssi \*ssi:
+        *undescribed*
+
+.. _`fsl_ssi_hw_clean`:
+
+fsl_ssi_hw_clean
+================
+
+.. c:function:: void fsl_ssi_hw_clean(struct fsl_ssi *ssi)
+
+    :param struct fsl_ssi \*ssi:
+        *undescribed*
 
 .. _`make_lowercase`:
 

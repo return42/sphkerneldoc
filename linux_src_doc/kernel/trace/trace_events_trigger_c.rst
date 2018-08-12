@@ -6,7 +6,7 @@
 event_triggers_call
 ===================
 
-.. c:function:: enum event_trigger_type event_triggers_call(struct trace_event_file *file, void *rec)
+.. c:function:: enum event_trigger_type event_triggers_call(struct trace_event_file *file, void *rec, struct ring_buffer_event *event)
 
     Call triggers associated with a trace event
 
@@ -15,6 +15,9 @@ event_triggers_call
 
     :param void \*rec:
         The trace entry for the event, NULL for unconditional invocation
+
+    :param struct ring_buffer_event \*event:
+        *undescribed*
 
 .. _`event_triggers_call.description`:
 
@@ -50,7 +53,7 @@ any trigger that should be deferred, ETT_NONE if nothing to defer.
 event_triggers_post_call
 ========================
 
-.. c:function:: void event_triggers_post_call(struct trace_event_file *file, enum event_trigger_type tt, void *rec)
+.. c:function:: void event_triggers_post_call(struct trace_event_file *file, enum event_trigger_type tt)
 
     Call 'post_triggers' for a trace event
 
@@ -59,9 +62,6 @@ event_triggers_post_call
 
     :param enum event_trigger_type tt:
         enum event_trigger_type containing a set bit for each trigger to invoke
-
-    :param void \*rec:
-        The trace entry for the event
 
 .. _`event_triggers_post_call.description`:
 

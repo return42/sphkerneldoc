@@ -48,7 +48,7 @@ for_each_pool_worker
 Description
 -----------
 
-This must be called with \ ``pool``\ ->attach_mutex.
+This must be called with wq_pool_attach_mutex.
 
 The if/else clause exists only for the lockdep assertion and can be
 ignored.
@@ -710,6 +710,31 @@ pending and its timer was modified.
 This function is safe to call from any context including IRQ handler.
 See \ :c:func:`try_to_grab_pending`\  for details.
 
+.. _`queue_rcu_work`:
+
+queue_rcu_work
+==============
+
+.. c:function:: bool queue_rcu_work(struct workqueue_struct *wq, struct rcu_work *rwork)
+
+    queue work after a RCU grace period
+
+    :param struct workqueue_struct \*wq:
+        workqueue to use
+
+    :param struct rcu_work \*rwork:
+        work to queue
+
+.. _`queue_rcu_work.return`:
+
+Return
+------
+
+\ ``false``\  if \ ``rwork``\  was already pending, \ ``true``\  otherwise.  Note
+that a full RCU grace period is guaranteed only after a \ ``true``\  return.
+While \ ``rwork``\  is guarnateed to be executed after a \ ``false``\  return, the
+execution may happen before a full RCU grace period has passed.
+
 .. _`worker_enter_idle`:
 
 worker_enter_idle
@@ -792,15 +817,12 @@ cpu-[un]hotplugs.
 worker_detach_from_pool
 =======================
 
-.. c:function:: void worker_detach_from_pool(struct worker *worker, struct worker_pool *pool)
+.. c:function:: void worker_detach_from_pool(struct worker *worker)
 
     detach a worker from its pool
 
     :param struct worker \*worker:
         worker which is attached to its pool
-
-    :param struct worker_pool \*pool:
-        the pool \ ``worker``\  is attached to
 
 .. _`worker_detach_from_pool.description`:
 
@@ -1345,6 +1367,26 @@ Return
 \ ``true``\  if \ :c:func:`flush_work`\  waited for the work to finish execution,
 \ ``false``\  if it was already idle.
 
+.. _`flush_rcu_work`:
+
+flush_rcu_work
+==============
+
+.. c:function:: bool flush_rcu_work(struct rcu_work *rwork)
+
+    wait for a rwork to finish executing the last queueing
+
+    :param struct rcu_work \*rwork:
+        the rcu work to flush
+
+.. _`flush_rcu_work.return`:
+
+Return
+------
+
+\ ``true``\  if \ :c:func:`flush_rcu_work`\  waited for the work to finish execution,
+\ ``false``\  if it was already idle.
+
 .. _`cancel_delayed_work`:
 
 cancel_delayed_work
@@ -1788,6 +1830,33 @@ Context
 -------
 
 Don't call from IRQ context.
+
+.. _`current_work`:
+
+current_work
+============
+
+.. c:function:: struct work_struct *current_work( void)
+
+    retrieve \ ``current``\  task's work struct
+
+    :param  void:
+        no arguments
+
+.. _`current_work.description`:
+
+Description
+-----------
+
+Determine if \ ``current``\  task is a workqueue worker and what it's working on.
+Useful to find out the context that the \ ``current``\  task is running in.
+
+.. _`current_work.return`:
+
+Return
+------
+
+work struct if \ ``current``\  task is a workqueue worker, \ ``NULL``\  otherwise.
 
 .. _`current_is_workqueue_rescuer`:
 

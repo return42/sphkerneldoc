@@ -36,6 +36,29 @@ ring_buffer_event_data
     :param struct ring_buffer_event \*event:
         the event to get the data from
 
+.. _`ring_buffer_event_time_stamp`:
+
+ring_buffer_event_time_stamp
+============================
+
+.. c:function:: u64 ring_buffer_event_time_stamp(struct ring_buffer_event *event)
+
+    return the event's extended timestamp
+
+    :param struct ring_buffer_event \*event:
+        the event to get the timestamp of
+
+.. _`ring_buffer_event_time_stamp.description`:
+
+Description
+-----------
+
+Returns the extended timestamp associated with a data event.
+An extended time_stamp is a 64-bit timestamp represented
+internally in a special way that makes the best use of space
+contained within a ring buffer event.  This function decodes
+it and maps it to a straight u64 value.
+
 .. _`ring_buffer_page_len`:
 
 ring_buffer_page_len
@@ -245,6 +268,52 @@ is the actual size that is written to the ring buffer,
 and with this, we can determine what to place into the
 data field.
 
+.. _`ring_buffer_nest_start`:
+
+ring_buffer_nest_start
+======================
+
+.. c:function:: void ring_buffer_nest_start(struct ring_buffer *buffer)
+
+    Allow to trace while nested
+
+    :param struct ring_buffer \*buffer:
+        The ring buffer to modify
+
+.. _`ring_buffer_nest_start.description`:
+
+Description
+-----------
+
+The ring buffer has a safety mechanism to prevent recursion.
+But there may be a case where a trace needs to be done while
+tracing something else. In this case, calling this function
+will allow this function to nest within a currently active
+\ :c:func:`ring_buffer_lock_reserve`\ .
+
+Call this function before calling another \ :c:func:`ring_buffer_lock_reserve`\  and
+call \ :c:func:`ring_buffer_nest_end`\  after the nested \ :c:func:`ring_buffer_unlock_commit`\ .
+
+.. _`ring_buffer_nest_end`:
+
+ring_buffer_nest_end
+====================
+
+.. c:function:: void ring_buffer_nest_end(struct ring_buffer *buffer)
+
+    Allow to trace while nested
+
+    :param struct ring_buffer \*buffer:
+        The ring buffer to modify
+
+.. _`ring_buffer_nest_end.description`:
+
+Description
+-----------
+
+Must be called after \ :c:func:`ring_buffer_nest_start`\  and after the
+\ :c:func:`ring_buffer_unlock_commit`\ .
+
 .. _`ring_buffer_unlock_commit`:
 
 ring_buffer_unlock_commit
@@ -289,7 +358,7 @@ ring_buffer_lock_reserve
 Description
 -----------
 
-Returns a reseverd event on the ring buffer to copy directly to.
+Returns a reserved event on the ring buffer to copy directly to.
 The user of this interface will need to get the body to write into
 and can use the \ :c:func:`ring_buffer_event_data`\  interface.
 
@@ -323,7 +392,7 @@ Sometimes an event that is in the ring buffer needs to be ignored.
 This function lets the user discard an event in the ring buffer
 and then that event will not be read later.
 
-This function only works if it is called before the the item has been
+This function only works if it is called before the item has been
 committed. It will try to free the event from the ring buffer
 if another event has not been added behind it.
 
@@ -471,6 +540,30 @@ Description
 -----------
 
 Returns true if the ring buffer is in a state that it accepts writes.
+
+.. _`ring_buffer_record_is_set_on`:
+
+ring_buffer_record_is_set_on
+============================
+
+.. c:function:: int ring_buffer_record_is_set_on(struct ring_buffer *buffer)
+
+    return true if the ring buffer is set writable
+
+    :param struct ring_buffer \*buffer:
+        The ring buffer to see if write is set enabled
+
+.. _`ring_buffer_record_is_set_on.description`:
+
+Description
+-----------
+
+Returns true if the ring buffer is set writable by \ :c:func:`ring_buffer_record_on`\ .
+Note that this does NOT mean it is in a writable state.
+
+It may return true when the ring buffer has been disabled by
+\ :c:func:`ring_buffer_record_disable`\ , as that is a temporary disabling of
+the ring buffer.
 
 .. _`ring_buffer_record_disable_cpu`:
 
@@ -803,7 +896,7 @@ This performs the initial preparations necessary to iterate
 through the buffer.  Memory is allocated, buffer recording
 is disabled, and the iterator pointer is returned to the caller.
 
-Disabling buffer recordng prevents the reading from being
+Disabling buffer recording prevents the reading from being
 corrupted. This is not a consuming read, so a producer is not
 expected.
 

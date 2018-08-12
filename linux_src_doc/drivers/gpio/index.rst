@@ -28,13 +28,12 @@ gpio
     gpio-pcie-idio-24_c
     gpio-pisosr_c
     gpio-pl061_c
+    gpio-pmic-eic-sprd_c
     gpio-reg_c
     gpio-spear-spics_c
     gpio-stp-xway_c
     gpio-syscon_c
     gpio-tpic2810_c
-    gpio-tz1090-pdc_c
-    gpio-tz1090_c
     gpio-winbond_c
     gpio-ws16c48_c
     gpio-xgene-sb_c

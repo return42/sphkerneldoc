@@ -14,7 +14,7 @@ tpm_transmit
         TPM chip to use
 
     :param struct tpm_space \*space:
-        *undescribed*
+        tpm space
 
     :param u8 \*buf:
         TPM command buffer
@@ -25,12 +25,29 @@ tpm_transmit
     :param unsigned int flags:
         tpm transmit flags - bitmap
 
+.. _`tpm_transmit.description`:
+
+Description
+-----------
+
+A wrapper around tpm_try_transmit that handles TPM2_RC_RETRY
+returns from the TPM and retransmits the command after a delay up
+to a maximum wait of TPM2_DURATION_LONG.
+
+.. _`tpm_transmit.note`:
+
+Note
+----
+
+TPM1 never returns TPM2_RC_RETRY so the retry logic is TPM2
+only
+
 .. _`tpm_transmit.return`:
 
 Return
 ------
 
-0 when the operation is successful.
+the length of the return when the operation is successful.
 A negative number for system errors (errno).
 
 .. _`tpm_transmit_cmd`:
@@ -38,7 +55,7 @@ A negative number for system errors (errno).
 tpm_transmit_cmd
 ================
 
-.. c:function:: ssize_t tpm_transmit_cmd(struct tpm_chip *chip, struct tpm_space *space, const void *buf, size_t bufsiz, size_t min_rsp_body_length, unsigned int flags, const char *desc)
+.. c:function:: ssize_t tpm_transmit_cmd(struct tpm_chip *chip, struct tpm_space *space, void *buf, size_t bufsiz, size_t min_rsp_body_length, unsigned int flags, const char *desc)
 
     send a tpm command to the device The function extracts tpm out header return code
 
@@ -46,9 +63,9 @@ tpm_transmit_cmd
         TPM chip to use
 
     :param struct tpm_space \*space:
-        *undescribed*
+        tpm space
 
-    :param const void \*buf:
+    :param void \*buf:
         TPM command buffer
 
     :param size_t bufsiz:

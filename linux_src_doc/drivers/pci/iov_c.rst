@@ -32,6 +32,18 @@ pci_iov_release
     :param struct pci_dev \*dev:
         the PCI device
 
+.. _`pci_iov_remove`:
+
+pci_iov_remove
+==============
+
+.. c:function:: void pci_iov_remove(struct pci_dev *dev)
+
+    clean up SR-IOV state after PF driver is detached
+
+    :param struct pci_dev \*dev:
+        the PCI device
+
 .. _`pci_iov_update_resource`:
 
 pci_iov_update_resource
@@ -247,6 +259,30 @@ Description
 For a PCIe device with SRIOV support, return the PCIe
 SRIOV capability value of TotalVFs or the value of driver_max_VFs
 if the driver reduced it.  Otherwise 0.
+
+.. _`pci_sriov_configure_simple`:
+
+pci_sriov_configure_simple
+==========================
+
+.. c:function:: int pci_sriov_configure_simple(struct pci_dev *dev, int nr_virtfn)
+
+    helper to configure SR-IOV
+
+    :param struct pci_dev \*dev:
+        the PCI device
+
+    :param int nr_virtfn:
+        number of virtual functions to enable, 0 to disable
+
+.. _`pci_sriov_configure_simple.description`:
+
+Description
+-----------
+
+Enable or disable SR-IOV for devices that don't require any PF setup
+before enabling SR-IOV.  Return value is negative on error, or number of
+VFs allocated on success.
 
 .. This file was automatic generated / don't edit.
 

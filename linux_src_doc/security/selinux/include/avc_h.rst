@@ -6,9 +6,12 @@
 avc_audit
 =========
 
-.. c:function:: int avc_audit(u32 ssid, u32 tsid, u16 tclass, u32 requested, struct av_decision *avd, int result, struct common_audit_data *a, int flags)
+.. c:function:: int avc_audit(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass, u32 requested, struct av_decision *avd, int result, struct common_audit_data *a, int flags)
 
     Audit the granting or denial of permissions.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier

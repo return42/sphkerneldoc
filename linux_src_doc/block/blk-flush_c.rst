@@ -49,7 +49,7 @@ Return
 blk_kick_flush
 ==============
 
-.. c:function:: bool blk_kick_flush(struct request_queue *q, struct blk_flush_queue *fq)
+.. c:function:: bool blk_kick_flush(struct request_queue *q, struct blk_flush_queue *fq, unsigned int flags)
 
     consider issuing flush request
 
@@ -58,6 +58,9 @@ blk_kick_flush
 
     :param struct blk_flush_queue \*fq:
         flush queue
+
+    :param unsigned int flags:
+        cmd_flags of the original request
 
 .. _`blk_kick_flush.description`:
 

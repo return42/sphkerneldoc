@@ -13,8 +13,7 @@ irqchip
     irq-ftintc010_c
     irq-imgpdc_c
     irq-mbigen_c
-    irq-metag-ext_c
-    irq-metag_c
     irq-s3c24xx_c
     irq-versatile-fpga_c
     irq-vic_c
+    qcom-pdc_c

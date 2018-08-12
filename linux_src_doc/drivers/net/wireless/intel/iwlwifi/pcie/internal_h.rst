@@ -637,6 +637,8 @@ Definition
         u32 hw_mask;
         cpumask_t affinity_mask[IWL_MAX_RX_HW_QUEUES];
         u16 tx_cmd_queue_size;
+        bool in_rescan;
+        bool scheduled_for_removal;
     }
 
 .. _`iwl_trans_pcie.members`:
@@ -846,7 +848,13 @@ affinity_mask
     *undescribed*
 
 tx_cmd_queue_size
-    the size of the tx command queue
+    *undescribed*
+
+in_rescan
+    true if we have triggered a device rescan
+
+scheduled_for_removal
+    true if we have scheduled a device removal
 
 .. This file was automatic generated / don't edit.
 

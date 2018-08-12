@@ -192,12 +192,15 @@ rvt_dealloc_ucontext
 rvt_register_device
 ===================
 
-.. c:function:: int rvt_register_device(struct rvt_dev_info *rdi)
+.. c:function:: int rvt_register_device(struct rvt_dev_info *rdi, u32 driver_id)
 
     register a driver
 
     :param struct rvt_dev_info \*rdi:
         main dev structure for all of rdmavt operations
+
+    :param u32 driver_id:
+        *undescribed*
 
 .. _`rvt_register_device.description`:
 

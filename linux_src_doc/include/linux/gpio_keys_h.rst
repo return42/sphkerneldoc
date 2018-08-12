@@ -24,6 +24,7 @@ Definition
         const char *desc;
         unsigned int type;
         int wakeup;
+        int wakeup_event_action;
         int debounce_interval;
         bool can_disable;
         int value;
@@ -53,6 +54,9 @@ type
 
 wakeup
     configure the button as a wake-up source
+
+wakeup_event_action
+    event action to trigger wakeup
 
 debounce_interval
     debounce ticks interval in msecs

@@ -939,6 +939,36 @@ Description
 This searches for expander device based on handle, then returns the
 sas_node object.
 
+.. _`mpt3sas_scsih_enclosure_find_by_handle`:
+
+mpt3sas_scsih_enclosure_find_by_handle
+======================================
+
+.. c:function:: struct _enclosure_node *mpt3sas_scsih_enclosure_find_by_handle(struct MPT3SAS_ADAPTER *ioc, u16 handle)
+
+    exclosure device search
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 handle:
+        enclosure handle (assigned by firmware)
+
+.. _`mpt3sas_scsih_enclosure_find_by_handle.context`:
+
+Context
+-------
+
+Calling function should acquire ioc->sas_device_lock
+
+.. _`mpt3sas_scsih_enclosure_find_by_handle.description`:
+
+Description
+-----------
+
+This searches for enclosure device based on handle, then returns the
+enclosure object.
+
 .. _`mpt3sas_scsih_expander_find_by_sas_address`:
 
 mpt3sas_scsih_expander_find_by_sas_address
@@ -1452,7 +1482,7 @@ During taskmangement request, we need to freeze the device queue.
 mpt3sas_scsih_issue_tm
 ======================
 
-.. c:function:: int mpt3sas_scsih_issue_tm(struct MPT3SAS_ADAPTER *ioc, u16 handle, u64 lun, u8 type, u16 smid_task, u16 msix_task, ulong timeout)
+.. c:function:: int mpt3sas_scsih_issue_tm(struct MPT3SAS_ADAPTER *ioc, u16 handle, u64 lun, u8 type, u16 smid_task, u16 msix_task, u8 timeout, u8 tr_method)
 
     main routine for sending tm requests
 
@@ -1474,8 +1504,11 @@ mpt3sas_scsih_issue_tm
     :param u16 msix_task:
         MSIX table index supplied by the OS
 
-    :param ulong timeout:
+    :param u8 timeout:
         timeout in seconds
+
+    :param u8 tr_method:
+        Target Reset Method
 
 .. _`mpt3sas_scsih_issue_tm.context`:
 
@@ -2090,7 +2123,7 @@ Return 1 meaning mf should be freed from \_base_interrupt
 \_scsih_issue_delayed_event_ack
 ===============================
 
-.. c:function:: void _scsih_issue_delayed_event_ack(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 event, u32 event_context)
+.. c:function:: void _scsih_issue_delayed_event_ack(struct MPT3SAS_ADAPTER *ioc, u16 smid, U16 event, U32 event_context)
 
     issue delayed Event ACK messages
 
@@ -2100,10 +2133,10 @@ Return 1 meaning mf should be freed from \_base_interrupt
     :param u16 smid:
         system request message index
 
-    :param u16 event:
+    :param U16 event:
         Event ID
 
-    :param u32 event_context:
+    :param U32 event_context:
         used to track events uniquely
 
 .. _`_scsih_issue_delayed_event_ack.description`:
@@ -2853,31 +2886,6 @@ Description
 
 Return 0 for success, else failure
 
-.. _`_scsih_get_enclosure_logicalid_chassis_slot`:
-
-\_scsih_get_enclosure_logicalid_chassis_slot
-============================================
-
-.. c:function:: void _scsih_get_enclosure_logicalid_chassis_slot(struct MPT3SAS_ADAPTER *ioc, Mpi2SasDevicePage0_t *sas_device_pg0, struct _sas_device *sas_device)
-
-    get device's EnclosureLogicalID and ChassisSlot information.
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param Mpi2SasDevicePage0_t \*sas_device_pg0:
-        SAS device page0
-
-    :param struct _sas_device \*sas_device:
-        per sas device object
-
-.. _`_scsih_get_enclosure_logicalid_chassis_slot.description`:
-
-Description
------------
-
-Returns nothing.
-
 .. _`_scsih_check_device`:
 
 \_scsih_check_device
@@ -3377,6 +3385,35 @@ Description
 
 Return nothing.
 
+.. _`_scsih_sas_device_discovery_error_event`:
+
+\_scsih_sas_device_discovery_error_event
+========================================
+
+.. c:function:: void _scsih_sas_device_discovery_error_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
+
+    display SAS device discovery error events
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct fw_event_work \*fw_event:
+        The fw_event_work object
+
+.. _`_scsih_sas_device_discovery_error_event.context`:
+
+Context
+-------
+
+user.
+
+.. _`_scsih_sas_device_discovery_error_event.description`:
+
+Description
+-----------
+
+Return nothing.
+
 .. _`_scsih_pcie_enumeration_event`:
 
 \_scsih_pcie_enumeration_event
@@ -3836,6 +3873,25 @@ Description
 
 After host reset, find out whether devices are still responding.
 Used in \_scsih_remove_unresponsive_sas_devices.
+
+Return nothing.
+
+.. _`_scsih_create_enclosure_list_after_reset`:
+
+\_scsih_create_enclosure_list_after_reset
+=========================================
+
+.. c:function:: void _scsih_create_enclosure_list_after_reset(struct MPT3SAS_ADAPTER *ioc)
+
+    Free Existing list, And create enclosure list by scanning all Enclosure Page(0)s
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+.. _`_scsih_create_enclosure_list_after_reset.description`:
+
+Description
+-----------
 
 Return nothing.
 

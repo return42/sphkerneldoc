@@ -570,6 +570,28 @@ Description
 
 Returns negative errno, or else the number of bytes transferred.
 
+.. _`i2c_get_device_id`:
+
+i2c_get_device_id
+=================
+
+.. c:function:: int i2c_get_device_id(const struct i2c_client *client, struct i2c_device_identity *id)
+
+    get manufacturer, part id and die revision of a device
+
+    :param const struct i2c_client \*client:
+        The device to query
+
+    :param struct i2c_device_identity \*id:
+        The queried information
+
+.. _`i2c_get_device_id.description`:
+
+Description
+-----------
+
+Returns negative errno on error, zero on success.
+
 .. _`i2c_get_dma_safe_msg_buf`:
 
 i2c_get_dma_safe_msg_buf

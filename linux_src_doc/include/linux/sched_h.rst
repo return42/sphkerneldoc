@@ -92,6 +92,65 @@ This structure groups together three kinds of CPU time that are tracked for
 threads and thread groups.  Most things considering CPU time want to group
 these counts together and treat all three of them in parallel.
 
+.. _`util_est`:
+
+struct util_est
+===============
+
+.. c:type:: struct util_est
+
+    Estimation utilization of FAIR tasks
+
+.. _`util_est.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct util_est {
+        unsigned int enqueued;
+        unsigned int ewma;
+    #define UTIL_EST_WEIGHT_SHIFT 2
+    }
+
+.. _`util_est.members`:
+
+Members
+-------
+
+enqueued
+    instantaneous estimated utilization of a task/cpu
+
+ewma
+    the Exponential Weighted Moving Average (EWMA)
+    utilization of a task
+
+.. _`util_est.description`:
+
+Description
+-----------
+
+Support data structure to track an Exponential Weighted Moving Average
+(EWMA) of a FAIR task's utilization. New samples are added to the moving
+average each time a task completes an activation. Sample's weight is chosen
+so that the EWMA will be relatively insensitive to transient changes to the
+task's workload.
+
+.. _`util_est.the-enqueued-attribute-has-a-slightly-different-meaning-for-tasks-and-cpus`:
+
+The enqueued attribute has a slightly different meaning for tasks and cpus
+--------------------------------------------------------------------------
+
+- task:   the task's util_avg at last task dequeue time
+- cfs_rq: the sum of util_est.enqueued for each RUNNABLE task on that CPU
+Thus, the util_est.enqueued of a task represents the contribution on the
+estimated utilization of the CPU where that task is currently enqueued.
+
+Only for tasks we track a moving average of the past instantaneous
+estimated utilization. This allows to absorb sporadic drops in utilization
+of an otherwise almost periodic task.
+
 .. _`pid_alive`:
 
 pid_alive

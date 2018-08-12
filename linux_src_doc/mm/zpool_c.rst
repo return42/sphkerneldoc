@@ -375,10 +375,10 @@ zpool_evictable
 
 .. c:function:: bool zpool_evictable(struct zpool *zpool)
 
-    Test if zpool is potentially evictable \ ``pool``\         The zpool to test
+    Test if zpool is potentially evictable
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool to test
 
 .. _`zpool_evictable.description`:
 

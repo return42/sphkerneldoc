@@ -768,6 +768,35 @@ IWL_UMAC_SCAN_FLAG_START_NOTIF
     notification will be sent to the driver
     when scan starts.
 
+.. _`iwl_umac_scan_general_flags2`:
+
+enum iwl_umac_scan_general_flags2
+=================================
+
+.. c:type:: enum iwl_umac_scan_general_flags2
+
+    UMAC scan general flags #2
+
+.. _`iwl_umac_scan_general_flags2.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_umac_scan_general_flags2 {
+        IWL_UMAC_SCAN_GEN_FLAGS2_NOTIF_PER_CHNL
+    };
+
+.. _`iwl_umac_scan_general_flags2.constants`:
+
+Constants
+---------
+
+IWL_UMAC_SCAN_GEN_FLAGS2_NOTIF_PER_CHNL
+    Whether to send a complete
+    notification per channel or not.
+
 .. _`iwl_scan_channel_cfg_umac`:
 
 struct iwl_scan_channel_cfg_umac
@@ -886,6 +915,41 @@ preq
 direct_scan
     list of SSIDs for directed active scan
 
+.. _`iwl_scan_umac_chan_param`:
+
+struct iwl_scan_umac_chan_param
+===============================
+
+.. c:type:: struct iwl_scan_umac_chan_param
+
+
+.. _`iwl_scan_umac_chan_param.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_scan_umac_chan_param {
+        u8 flags;
+        u8 count;
+        __le16 reserved;
+    }
+
+.. _`iwl_scan_umac_chan_param.members`:
+
+Members
+-------
+
+flags
+    channel flags \ :c:type:`enum iwl_scan_channel_flags <iwl_scan_channel_flags>`\ 
+
+count
+    num of channels in scan request
+
+reserved
+    for future use and alignment
+
 .. _`iwl_scan_req_umac`:
 
 struct iwl_scan_req_umac
@@ -917,9 +981,7 @@ Definition
                 __le32 max_out_time;
                 __le32 suspend_time;
                 __le32 scan_priority;
-                u8 channel_flags;
-                u8 n_channels;
-                __le16 reserved2;
+                struct iwl_scan_umac_chan_param channel;
                 u8 data[];
             } v1;
             struct {
@@ -930,9 +992,7 @@ Definition
                 __le32 max_out_time[SCAN_TWO_LMACS];
                 __le32 suspend_time[SCAN_TWO_LMACS];
                 __le32 scan_priority;
-                u8 channel_flags;
-                u8 n_channels;
-                __le16 reserved2;
+                struct iwl_scan_umac_chan_param channel;
                 u8 data[];
             } v6;
             struct {
@@ -946,11 +1006,24 @@ Definition
                 __le32 max_out_time[SCAN_TWO_LMACS];
                 __le32 suspend_time[SCAN_TWO_LMACS];
                 __le32 scan_priority;
-                u8 channel_flags;
-                u8 n_channels;
-                __le16 reserved2;
+                struct iwl_scan_umac_chan_param channel;
                 u8 data[];
             } v7;
+            struct {
+                u8 active_dwell[SCAN_TWO_LMACS];
+                u8 reserved2;
+                u8 adwell_default_n_aps;
+                u8 adwell_default_n_aps_social;
+                u8 general_flags2;
+                __le16 adwell_max_budget;
+                __le32 max_out_time[SCAN_TWO_LMACS];
+                __le32 suspend_time[SCAN_TWO_LMACS];
+                __le32 scan_priority;
+                u8 passive_dwell[SCAN_TWO_LMACS];
+                u8 num_of_fragments[SCAN_TWO_LMACS];
+                struct iwl_scan_umac_chan_param channel;
+                u8 data[];
+            } v8;
         } ;
     }
 
@@ -987,6 +1060,9 @@ v6
     *undescribed*
 
 v7
+    *undescribed*
+
+v8
     *undescribed*
 
 .. _`iwl_umac_scan_abort`:

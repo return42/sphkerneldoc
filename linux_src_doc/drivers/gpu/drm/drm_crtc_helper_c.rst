@@ -195,7 +195,7 @@ The \ :c:func:`drm_crtc_helper_set_config`\  helper function implements the of
 helpers.
 
 It first tries to locate the best encoder for each connector by calling the
-connector \ ``drm_connector_helper_funcs``\ .best_encoder helper operation.
+connector \ ``drm_connector_helper_funcs.best_encoder``\  helper operation.
 
 After locating the appropriate encoders, the helper function will call the
 mode_fixup encoder and CRTC helper operations to adjust the requested mode,

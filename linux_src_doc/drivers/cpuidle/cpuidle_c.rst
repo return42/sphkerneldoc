@@ -101,7 +101,7 @@ cpuidle_enter_state
 cpuidle_select
 ==============
 
-.. c:function:: int cpuidle_select(struct cpuidle_driver *drv, struct cpuidle_device *dev)
+.. c:function:: int cpuidle_select(struct cpuidle_driver *drv, struct cpuidle_device *dev, bool *stop_tick)
 
     ask the cpuidle framework to choose an idle state
 
@@ -111,12 +111,19 @@ cpuidle_select
     :param struct cpuidle_device \*dev:
         the cpuidle device
 
+    :param bool \*stop_tick:
+        indication on whether or not to stop the tick
+
 .. _`cpuidle_select.description`:
 
 Description
 -----------
 
 Returns the index of the idle state.  The return value must not be negative.
+
+The memory location pointed to by \ ``stop_tick``\  is expected to be written the
+'false' boolean value if the scheduler tick should not be stopped before
+entering the returned state.
 
 .. _`cpuidle_enter`:
 

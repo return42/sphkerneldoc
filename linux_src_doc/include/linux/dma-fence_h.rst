@@ -100,7 +100,7 @@ struct dma_fence_cb
 
 .. c:type:: struct dma_fence_cb
 
-    callback for dma_fence_add_callback
+    callback for \ :c:func:`dma_fence_add_callback`\ 
 
 .. _`dma_fence_cb.definition`:
 
@@ -120,7 +120,7 @@ Members
 -------
 
 node
-    used by dma_fence_add_callback to append this struct to fence::cb_list
+    used by \ :c:func:`dma_fence_add_callback`\  to append this struct to fence::cb_list
 
 func
     dma_fence_func_t to call
@@ -130,7 +130,7 @@ func
 Description
 -----------
 
-This struct will be initialized by dma_fence_add_callback, additional
+This struct will be initialized by \ :c:func:`dma_fence_add_callback`\ , additional
 data can be passed along by embedding dma_fence_cb in another struct.
 
 .. _`dma_fence_ops`:
@@ -167,94 +167,112 @@ Members
 -------
 
 get_driver_name
-    returns the driver name.
+
+    Returns the driver name. This is a callback to allow drivers to
+    compute the name at runtime, without having it to store permanently
+    for each fence, or build a cache of some sort.
+
+    This callback is mandatory.
 
 get_timeline_name
-    return the name of the context this fence belongs to.
+
+    Return the name of the context this fence belongs to. This is a
+    callback to allow drivers to compute the name at runtime, without
+    having it to store permanently for each fence, or build a cache of
+    some sort.
+
+    This callback is mandatory.
 
 enable_signaling
-    enable software signaling of fence.
+
+    Enable software signaling of fence.
+
+    For fence implementations that have the capability for hw->hw
+    signaling, they can implement this op to enable the necessary
+    interrupts, or insert commands into cmdstream, etc, to avoid these
+    costly operations for the common case where only hw->hw
+    synchronization is required.  This is called in the first
+    \ :c:func:`dma_fence_wait`\  or \ :c:func:`dma_fence_add_callback`\  path to let the fence
+    implementation know that there is another driver waiting on the
+    signal (ie. hw->sw case).
+
+    This function can be called from atomic context, but not
+    from irq context, so normal spinlocks can be used.
+
+    A return value of false indicates the fence already passed,
+    or some failure occurred that made it impossible to enable
+    signaling. True indicates successful enabling.
+
+    \ :c:type:`dma_fence.error <dma_fence>`\  may be set in enable_signaling, but only when false
+    is returned.
+
+    Since many implementations can call \ :c:func:`dma_fence_signal`\  even when before
+    \ ``enable_signaling``\  has been called there's a race window, where the
+    \ :c:func:`dma_fence_signal`\  might result in the final fence reference being
+    released and its memory freed. To avoid this, implementations of this
+    callback should grab their own reference using \ :c:func:`dma_fence_get`\ , to be
+    released when the fence is signalled (through e.g. the interrupt
+    handler).
+
+    This callback is mandatory.
 
 signaled
-    [optional] peek whether the fence is signaled, can be null.
+
+    Peek whether the fence is signaled, as a fastpath optimization for
+    e.g. \ :c:func:`dma_fence_wait`\  or \ :c:func:`dma_fence_add_callback`\ . Note that this
+    callback does not need to make any guarantees beyond that a fence
+    once indicates as signalled must always return true from this
+    callback. This callback may return false even if the fence has
+    completed already, in this case information hasn't propogated throug
+    the system yet. See also \ :c:func:`dma_fence_is_signaled`\ .
+
+    May set \ :c:type:`dma_fence.error <dma_fence>`\  if returning true.
+
+    This callback is optional.
 
 wait
-    custom wait implementation, or dma_fence_default_wait.
+
+    Custom wait implementation, or dma_fence_default_wait.
+
+    Must not be NULL, set to dma_fence_default_wait for default implementation.
+    the dma_fence_default_wait implementation should work for any fence, as long
+    as enable_signaling works correctly.
+
+    Must return -ERESTARTSYS if the wait is intr = true and the wait was
+    interrupted, and remaining jiffies if fence has signaled, or 0 if wait
+    timed out. Can also return other error values on custom implementations,
+    which should be treated as if the fence is signaled. For example a hardware
+    lockup could be reported like that.
+
+    This callback is mandatory.
 
 release
-    [optional] called on destruction of fence, can be null
+
+    Called on destruction of fence to release additional resources.
+    Can be called from irq context.  This callback is optional. If it is
+    NULL, then \ :c:func:`dma_fence_free`\  is instead called as the default
+    implementation.
 
 fill_driver_data
-    [optional] callback to fill in free-form debug info
-    Returns amount of bytes filled, or -errno.
+
+    Callback to fill in free-form debug info.
+
+    Returns amount of bytes filled, or negative error on failure.
+
+    This callback is optional.
 
 fence_value_str
-    [optional] fills in the value of the fence as a string
+
+    Callback to fill in free-form debug info specific to this fence, like
+    the sequence number.
+
+    This callback is optional.
 
 timeline_value_str
-    [optional] fills in the current value of the timeline
-    as a string
 
-.. _`dma_fence_ops.notes-on-enable_signaling`:
-
-Notes on enable_signaling
--------------------------
-
-For fence implementations that have the capability for hw->hw
-signaling, they can implement this op to enable the necessary
-irqs, or insert commands into cmdstream, etc.  This is called
-in the first \ :c:func:`wait`\  or \ :c:func:`add_callback`\  path to let the fence
-implementation know that there is another driver waiting on
-the signal (ie. hw->sw case).
-
-This function can be called from atomic context, but not
-from irq context, so normal spinlocks can be used.
-
-A return value of false indicates the fence already passed,
-or some failure occurred that made it impossible to enable
-signaling. True indicates successful enabling.
-
-fence->error may be set in enable_signaling, but only when false is
-returned.
-
-Calling dma_fence_signal before enable_signaling is called allows
-for a tiny race window in which enable_signaling is called during,
-before, or after dma_fence_signal. To fight this, it is recommended
-that before enable_signaling returns true an extra reference is
-taken on the fence, to be released when the fence is signaled.
-This will mean dma_fence_signal will still be called twice, but
-the second time will be a noop since it was already signaled.
-
-.. _`dma_fence_ops.notes-on-signaled`:
-
-Notes on signaled
------------------
-
-May set fence->error if returning true.
-
-.. _`dma_fence_ops.notes-on-wait`:
-
-Notes on wait
--------------
-
-Must not be NULL, set to dma_fence_default_wait for default implementation.
-the dma_fence_default_wait implementation should work for any fence, as long
-as enable_signaling works correctly.
-
-Must return -ERESTARTSYS if the wait is intr = true and the wait was
-interrupted, and remaining jiffies if fence has signaled, or 0 if wait
-timed out. Can also return other error values on custom implementations,
-which should be treated as if the fence is signaled. For example a hardware
-lockup could be reported like that.
-
-.. _`dma_fence_ops.notes-on-release`:
-
-Notes on release
-----------------
-
-Can be NULL, this function allows additional commands to run on
-destruction of the fence. Can be called from irq context.
-If pointer is set to NULL, kfree will get called instead.
+    Fills in the current value of the timeline as a string, like the
+    sequence number. This should match what \ ``fill_driver_data``\  prints for
+    the most recently signalled fence (assuming no delayed signalling).
 
 .. _`dma_fence_put`:
 
@@ -266,7 +284,7 @@ dma_fence_put
     decreases refcount of the fence
 
     :param struct dma_fence \*fence:
-        [in]    fence to reduce refcount of
+        fence to reduce refcount of
 
 .. _`dma_fence_get`:
 
@@ -278,7 +296,7 @@ dma_fence_get
     increases refcount of the fence
 
     :param struct dma_fence \*fence:
-        [in]    fence to increase refcount of
+        fence to increase refcount of
 
 .. _`dma_fence_get.description`:
 
@@ -297,7 +315,7 @@ dma_fence_get_rcu
     get a fence from a reservation_object_list with rcu read lock
 
     :param struct dma_fence \*fence:
-        [in]    fence to increase refcount of
+        fence to increase refcount of
 
 .. _`dma_fence_get_rcu.description`:
 
@@ -316,7 +334,7 @@ dma_fence_get_rcu_safe
     acquire a reference to an RCU tracked fence
 
     :param struct dma_fence __rcu \*\*fencep:
-        [in]    pointer to fence to increase refcount of
+        pointer to fence to increase refcount of
 
 .. _`dma_fence_get_rcu_safe.description`:
 
@@ -345,7 +363,7 @@ dma_fence_is_signaled_locked
     Return an indication if the fence is signaled yet.
 
     :param struct dma_fence \*fence:
-        [in]    the fence to check
+        the fence to check
 
 .. _`dma_fence_is_signaled_locked.description`:
 
@@ -354,10 +372,12 @@ Description
 
 Returns true if the fence was already signaled, false if not. Since this
 function doesn't enable signaling, it is not guaranteed to ever return
-true if dma_fence_add_callback, dma_fence_wait or
-dma_fence_enable_sw_signaling haven't been called before.
+true if \ :c:func:`dma_fence_add_callback`\ , \ :c:func:`dma_fence_wait`\  or
+\ :c:func:`dma_fence_enable_sw_signaling`\  haven't been called before.
 
-This function requires fence->lock to be held.
+This function requires \ :c:type:`dma_fence.lock <dma_fence>`\  to be held.
+
+See also \ :c:func:`dma_fence_is_signaled`\ .
 
 .. _`dma_fence_is_signaled`:
 
@@ -369,7 +389,7 @@ dma_fence_is_signaled
     Return an indication if the fence is signaled yet.
 
     :param struct dma_fence \*fence:
-        [in]    the fence to check
+        the fence to check
 
 .. _`dma_fence_is_signaled.description`:
 
@@ -378,13 +398,15 @@ Description
 
 Returns true if the fence was already signaled, false if not. Since this
 function doesn't enable signaling, it is not guaranteed to ever return
-true if dma_fence_add_callback, dma_fence_wait or
-dma_fence_enable_sw_signaling haven't been called before.
+true if \ :c:func:`dma_fence_add_callback`\ , \ :c:func:`dma_fence_wait`\  or
+\ :c:func:`dma_fence_enable_sw_signaling`\  haven't been called before.
 
 It's recommended for seqno fences to call dma_fence_signal when the
 operation is complete, it makes it possible to prevent issues from
 wraparound between time of issue and time of use by checking the return
 value of this function before calling hardware-specific wait instructions.
+
+See also \ :c:func:`dma_fence_is_signaled_locked`\ .
 
 .. _`__dma_fence_is_later`:
 
@@ -396,10 +418,10 @@ __dma_fence_is_later
     return if f1 is chronologically later than f2
 
     :param u32 f1:
-        [in]    the first fence's seqno
+        the first fence's seqno
 
     :param u32 f2:
-        [in]    the second fence's seqno from the same context
+        the second fence's seqno from the same context
 
 .. _`__dma_fence_is_later.description`:
 
@@ -419,10 +441,10 @@ dma_fence_is_later
     return if f1 is chronologically later than f2
 
     :param struct dma_fence \*f1:
-        [in]    the first fence from the same context
+        the first fence from the same context
 
     :param struct dma_fence \*f2:
-        [in]    the second fence from the same context
+        the second fence from the same context
 
 .. _`dma_fence_is_later.description`:
 
@@ -442,10 +464,10 @@ dma_fence_later
     return the chronologically later fence
 
     :param struct dma_fence \*f1:
-        [in]    the first fence from the same context
+        the first fence from the same context
 
     :param struct dma_fence \*f2:
-        [in]    the second fence from the same context
+        the second fence from the same context
 
 .. _`dma_fence_later.description`:
 
@@ -466,7 +488,7 @@ dma_fence_get_status_locked
     returns the status upon completion
 
     :param struct dma_fence \*fence:
-        [in] the dma_fence to query
+        the dma_fence to query
 
 .. _`dma_fence_get_status_locked.description`:
 
@@ -493,10 +515,10 @@ dma_fence_set_error
     flag an error condition on the fence
 
     :param struct dma_fence \*fence:
-        [in] the dma_fence
+        the dma_fence
 
     :param int error:
-        [in] the error to store
+        the error to store
 
 .. _`dma_fence_set_error.description`:
 
@@ -519,10 +541,10 @@ dma_fence_wait
     sleep until the fence gets signaled
 
     :param struct dma_fence \*fence:
-        [in]    the fence to wait on
+        the fence to wait on
 
     :param bool intr:
-        [in]    if true, do an interruptible wait
+        if true, do an interruptible wait
 
 .. _`dma_fence_wait.description`:
 
@@ -536,6 +558,8 @@ returned on custom implementations.
 Performs a synchronous wait on this fence. It is assumed the caller
 directly or indirectly holds a reference to the fence, otherwise the
 fence might be freed before return, resulting in undefined behavior.
+
+See also \ :c:func:`dma_fence_wait_timeout`\  and \ :c:func:`dma_fence_wait_any_timeout`\ .
 
 .. This file was automatic generated / don't edit.
 

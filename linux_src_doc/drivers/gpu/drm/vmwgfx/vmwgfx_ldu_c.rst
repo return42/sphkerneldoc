@@ -60,51 +60,5 @@ vmw_ldu_crtc_atomic_disable
     :param struct drm_crtc_state \*old_state:
         *undescribed*
 
-.. _`vmw_ldu_primary_plane_cleanup_fb`:
-
-vmw_ldu_primary_plane_cleanup_fb
-================================
-
-.. c:function:: void vmw_ldu_primary_plane_cleanup_fb(struct drm_plane *plane, struct drm_plane_state *old_state)
-
-    Noop
-
-    :param struct drm_plane \*plane:
-        display plane
-
-    :param struct drm_plane_state \*old_state:
-        Contains the FB to clean up
-
-.. _`vmw_ldu_primary_plane_cleanup_fb.description`:
-
-Description
------------
-
-Unpins the display surface
-
-Returns 0 on success
-
-.. _`vmw_ldu_primary_plane_prepare_fb`:
-
-vmw_ldu_primary_plane_prepare_fb
-================================
-
-.. c:function:: int vmw_ldu_primary_plane_prepare_fb(struct drm_plane *plane, struct drm_plane_state *new_state)
-
-    Noop
-
-    :param struct drm_plane \*plane:
-        display plane
-
-    :param struct drm_plane_state \*new_state:
-        info on the new plane state, including the FB
-
-.. _`vmw_ldu_primary_plane_prepare_fb.description`:
-
-Description
------------
-
-Returns 0 on success
-
 .. This file was automatic generated / don't edit.
 

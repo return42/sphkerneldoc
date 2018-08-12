@@ -136,25 +136,6 @@ to the queue.
 
 The caller serializes calls to this function (per rpcrdma_buffer).
 
-.. _`rpcrdma_create_rep`:
-
-rpcrdma_create_rep
-==================
-
-.. c:function:: int rpcrdma_create_rep(struct rpcrdma_xprt *r_xprt)
-
-    Allocate an rpcrdma_rep object
-
-    :param struct rpcrdma_xprt \*r_xprt:
-        controlling transport
-
-.. _`rpcrdma_create_rep.description`:
-
-Description
------------
-
-Returns 0 on success or a negative errno on failure.
-
 .. _`rpcrdma_mr_get`:
 
 rpcrdma_mr_get
@@ -198,6 +179,37 @@ rpcrdma_mr_unmap_and_put
 
     :param struct rpcrdma_mr \*mr:
         object to release
+
+.. _`rpcrdma_buffer_get`:
+
+rpcrdma_buffer_get
+==================
+
+.. c:function:: struct rpcrdma_req *rpcrdma_buffer_get(struct rpcrdma_buffer *buffers)
+
+    Get a request buffer
+
+    :param struct rpcrdma_buffer \*buffers:
+        Buffer pool from which to obtain a buffer
+
+.. _`rpcrdma_buffer_get.description`:
+
+Description
+-----------
+
+Returns a fresh rpcrdma_req, or NULL if none are available.
+
+.. _`rpcrdma_buffer_put`:
+
+rpcrdma_buffer_put
+==================
+
+.. c:function:: void rpcrdma_buffer_put(struct rpcrdma_req *req)
+
+    Put request/reply buffers back into pool
+
+    :param struct rpcrdma_req \*req:
+        object to return
 
 .. _`rpcrdma_alloc_regbuf`:
 
@@ -256,27 +268,20 @@ rpcrdma_free_regbuf
     :param struct rpcrdma_regbuf \*rb:
         regbuf to be deregistered and freed
 
-.. _`rpcrdma_ep_post_extra_recv`:
+.. _`rpcrdma_post_recvs`:
 
-rpcrdma_ep_post_extra_recv
-==========================
+rpcrdma_post_recvs
+==================
 
-.. c:function:: int rpcrdma_ep_post_extra_recv(struct rpcrdma_xprt *r_xprt, unsigned int count)
+.. c:function:: void rpcrdma_post_recvs(struct rpcrdma_xprt *r_xprt, bool temp)
 
-    Post buffers for incoming backchannel requests
+    Maybe post some Receive buffers
 
     :param struct rpcrdma_xprt \*r_xprt:
-        transport associated with these backchannel resources
+        controlling transport
 
-    :param unsigned int count:
-        minimum number of incoming requests expected
-
-.. _`rpcrdma_ep_post_extra_recv.description`:
-
-Description
------------
-
-Returns zero if all requested buffers were posted, or a negative errno.
+    :param bool temp:
+        when true, allocate temp rpcrdma_rep objects
 
 .. This file was automatic generated / don't edit.
 

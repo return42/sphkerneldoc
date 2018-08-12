@@ -220,6 +220,8 @@ Definition
         u32 (*get_rxfh_indir_size)(struct net_device *);
         int (*get_rxfh)(struct net_device *, u32 *indir, u8 *key, u8 *hfunc);
         int (*set_rxfh)(struct net_device *, const u32 *indir, const u8 *key, const u8 hfunc);
+        int (*get_rxfh_context)(struct net_device *, u32 *indir, u8 *key, u8 *hfunc, u32 rss_context);
+        int (*set_rxfh_context)(struct net_device *, const u32 *indir,const u8 *key, const u8 hfunc, u32 *rss_context, bool delete);
         void (*get_channels)(struct net_device *, struct ethtool_channels *);
         int (*set_channels)(struct net_device *, struct ethtool_channels *);
         int (*get_dump_flag)(struct net_device *, struct ethtool_dump *);
@@ -238,6 +240,7 @@ Definition
         int (*set_link_ksettings)(struct net_device *, const struct ethtool_link_ksettings *);
         int (*get_fecparam)(struct net_device *, struct ethtool_fecparam *);
         int (*set_fecparam)(struct net_device *, struct ethtool_fecparam *);
+        void (*get_ethtool_phy_stats)(struct net_device *, struct ethtool_stats *, u64 *);
     }
 
 .. _`ethtool_ops.members`:
@@ -409,6 +412,12 @@ set_rxfh
     Returns a negative error code or zero. An error code must be returned
     if at least one unsupported change was requested.
 
+get_rxfh_context
+    *undescribed*
+
+set_rxfh_context
+    *undescribed*
+
 get_channels
     Get number of channels.
 
@@ -482,10 +491,15 @@ set_link_ksettings
     by kernel. Returns a negative error code or zero.
 
 get_fecparam
-    *undescribed*
+    Get the network device Forward Error Correction parameters.
 
 set_fecparam
-    *undescribed*
+    Set the network device Forward Error Correction parameters.
+
+get_ethtool_phy_stats
+    Return extended statistics about the PHY device.
+    This is only useful if the device maintains PHY statistics and
+    cannot use the standard PHY library helpers.
 
 .. _`ethtool_ops.description`:
 

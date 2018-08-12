@@ -429,8 +429,8 @@ Description
 -----------
 
 P2P needs mac addresses for P2P device and interface. If no device
-address it specified, these are derived from the primary net device, ie.
-the permanent ethernet address of the device.
+address it specified, these are derived from a random ethernet
+address.
 
 .. _`brcmf_p2p_scan_is_p2p_request`:
 

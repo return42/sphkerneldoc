@@ -6,7 +6,7 @@
 dspio_scp
 =========
 
-.. c:function:: int dspio_scp(struct hda_codec *codec, int mod_id, int req, int dir, void *data, unsigned int len, void *reply, unsigned int *reply_len)
+.. c:function:: int dspio_scp(struct hda_codec *codec, int mod_id, int src_id, int req, int dir, const void *data, unsigned int len, void *reply, unsigned int *reply_len)
 
     :param struct hda_codec \*codec:
         the HDA codec
@@ -14,13 +14,16 @@ dspio_scp
     :param int mod_id:
         ID of the DSP module to send the command
 
+    :param int src_id:
+        *undescribed*
+
     :param int req:
         ID of request to send to the DSP module
 
     :param int dir:
         SET or GET
 
-    :param void \*data:
+    :param const void \*data:
         pointer to the data to send with the request, request specific
 
     :param unsigned int len:

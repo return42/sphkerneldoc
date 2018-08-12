@@ -34,7 +34,11 @@ Definition
         void (*repr_clean)(struct nfp_app *app, struct net_device *netdev);
         int (*repr_open)(struct nfp_app *app, struct nfp_repr *repr);
         int (*repr_stop)(struct nfp_app *app, struct nfp_repr *repr);
-        int (*change_mtu)(struct nfp_app *app, struct net_device *netdev, int new_mtu);
+        int (*check_mtu)(struct nfp_app *app, struct net_device *netdev, int new_mtu);
+        int (*repr_change_mtu)(struct nfp_app *app, struct net_device *netdev, int new_mtu);
+        u64 *(*port_get_stats)(struct nfp_app *app, struct nfp_port *port, u64 *data);
+        int (*port_get_stats_count)(struct nfp_app *app, struct nfp_port *port);
+        u8 *(*port_get_stats_strings)(struct nfp_app *app, struct nfp_port *port, u8 *data);
         int (*start)(struct nfp_app *app);
         void (*stop)(struct nfp_app *app);
         void (*ctrl_msg_rx)(struct nfp_app *app, struct sk_buff *skb);
@@ -44,6 +48,7 @@ Definition
         int (*sriov_enable)(struct nfp_app *app, int num_vfs);
         void (*sriov_disable)(struct nfp_app *app);
         enum devlink_eswitch_mode (*eswitch_mode_get)(struct nfp_app *app);
+        int (*eswitch_mode_set)(struct nfp_app *app, u16 mode);
         struct net_device *(*repr_get)(struct nfp_app *app, u32 id);
     }
 
@@ -103,9 +108,20 @@ repr_open
 repr_stop
     representor netdev stop callback
 
-change_mtu
-    MTU change on a netdev has been requested (veto-only, change
-    is not guaranteed to be committed)
+check_mtu
+    MTU change request on a netdev (verify it is valid)
+
+repr_change_mtu
+    MTU change request on repr (make and verify change)
+
+port_get_stats
+    get extra ethtool statistics for a port
+
+port_get_stats_count
+    get count of extra statistics for a port
+
+port_get_stats_strings
+    get strings for extra statistics
 
 start
     start application logic
@@ -133,6 +149,9 @@ sriov_disable
 
 eswitch_mode_get
     get SR-IOV eswitch mode
+
+eswitch_mode_set
+    set SR-IOV eswitch mode (under pf->lock)
 
 repr_get
     get representor netdev

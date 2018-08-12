@@ -6,12 +6,12 @@
 wm8962_mic_detect
 =================
 
-.. c:function:: int wm8962_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+.. c:function:: int wm8962_mic_detect(struct snd_soc_component *component, struct snd_soc_jack *jack)
 
     Enable microphone detection via the WM8962 IRQ
 
-    :param struct snd_soc_codec \*codec:
-        WM8962 codec
+    :param struct snd_soc_component \*component:
+        WM8962 component
 
     :param struct snd_soc_jack \*jack:
         jack to report detection events on

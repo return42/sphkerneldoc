@@ -718,7 +718,7 @@ NFT_SET_TIMEOUT
     set uses timeouts
 
 NFT_SET_EVAL
-    set contains expressions for evaluation
+    set can be updated from the evaluation path
 
 NFT_SET_OBJECT
     set contains stateful objects
@@ -2078,7 +2078,8 @@ Definition
         NFT_RT_CLASSID,
         NFT_RT_NEXTHOP4,
         NFT_RT_NEXTHOP6,
-        NFT_RT_TCPMSS
+        NFT_RT_TCPMSS,
+        __NFT_RT_MAX
     };
 
 .. _`nft_rt_keys.constants`:
@@ -2097,6 +2098,9 @@ NFT_RT_NEXTHOP6
 
 NFT_RT_TCPMSS
     fetch current path tcp mss
+
+\__NFT_RT_MAX
+    *undescribed*
 
 .. _`nft_hash_types`:
 
@@ -2155,6 +2159,8 @@ Definition
         NFTA_HASH_SEED,
         NFTA_HASH_OFFSET,
         NFTA_HASH_TYPE,
+        NFTA_HASH_SET_NAME,
+        NFTA_HASH_SET_ID,
         __NFTA_HASH_MAX
     };
 
@@ -2186,6 +2192,12 @@ NFTA_HASH_OFFSET
 
 NFTA_HASH_TYPE
     hash operation (NLA_U32: nft_hash_types)
+
+NFTA_HASH_SET_NAME
+    name of the map to lookup (NLA_STRING)
+
+NFTA_HASH_SET_ID
+    id of the map (NLA_U32)
 
 \__NFTA_HASH_MAX
     *undescribed*
@@ -2274,6 +2286,46 @@ NFTA_RT_KEY
 \__NFTA_RT_MAX
     *undescribed*
 
+.. _`nft_socket_attributes`:
+
+enum nft_socket_attributes
+==========================
+
+.. c:type:: enum nft_socket_attributes
+
+    nf_tables socket expression netlink attributes
+
+.. _`nft_socket_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_socket_attributes {
+        NFTA_SOCKET_UNSPEC,
+        NFTA_SOCKET_KEY,
+        NFTA_SOCKET_DREG,
+        __NFTA_SOCKET_MAX
+    };
+
+.. _`nft_socket_attributes.constants`:
+
+Constants
+---------
+
+NFTA_SOCKET_UNSPEC
+    *undescribed*
+
+NFTA_SOCKET_KEY
+    socket key to match
+
+NFTA_SOCKET_DREG
+    destination register
+
+\__NFTA_SOCKET_MAX
+    *undescribed*
+
 .. _`nft_ct_keys`:
 
 enum nft_ct_keys
@@ -2309,7 +2361,12 @@ Definition
         NFT_CT_BYTES,
         NFT_CT_AVGPKT,
         NFT_CT_ZONE,
-        NFT_CT_EVENTMASK
+        NFT_CT_EVENTMASK,
+        NFT_CT_SRC_IP,
+        NFT_CT_DST_IP,
+        NFT_CT_SRC_IP6,
+        NFT_CT_DST_IP6,
+        __NFT_CT_MAX
     };
 
 .. _`nft_ct_keys.constants`:
@@ -2342,10 +2399,10 @@ NFT_CT_L3PROTOCOL
     conntrack layer 3 protocol
 
 NFT_CT_SRC
-    conntrack layer 3 protocol source (IPv4/IPv6 address)
+    conntrack layer 3 protocol source (IPv4/IPv6 address, deprecated)
 
 NFT_CT_DST
-    conntrack layer 3 protocol destination (IPv4/IPv6 address)
+    conntrack layer 3 protocol destination (IPv4/IPv6 address, deprecated)
 
 NFT_CT_PROTOCOL
     conntrack layer 4 protocol
@@ -2373,6 +2430,21 @@ NFT_CT_ZONE
 
 NFT_CT_EVENTMASK
     ctnetlink events to be generated for this conntrack
+
+NFT_CT_SRC_IP
+    conntrack layer 3 protocol source (IPv4 address)
+
+NFT_CT_DST_IP
+    conntrack layer 3 protocol destination (IPv4 address)
+
+NFT_CT_SRC_IP6
+    conntrack layer 3 protocol source (IPv6 address)
+
+NFT_CT_DST_IP6
+    conntrack layer 3 protocol destination (IPv6 address)
+
+\__NFT_CT_MAX
+    *undescribed*
 
 .. _`nft_ct_attributes`:
 
@@ -2514,6 +2586,46 @@ NFTA_LIMIT_PAD
 \__NFTA_LIMIT_MAX
     *undescribed*
 
+.. _`nft_connlimit_attributes`:
+
+enum nft_connlimit_attributes
+=============================
+
+.. c:type:: enum nft_connlimit_attributes
+
+    nf_tables connlimit expression netlink attributes
+
+.. _`nft_connlimit_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_connlimit_attributes {
+        NFTA_CONNLIMIT_UNSPEC,
+        NFTA_CONNLIMIT_COUNT,
+        NFTA_CONNLIMIT_FLAGS,
+        __NFTA_CONNLIMIT_MAX
+    };
+
+.. _`nft_connlimit_attributes.constants`:
+
+Constants
+---------
+
+NFTA_CONNLIMIT_UNSPEC
+    *undescribed*
+
+NFTA_CONNLIMIT_COUNT
+    number of connections (NLA_U32)
+
+NFTA_CONNLIMIT_FLAGS
+    flags (NLA_U32: enum nft_connlimit_flags)
+
+\__NFTA_CONNLIMIT_MAX
+    *undescribed*
+
 .. _`nft_counter_attributes`:
 
 enum nft_counter_attributes
@@ -2612,6 +2724,70 @@ NFTA_LOG_FLAGS
     logging flags (NLA_U32)
 
 \__NFTA_LOG_MAX
+    *undescribed*
+
+.. _`nft_log_level`:
+
+enum nft_log_level
+==================
+
+.. c:type:: enum nft_log_level
+
+    nf_tables log levels
+
+.. _`nft_log_level.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_log_level {
+        NFT_LOGLEVEL_EMERG,
+        NFT_LOGLEVEL_ALERT,
+        NFT_LOGLEVEL_CRIT,
+        NFT_LOGLEVEL_ERR,
+        NFT_LOGLEVEL_WARNING,
+        NFT_LOGLEVEL_NOTICE,
+        NFT_LOGLEVEL_INFO,
+        NFT_LOGLEVEL_DEBUG,
+        NFT_LOGLEVEL_AUDIT,
+        __NFT_LOGLEVEL_MAX
+    };
+
+.. _`nft_log_level.constants`:
+
+Constants
+---------
+
+NFT_LOGLEVEL_EMERG
+    system is unusable
+
+NFT_LOGLEVEL_ALERT
+    action must be taken immediately
+
+NFT_LOGLEVEL_CRIT
+    critical conditions
+
+NFT_LOGLEVEL_ERR
+    error conditions
+
+NFT_LOGLEVEL_WARNING
+    warning conditions
+
+NFT_LOGLEVEL_NOTICE
+    normal but significant condition
+
+NFT_LOGLEVEL_INFO
+    informational
+
+NFT_LOGLEVEL_DEBUG
+    debug-level messages
+
+NFT_LOGLEVEL_AUDIT
+    enabling audit logging
+
+\__NFT_LOGLEVEL_MAX
     *undescribed*
 
 .. _`nft_queue_attributes`:
@@ -3076,6 +3252,8 @@ Definition
     enum nft_fwd_attributes {
         NFTA_FWD_UNSPEC,
         NFTA_FWD_SREG_DEV,
+        NFTA_FWD_SREG_ADDR,
+        NFTA_FWD_NFPROTO,
         __NFTA_FWD_MAX
     };
 
@@ -3089,6 +3267,12 @@ NFTA_FWD_UNSPEC
 
 NFTA_FWD_SREG_DEV
     source register of output interface (NLA_U32: nft_register)
+
+NFTA_FWD_SREG_ADDR
+    source register of destination address (NLA_U32: nft_register)
+
+NFTA_FWD_NFPROTO
+    layer 3 family of source register address (NLA_U32: enum nfproto)
 
 \__NFTA_FWD_MAX
     *undescribed*
@@ -3507,6 +3691,8 @@ Definition
         NFTA_NG_MODULUS,
         NFTA_NG_TYPE,
         NFTA_NG_OFFSET,
+        NFTA_NG_SET_NAME,
+        NFTA_NG_SET_ID,
         __NFTA_NG_MAX
     };
 
@@ -3529,6 +3715,12 @@ NFTA_NG_TYPE
 
 NFTA_NG_OFFSET
     offset to be added to the counter (NLA_U32)
+
+NFTA_NG_SET_NAME
+    name of the map to lookup (NLA_STRING)
+
+NFTA_NG_SET_ID
+    id of the map (NLA_U32)
 
 \__NFTA_NG_MAX
     *undescribed*

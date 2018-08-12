@@ -23,6 +23,9 @@ Definition
         int fd;
         refcount_t refcnt;
         u64 prev;
+        u64 start;
+        u64 end;
+        bool overwrite;
         struct auxtrace_mmap auxtrace_mmap;
         char event_copy[PERF_SAMPLE_MAX_SIZE] __aligned(8);
     }
@@ -45,6 +48,15 @@ refcnt
     *undescribed*
 
 prev
+    *undescribed*
+
+start
+    *undescribed*
+
+end
+    *undescribed*
+
+overwrite
     *undescribed*
 
 auxtrace_mmap

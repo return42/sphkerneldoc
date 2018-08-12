@@ -8,3 +8,4 @@ em28xx
     :maxdepth: 1
 
     em28xx-cards_c
+    em28xx_h

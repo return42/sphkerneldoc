@@ -21,24 +21,26 @@ Definition
         struct hrtimer sched_timer;
         unsigned long check_clocks;
         enum tick_nohz_mode nohz_mode;
+        unsigned int inidle : 1;
+        unsigned int tick_stopped : 1;
+        unsigned int idle_active : 1;
+        unsigned int do_timer_last : 1;
+        unsigned int got_idle_tick : 1;
         ktime_t last_tick;
         ktime_t next_tick;
-        int inidle;
-        int tick_stopped;
         unsigned long idle_jiffies;
         unsigned long idle_calls;
         unsigned long idle_sleeps;
-        int idle_active;
         ktime_t idle_entrytime;
         ktime_t idle_waketime;
         ktime_t idle_exittime;
         ktime_t idle_sleeptime;
         ktime_t iowait_sleeptime;
-        ktime_t sleep_length;
         unsigned long last_jiffies;
+        u64 timer_expires;
+        u64 timer_expires_base;
         u64 next_timer;
         ktime_t idle_expires;
-        int do_timer_last;
         atomic_t tick_dep_mask;
     }
 
@@ -57,6 +59,21 @@ check_clocks
 nohz_mode
     *undescribed*
 
+inidle
+    *undescribed*
+
+tick_stopped
+    Indicator that the idle tick has been stopped
+
+idle_active
+    *undescribed*
+
+do_timer_last
+    *undescribed*
+
+got_idle_tick
+    Tick timer function has run with \ ``inidle``\  set
+
 last_tick
     Store the last tick expiry time when the tick
     timer is modified for nohz sleeps. This is necessary
@@ -66,12 +83,6 @@ last_tick
 next_tick
     Next tick to be fired when in dynticks mode.
 
-inidle
-    *undescribed*
-
-tick_stopped
-    Indicator that the idle tick has been stopped
-
 idle_jiffies
     jiffies at the entry to idle for idle time accounting
 
@@ -80,9 +91,6 @@ idle_calls
 
 idle_sleeps
     Number of idle calls, where the sched tick was stopped
-
-idle_active
-    *undescribed*
 
 idle_entrytime
     Time when the idle call was entered
@@ -99,19 +107,19 @@ idle_sleeptime
 iowait_sleeptime
     Sum of the time slept in idle with sched tick stopped, with IO outstanding
 
-sleep_length
-    Duration of the current idle sleep
-
 last_jiffies
     *undescribed*
+
+timer_expires
+    Anticipated timer expiration time (in case sched tick is stopped)
+
+timer_expires_base
+    Base time clock monotonic for \ ``timer_expires``\ 
 
 next_timer
     *undescribed*
 
 idle_expires
-    *undescribed*
-
-do_timer_last
     *undescribed*
 
 tick_dep_mask

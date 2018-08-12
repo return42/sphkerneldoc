@@ -1,65 +1,123 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/sunrpc/xprtrdma/svc_rdma_sendto.c
 
-.. _`svc_rdma_map_reply_hdr`:
+.. _`svc_rdma_send_ctxts_destroy`:
 
-svc_rdma_map_reply_hdr
+svc_rdma_send_ctxts_destroy
+===========================
+
+.. c:function:: void svc_rdma_send_ctxts_destroy(struct svcxprt_rdma *rdma)
+
+    Release all send_ctxt's for an xprt
+
+    :param struct svcxprt_rdma \*rdma:
+        svcxprt_rdma being torn down
+
+.. _`svc_rdma_send_ctxt_get`:
+
+svc_rdma_send_ctxt_get
 ======================
 
-.. c:function:: int svc_rdma_map_reply_hdr(struct svcxprt_rdma *rdma, struct svc_rdma_op_ctxt *ctxt, __be32 *rdma_resp, unsigned int len)
+.. c:function:: struct svc_rdma_send_ctxt *svc_rdma_send_ctxt_get(struct svcxprt_rdma *rdma)
 
-    DMA map the transport header buffer
+    Get a free send_ctxt
+
+    :param struct svcxprt_rdma \*rdma:
+        controlling svcxprt_rdma
+
+.. _`svc_rdma_send_ctxt_get.description`:
+
+Description
+-----------
+
+Returns a ready-to-use send_ctxt, or NULL if none are
+available and a fresh one cannot be allocated.
+
+.. _`svc_rdma_send_ctxt_put`:
+
+svc_rdma_send_ctxt_put
+======================
+
+.. c:function:: void svc_rdma_send_ctxt_put(struct svcxprt_rdma *rdma, struct svc_rdma_send_ctxt *ctxt)
+
+    Return send_ctxt to free list
+
+    :param struct svcxprt_rdma \*rdma:
+        controlling svcxprt_rdma
+
+    :param struct svc_rdma_send_ctxt \*ctxt:
+        object to return to the free list
+
+.. _`svc_rdma_send_ctxt_put.description`:
+
+Description
+-----------
+
+Pages left in sc_pages are DMA unmapped and released.
+
+.. _`svc_rdma_wc_send`:
+
+svc_rdma_wc_send
+================
+
+.. c:function:: void svc_rdma_wc_send(struct ib_cq *cq, struct ib_wc *wc)
+
+    Invoked by RDMA provider for each polled Send WC
+
+    :param struct ib_cq \*cq:
+        Completion Queue context
+
+    :param struct ib_wc \*wc:
+        Work Completion object
+
+.. _`svc_rdma_wc_send.description`:
+
+Description
+-----------
+
+NB: The svc_xprt/svcxprt_rdma is pinned whenever it's possible that
+the Send completion handler could be running.
+
+.. _`svc_rdma_send`:
+
+svc_rdma_send
+=============
+
+.. c:function:: int svc_rdma_send(struct svcxprt_rdma *rdma, struct ib_send_wr *wr)
+
+    Post a single Send WR
+
+    :param struct svcxprt_rdma \*rdma:
+        transport on which to post the WR
+
+    :param struct ib_send_wr \*wr:
+        prepared Send WR to post
+
+.. _`svc_rdma_send.description`:
+
+Description
+-----------
+
+Returns zero the Send WR was posted successfully. Otherwise, a
+negative errno is returned.
+
+.. _`svc_rdma_sync_reply_hdr`:
+
+svc_rdma_sync_reply_hdr
+=======================
+
+.. c:function:: void svc_rdma_sync_reply_hdr(struct svcxprt_rdma *rdma, struct svc_rdma_send_ctxt *ctxt, unsigned int len)
+
+    DMA sync the transport header buffer
 
     :param struct svcxprt_rdma \*rdma:
         controlling transport
 
-    :param struct svc_rdma_op_ctxt \*ctxt:
-        op_ctxt for the Send WR
-
-    :param __be32 \*rdma_resp:
-        buffer containing transport header
+    :param struct svc_rdma_send_ctxt \*ctxt:
+        send_ctxt for the Send WR
 
     :param unsigned int len:
         length of transport header
-
-.. _`svc_rdma_map_reply_hdr.return`:
-
-Return
-------
-
-\ ``0``\  if the header is DMA mapped,
-\ ``-EIO``\  if DMA mapping failed.
-
-.. _`svc_rdma_post_send_wr`:
-
-svc_rdma_post_send_wr
-=====================
-
-.. c:function:: int svc_rdma_post_send_wr(struct svcxprt_rdma *rdma, struct svc_rdma_op_ctxt *ctxt, int num_sge, u32 inv_rkey)
-
-    Set up and post one Send Work Request
-
-    :param struct svcxprt_rdma \*rdma:
-        controlling transport
-
-    :param struct svc_rdma_op_ctxt \*ctxt:
-        op_ctxt for transmitting the Send WR
-
-    :param int num_sge:
-        number of SGEs to send
-
-    :param u32 inv_rkey:
-        R_key argument to Send With Invalidate, or zero
-
-.. _`svc_rdma_post_send_wr.return`:
-
-Return
-------
-
-\ ``0``\  if the Send\* was posted successfully,
-\ ``-ENOTCONN``\  if the connection was lost or dropped,
-\ ``-EINVAL``\  if there was a problem with the Send we built,
-\ ``-ENOMEM``\  if ib_post_send failed.
 
 .. _`svc_rdma_sendto`:
 

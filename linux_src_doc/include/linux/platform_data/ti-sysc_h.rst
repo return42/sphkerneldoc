@@ -154,5 +154,65 @@ srst_udelay
 quirks
     bitmask of enabled quirks
 
+.. _`ti_sysc_module_data`:
+
+struct ti_sysc_module_data
+==========================
+
+.. c:type:: struct ti_sysc_module_data
+
+    ti-sysc to hwmod translation data for a module
+
+.. _`ti_sysc_module_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ti_sysc_module_data {
+        const char *name;
+        u64 module_pa;
+        u32 module_size;
+        int *offsets;
+        int nr_offsets;
+        const struct sysc_capabilities *cap;
+        struct sysc_config *cfg;
+    }
+
+.. _`ti_sysc_module_data.members`:
+
+Members
+-------
+
+name
+    legacy "ti,hwmods" module name
+
+module_pa
+    physical address of the interconnect target module
+
+module_size
+    size of the interconnect target module
+
+offsets
+    array of register offsets as listed in enum sysc_registers
+
+nr_offsets
+    number of registers
+
+cap
+    interconnect target module capabilities
+
+cfg
+    interconnect target module configuration
+
+.. _`ti_sysc_module_data.description`:
+
+Description
+-----------
+
+This data is enough to allocate a new struct omap_hwmod_class_sysconfig
+based on device tree data parsed by ti-sysc driver.
+
 .. This file was automatic generated / don't edit.
 

@@ -30,24 +30,24 @@ non-zero value from the callback will destroy the passed in id.
 rdma_create_id
 ==============
 
-.. c:function:: struct rdma_cm_id *rdma_create_id(struct net *net, rdma_cm_event_handler event_handler, void *context, enum rdma_port_space ps, enum ib_qp_type qp_type)
+.. c:function::  rdma_create_id( net,  event_handler,  context,  ps,  qp_type)
 
     Create an RDMA identifier.
 
-    :param struct net \*net:
+    :param  net:
         The network namespace in which to create the new id.
 
-    :param rdma_cm_event_handler event_handler:
+    :param  event_handler:
         User callback invoked to report events associated with the
         returned rdma_id.
 
-    :param void \*context:
+    :param  context:
         User specified context associated with the id.
 
-    :param enum rdma_port_space ps:
+    :param  ps:
         RDMA port space.
 
-    :param enum ib_qp_type qp_type:
+    :param  qp_type:
         type of queue pair associated with the id.
 
 .. _`rdma_create_id.description`:
@@ -282,14 +282,14 @@ rdma_bind_addr before calling this routine.
 rdma_accept
 ===========
 
-.. c:function:: int rdma_accept(struct rdma_cm_id *id, struct rdma_conn_param *conn_param)
+.. c:function::  rdma_accept( id,  conn_param)
 
     Called to accept a connection request or response.
 
-    :param struct rdma_cm_id \*id:
+    :param  id:
         Connection identifier associated with the request.
 
-    :param struct rdma_conn_param \*conn_param:
+    :param  conn_param:
         Information needed to establish the connection.  This must be
         provided if accepting a connection request.  If accepting a connection
         response, this parameter must be NULL.

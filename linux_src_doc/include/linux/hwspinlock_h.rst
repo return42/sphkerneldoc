@@ -112,6 +112,38 @@ to release the hwspinlock as soon as possible.
 Returns 0 if we successfully locked the hwspinlock, -EBUSY if
 the hwspinlock was already taken, and -EINVAL if \ ``hwlock``\  is invalid.
 
+.. _`hwspin_trylock_raw`:
+
+hwspin_trylock_raw
+==================
+
+.. c:function:: int hwspin_trylock_raw(struct hwspinlock *hwlock)
+
+    attempt to lock a specific hwspinlock
+
+    :param struct hwspinlock \*hwlock:
+        an hwspinlock which we want to trylock
+
+.. _`hwspin_trylock_raw.description`:
+
+Description
+-----------
+
+This function attempts to lock an hwspinlock, and will immediately fail
+if the hwspinlock is already taken.
+
+.. _`hwspin_trylock_raw.caution`:
+
+Caution
+-------
+
+User must protect the routine of getting hardware lock with mutex
+or spinlock to avoid dead-lock, that will let user can do some time-consuming
+or sleepable operations under the hardware lock.
+
+Returns 0 if we successfully locked the hwspinlock, -EBUSY if
+the hwspinlock was already taken, and -EINVAL if \ ``hwlock``\  is invalid.
+
 .. _`hwspin_trylock`:
 
 hwspin_trylock
@@ -207,6 +239,43 @@ Returns 0 when the \ ``hwlock``\  was successfully taken, and an appropriate
 error code otherwise (most notably an -ETIMEDOUT if the \ ``hwlock``\  is still
 busy after \ ``timeout``\  msecs). The function will never sleep.
 
+.. _`hwspin_lock_timeout_raw`:
+
+hwspin_lock_timeout_raw
+=======================
+
+.. c:function:: int hwspin_lock_timeout_raw(struct hwspinlock *hwlock, unsigned int to)
+
+    lock an hwspinlock with timeout limit
+
+    :param struct hwspinlock \*hwlock:
+        the hwspinlock to be locked
+
+    :param unsigned int to:
+        timeout value in msecs
+
+.. _`hwspin_lock_timeout_raw.description`:
+
+Description
+-----------
+
+This function locks the underlying \ ``hwlock``\ . If the \ ``hwlock``\ 
+is already taken, the function will busy loop waiting for it to
+be released, but give up when \ ``timeout``\  msecs have elapsed.
+
+.. _`hwspin_lock_timeout_raw.caution`:
+
+Caution
+-------
+
+User must protect the routine of getting hardware lock with mutex
+or spinlock to avoid dead-lock, that will let user can do some time-consuming
+or sleepable operations under the hardware lock.
+
+Returns 0 when the \ ``hwlock``\  was successfully taken, and an appropriate
+error code otherwise (most notably an -ETIMEDOUT if the \ ``hwlock``\  is still
+busy after \ ``timeout``\  msecs). The function will never sleep.
+
 .. _`hwspin_lock_timeout`:
 
 hwspin_lock_timeout
@@ -295,6 +364,35 @@ calling this function
 
 it is a bug to call unlock on a \ ``hwlock``\  that is
 already unlocked.
+
+.. _`hwspin_unlock_raw`:
+
+hwspin_unlock_raw
+=================
+
+.. c:function:: void hwspin_unlock_raw(struct hwspinlock *hwlock)
+
+    unlock hwspinlock
+
+    :param struct hwspinlock \*hwlock:
+        a previously-acquired hwspinlock which we want to unlock
+
+.. _`hwspin_unlock_raw.description`:
+
+Description
+-----------
+
+This function will unlock a specific hwspinlock.
+
+\ ``hwlock``\  must be already locked (e.g. by \ :c:func:`hwspin_trylock`\ ) before calling
+
+.. _`hwspin_unlock_raw.this-function`:
+
+this function
+-------------
+
+it is a bug to call unlock on a \ ``hwlock``\  that is already
+unlocked.
 
 .. _`hwspin_unlock`:
 

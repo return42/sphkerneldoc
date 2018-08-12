@@ -14,9 +14,11 @@ soc
     intel/index
     omap/index
     pxa/index
+    qcom/index
     samsung/index
     stm/index
     sunxi/index
+    uniphier/index
     soc-ac97_c
     soc-compress_c
     soc-core_c

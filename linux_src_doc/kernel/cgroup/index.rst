@@ -14,4 +14,4 @@ cgroup
     freezer_c
     pids_c
     rdma_c
-    stat_c
+    rstat_c

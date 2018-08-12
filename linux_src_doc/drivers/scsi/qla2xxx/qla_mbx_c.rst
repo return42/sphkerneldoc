@@ -9,7 +9,7 @@ qla2x00_set_serdes_params
 .. c:function:: int qla2x00_set_serdes_params(scsi_qla_host_t *vha, uint16_t sw_em_1g, uint16_t sw_em_2g, uint16_t sw_em_4g)
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
     :param uint16_t sw_em_1g:
         *undescribed*

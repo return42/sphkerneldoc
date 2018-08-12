@@ -248,6 +248,7 @@ Definition
         int vrefresh;
         int hsync;
         enum hdmi_picture_aspect picture_aspect_ratio;
+        struct list_head export_head;
     }
 
 .. _`drm_display_mode.members`:
@@ -284,26 +285,25 @@ type
     A bitmask of flags, mostly about the source of a mode. Possible flags
     are:
 
-     - DRM_MODE_TYPE_BUILTIN: Meant for hard-coded modes, effectively
-       unused.
      - DRM_MODE_TYPE_PREFERRED: Preferred mode, usually the native
        resolution of an LCD panel. There should only be one preferred
        mode per connector at any given time.
      - DRM_MODE_TYPE_DRIVER: Mode created by the driver, which is all of
        them really. Drivers must set this bit for all modes they create
        and expose to userspace.
+     - DRM_MODE_TYPE_USERDEF: Mode defined via kernel command line
 
     Plus a big list of flags which shouldn't be used at all, but are
-    still around since these flags are also used in the userspace ABI:
+    still around since these flags are also used in the userspace ABI.
+    We no longer accept modes with these types though:
 
+     - DRM_MODE_TYPE_BUILTIN: Meant for hard-coded modes, unused.
+       Use DRM_MODE_TYPE_DRIVER instead.
      - DRM_MODE_TYPE_DEFAULT: Again a leftover, use
        DRM_MODE_TYPE_PREFERRED instead.
      - DRM_MODE_TYPE_CLOCK_C and DRM_MODE_TYPE_CRTC_C: Define leftovers
        which are stuck around for hysterical raisins only. No one has an
        idea what they were meant for. Don't use.
-     - DRM_MODE_TYPE_USERDEF: Mode defined by userspace, again a vestige
-       from older kms designs where userspace had to first add a custom
-       mode to the kernel's mode list before it could use it. Don't use.
 
 clock
 
@@ -353,8 +353,8 @@ flags
      - DRM_MODE_FLAG_PCSYNC: composite sync is active high.
      - DRM_MODE_FLAG_NCSYNC: composite sync is active low.
      - DRM_MODE_FLAG_HSKEW: hskew provided (not used?).
-     - DRM_MODE_FLAG_BCAST: not used?
-     - DRM_MODE_FLAG_PIXMUX: not used?
+     - DRM_MODE_FLAG_BCAST: <deprecated>
+     - DRM_MODE_FLAG_PIXMUX: <deprecated>
      - DRM_MODE_FLAG_DBLCLK: double-clocked mode.
      - DRM_MODE_FLAG_CLKDIV2: half-clocked mode.
 
@@ -463,6 +463,16 @@ hsync
 picture_aspect_ratio
 
     Field for setting the HDMI picture aspect ratio of a mode.
+
+export_head
+
+    struct list_head for modes to be exposed to the userspace.
+    This is to maintain a list of exposed modes while preparing
+    user-mode's list in drm_mode_getconnector ioctl. The purpose of this
+    list_head only lies in the ioctl function, and is not expected to be
+    used outside the function.
+    Once used, the stale pointers are not reset, but left as it is, to
+    avoid overhead of protecting it by mode_config.mutex.
 
 .. _`drm_display_mode.description`:
 

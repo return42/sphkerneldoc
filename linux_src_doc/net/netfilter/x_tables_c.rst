@@ -1,6 +1,33 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/netfilter/x_tables.c
 
+.. _`xt_check_proc_name`:
+
+xt_check_proc_name
+==================
+
+.. c:function:: int xt_check_proc_name(const char *name, unsigned int size)
+
+    check that name is suitable for /proc file creation
+
+    :param const char \*name:
+        file name candidate
+
+    :param unsigned int size:
+        length of buffer
+
+.. _`xt_check_proc_name.description`:
+
+Description
+-----------
+
+some x_tables modules wish to create a file in /proc.
+This function makes sure that the name is suitable for this
+purpose, it checks that name is NUL terminated and isn't a 'special'
+name, like "..".
+
+returns negative number on error or 0 if name is useable.
+
 .. _`xt_check_entry_offsets`:
 
 xt_check_entry_offsets
@@ -210,7 +237,9 @@ Rule evaluation needs to use \ :c:func:`xt_get_this_cpu_counter`\  helper
 to fetch the real percpu counter.
 
 To speed up allocation and improve data locality, a 4kb block is
-allocated.
+allocated.  Freeing any counter may free an entire block, so all
+counters allocated using the same state must be freed at the same
+time.
 
 xt_percpu_counter_alloc_state contains the base address of the
 allocated page and the current sub-offset.

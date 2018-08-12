@@ -6,12 +6,12 @@
 wm8350_hp_jack_detect
 =====================
 
-.. c:function:: int wm8350_hp_jack_detect(struct snd_soc_codec *codec, enum wm8350_jack which, struct snd_soc_jack *jack, int report)
+.. c:function:: int wm8350_hp_jack_detect(struct snd_soc_component *component, enum wm8350_jack which, struct snd_soc_jack *jack, int report)
 
     Enable headphone jack detection.
 
-    :param struct snd_soc_codec \*codec:
-        WM8350 codec
+    :param struct snd_soc_component \*component:
+        WM8350 component
 
     :param enum wm8350_jack which:
         left or right jack detect signal
@@ -35,12 +35,12 @@ is specified then detection is disabled.
 wm8350_mic_jack_detect
 ======================
 
-.. c:function:: int wm8350_mic_jack_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, int detect_report, int short_report)
+.. c:function:: int wm8350_mic_jack_detect(struct snd_soc_component *component, struct snd_soc_jack *jack, int detect_report, int short_report)
 
     Enable microphone jack detection.
 
-    :param struct snd_soc_codec \*codec:
-        WM8350 codec
+    :param struct snd_soc_component \*component:
+        WM8350 component
 
     :param struct snd_soc_jack \*jack:
         jack to report detection events on

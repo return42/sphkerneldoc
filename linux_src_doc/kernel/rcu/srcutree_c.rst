@@ -43,26 +43,6 @@ Note that this is not an atomic primitive, and can therefore suffer
 severe errors when invoked on an active srcu_struct.  That said, it
 can be useful as an error check at cleanup time.
 
-.. _`cleanup_srcu_struct`:
-
-cleanup_srcu_struct
-===================
-
-.. c:function:: void cleanup_srcu_struct(struct srcu_struct *sp)
-
-    deconstruct a sleep-RCU structure
-
-    :param struct srcu_struct \*sp:
-        structure to clean up.
-
-.. _`cleanup_srcu_struct.description`:
-
-Description
------------
-
-Must invoke this after you are finished using a given srcu_struct that
-was initialized via \ :c:func:`init_srcu_struct`\ , else you leak memory.
-
 .. _`call_srcu`:
 
 call_srcu

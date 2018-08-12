@@ -381,7 +381,7 @@ i40iw_clean_cq
 
 .. c:function:: void i40iw_clean_cq(void *queue, struct i40iw_cq_uk *cq)
 
-    clean cq entries @ queue completion context
+    clean cq entries \ ````\  queue completion context
 
     :param void \*queue:
         *undescribed*

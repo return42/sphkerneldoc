@@ -318,6 +318,37 @@ vfs_path_lookup
     :param struct path \*path:
         pointer to struct path to fill
 
+.. _`try_lookup_one_len`:
+
+try_lookup_one_len
+==================
+
+.. c:function:: struct dentry *try_lookup_one_len(const char *name, struct dentry *base, int len)
+
+    filesystem helper to lookup single pathname component
+
+    :param const char \*name:
+        pathname component to lookup
+
+    :param struct dentry \*base:
+        base directory to lookup from
+
+    :param int len:
+        maximum length \ ``len``\  should be interpreted to
+
+.. _`try_lookup_one_len.description`:
+
+Description
+-----------
+
+Look up a dentry by name in the dcache, returning NULL if it does not
+currently exist.  The function does not try to create a dentry.
+
+Note that this routine is purely a helper for filesystem usage and should
+not be called by generic code.
+
+The caller must hold base->i_mutex.
+
 .. _`lookup_one_len`:
 
 lookup_one_len

@@ -88,7 +88,6 @@ Definition
         struct platform_device *pdev;
         struct spi_master *master;
         struct s3c64xx_spi_info *cntrlr_info;
-        struct spi_device *tgl_spi;
         spinlock_t lock;
         unsigned long sfr_start;
         struct completion xfer_completion;
@@ -126,9 +125,6 @@ master
 
 cntrlr_info
     Platform specific data for the controller this driver manages.
-
-tgl_spi
-    Pointer to the last CS left untoggled by the cs_change hint.
 
 lock
     Controller specific lock.

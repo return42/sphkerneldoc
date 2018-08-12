@@ -229,6 +229,57 @@ Return
 
 Zero on success, error code on failure. Cannot return -EDEADLK.
 
+.. _`drm_atomic_replace_property_blob_from_id`:
+
+drm_atomic_replace_property_blob_from_id
+========================================
+
+.. c:function:: int drm_atomic_replace_property_blob_from_id(struct drm_device *dev, struct drm_property_blob **blob, uint64_t blob_id, ssize_t expected_size, ssize_t expected_elem_size, bool *replaced)
+
+    lookup the new blob and replace the old one with it
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_property_blob \*\*blob:
+        a pointer to the member blob to be replaced
+
+    :param uint64_t blob_id:
+        ID of the new blob
+
+    :param ssize_t expected_size:
+        total expected size of the blob data (in bytes)
+
+    :param ssize_t expected_elem_size:
+        expected element size of the blob data (in bytes)
+
+    :param bool \*replaced:
+        did the blob get replaced?
+
+.. _`drm_atomic_replace_property_blob_from_id.description`:
+
+Description
+-----------
+
+Replace \ ``blob``\  with another blob with the ID \ ``blob_id``\ . If \ ``blob_id``\  is zero
+\ ``blob``\  becomes NULL.
+
+If \ ``expected_size``\  is positive the new blob length is expected to be equal
+to \ ``expected_size``\  bytes. If \ ``expected_elem_size``\  is positive the new blob
+length is expected to be a multiple of \ ``expected_elem_size``\  bytes. Otherwise
+an error is returned.
+
+\ ``replaced``\  will indicate to the caller whether the blob was replaced or not.
+If the old and new blobs were in fact the same blob \ ``replaced``\  will be false
+otherwise it will be true.
+
+.. _`drm_atomic_replace_property_blob_from_id.return`:
+
+Return
+------
+
+Zero on success, error code on failure.
+
 .. _`drm_atomic_crtc_set_property`:
 
 drm_atomic_crtc_set_property
@@ -786,6 +837,14 @@ drop the reference to the fence as we are not storing it anywhere.
 Otherwise, if \ :c:type:`drm_plane_state.fence <drm_plane_state>`\  is not set this function we just set it
 with the received implicit fence. In both cases this function consumes a
 reference for \ ``fence``\ .
+
+This way explicit fencing can be used to overrule implicit fencing, which is
+important to make explicit fencing use-cases work: One example is using one
+buffer for 2 screens with different refresh rates. Implicit fencing will
+clamp rendering to the refresh rate of the slower screen, whereas explicit
+fence allows 2 independent render and display loops on a single buffer. If a
+driver allows obeys both implicit and explicit fences for plane updates, then
+it will break all the benefits of explicit fencing.
 
 .. _`drm_atomic_set_crtc_for_connector`:
 

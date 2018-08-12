@@ -15,7 +15,7 @@ dac
     ad5449_c
     ad5504_c
     ad5624r_h
-    ad5686_c
+    ad5686_h
     ad5755_c
     ad5761_c
     ad5764_c

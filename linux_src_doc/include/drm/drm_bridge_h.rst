@@ -20,7 +20,7 @@ Definition
     struct drm_bridge_funcs {
         int (*attach)(struct drm_bridge *bridge);
         void (*detach)(struct drm_bridge *bridge);
-        enum drm_mode_status (*mode_valid)(struct drm_bridge *crtc, const struct drm_display_mode *mode);
+        enum drm_mode_status (*mode_valid)(struct drm_bridge *bridge, const struct drm_display_mode *mode);
         bool (*mode_fixup)(struct drm_bridge *bridge,const struct drm_display_mode *mode, struct drm_display_mode *adjusted_mode);
         void (*disable)(struct drm_bridge *bridge);
         void (*post_disable)(struct drm_bridge *bridge);
@@ -190,6 +190,50 @@ enable
 
     The enable callback is optional.
 
+.. _`drm_bridge_timings`:
+
+struct drm_bridge_timings
+=========================
+
+.. c:type:: struct drm_bridge_timings
+
+    timing information for the bridge
+
+.. _`drm_bridge_timings.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_bridge_timings {
+        u32 sampling_edge;
+        u32 setup_time_ps;
+        u32 hold_time_ps;
+    }
+
+.. _`drm_bridge_timings.members`:
+
+Members
+-------
+
+sampling_edge
+
+    Tells whether the bridge samples the digital input signal
+    from the display engine on the positive or negative edge of the
+    clock, this should reuse the DRM_BUS_FLAG_PIXDATA_[POS|NEG]EDGE
+    bitwise flags from the DRM connector (bit 2 and 3 valid).
+
+setup_time_ps
+
+    Defines the time in picoseconds the input data lines must be
+    stable before the clock edge.
+
+hold_time_ps
+
+    Defines the time in picoseconds taken for the bridge to sample the
+    input signal after the clock edge.
+
 .. _`drm_bridge`:
 
 struct drm_bridge
@@ -214,6 +258,7 @@ Definition
         struct device_node *of_node;
     #endif
         struct list_head list;
+        const struct drm_bridge_timings *timings;
         const struct drm_bridge_funcs *funcs;
         void *driver_private;
     }
@@ -237,6 +282,10 @@ of_node
 
 list
     to keep track of all added bridges
+
+timings
+    the timing specification for the bridge, if any (may
+    be NULL)
 
 funcs
     control functions

@@ -41,7 +41,7 @@ Definition
         void (*cm_connect_complete)(struct rds_connection *conn, struct rdma_cm_event *event);
         unsigned int (*stats_info_copy)(struct rds_info_iterator *iter, unsigned int avail);
         void (*exit)(void);
-        void *(*get_mr)(struct scatterlist *sg, unsigned long nr_sg, struct rds_sock *rs, u32 *key_ret);
+        void *(*get_mr)(struct scatterlist *sg, unsigned long nr_sg,struct rds_sock *rs, u32 *key_ret, struct rds_connection *conn);
         void (*sync_mr)(void *trans_private, int direction);
         void (*free_mr)(void *trans_private, int invalidate);
         void (*flush_mrs)(void);

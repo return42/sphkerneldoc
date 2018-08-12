@@ -46,7 +46,7 @@ da8xx_register_usb11_phy_clk
 
     :param bool use_usb_refclkin:
         Selects the parent clock - either "usb_refclkin" if true
-        or "usb20_phy" if false.
+        or "usb0_clk48" if false.
 
 .. This file was automatic generated / don't edit.
 

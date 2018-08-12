@@ -258,5 +258,31 @@ srp_conn_unique
     :param struct srp_target_port \*target:
         SRP target port.
 
+.. _`srp_parse_in`:
+
+srp_parse_in
+============
+
+.. c:function:: int srp_parse_in(struct net *net, struct sockaddr_storage *sa, const char *addr_port_str)
+
+    parse an IP address and port number combination
+
+    :param struct net \*net:
+        *undescribed*
+
+    :param struct sockaddr_storage \*sa:
+        *undescribed*
+
+    :param const char \*addr_port_str:
+        *undescribed*
+
+.. _`srp_parse_in.parse-the-following-address-formats`:
+
+Parse the following address formats
+-----------------------------------
+
+- IPv4: <ip_address>:<port>, e.g. 1.2.3.4:5.
+- IPv6: \[<ipv6_address>\]:<port>, e.g. [1::2:3%4]:5.
+
 .. This file was automatic generated / don't edit.
 

@@ -559,7 +559,7 @@ fm10k_iov_select_vid
     Select correct default VLAN ID
 
     :param struct fm10k_vf_info \*vf_info:
-        *undescribed*
+        pointer to VF information structure
 
     :param u16 vid:
         VLAN ID to correct

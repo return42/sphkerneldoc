@@ -77,8 +77,8 @@ Return
 
 \ ``0``\  if the RPC was sent successfully,
 \ ``-ENOTCONN``\  if the connection was lost,
-\ ``-EAGAIN``\  if not enough pages are available for on-demand reply buffer,
-\ ``-ENOBUFS``\  if no MRs are available to register chunks,
+\ ``-EAGAIN``\  if the caller should call again with the same arguments,
+\ ``-ENOBUFS``\  if the caller should call again after a delay,
 \ ``-EMSGSIZE``\  if the transport header is too small,
 \ ``-EIO``\  if a permanent problem occurred while marshaling.
 

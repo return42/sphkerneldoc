@@ -221,6 +221,29 @@ Description
 Call the NetLabel mechanism to set the label of a packet using \ ``sid``\ .
 Returns zero on success, negative values on failure.
 
+.. _`selinux_netlbl_sctp_assoc_request`:
+
+selinux_netlbl_sctp_assoc_request
+=================================
+
+.. c:function:: int selinux_netlbl_sctp_assoc_request(struct sctp_endpoint *ep, struct sk_buff *skb)
+
+    Label an incoming sctp association.
+
+    :param struct sctp_endpoint \*ep:
+        incoming association endpoint.
+
+    :param struct sk_buff \*skb:
+        the packet.
+
+.. _`selinux_netlbl_sctp_assoc_request.description`:
+
+Description
+-----------
+
+A new incoming connection is represented by \ ``ep``\ , ......
+Returns zero on success, negative values on failure.
+
 .. _`selinux_netlbl_inet_conn_request`:
 
 selinux_netlbl_inet_conn_request
@@ -269,6 +292,28 @@ Description
 A new connection has been established using \ ``sk``\ , we've already labeled the
 socket via the request_sock struct in \ :c:func:`selinux_netlbl_inet_conn_request`\  but
 we need to set the NetLabel state here since we now have a sock structure.
+
+.. _`selinux_netlbl_sctp_sk_clone`:
+
+selinux_netlbl_sctp_sk_clone
+============================
+
+.. c:function:: void selinux_netlbl_sctp_sk_clone(struct sock *sk, struct sock *newsk)
+
+    Copy state to the newly created sock
+
+    :param struct sock \*sk:
+        current sock
+
+    :param struct sock \*newsk:
+        the new sock
+
+.. _`selinux_netlbl_sctp_sk_clone.description`:
+
+Description
+-----------
+
+Called whenever a new socket is created by accept(2) or sctp_peeloff(3).
 
 .. _`selinux_netlbl_socket_post_create`:
 
@@ -373,6 +418,53 @@ Check the \ :c:func:`setsockopt`\  call and if the user is trying to replace the
 options on a socket and a NetLabel is in place for the socket deny the
 access; otherwise allow the access.  Returns zero when the access is
 allowed, -EACCES when denied, and other negative values on error.
+
+.. _`selinux_netlbl_socket_connect_helper`:
+
+selinux_netlbl_socket_connect_helper
+====================================
+
+.. c:function:: int selinux_netlbl_socket_connect_helper(struct sock *sk, struct sockaddr *addr)
+
+    Help label a client-side socket on connect
+
+    :param struct sock \*sk:
+        the socket to label
+
+    :param struct sockaddr \*addr:
+        the destination address
+
+.. _`selinux_netlbl_socket_connect_helper.description`:
+
+Description
+-----------
+
+Attempt to label a connected socket with NetLabel using the given address.
+Returns zero values on success, negative values on failure.
+
+.. _`selinux_netlbl_socket_connect_locked`:
+
+selinux_netlbl_socket_connect_locked
+====================================
+
+.. c:function:: int selinux_netlbl_socket_connect_locked(struct sock *sk, struct sockaddr *addr)
+
+    Label a client-side socket on connect
+
+    :param struct sock \*sk:
+        the socket to label
+
+    :param struct sockaddr \*addr:
+        the destination address
+
+.. _`selinux_netlbl_socket_connect_locked.description`:
+
+Description
+-----------
+
+Attempt to label a connected socket that already has the socket locked
+with NetLabel using the given address.
+Returns zero values on success, negative values on failure.
 
 .. _`selinux_netlbl_socket_connect`:
 

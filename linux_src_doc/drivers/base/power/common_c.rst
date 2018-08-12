@@ -74,7 +74,49 @@ power management through PM domains.
 Callers must ensure proper synchronization of this function with power
 management callbacks.
 
-Returns 0 on successfully attached PM domain or negative error code.
+Returns 0 on successfully attached PM domain, or when it is found that the
+device doesn't need a PM domain, else a negative error code.
+
+.. _`dev_pm_domain_attach_by_id`:
+
+dev_pm_domain_attach_by_id
+==========================
+
+.. c:function:: struct device *dev_pm_domain_attach_by_id(struct device *dev, unsigned int index)
+
+    Associate a device with one of its PM domains.
+
+    :param struct device \*dev:
+        The device used to lookup the PM domain.
+
+    :param unsigned int index:
+        The index of the PM domain.
+
+.. _`dev_pm_domain_attach_by_id.description`:
+
+Description
+-----------
+
+As \ ``dev``\  may only be attached to a single PM domain, the backend PM domain
+provider creates a virtual device to attach instead. If attachment succeeds,
+the ->detach() callback in the struct dev_pm_domain are assigned by the
+corresponding backend attach function, as to deal with detaching of the
+created virtual device.
+
+This function should typically be invoked by a driver during the probe phase,
+in case its device requires power management through multiple PM domains. The
+driver may benefit from using the received device, to configure device-links
+towards its original device. Depending on the use-case and if needed, the
+links may be dynamically changed by the driver, which allows it to control
+the power to the PM domains independently from each other.
+
+Callers must ensure proper synchronization of this function with power
+management callbacks.
+
+Returns the virtual created device when successfully attached to its PM
+domain, NULL in case \ ``dev``\  don't need a PM domain, else an \ :c:func:`ERR_PTR`\ .
+Note that, to detach the returned virtual device, the driver shall call
+\ :c:func:`dev_pm_domain_detach`\  on it, typically during the remove phase.
 
 .. _`dev_pm_domain_detach`:
 
@@ -96,9 +138,10 @@ dev_pm_domain_detach
 Description
 -----------
 
-This functions will reverse the actions from \ :c:func:`dev_pm_domain_attach`\  and thus
-try to detach the \ ``dev``\  from its PM domain. Typically it should be invoked
-from subsystem level code during the remove phase.
+This functions will reverse the actions from \ :c:func:`dev_pm_domain_attach`\  and
+\ :c:func:`dev_pm_domain_attach_by_id`\ , thus it detaches \ ``dev``\  from its PM domain.
+Typically it should be invoked during the remove phase, either from
+subsystem level code or from drivers.
 
 Callers must ensure proper synchronization of this function with power
 management callbacks.

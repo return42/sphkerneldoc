@@ -16,12 +16,19 @@ irq_sim_init
     :param unsigned int num_irqs:
         Number of interrupts to allocate
 
-.. _`irq_sim_init.description`:
+.. _`irq_sim_init.on-success`:
 
-Description
------------
+On success
+----------
 
-Returns 0 on success and a negative error number on failure.
+return the base of the allocated interrupt range.
+
+.. _`irq_sim_init.on-failure`:
+
+On failure
+----------
+
+a negative errno.
 
 .. _`irq_sim_fini`:
 
@@ -53,12 +60,19 @@ devm_irq_sim_init
     :param unsigned int num_irqs:
         Number of interrupts to allocate
 
-.. _`devm_irq_sim_init.description`:
+.. _`devm_irq_sim_init.on-success`:
 
-Description
------------
+On success
+----------
 
-Returns 0 on success and a negative error number on failure.
+return the base of the allocated interrupt range.
+
+.. _`devm_irq_sim_init.on-failure`:
+
+On failure
+----------
+
+a negative errno.
 
 .. _`irq_sim_fire`:
 

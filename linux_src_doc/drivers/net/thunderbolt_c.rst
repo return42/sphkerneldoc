@@ -82,6 +82,7 @@ Definition
         int login_retries;
         struct delayed_work login_work;
         struct work_struct connected_work;
+        struct work_struct disconnect_work;
         struct thunderbolt_ip_frame_header rx_hdr;
         struct tbnet_ring rx_ring;
         atomic_t frame_id;
@@ -142,6 +143,10 @@ connected_work
     Worker that finalizes the ThunderboltIP connection
     setup and enables DMA paths for high speed data
     transfers
+
+disconnect_work
+    Worker that handles tearing down the ThunderboltIP
+    connection
 
 rx_hdr
     Copy of the currently processed Rx frame. Used when a

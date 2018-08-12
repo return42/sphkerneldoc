@@ -91,12 +91,15 @@ hint.
 pcpu_mem_zalloc
 ===============
 
-.. c:function:: void *pcpu_mem_zalloc(size_t size)
+.. c:function:: void *pcpu_mem_zalloc(size_t size, gfp_t gfp)
 
     allocate memory
 
     :param size_t size:
         bytes to allocate
+
+    :param gfp_t gfp:
+        allocation flags
 
 .. _`pcpu_mem_zalloc.description`:
 
@@ -104,15 +107,9 @@ Description
 -----------
 
 Allocate \ ``size``\  bytes.  If \ ``size``\  is smaller than PAGE_SIZE,
-\ :c:func:`kzalloc`\  is used; otherwise, \ :c:func:`vzalloc`\  is used.  The returned
-memory is always zeroed.
-
-.. _`pcpu_mem_zalloc.context`:
-
-Context
--------
-
-Does GFP_KERNEL allocation.
+\ :c:func:`kzalloc`\  is used; otherwise, the equivalent of \ :c:func:`vzalloc`\  is used.
+This is to facilitate passing through whitelisted flags.  The
+returned memory is always zeroed.
 
 .. _`pcpu_mem_zalloc.return`:
 
@@ -785,7 +782,12 @@ pcpu_balance_workfn
 Description
 -----------
 
-Reclaim all fully free chunks except for the first one.
+Reclaim all fully free chunks except for the first one.  This is also
+responsible for maintaining the pool of empty populated pages.  However,
+it is possible that this is called when physical memory is scarce causing
+OOM killer to be triggered.  We should avoid doing so until an actual
+allocation causes the failure as it is possible that requests can be
+serviced from already backed regions.
 
 .. _`free_percpu`:
 

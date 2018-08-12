@@ -252,6 +252,7 @@ Definition
         u32 cmd_rcgr;
         u8 mnd_width;
         u8 hid_width;
+        u8 safe_src_index;
         const struct parent_map *parent_map;
         const struct freq_tbl *freq_tbl;
         struct clk_regmap clkr;
@@ -270,6 +271,9 @@ mnd_width
 
 hid_width
     number of bits in half integer divider
+
+safe_src_index
+    safe src index value
 
 parent_map
     map from software's parent index to hardware's src_sel field

@@ -228,5 +228,32 @@ Return
 
 Size of the resource in bytes
 
+.. _`nfp_resource_table_init`:
+
+nfp_resource_table_init
+=======================
+
+.. c:function:: int nfp_resource_table_init(struct nfp_cpp *cpp)
+
+    Run initial checks on the resource table
+
+    :param struct nfp_cpp \*cpp:
+        NFP CPP handle
+
+.. _`nfp_resource_table_init.description`:
+
+Description
+-----------
+
+Start-of-day init procedure for resource table.  Must be called before
+any local resource table users may exist.
+
+.. _`nfp_resource_table_init.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
 .. This file was automatic generated / don't edit.
 

@@ -31,6 +31,35 @@ qcom_remove_glink_subdev
     :param struct qcom_rproc_glink \*glink:
         reference to a GLINK subdev context
 
+.. _`qcom_register_dump_segments`:
+
+qcom_register_dump_segments
+===========================
+
+.. c:function:: int qcom_register_dump_segments(struct rproc *rproc, const struct firmware *fw)
+
+    register segments for coredump
+
+    :param struct rproc \*rproc:
+        remoteproc handle
+
+    :param const struct firmware \*fw:
+        firmware header
+
+.. _`qcom_register_dump_segments.description`:
+
+Description
+-----------
+
+Register all segments of the ELF in the remoteproc coredump segment list
+
+.. _`qcom_register_dump_segments.return`:
+
+Return
+------
+
+0 on success, negative errno on failure.
+
 .. _`qcom_add_smd_subdev`:
 
 qcom_add_smd_subdev

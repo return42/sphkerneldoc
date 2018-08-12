@@ -124,10 +124,22 @@ flags
     flags
 
 get_next_block
-    callback to fetch the next block to search in
+    fetch next block of data@consumed: number of bytes consumed by the caller
+    \ ``dst``\ : destination buffer
+    \ ``conf``\ : search configuration
+    \ ``state``\ : search state
+
+    Called repeatedly until 0 is returned. Must assign the
+    head of the next block of data to &*dst and return the length
+    of the block or 0 if at the end. consumed == 0 indicates
+    a new search. May store/read persistent values in state->cb.
 
 finish
-    callback to finalize a search
+    finalize/clean a series of \ :c:func:`get_next_block`\  calls@conf: search configuration
+    \ ``state``\ : search state
+
+    Called after the last use of \ :c:func:`get_next_block`\ , may be used
+    to cleanup any leftovers.
 
 .. _`textsearch_next`:
 

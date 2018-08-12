@@ -22,6 +22,7 @@ Definition
         void __iomem *tx;
         void __iomem *rx;
         void __iomem *pcs;
+        void __iomem *pcs_misc;
         struct clk *pipe_clk;
         unsigned int index;
         struct qcom_qmp *qmp;
@@ -44,6 +45,9 @@ rx
 
 pcs
     iomapped memory space for lane's pcs
+
+pcs_misc
+    iomapped memory space for lane's pcs_misc
 
 pipe_clk
     pipe lock
@@ -76,13 +80,16 @@ Definition
     struct qcom_qmp {
         struct device *dev;
         void __iomem *serdes;
-        struct clk **clks;
+        void __iomem *dp_com;
+        struct clk_bulk_data *clks;
         struct reset_control **resets;
         struct regulator_bulk_data *vregs;
         const struct qmp_phy_cfg *cfg;
         struct qmp_phy **phys;
         struct mutex phy_mutex;
         int init_count;
+        bool phy_initialized;
+        enum phy_mode mode;
     }
 
 .. _`qcom_qmp.members`:
@@ -95,6 +102,9 @@ dev
 
 serdes
     iomapped memory space for phy's serdes
+
+dp_com
+    iomapped memory space for phy's dp_com control block
 
 clks
     array of clocks required by phy
@@ -116,6 +126,12 @@ phy_mutex
 
 init_count
     phy common block initialization count
+
+phy_initialized
+    indicate if PHY has been initialized
+
+mode
+    current PHY mode
 
 .. This file was automatic generated / don't edit.
 

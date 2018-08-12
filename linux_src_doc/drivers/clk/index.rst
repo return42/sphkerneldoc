@@ -9,10 +9,12 @@ clk
 
     at91/index
     bcm/index
+    davinci/index
     hisilicon/index
     imx/index
     ingenic/index
     keystone/index
+    meson/index
     mxs/index
     qcom/index
     renesas/index
@@ -38,6 +40,7 @@ clk
     clk-gpio_c
     clk-nomadik_c
     clk-si5351_h
+    clk-si544_c
     clk-si570_c
     clk-u300_c
     clk-xgene_c

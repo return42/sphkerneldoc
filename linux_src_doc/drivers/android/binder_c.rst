@@ -295,7 +295,7 @@ data
     binder_ref_data containing id, handle, and current refcounts
 
 rb_node_desc
-    node for lookup by \ ``data``\ .desc in proc's rb_tree
+    node for lookup by \ ``data.desc``\  in proc's rb_tree
 
 rb_node_node
     node for lookup by \ ``node``\  in proc's rb_tree

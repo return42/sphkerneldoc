@@ -1,6 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pci/endpoint/pci-epf-core.c
 
+.. _`define_mutex`:
+
+DEFINE_MUTEX
+============
+
+.. c:function::  DEFINE_MUTEX( pci_epf_mutex)
+
+    :param  pci_epf_mutex:
+        *undescribed*
+
+.. _`define_mutex.description`:
+
+Description
+-----------
+
+Copyright (C) 2017 Texas Instruments
+
+.. _`define_mutex.author`:
+
+Author
+------
+
+Kishon Vijay Abraham I <kishon@ti.com>
+
 .. _`pci_epf_linkup`:
 
 pci_epf_linkup

@@ -105,7 +105,7 @@ ext4_swap_extents
         Number of blocks to swap
 
     :param int unwritten:
-        *undescribed*
+        Mark second inode's extents as unwritten after swap
 
     :param int \*erp:
         Pointer to save error value

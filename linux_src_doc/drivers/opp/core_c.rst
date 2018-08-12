@@ -687,53 +687,6 @@ Description
 
 Release resources blocked for platform specific set_opp helper.
 
-.. _`dev_pm_opp_register_get_pstate_helper`:
-
-dev_pm_opp_register_get_pstate_helper
-=====================================
-
-.. c:function:: struct opp_table *dev_pm_opp_register_get_pstate_helper(struct device *dev, int (*get_pstate)(struct device *dev, unsigned long rate))
-
-    Register \ :c:func:`get_pstate`\  helper.
-
-    :param struct device \*dev:
-        Device for which the helper is getting registered.
-
-    :param int (\*get_pstate)(struct device \*dev, unsigned long rate):
-        Helper.
-
-.. _`dev_pm_opp_register_get_pstate_helper.todo`:
-
-TODO
-----
-
-Remove this callback after the same information is available via Device
-Tree.
-
-This allows a platform to initialize the performance states of individual
-OPPs for its devices, until we get similar information directly from DT.
-
-This must be called before the OPPs are initialized for the device.
-
-.. _`dev_pm_opp_unregister_get_pstate_helper`:
-
-dev_pm_opp_unregister_get_pstate_helper
-=======================================
-
-.. c:function:: void dev_pm_opp_unregister_get_pstate_helper(struct opp_table *opp_table)
-
-    Releases resources blocked for \ :c:func:`get_pstate`\  helper
-
-    :param struct opp_table \*opp_table:
-        OPP table returned from \ :c:func:`dev_pm_opp_register_get_pstate_helper`\ .
-
-.. _`dev_pm_opp_unregister_get_pstate_helper.description`:
-
-Description
------------
-
-Release resources blocked for platform specific \ :c:func:`get_pstate`\  helper.
-
 .. _`dev_pm_opp_add`:
 
 dev_pm_opp_add

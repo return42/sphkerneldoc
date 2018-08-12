@@ -217,6 +217,27 @@ i40iw_hw_flush_wqes
     :param bool wait:
         flag wait for completion
 
+.. _`i40iw_gen_ae`:
+
+i40iw_gen_ae
+============
+
+.. c:function:: void i40iw_gen_ae(struct i40iw_device *iwdev, struct i40iw_sc_qp *qp, struct i40iw_gen_ae_info *info, bool wait)
+
+    generate AE
+
+    :param struct i40iw_device \*iwdev:
+        iwarp device
+
+    :param struct i40iw_sc_qp \*qp:
+        qp associated with AE
+
+    :param struct i40iw_gen_ae_info \*info:
+        info for ae
+
+    :param bool wait:
+        wait for completion
+
 .. _`i40iw_hw_manage_vf_pble_bp`:
 
 i40iw_hw_manage_vf_pble_bp

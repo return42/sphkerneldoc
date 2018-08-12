@@ -9,6 +9,7 @@ mtd
 
     bbm_h
     mtd_h
+    nand_h
     onenand_h
     partitions_h
     rawnand_h

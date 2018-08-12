@@ -250,58 +250,6 @@ on the devres data, then, devres data is freed.
 
 For use by USB host and peripheral drivers.
 
-.. _`usb_get_phy_dev`:
-
-usb_get_phy_dev
-===============
-
-.. c:function:: struct usb_phy *usb_get_phy_dev(struct device *dev, u8 index)
-
-    find the USB PHY \ ``dev``\  - device that requests this phy \ ``index``\  - the index of the phy
-
-    :param struct device \*dev:
-        *undescribed*
-
-    :param u8 index:
-        *undescribed*
-
-.. _`usb_get_phy_dev.description`:
-
-Description
------------
-
-Returns the phy driver, after getting a refcount to it; or
--ENODEV if there is no such phy.  The caller is responsible for
-calling \ :c:func:`usb_put_phy`\  to release that count.
-
-For use by USB host and peripheral drivers.
-
-.. _`devm_usb_get_phy_dev`:
-
-devm_usb_get_phy_dev
-====================
-
-.. c:function:: struct usb_phy *devm_usb_get_phy_dev(struct device *dev, u8 index)
-
-    find the USB PHY using device ptr and index \ ``dev``\  - device that requests this phy \ ``index``\  - the index of the phy
-
-    :param struct device \*dev:
-        *undescribed*
-
-    :param u8 index:
-        *undescribed*
-
-.. _`devm_usb_get_phy_dev.description`:
-
-Description
------------
-
-Gets the phy using \ :c:func:`usb_get_phy_dev`\ , and associates a device with it using
-devres. On driver detach, release function is invoked on the devres data,
-then, devres data is freed.
-
-For use by USB host and peripheral drivers.
-
 .. _`devm_usb_put_phy`:
 
 devm_usb_put_phy
@@ -412,35 +360,6 @@ Description
 -----------
 
 This reverts the effects of usb_add_phy
-
-.. _`usb_bind_phy`:
-
-usb_bind_phy
-============
-
-.. c:function:: int usb_bind_phy(const char *dev_name, u8 index, const char *phy_dev_name)
-
-    bind the phy and the controller that uses the phy
-
-    :param const char \*dev_name:
-        the device name of the device that will bind to the phy
-
-    :param u8 index:
-        index to specify the port number
-
-    :param const char \*phy_dev_name:
-        the device name of the phy
-
-.. _`usb_bind_phy.description`:
-
-Description
------------
-
-Fills the phy_bind structure with the dev_name and phy_dev_name. This will
-be used when the phy driver registers the phy and when the controller
-requests this phy.
-
-To be used by platform specific initialization code.
 
 .. _`usb_phy_set_event`:
 

@@ -119,27 +119,31 @@ Return
 
 Zero on success, negative error code on failure.
 
-.. _`mipi_dbi_pipe_enable`:
+.. _`mipi_dbi_enable_flush`:
 
-mipi_dbi_pipe_enable
-====================
+mipi_dbi_enable_flush
+=====================
 
-.. c:function:: void mipi_dbi_pipe_enable(struct drm_simple_display_pipe *pipe, struct drm_crtc_state *crtc_state)
+.. c:function:: void mipi_dbi_enable_flush(struct mipi_dbi *mipi, struct drm_crtc_state *crtc_state, struct drm_plane_state *plane_state)
 
-    MIPI DBI pipe enable helper
+    MIPI DBI enable helper
 
-    :param struct drm_simple_display_pipe \*pipe:
-        Display pipe
+    :param struct mipi_dbi \*mipi:
+        MIPI DBI structure
 
     :param struct drm_crtc_state \*crtc_state:
-        CRTC state
+        *undescribed*
 
-.. _`mipi_dbi_pipe_enable.description`:
+    :param struct drm_plane_state \*plane_state:
+        *undescribed*
+
+.. _`mipi_dbi_enable_flush.description`:
 
 Description
 -----------
 
-This function enables backlight. Drivers can use this as their
+This function sets \ :c:type:`mipi_dbi->enabled <mipi_dbi>`\ , flushes the whole framebuffer and
+enables the backlight. Drivers can use this in their
 \ :c:type:`drm_simple_display_pipe_funcs->enable <drm_simple_display_pipe_funcs>`\  callback.
 
 .. _`mipi_dbi_pipe_disable`:
@@ -159,8 +163,8 @@ mipi_dbi_pipe_disable
 Description
 -----------
 
-This function disables backlight if present or if not the
-display memory is blanked. Drivers can use this as their
+This function disables backlight if present, if not the display memory is
+blanked. The regulator is disabled if in use. Drivers can use this as their
 \ :c:type:`drm_simple_display_pipe_funcs->disable <drm_simple_display_pipe_funcs>`\  callback.
 
 .. _`mipi_dbi_init`:
@@ -257,6 +261,62 @@ Return
 ------
 
 true if the display can be verified to be on, false otherwise.
+
+.. _`mipi_dbi_poweron_reset`:
+
+mipi_dbi_poweron_reset
+======================
+
+.. c:function:: int mipi_dbi_poweron_reset(struct mipi_dbi *mipi)
+
+    MIPI DBI poweron and reset
+
+    :param struct mipi_dbi \*mipi:
+        MIPI DBI structure
+
+.. _`mipi_dbi_poweron_reset.description`:
+
+Description
+-----------
+
+This function enables the regulator if used and does a hardware and software
+reset.
+
+.. _`mipi_dbi_poweron_reset.return`:
+
+Return
+------
+
+Zero on success, or a negative error code.
+
+.. _`mipi_dbi_poweron_conditional_reset`:
+
+mipi_dbi_poweron_conditional_reset
+==================================
+
+.. c:function:: int mipi_dbi_poweron_conditional_reset(struct mipi_dbi *mipi)
+
+    MIPI DBI poweron and conditional reset
+
+    :param struct mipi_dbi \*mipi:
+        MIPI DBI structure
+
+.. _`mipi_dbi_poweron_conditional_reset.description`:
+
+Description
+-----------
+
+This function enables the regulator if used and if the display is off, it
+does a hardware and software reset. If \ :c:func:`mipi_dbi_display_is_on`\  determines
+that the display is on, no reset is performed.
+
+.. _`mipi_dbi_poweron_conditional_reset.return`:
+
+Return
+------
+
+Zero if the controller was reset, 1 if the display was already on, or a
+negative error code.
 
 .. _`mipi_dbi_spi_cmd_max_speed`:
 

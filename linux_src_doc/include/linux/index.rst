@@ -57,12 +57,14 @@ linux
     atomic_h
     backing-dev-defs_h
     backing-dev_h
+    backlight_h
     bch_h
     bio_h
     bitfield_h
     bitmap_h
     bitops_h
     blk-cgroup_h
+    blk-mq_h
     blk_types_h
     blktrace_api_h
     btree_h
@@ -145,9 +147,6 @@ linux
     hw_random_h
     hwmon_h
     hwspinlock_h
-    i2c-gpio_h
-    i2c-mux-gpio_h
-    i2c-xiic_h
     i2c_h
     ide_h
     idr_h
@@ -218,6 +217,7 @@ linux
     module_h
     moduleparam_h
     mpi_h
+    mroute_base_h
     mroute_h
     msi_h
     mutex_h
@@ -235,6 +235,7 @@ linux
     ntb_h
     nvme-fc-driver_h
     nvme-rdma_h
+    nvmem-provider_h
     of_device_h
     of_gpio_h
     of_graph_h
@@ -243,6 +244,7 @@ linux
     of_reserved_mem_h
     omap-gpmc_h
     oprofile_h
+    overflow_h
     padata_h
     page-flags_h
     pagemap_h
@@ -275,6 +277,7 @@ linux
     ptrace_h
     pwm_h
     pxa2xx_ssp_h
+    qcom-geni-se_h
     quota_h
     radix-tree_h
     random_h
@@ -309,6 +312,7 @@ linux
     scatterlist_h
     sched_h
     scif_h
+    scmi_protocol_h
     scpi_protocol_h
     seccomp_h
     selinux_h
@@ -332,7 +336,6 @@ linux
     spmi_h
     srcu_h
     stddef_h
-    ste_modem_shm_h
     stm_h
     stop_machine_h
     string_h

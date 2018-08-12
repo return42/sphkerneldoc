@@ -155,12 +155,9 @@ next write to be completed.
 wait_iff_congested
 ==================
 
-.. c:function:: long wait_iff_congested(struct pglist_data *pgdat, int sync, long timeout)
+.. c:function:: long wait_iff_congested(int sync, long timeout)
 
     Conditionally wait for a backing_dev to become uncongested or a pgdat to complete writes
-
-    :param struct pglist_data \*pgdat:
-        A pgdat to check if it is heavily congested
 
     :param int sync:
         SYNC or ASYNC IO
@@ -173,13 +170,9 @@ wait_iff_congested
 Description
 -----------
 
-In the event of a congested backing_dev (any backing_dev) and the given
-\ ``pgdat``\  has experienced recent congestion, this waits for up to \ ``timeout``\ 
-jiffies for either a BDI to exit congestion of the given \ ``sync``\  queue
-or a write to complete.
-
-In the absence of pgdat congestion, \ :c:func:`cond_resched`\  is called to yield
-the processor if necessary but otherwise does not sleep.
+In the event of a congested backing_dev (any backing_dev) this waits
+for up to \ ``timeout``\  jiffies for either a BDI to exit congestion of the
+given \ ``sync``\  queue or a write to complete.
 
 The return value is 0 if the sleep is for the full timeout. Otherwise,
 it is the number of jiffies that were still remaining when the function

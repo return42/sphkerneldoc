@@ -744,12 +744,12 @@ Description
 
 Transmit Frame Descriptor (TFD)
 
-@ \__reserved1[3] reserved
-@ num_tbs 0-4 number of active tbs
+\ ````\  \__reserved1[3] reserved
+\ ````\  num_tbs 0-4 number of active tbs
 5   reserved
 6-7 padding (not used)
-@ tbs[20]    transmit frame buffer descriptors
-@ \__pad      padding
+\ ````\  tbs[20]    transmit frame buffer descriptors
+\ ````\  \__pad      padding
 
 Each Tx queue uses a circular buffer of 256 TFDs stored in host DRAM.
 Both driver and device share these circular buffers, each of which must be

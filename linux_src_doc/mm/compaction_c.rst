@@ -11,7 +11,7 @@ isolate_freepages_range
     isolate free pages.
 
     :param struct compact_control \*cc:
-        *undescribed*
+        Compaction control structure.
 
     :param unsigned long start_pfn:
         The first PFN to start isolating.

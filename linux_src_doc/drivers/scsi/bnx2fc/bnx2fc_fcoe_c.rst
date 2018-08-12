@@ -120,7 +120,7 @@ bnx2fc_fip_recv
         the \ :c:type:`struct packet_type <packet_type>`\  structure which was used to register this handler.
 
     :param struct net_device \*orig_dev:
-        original receive \ :c:type:`struct net_device <net_device>`\ , in case @ dev is a bond.
+        original receive \ :c:type:`struct net_device <net_device>`\ , in case \ ````\  dev is a bond.
 
 .. _`bnx2fc_fip_recv.return`:
 

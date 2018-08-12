@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/ib_addr.h
 
-.. _`rdma_addr_register_client`:
-
-rdma_addr_register_client
-=========================
-
-.. c:function:: void rdma_addr_register_client(struct rdma_addr_client *client)
-
-    Register an address client.
-
-    :param struct rdma_addr_client \*client:
-        *undescribed*
-
-.. _`rdma_addr_unregister_client`:
-
-rdma_addr_unregister_client
-===========================
-
-.. c:function:: void rdma_addr_unregister_client(struct rdma_addr_client *client)
-
-    Deregister an address client.
-
-    :param struct rdma_addr_client \*client:
-        Client object to deregister.
-
 .. _`rdma_dev_addr`:
 
 struct rdma_dev_addr
@@ -112,12 +88,9 @@ The dev_addr->net field must be initialized.
 rdma_resolve_ip
 ===============
 
-.. c:function:: int rdma_resolve_ip(struct rdma_addr_client *client, struct sockaddr *src_addr, struct sockaddr *dst_addr, struct rdma_dev_addr *addr, int timeout_ms, void (*callback)(int status, struct sockaddr *src_addr, struct rdma_dev_addr *addr, void *context), void *context)
+.. c:function:: int rdma_resolve_ip(struct sockaddr *src_addr, struct sockaddr *dst_addr, struct rdma_dev_addr *addr, int timeout_ms, void (*callback)(int status, struct sockaddr *src_addr, struct rdma_dev_addr *addr, void *context), void *context)
 
     Resolve source and destination IP addresses to RDMA hardware addresses.
-
-    :param struct rdma_addr_client \*client:
-        Address client associated with request.
 
     :param struct sockaddr \*src_addr:
         An optional source address to use in the resolution.  If a

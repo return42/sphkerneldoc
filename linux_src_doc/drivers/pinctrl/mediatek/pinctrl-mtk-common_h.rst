@@ -210,9 +210,8 @@ Definition
         unsigned char port_shf;
         unsigned char port_mask;
         unsigned char port_align;
-        struct mtk_eint_offsets eint_offsets;
-        unsigned int ap_num;
-        unsigned int db_cnt;
+        struct mtk_eint_hw eint_hw;
+        struct mtk_eint_regs *eint_regs;
     }
 
 .. _`mtk_pinctrl_devdata.members`:
@@ -307,13 +306,10 @@ port_mask
 port_align
     Provide clear register and set register step.
 
-eint_offsets
+eint_hw
     *undescribed*
 
-ap_num
-    *undescribed*
-
-db_cnt
+eint_regs
     *undescribed*
 
 .. This file was automatic generated / don't edit.

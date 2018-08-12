@@ -155,7 +155,7 @@ flattened DMA descriptor chain.
 descriptor in the chain. When a descriptor is moved to the \ ``active``\  queue,
 the first and chained descriptors are flattened into a single list.
 
-\ ``chan``\ .private holds pointer to \ :c:type:`struct ep93xx_dma_data <ep93xx_dma_data>`\  which contains
+\ ``chan.private``\  holds pointer to \ :c:type:`struct ep93xx_dma_data <ep93xx_dma_data>`\  which contains
 necessary channel configuration information. For memcpy channels this must
 be \ ``NULL``\ .
 

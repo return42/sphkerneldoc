@@ -177,7 +177,6 @@ Definition
 .. code-block:: c
 
     struct ttm_buffer_object {
-        struct ttm_bo_global *glob;
         struct ttm_bo_device *bdev;
         enum ttm_bo_type type;
         void (*destroy) (struct ttm_buffer_object *);
@@ -208,9 +207,6 @@ Definition
 
 Members
 -------
-
-glob
-    *undescribed*
 
 bdev
     Pointer to the buffer object device structure.
@@ -326,9 +322,9 @@ Definition
     struct ttm_operation_ctx {
         bool interruptible;
         bool no_wait_gpu;
-        bool allow_reserved_eviction;
         struct reservation_object *resv;
         uint64_t bytes_moved;
+        uint32_t flags;
     }
 
 .. _`ttm_operation_ctx.members`:
@@ -342,14 +338,14 @@ interruptible
 no_wait_gpu
     Return immediately if the GPU is busy.
 
-allow_reserved_eviction
-    Allow eviction of reserved BOs.
-
 resv
     Reservation object to allow reserved evictions with.
 
 bytes_moved
     *undescribed*
+
+flags
+    Including the following flags
 
 .. _`ttm_operation_ctx.description`:
 
@@ -674,7 +670,7 @@ Returns size to account for a buffer object
 ttm_bo_init_reserved
 ====================
 
-.. c:function:: int ttm_bo_init_reserved(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, struct ttm_operation_ctx *ctx, struct file *persistent_swap_storage, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
+.. c:function:: int ttm_bo_init_reserved(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, struct ttm_operation_ctx *ctx, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
 
     :param struct ttm_bo_device \*bdev:
         Pointer to a ttm_bo_device struct.
@@ -696,13 +692,6 @@ ttm_bo_init_reserved
 
     :param struct ttm_operation_ctx \*ctx:
         TTM operation context for memory allocation.
-
-    :param struct file \*persistent_swap_storage:
-        Usually the swap storage is deleted for buffers
-        pinned in physical memory. If this behaviour is not desired, this member
-        holds a pointer to a persistent shmem object. Typically, this would
-        point to the shmem object backing a GEM object if TTM is used to back a
-        GEM user interface.
 
     :param size_t acc_size:
         Accounted size for this object.
@@ -746,7 +735,7 @@ Returns
 ttm_bo_init
 ===========
 
-.. c:function:: int ttm_bo_init(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interrubtible, struct file *persistent_swap_storage, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
+.. c:function:: int ttm_bo_init(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interrubtible, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
 
     :param struct ttm_bo_device \*bdev:
         Pointer to a ttm_bo_device struct.
@@ -768,13 +757,6 @@ ttm_bo_init
 
     :param bool interrubtible:
         *undescribed*
-
-    :param struct file \*persistent_swap_storage:
-        Usually the swap storage is deleted for buffers
-        pinned in physical memory. If this behaviour is not desired, this member
-        holds a pointer to a persistent shmem object. Typically, this would
-        point to the shmem object backing a GEM object if TTM is used to back a
-        GEM user interface.
 
     :param size_t acc_size:
         Accounted size for this object.
@@ -816,7 +798,7 @@ Returns
 ttm_bo_create
 =============
 
-.. c:function:: int ttm_bo_create(struct ttm_bo_device *bdev, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interruptible, struct file *persistent_swap_storage, struct ttm_buffer_object **p_bo)
+.. c:function:: int ttm_bo_create(struct ttm_bo_device *bdev, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interruptible, struct ttm_buffer_object **p_bo)
 
     :param struct ttm_bo_device \*bdev:
         Pointer to a ttm_bo_device struct.
@@ -836,13 +818,6 @@ ttm_bo_create
     :param bool interruptible:
         If needing to sleep while waiting for GPU resources,
         sleep interruptible.
-
-    :param struct file \*persistent_swap_storage:
-        Usually the swap storage is deleted for buffers
-        pinned in physical memory. If this behaviour is not desired, this member
-        holds a pointer to a persistent shmem object. Typically, this would
-        point to the shmem object backing a GEM object if TTM is used to back a
-        GEM user interface.
 
     :param struct ttm_buffer_object \*\*p_bo:
         On successful completion \*p_bo points to the created object.

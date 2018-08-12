@@ -6,12 +6,12 @@
 wil6210_disconnect
 ==================
 
-.. c:function:: void wil6210_disconnect(struct wil6210_priv *wil, const u8 *bssid, u16 reason_code, bool from_event)
+.. c:function:: void wil6210_disconnect(struct wil6210_vif *vif, const u8 *bssid, u16 reason_code, bool from_event)
 
     disconnect one connection
 
-    :param struct wil6210_priv \*wil:
-        driver context
+    :param struct wil6210_vif \*vif:
+        virtual interface context
 
     :param const u8 \*bssid:
         peer to disconnect, NULL to disconnect all

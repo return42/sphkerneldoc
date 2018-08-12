@@ -402,14 +402,50 @@ TILE:
      should update this value using \ :c:func:`drm_mode_connector_set_tile_property`\ .
      Userspace cannot change this property.
 link-status:
-     Connector link-status property to indicate the status of link. The default
-     value of link-status is "GOOD". If something fails during or after modeset,
-     the kernel driver may set this to "BAD" and issue a hotplug uevent. Drivers
-     should update this value using \ :c:func:`drm_mode_connector_set_link_status_property`\ .
+     Connector link-status property to indicate the status of link. The
+     default value of link-status is "GOOD". If something fails during or
+     after modeset, the kernel driver may set this to "BAD" and issue a
+     hotplug uevent. Drivers should update this value using
+     \ :c:func:`drm_mode_connector_set_link_status_property`\ .
 non_desktop:
      Indicates the output should be ignored for purposes of displaying a
      standard desktop environment or console. This is most likely because
      the output device is not rectilinear.
+Content Protection:
+     This property is used by userspace to request the kernel protect future
+     content communicated over the link. When requested, kernel will apply
+     the appropriate means of protection (most often HDCP), and use the
+     property to tell userspace the protection is active.
+
+     Drivers can set this up by calling
+     \ :c:func:`drm_connector_attach_content_protection_property`\  on initialization.
+
+     The value of this property can be one of the following:
+
+     DRM_MODE_CONTENT_PROTECTION_UNDESIRED = 0
+             The link is not protected, content is transmitted in the clear.
+     DRM_MODE_CONTENT_PROTECTION_DESIRED = 1
+             Userspace has requested content protection, but the link is not
+             currently protected. When in this state, kernel should enable
+             Content Protection as soon as possible.
+     DRM_MODE_CONTENT_PROTECTION_ENABLED = 2
+             Userspace has requested content protection, and the link is
+             protected. Only the driver can set the property to this value.
+             If userspace attempts to set to ENABLED, kernel will return
+             -EINVAL.
+
+     A few guidelines:
+
+     - DESIRED state should be preserved until userspace de-asserts it by
+       setting the property to UNDESIRED. This means ENABLED should only
+       transition to UNDESIRED when the user explicitly requests it.
+     - If the state is DESIRED, kernel should attempt to re-authenticate the
+       link whenever possible. This includes across disable/enable, dpms,
+       hotplug, downstream device changes, link status failures, etc..
+     - Userspace is responsible for polling the property to determine when
+       the value transitions from ENABLED to DESIRED. This signifies the link
+       is no longer protected and userspace should take appropriate action
+       (whatever that might be).
 
 Connectors also have one standardized atomic property:
 
@@ -426,7 +462,31 @@ panel orientation:
      INPUT_PROP_DIRECT) will still map 1:1 to the actual LCD panel
      coordinates, so if userspace rotates the picture to adjust for
      the orientation it must also apply the same transformation to the
-     touchscreen input coordinates.
+     touchscreen input coordinates. This property is initialized by calling
+     \ :c:func:`drm_connector_init_panel_orientation_property`\ .
+
+scaling mode:
+     This property defines how a non-native mode is upscaled to the native
+     mode of an LCD panel:
+
+     None:
+             No upscaling happens, scaling is left to the panel. Not all
+             drivers expose this mode.
+     Full:
+             The output is upscaled to the full resolution of the panel,
+             ignoring the aspect ratio.
+     Center:
+             No upscaling happens, the output is centered within the native
+             resolution the panel.
+     Full aspect:
+             The output is upscaled to maximize either the width or height
+             while retaining the aspect ratio.
+
+     This property should be set up by calling
+     \ :c:func:`drm_connector_attach_scaling_mode_property`\ . Note that drivers
+     can also expose this property to external outputs, in which case they
+     must support "None", which should be the default (since external screens
+     have a built-in scaler).
 
 .. _`drm_mode_create_dvi_i_properties`:
 
@@ -526,6 +586,36 @@ and can be used from \ :c:type:`drm_connector_helper_funcs->atomic_check <drm_co
 This is the atomic version of \ :c:func:`drm_mode_create_scaling_mode_property`\ .
 
 .. _`drm_connector_attach_scaling_mode_property.return`:
+
+Return
+------
+
+Zero on success, negative errno on failure.
+
+.. _`drm_connector_attach_content_protection_property`:
+
+drm_connector_attach_content_protection_property
+================================================
+
+.. c:function:: int drm_connector_attach_content_protection_property(struct drm_connector *connector)
+
+    attach content protection property
+
+    :param struct drm_connector \*connector:
+        connector to attach CP property on.
+
+.. _`drm_connector_attach_content_protection_property.description`:
+
+Description
+-----------
+
+This is used to add support for content protection on select connectors.
+Content Protection is intentionally vague to allow for different underlying
+technologies, however it is most implemented by HDCP.
+
+The content protection will be set to \ :c:type:`drm_connector_state.content_protection <drm_connector_state>`\ 
+
+.. _`drm_connector_attach_content_protection_property.return`:
 
 Return
 ------

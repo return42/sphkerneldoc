@@ -87,26 +87,6 @@ bad.
 Note, in case of an error, it is possible that something was still written
 to the flash media, but may be some garbage.
 
-.. _`erase_callback`:
-
-erase_callback
-==============
-
-.. c:function:: void erase_callback(struct erase_info *ei)
-
-    MTD erasure call-back.
-
-    :param struct erase_info \*ei:
-        MTD erase information object.
-
-.. _`erase_callback.description`:
-
-Description
------------
-
-Note, even though MTD erase interface is asynchronous, all the current
-implementations are synchronous anyway.
-
 .. _`do_sync_erase`:
 
 do_sync_erase

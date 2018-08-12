@@ -90,7 +90,7 @@ access to
 
 Additionally, KVM only traps guest accesses to the debug registers if
 the guest is not actively using them (see the KVM_ARM64_DEBUG_DIRTY
-flag on vcpu->arch.debug_flags).  Since the guest must not interfere
+flag on vcpu->arch.flags).  Since the guest must not interfere
 with the hardware state when debugging the guest, we must ensure that
 trapping is enabled whenever we are debugging the guest using the
 debug registers.

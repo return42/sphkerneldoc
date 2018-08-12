@@ -46,10 +46,13 @@ platform_data
     gpio-htc-egpio_h
     gpio-ts5500_h
     hwmon-s3c_h
+    i2c-gpio_h
     i2c-hid_h
     i2c-imx_h
+    i2c-mux-gpio_h
     i2c-mux-reg_h
     i2c-s3c2410_h
+    i2c-xiic_h
     ina2xx_h
     intel-spi_h
     invensense_mpu6050_h
@@ -68,7 +71,6 @@ platform_data
     mtd-nand-s3c2410_h
     omap-wd-timer_h
     pcf857x_h
-    pinctrl-adi2_h
     pixcir_i2c_ts_h
     s3c-hsotg_h
     sc18is602_h
@@ -78,7 +80,9 @@ platform_data
     spi-s3c64xx_h
     ssm2518_h
     st_sensors_pdata_h
+    ti-aemif_h
     ti-sysc_h
+    tsl2772_h
     ux500_wdt_h
     video-mx3fb_h
     video_s3c_h

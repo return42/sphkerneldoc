@@ -89,19 +89,15 @@ Definition
     #define DWC3_EP_ENABLED BIT(0)
     #define DWC3_EP_STALL BIT(1)
     #define DWC3_EP_WEDGE BIT(2)
-    #define DWC3_EP_BUSY BIT(4)
+    #define DWC3_EP_TRANSFER_STARTED BIT(3)
     #define DWC3_EP_PENDING_REQUEST BIT(5)
-    #define DWC3_EP_MISSED_ISOC BIT(6)
     #define DWC3_EP_END_TRANSFER_PENDING BIT(7)
-    #define DWC3_EP_TRANSFER_STARTED BIT(8)
     #define DWC3_EP0_DIR_IN BIT(31)
         u8 trb_enqueue;
         u8 trb_dequeue;
         u8 number;
         u8 type;
         u8 resource_index;
-        u32 allocated_requests;
-        u32 queued_requests;
         u32 frame_number;
         u32 interval;
         char name[20];
@@ -161,12 +157,6 @@ type
 
 resource_index
     Resource transfer index
-
-allocated_requests
-    number of requests allocated
-
-queued_requests
-    number of requests queued for transfer
 
 frame_number
     set to the frame number we want this transfer to start (ISOC)
@@ -304,7 +294,9 @@ Definition
         struct list_head list;
         struct dwc3_ep *dep;
         struct scatterlist *sg;
+        struct scatterlist *start_sg;
         unsigned num_pending_sgs;
+        unsigned int num_queued_sgs;
         unsigned remaining;
         u8 epnum;
         struct dwc3_trb *trb;
@@ -333,8 +325,14 @@ dep
 sg
     pointer to first incomplete sg
 
+start_sg
+    pointer to the sg which should be queued next
+
 num_pending_sgs
     counter to pending sgs
+
+num_queued_sgs
+    counter to the number of sgs which already got queued
 
 remaining
     amount of data remaining
@@ -399,11 +397,16 @@ Definition
         struct dwc3_ep *eps[DWC3_ENDPOINTS_NUM];
         struct usb_gadget gadget;
         struct usb_gadget_driver *gadget_driver;
+        struct clk_bulk_data *clks;
+        int num_clks;
+        struct reset_control *reset;
         struct usb_phy *usb2_phy;
         struct usb_phy *usb3_phy;
         struct phy *usb2_generic_phy;
         struct phy *usb3_generic_phy;
+        bool phys_ready;
         struct ulpi *ulpi;
+        bool ulpi_ready;
         void __iomem *regs;
         size_t regs_size;
         enum usb_dr_mode dr_mode;
@@ -414,6 +417,10 @@ Definition
         enum usb_phy_interface hsphy_mode;
         u32 fladj;
         u32 irq_gadget;
+        u32 otg_irq;
+        u32 current_otg_role;
+        u32 desired_otg_role;
+        bool otg_restart_host;
         u32 nr_scratch;
         u32 u1u2;
         u32 maximum_speed;
@@ -459,6 +466,10 @@ Definition
         u8 test_mode_nr;
         u8 lpm_nyet_threshold;
         u8 hird_threshold;
+        u8 rx_thr_num_pkt_prd;
+        u8 rx_max_burst_prd;
+        u8 tx_thr_num_pkt_prd;
+        u8 tx_max_burst_prd;
         const char *hsphy_interface;
         unsigned connected:1;
         unsigned delayed_status:1;
@@ -557,6 +568,15 @@ gadget
 gadget_driver
     pointer to the gadget driver
 
+clks
+    array of clocks
+
+num_clks
+    number of clocks
+
+reset
+    reset control
+
 usb2_phy
     pointer to USB2 PHY
 
@@ -569,8 +589,14 @@ usb2_generic_phy
 usb3_generic_phy
     pointer to USB3 PHY
 
+phys_ready
+    flag to indicate that PHYs are ready
+
 ulpi
     pointer to ulpi interface
+
+ulpi_ready
+    flag to indicate that ULPI is initialized
 
 regs
     base address for our registers
@@ -603,6 +629,18 @@ fladj
 
 irq_gadget
     peripheral controller's IRQ number
+
+otg_irq
+    IRQ number for OTG IRQs
+
+current_otg_role
+    current role of operation while using the OTG block
+
+desired_otg_role
+    desired role of operation while using the OTG block
+
+otg_restart_host
+    flag that OTG controller needs to restart host
 
 nr_scratch
     number of scratch buffers
@@ -663,6 +701,18 @@ lpm_nyet_threshold
 
 hird_threshold
     HIRD threshold
+
+rx_thr_num_pkt_prd
+    periodic ESS receive packet count
+
+rx_max_burst_prd
+    max periodic ESS receive burst size
+
+tx_thr_num_pkt_prd
+    periodic ESS transmit packet count
+
+tx_max_burst_prd
+    max periodic ESS transmit burst size
 
 hsphy_interface
     "utmi" or "ulpi"
@@ -806,6 +856,7 @@ Definition
     #define DEPEVT_STATUS_SHORT BIT(1)
     #define DEPEVT_STATUS_IOC BIT(2)
     #define DEPEVT_STATUS_LST BIT(3)
+    #define DEPEVT_STATUS_MISSED_ISOC BIT(3)
     #define DEPEVT_STREAMEVT_FOUND 1
     #define DEPEVT_STREAMEVT_NOTFOUND 2
     #define DEPEVT_STATUS_CONTROL_DATA 1

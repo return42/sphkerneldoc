@@ -11,7 +11,7 @@ obj_to_location
     get (<page>, <obj_idx>) from encoded object value
 
     :param unsigned long obj:
-        *undescribed*
+        the encoded object value
 
     :param struct page \*\*page:
         page object resides in zspage
@@ -50,7 +50,7 @@ zs_map_object
         handle returned from zs_malloc
 
     :param enum zs_mapmode mm:
-        *undescribed*
+        maping mode to use
 
 .. _`zs_map_object.description`:
 
@@ -65,6 +65,41 @@ Only one object can be mapped per cpu at a time. There is no protection
 against nested mappings.
 
 This function returns with preemption and page faults disabled.
+
+.. _`zs_huge_class_size`:
+
+zs_huge_class_size
+==================
+
+.. c:function:: size_t zs_huge_class_size(struct zs_pool *pool)
+
+    Returns the size (in bytes) of the first huge zsmalloc \ :c:type:`struct size_class <size_class>`\ .
+
+    :param struct zs_pool \*pool:
+        zsmalloc pool to use
+
+.. _`zs_huge_class_size.description`:
+
+Description
+-----------
+
+The function returns the size of the first huge class - any object of equal
+or bigger size will be stored in zspage consisting of a single physical
+page.
+
+.. _`zs_huge_class_size.context`:
+
+Context
+-------
+
+Any context.
+
+.. _`zs_huge_class_size.return`:
+
+Return
+------
+
+the size (in bytes) of the first huge zsmalloc \ :c:type:`struct size_class <size_class>`\ .
 
 .. _`zs_malloc`:
 

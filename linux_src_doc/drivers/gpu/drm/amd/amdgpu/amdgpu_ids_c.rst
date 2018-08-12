@@ -37,6 +37,28 @@ amdgpu_pasid_free
     :param unsigned int pasid:
         PASID to free
 
+.. _`amdgpu_pasid_free_delayed`:
+
+amdgpu_pasid_free_delayed
+=========================
+
+.. c:function:: void amdgpu_pasid_free_delayed(struct reservation_object *resv, unsigned int pasid)
+
+    free pasid when fences signal
+
+    :param struct reservation_object \*resv:
+        reservation object with the fences to wait for
+
+    :param unsigned int pasid:
+        pasid to free
+
+.. _`amdgpu_pasid_free_delayed.description`:
+
+Description
+-----------
+
+Free the pasid only after all the fences in resv are signaled.
+
 .. _`amdgpu_vmid_had_gpu_reset`:
 
 amdgpu_vmid_had_gpu_reset
@@ -58,6 +80,103 @@ Description
 -----------
 
 Check if GPU reset occured since last use of the VMID.
+
+.. _`amdgpu_vmid_grab_idle`:
+
+amdgpu_vmid_grab_idle
+=====================
+
+.. c:function:: int amdgpu_vmid_grab_idle(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct amdgpu_vmid **idle)
+
+    grab idle VMID
+
+    :param struct amdgpu_vm \*vm:
+        vm to allocate id for
+
+    :param struct amdgpu_ring \*ring:
+        ring we want to submit job to
+
+    :param struct amdgpu_sync \*sync:
+        sync object where we add dependencies
+
+    :param struct amdgpu_vmid \*\*idle:
+        resulting idle VMID
+
+.. _`amdgpu_vmid_grab_idle.description`:
+
+Description
+-----------
+
+Try to find an idle VMID, if none is idle add a fence to wait to the sync
+object. Returns -ENOMEM when we are out of memory.
+
+.. _`amdgpu_vmid_grab_reserved`:
+
+amdgpu_vmid_grab_reserved
+=========================
+
+.. c:function:: int amdgpu_vmid_grab_reserved(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct dma_fence *fence, struct amdgpu_job *job, struct amdgpu_vmid **id)
+
+    try to assign reserved VMID
+
+    :param struct amdgpu_vm \*vm:
+        vm to allocate id for
+
+    :param struct amdgpu_ring \*ring:
+        ring we want to submit job to
+
+    :param struct amdgpu_sync \*sync:
+        sync object where we add dependencies
+
+    :param struct dma_fence \*fence:
+        fence protecting ID from reuse
+
+    :param struct amdgpu_job \*job:
+        job who wants to use the VMID
+
+    :param struct amdgpu_vmid \*\*id:
+        *undescribed*
+
+.. _`amdgpu_vmid_grab_reserved.description`:
+
+Description
+-----------
+
+Try to assign a reserved VMID.
+
+.. _`amdgpu_vmid_grab_used`:
+
+amdgpu_vmid_grab_used
+=====================
+
+.. c:function:: int amdgpu_vmid_grab_used(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct dma_fence *fence, struct amdgpu_job *job, struct amdgpu_vmid **id)
+
+    try to reuse a VMID
+
+    :param struct amdgpu_vm \*vm:
+        vm to allocate id for
+
+    :param struct amdgpu_ring \*ring:
+        ring we want to submit job to
+
+    :param struct amdgpu_sync \*sync:
+        sync object where we add dependencies
+
+    :param struct dma_fence \*fence:
+        fence protecting ID from reuse
+
+    :param struct amdgpu_job \*job:
+        job who wants to use the VMID
+
+    :param struct amdgpu_vmid \*\*id:
+        resulting VMID
+
+.. _`amdgpu_vmid_grab_used.description`:
+
+Description
+-----------
+
+Try to reuse a VMID for this submission.
 
 .. _`amdgpu_vmid_grab`:
 
@@ -81,7 +200,7 @@ amdgpu_vmid_grab
         fence protecting ID from reuse
 
     :param struct amdgpu_job \*job:
-        *undescribed*
+        job who wants to use the VMID
 
 .. _`amdgpu_vmid_grab.description`:
 

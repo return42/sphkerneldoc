@@ -74,7 +74,7 @@ local BH must be disabled.
 dst_cache_set_ip6
 =================
 
-.. c:function:: void dst_cache_set_ip6(struct dst_cache *dst_cache, struct dst_entry *dst, const struct in6_addr *addr)
+.. c:function:: void dst_cache_set_ip6(struct dst_cache *dst_cache, struct dst_entry *dst, const struct in6_addr *saddr)
 
     store the ipv6 dst into the cache
 
@@ -84,8 +84,8 @@ dst_cache_set_ip6
     :param struct dst_entry \*dst:
         the entry to be cached
 
-    :param const struct in6_addr \*addr:
-        *undescribed*
+    :param const struct in6_addr \*saddr:
+        the source address to be stored inside the cache
 
 .. _`dst_cache_set_ip6.description`:
 
@@ -133,7 +133,7 @@ dst_cache_reset
 Description
 -----------
 
-This do not free the cached dst to avoid races and contentions.
+This does not free the cached dst to avoid races and contentions.
 the dst will be freed on later cache lookup.
 
 .. _`dst_cache_init`:

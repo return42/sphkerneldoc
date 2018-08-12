@@ -6,11 +6,11 @@
 usb_gadget_get_string
 =====================
 
-.. c:function:: int usb_gadget_get_string(struct usb_gadget_strings *table, int id, u8 *buf)
+.. c:function:: int usb_gadget_get_string(const struct usb_gadget_strings *table, int id, u8 *buf)
 
     fill out a string descriptor
 
-    :param struct usb_gadget_strings \*table:
+    :param const struct usb_gadget_strings \*table:
         of c strings encoded using UTF-8
 
     :param int id:

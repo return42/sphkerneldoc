@@ -261,7 +261,8 @@ Reclaim modifiers - __GFP_NORETRY and __GFP_NOFAIL are not supported.
 __GFP_RETRY_MAYFAIL is supported, and it should be used only if kmalloc is
 preferable to the vmalloc fallback, due to visible performance drawbacks.
 
-Any use of gfp flags outside of GFP_KERNEL should be consulted with mm people.
+Please note that any use of gfp flags outside of GFP_KERNEL is careful to not
+fall back to vmalloc.
 
 .. _`get_cmdline`:
 

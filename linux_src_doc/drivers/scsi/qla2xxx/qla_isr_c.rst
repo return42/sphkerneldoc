@@ -59,7 +59,7 @@ qla2x00_mbx_completion
     Process mailbox command completions.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param uint16_t mb0:
         Mailbox0 register
@@ -74,10 +74,10 @@ qla2x00_async_event
     Process aynchronous events.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param uint16_t \*mb:
         Mailbox registers (0 - 3)
@@ -92,10 +92,10 @@ qla2x00_process_completed_request
     Process a Fast Post response.
 
     :param struct scsi_qla_host \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct req_que \*req:
-        *undescribed*
+        request queue
 
     :param uint32_t index:
         SRB index
@@ -110,7 +110,7 @@ qla2x00_process_response_queue
     Process response queue entries.
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
 .. _`qla2x00_status_entry`:
 
@@ -122,10 +122,10 @@ qla2x00_status_entry
     Process a Status IOCB entry.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param void \*pkt:
         Entry pointer
@@ -140,7 +140,7 @@ qla2x00_status_cont_entry
     Process a Status Continuations entry.
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param sts_cont_entry_t \*pkt:
         Entry pointer
@@ -162,10 +162,10 @@ qla2x00_error_entry
     Process an error entry.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param sts_entry_t \*pkt:
         Entry pointer
@@ -181,7 +181,7 @@ qla24xx_mbx_completion
     Process mailbox command completions.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param uint16_t mb0:
         Mailbox0 register
@@ -196,10 +196,10 @@ qla24xx_process_response_queue
     Process response queue entries.
 
     :param struct scsi_qla_host \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
 .. _`qla24xx_intr_handler`:
 

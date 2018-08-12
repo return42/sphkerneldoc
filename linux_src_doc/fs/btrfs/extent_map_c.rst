@@ -204,9 +204,12 @@ are done to see if the range is in use
 btrfs_add_extent_mapping
 ========================
 
-.. c:function:: int btrfs_add_extent_mapping(struct extent_map_tree *em_tree, struct extent_map **em_in, u64 start, u64 len)
+.. c:function:: int btrfs_add_extent_mapping(struct btrfs_fs_info *fs_info, struct extent_map_tree *em_tree, struct extent_map **em_in, u64 start, u64 len)
 
-    add extent mapping into em_tree \ ``em_tree``\  - the extent tree into which we want to insert the extent mapping \ ``em_in``\    - extent we are inserting \ ``start``\    - start of the logical range \ :c:func:`btrfs_get_extent`\  is requesting \ ``len``\      - length of the logical range \ :c:func:`btrfs_get_extent`\  is requesting
+    add extent mapping into em_tree \ ``fs_info``\  - used for tracepoint \ ``em_tree``\  - the extent tree into which we want to insert the extent mapping \ ``em_in``\    - extent we are inserting \ ``start``\    - start of the logical range \ :c:func:`btrfs_get_extent`\  is requesting \ ``len``\      - length of the logical range \ :c:func:`btrfs_get_extent`\  is requesting
+
+    :param struct btrfs_fs_info \*fs_info:
+        *undescribed*
 
     :param struct extent_map_tree \*em_tree:
         *undescribed*

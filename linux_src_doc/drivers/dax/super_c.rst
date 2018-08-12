@@ -6,12 +6,12 @@
 \__bdev_dax_supported
 =====================
 
-.. c:function:: int __bdev_dax_supported(struct super_block *sb, int blocksize)
+.. c:function:: bool __bdev_dax_supported(struct block_device *bdev, int blocksize)
 
     Check if the device supports dax for filesystem
 
-    :param struct super_block \*sb:
-        The superblock of the device
+    :param struct block_device \*bdev:
+        block device to check
 
     :param int blocksize:
         The block size of the device
@@ -29,7 +29,7 @@ can be mounted with dax option.
 Return
 ------
 
-negative errno if unsupported, 0 if supported.
+true if supported, false if unsupported
 
 .. _`dax_device`:
 

@@ -12,4 +12,6 @@ cifs
     dns_resolve_c
     file_c
     inode_c
+    misc_c
+    smb2misc_c
     winucase_c

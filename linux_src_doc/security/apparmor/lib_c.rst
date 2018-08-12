@@ -177,7 +177,7 @@ aa_check_perms
         initialized audit structure (MAY BE NULL if not auditing)
 
     :param void (\*cb)(struct audit_buffer \*, void \*):
-        callback fn for tpye specific fields (MAY BE NULL)
+        callback fn for type specific fields (MAY BE NULL)
 
 .. _`aa_check_perms.return`:
 

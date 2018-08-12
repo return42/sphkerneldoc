@@ -19,7 +19,7 @@ dmm_txn_init
 dmm_txn_append
 ==============
 
-.. c:function:: void dmm_txn_append(struct dmm_txn *txn, struct pat_area *area, struct page **pages, uint32_t npages, uint32_t roll)
+.. c:function:: void dmm_txn_append(struct dmm_txn *txn, struct pat_area *area, struct page **pages, u32 npages, u32 roll)
 
     corresponding slot is cleared (ie. dummy_pa is programmed)
 
@@ -32,10 +32,10 @@ dmm_txn_append
     :param struct page \*\*pages:
         *undescribed*
 
-    :param uint32_t npages:
+    :param u32 npages:
         *undescribed*
 
-    :param uint32_t roll:
+    :param u32 roll:
         *undescribed*
 
 .. _`dmm_txn_commit`:

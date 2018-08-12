@@ -151,7 +151,7 @@ see aafs_create
 aafs_create_symlink
 ===================
 
-.. c:function:: struct dentry *aafs_create_symlink(const char *name, struct dentry *parent, const char *target, const struct inode_operations *iops)
+.. c:function:: struct dentry *aafs_create_symlink(const char *name, struct dentry *parent, const char *target, void *private, const struct inode_operations *iops)
 
     create a symlink in the apparmorfs filesystem
 
@@ -163,6 +163,9 @@ aafs_create_symlink
 
     :param const char \*target:
         if symlink, symlink target string
+
+    :param void \*private:
+        private data
 
     :param const struct inode_operations \*iops:
         struct of inode_operations that should be used

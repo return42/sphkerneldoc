@@ -344,7 +344,7 @@ This function restarts the capture for this corner case, where :
 - a videobuffer is queued on the pcdev->capture list
 
 Please check the "DMA hot chaining timeslice issue" in
-Documentation/video4linux/pxa_camera.txt
+Documentation/media/v4l-drivers/pxa_camera.rst
 
 .. _`pxa_camera_check_link_miss.context`:
 

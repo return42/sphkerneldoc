@@ -307,7 +307,7 @@ Returns 0 on success, error on failure.
 radeon_atpx_get_client_id
 =========================
 
-.. c:function:: int radeon_atpx_get_client_id(struct pci_dev *pdev)
+.. c:function:: enum vga_switcheroo_client_id radeon_atpx_get_client_id(struct pci_dev *pdev)
 
     get the client id
 

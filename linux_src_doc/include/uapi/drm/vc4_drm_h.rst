@@ -49,6 +49,10 @@ Definition
     #define VC4_SUBMIT_CL_RCL_ORDER_INCREASING_Y (1 << 3)
         __u32 flags;
         __u64 seqno;
+        __u32 perfmonid;
+        __u32 in_sync;
+        __u32 out_sync;
+        __u32 pad2;
     }
 
 .. _`drm_vc4_submit_cl.members`:
@@ -135,6 +139,18 @@ flags
     *undescribed*
 
 seqno
+    *undescribed*
+
+perfmonid
+    *undescribed*
+
+in_sync
+    *undescribed*
+
+out_sync
+    *undescribed*
+
+pad2
     *undescribed*
 
 .. _`drm_vc4_submit_cl.description`:

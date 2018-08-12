@@ -51,7 +51,7 @@ queue
 
 backlog
     number of bytes pending in the queue. The number of packets can be
-    found in \ ``queue``\ .qlen
+    found in \ ``queue.qlen``\ 
 
 deficit
     used for DRR++

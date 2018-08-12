@@ -8,5 +8,6 @@ typec
     :maxdepth: 1
 
     ucsi/index
-    typec_c
+    class_c
+    mux_c
     typec_wcove_c

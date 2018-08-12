@@ -151,6 +151,34 @@ Return
 
 Zero on success, negative error code if failed.
 
+.. _`intel_vgpu_mask_mmio_write`:
+
+intel_vgpu_mask_mmio_write
+==========================
+
+.. c:function:: int intel_vgpu_mask_mmio_write(struct intel_vgpu *vgpu, unsigned int offset, void *p_data, unsigned int bytes)
+
+    write mask register
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+    :param unsigned int offset:
+        access offset
+
+    :param void \*p_data:
+        write data buffer
+
+    :param unsigned int bytes:
+        access data length
+
+.. _`intel_vgpu_mask_mmio_write.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed.
+
 .. _`intel_gvt_in_force_nonpriv_whitelist`:
 
 intel_gvt_in_force_nonpriv_whitelist

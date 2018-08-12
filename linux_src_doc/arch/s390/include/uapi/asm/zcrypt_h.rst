@@ -289,30 +289,30 @@ resp_len
 resp
     Addr to response block
 
-.. _`zcrypt_device_status`:
+.. _`zcrypt_device_status_ext`:
 
-struct zcrypt_device_status
-===========================
+struct zcrypt_device_status_ext
+===============================
 
-.. c:type:: struct zcrypt_device_status
+.. c:type:: struct zcrypt_device_status_ext
 
 
-.. _`zcrypt_device_status.definition`:
+.. _`zcrypt_device_status_ext.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct zcrypt_device_status {
+    struct zcrypt_device_status_ext {
         unsigned int hwtype:8;
-        unsigned int qid:14;
+        unsigned int qid:16;
         unsigned int online:1;
         unsigned int functions:6;
-        unsigned int reserved:3;
+        unsigned int reserved:1;
     }
 
-.. _`zcrypt_device_status.members`:
+.. _`zcrypt_device_status_ext.members`:
 
 Members
 -------
@@ -321,7 +321,7 @@ hwtype
     raw hardware type
 
 qid
-    6 bit device index, 8 bit domain
+    8 bit device index, 8 bit domain
 
 online
     *undescribed*
@@ -337,13 +337,6 @@ functions
 
 reserved
     *undescribed*
-
-.. _`max_zdev_entries`:
-
-MAX_ZDEV_ENTRIES
-================
-
-.. c:function::  MAX_ZDEV_ENTRIES()
 
 .. _`icarsamodexpo`:
 
@@ -392,9 +385,13 @@ Send an arbitrary CPRB to a crypto card.
 ZSENDEP11CPRB
 Send an arbitrary EP11 CPRB to an EP11 coprocessor crypto card.
 
-Z90STAT_STATUS_MASK
-Return an 64 element array of unsigned chars for the status of
-all devices.
+ZCRYPT_DEVICE_STATUS
+The given struct zcrypt_device_matrix_ext is updated with
+status information for each currently known apqn.
+
+ZCRYPT_STATUS_MASK
+Return an MAX_ZDEV_CARDIDS_EXT element array of unsigned chars for the
+status of all devices.
 
 .. _`icarsamodexpo.0x01`:
 
@@ -438,71 +435,56 @@ CEX2C
 
 CEX2A
 
+.. _`icarsamodexpo.0x07`:
+
+0x07
+----
+
+CEX3C
+
+.. _`icarsamodexpo.0x08`:
+
+0x08
+----
+
+CEX3A
+
+.. _`icarsamodexpo.0x0a`:
+
+0x0a
+----
+
+CEX4
+
+.. _`icarsamodexpo.0x0b`:
+
+0x0b
+----
+
+CEX5
+
+.. _`icarsamodexpo.0x0c`:
+
+0x0c
+----
+
+CEX6
+
 .. _`icarsamodexpo.0x0d`:
 
 0x0d
 ----
 
-device is disabled via the proc filesystem
+device is disabled
 
-Z90STAT_QDEPTH_MASK
-Return an 64 element array of unsigned chars for the queue
-depth of all devices.
+ZCRYPT_QDEPTH_MASK
+Return an MAX_ZDEV_CARDIDS_EXT element array of unsigned chars for the
+queue depth of all devices.
 
-Z90STAT_PERDEV_REQCNT
-Return an 64 element array of unsigned integers for the number
-of successfully completed requests per device since the device
-was detected and made available.
-
-Z90STAT_REQUESTQ_COUNT
-Return an integer count of the number of entries waiting to be
-sent to a device.
-
-Z90STAT_PENDINGQ_COUNT
-Return an integer count of the number of entries sent to all
-devices awaiting the reply.
-
-Z90STAT_TOTALOPEN_COUNT
-Return an integer count of the number of open file handles.
-
-Z90STAT_DOMAIN_INDEX
-Return the integer value of the Cryptographic Domain.
-
-.. _`icarsamodexpo.the-following-ioctls-are-deprecated-and-should-be-no-longer-used`:
-
-The following ioctls are deprecated and should be no longer used
-----------------------------------------------------------------
-
-
-Z90STAT_TOTALCOUNT
-Return an integer count of all device types together.
-
-Z90STAT_PCICACOUNT
-Return an integer count of all PCICAs.
-
-Z90STAT_PCICCCOUNT
-Return an integer count of all PCICCs.
-
-Z90STAT_PCIXCCMCL2COUNT
-Return an integer count of all MCL2 PCIXCCs.
-
-Z90STAT_PCIXCCMCL3COUNT
-Return an integer count of all MCL3 PCIXCCs.
-
-Z90STAT_CEX2CCOUNT
-Return an integer count of all CEX2Cs.
-
-Z90STAT_CEX2ACOUNT
-Return an integer count of all CEX2As.
-
-ICAZ90STATUS
-Return some device driver status in a ica_z90_status struct
-This takes an ica_z90_status struct as its arg.
-
-Z90STAT_PCIXCCCOUNT
-Return an integer count of all PCIXCCs (MCL2 + MCL3).
-This is DEPRECATED now that MCL3 PCIXCCs are treated differently from
-MCL2 PCIXCCs.
+ZCRYPT_PERDEV_REQCNT
+Return an MAX_ZDEV_CARDIDS_EXT element array of unsigned integers for
+the number of successfully completed requests per device since the
+device was detected and made available.
 
 .. This file was automatic generated / don't edit.
 

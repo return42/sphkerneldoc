@@ -32,6 +32,8 @@ Definition
         bool (*set_cache_memory_policy)(struct device_queue_manager *dqm,struct qcm_process_device *qpd,enum cache_policy default_policy,enum cache_policy alternate_policy,void __user *alternate_aperture_base, uint64_t alternate_aperture_size);
         int (*set_trap_handler)(struct device_queue_manager *dqm,struct qcm_process_device *qpd,uint64_t tba_addr, uint64_t tma_addr);
         int (*process_termination)(struct device_queue_manager *dqm, struct qcm_process_device *qpd);
+        int (*evict_process_queues)(struct device_queue_manager *dqm, struct qcm_process_device *qpd);
+        int (*restore_process_queues)(struct device_queue_manager *dqm, struct qcm_process_device *qpd);
     }
 
 .. _`device_queue_manager_ops.members`:
@@ -89,6 +91,12 @@ set_trap_handler
 process_termination
     Clears all process queues belongs to that device.
 
+evict_process_queues
+    Evict all active queues of a process
+
+restore_process_queues
+    Restore all evicted queues queues of a process
+
 .. _`device_queue_manager`:
 
 struct device_queue_manager
@@ -126,6 +134,7 @@ Definition
         unsigned int *fence_addr;
         struct kfd_mem_obj *fence_mem;
         bool active_runlist;
+        int sched_policy;
     }
 
 .. _`device_queue_manager.members`:
@@ -194,6 +203,9 @@ fence_mem
     *undescribed*
 
 active_runlist
+    *undescribed*
+
+sched_policy
     *undescribed*
 
 .. _`device_queue_manager.description`:

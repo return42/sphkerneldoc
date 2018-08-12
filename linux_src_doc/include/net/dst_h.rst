@@ -101,7 +101,7 @@ skb_tunnel_rx
         tunnel device
 
     :param struct net \*net:
-        *undescribed*
+        netns for packet i/o
 
 .. _`skb_tunnel_rx.description`:
 

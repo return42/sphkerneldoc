@@ -38,7 +38,7 @@ get_sd_pd_idx
 
 .. c:function:: void get_sd_pd_idx(struct i40iw_hmc_pble_rsrc *pble_rsrc, struct sd_pd_idx *idx)
 
-    Returns sd index, pd index and rel_pd_idx from fpm address @ pble_rsrc: structure containing fpm address @ idx: where to return indexes
+    Returns sd index, pd index and rel_pd_idx from fpm address \ ````\  pble_rsrc: structure containing fpm address \ ````\  idx: where to return indexes
 
     :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
         *undescribed*

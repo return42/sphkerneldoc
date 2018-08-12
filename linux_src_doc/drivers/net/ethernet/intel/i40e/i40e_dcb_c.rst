@@ -361,6 +361,34 @@ Description
 
 Update DCB configuration from the Firmware
 
+.. _`_i40e_read_lldp_cfg`:
+
+\_i40e_read_lldp_cfg
+====================
+
+.. c:function:: i40e_status _i40e_read_lldp_cfg(struct i40e_hw *hw, struct i40e_lldp_variables *lldp_cfg, u8 module, u32 word_offset)
+
+    generic read of LLDP Configuration data from NVM
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param struct i40e_lldp_variables \*lldp_cfg:
+        pointer to hold lldp configuration variables
+
+    :param u8 module:
+        address of the module pointer
+
+    :param u32 word_offset:
+        offset of LLDP configuration
+
+.. _`_i40e_read_lldp_cfg.description`:
+
+Description
+-----------
+
+Reads the LLDP configuration data from NVM using passed addresses
+
 .. _`i40e_read_lldp_cfg`:
 
 i40e_read_lldp_cfg

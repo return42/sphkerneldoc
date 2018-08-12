@@ -6,18 +6,18 @@
 i915_capture_error_state
 ========================
 
-.. c:function:: void i915_capture_error_state(struct drm_i915_private *dev_priv, u32 engine_mask, const char *error_msg)
+.. c:function:: void i915_capture_error_state(struct drm_i915_private *i915, u32 engine_mask, const char *error_msg)
 
     capture an error record for later analysis
 
-    :param struct drm_i915_private \*dev_priv:
-        *undescribed*
+    :param struct drm_i915_private \*i915:
+        i915 device
 
     :param u32 engine_mask:
-        *undescribed*
+        the mask of engines triggering the hang
 
     :param const char \*error_msg:
-        *undescribed*
+        a message to insert into the error capture header
 
 .. _`i915_capture_error_state.description`:
 

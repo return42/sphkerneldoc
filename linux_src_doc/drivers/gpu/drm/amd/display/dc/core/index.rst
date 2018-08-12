@@ -7,4 +7,5 @@ core
 .. toctree::
     :maxdepth: 1
 
+    dc_c
     dc_stream_c

@@ -87,7 +87,7 @@ true if the adapter is registered, false otherwise.
 cec_queue_pin_cec_event
 =======================
 
-.. c:function:: void cec_queue_pin_cec_event(struct cec_adapter *adap, bool is_high, ktime_t ts)
+.. c:function:: void cec_queue_pin_cec_event(struct cec_adapter *adap, bool is_high, bool dropped_events, ktime_t ts)
 
     queue a CEC pin event with a given timestamp.
 
@@ -96,6 +96,9 @@ cec_queue_pin_cec_event
 
     :param bool is_high:
         when true the CEC pin is high, otherwise it is low
+
+    :param bool dropped_events:
+        when true some events were dropped
 
     :param ktime_t ts:
         the timestamp for this event

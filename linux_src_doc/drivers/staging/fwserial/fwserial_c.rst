@@ -277,7 +277,7 @@ fwserial_claim_port
 
 .. c:function:: struct fwtty_port *fwserial_claim_port(struct fwtty_peer *peer, int index)
 
-    attempt to claim port @ index for peer
+    attempt to claim port \ ````\  index for peer
 
     :param struct fwtty_peer \*peer:
         *undescribed*

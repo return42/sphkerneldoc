@@ -63,11 +63,11 @@ Return
 emit_mocs_control_table
 =======================
 
-.. c:function:: int emit_mocs_control_table(struct drm_i915_gem_request *req, const struct drm_i915_mocs_table *table)
+.. c:function:: int emit_mocs_control_table(struct i915_request *rq, const struct drm_i915_mocs_table *table)
 
     emit the mocs control table
 
-    :param struct drm_i915_gem_request \*req:
+    :param struct i915_request \*rq:
         Request to set up the MOCS table for.
 
     :param const struct drm_i915_mocs_table \*table:
@@ -93,11 +93,11 @@ Return
 emit_mocs_l3cc_table
 ====================
 
-.. c:function:: int emit_mocs_l3cc_table(struct drm_i915_gem_request *req, const struct drm_i915_mocs_table *table)
+.. c:function:: int emit_mocs_l3cc_table(struct i915_request *rq, const struct drm_i915_mocs_table *table)
 
     emit the mocs control table
 
-    :param struct drm_i915_gem_request \*req:
+    :param struct i915_request \*rq:
         Request to set up the MOCS table for.
 
     :param const struct drm_i915_mocs_table \*table:
@@ -156,11 +156,11 @@ Nothing.
 intel_rcs_context_init_mocs
 ===========================
 
-.. c:function:: int intel_rcs_context_init_mocs(struct drm_i915_gem_request *req)
+.. c:function:: int intel_rcs_context_init_mocs(struct i915_request *rq)
 
     program the MOCS register.
 
-    :param struct drm_i915_gem_request \*req:
+    :param struct i915_request \*rq:
         Request to set up the MOCS tables for.
 
 .. _`intel_rcs_context_init_mocs.description`:

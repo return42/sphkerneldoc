@@ -42,7 +42,7 @@ packets.
 rs_initialize_lq
 ================
 
-.. c:function:: void rs_initialize_lq(struct iwl_mvm *mvm, struct ieee80211_sta *sta, struct iwl_lq_sta *lq_sta, enum nl80211_band band, bool init)
+.. c:function:: void rs_initialize_lq(struct iwl_mvm *mvm, struct ieee80211_sta *sta, struct iwl_lq_sta *lq_sta, enum nl80211_band band)
 
     Initialize a station's hardware rate table
 
@@ -56,9 +56,6 @@ rs_initialize_lq
         *undescribed*
 
     :param enum nl80211_band band:
-        *undescribed*
-
-    :param bool init:
         *undescribed*
 
 .. _`rs_initialize_lq.description`:

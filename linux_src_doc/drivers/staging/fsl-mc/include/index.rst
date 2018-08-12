@@ -10,6 +10,3 @@ include
     dpaa2-fd_h
     dpaa2-global_h
     dpaa2-io_h
-    dpbp_h
-    dpcon_h
-    mc_h

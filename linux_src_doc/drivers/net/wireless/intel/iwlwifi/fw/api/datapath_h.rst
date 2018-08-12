@@ -22,7 +22,6 @@ Definition
         UPDATE_MU_GROUPS_CMD,
         TRIGGER_RX_QUEUES_NOTIF_CMD,
         TLC_MNG_CONFIG_CMD,
-        TLC_MNG_NOTIF_REQ_CMD,
         TLC_MNG_UPDATE_NOTIF,
         STA_PM_NOTIF,
         MU_GROUP_MGMT_NOTIF,
@@ -45,9 +44,6 @@ TRIGGER_RX_QUEUES_NOTIF_CMD
 
 TLC_MNG_CONFIG_CMD
     \ :c:type:`struct iwl_tlc_config_cmd <iwl_tlc_config_cmd>`\ 
-
-TLC_MNG_NOTIF_REQ_CMD
-    \ :c:type:`struct iwl_tlc_notif_req_config_cmd <iwl_tlc_notif_req_config_cmd>`\ 
 
 TLC_MNG_UPDATE_NOTIF
     \ :c:type:`struct iwl_tlc_update_notif <iwl_tlc_update_notif>`\ 

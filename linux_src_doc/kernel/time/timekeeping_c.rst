@@ -268,39 +268,19 @@ Forward the current clock to update its state since the last call to
 \ :c:func:`update_wall_time`\ . This is useful before significant clock changes,
 as it avoids having to deal with this time offset explicitly.
 
-.. _`__getnstimeofday64`:
+.. _`ktime_get_real_ts64`:
 
-\__getnstimeofday64
+ktime_get_real_ts64
 ===================
 
-.. c:function:: int __getnstimeofday64(struct timespec64 *ts)
+.. c:function:: void ktime_get_real_ts64(struct timespec64 *ts)
 
     Returns the time of day in a timespec64.
 
     :param struct timespec64 \*ts:
         pointer to the timespec to be set
 
-.. _`__getnstimeofday64.description`:
-
-Description
------------
-
-Updates the time of day in the timespec.
-Returns 0 on success, or -ve when suspended (timespec will be undefined).
-
-.. _`getnstimeofday64`:
-
-getnstimeofday64
-================
-
-.. c:function:: void getnstimeofday64(struct timespec64 *ts)
-
-    Returns the time of day in a timespec64.
-
-    :param struct timespec64 \*ts:
-        pointer to the timespec64 to be set
-
-.. _`getnstimeofday64.description`:
+.. _`ktime_get_real_ts64.description`:
 
 Description
 -----------
@@ -606,19 +586,19 @@ Description
 This function is called from clocksource.c after a new, better clock
 source has been registered. The caller holds the clocksource_mutex.
 
-.. _`getrawmonotonic64`:
+.. _`ktime_get_raw_ts64`:
 
-getrawmonotonic64
-=================
+ktime_get_raw_ts64
+==================
 
-.. c:function:: void getrawmonotonic64(struct timespec64 *ts)
+.. c:function:: void ktime_get_raw_ts64(struct timespec64 *ts)
 
     Returns the raw monotonic time in a timespec
 
     :param struct timespec64 \*ts:
         pointer to the timespec64 to be set
 
-.. _`getrawmonotonic64.description`:
+.. _`ktime_get_raw_ts64.description`:
 
 Description
 -----------

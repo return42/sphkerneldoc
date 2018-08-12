@@ -65,6 +65,25 @@ Description
 
 Calculate how many bytes of the MM node are inside visible VRAM
 
+.. _`amdgpu_vram_mgr_bo_invisible_size`:
+
+amdgpu_vram_mgr_bo_invisible_size
+=================================
+
+.. c:function:: u64 amdgpu_vram_mgr_bo_invisible_size(struct amdgpu_bo *bo)
+
+    CPU invisible BO size
+
+    :param struct amdgpu_bo \*bo:
+        \ :c:type:`struct amdgpu_bo <amdgpu_bo>`\  buffer object (must be in VRAM)
+
+.. _`amdgpu_vram_mgr_bo_invisible_size.return`:
+
+Return
+------
+
+How much of the given \ :c:type:`struct amdgpu_bo <amdgpu_bo>`\  buffer object lies in CPU invisible VRAM.
+
 .. _`amdgpu_vram_mgr_new`:
 
 amdgpu_vram_mgr_new

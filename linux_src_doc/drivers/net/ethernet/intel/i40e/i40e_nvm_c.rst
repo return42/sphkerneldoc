@@ -557,7 +557,7 @@ i40e_nvmupd_check_wait_event
         the event that just happened
 
     :param struct i40e_aq_desc \*desc:
-        *undescribed*
+        AdminQ descriptor
 
 .. _`i40e_nvmupd_validate_command`:
 

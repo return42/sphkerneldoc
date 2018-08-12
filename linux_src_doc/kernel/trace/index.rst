@@ -14,6 +14,7 @@ trace
     trace_c
     trace_events_c
     trace_events_filter_c
+    trace_events_hist_c
     trace_events_trigger_c
     trace_functions_graph_c
     trace_h

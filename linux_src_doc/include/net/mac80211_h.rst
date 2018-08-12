@@ -462,7 +462,8 @@ Definition
         BSS_CHANGED_BANDWIDTH,
         BSS_CHANGED_OCB,
         BSS_CHANGED_MU_GROUPS,
-        BSS_CHANGED_KEEP_ALIVE
+        BSS_CHANGED_KEEP_ALIVE,
+        BSS_CHANGED_MCAST_RATE
     };
 
 .. _`ieee80211_bss_change.constants`:
@@ -554,6 +555,9 @@ BSS_CHANGED_MU_GROUPS
 BSS_CHANGED_KEEP_ALIVE
     keep alive options (idle period or protected
     keep alive) changed.
+
+BSS_CHANGED_MCAST_RATE
+    Multicast Rate setting changed for this interface
 
 .. _`ieee80211_bss_change.description`:
 
@@ -1592,6 +1596,7 @@ Definition
                 u8 ampdu_len;
                 u8 antenna;
                 u16 tx_time;
+                bool is_valid_ack_signal;
                 void *status_driver_data[19 / sizeof(void *)];
             } status;
             struct {
@@ -1819,7 +1824,9 @@ Definition
         RX_FLAG_RADIOTAP_VENDOR_DATA,
         RX_FLAG_MIC_STRIPPED,
         RX_FLAG_ALLOW_SAME_PN,
-        RX_FLAG_ICV_STRIPPED
+        RX_FLAG_ICV_STRIPPED,
+        RX_FLAG_AMPDU_EOF_BIT,
+        RX_FLAG_AMPDU_EOF_BIT_KNOWN
     };
 
 .. _`mac80211_rx_flags.constants`:
@@ -1940,6 +1947,13 @@ RX_FLAG_ALLOW_SAME_PN
 RX_FLAG_ICV_STRIPPED
     The ICV is stripped from this frame. CRC checking must
     be done in the hardware.
+
+RX_FLAG_AMPDU_EOF_BIT
+    Value of the EOF bit in the A-MPDU delimiter for this
+    frame
+
+RX_FLAG_AMPDU_EOF_BIT_KNOWN
+    The EOF value is known
 
 .. _`mac80211_rx_flags.description`:
 
@@ -3498,6 +3512,8 @@ Definition
         IEEE80211_HW_REPORTS_LOW_ACK,
         IEEE80211_HW_SUPPORTS_TX_FRAG,
         IEEE80211_HW_SUPPORTS_TDLS_BUFFER_STA,
+        IEEE80211_HW_DEAUTH_NEED_MGD_TX_PREP,
+        IEEE80211_HW_DOESNT_SUPPORT_QOS_NDP,
         NUM_IEEE80211_HW_FLAGS
     };
 
@@ -3707,6 +3723,19 @@ IEEE80211_HW_SUPPORTS_TX_FRAG
 IEEE80211_HW_SUPPORTS_TDLS_BUFFER_STA
     Hardware supports buffer STA on
     TDLS links.
+
+IEEE80211_HW_DEAUTH_NEED_MGD_TX_PREP
+    The driver requires the
+    \ :c:func:`mgd_prepare_tx`\  callback to be called before transmission of a
+    deauthentication frame in case the association was completed but no
+    beacon was heard. This is required in multi-channel scenarios, where the
+    virtual interface might not be given air time for the transmission of
+    the frame, as it is not synced with the AP/P2P GO yet, and thus the
+    deauthentication frame might not be transmitted.
+
+IEEE80211_HW_DOESNT_SUPPORT_QOS_NDP
+    The driver (or firmware) doesn't
+    support QoS NDP for AP probing - that's most likely a driver bug.
 
 NUM_IEEE80211_HW_FLAGS
     number of hardware flags, used for sizing arrays
@@ -4967,7 +4996,7 @@ Definition
         int (*get_et_sset_count)(struct ieee80211_hw *hw, struct ieee80211_vif *vif, int sset);
         void (*get_et_stats)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, struct ethtool_stats *stats, u64 *data);
         void (*get_et_strings)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, u32 sset, u8 *data);
-        void (*mgd_prepare_tx)(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
+        void (*mgd_prepare_tx)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, u16 duration);
         void (*mgd_protect_tdls_discover)(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
         int (*add_chanctx)(struct ieee80211_hw *hw, struct ieee80211_chanctx_conf *ctx);
         void (*remove_chanctx)(struct ieee80211_hw *hw, struct ieee80211_chanctx_conf *ctx);
@@ -5503,8 +5532,13 @@ mgd_prepare_tx
     management frame prior to having successfully associated to allow the
     driver to give it channel time for the transmission, to get a response
     and to be able to synchronize with the GO.
+    For drivers that set \ ``IEEE80211_HW_DEAUTH_NEED_MGD_TX_PREP``\ , mac80211
+    would also call this function before transmitting a deauthentication
+    frame in case that no beacon was heard from the AP/P2P GO.
     The callback will be called before each transmission and upon return
     mac80211 will transmit the frame right away.
+    If duration is greater than zero, mac80211 hints to the driver the
+    duration for which the operation is requested.
     The callback is optional and can (should!) sleep.
 
 mgd_protect_tdls_discover
@@ -6752,6 +6786,32 @@ Return
 ------
 
 new csa counter value
+
+.. _`ieee80211_csa_set_counter`:
+
+ieee80211_csa_set_counter
+=========================
+
+.. c:function:: void ieee80211_csa_set_counter(struct ieee80211_vif *vif, u8 counter)
+
+    request mac80211 to set csa counter
+
+    :param struct ieee80211_vif \*vif:
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+
+    :param u8 counter:
+        the new value for the counter
+
+.. _`ieee80211_csa_set_counter.description`:
+
+Description
+-----------
+
+The csa counter can be changed by the device, this API should be
+used by the device driver to update csa counter in mac80211.
+
+It should never be used together with \ :c:func:`ieee80211_csa_update_counter`\ ,
+as it will cause a race condition around the counter value.
 
 .. _`ieee80211_csa_finish`:
 

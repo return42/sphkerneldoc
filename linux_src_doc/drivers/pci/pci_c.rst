@@ -447,12 +447,12 @@ __pci_dev_set_current_state
     :param void \*data:
         pointer to state to be set
 
-.. _`__pci_bus_set_current_state`:
+.. _`pci_bus_set_current_state`:
 
-__pci_bus_set_current_state
-===========================
+pci_bus_set_current_state
+=========================
 
-.. c:function:: void __pci_bus_set_current_state(struct pci_bus *bus, pci_power_t state)
+.. c:function:: void pci_bus_set_current_state(struct pci_bus *bus, pci_power_t state)
 
     Walk given bus and set current state of devices
 
@@ -899,6 +899,18 @@ Description
 
 Sets the PCI reset state for the device.
 
+.. _`pcie_clear_root_pme_status`:
+
+pcie_clear_root_pme_status
+==========================
+
+.. c:function:: void pcie_clear_root_pme_status(struct pci_dev *dev)
+
+    Clear root port PME interrupt status.
+
+    :param struct pci_dev \*dev:
+        PCIe root port or event collector.
+
 .. _`pci_check_pme_status`:
 
 pci_check_pme_status
@@ -1005,12 +1017,12 @@ Description
 The caller must verify that the device is capable of generating PME# before
 calling this function with \ ``enable``\  equal to 'true'.
 
-.. _`pci_enable_wake`:
+.. _`__pci_enable_wake`:
 
-pci_enable_wake
-===============
+__pci_enable_wake
+=================
 
-.. c:function:: int pci_enable_wake(struct pci_dev *dev, pci_power_t state, bool enable)
+.. c:function:: int __pci_enable_wake(struct pci_dev *dev, pci_power_t state, bool enable)
 
     enable PCI device as wakeup event source
 
@@ -1023,7 +1035,7 @@ pci_enable_wake
     :param bool enable:
         True to enable event generation; false to disable
 
-.. _`pci_enable_wake.description`:
+.. _`__pci_enable_wake.description`:
 
 Description
 -----------
@@ -1035,7 +1047,7 @@ called automatically by this routine.
 Devices with legacy power management (no standard PCI PM capabilities)
 always require such platform hooks.
 
-.. _`pci_enable_wake.return-value`:
+.. _`__pci_enable_wake.return-value`:
 
 RETURN VALUE
 ------------
@@ -1044,6 +1056,32 @@ RETURN VALUE
 -EINVAL is returned if device is not supposed to wake up the system
 Error code depending on the platform is returned if both the platform and
 the native mechanism fail to enable the generation of wake-up events
+
+.. _`pci_enable_wake`:
+
+pci_enable_wake
+===============
+
+.. c:function:: int pci_enable_wake(struct pci_dev *pci_dev, pci_power_t state, bool enable)
+
+    change wakeup settings for a PCI device
+
+    :param struct pci_dev \*pci_dev:
+        Target device
+
+    :param pci_power_t state:
+        PCI state from which device will issue wakeup events
+
+    :param bool enable:
+        Whether or not to enable event generation
+
+.. _`pci_enable_wake.description`:
+
+Description
+-----------
+
+If \ ``enable``\  is set, check \ :c:func:`device_may_wakeup`\  for the device before calling
+\ :c:func:`__pci_enable_wake`\  for it.
 
 .. _`pci_wake_from_d3`:
 
@@ -1070,9 +1108,9 @@ and this function allows them to set that up cleanly - \ :c:func:`pci_enable_wak
 should not be called twice in a row to enable wake-up due to PCI PM vs ACPI
 ordering constraints.
 
-This function only returns error code if the device is not capable of
-generating PME# from both D3_hot and D3_cold, and the platform is unable to
-enable wake-up power for it.
+This function only returns error code if the device is not allowed to wake
+up the system from sleep or it is not capable of generating PME# from both
+D3_hot and D3_cold and the platform is unable to enable wake-up power for it.
 
 .. _`pci_target_state`:
 
@@ -1913,6 +1951,32 @@ Description
      Only architectures that have memory mapped IO functions defined
      (and the PCI_IOBASE value defined) should call this function.
 
+.. _`devm_pci_remap_iospace`:
+
+devm_pci_remap_iospace
+======================
+
+.. c:function:: int devm_pci_remap_iospace(struct device *dev, const struct resource *res, phys_addr_t phys_addr)
+
+    Managed \ :c:func:`pci_remap_iospace`\ 
+
+    :param struct device \*dev:
+        Generic device to remap IO address for
+
+    :param const struct resource \*res:
+        Resource describing the I/O space
+
+    :param phys_addr_t phys_addr:
+        physical address of range to be mapped
+
+.. _`devm_pci_remap_iospace.description`:
+
+Description
+-----------
+
+Managed \ :c:func:`pci_remap_iospace`\ .  Map is automatically unmapped on driver
+detach.
+
 .. _`devm_pci_remap_cfgspace`:
 
 devm_pci_remap_cfgspace
@@ -2280,7 +2344,7 @@ resets.
 pcie_flr
 ========
 
-.. c:function:: void pcie_flr(struct pci_dev *dev)
+.. c:function:: int pcie_flr(struct pci_dev *dev)
 
     initiate a PCIe function level reset
 
@@ -2331,12 +2395,34 @@ cooldown period, which for the D0->D3hot and D3hot->D0 transitions is 10 ms
 by default (i.e. unless the \ ``dev``\ 's d3_delay field has a different value).
 Moreover, only devices in D0 can be reset by this function.
 
+.. _`pcie_wait_for_link`:
+
+pcie_wait_for_link
+==================
+
+.. c:function:: bool pcie_wait_for_link(struct pci_dev *pdev, bool active)
+
+    Wait until link is active or inactive
+
+    :param struct pci_dev \*pdev:
+        Bridge device
+
+    :param bool active:
+        waiting for active or inactive?
+
+.. _`pcie_wait_for_link.description`:
+
+Description
+-----------
+
+Use this to wait till link becomes active or inactive.
+
 .. _`pci_reset_bridge_secondary_bus`:
 
 pci_reset_bridge_secondary_bus
 ==============================
 
-.. c:function:: void pci_reset_bridge_secondary_bus(struct pci_dev *dev)
+.. c:function:: int pci_reset_bridge_secondary_bus(struct pci_dev *dev)
 
     Reset the secondary bus on a PCI bridge.
 
@@ -2759,31 +2845,125 @@ Description
 
 If possible sets maximum payload size
 
-.. _`pcie_get_minimum_link`:
+.. _`pcie_bandwidth_available`:
 
-pcie_get_minimum_link
-=====================
+pcie_bandwidth_available
+========================
 
-.. c:function:: int pcie_get_minimum_link(struct pci_dev *dev, enum pci_bus_speed *speed, enum pcie_link_width *width)
+.. c:function:: u32 pcie_bandwidth_available(struct pci_dev *dev, struct pci_dev **limiting_dev, enum pci_bus_speed *speed, enum pcie_link_width *width)
 
-    determine minimum link settings of a PCI device
+    determine minimum link settings of a PCIe device and its bandwidth limitation
 
     :param struct pci_dev \*dev:
         PCI device to query
 
+    :param struct pci_dev \*\*limiting_dev:
+        storage for device causing the bandwidth limitation
+
     :param enum pci_bus_speed \*speed:
-        storage for minimum speed
+        storage for speed of limiting device
 
     :param enum pcie_link_width \*width:
-        storage for minimum width
+        storage for width of limiting device
 
-.. _`pcie_get_minimum_link.description`:
+.. _`pcie_bandwidth_available.description`:
 
 Description
 -----------
 
-This function will walk up the PCI device chain and determine the minimum
-link width and speed of the device.
+Walk up the PCI device chain and find the point where the minimum
+bandwidth is available.  Return the bandwidth available there and (if
+limiting_dev, speed, and width pointers are supplied) information about
+that point.  The bandwidth returned is in Mb/s, i.e., megabits/second of
+raw bandwidth.
+
+.. _`pcie_get_speed_cap`:
+
+pcie_get_speed_cap
+==================
+
+.. c:function:: enum pci_bus_speed pcie_get_speed_cap(struct pci_dev *dev)
+
+    query for the PCI device's link speed capability
+
+    :param struct pci_dev \*dev:
+        PCI device to query
+
+.. _`pcie_get_speed_cap.description`:
+
+Description
+-----------
+
+Query the PCI device speed capability.  Return the maximum link speed
+supported by the device.
+
+.. _`pcie_get_width_cap`:
+
+pcie_get_width_cap
+==================
+
+.. c:function:: enum pcie_link_width pcie_get_width_cap(struct pci_dev *dev)
+
+    query for the PCI device's link width capability
+
+    :param struct pci_dev \*dev:
+        PCI device to query
+
+.. _`pcie_get_width_cap.description`:
+
+Description
+-----------
+
+Query the PCI device width capability.  Return the maximum link width
+supported by the device.
+
+.. _`pcie_bandwidth_capable`:
+
+pcie_bandwidth_capable
+======================
+
+.. c:function:: u32 pcie_bandwidth_capable(struct pci_dev *dev, enum pci_bus_speed *speed, enum pcie_link_width *width)
+
+    calculate a PCI device's link bandwidth capability
+
+    :param struct pci_dev \*dev:
+        PCI device
+
+    :param enum pci_bus_speed \*speed:
+        storage for link speed
+
+    :param enum pcie_link_width \*width:
+        storage for link width
+
+.. _`pcie_bandwidth_capable.description`:
+
+Description
+-----------
+
+Calculate a PCI device's link bandwidth by querying for its link speed
+and width, multiplying them, and applying encoding overhead.  The result
+is in Mb/s, i.e., megabits/second of raw bandwidth.
+
+.. _`pcie_print_link_status`:
+
+pcie_print_link_status
+======================
+
+.. c:function:: void pcie_print_link_status(struct pci_dev *dev)
+
+    Report the PCI device's link speed and width
+
+    :param struct pci_dev \*dev:
+        PCI device to query
+
+.. _`pcie_print_link_status.description`:
+
+Description
+-----------
+
+Report the available bandwidth at the device.  If this is less than the
+device is capable of, report the device's maximum possible bandwidth and
+the upstream link that limits its performance to less than that.
 
 .. _`pci_select_bars`:
 

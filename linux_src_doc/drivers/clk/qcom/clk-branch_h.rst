@@ -29,6 +29,7 @@ Definition
     #define BRANCH_HALT_ENABLE 1
     #define BRANCH_HALT_ENABLE_VOTED (BRANCH_HALT_ENABLE | BRANCH_VOTED)
     #define BRANCH_HALT_DELAY 2
+    #define BRANCH_HALT_SKIP 3
         struct clk_regmap clkr;
     }
 

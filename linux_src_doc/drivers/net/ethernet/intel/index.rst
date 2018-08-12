@@ -12,6 +12,7 @@ intel
     fm10k/index
     i40e/index
     i40evf/index
+    ice/index
     igb/index
     igbvf/index
     ixgb/index

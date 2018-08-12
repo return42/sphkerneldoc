@@ -30,7 +30,13 @@ Definition
         DPLL_ID_SKL_DPLL0,
         DPLL_ID_SKL_DPLL1,
         DPLL_ID_SKL_DPLL2,
-        DPLL_ID_SKL_DPLL3
+        DPLL_ID_SKL_DPLL3,
+        DPLL_ID_ICL_DPLL0,
+        DPLL_ID_ICL_DPLL1,
+        DPLL_ID_ICL_MGPLL1,
+        DPLL_ID_ICL_MGPLL2,
+        DPLL_ID_ICL_MGPLL3,
+        DPLL_ID_ICL_MGPLL4
     };
 
 .. _`intel_dpll_id.constants`:
@@ -76,6 +82,24 @@ DPLL_ID_SKL_DPLL2
 
 DPLL_ID_SKL_DPLL3
     SKL and later DPLL3
+
+DPLL_ID_ICL_DPLL0
+    ICL combo PHY DPLL0
+
+DPLL_ID_ICL_DPLL1
+    ICL combo PHY DPLL1
+
+DPLL_ID_ICL_MGPLL1
+    ICL MG PLL 1 port 1 (C)
+
+DPLL_ID_ICL_MGPLL2
+    ICL MG PLL 1 port 2 (D)
+
+DPLL_ID_ICL_MGPLL3
+    ICL MG PLL 1 port 3 (E)
+
+DPLL_ID_ICL_MGPLL4
+    ICL MG PLL 1 port 4 (F)
 
 .. _`intel_dpll_id.description`:
 
@@ -179,6 +203,50 @@ get_hw_state
     registers. This is used for initial hw state readout and state
     verification after a mode set.
 
+.. _`dpll_info`:
+
+struct dpll_info
+================
+
+.. c:type:: struct dpll_info
+
+    display PLL platform specific info
+
+.. _`dpll_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dpll_info {
+        const char *name;
+        const struct intel_shared_dpll_funcs *funcs;
+        enum intel_dpll_id id;
+    #define INTEL_DPLL_ALWAYS_ON (1 << 0)
+        uint32_t flags;
+    }
+
+.. _`dpll_info.members`:
+
+Members
+-------
+
+name
+    DPLL name; used for logging
+
+funcs
+    platform specific hooks
+
+id
+    unique indentifier for this DPLL; should match the index in thedev_priv->shared_dplls array
+
+flags
+
+    INTEL_DPLL_ALWAYS_ON
+        Inform the state checker that the DPLL is kept enabled even if
+        not in use by any CRTC.
+
 .. _`intel_shared_dpll`:
 
 struct intel_shared_dpll
@@ -199,11 +267,7 @@ Definition
         struct intel_shared_dpll_state state;
         unsigned active_mask;
         bool on;
-        const char *name;
-        enum intel_dpll_id id;
-        struct intel_shared_dpll_funcs funcs;
-    #define INTEL_DPLL_ALWAYS_ON (1 << 0)
-        uint32_t flags;
+        const struct dpll_info *info;
     }
 
 .. _`intel_shared_dpll.members`:
@@ -222,20 +286,8 @@ active_mask
 on
     is the PLL actually active? Disabled during modeset
 
-name
-    DPLL name; used for logging
-
-id
-    unique indentifier for this DPLL; should match the index in thedev_priv->shared_dplls array
-
-funcs
-    platform specific hooks
-
-flags
-
-    INTEL_DPLL_ALWAYS_ON
-        Inform the state checker that the DPLL is kept enabled even if
-        not in use by any CRTC.
+info
+    platform specific info
 
 .. This file was automatic generated / don't edit.
 

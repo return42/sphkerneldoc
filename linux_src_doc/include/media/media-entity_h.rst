@@ -1389,7 +1389,7 @@ This function can be used to resolve the media pad number from
 a fwnode. This is useful for devices which use more complex
 mappings of media pads.
 
-If the entity dose not implement the \ :c:func:`get_fwnode_pad`\  operation
+If the entity does not implement the \ :c:func:`get_fwnode_pad`\  operation
 then this function searches the entity for the first pad that
 matches the \ ``direction_flags``\ .
 

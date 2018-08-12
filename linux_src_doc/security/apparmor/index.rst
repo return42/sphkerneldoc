@@ -11,7 +11,6 @@ apparmor
     apparmorfs_c
     audit_c
     capability_c
-    context_c
     domain_c
     file_c
     ipc_c
@@ -27,3 +26,4 @@ apparmor
     procattr_c
     resource_c
     secid_c
+    task_c

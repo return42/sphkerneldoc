@@ -6,9 +6,12 @@
 ir_create_table
 ===============
 
-.. c:function:: int ir_create_table(struct rc_map *rc_map, const char *name, u64 rc_proto, size_t size)
+.. c:function:: int ir_create_table(struct rc_dev *dev, struct rc_map *rc_map, const char *name, u64 rc_proto, size_t size)
 
     initializes a scancode table
+
+    :param struct rc_dev \*dev:
+        the rc_dev device
 
     :param struct rc_map \*rc_map:
         the rc_map to initialize
@@ -62,9 +65,12 @@ scancode table.
 ir_resize_table
 ===============
 
-.. c:function:: int ir_resize_table(struct rc_map *rc_map, gfp_t gfp_flags)
+.. c:function:: int ir_resize_table(struct rc_dev *dev, struct rc_map *rc_map, gfp_t gfp_flags)
 
     resizes a scancode table if necessary
+
+    :param struct rc_dev \*dev:
+        the rc_dev device
 
     :param struct rc_map \*rc_map:
         the rc_map to resize
@@ -618,9 +624,12 @@ store_protocols and show_protocols.
 parse_protocol_change
 =====================
 
-.. c:function:: int parse_protocol_change(u64 *protocols, const char *buf)
+.. c:function:: int parse_protocol_change(struct rc_dev *dev, u64 *protocols, const char *buf)
 
     parses a protocol change request
+
+    :param struct rc_dev \*dev:
+        rc_dev device
 
     :param u64 \*protocols:
         pointer to the bitmask of current protocols

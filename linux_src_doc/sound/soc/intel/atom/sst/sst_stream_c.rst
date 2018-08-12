@@ -1,6 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/soc/intel/atom/sst/sst_stream.c
 
+.. _`sst_realloc_stream`:
+
+sst_realloc_stream
+==================
+
+.. c:function:: int sst_realloc_stream(struct intel_sst_drv *sst_drv_ctx, int str_id)
+
+    Send msg for (re-)allocating a stream using the \ ``sst_drv_ctx``\   intel_sst_drv context pointer
+
+    :param struct intel_sst_drv \*sst_drv_ctx:
+        *undescribed*
+
+    :param int str_id:
+        stream ID
+
+.. _`sst_realloc_stream.description`:
+
+Description
+-----------
+
+Send a msg for (re-)allocating a stream using the parameters previously
+passed to \ :c:func:`sst_alloc_stream_mrfld`\  for the same stream ID.
+
+.. _`sst_realloc_stream.return`:
+
+Return
+------
+
+0 or negative errno value.
+
 .. _`sst_start_stream`:
 
 sst_start_stream

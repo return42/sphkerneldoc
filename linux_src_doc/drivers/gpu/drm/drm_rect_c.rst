@@ -37,7 +37,7 @@ Return
 drm_rect_clip_scaled
 ====================
 
-.. c:function:: bool drm_rect_clip_scaled(struct drm_rect *src, struct drm_rect *dst, const struct drm_rect *clip, int hscale, int vscale)
+.. c:function:: bool drm_rect_clip_scaled(struct drm_rect *src, struct drm_rect *dst, const struct drm_rect *clip)
 
     perform a scaled clip operation
 
@@ -49,12 +49,6 @@ drm_rect_clip_scaled
 
     :param const struct drm_rect \*clip:
         clip rectangle
-
-    :param int hscale:
-        horizontal scaling factor
-
-    :param int vscale:
-        vertical scaling factor
 
 .. _`drm_rect_clip_scaled.description`:
 
@@ -101,6 +95,10 @@ Description
 Calculate the horizontal scaling factor as
 (@src width) / (@dst width).
 
+If the scale is below 1 << 16, round down. If the scale is above
+1 << 16, round up. This will calculate the scale with the most
+pessimistic limit calculation.
+
 .. _`drm_rect_calc_hscale.return`:
 
 Return
@@ -136,6 +134,10 @@ Description
 
 Calculate the vertical scaling factor as
 (@src height) / (@dst height).
+
+If the scale is below 1 << 16, round down. If the scale is above
+1 << 16, round up. This will calculate the scale with the most
+pessimistic limit calculation.
 
 .. _`drm_rect_calc_vscale.return`:
 
@@ -179,6 +181,10 @@ decrease the height of rectangle \ ``dst``\  to compensate.
 If the calculated scaling factor is above \ ``max_vscale``\ ,
 decrease the height of rectangle \ ``src``\  to compensate.
 
+If the scale is below 1 << 16, round down. If the scale is above
+1 << 16, round up. This will calculate the scale with the most
+pessimistic limit calculation.
+
 .. _`drm_rect_calc_hscale_relaxed.return`:
 
 Return
@@ -220,6 +226,10 @@ decrease the height of rectangle \ ``dst``\  to compensate.
 
 If the calculated scaling factor is above \ ``max_vscale``\ ,
 decrease the height of rectangle \ ``src``\  to compensate.
+
+If the scale is below 1 << 16, round down. If the scale is above
+1 << 16, round up. This will calculate the scale with the most
+pessimistic limit calculation.
 
 .. _`drm_rect_calc_vscale_relaxed.return`:
 
@@ -319,8 +329,8 @@ coordinate space, so that you never have to flip
 them when doing a rotatation and its inverse.
 That is, if you do ::
 
-    DRM_MODE_PROP_ROTATE(&r, width, height, rotation);
-    DRM_MODE_ROTATE_inv(&r, width, height, rotation);
+    drm_rect_rotate(&r, width, height, rotation);
+    drm_rect_rotate_inv(&r, width, height, rotation);
 
 you will always get back the original rectangle.
 

@@ -33,19 +33,19 @@ on the order of a million or so, even on 32-bit systems).  It is
 not legal to block within \ :c:func:`RCU_NONIDLE`\ , nor is it permissible to
 transfer control either into or out of \ :c:func:`RCU_NONIDLE`\ 's statement.
 
-.. _`cond_resched_rcu_qs`:
+.. _`cond_resched_tasks_rcu_qs`:
 
-cond_resched_rcu_qs
-===================
+cond_resched_tasks_rcu_qs
+=========================
 
-.. c:function::  cond_resched_rcu_qs( void)
+.. c:function::  cond_resched_tasks_rcu_qs( void)
 
     Report potential quiescent states to RCU
 
     :param  void:
         no arguments
 
-.. _`cond_resched_rcu_qs.description`:
+.. _`cond_resched_tasks_rcu_qs.description`:
 
 Description
 -----------
@@ -487,9 +487,7 @@ is responsible for deboosting, which it does via \ :c:func:`rt_mutex_unlock`\ .
 Unfortunately, this function acquires the scheduler's runqueue and
 priority-inheritance spinlocks.  This means that deadlock could result
 if the caller of \ :c:func:`rcu_read_unlock`\  already holds one of these locks or
-any lock that is ever acquired while holding them; or any lock which
-can be taken from interrupt context because \ :c:func:`rcu_boost`\ ->rt_mutex_lock()
-does not disable irqs while taking ->wait_lock.
+any lock that is ever acquired while holding them.
 
 That said, RCU readers are never priority boosted unless they were
 preempted.  Therefore, one way to avoid deadlock is to make sure

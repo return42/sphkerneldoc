@@ -8,4 +8,3 @@ ion
     :maxdepth: 1
 
     ion_h
-    ion_system_heap_c

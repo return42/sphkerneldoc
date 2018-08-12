@@ -579,8 +579,9 @@ Description
 -----------
 
 unpack and replace a profile on the profile list and uses of that profile
-by any aa_task_ctx.  If the profile does not exist on the profile list
-it is added.
+by any task creds via invalidating the old version of the profile, which
+tasks will notice to update their own cred.  If the profile does not exist
+on the profile list it is added.
 
 .. _`aa_replace_profiles.return`:
 
@@ -623,7 +624,7 @@ they can not be found anymore and mark them as replaced by unconfined
 NOTE
 ----
 
-removing confinement does not restore rlimits to preconfinemnet values
+removing confinement does not restore rlimits to preconfinement values
 
 .. _`aa_remove_profiles.return`:
 

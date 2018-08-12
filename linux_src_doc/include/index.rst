@@ -9,6 +9,7 @@ include
 
     acpi/index
     asm-generic/index
+    clocksource/index
     crypto/index
     drm/index
     dt-bindings/index
@@ -16,6 +17,7 @@ include
     kvm/index
     linux/index
     media/index
+    misc/index
     net/index
     pcmcia/index
     rdma/index

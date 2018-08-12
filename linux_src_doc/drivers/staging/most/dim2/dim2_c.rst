@@ -21,6 +21,7 @@ Definition
         char name[sizeof "caNNN"];
         bool is_initialized;
         struct dim_channel ch;
+        u16 *reset_dbr_size;
         struct list_head pending_list;
         struct list_head started_list;
         enum most_channel_direction direction;
@@ -40,6 +41,9 @@ is_initialized
 
 ch
     HAL specific channel data
+
+reset_dbr_size
+    *undescribed*
 
 pending_list
     list to keep MBO's before starting transfer
@@ -76,7 +80,9 @@ Definition
         struct most_interface most_iface;
         char name[16 + sizeof "dim2-"];
         void __iomem *io_base;
-        int clk_speed;
+        u8 clk_speed;
+        struct clk *clk;
+        struct clk *clk_pll;
         struct task_struct *netinfo_task;
         wait_queue_head_t netinfo_waitq;
         int deliver_netinfo;
@@ -85,6 +91,7 @@ Definition
         int atx_idx;
         struct medialb_bus bus;
         void (*on_netinfo)(struct most_interface *most_iface, unsigned char link_state, unsigned char *addrs);
+        void (*disable_platform)(struct platform_device *);
     }
 
 .. _`dim2_hdm.members`:
@@ -111,7 +118,13 @@ io_base
     I/O register base address
 
 clk_speed
-    user selectable (through command line parameter) clock speed
+    *undescribed*
+
+clk
+    *undescribed*
+
+clk_pll
+    *undescribed*
 
 netinfo_task
     thread to deliver network status
@@ -135,6 +148,9 @@ bus
     *undescribed*
 
 on_netinfo
+    *undescribed*
+
+disable_platform
     *undescribed*
 
 .. _`dimcb_io_read`:
@@ -178,26 +194,6 @@ dimcb_on_error
 
     :param const char \*error_message:
         Error message. Some text in a free format
-
-.. _`startup_dim`:
-
-startup_dim
-===========
-
-.. c:function:: int startup_dim(struct platform_device *pdev)
-
-    initialize the dim2 interface
-
-    :param struct platform_device \*pdev:
-        platform device
-
-.. _`startup_dim.description`:
-
-Description
------------
-
-Get the value of command line parameter "clock_speed" if given or use the
-default value, enable the clock and PLL, and initialize the dim2 interface.
 
 .. _`try_start_dim_transfer`:
 
@@ -444,6 +440,29 @@ Description
 
 Destroy a channel and complete all the buffers in both started_list &
 pending_list. Return 0 on success, negative on failure.
+
+.. _`get_dim2_clk_speed`:
+
+get_dim2_clk_speed
+==================
+
+.. c:function:: int get_dim2_clk_speed(const char *clock_speed, u8 *val)
+
+    converts string to DIM2 clock speed value
+
+    :param const char \*clock_speed:
+        string in the format "{NUMBER}fs"
+
+    :param u8 \*val:
+        pointer to get one of the CLK_{NUMBER}FS values
+
+.. _`get_dim2_clk_speed.description`:
+
+Description
+-----------
+
+By success stores one of the CLK_{NUMBER}FS in the \*val and returns 0,
+otherwise returns -EINVAL.
 
 .. _`dim2_remove`:
 

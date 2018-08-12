@@ -75,7 +75,7 @@ by using platform parameters.
 stmmac_mtl_setup
 ================
 
-.. c:function:: void stmmac_mtl_setup(struct platform_device *pdev, struct plat_stmmacenet_data *plat)
+.. c:function:: int stmmac_mtl_setup(struct platform_device *pdev, struct plat_stmmacenet_data *plat)
 
     parse DT parameters for multiple queues configuration
 

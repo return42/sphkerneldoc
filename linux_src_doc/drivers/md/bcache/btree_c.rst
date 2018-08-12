@@ -46,42 +46,5 @@ btree_root
     :param ellipsis ellipsis:
         variable arguments
 
-.. _`bch_btree_node_get`:
-
-bch_btree_node_get
-==================
-
-.. c:function:: struct btree *bch_btree_node_get(struct cache_set *c, struct btree_op *op, struct bkey *k, int level, bool write, struct btree *parent)
-
-    find a btree node in the cache and lock it, reading it in from disk if necessary.
-
-    :param struct cache_set \*c:
-        *undescribed*
-
-    :param struct btree_op \*op:
-        *undescribed*
-
-    :param struct bkey \*k:
-        *undescribed*
-
-    :param int level:
-        *undescribed*
-
-    :param bool write:
-        *undescribed*
-
-    :param struct btree \*parent:
-        *undescribed*
-
-.. _`bch_btree_node_get.description`:
-
-Description
------------
-
-If IO is necessary and running under generic_make_request, returns -EAGAIN.
-
-The btree node will have either a read or a write lock held, depending on
-level and op->lock.
-
 .. This file was automatic generated / don't edit.
 

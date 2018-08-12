@@ -59,39 +59,6 @@ the connector type.
 
 If the port type is not known, returns \ ``PORT_OTHER``\ .
 
-.. _`sfp_parse_interface`:
-
-sfp_parse_interface
-===================
-
-.. c:function:: phy_interface_t sfp_parse_interface(struct sfp_bus *bus, const struct sfp_eeprom_id *id)
-
-    Parse the phy_interface_t
-
-    :param struct sfp_bus \*bus:
-        a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
-
-    :param const struct sfp_eeprom_id \*id:
-        a pointer to the module's \ :c:type:`struct sfp_eeprom_id <sfp_eeprom_id>`\ 
-
-.. _`sfp_parse_interface.description`:
-
-Description
------------
-
-Derive the phy_interface_t mode for the information found in the
-module's identifying EEPROM. There is no standard or defined way
-to derive this information, so we use some heuristics.
-
-If the encoding is 64b66b, then the module must be >= 10G, so
-return \ ``PHY_INTERFACE_MODE_10GKR``\ .
-
-If it's 8b10b, then it's 1G or slower. If it's definitely a fibre
-module, return \ ``PHY_INTERFACE_MODE_1000BASEX``\  mode, otherwise return
-\ ``PHY_INTERFACE_MODE_SGMII``\  mode.
-
-If the encoding is not known, return \ ``PHY_INTERFACE_MODE_NA``\ .
-
 .. _`sfp_parse_support`:
 
 sfp_parse_support
@@ -117,6 +84,34 @@ Description
 
 Parse the EEPROM identification information and derive the supported
 ethtool link modes for the module.
+
+.. _`sfp_select_interface`:
+
+sfp_select_interface
+====================
+
+.. c:function:: phy_interface_t sfp_select_interface(struct sfp_bus *bus, const struct sfp_eeprom_id *id, unsigned long *link_modes)
+
+    Select appropriate phy_interface_t mode
+
+    :param struct sfp_bus \*bus:
+        a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+
+    :param const struct sfp_eeprom_id \*id:
+        a pointer to the module's \ :c:type:`struct sfp_eeprom_id <sfp_eeprom_id>`\ 
+
+    :param unsigned long \*link_modes:
+        ethtool link modes mask
+
+.. _`sfp_select_interface.description`:
+
+Description
+-----------
+
+Derive the phy_interface_t mode for the information found in the
+module's identifying EEPROM and the link modes mask. There is no
+standard or defined way to derive this information, so we decide
+based upon the link mode mask.
 
 .. _`sfp_get_module_info`:
 

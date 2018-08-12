@@ -281,8 +281,6 @@ Definition
         struct usb_request *ep0_reply;
         struct usb_request *ep0_request;
         struct dentry *debugfs_root;
-        struct dentry *debugfs_usbd;
-        struct dentry *debugfs_iudma;
     }
 
 .. _`bcm63xx_udc.members`:
@@ -370,12 +368,6 @@ ep0_request
 
 debugfs_root
     debugfs directory: /sys/kernel/debug/<DRV_MODULE_NAME>.
-
-debugfs_usbd
-    debugfs file "usbd" for controller state.
-
-debugfs_iudma
-    debugfs file "usbd" for IUDMA state.
 
 .. _`bcm63xx_ep_dma_select`:
 

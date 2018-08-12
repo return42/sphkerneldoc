@@ -226,9 +226,9 @@ Definition
 .. code-block:: c
 
     struct omap_hwmod_class_sysconfig {
-        u32 rev_offs;
-        u32 sysc_offs;
-        u32 syss_offs;
+        s32 rev_offs;
+        s32 sysc_offs;
+        s32 syss_offs;
         u16 sysc_flags;
         struct sysc_regbits *sysc_fields;
         u8 srst_udelay;

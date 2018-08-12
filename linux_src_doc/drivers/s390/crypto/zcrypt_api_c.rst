@@ -118,28 +118,6 @@ Description
 
 Device close function to count number of users.
 
-.. _`zcrypt_ica_status`:
-
-zcrypt_ica_status
-=================
-
-.. c:function:: long zcrypt_ica_status(struct file *filp, unsigned long arg)
-
-    Old, depracted combi status call.
-
-    :param struct file \*filp:
-        *undescribed*
-
-    :param unsigned long arg:
-        *undescribed*
-
-.. _`zcrypt_ica_status.description`:
-
-Description
------------
-
-Old, deprecated combi status call.
-
 .. _`zcrypt_api_init`:
 
 zcrypt_api_init

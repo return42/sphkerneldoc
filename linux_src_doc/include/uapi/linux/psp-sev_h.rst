@@ -169,6 +169,38 @@ cert_chain_address
 cert_chain_len
     length of PDH certificate chain
 
+.. _`sev_user_data_get_id`:
+
+struct sev_user_data_get_id
+===========================
+
+.. c:type:: struct sev_user_data_get_id
+
+    GET_ID command parameters
+
+.. _`sev_user_data_get_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sev_user_data_get_id {
+        __u8 socket1[64];
+        __u8 socket2[64];
+    }
+
+.. _`sev_user_data_get_id.members`:
+
+Members
+-------
+
+socket1
+    Buffer to pass unique ID of first socket
+
+socket2
+    Buffer to pass unique ID of second socket
+
 .. _`sev_issue_cmd`:
 
 struct sev_issue_cmd

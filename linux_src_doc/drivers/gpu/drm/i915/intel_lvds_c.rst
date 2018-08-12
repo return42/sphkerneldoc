@@ -1,54 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_lvds.c
 
-.. _`intel_enable_lvds`:
-
-intel_enable_lvds
-=================
-
-.. c:function:: void intel_enable_lvds(struct intel_encoder *encoder, const struct intel_crtc_state *pipe_config, const struct drm_connector_state *conn_state)
-
-    :param struct intel_encoder \*encoder:
-        *undescribed*
-
-    :param const struct intel_crtc_state \*pipe_config:
-        *undescribed*
-
-    :param const struct drm_connector_state \*conn_state:
-        *undescribed*
-
-.. _`intel_lvds_detect`:
-
-intel_lvds_detect
-=================
-
-.. c:function:: enum drm_connector_status intel_lvds_detect(struct drm_connector *connector, bool force)
-
-    :param struct drm_connector \*connector:
-        *undescribed*
-
-    :param bool force:
-        *undescribed*
-
-.. _`intel_lvds_detect.description`:
-
-Description
------------
-
-Since LVDS doesn't have hotlug, we use the lid as a proxy.  Open means
-connected and closed means disconnected.  We also send hotplug events as
-needed, using lid status notification from the input layer.
-
-.. _`intel_lvds_get_modes`:
-
-intel_lvds_get_modes
-====================
-
-.. c:function:: int intel_lvds_get_modes(struct drm_connector *connector)
-
-    :param struct drm_connector \*connector:
-        *undescribed*
-
 .. _`intel_lvds_destroy`:
 
 intel_lvds_destroy
@@ -79,7 +31,7 @@ intel_lvds_init
     setup LVDS connectors on this device
 
     :param struct drm_i915_private \*dev_priv:
-        *undescribed*
+        i915 device
 
 .. _`intel_lvds_init.description`:
 

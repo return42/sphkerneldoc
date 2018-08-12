@@ -20,5 +20,17 @@ Computes
 
 floor(sqrt(x))
 
+.. _`int_sqrt64`:
+
+int_sqrt64
+==========
+
+.. c:function:: u32 int_sqrt64(u64 x)
+
+    strongly typed int_sqrt function when minimum 64 bit input is expected.
+
+    :param u64 x:
+        64bit integer of which to calculate the sqrt
+
 .. This file was automatic generated / don't edit.
 

@@ -252,6 +252,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_tuner_ops {
+        int (*standby)(struct v4l2_subdev *sd);
         int (*s_radio)(struct v4l2_subdev *sd);
         int (*s_frequency)(struct v4l2_subdev *sd, const struct v4l2_frequency *freq);
         int (*g_frequency)(struct v4l2_subdev *sd, struct v4l2_frequency *freq);
@@ -268,6 +269,10 @@ Definition
 
 Members
 -------
+
+standby
+    puts the tuner in standby mode. It will be woken up
+    automatically the next time it is used.
 
 s_radio
     callback that switches the tuner to radio mode.
@@ -515,8 +520,6 @@ Definition
         int (*g_input_status)(struct v4l2_subdev *sd, u32 *status);
         int (*s_stream)(struct v4l2_subdev *sd, int enable);
         int (*g_pixelaspect)(struct v4l2_subdev *sd, struct v4l2_fract *aspect);
-        int (*g_parm)(struct v4l2_subdev *sd, struct v4l2_streamparm *param);
-        int (*s_parm)(struct v4l2_subdev *sd, struct v4l2_streamparm *param);
         int (*g_frame_interval)(struct v4l2_subdev *sd, struct v4l2_subdev_frame_interval *interval);
         int (*s_frame_interval)(struct v4l2_subdev *sd, struct v4l2_subdev_frame_interval *interval);
         int (*s_dv_timings)(struct v4l2_subdev *sd, struct v4l2_dv_timings *timings);
@@ -577,12 +580,6 @@ s_stream
 
 g_pixelaspect
     callback to return the pixelaspect ratio.
-
-g_parm
-    callback for \ :c:func:`VIDIOC_G_PARM`\  ioctl handler code.
-
-s_parm
-    callback for \ :c:func:`VIDIOC_S_PARM`\  ioctl handler code.
 
 g_frame_interval
     callback for \ :c:func:`VIDIOC_SUBDEV_G_FRAME_INTERVAL`\ 
@@ -1323,6 +1320,30 @@ stand-alone or embedded in a larger struct.
 This structure should be initialized by \ :c:func:`v4l2_subdev_init`\  or one of
 its variants: \ :c:func:`v4l2_spi_subdev_init`\ , \ :c:func:`v4l2_i2c_subdev_init`\ .
 
+.. _`media_entity_to_v4l2_subdev`:
+
+media_entity_to_v4l2_subdev
+===========================
+
+.. c:function::  media_entity_to_v4l2_subdev( ent)
+
+    Returns a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  from the \ :c:type:`struct media_entity <media_entity>`\  embedded in it.
+
+    :param  ent:
+        pointer to \ :c:type:`struct media_entity <media_entity>`\ .
+
+.. _`vdev_to_v4l2_subdev`:
+
+vdev_to_v4l2_subdev
+===================
+
+.. c:function::  vdev_to_v4l2_subdev( vdev)
+
+    Returns a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  from the \ :c:type:`struct video_device <video_device>`\  embedded on it.
+
+    :param  vdev:
+        pointer to \ :c:type:`struct video_device <video_device>`\ 
+
 .. _`v4l2_subdev_fh`:
 
 struct v4l2_subdev_fh
@@ -1352,10 +1373,76 @@ Members
 -------
 
 vfh
-    pointer to struct v4l2_fh
+    pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
 
 pad
-    pointer to v4l2_subdev_pad_config
+    pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ 
+
+.. _`to_v4l2_subdev_fh`:
+
+to_v4l2_subdev_fh
+=================
+
+.. c:function::  to_v4l2_subdev_fh( fh)
+
+    Returns a \ :c:type:`struct v4l2_subdev_fh <v4l2_subdev_fh>`\  from the \ :c:type:`struct v4l2_fh <v4l2_fh>`\  embedded on it.
+
+    :param  fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+.. _`v4l2_subdev_get_try_format`:
+
+v4l2_subdev_get_try_format
+==========================
+
+.. c:function:: struct v4l2_mbus_framefmt *v4l2_subdev_get_try_format(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg, unsigned int pad)
+
+    ancillary routine to call \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ ->try_fmt
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param struct v4l2_subdev_pad_config \*cfg:
+        pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\  array.
+
+    :param unsigned int pad:
+        index of the pad in the \ ``cfg``\  array.
+
+.. _`v4l2_subdev_get_try_crop`:
+
+v4l2_subdev_get_try_crop
+========================
+
+.. c:function:: struct v4l2_rect *v4l2_subdev_get_try_crop(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg, unsigned int pad)
+
+    ancillary routine to call \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ ->try_crop
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param struct v4l2_subdev_pad_config \*cfg:
+        pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\  array.
+
+    :param unsigned int pad:
+        index of the pad in the \ ``cfg``\  array.
+
+.. _`v4l2_subdev_get_try_compose`:
+
+v4l2_subdev_get_try_compose
+===========================
+
+.. c:function:: struct v4l2_rect *v4l2_subdev_get_try_compose(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg, unsigned int pad)
+
+    ancillary routine to call \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ ->try_compose
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param struct v4l2_subdev_pad_config \*cfg:
+        pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\  array.
+
+    :param unsigned int pad:
+        index of the pad in the \ ``cfg``\  array.
 
 .. _`v4l2_set_subdevdata`:
 
@@ -1515,6 +1602,56 @@ v4l2_subdev_init
 
     :param const struct v4l2_subdev_ops \*ops:
         pointer to \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+
+.. _`v4l2_subdev_call`:
+
+v4l2_subdev_call
+================
+
+.. c:function::  v4l2_subdev_call( sd,  o,  f,  args...)
+
+    call an operation of a v4l2_subdev.
+
+    :param  sd:
+        pointer to the \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param  o:
+        name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
+        Each element there groups a set of callbacks functions.
+
+    :param  f:
+        callback function that will be called if \ ``cond``\  matches.
+        The callback functions are defined in groups, according to
+        each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+
+.. _`v4l2_subdev_call.example`:
+
+Example
+-------
+
+.. code-block:: c
+
+    err = v4l2_subdev_call(sd, video, s_std, norm);
+
+
+.. _`v4l2_subdev_has_op`:
+
+v4l2_subdev_has_op
+==================
+
+.. c:function::  v4l2_subdev_has_op( sd,  o,  f)
+
+    Checks if a subdev defines a certain operation.
+
+    :param  sd:
+        pointer to the \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param  o:
+        The group of callback functions in \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ 
+        which \ ``f``\  is a part of.
+
+    :param  f:
+        callback function to be checked for its existence.
 
 .. _`v4l2_subdev_notify_event`:
 

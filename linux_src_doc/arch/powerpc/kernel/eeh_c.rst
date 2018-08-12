@@ -148,12 +148,12 @@ Return value
 eeh_set_dev_freset
 ==================
 
-.. c:function:: void *eeh_set_dev_freset(void *data, void *flag)
+.. c:function:: void *eeh_set_dev_freset(struct eeh_dev *edev, void *flag)
 
     Check the required reset for the indicated device
 
-    :param void \*data:
-        EEH device
+    :param struct eeh_dev \*edev:
+        *undescribed*
 
     :param void \*flag:
         return value

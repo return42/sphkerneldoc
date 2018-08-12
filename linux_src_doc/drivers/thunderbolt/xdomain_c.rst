@@ -373,6 +373,36 @@ to the bus (handshake is still in progress).
 
 The caller needs to hold \ ``tb``\ ->lock.
 
+.. _`tb_xdomain_find_by_route`:
+
+tb_xdomain_find_by_route
+========================
+
+.. c:function:: struct tb_xdomain *tb_xdomain_find_by_route(struct tb *tb, u64 route)
+
+    Find an XDomain by route string
+
+    :param struct tb \*tb:
+        Domain where the XDomain belongs to
+
+    :param u64 route:
+        XDomain route string
+
+.. _`tb_xdomain_find_by_route.description`:
+
+Description
+-----------
+
+Finds XDomain by walking through the Thunderbolt topology below \ ``tb``\ .
+The returned XDomain will have its reference count increased so the
+caller needs to call \ :c:func:`tb_xdomain_put`\  when it is done with the
+object.
+
+This will find all XDomains including the ones that are not yet added
+to the bus (handshake is still in progress).
+
+The caller needs to hold \ ``tb``\ ->lock.
+
 .. _`tb_register_property_dir`:
 
 tb_register_property_dir

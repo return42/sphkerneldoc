@@ -88,6 +88,36 @@ be freed.  This can be used for freeing the argv and envp.  The
 Function must be runnable in either a process context or the
 context in which call_usermodehelper_exec is called.
 
+.. _`fork_usermode_blob`:
+
+fork_usermode_blob
+==================
+
+.. c:function:: int fork_usermode_blob(void *data, size_t len, struct umh_info *info)
+
+    fork a blob of bytes as a usermode process
+
+    :param void \*data:
+        a blob of bytes that can be do_execv-ed as a file
+
+    :param size_t len:
+        length of the blob
+
+    :param struct umh_info \*info:
+        information about usermode process (shouldn't be NULL)
+
+.. _`fork_usermode_blob.description`:
+
+Description
+-----------
+
+Returns either negative error or zero which indicates success
+in executing a blob of bytes as a usermode process. In such
+case 'struct umh_info \*info' is populated with two pipes
+and a pid of the process. The caller is responsible for health
+check of the user process, killing it via pid, and closing the
+pipes when user process is no longer needed.
+
 .. _`call_usermodehelper_exec`:
 
 call_usermodehelper_exec

@@ -34,6 +34,7 @@ Definition
         unsigned multi_count:2;
         u8 *xfer_buf;
         dma_addr_t xfer_dma;
+        dma_addr_t align_buf;
         u32 xfer_len;
         u32 xfer_count;
         u16 start_pkt_count;
@@ -114,6 +115,10 @@ xfer_buf
 xfer_dma
     DMA address of xfer_buf
 
+align_buf
+    In Buffer DMA mode this will be used if xfer_buf is not
+    DWORD aligned
+
 xfer_len
     Total number of bytes to transfer
 
@@ -127,7 +132,7 @@ xfer_started
     True if the transfer has been started
 
 do_ping
-    *undescribed*
+    True if a PING request should be issued on this channel
 
 error_state
     True if the error count for this transaction is non-zero
@@ -173,10 +178,9 @@ ntd
 
 halt_status
     Reason for halting the host channel
-    \ ``hcint``\                Contents of the HCINT register when the interrupt came
 
 hcint
-    *undescribed*
+    Contents of the HCINT register when the interrupt came
 
 qh
     QH for the transfer being processed by this channel
@@ -274,7 +278,11 @@ Members
 -------
 
 start_schedule_us
-    *undescribed*
+    The start time on the main bus schedule.  Note that
+    the main bus schedule is tightly packed and this
+    time should be interpreted as tightly packed (so
+    uFrame 0 starts at 0 us, uFrame 1 starts at 100 us
+    instead of 125 us).
 
 duration_us
     How long this transfer goes.
@@ -316,6 +324,8 @@ Definition
         struct dwc2_hs_transfer_time hs_transfers[DWC2_HS_SCHEDULE_UFRAMES];
         u32 ls_start_schedule_slice;
         u16 ntd;
+        u8 *dw_align_buf;
+        dma_addr_t dw_align_buf_dma;
         struct list_head qtd_list;
         struct dwc2_host_chan *channel;
         struct list_head qh_list_entry;
@@ -428,6 +438,13 @@ ls_start_schedule_slice
 ntd
     Actual number of transfer descriptors in a list
 
+dw_align_buf
+    Used instead of original buffer if its physical address
+    is not dword-aligned
+
+dw_align_buf_dma
+    DMA address for dw_align_buf
+
 qtd_list
     List of QTDs for this QH
 
@@ -459,14 +476,17 @@ wait_timer
     Timer used to wait before re-queuing.
 
 dwc_tt
-    *undescribed*
+    Pointer to our tt info (or NULL if no tt).
 
 ttport
     Port number within our tt.
     \ ``tt_buffer_dirty``\      True if clear_tt_buffer_complete is pending
 
 tt_buffer_dirty
-    *undescribed*
+    True if EP's TT buffer is not clean.
+    A Queue Head (QH) holds the static characteristics of an endpoint and
+    maintains a list of transfers (QTDs) for that endpoint. A QH structure may
+    be entered in either the non-periodic or periodic schedule.
 
 unreserve_pending
     True if we planned to unreserve but haven't yet.
@@ -481,15 +501,6 @@ want_wait
 
 wait_timer_cancel
     Set to true to cancel the wait_timer.
-
-.. _`dwc2_qh.description`:
-
-Description
------------
-
-A Queue Head (QH) holds the static characteristics of an endpoint and
-maintains a list of transfers (QTDs) for that endpoint. A QH structure may
-be entered in either the non-periodic or periodic schedule.
 
 .. _`dwc2_qtd`:
 
@@ -566,10 +577,12 @@ isoc_split_offset
     current frame
 
 isoc_td_last
-    *undescribed*
+    Index of last activated isochronous transfer
+    descriptor in Descriptor DMA mode
 
 isoc_td_first
-    *undescribed*
+    Index of first activated isochronous transfer
+    descriptor in Descriptor DMA mode
 
 ssplit_out_xfer_count
     How many bytes transferred during SSPLIT OUT
@@ -671,34 +684,6 @@ dwc2_hcd_dump_state
         The DWC2 HCD
 
 .. _`dwc2_hcd_dump_state.note`:
-
-NOTE
-----
-
-This function will be removed once the peripheral controller code
-is integrated and the driver is stable
-
-.. _`dwc2_hcd_dump_frrem`:
-
-dwc2_hcd_dump_frrem
-===================
-
-.. c:function:: void dwc2_hcd_dump_frrem(struct dwc2_hsotg *hsotg)
-
-    Dumps the average frame remaining at SOF
-
-    :param struct dwc2_hsotg \*hsotg:
-        The DWC2 HCD
-
-.. _`dwc2_hcd_dump_frrem.description`:
-
-Description
------------
-
-This can be used to determine average interrupt latency. Frame remaining is
-also shown for start transfer and two additional sample points.
-
-.. _`dwc2_hcd_dump_frrem.note`:
 
 NOTE
 ----

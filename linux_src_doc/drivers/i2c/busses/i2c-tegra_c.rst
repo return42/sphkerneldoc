@@ -102,7 +102,6 @@ Definition
         int msg_read;
         u32 bus_clk_rate;
         u16 clk_divisor_non_hs_mode;
-        bool is_suspended;
         bool is_multimaster_mode;
         spinlock_t xfer_lock;
     }
@@ -165,9 +164,6 @@ bus_clk_rate
 
 clk_divisor_non_hs_mode
     *undescribed*
-
-is_suspended
-    prevents i2c controller accesses after suspend is called
 
 is_multimaster_mode
     *undescribed*

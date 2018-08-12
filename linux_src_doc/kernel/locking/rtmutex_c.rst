@@ -30,6 +30,21 @@ Description
 
 Must be called with lock->wait_lock held and interrupts disabled
 
+.. _`rt_mutex_lock_nested`:
+
+rt_mutex_lock_nested
+====================
+
+.. c:function:: void __sched rt_mutex_lock_nested(struct rt_mutex *lock, unsigned int subclass)
+
+    lock a rt_mutex
+
+    :param struct rt_mutex \*lock:
+        the rt_mutex to be locked
+
+    :param unsigned int subclass:
+        the lockdep subclass
+
 .. _`rt_mutex_lock`:
 
 rt_mutex_lock

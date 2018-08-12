@@ -321,5 +321,43 @@ Description
 
 No return value.
 
+.. _`omap4_clkdm_save_context`:
+
+omap4_clkdm_save_context
+========================
+
+.. c:function:: int omap4_clkdm_save_context(struct clockdomain *clkdm)
+
+    Save the clockdomain modulemode context
+
+    :param struct clockdomain \*clkdm:
+        The clockdomain pointer whose context needs to be saved
+
+.. _`omap4_clkdm_save_context.description`:
+
+Description
+-----------
+
+Save the clockdomain modulemode context.
+
+.. _`omap4_clkdm_restore_context`:
+
+omap4_clkdm_restore_context
+===========================
+
+.. c:function:: int omap4_clkdm_restore_context(struct clockdomain *clkdm)
+
+    Restore the clockdomain modulemode context
+
+    :param struct clockdomain \*clkdm:
+        The clockdomain pointer whose context needs to be restored
+
+.. _`omap4_clkdm_restore_context.description`:
+
+Description
+-----------
+
+Restore the clockdomain modulemode context.
+
 .. This file was automatic generated / don't edit.
 

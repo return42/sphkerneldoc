@@ -63,7 +63,7 @@ The pages were allocated for \ ``chunk``\ .
 pcpu_alloc_pages
 ================
 
-.. c:function:: int pcpu_alloc_pages(struct pcpu_chunk *chunk, struct page **pages, int page_start, int page_end)
+.. c:function:: int pcpu_alloc_pages(struct pcpu_chunk *chunk, struct page **pages, int page_start, int page_end, gfp_t gfp)
 
     allocates pages for \ ``chunk``\ 
 
@@ -78,6 +78,9 @@ pcpu_alloc_pages
 
     :param int page_end:
         page index of the last page to be allocated + 1
+
+    :param gfp_t gfp:
+        allocation flags passed to the underlying allocator
 
 .. _`pcpu_alloc_pages.description`:
 
@@ -246,7 +249,7 @@ for the whole region.
 pcpu_populate_chunk
 ===================
 
-.. c:function:: int pcpu_populate_chunk(struct pcpu_chunk *chunk, int page_start, int page_end)
+.. c:function:: int pcpu_populate_chunk(struct pcpu_chunk *chunk, int page_start, int page_end, gfp_t gfp)
 
     populate and map an area of a pcpu_chunk
 
@@ -258,6 +261,9 @@ pcpu_populate_chunk
 
     :param int page_end:
         the end page
+
+    :param gfp_t gfp:
+        allocation flags passed to the underlying memory allocator
 
 .. _`pcpu_populate_chunk.description`:
 

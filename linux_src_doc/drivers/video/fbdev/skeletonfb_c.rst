@@ -414,7 +414,7 @@ xxxfb_suspend
 Description
 -----------
 
-See Documentation/power/admin-guide/devices.rst for more information
+See Documentation/driver-api/pm/devices.rst for more information
 
 .. _`xxxfb_resume`:
 
@@ -433,7 +433,7 @@ xxxfb_resume
 Description
 -----------
 
-See Documentation/power/admin-guide/devices.rst for more information
+See Documentation/driver-api/pm/devices.rst for more information
 
 .. _`xxxfb_suspend`:
 
@@ -455,7 +455,7 @@ xxxfb_suspend
 Description
 -----------
 
-See Documentation/power/admin-guide/devices.rst for more information
+See Documentation/driver-api/pm/devices.rst for more information
 
 .. _`xxxfb_resume`:
 
@@ -474,7 +474,7 @@ xxxfb_resume
 Description
 -----------
 
-See Documentation/power/admin-guide/devices.rst for more information
+See Documentation/driver-api/pm/devices.rst for more information
 
 .. This file was automatic generated / don't edit.
 

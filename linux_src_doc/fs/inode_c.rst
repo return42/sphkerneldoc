@@ -319,6 +319,47 @@ unlock_two_nondirectories
     :param struct inode \*inode2:
         second inode to unlock
 
+.. _`inode_insert5`:
+
+inode_insert5
+=============
+
+.. c:function:: struct inode *inode_insert5(struct inode *inode, unsigned long hashval, int (*test)(struct inode *, void *), int (*set)(struct inode *, void *), void *data)
+
+    obtain an inode from a mounted file system
+
+    :param struct inode \*inode:
+        pre-allocated inode to use for insert to cache
+
+    :param unsigned long hashval:
+        hash value (usually inode number) to get
+
+    :param int (\*test)(struct inode \*, void \*):
+        callback used for comparisons between inodes
+
+    :param int (\*set)(struct inode \*, void \*):
+        callback used to initialize a new struct inode
+
+    :param void \*data:
+        opaque data pointer to pass to \ ``test``\  and \ ``set``\ 
+
+.. _`inode_insert5.description`:
+
+Description
+-----------
+
+Search for the inode specified by \ ``hashval``\  and \ ``data``\  in the inode cache,
+and if present it is return it with an increased reference count. This is
+a variant of \ :c:func:`iget5_locked`\  for callers that don't want to fail on memory
+allocation of inode.
+
+If the inode is not in cache, insert the pre-allocated inode to cache and
+return it locked, hashed, and with the I_NEW flag set. The file system gets
+to fill it in before unlocking it via \ :c:func:`unlock_new_inode`\ .
+
+Note both \ ``test``\  and \ ``set``\  are called with the inode_hash_lock held, so can't
+sleep.
+
 .. _`iget5_locked`:
 
 iget5_locked
@@ -728,12 +769,35 @@ proceed with a truncate or equivalent operation.
 Must be called under a lock that serializes taking new references
 to i_dio_count, usually by inode->i_mutex.
 
+.. _`timespec64_trunc`:
+
+timespec64_trunc
+================
+
+.. c:function:: struct timespec64 timespec64_trunc(struct timespec64 t, unsigned gran)
+
+    Truncate timespec64 to a granularity
+
+    :param struct timespec64 t:
+        Timespec64
+
+    :param unsigned gran:
+        Granularity in ns.
+
+.. _`timespec64_trunc.description`:
+
+Description
+-----------
+
+Truncate a timespec64 to a granularity. Always rounds down. gran must
+not be 0 nor greater than a second (NSEC_PER_SEC, or 10^9 ns).
+
 .. _`current_time`:
 
 current_time
 ============
 
-.. c:function:: struct timespec current_time(struct inode *inode)
+.. c:function:: struct timespec64 current_time(struct inode *inode)
 
     Return FS time
 

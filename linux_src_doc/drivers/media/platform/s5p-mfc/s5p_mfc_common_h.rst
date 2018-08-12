@@ -964,6 +964,7 @@ Definition
             struct s5p_mfc_h264_enc_params h264;
             struct s5p_mfc_mpeg4_enc_params mpeg4;
             struct s5p_mfc_vp8_enc_params vp8;
+            struct s5p_mfc_hevc_enc_params hevc;
         } codec;
     }
 

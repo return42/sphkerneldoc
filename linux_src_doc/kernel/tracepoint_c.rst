@@ -8,7 +8,7 @@ tracepoint_probe_register_prio
 
 .. c:function:: int tracepoint_probe_register_prio(struct tracepoint *tp, void *probe, void *data, int prio)
 
-    Connect a probe to a tracepoint
+    Connect a probe to a tracepoint with priority
 
     :param struct tracepoint \*tp:
         tracepoint

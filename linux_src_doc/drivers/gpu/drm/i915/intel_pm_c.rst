@@ -203,7 +203,7 @@ intel_calculate_wm
         chip FIFO params
 
     :param int fifo_size:
-        *undescribed*
+        size of the FIFO buffer
 
     :param int cpp:
         bytes per pixel
@@ -237,7 +237,7 @@ intel_update_watermarks
     update FIFO watermark values based on current modes
 
     :param struct intel_crtc \*crtc:
-        *undescribed*
+        the #intel_crtc on which to compute the WM
 
 .. _`intel_update_watermarks.description`:
 

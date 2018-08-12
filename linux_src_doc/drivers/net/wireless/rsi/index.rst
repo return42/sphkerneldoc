@@ -7,6 +7,7 @@ rsi
 .. toctree::
     :maxdepth: 1
 
+    rsi_91x_coex_c
     rsi_91x_core_c
     rsi_91x_debugfs_c
     rsi_91x_hal_c

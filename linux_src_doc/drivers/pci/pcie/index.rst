@@ -7,9 +7,8 @@ pcie
 .. toctree::
     :maxdepth: 1
 
-    aer/index
+    aer_c
     aspm_c
+    err_c
     pme_c
-    portdrv_acpi_c
     portdrv_core_c
-    portdrv_pci_c

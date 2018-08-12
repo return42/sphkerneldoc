@@ -96,7 +96,7 @@ description.
 fscache_acquire_cookie
 ======================
 
-.. c:function:: struct fscache_cookie *fscache_acquire_cookie(struct fscache_cookie *parent, const struct fscache_cookie_def *def, void *netfs_data, bool enable)
+.. c:function:: struct fscache_cookie *fscache_acquire_cookie(struct fscache_cookie *parent, const struct fscache_cookie_def *def, const void *index_key, size_t index_key_len, const void *aux_data, size_t aux_data_len, void *netfs_data, loff_t object_size, bool enable)
 
     Acquire a cookie to represent a cache object
 
@@ -106,9 +106,24 @@ fscache_acquire_cookie
     :param const struct fscache_cookie_def \*def:
         A description of the cache object, including callback operations
 
+    :param const void \*index_key:
+        The index key for this cookie
+
+    :param size_t index_key_len:
+        Size of the index key
+
+    :param const void \*aux_data:
+        The auxiliary data for the cookie (may be NULL)
+
+    :param size_t aux_data_len:
+        Size of the auxiliary data buffer
+
     :param void \*netfs_data:
         An arbitrary piece of data to be kept in the cookie to
         represent the cache object to the netfs
+
+    :param loff_t object_size:
+        The initial size of object
 
     :param bool enable:
         Whether or not to enable a data cookie immediately
@@ -130,12 +145,15 @@ description.
 fscache_relinquish_cookie
 =========================
 
-.. c:function:: void fscache_relinquish_cookie(struct fscache_cookie *cookie, bool retire)
+.. c:function:: void fscache_relinquish_cookie(struct fscache_cookie *cookie, const void *aux_data, bool retire)
 
     Return the cookie to the cache, maybe discarding it
 
     :param struct fscache_cookie \*cookie:
         The cookie being returned
+
+    :param const void \*aux_data:
+        The updated auxiliary data for the cookie (may be NULL)
 
     :param bool retire:
         True if the cache object the cookie represents is to be discarded
@@ -146,7 +164,9 @@ Description
 -----------
 
 This function returns a cookie to the cache, forcibly discarding the
-associated cache object if retire is set to true.
+associated cache object if retire is set to true.  The opportunity is
+provided to update the auxiliary data in the cache before the object is
+disconnected.
 
 See Documentation/filesystems/caching/netfs-api.txt for a complete
 description.
@@ -156,20 +176,24 @@ description.
 fscache_check_consistency
 =========================
 
-.. c:function:: int fscache_check_consistency(struct fscache_cookie *cookie)
+.. c:function:: int fscache_check_consistency(struct fscache_cookie *cookie, const void *aux_data)
 
-    Request that if the cache is updated
+    Request validation of a cache's auxiliary data
 
     :param struct fscache_cookie \*cookie:
         The cookie representing the cache object
+
+    :param const void \*aux_data:
+        The updated auxiliary data for the cookie (may be NULL)
 
 .. _`fscache_check_consistency.description`:
 
 Description
 -----------
 
-Request an consistency check from fscache, which passes the request
-to the backing cache.
+Request an consistency check from fscache, which passes the request to the
+backing cache.  The auxiliary data on the cookie will be updated first if
+\ ``aux_data``\  is set.
 
 Returns 0 if consistent and -ESTALE if inconsistent.  May also
 return -ENOMEM and -ERESTARTSYS.
@@ -179,12 +203,15 @@ return -ENOMEM and -ERESTARTSYS.
 fscache_update_cookie
 =====================
 
-.. c:function:: void fscache_update_cookie(struct fscache_cookie *cookie)
+.. c:function:: void fscache_update_cookie(struct fscache_cookie *cookie, const void *aux_data)
 
     Request that a cache object be updated
 
     :param struct fscache_cookie \*cookie:
         The cookie representing the cache object
+
+    :param const void \*aux_data:
+        The updated auxiliary data for the cookie (may be NULL)
 
 .. _`fscache_update_cookie.description`:
 
@@ -192,7 +219,8 @@ Description
 -----------
 
 Request an update of the index data for the cache object associated with the
-cookie.
+cookie.  The auxiliary data on the cookie will be updated first if \ ``aux_data``\ 
+is set.
 
 See Documentation/filesystems/caching/netfs-api.txt for a complete
 description.
@@ -515,7 +543,7 @@ This function may sleep as it may have to clean up disk state.
 fscache_write_page
 ==================
 
-.. c:function:: int fscache_write_page(struct fscache_cookie *cookie, struct page *page, gfp_t gfp)
+.. c:function:: int fscache_write_page(struct fscache_cookie *cookie, struct page *page, loff_t object_size, gfp_t gfp)
 
     Request storage of a page in the cache
 
@@ -524,6 +552,9 @@ fscache_write_page
 
     :param struct page \*page:
         The netfs page to store
+
+    :param loff_t object_size:
+        Updated size of object
 
     :param gfp_t gfp:
         The conditions under which memory allocation should be made
@@ -688,12 +719,15 @@ and will wait whilst the PG_fscache mark is removed by the cache.
 fscache_disable_cookie
 ======================
 
-.. c:function:: void fscache_disable_cookie(struct fscache_cookie *cookie, bool invalidate)
+.. c:function:: void fscache_disable_cookie(struct fscache_cookie *cookie, const void *aux_data, bool invalidate)
 
     Disable a cookie
 
     :param struct fscache_cookie \*cookie:
         The cookie representing the cache object
+
+    :param const void \*aux_data:
+        The updated auxiliary data for the cookie (may be NULL)
 
     :param bool invalidate:
         Invalidate the backing object
@@ -712,17 +746,25 @@ This will not return until all outstanding operations have completed.
 If \ ``invalidate``\  is set, then the backing object will be invalidated and
 detached, otherwise it will just be detached.
 
+If \ ``aux_data``\  is set, then auxiliary data will be updated from that.
+
 .. _`fscache_enable_cookie`:
 
 fscache_enable_cookie
 =====================
 
-.. c:function:: void fscache_enable_cookie(struct fscache_cookie *cookie, bool (*can_enable)(void *data), void *data)
+.. c:function:: void fscache_enable_cookie(struct fscache_cookie *cookie, const void *aux_data, loff_t object_size, bool (*can_enable)(void *data), void *data)
 
     Reenable a cookie
 
     :param struct fscache_cookie \*cookie:
         The cookie representing the cache object
+
+    :param const void \*aux_data:
+        The updated auxiliary data for the cookie (may be NULL)
+
+    :param loff_t object_size:
+        Current size of object
 
     :param bool (\*can_enable)(void \*data):
         A function to permit enablement once lock is held
@@ -737,7 +779,8 @@ Description
 
 Reenable a previously disabled cookie, allowing it to accept further alloc,
 read, write, invalidate, update or acquire operations.  An attempt will be
-made to immediately reattach the cookie to a backing object.
+made to immediately reattach the cookie to a backing object.  If \ ``aux_data``\ 
+is set, the auxiliary data attached to the cookie will be updated.
 
 The \ :c:func:`can_enable`\  function is called (if not NULL) once the enablement lock
 is held to rule on whether enablement is still permitted to go ahead.

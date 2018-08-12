@@ -310,20 +310,17 @@ Description
 This callback is used only for driver debug purposes, answering to
 VIDIOC_LOG_STATUS. No changes should happen on this call.
 
-.. _`tuner_s_power`:
+.. _`tuner_standby`:
 
-tuner_s_power
+tuner_standby
 =============
 
-.. c:function:: int tuner_s_power(struct v4l2_subdev *sd, int on)
+.. c:function:: int tuner_standby(struct v4l2_subdev *sd)
 
-    controls the power state of the tuner
+    places the tuner in standby mode
 
     :param struct v4l2_subdev \*sd:
         pointer to struct v4l2_subdev
-
-    :param int on:
-        a zero value puts the tuner to sleep, non-zero wakes it up
 
 .. _`tuner_g_frequency`:
 

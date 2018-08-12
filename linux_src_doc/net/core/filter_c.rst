@@ -35,7 +35,7 @@ be accepted or -EPERM if the packet should be tossed.
 bpf_convert_filter
 ==================
 
-.. c:function:: int bpf_convert_filter(struct sock_filter *prog, int len, struct bpf_prog *new_prog, int *new_len)
+.. c:function:: int bpf_convert_filter(struct sock_filter *prog, int len, struct bpf_prog *new_prog, int *new_len, bool *seen_ld_abs)
 
     convert filter program
 
@@ -50,6 +50,9 @@ bpf_convert_filter
 
     :param int \*new_len:
         pointer to store length of converted program
+
+    :param bool \*seen_ld_abs:
+        bool whether we've seen ld_abs/ind
 
 .. _`bpf_convert_filter.description`:
 
@@ -66,11 +69,11 @@ Conversion workflow
 
 
 1) First pass for calculating the new program length:
-  bpf_convert_filter(old_prog, old_len, NULL, \ :c:type:`struct new_len <new_len>`\ )
+  bpf_convert_filter(old_prog, old_len, NULL, \ :c:type:`struct new_len <new_len>`\ , \ :c:type:`struct seen_ld_abs <seen_ld_abs>`\ )
 
 2) 2nd pass to remap in two passes: 1st pass finds new
    jump offsets, 2nd pass remapping:
-  bpf_convert_filter(old_prog, old_len, new_prog, \ :c:type:`struct new_len <new_len>`\ );
+  bpf_convert_filter(old_prog, old_len, new_prog, \ :c:type:`struct new_len <new_len>`\ , \ :c:type:`struct seen_ld_abs <seen_ld_abs>`\ )
 
 .. _`bpf_check_classic`:
 

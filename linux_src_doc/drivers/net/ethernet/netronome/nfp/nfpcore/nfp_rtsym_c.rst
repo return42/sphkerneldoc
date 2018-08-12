@@ -98,5 +98,39 @@ Return
 
 value read, on error sets the error and returns ~0ULL.
 
+.. _`nfp_rtsym_write_le`:
+
+nfp_rtsym_write_le
+==================
+
+.. c:function:: int nfp_rtsym_write_le(struct nfp_rtsym_table *rtbl, const char *name, u64 value)
+
+    Write an unsigned scalar value to a symbol
+
+    :param struct nfp_rtsym_table \*rtbl:
+        NFP RTsym table
+
+    :param const char \*name:
+        Symbol name
+
+    :param u64 value:
+        Value to write
+
+.. _`nfp_rtsym_write_le.description`:
+
+Description
+-----------
+
+Lookup a symbol and write a value to it. Symbol can be 4 or 8 bytes in size.
+If 4 bytes then the lower 32-bits of 'value' are used. Value will be
+written as simple little-endian unsigned value.
+
+.. _`nfp_rtsym_write_le.return`:
+
+Return
+------
+
+0 on success or error code.
+
 .. This file was automatic generated / don't edit.
 

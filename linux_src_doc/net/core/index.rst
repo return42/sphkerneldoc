@@ -12,6 +12,7 @@ core
     dev_c
     dev_ioctl_c
     devlink_c
+    failover_c
     filter_c
     flow_dissector_c
     gen_estimator_c

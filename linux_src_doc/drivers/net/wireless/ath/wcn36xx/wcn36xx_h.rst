@@ -24,6 +24,7 @@ Definition
         bool is_joining;
         bool sta_assoc;
         struct wcn36xx_hal_mac_ssid ssid;
+        enum wcn36xx_hal_bss_type bss_type;
         enum wcn36xx_power_state pw_state;
         u8 bss_index;
         u8 self_sta_index;
@@ -52,6 +53,9 @@ sta_assoc
     *undescribed*
 
 ssid
+    *undescribed*
+
+bss_type
     *undescribed*
 
 pw_state

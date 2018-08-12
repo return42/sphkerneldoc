@@ -8,27 +8,18 @@ sas_ex_discover_devices
 
 .. c:function:: int sas_ex_discover_devices(struct domain_device *dev, int single)
 
-    - discover devices attached to this expander
+    discover devices attached to this expander
 
     :param struct domain_device \*dev:
-        *undescribed*
+        pointer to the expander domain device
 
     :param int single:
-        *undescribed*
+        if you want to do a single phy, else set to -1;
 
-.. _`sas_ex_discover_devices.dev`:
+.. _`sas_ex_discover_devices.description`:
 
-dev
----
-
-pointer to the expander domain device
-
-.. _`sas_ex_discover_devices.single`:
-
-single
-------
-
-if you want to do a single phy, else set to -1;
+Description
+-----------
 
 Configure this expander for use with its devices and register the
 devices of this expander.
@@ -40,40 +31,19 @@ sas_configure_parent
 
 .. c:function:: int sas_configure_parent(struct domain_device *parent, struct domain_device *child, u8 *sas_addr, int include)
 
-    - configure routing table of parent
+    configure routing table of parent
 
     :param struct domain_device \*parent:
-        *undescribed*
+        parent expander
 
     :param struct domain_device \*child:
-        *undescribed*
+        child expander
 
     :param u8 \*sas_addr:
-        *undescribed*
+        SAS port identifier of device directly attached to child
 
     :param int include:
-        *undescribed*
-
-.. _`sas_configure_parent.parent`:
-
-parent
-------
-
-parent expander
-
-.. _`sas_configure_parent.child`:
-
-child
------
-
-child expander
-
-.. _`sas_configure_parent.sas_addr`:
-
-sas_addr
---------
-
-SAS port identifier of device directly attached to child
+        whether or not to include \ ``child``\  in the expander routing table
 
 .. _`sas_configure_routing`:
 
@@ -82,27 +52,13 @@ sas_configure_routing
 
 .. c:function:: int sas_configure_routing(struct domain_device *dev, u8 *sas_addr)
 
-    - configure routing
+    configure routing
 
     :param struct domain_device \*dev:
-        *undescribed*
+        expander device
 
     :param u8 \*sas_addr:
-        *undescribed*
-
-.. _`sas_configure_routing.dev`:
-
-dev
----
-
-expander device
-
-.. _`sas_configure_routing.sas_addr`:
-
-sas_addr
---------
-
-port identifier of device directly attached to the expander device
+        port identifier of device directly attached to the expander device
 
 .. _`sas_discover_expander`:
 
@@ -111,10 +67,10 @@ sas_discover_expander
 
 .. c:function:: int sas_discover_expander(struct domain_device *dev)
 
-    - expander discovery
+    expander discovery
 
     :param struct domain_device \*dev:
-        *undescribed*
+        pointer to expander domain device
 
 .. _`sas_discover_expander.description`:
 
@@ -188,10 +144,10 @@ sas_ex_revalidate_domain
 
 .. c:function:: int sas_ex_revalidate_domain(struct domain_device *port_dev)
 
-    - revalidate the domain
+    revalidate the domain
 
     :param struct domain_device \*port_dev:
-        *undescribed*
+        port domain device.
 
 .. _`sas_ex_revalidate_domain.note`:
 

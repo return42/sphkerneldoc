@@ -41,14 +41,57 @@ Return
 NULL if no such bridge exists. Otherwise the net device of the
 bridge.
 
+.. _`batadv_mcast_addr_is_ipv4`:
+
+batadv_mcast_addr_is_ipv4
+=========================
+
+.. c:function:: bool batadv_mcast_addr_is_ipv4(const u8 *addr)
+
+    check if multicast MAC is IPv4
+
+    :param const u8 \*addr:
+        the MAC address to check
+
+.. _`batadv_mcast_addr_is_ipv4.return`:
+
+Return
+------
+
+True, if MAC address is one reserved for IPv4 multicast, false
+otherwise.
+
+.. _`batadv_mcast_addr_is_ipv6`:
+
+batadv_mcast_addr_is_ipv6
+=========================
+
+.. c:function:: bool batadv_mcast_addr_is_ipv6(const u8 *addr)
+
+    check if multicast MAC is IPv6
+
+    :param const u8 \*addr:
+        the MAC address to check
+
+.. _`batadv_mcast_addr_is_ipv6.return`:
+
+Return
+------
+
+True, if MAC address is one reserved for IPv6 multicast, false
+otherwise.
+
 .. _`batadv_mcast_mla_softif_get`:
 
 batadv_mcast_mla_softif_get
 ===========================
 
-.. c:function:: int batadv_mcast_mla_softif_get(struct net_device *dev, struct hlist_head *mcast_list)
+.. c:function:: int batadv_mcast_mla_softif_get(struct batadv_priv *bat_priv, struct net_device *dev, struct hlist_head *mcast_list)
 
     get softif multicast listeners
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
 
     :param struct net_device \*dev:
         the device to collect multicast addresses from
@@ -134,9 +177,12 @@ at least ETH_ALEN bytes.
 batadv_mcast_mla_bridge_get
 ===========================
 
-.. c:function:: int batadv_mcast_mla_bridge_get(struct net_device *dev, struct hlist_head *mcast_list)
+.. c:function:: int batadv_mcast_mla_bridge_get(struct batadv_priv *bat_priv, struct net_device *dev, struct hlist_head *mcast_list)
 
     get bridged-in multicast listeners
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
 
     :param struct net_device \*dev:
         a bridge slave whose bridge to collect multicast addresses from
@@ -926,6 +972,165 @@ Return
 ------
 
 always 0
+
+.. _`batadv_mcast_mesh_info_put`:
+
+batadv_mcast_mesh_info_put
+==========================
+
+.. c:function:: int batadv_mcast_mesh_info_put(struct sk_buff *msg, struct batadv_priv *bat_priv)
+
+    put multicast info into a netlink message
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_mcast_mesh_info_put.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_mcast_flags_dump_entry`:
+
+batadv_mcast_flags_dump_entry
+=============================
+
+.. c:function:: int batadv_mcast_flags_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_orig_node *orig_node)
+
+    dump one entry of the multicast flags table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_orig_node \*orig_node:
+        originator to dump the multicast flags of
+
+.. _`batadv_mcast_flags_dump_entry.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_mcast_flags_dump_bucket`:
+
+batadv_mcast_flags_dump_bucket
+==============================
+
+.. c:function:: int batadv_mcast_flags_dump_bucket(struct sk_buff *msg, u32 portid, u32 seq, struct hlist_head *head, long *idx_skip)
+
+    dump one bucket of the multicast flags table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct hlist_head \*head:
+        bucket to dump
+
+    :param long \*idx_skip:
+        How many entries to skip
+
+.. _`batadv_mcast_flags_dump_bucket.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`__batadv_mcast_flags_dump`:
+
+\__batadv_mcast_flags_dump
+==========================
+
+.. c:function:: int __batadv_mcast_flags_dump(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, long *bucket, long *idx)
+
+    dump multicast flags table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param long \*bucket:
+        current bucket to dump
+
+    :param long \*idx:
+        index in current bucket to the next entry to dump
+
+.. _`__batadv_mcast_flags_dump.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_mcast_netlink_get_primary`:
+
+batadv_mcast_netlink_get_primary
+================================
+
+.. c:function:: int batadv_mcast_netlink_get_primary(struct netlink_callback *cb, struct batadv_hard_iface **primary_if)
+
+    get primary interface from netlink callback
+
+    :param struct netlink_callback \*cb:
+        netlink callback structure
+
+    :param struct batadv_hard_iface \*\*primary_if:
+        the primary interface pointer to return the result in
+
+.. _`batadv_mcast_netlink_get_primary.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_mcast_flags_dump`:
+
+batadv_mcast_flags_dump
+=======================
+
+.. c:function:: int batadv_mcast_flags_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    dump multicast flags table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param struct netlink_callback \*cb:
+        callback structure containing arguments
+
+.. _`batadv_mcast_flags_dump.return`:
+
+Return
+------
+
+message length.
 
 .. _`batadv_mcast_free`:
 

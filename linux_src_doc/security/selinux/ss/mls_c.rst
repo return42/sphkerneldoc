@@ -6,9 +6,12 @@
 mls_export_netlbl_lvl
 =====================
 
-.. c:function:: void mls_export_netlbl_lvl(struct context *context, struct netlbl_lsm_secattr *secattr)
+.. c:function:: void mls_export_netlbl_lvl(struct policydb *p, struct context *context, struct netlbl_lsm_secattr *secattr)
 
     Export the MLS sensitivity levels to NetLabel
+
+    :param struct policydb \*p:
+        *undescribed*
 
     :param struct context \*context:
         the security context
@@ -29,9 +32,12 @@ NetLabel MLS sensitivity level field.
 mls_import_netlbl_lvl
 =====================
 
-.. c:function:: void mls_import_netlbl_lvl(struct context *context, struct netlbl_lsm_secattr *secattr)
+.. c:function:: void mls_import_netlbl_lvl(struct policydb *p, struct context *context, struct netlbl_lsm_secattr *secattr)
 
     Import the NetLabel MLS sensitivity levels
+
+    :param struct policydb \*p:
+        *undescribed*
 
     :param struct context \*context:
         the security context
@@ -52,9 +58,12 @@ NetLabel MLS sensitivity level into the context.
 mls_export_netlbl_cat
 =====================
 
-.. c:function:: int mls_export_netlbl_cat(struct context *context, struct netlbl_lsm_secattr *secattr)
+.. c:function:: int mls_export_netlbl_cat(struct policydb *p, struct context *context, struct netlbl_lsm_secattr *secattr)
 
     Export the MLS categories to NetLabel
+
+    :param struct policydb \*p:
+        *undescribed*
 
     :param struct context \*context:
         the security context
@@ -75,9 +84,12 @@ MLS category field.  Returns zero on success, negative values on failure.
 mls_import_netlbl_cat
 =====================
 
-.. c:function:: int mls_import_netlbl_cat(struct context *context, struct netlbl_lsm_secattr *secattr)
+.. c:function:: int mls_import_netlbl_cat(struct policydb *p, struct context *context, struct netlbl_lsm_secattr *secattr)
 
     Import the MLS categories from NetLabel
+
+    :param struct policydb \*p:
+        *undescribed*
 
     :param struct context \*context:
         the security context

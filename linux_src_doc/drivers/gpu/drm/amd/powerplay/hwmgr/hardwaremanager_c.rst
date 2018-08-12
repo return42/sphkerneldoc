@@ -6,12 +6,9 @@
 phm_start_thermal_controller
 ============================
 
-.. c:function:: int phm_start_thermal_controller(struct pp_hwmgr *hwmgr, struct PP_TemperatureRange *temperature_range)
+.. c:function:: int phm_start_thermal_controller(struct pp_hwmgr *hwmgr)
 
     :param struct pp_hwmgr \*hwmgr:
-        *undescribed*
-
-    :param struct PP_TemperatureRange \*temperature_range:
         *undescribed*
 
 .. _`phm_start_thermal_controller.description`:
@@ -20,7 +17,6 @@ Description
 -----------
 
 \ ``param``\     pHwMgr  the address of the powerplay hardware manager.
-\ ``param``\     pTemperatureRange the address of the structure holding the temperature range.
 \ ``exception``\  PP_Result_Failed if any of the paramters is NULL, otherwise the return value from the dispatcher.
 
 .. _`phm_get_clock_info`:

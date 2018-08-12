@@ -551,7 +551,7 @@ scsw_cmd_is_valid_sctl
 
 .. c:function:: int scsw_cmd_is_valid_sctl(union scsw *scsw)
 
-    check fctl field validity
+    check sctl field validity
 
     :param union scsw \*scsw:
         pointer to scsw
@@ -561,7 +561,7 @@ scsw_cmd_is_valid_sctl
 Description
 -----------
 
-Return non-zero if the fctl field of the specified command mode scsw is
+Return non-zero if the sctl field of the specified command mode scsw is
 valid, zero otherwise.
 
 .. _`scsw_cmd_is_valid_eswf`:

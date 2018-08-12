@@ -255,6 +255,26 @@ Description
 free up any allocated data for a context
 It should never change any chip state, or global driver state.
 
+.. _`hfi1_clean_devdata`:
+
+hfi1_clean_devdata
+==================
+
+.. c:function:: void hfi1_clean_devdata(struct hfi1_devdata *dd)
+
+    cleans up per-unit data structure
+
+    :param struct hfi1_devdata \*dd:
+        pointer to a valid devdata structure
+
+.. _`hfi1_clean_devdata.description`:
+
+Description
+-----------
+
+It cleans up all data structures set up by
+by \ :c:func:`hfi1_alloc_devdata`\ .
+
 .. _`hfi1_create_rcvhdrq`:
 
 hfi1_create_rcvhdrq

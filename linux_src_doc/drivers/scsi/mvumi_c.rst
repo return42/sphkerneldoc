@@ -275,29 +275,5 @@ mvumi_shutdown
     :param struct pci_dev \*pdev:
         *undescribed*
 
-.. _`mvumi_init`:
-
-mvumi_init
-==========
-
-.. c:function:: int mvumi_init( void)
-
-    Driver load entry point
-
-    :param  void:
-        no arguments
-
-.. _`mvumi_exit`:
-
-mvumi_exit
-==========
-
-.. c:function:: void __exit mvumi_exit( void)
-
-    Driver unload entry point
-
-    :param  void:
-        no arguments
-
 .. This file was automatic generated / don't edit.
 

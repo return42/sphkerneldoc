@@ -25,7 +25,6 @@ Definition
         struct fpga_image_info *info;
         void *priv;
         int (*get_bridges)(struct fpga_region *region);
-        const struct attribute_group **groups;
     }
 
 .. _`fpga_region.members`:
@@ -53,9 +52,6 @@ priv
 
 get_bridges
     optional function to get bridges to a list
-
-groups
-    optional attribute groups.
 
 .. This file was automatic generated / don't edit.
 

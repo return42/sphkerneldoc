@@ -6,12 +6,12 @@
 wm8994_mic_detect
 =================
 
-.. c:function:: int wm8994_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, int micbias)
+.. c:function:: int wm8994_mic_detect(struct snd_soc_component *component, struct snd_soc_jack *jack, int micbias)
 
     Enable microphone detection via the WM8994 IRQ
 
-    :param struct snd_soc_codec \*codec:
-        WM8994 codec
+    :param struct snd_soc_component \*component:
+        WM8994 component
 
     :param struct snd_soc_jack \*jack:
         jack to report detection events on
@@ -37,12 +37,12 @@ and micbias2_lvl platform data members.
 wm8958_mic_detect
 =================
 
-.. c:function:: int wm8958_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, wm1811_micdet_cb det_cb, void *det_cb_data, wm1811_mic_id_cb id_cb, void *id_cb_data)
+.. c:function:: int wm8958_mic_detect(struct snd_soc_component *component, struct snd_soc_jack *jack, wm1811_micdet_cb det_cb, void *det_cb_data, wm1811_mic_id_cb id_cb, void *id_cb_data)
 
     Enable microphone detection via the WM8958 IRQ
 
-    :param struct snd_soc_codec \*codec:
-        WM8958 codec
+    :param struct snd_soc_component \*component:
+        WM8958 component
 
     :param struct snd_soc_jack \*jack:
         jack to report detection events on

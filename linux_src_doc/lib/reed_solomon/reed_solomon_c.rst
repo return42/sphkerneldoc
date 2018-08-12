@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/reed_solomon/reed_solomon.c
 
-.. _`rs_init`:
+.. _`codec_init`:
 
-rs_init
-=======
+codec_init
+==========
 
-.. c:function:: struct rs_control *rs_init(int symsize, int gfpoly, int (*gffunc)(int), int fcr, int prim, int nroots)
+.. c:function:: struct rs_codec *codec_init(int symsize, int gfpoly, int (*gffunc)(int), int fcr, int prim, int nroots, gfp_t gfp)
 
     Initialize a Reed-Solomon codec
 
@@ -28,12 +28,15 @@ rs_init
     :param int nroots:
         RS code generator polynomial degree (number of roots)
 
-.. _`rs_init.description`:
+    :param gfp_t gfp:
+        GFP_ flags for allocations
+
+.. _`codec_init.description`:
 
 Description
 -----------
 
-Allocate a control structure and the polynom arrays for faster
+Allocate a codec structure and the polynom arrays for faster
 en/decoding. Fill the arrays according to the given parameters.
 
 .. _`free_rs`:
@@ -43,20 +46,28 @@ free_rs
 
 .. c:function:: void free_rs(struct rs_control *rs)
 
-    Free the rs control structure, if it is no longer used
+    Free the rs control structure
 
     :param struct rs_control \*rs:
-        the control structure which is not longer used by the
+        The control structure which is not longer used by the
         caller
+
+.. _`free_rs.description`:
+
+Description
+-----------
+
+Free the control structure. If \ ``rs``\  is the last user of the associated
+codec, free the codec as well.
 
 .. _`init_rs_internal`:
 
 init_rs_internal
 ================
 
-.. c:function:: struct rs_control *init_rs_internal(int symsize, int gfpoly, int (*gffunc)(int), int fcr, int prim, int nroots)
+.. c:function:: struct rs_control *init_rs_internal(int symsize, int gfpoly, int (*gffunc)(int), int fcr, int prim, int nroots, gfp_t gfp)
 
-    Find a matching or allocate a new rs control structure
+    Allocate rs control, find a matching codec or allocate a new one
 
     :param int symsize:
         the symbol size (number of bits)
@@ -81,14 +92,17 @@ init_rs_internal
     :param int nroots:
         RS code generator polynomial degree (number of roots)
 
-.. _`init_rs`:
+    :param gfp_t gfp:
+        GFP_ flags for allocations
 
-init_rs
-=======
+.. _`init_rs_gfp`:
 
-.. c:function:: struct rs_control *init_rs(int symsize, int gfpoly, int fcr, int prim, int nroots)
+init_rs_gfp
+===========
 
-    Find a matching or allocate a new rs control structure
+.. c:function:: struct rs_control *init_rs_gfp(int symsize, int gfpoly, int fcr, int prim, int nroots, gfp_t gfp)
+
+    Create a RS control struct and initialize it
 
     :param int symsize:
         the symbol size (number of bits)
@@ -108,6 +122,9 @@ init_rs
     :param int nroots:
         RS code generator polynomial degree (number of roots)
 
+    :param gfp_t gfp:
+        GFP_ flags for allocations
+
 .. _`init_rs_non_canonical`:
 
 init_rs_non_canonical
@@ -115,7 +132,7 @@ init_rs_non_canonical
 
 .. c:function:: struct rs_control *init_rs_non_canonical(int symsize, int (*gffunc)(int), int fcr, int prim, int nroots)
 
-    Find a matching or allocate a new rs control structure, for fields with non-canonical representation
+    Allocate rs control struct for fields with non-canonical representation
 
     :param int symsize:
         the symbol size (number of bits)
@@ -140,11 +157,11 @@ init_rs_non_canonical
 encode_rs8
 ==========
 
-.. c:function:: int encode_rs8(struct rs_control *rs, uint8_t *data, int len, uint16_t *par, uint16_t invmsk)
+.. c:function:: int encode_rs8(struct rs_control *rsc, uint8_t *data, int len, uint16_t *par, uint16_t invmsk)
 
     Calculate the parity for data values (8bit data width)
 
-    :param struct rs_control \*rs:
+    :param struct rs_control \*rsc:
         the rs control structure
 
     :param uint8_t \*data:
@@ -173,11 +190,11 @@ Description
 decode_rs8
 ==========
 
-.. c:function:: int decode_rs8(struct rs_control *rs, uint8_t *data, uint16_t *par, int len, uint16_t *s, int no_eras, int *eras_pos, uint16_t invmsk, uint16_t *corr)
+.. c:function:: int decode_rs8(struct rs_control *rsc, uint8_t *data, uint16_t *par, int len, uint16_t *s, int no_eras, int *eras_pos, uint16_t invmsk, uint16_t *corr)
 
     Decode codeword (8bit data width)
 
-    :param struct rs_control \*rs:
+    :param struct rs_control \*rsc:
         the rs control structure
 
     :param uint8_t \*data:
@@ -212,6 +229,16 @@ Description
  The syndrome and parity uses a uint16_t data type to enable
  symbol size > 8. The calling code must take care of decoding of the
  syndrome result and the received parity before calling this code.
+
+.. _`decode_rs8.note`:
+
+Note
+----
+
+The rs_control struct \ ``rsc``\  contains buffers which are used for
+ decoding, so the caller has to ensure that decoder invocations are
+ serialized.
+
  Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
 
 .. _`encode_rs16`:
@@ -219,11 +246,11 @@ Description
 encode_rs16
 ===========
 
-.. c:function:: int encode_rs16(struct rs_control *rs, uint16_t *data, int len, uint16_t *par, uint16_t invmsk)
+.. c:function:: int encode_rs16(struct rs_control *rsc, uint16_t *data, int len, uint16_t *par, uint16_t invmsk)
 
     Calculate the parity for data values (16bit data width)
 
-    :param struct rs_control \*rs:
+    :param struct rs_control \*rsc:
         the rs control structure
 
     :param uint16_t \*data:
@@ -250,11 +277,11 @@ Description
 decode_rs16
 ===========
 
-.. c:function:: int decode_rs16(struct rs_control *rs, uint16_t *data, uint16_t *par, int len, uint16_t *s, int no_eras, int *eras_pos, uint16_t invmsk, uint16_t *corr)
+.. c:function:: int decode_rs16(struct rs_control *rsc, uint16_t *data, uint16_t *par, int len, uint16_t *s, int no_eras, int *eras_pos, uint16_t invmsk, uint16_t *corr)
 
     Decode codeword (16bit data width)
 
-    :param struct rs_control \*rs:
+    :param struct rs_control \*rsc:
         the rs control structure
 
     :param uint16_t \*data:
@@ -287,6 +314,16 @@ Description
 -----------
 
  Each field in the data array contains up to symbol size bits of valid data.
+
+.. _`decode_rs16.note`:
+
+Note
+----
+
+The rc_control struct \ ``rsc``\  contains buffers which are used for
+ decoding, so the caller has to ensure that decoder invocations are
+ serialized.
+
  Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
 
 .. This file was automatic generated / don't edit.

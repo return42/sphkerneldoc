@@ -52,6 +52,26 @@ __rounddown_pow_of_two
     :param unsigned long n:
         value to round down
 
+.. _`const_ilog2`:
+
+const_ilog2
+===========
+
+.. c:function::  const_ilog2( n)
+
+    log base 2 of 32-bit or a 64-bit constant unsigned value
+
+    :param  n:
+        parameter
+
+.. _`const_ilog2.description`:
+
+Description
+-----------
+
+Use this where sparse expects a true constant expression, e.g. for array
+indices.
+
 .. _`ilog2`:
 
 ilog2

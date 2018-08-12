@@ -46,7 +46,7 @@ current list to the endpoint's started_list.
 dwc3_gadget_ep_get_transfer_index
 =================================
 
-.. c:function:: u32 dwc3_gadget_ep_get_transfer_index(struct dwc3_ep *dep)
+.. c:function:: void dwc3_gadget_ep_get_transfer_index(struct dwc3_ep *dep)
 
     Gets transfer index from HW
 

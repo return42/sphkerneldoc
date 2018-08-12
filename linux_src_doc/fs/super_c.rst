@@ -358,6 +358,25 @@ Description
 
      Alters the mount options of a mounted file system.
 
+.. _`emergency_thaw_all`:
+
+emergency_thaw_all
+==================
+
+.. c:function:: void emergency_thaw_all( void)
+
+    - forcibly thaw every frozen filesystem
+
+    :param  void:
+        no arguments
+
+.. _`emergency_thaw_all.description`:
+
+Description
+-----------
+
+Used for emergency unfreeze of all filesystems via SysRq
+
 .. _`sb_wait_write`:
 
 sb_wait_write
@@ -427,19 +446,19 @@ mostly auxiliary for filesystems to verify they do not modify frozen fs.
 
 sb->s_writers.frozen is protected by sb->s_umount.
 
-.. _`thaw_super`:
+.. _`thaw_super_locked`:
 
-thaw_super
-==========
+thaw_super_locked
+=================
 
-.. c:function:: int thaw_super(struct super_block *sb)
+.. c:function:: int thaw_super_locked(struct super_block *sb)
 
     - unlock filesystem
 
     :param struct super_block \*sb:
         the super to thaw
 
-.. _`thaw_super.description`:
+.. _`thaw_super_locked.description`:
 
 Description
 -----------

@@ -147,6 +147,44 @@ Description
 Initializes system control module. This sets up the sysconfig autoidle,
 and sets up modem and iva2 so that they can be idled properly.
 
+.. _`am43xx_control_save_context`:
+
+am43xx_control_save_context
+===========================
+
+.. c:function:: void am43xx_control_save_context( void)
+
+    Save the wakeup domain registers
+
+    :param  void:
+        no arguments
+
+.. _`am43xx_control_save_context.description`:
+
+Description
+-----------
+
+Save the wkup domain registers
+
+.. _`am43xx_control_restore_context`:
+
+am43xx_control_restore_context
+==============================
+
+.. c:function:: void am43xx_control_restore_context( void)
+
+    Restore the wakeup domain registers
+
+    :param  void:
+        no arguments
+
+.. _`am43xx_control_restore_context.description`:
+
+Description
+-----------
+
+Restore the wkup domain registers
+
 .. _`omap2_control_base_init`:
 
 omap2_control_base_init

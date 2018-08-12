@@ -1151,6 +1151,28 @@ Description
 
 Fill in a set of blank credentials from another set of credentials.
 
+.. _`smack_cred_getsecid`:
+
+smack_cred_getsecid
+===================
+
+.. c:function:: void smack_cred_getsecid(const struct cred *c, u32 *secid)
+
+    get the secid corresponding to a creds structure
+
+    :param const struct cred \*c:
+        the object creds
+
+    :param u32 \*secid:
+        where to put the result
+
+.. _`smack_cred_getsecid.description`:
+
+Description
+-----------
+
+Sets the secid to contain a u32 version of the smack label.
+
 .. _`smack_kernel_act_as`:
 
 smack_kernel_act_as
@@ -1428,7 +1450,7 @@ Return 0 if write access is permitted
 smack_task_kill
 ===============
 
-.. c:function:: int smack_task_kill(struct task_struct *p, struct siginfo *info, int sig, u32 secid)
+.. c:function:: int smack_task_kill(struct task_struct *p, struct siginfo *info, int sig, const struct cred *cred)
 
     Smack check on signal delivery
 
@@ -1441,8 +1463,8 @@ smack_task_kill
     :param int sig:
         unused
 
-    :param u32 secid:
-        identifies the smack to use in lieu of current's
+    :param const struct cred \*cred:
+        identifies the cred to use in lieu of current's
 
 .. _`smack_task_kill.description`:
 
@@ -1450,9 +1472,6 @@ Description
 -----------
 
 Return 0 if write access is permitted
-
-The secid behavior is an artifact of an SELinux hack
-in the USB code. Someday it may go away.
 
 .. _`smack_task_to_inode`:
 
@@ -1763,6 +1782,30 @@ Sets the netlabel information on the socket
 
 Returns 0 on success, and error code otherwise
 
+.. _`smack_socket_socketpair`:
+
+smack_socket_socketpair
+=======================
+
+.. c:function:: int smack_socket_socketpair(struct socket *socka, struct socket *sockb)
+
+    create socket pair
+
+    :param struct socket \*socka:
+        one socket
+
+    :param struct socket \*sockb:
+        another socket
+
+.. _`smack_socket_socketpair.description`:
+
+Description
+-----------
+
+Cross reference the peer labels for SO_PEERSEC
+
+Returns 0 on success, and error code otherwise
+
 .. _`smack_socket_bind`:
 
 smack_socket_bind
@@ -1874,57 +1917,57 @@ Description
 
 Clears the blob pointer
 
-.. _`smack_of_shm`:
+.. _`smack_of_ipc`:
 
-smack_of_shm
+smack_of_ipc
 ============
 
-.. c:function:: struct smack_known *smack_of_shm(struct shmid_kernel *shp)
+.. c:function:: struct smack_known *smack_of_ipc(struct kern_ipc_perm *isp)
 
-    the smack pointer for the shm
+    the smack pointer for the ipc
 
-    :param struct shmid_kernel \*shp:
+    :param struct kern_ipc_perm \*isp:
         the object
 
-.. _`smack_of_shm.description`:
+.. _`smack_of_ipc.description`:
 
 Description
 -----------
 
 Returns a pointer to the smack value
 
-.. _`smack_shm_alloc_security`:
+.. _`smack_ipc_alloc_security`:
 
-smack_shm_alloc_security
+smack_ipc_alloc_security
 ========================
 
-.. c:function:: int smack_shm_alloc_security(struct shmid_kernel *shp)
+.. c:function:: int smack_ipc_alloc_security(struct kern_ipc_perm *isp)
 
-    Set the security blob for shm
+    Set the security blob for ipc
 
-    :param struct shmid_kernel \*shp:
+    :param struct kern_ipc_perm \*isp:
         the object
 
-.. _`smack_shm_alloc_security.description`:
+.. _`smack_ipc_alloc_security.description`:
 
 Description
 -----------
 
 Returns 0
 
-.. _`smack_shm_free_security`:
+.. _`smack_ipc_free_security`:
 
-smack_shm_free_security
+smack_ipc_free_security
 =======================
 
-.. c:function:: void smack_shm_free_security(struct shmid_kernel *shp)
+.. c:function:: void smack_ipc_free_security(struct kern_ipc_perm *isp)
 
-    Clear the security blob for shm
+    Clear the security blob for ipc
 
-    :param struct shmid_kernel \*shp:
+    :param struct kern_ipc_perm \*isp:
         the object
 
-.. _`smack_shm_free_security.description`:
+.. _`smack_ipc_free_security.description`:
 
 Description
 -----------
@@ -1936,11 +1979,11 @@ Clears the blob pointer
 smk_curacc_shm
 ==============
 
-.. c:function:: int smk_curacc_shm(struct shmid_kernel *shp, int access)
+.. c:function:: int smk_curacc_shm(struct kern_ipc_perm *isp, int access)
 
     check if current has access on shm
 
-    :param struct shmid_kernel \*shp:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int access:
@@ -1958,11 +2001,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_shm_associate
 ===================
 
-.. c:function:: int smack_shm_associate(struct shmid_kernel *shp, int shmflg)
+.. c:function:: int smack_shm_associate(struct kern_ipc_perm *isp, int shmflg)
 
     Smack access check for shm
 
-    :param struct shmid_kernel \*shp:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int shmflg:
@@ -1980,11 +2023,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_shm_shmctl
 ================
 
-.. c:function:: int smack_shm_shmctl(struct shmid_kernel *shp, int cmd)
+.. c:function:: int smack_shm_shmctl(struct kern_ipc_perm *isp, int cmd)
 
     Smack access check for shm
 
-    :param struct shmid_kernel \*shp:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int cmd:
@@ -2002,12 +2045,12 @@ Returns 0 if current has the requested access, error code otherwise
 smack_shm_shmat
 ===============
 
-.. c:function:: int smack_shm_shmat(struct shmid_kernel *shp, char __user *shmaddr, int shmflg)
+.. c:function:: int smack_shm_shmat(struct kern_ipc_perm *ipc, char __user *shmaddr, int shmflg)
 
     Smack access for shmat
 
-    :param struct shmid_kernel \*shp:
-        the object
+    :param struct kern_ipc_perm \*ipc:
+        *undescribed*
 
     :param char __user \*shmaddr:
         unused
@@ -2022,73 +2065,16 @@ Description
 
 Returns 0 if current has the requested access, error code otherwise
 
-.. _`smack_of_sem`:
-
-smack_of_sem
-============
-
-.. c:function:: struct smack_known *smack_of_sem(struct sem_array *sma)
-
-    the smack pointer for the sem
-
-    :param struct sem_array \*sma:
-        the object
-
-.. _`smack_of_sem.description`:
-
-Description
------------
-
-Returns a pointer to the smack value
-
-.. _`smack_sem_alloc_security`:
-
-smack_sem_alloc_security
-========================
-
-.. c:function:: int smack_sem_alloc_security(struct sem_array *sma)
-
-    Set the security blob for sem
-
-    :param struct sem_array \*sma:
-        the object
-
-.. _`smack_sem_alloc_security.description`:
-
-Description
------------
-
-Returns 0
-
-.. _`smack_sem_free_security`:
-
-smack_sem_free_security
-=======================
-
-.. c:function:: void smack_sem_free_security(struct sem_array *sma)
-
-    Clear the security blob for sem
-
-    :param struct sem_array \*sma:
-        the object
-
-.. _`smack_sem_free_security.description`:
-
-Description
------------
-
-Clears the blob pointer
-
 .. _`smk_curacc_sem`:
 
 smk_curacc_sem
 ==============
 
-.. c:function:: int smk_curacc_sem(struct sem_array *sma, int access)
+.. c:function:: int smk_curacc_sem(struct kern_ipc_perm *isp, int access)
 
     check if current has access on sem
 
-    :param struct sem_array \*sma:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int access:
@@ -2106,11 +2092,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_sem_associate
 ===================
 
-.. c:function:: int smack_sem_associate(struct sem_array *sma, int semflg)
+.. c:function:: int smack_sem_associate(struct kern_ipc_perm *isp, int semflg)
 
     Smack access check for sem
 
-    :param struct sem_array \*sma:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int semflg:
@@ -2128,11 +2114,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_sem_semctl
 ================
 
-.. c:function:: int smack_sem_semctl(struct sem_array *sma, int cmd)
+.. c:function:: int smack_sem_semctl(struct kern_ipc_perm *isp, int cmd)
 
     Smack access check for sem
 
-    :param struct sem_array \*sma:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int cmd:
@@ -2150,11 +2136,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_sem_semop
 ===============
 
-.. c:function:: int smack_sem_semop(struct sem_array *sma, struct sembuf *sops, unsigned nsops, int alter)
+.. c:function:: int smack_sem_semop(struct kern_ipc_perm *isp, struct sembuf *sops, unsigned nsops, int alter)
 
     Smack checks of semaphore operations
 
-    :param struct sem_array \*sma:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param struct sembuf \*sops:
@@ -2175,73 +2161,16 @@ Treated as read and write in all cases.
 
 Returns 0 if access is allowed, error code otherwise
 
-.. _`smack_msg_queue_alloc_security`:
-
-smack_msg_queue_alloc_security
-==============================
-
-.. c:function:: int smack_msg_queue_alloc_security(struct msg_queue *msq)
-
-    Set the security blob for msg
-
-    :param struct msg_queue \*msq:
-        the object
-
-.. _`smack_msg_queue_alloc_security.description`:
-
-Description
------------
-
-Returns 0
-
-.. _`smack_msg_queue_free_security`:
-
-smack_msg_queue_free_security
-=============================
-
-.. c:function:: void smack_msg_queue_free_security(struct msg_queue *msq)
-
-    Clear the security blob for msg
-
-    :param struct msg_queue \*msq:
-        the object
-
-.. _`smack_msg_queue_free_security.description`:
-
-Description
------------
-
-Clears the blob pointer
-
-.. _`smack_of_msq`:
-
-smack_of_msq
-============
-
-.. c:function:: struct smack_known *smack_of_msq(struct msg_queue *msq)
-
-    the smack pointer for the msq
-
-    :param struct msg_queue \*msq:
-        the object
-
-.. _`smack_of_msq.description`:
-
-Description
------------
-
-Returns a pointer to the smack label entry
-
 .. _`smk_curacc_msq`:
 
 smk_curacc_msq
 ==============
 
-.. c:function:: int smk_curacc_msq(struct msg_queue *msq, int access)
+.. c:function:: int smk_curacc_msq(struct kern_ipc_perm *isp, int access)
 
     helper to check if current has access on msq
 
-    :param struct msg_queue \*msq:
+    :param struct kern_ipc_perm \*isp:
         the msq
 
     :param int access:
@@ -2259,11 +2188,11 @@ return 0 if current has access, error otherwise
 smack_msg_queue_associate
 =========================
 
-.. c:function:: int smack_msg_queue_associate(struct msg_queue *msq, int msqflg)
+.. c:function:: int smack_msg_queue_associate(struct kern_ipc_perm *isp, int msqflg)
 
     Smack access check for msg_queue
 
-    :param struct msg_queue \*msq:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int msqflg:
@@ -2281,11 +2210,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_msg_queue_msgctl
 ======================
 
-.. c:function:: int smack_msg_queue_msgctl(struct msg_queue *msq, int cmd)
+.. c:function:: int smack_msg_queue_msgctl(struct kern_ipc_perm *isp, int cmd)
 
     Smack access check for msg_queue
 
-    :param struct msg_queue \*msq:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param int cmd:
@@ -2303,11 +2232,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_msg_queue_msgsnd
 ======================
 
-.. c:function:: int smack_msg_queue_msgsnd(struct msg_queue *msq, struct msg_msg *msg, int msqflg)
+.. c:function:: int smack_msg_queue_msgsnd(struct kern_ipc_perm *isp, struct msg_msg *msg, int msqflg)
 
     Smack access check for msg_queue
 
-    :param struct msg_queue \*msq:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param struct msg_msg \*msg:
@@ -2328,11 +2257,11 @@ Returns 0 if current has the requested access, error code otherwise
 smack_msg_queue_msgrcv
 ======================
 
-.. c:function:: int smack_msg_queue_msgrcv(struct msg_queue *msq, struct msg_msg *msg, struct task_struct *target, long type, int mode)
+.. c:function:: int smack_msg_queue_msgrcv(struct kern_ipc_perm *isp, struct msg_msg *msg, struct task_struct *target, long type, int mode)
 
     Smack access check for msg_queue
 
-    :param struct msg_queue \*msq:
+    :param struct kern_ipc_perm \*isp:
         the object
 
     :param struct msg_msg \*msg:

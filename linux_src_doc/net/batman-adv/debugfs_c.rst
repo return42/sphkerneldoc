@@ -110,6 +110,18 @@ Return
 
 0 on success or negative error number in case of failure
 
+.. _`batadv_debugfs_rename_hardif`:
+
+batadv_debugfs_rename_hardif
+============================
+
+.. c:function:: void batadv_debugfs_rename_hardif(struct batadv_hard_iface *hard_iface)
+
+    Fix debugfs path for renamed hardif
+
+    :param struct batadv_hard_iface \*hard_iface:
+        hard interface which was renamed
+
 .. _`batadv_debugfs_del_hardif`:
 
 batadv_debugfs_del_hardif
@@ -140,6 +152,18 @@ Return
 ------
 
 0 on success or negative error number in case of failure
+
+.. _`batadv_debugfs_rename_meshif`:
+
+batadv_debugfs_rename_meshif
+============================
+
+.. c:function:: void batadv_debugfs_rename_meshif(struct net_device *dev)
+
+    Fix debugfs path for renamed softif
+
+    :param struct net_device \*dev:
+        net_device which was renamed
 
 .. _`batadv_debugfs_del_meshif`:
 

@@ -11,7 +11,7 @@ qlafx00_pci_config
     Setup ISPFx00 PCI configuration registers.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qlafx00_pci_config.description`:
 
@@ -30,7 +30,7 @@ qlafx00_soc_cpu_reset
     Perform warm reset of iSA(CPUs being reset on SOC).
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qlafx00_soft_reset`:
 
@@ -42,7 +42,7 @@ qlafx00_soft_reset
     Soft Reset ISPFx00.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qlafx00_soft_reset.description`:
 
@@ -61,7 +61,7 @@ qlafx00_chip_diag
     Test ISPFx00 for proper operation.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
 .. _`qlafx00_chip_diag.description`:
 
@@ -80,7 +80,7 @@ qlafx00_init_response_q_entries
     Initializes response queue entries.
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
 .. _`qlafx00_init_response_q_entries.description`:
 
@@ -102,10 +102,10 @@ qlafx00_status_entry
     Process a Status IOCB entry.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param void \*pkt:
         Entry pointer
@@ -120,7 +120,7 @@ qlafx00_status_cont_entry
     Process a Status Continuations entry.
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param sts_cont_entry_t \*pkt:
         Entry pointer
@@ -142,10 +142,10 @@ qlafx00_multistatus_entry
     Process Multi response queue entries.
 
     :param struct scsi_qla_host \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param void \*pkt:
         *undescribed*
@@ -160,10 +160,10 @@ qlafx00_error_entry
     Process an error entry.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
     :param struct sts_entry_fx00 \*pkt:
         Entry pointer
@@ -184,10 +184,10 @@ qlafx00_process_response_queue
     Process response queue entries.
 
     :param struct scsi_qla_host \*vha:
-        *undescribed*
+        SCSI driver HA context
 
     :param struct rsp_que \*rsp:
-        *undescribed*
+        response queue
 
 .. _`qlafx00_async_event`:
 
@@ -199,6 +199,21 @@ qlafx00_async_event
     Process aynchronous events.
 
     :param scsi_qla_host_t \*vha:
+        SCSI driver HA context
+
+.. _`qlafx00_mbx_completion`:
+
+qlafx00_mbx_completion
+======================
+
+.. c:function:: void qlafx00_mbx_completion(scsi_qla_host_t *vha, uint32_t mb0)
+
+    Process mailbox command completions.
+
+    :param scsi_qla_host_t \*vha:
+        SCSI driver HA context
+
+    :param uint32_t mb0:
         *undescribed*
 
 .. _`qlafx00_intr_handler`:

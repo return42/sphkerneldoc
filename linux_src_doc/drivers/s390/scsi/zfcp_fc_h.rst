@@ -475,7 +475,7 @@ as
 zfcp_fc_scsi_to_fcp
 ===================
 
-.. c:function:: void zfcp_fc_scsi_to_fcp(struct fcp_cmnd *fcp, struct scsi_cmnd *scsi, u8 tm_flags)
+.. c:function:: void zfcp_fc_scsi_to_fcp(struct fcp_cmnd *fcp, struct scsi_cmnd *scsi)
 
     setup FCP command with data from scsi_cmnd
 
@@ -485,8 +485,23 @@ zfcp_fc_scsi_to_fcp
     :param struct scsi_cmnd \*scsi:
         scsi_cmnd where to get LUN, task attributes/flags and CDB
 
+.. _`zfcp_fc_fcp_tm`:
+
+zfcp_fc_fcp_tm
+==============
+
+.. c:function:: void zfcp_fc_fcp_tm(struct fcp_cmnd *fcp, struct scsi_device *dev, u8 tm_flags)
+
+    Setup FCP command as task management command.
+
+    :param struct fcp_cmnd \*fcp:
+        Pointer to FCP_CMND IU to set up.
+
+    :param struct scsi_device \*dev:
+        Pointer to SCSI_device where to send the task management command.
+
     :param u8 tm_flags:
-        *undescribed*
+        Task management flags to setup tm command.
 
 .. _`zfcp_fc_eval_fcp_rsp`:
 

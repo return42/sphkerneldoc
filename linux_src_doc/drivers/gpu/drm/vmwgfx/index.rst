@@ -10,6 +10,7 @@ vmwgfx
     device_include/index
     vmwgfx_binding_c
     vmwgfx_binding_h
+    vmwgfx_blit_c
     vmwgfx_buffer_c
     vmwgfx_cmdbuf_c
     vmwgfx_cmdbuf_res_c
@@ -19,6 +20,7 @@ vmwgfx
     vmwgfx_drv_c
     vmwgfx_drv_h
     vmwgfx_execbuf_c
+    vmwgfx_fb_c
     vmwgfx_fence_c
     vmwgfx_fifo_c
     vmwgfx_ioctl_c

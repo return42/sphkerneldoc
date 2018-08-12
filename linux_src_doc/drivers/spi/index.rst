@@ -12,6 +12,7 @@ spi
     spi-davinci_c
     spi-ep93xx_c
     spi-loopback-test_c
+    spi-mem_c
     spi-meson-spifc_c
     spi-mpc52xx_c
     spi-pic32-sqi_c

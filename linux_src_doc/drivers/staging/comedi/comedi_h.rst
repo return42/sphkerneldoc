@@ -696,7 +696,7 @@ values (frequencies rounded up).
 values (frequencies rounded down).
 
 Trigger source values for \ ``start_src``\ , \ ``scan_begin_src``\ , \ ``convert_src``\ ,
-\ ``scan_end_src``\ , and \ ``stop_src``\ ...
+\ ``scan_end_src``\ , and \ ``stop_src...``\ 
 
 \ ``TRIG_ANY``\  - "all ones" value used to test which trigger sources are
 supported.

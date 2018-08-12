@@ -11,19 +11,19 @@ dwc2_update_urb_state
     Updates the state of the URB after a Transfer Complete interrupt on the host channel. Updates the actual_length field of the URB based on the number of bytes transferred via the host channel. Sets the URB status if the data transfer is finished.
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
     :param struct dwc2_host_chan \*chan:
-        *undescribed*
+        Programming view of host channel
 
     :param int chnum:
-        *undescribed*
+        Channel number
 
     :param struct dwc2_hcd_urb \*urb:
-        *undescribed*
+        Processing URB
 
     :param struct dwc2_qtd \*qtd:
-        *undescribed*
+        Queue transfer descriptor
 
 .. _`dwc2_update_urb_state.return`:
 
@@ -43,19 +43,19 @@ dwc2_update_isoc_urb_state
     Updates the state of an Isochronous URB when the transfer is stopped for any reason. The fields of the current entry in the frame descriptor array are set based on the transfer state and the input halt_status. Completes the Isochronous URB if all the URB frames have been completed.
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
     :param struct dwc2_host_chan \*chan:
-        *undescribed*
+        Programming view of host channel
 
     :param int chnum:
-        *undescribed*
+        Channel number
 
     :param struct dwc2_qtd \*qtd:
-        *undescribed*
+        Queue transfer descriptor
 
     :param enum dwc2_halt_status halt_status:
-        *undescribed*
+        Reason for halting a host channel
 
 .. _`dwc2_update_isoc_urb_state.return`:
 

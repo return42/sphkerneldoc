@@ -153,7 +153,7 @@ i40e_add_del_fdir
         pointer to the targeted VSI
 
     :param struct i40e_fdir_filter \*input:
-        *undescribed*
+        filter to add or delete
 
     :param bool add:
         true adds a filter, false removes it
@@ -235,12 +235,15 @@ Free all transmit software resources
 i40e_get_tx_pending
 ===================
 
-.. c:function:: u32 i40e_get_tx_pending(struct i40e_ring *ring)
+.. c:function:: u32 i40e_get_tx_pending(struct i40e_ring *ring, bool in_sw)
 
     how many tx descriptors not processed
 
     :param struct i40e_ring \*ring:
-        *undescribed*
+        the ring of descriptors
+
+    :param bool in_sw:
+        use SW variables
 
 .. _`i40e_get_tx_pending.description`:
 
@@ -325,31 +328,32 @@ i40e_force_wb
     :param struct i40e_q_vector \*q_vector:
         the vector  on which to force writeback
 
-.. _`i40e_set_new_dynamic_itr`:
+.. _`i40e_update_itr`:
 
-i40e_set_new_dynamic_itr
-========================
+i40e_update_itr
+===============
 
-.. c:function:: bool i40e_set_new_dynamic_itr(struct i40e_ring_container *rc)
+.. c:function:: void i40e_update_itr(struct i40e_q_vector *q_vector, struct i40e_ring_container *rc)
 
-    Find new ITR level
+    update the dynamic ITR value based on statistics
+
+    :param struct i40e_q_vector \*q_vector:
+        structure containing interrupt and ring information
 
     :param struct i40e_ring_container \*rc:
         structure containing ring performance data
 
-.. _`i40e_set_new_dynamic_itr.description`:
+.. _`i40e_update_itr.description`:
 
 Description
 -----------
 
-Returns true if ITR changed, false if not
-
-Stores a new ITR value based on packets and byte counts during
-the last interrupt.  The advantage of per interrupt computation
-is faster updates and more accurate ITR for the current traffic
-pattern.  Constants in this function were computed based on
-theoretical maximum wire speed and thresholds were set based on
-testing data as well as attempting to minimize response time
+Stores a new ITR value based on packets and byte
+counts during the last interrupt.  The advantage of per interrupt
+computation is faster updates and more accurate ITR for the current
+traffic pattern.  Constants in this function were computed
+based on theoretical maximum wire speed and thresholds were set based
+on testing data as well as attempting to minimize response time
 while increasing bulk throughput.
 
 .. _`i40e_reuse_rx_page`:
@@ -642,10 +646,10 @@ i40e_rx_hash
         specific descriptor
 
     :param struct sk_buff \*skb:
-        *undescribed*
+        skb currently being received and modified
 
     :param u8 rx_ptype:
-        *undescribed*
+        Rx packet type
 
 .. _`i40e_process_skb_fields`:
 
@@ -894,7 +898,7 @@ Description
 -----------
 
 This function will clean up the contents of the rx_buffer.  It will
-either recycle the bufer or unmap it and free the associated resources.
+either recycle the buffer or unmap it and free the associated resources.
 
 .. _`i40e_is_non_eop`:
 
@@ -1259,12 +1263,12 @@ Returns 0 on success, -1 on failure to DMA
 i40e_xmit_xdp_ring
 ==================
 
-.. c:function:: int i40e_xmit_xdp_ring(struct xdp_buff *xdp, struct i40e_ring *xdp_ring)
+.. c:function:: int i40e_xmit_xdp_ring(struct xdp_frame *xdpf, struct i40e_ring *xdp_ring)
 
     transmits an XDP buffer to an XDP Tx ring
 
-    :param struct xdp_buff \*xdp:
-        data to transmit
+    :param struct xdp_frame \*xdpf:
+        *undescribed*
 
     :param struct i40e_ring \*xdp_ring:
         XDP Tx ring
@@ -1312,6 +1316,38 @@ Description
 -----------
 
 Returns NETDEV_TX_OK if sent, else an error code
+
+.. _`i40e_xdp_xmit`:
+
+i40e_xdp_xmit
+=============
+
+.. c:function:: int i40e_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames, u32 flags)
+
+    Implements ndo_xdp_xmit
+
+    :param struct net_device \*dev:
+        netdev
+
+    :param int n:
+        *undescribed*
+
+    :param struct xdp_frame \*\*frames:
+        *undescribed*
+
+    :param u32 flags:
+        *undescribed*
+
+.. _`i40e_xdp_xmit.description`:
+
+Description
+-----------
+
+Returns number of frames successfully sent. Frames that fail are
+free'ed via XDP return API.
+
+For error cases, a negative errno code is returned and no-frames
+are transmitted (caller must handle freeing frames).
 
 .. This file was automatic generated / don't edit.
 

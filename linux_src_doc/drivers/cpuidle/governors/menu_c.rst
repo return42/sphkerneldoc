@@ -6,7 +6,7 @@
 menu_select
 ===========
 
-.. c:function:: int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev)
+.. c:function:: int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev, bool *stop_tick)
 
     selects the next idle state to enter
 
@@ -15,6 +15,9 @@ menu_select
 
     :param struct cpuidle_device \*dev:
         the CPU
+
+    :param bool \*stop_tick:
+        indication on whether or not to stop the tick
 
 .. _`menu_reflect`:
 

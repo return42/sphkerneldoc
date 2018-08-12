@@ -134,13 +134,13 @@ i40e_find_vsi_from_id
 
 .. c:function:: struct i40e_vsi *i40e_find_vsi_from_id(struct i40e_pf *pf, u16 id)
 
-    searches for the vsi with the given id \ ``pf``\  - the pf structure to search for the vsi \ ``id``\  - id of the vsi it is searching for
+    searches for the vsi with the given id
 
     :param struct i40e_pf \*pf:
-        *undescribed*
+        the pf structure to search for the vsi
 
     :param u16 id:
-        *undescribed*
+        id of the vsi it is searching for
 
 .. _`i40e_service_event_schedule`:
 
@@ -230,7 +230,7 @@ i40e_get_netdev_stats_struct
         network interface device structure
 
     :param struct rtnl_link_stats64 \*stats:
-        *undescribed*
+        data structure to store statistics
 
 .. _`i40e_get_netdev_stats_struct.description`:
 
@@ -975,7 +975,7 @@ i40e_update_filter_state
         return data from fw
 
     :param struct i40e_new_mac_filter \*add_head:
-        *undescribed*
+        pointer to first filter in current batch
 
 .. _`i40e_update_filter_state.description`:
 
@@ -1024,7 +1024,7 @@ preserve the previous value of \*retval on successful delete.
 i40e_aqc_add_filters
 ====================
 
-.. c:function:: void i40e_aqc_add_filters(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_aqc_add_macvlan_element_data *list, struct i40e_new_mac_filter *add_head, int num_add, bool *promisc_changed)
+.. c:function:: void i40e_aqc_add_filters(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_aqc_add_macvlan_element_data *list, struct i40e_new_mac_filter *add_head, int num_add)
 
     Request firmware to add a set of filters
 
@@ -1043,17 +1043,14 @@ i40e_aqc_add_filters
     :param int num_add:
         the number of filters to add
 
-    :param bool \*promisc_changed:
-        *undescribed*
-
 .. _`i40e_aqc_add_filters.description`:
 
 Description
 -----------
 
 Send a request to firmware via AdminQ to add a chunk of filters. Will set
-promisc_changed to true if the firmware has run out of space for more
-filters.
+\__I40E_VSI_OVERFLOW_PROMISC bit in vsi->state if the firmware has run out of
+space for more filters.
 
 .. _`i40e_aqc_broadcast_filter`:
 
@@ -1068,7 +1065,7 @@ i40e_aqc_broadcast_filter
         pointer to the VSI
 
     :param const char \*vsi_name:
-        *undescribed*
+        the VSI name
 
     :param struct i40e_mac_filter \*f:
         filter data
@@ -1217,21 +1214,6 @@ i40e_vlan_stripping_disable
     :param struct i40e_vsi \*vsi:
         the vsi being adjusted
 
-.. _`i40e_vlan_rx_register`:
-
-i40e_vlan_rx_register
-=====================
-
-.. c:function:: void i40e_vlan_rx_register(struct net_device *netdev, u32 features)
-
-    Setup or shutdown vlan offload
-
-    :param struct net_device \*netdev:
-        network interface to be adjusted
-
-    :param u32 features:
-        netdev features to test if VLAN offload is enabled or not
-
 .. _`i40e_add_vlan_all_mac`:
 
 i40e_add_vlan_all_mac
@@ -1341,7 +1323,7 @@ i40e_vlan_rx_add_vid
         network interface to be adjusted
 
     :param __always_unused __be16 proto:
-        *undescribed*
+        unused protocol value
 
     :param u16 vid:
         vlan id to be added
@@ -1352,6 +1334,24 @@ Description
 -----------
 
 net_device_ops implementation for adding vlan ids
+
+.. _`i40e_vlan_rx_add_vid_up`:
+
+i40e_vlan_rx_add_vid_up
+=======================
+
+.. c:function:: void i40e_vlan_rx_add_vid_up(struct net_device *netdev, __always_unused __be16 proto, u16 vid)
+
+    Add a vlan id filter to HW offload in UP path
+
+    :param struct net_device \*netdev:
+        network interface to be adjusted
+
+    :param __always_unused __be16 proto:
+        unused protocol value
+
+    :param u16 vid:
+        vlan id to be added
 
 .. _`i40e_vlan_rx_kill_vid`:
 
@@ -1366,7 +1366,7 @@ i40e_vlan_rx_kill_vid
         network interface to be adjusted
 
     :param __always_unused __be16 proto:
-        *undescribed*
+        unused protocol value
 
     :param u16 vid:
         vlan id to be removed
@@ -1682,7 +1682,7 @@ i40e_enable_misc_int_causes
     enable the non-queue interrupts
 
     :param struct i40e_pf \*pf:
-        *undescribed*
+        pointer to private device data structure
 
 .. _`i40e_configure_msi_and_legacy`:
 
@@ -2118,9 +2118,34 @@ i40e_control_rx_q
 Description
 -----------
 
-This function enables or disables a single queue. Note that any delay
-required after the operation is expected to be handled by the caller of
-this function.
+This function enables or disables a single queue. Note that
+any delay required after the operation is expected to be
+handled by the caller of this function.
+
+.. _`i40e_control_wait_rx_q`:
+
+i40e_control_wait_rx_q
+======================
+
+.. c:function:: int i40e_control_wait_rx_q(struct i40e_pf *pf, int pf_q, bool enable)
+
+    :param struct i40e_pf \*pf:
+        the PF structure
+
+    :param int pf_q:
+        queue being configured
+
+    :param bool enable:
+        start or stop the rings
+
+.. _`i40e_control_wait_rx_q.description`:
+
+Description
+-----------
+
+This function enables or disables a single queue along with waiting
+for the change to finish. The caller of this function should handle
+the delays needed in the case of disabling queues.
 
 .. _`i40e_vsi_control_rx`:
 
@@ -2548,7 +2573,7 @@ i40e_vsi_configure_bw_alloc
         TC bitmap
 
     :param u8 \*bw_share:
-        *undescribed*
+        BW shared credits per TC
 
 .. _`i40e_vsi_configure_bw_alloc.description`:
 
@@ -3056,7 +3081,7 @@ i40e_print_link_message
         the VSI for which link needs a message
 
     :param bool isup:
-        *undescribed*
+        true of link is up, false otherwise
 
 .. _`i40e_up_complete`:
 
@@ -3101,6 +3126,21 @@ i40e_up
 
     :param struct i40e_vsi \*vsi:
         the VSI being configured
+
+.. _`i40e_force_link_state`:
+
+i40e_force_link_state
+=====================
+
+.. c:function:: i40e_status i40e_force_link_state(struct i40e_pf *pf, bool is_up)
+
+    Force the link status
+
+    :param struct i40e_pf \*pf:
+        board private structure
+
+    :param bool is_up:
+        whether the link state should be forced up or down
 
 .. _`i40e_down`:
 
@@ -3574,6 +3614,45 @@ i40e_get_global_fd_count
 
     :param struct i40e_pf \*pf:
         board private structure
+
+.. _`i40e_reenable_fdir_sb`:
+
+i40e_reenable_fdir_sb
+=====================
+
+.. c:function:: void i40e_reenable_fdir_sb(struct i40e_pf *pf)
+
+    Restore FDir SB capability
+
+    :param struct i40e_pf \*pf:
+        board private structure
+
+.. _`i40e_reenable_fdir_atr`:
+
+i40e_reenable_fdir_atr
+======================
+
+.. c:function:: void i40e_reenable_fdir_atr(struct i40e_pf *pf)
+
+    Restore FDir ATR capability
+
+    :param struct i40e_pf \*pf:
+        board private structure
+
+.. _`i40e_delete_invalid_filter`:
+
+i40e_delete_invalid_filter
+==========================
+
+.. c:function:: void i40e_delete_invalid_filter(struct i40e_pf *pf, struct i40e_fdir_filter *filter)
+
+    Delete an invalid FDIR filter
+
+    :param struct i40e_pf \*pf:
+        board private structure
+
+    :param struct i40e_fdir_filter \*filter:
+        FDir filter to remove
 
 .. _`i40e_fdir_check_and_reenable`:
 
@@ -4152,7 +4231,7 @@ i40e_vsi_free_arrays
     Free queue and vector pointer arrays for the VSI
 
     :param struct i40e_vsi \*vsi:
-        *undescribed*
+        VSI pointer
 
     :param bool free_qvectors:
         a bool to specify if q_vectors need to be freed.
@@ -4492,14 +4571,12 @@ i40e_get_rss
         Buffer to store the lookup table entries
 
     :param u16 lut_size:
-        *undescribed*
+        Size of buffer to store the lookup table entries
 
-.. _`i40e_get_rss.lut_size`:
+.. _`i40e_get_rss.description`:
 
-lut_size
---------
-
-Size of buffer to store the lookup table entries
+Description
+-----------
 
 Returns 0 on success, negative on failure
 
@@ -4753,7 +4830,7 @@ i40e_ndo_fdb_add
         the MAC address entry being added
 
     :param u16 vid:
-        *undescribed*
+        VLAN ID
 
     :param u16 flags:
         instructions from stack about fdb operation
@@ -4774,7 +4851,7 @@ i40e_ndo_bridge_setlink
         RTNL message
 
     :param u16 flags:
-        *undescribed*
+        bridge flags
 
 .. _`i40e_ndo_bridge_setlink.description`:
 
@@ -5387,7 +5464,7 @@ i40e_pci_error_detected
         PCI device information struct
 
     :param enum pci_channel_state error:
-        *undescribed*
+        the type of PCI error
 
 .. _`i40e_pci_error_detected.description`:
 

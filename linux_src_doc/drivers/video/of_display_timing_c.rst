@@ -72,17 +72,5 @@ of_get_display_timings
     :param const struct device_node \*np:
         device_node with the subnodes
 
-.. _`of_display_timings_exist`:
-
-of_display_timings_exist
-========================
-
-.. c:function:: int of_display_timings_exist(const struct device_node *np)
-
-    check if a display-timings node is provided
-
-    :param const struct device_node \*np:
-        device_node with the timing
-
 .. This file was automatic generated / don't edit.
 

@@ -35,6 +35,7 @@ Definition
         u16 capabilities;
         u32 signature;
         u32 link_id;
+        u8 peer_id[16];
         struct list_head publ_list;
         struct list_head conn_sks;
         unsigned long keepalive_intv;
@@ -97,6 +98,9 @@ signature
 
 link_id
     local and remote bearer ids of changing link, if any
+
+peer_id
+    *undescribed*
 
 publ_list
     list of publications

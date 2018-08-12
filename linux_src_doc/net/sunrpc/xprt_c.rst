@@ -377,6 +377,13 @@ xprt_lookup_rqst
     :param __be32 xid:
         RPC XID of incoming reply
 
+.. _`xprt_lookup_rqst.description`:
+
+Description
+-----------
+
+Caller holds xprt->recv_lock.
+
 .. _`xprt_pin_rqst`:
 
 xprt_pin_rqst
@@ -416,6 +423,25 @@ Description
 
 Caller should be holding the xprt transport lock.
 
+.. _`xprt_update_rtt`:
+
+xprt_update_rtt
+===============
+
+.. c:function:: void xprt_update_rtt(struct rpc_task *task)
+
+    Update RPC RTT statistics
+
+    :param struct rpc_task \*task:
+        RPC request that recently completed
+
+.. _`xprt_update_rtt.description`:
+
+Description
+-----------
+
+Caller holds xprt->recv_lock.
+
 .. _`xprt_complete_rqst`:
 
 xprt_complete_rqst
@@ -436,7 +462,7 @@ xprt_complete_rqst
 Description
 -----------
 
-Caller holds transport lock.
+Caller holds xprt->recv_lock.
 
 .. _`xprt_prepare_transmit`:
 

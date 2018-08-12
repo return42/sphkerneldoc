@@ -6,9 +6,12 @@
 security_compute_av
 ===================
 
-.. c:function:: void security_compute_av(u32 ssid, u32 tsid, u16 orig_tclass, struct av_decision *avd, struct extended_perms *xperms)
+.. c:function:: void security_compute_av(struct selinux_state *state, u32 ssid, u32 tsid, u16 orig_tclass, struct av_decision *avd, struct extended_perms *xperms)
 
     Compute access vector decisions.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier
@@ -38,9 +41,12 @@ SID pair (@ssid, \ ``tsid``\ ) for the permissions in \ ``tclass``\ .
 security_sid_to_context
 =======================
 
-.. c:function:: int security_sid_to_context(u32 sid, char **scontext, u32 *scontext_len)
+.. c:function:: int security_sid_to_context(struct selinux_state *state, u32 sid, char **scontext, u32 *scontext_len)
 
     Obtain a context for a given SID.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 sid:
         security identifier, SID
@@ -65,9 +71,12 @@ to point to this string and set \ ``scontext_len``\  to the length of the string
 security_context_to_sid
 =======================
 
-.. c:function:: int security_context_to_sid(const char *scontext, u32 scontext_len, u32 *sid, gfp_t gfp)
+.. c:function:: int security_context_to_sid(struct selinux_state *state, const char *scontext, u32 scontext_len, u32 *sid, gfp_t gfp)
 
     Obtain a SID for a given security context.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param const char \*scontext:
         security context
@@ -96,9 +105,12 @@ memory is available, or 0 on success.
 security_context_to_sid_default
 ===============================
 
-.. c:function:: int security_context_to_sid_default(const char *scontext, u32 scontext_len, u32 *sid, u32 def_sid, gfp_t gfp_flags)
+.. c:function:: int security_context_to_sid_default(struct selinux_state *state, const char *scontext, u32 scontext_len, u32 *sid, u32 def_sid, gfp_t gfp_flags)
 
     Obtain a SID for a given security context, falling back to specified default if needed.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param const char \*scontext:
         security context
@@ -134,9 +146,12 @@ memory is available, or 0 on success.
 security_transition_sid
 =======================
 
-.. c:function:: int security_transition_sid(u32 ssid, u32 tsid, u16 tclass, const struct qstr *qstr, u32 *out_sid)
+.. c:function:: int security_transition_sid(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass, const struct qstr *qstr, u32 *out_sid)
 
     Compute the SID for a new subject/object.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier
@@ -169,9 +184,12 @@ computed successfully.
 security_member_sid
 ===================
 
-.. c:function:: int security_member_sid(u32 ssid, u32 tsid, u16 tclass, u32 *out_sid)
+.. c:function:: int security_member_sid(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass, u32 *out_sid)
 
     Compute the SID for member selection.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier
@@ -201,9 +219,12 @@ computed successfully.
 security_change_sid
 ===================
 
-.. c:function:: int security_change_sid(u32 ssid, u32 tsid, u16 tclass, u32 *out_sid)
+.. c:function:: int security_change_sid(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass, u32 *out_sid)
 
     Compute the SID for object relabeling.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier
@@ -233,9 +254,12 @@ computed successfully.
 security_load_policy
 ====================
 
-.. c:function:: int security_load_policy(void *data, size_t len)
+.. c:function:: int security_load_policy(struct selinux_state *state, void *data, size_t len)
 
     Load a security policy configuration.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param void \*data:
         binary policy data
@@ -258,9 +282,12 @@ loading the new policy.
 security_port_sid
 =================
 
-.. c:function:: int security_port_sid(u8 protocol, u16 port, u32 *out_sid)
+.. c:function:: int security_port_sid(struct selinux_state *state, u8 protocol, u16 port, u32 *out_sid)
 
     Obtain the SID for a port.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u8 protocol:
         protocol number
@@ -276,9 +303,12 @@ security_port_sid
 security_ib_pkey_sid
 ====================
 
-.. c:function:: int security_ib_pkey_sid(u64 subnet_prefix, u16 pkey_num, u32 *out_sid)
+.. c:function:: int security_ib_pkey_sid(struct selinux_state *state, u64 subnet_prefix, u16 pkey_num, u32 *out_sid)
 
     Obtain the SID for a pkey.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u64 subnet_prefix:
         Subnet Prefix
@@ -294,9 +324,12 @@ security_ib_pkey_sid
 security_ib_endport_sid
 =======================
 
-.. c:function:: int security_ib_endport_sid(const char *dev_name, u8 port_num, u32 *out_sid)
+.. c:function:: int security_ib_endport_sid(struct selinux_state *state, const char *dev_name, u8 port_num, u32 *out_sid)
 
     Obtain the SID for a subnet management interface.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param const char \*dev_name:
         device name
@@ -312,9 +345,12 @@ security_ib_endport_sid
 security_netif_sid
 ==================
 
-.. c:function:: int security_netif_sid(char *name, u32 *if_sid)
+.. c:function:: int security_netif_sid(struct selinux_state *state, char *name, u32 *if_sid)
 
     Obtain the SID for a network interface.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param char \*name:
         interface name
@@ -327,9 +363,12 @@ security_netif_sid
 security_node_sid
 =================
 
-.. c:function:: int security_node_sid(u16 domain, void *addrp, u32 addrlen, u32 *out_sid)
+.. c:function:: int security_node_sid(struct selinux_state *state, u16 domain, void *addrp, u32 addrlen, u32 *out_sid)
 
     Obtain the SID for a node (host).
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u16 domain:
         communication domain aka address family
@@ -348,9 +387,12 @@ security_node_sid
 security_get_user_sids
 ======================
 
-.. c:function:: int security_get_user_sids(u32 fromsid, char *username, u32 **sids, u32 *nel)
+.. c:function:: int security_get_user_sids(struct selinux_state *state, u32 fromsid, char *username, u32 **sids, u32 *nel)
 
     Obtain reachable SIDs for a user.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 fromsid:
         starting SID
@@ -380,9 +422,12 @@ number of elements in the array.
 \__security_genfs_sid
 =====================
 
-.. c:function:: int __security_genfs_sid(const char *fstype, char *path, u16 orig_sclass, u32 *sid)
+.. c:function:: int __security_genfs_sid(struct selinux_state *state, const char *fstype, char *path, u16 orig_sclass, u32 *sid)
 
     Helper to obtain a SID for a file in a filesystem
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param const char \*fstype:
         filesystem type
@@ -412,9 +457,12 @@ The caller must acquire the policy_rwlock before calling this function.
 security_genfs_sid
 ==================
 
-.. c:function:: int security_genfs_sid(const char *fstype, char *path, u16 orig_sclass, u32 *sid)
+.. c:function:: int security_genfs_sid(struct selinux_state *state, const char *fstype, char *path, u16 orig_sclass, u32 *sid)
 
     Obtain a SID for a file in a filesystem
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param const char \*fstype:
         filesystem type
@@ -441,9 +489,12 @@ it afterward.
 security_fs_use
 ===============
 
-.. c:function:: int security_fs_use(struct super_block *sb)
+.. c:function:: int security_fs_use(struct selinux_state *state, struct super_block *sb)
 
     Determine how to handle labeling for a filesystem.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param struct super_block \*sb:
         superblock in question
@@ -453,9 +504,12 @@ security_fs_use
 security_net_peersid_resolve
 ============================
 
-.. c:function:: int security_net_peersid_resolve(u32 nlbl_sid, u32 nlbl_type, u32 xfrm_sid, u32 *peer_sid)
+.. c:function:: int security_net_peersid_resolve(struct selinux_state *state, u32 nlbl_sid, u32 nlbl_type, u32 xfrm_sid, u32 *peer_sid)
 
     Compare and resolve two network peer SIDs
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 nlbl_sid:
         NetLabel SID
@@ -491,9 +545,12 @@ multiple, inconsistent labels \|    -<errno>     \|    SECSID_NULL
 security_policycap_supported
 ============================
 
-.. c:function:: int security_policycap_supported(unsigned int req_cap)
+.. c:function:: int security_policycap_supported(struct selinux_state *state, unsigned int req_cap)
 
     Check for a specific policy capability
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param unsigned int req_cap:
         capability
@@ -536,9 +593,12 @@ already been initialized.
 security_netlbl_secattr_to_sid
 ==============================
 
-.. c:function:: int security_netlbl_secattr_to_sid(struct netlbl_lsm_secattr *secattr, u32 *sid)
+.. c:function:: int security_netlbl_secattr_to_sid(struct selinux_state *state, struct netlbl_lsm_secattr *secattr, u32 *sid)
 
     Convert a NetLabel secattr to a SELinux SID
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param struct netlbl_lsm_secattr \*secattr:
         the NetLabel packet security attributes
@@ -564,9 +624,12 @@ failure.
 security_netlbl_sid_to_secattr
 ==============================
 
-.. c:function:: int security_netlbl_sid_to_secattr(u32 sid, struct netlbl_lsm_secattr *secattr)
+.. c:function:: int security_netlbl_sid_to_secattr(struct selinux_state *state, u32 sid, struct netlbl_lsm_secattr *secattr)
 
     Convert a SELinux SID to a NetLabel secattr
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 sid:
         the SELinux SID
@@ -587,9 +650,12 @@ Returns zero on success, negative values on failure.
 security_read_policy
 ====================
 
-.. c:function:: int security_read_policy(void **data, size_t *len)
+.. c:function:: int security_read_policy(struct selinux_state *state, void **data, size_t *len)
 
     read the policy.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param void \*\*data:
         binary policy data

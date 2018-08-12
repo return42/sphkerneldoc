@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/buffer.c
 
-.. _`emergency_thaw_all`:
-
-emergency_thaw_all
-==================
-
-.. c:function:: void emergency_thaw_all( void)
-
-    - forcibly thaw every frozen filesystem
-
-    :param  void:
-        no arguments
-
-.. _`emergency_thaw_all.description`:
-
-Description
------------
-
-Used for emergency unfreeze of all filesystems via SysRq
-
 .. _`sync_mapping_buffers`:
 
 sync_mapping_buffers
@@ -67,7 +48,7 @@ tree and then attach the address_space's inode to its superblock's dirty
 inode list.
 
 \ :c:func:`mark_buffer_dirty`\  is atomic.  It takes bh->b_page->mapping->private_lock,
-mapping->tree_lock and mapping->host->i_lock.
+i_pages lock and mapping->host->i_lock.
 
 .. _`__bread_gfp`:
 

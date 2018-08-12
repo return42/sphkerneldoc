@@ -34,11 +34,12 @@ Definition
         int (*suspend)(struct device *dev, pm_message_t state);
         int (*resume)(struct device *dev);
         int (*num_vf)(struct device *dev);
+        int (*dma_configure)(struct device *dev);
         const struct dev_pm_ops *pm;
         const struct iommu_ops *iommu_ops;
         struct subsys_private *p;
         struct lock_class_key lock_key;
-        bool force_dma;
+        bool need_parent_lock;
     }
 
 .. _`bus_type.members`:
@@ -102,6 +103,9 @@ num_vf
     Called to find out how many virtual functions a device on this
     bus supports.
 
+dma_configure
+    Called to setup DMA configuration on a device on
+
 pm
     Power management operations of this bus, callback the specific
     device driver's pm-ops.
@@ -118,9 +122,9 @@ p
 lock_key
     Lock class key for use by the lock validator
 
-force_dma
-    Assume devices on this bus should be set up by \ :c:func:`dma_configure`\ 
-    even if DMA capability is not explicitly described by firmware.
+need_parent_lock
+    When probing or removing a device on this bus, the
+    device core should lock the device's parent.
 
 .. _`bus_type.description`:
 
@@ -221,7 +225,7 @@ Definition
         int (*resume) (struct device *dev);
         const struct attribute_group **groups;
         const struct dev_pm_ops *pm;
-        int (*coredump) (struct device *dev);
+        void (*coredump) (struct device *dev);
         struct driver_private *p;
     }
 
@@ -282,7 +286,9 @@ pm
     this driver.
 
 coredump
-    *undescribed*
+    Called when sysfs entry is written to. The device driver
+    is expected to call the dev_coredump API resulting in a
+    uevent.
 
 p
     Driver core's private data, no one other than the driver
@@ -478,6 +484,42 @@ Return
 
 Pointer to allocated memory on success, NULL on failure.
 
+.. _`device_connection`:
+
+struct device_connection
+========================
+
+.. c:type:: struct device_connection
+
+    Device Connection Descriptor
+
+.. _`device_connection.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct device_connection {
+        const char *endpoint[2];
+        const char *id;
+        struct list_head list;
+    }
+
+.. _`device_connection.members`:
+
+Members
+-------
+
+endpoint
+    The names of the two devices connected together
+
+id
+    Unique identifier for the connection
+
+list
+    List head, private, for internal use only
+
 .. _`device_link_state`:
 
 enum device_link_state
@@ -550,6 +592,7 @@ Definition
         enum device_link_state status;
         u32 flags;
         bool rpm_active;
+        struct kref kref;
     #ifdef CONFIG_SRCU
         struct rcu_head rcu_head;
     #endif
@@ -580,6 +623,9 @@ flags
 
 rpm_active
     Whether or not the consumer device is runtime-PM-active.
+
+kref
+    Count repeated addition of the same link.
 
 rcu_head
     An RCU head to use for deferred execution of SRCU callbacks.
@@ -728,6 +774,7 @@ Definition
         bool offline_disabled:1;
         bool offline:1;
         bool of_node_reused:1;
+        bool dma_32bit_limit:1;
     }
 
 .. _`device.members`:
@@ -880,6 +927,10 @@ offline
 of_node_reused
     Set if the device-tree node is shared with an ancestor
     device.
+
+dma_32bit_limit
+    bridge limited to 32bit DMA even if the device itself
+    indicates support for a higher limit in the dma_mask field.
 
 .. _`device.description`:
 

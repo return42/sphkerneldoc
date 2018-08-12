@@ -6,12 +6,12 @@
 rt5670_headset_detect
 =====================
 
-.. c:function:: int rt5670_headset_detect(struct snd_soc_codec *codec, int jack_insert)
+.. c:function:: int rt5670_headset_detect(struct snd_soc_component *component, int jack_insert)
 
     Detect headset.
 
-    :param struct snd_soc_codec \*codec:
-        SoC audio codec device.
+    :param struct snd_soc_component \*component:
+        SoC audio component device.
 
     :param int jack_insert:
         Jack insert or not.
@@ -56,12 +56,12 @@ It is better for clock to approximate 3MHz.
 rt5670_sel_asrc_clk_src
 =======================
 
-.. c:function:: int rt5670_sel_asrc_clk_src(struct snd_soc_codec *codec, unsigned int filter_mask, unsigned int clk_src)
+.. c:function:: int rt5670_sel_asrc_clk_src(struct snd_soc_component *component, unsigned int filter_mask, unsigned int clk_src)
 
     select ASRC clock source for a set of filters
 
-    :param struct snd_soc_codec \*codec:
-        SoC audio codec device.
+    :param struct snd_soc_component \*component:
+        SoC audio component device.
 
     :param unsigned int filter_mask:
         mask of filters.

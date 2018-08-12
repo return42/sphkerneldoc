@@ -68,7 +68,7 @@ dwc2_read_packet
     Reads a packet from the Rx FIFO into the destination buffer
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of DWC_otg controller
 
     :param u8 \*dest:
         Destination buffer for the packet
@@ -684,6 +684,18 @@ dwc2_restore_host_registers
 .. c:function:: int dwc2_restore_host_registers(struct dwc2_hsotg *hsotg)
 
     Restore controller host registers. When resuming usb bus, device registers needs to be restored if controller power were disabled.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of the DWC_otg controller
+
+.. _`dwc2_host_enter_hibernation`:
+
+dwc2_host_enter_hibernation
+===========================
+
+.. c:function:: int dwc2_host_enter_hibernation(struct dwc2_hsotg *hsotg)
+
+    Put controller in Hibernation.
 
     :param struct dwc2_hsotg \*hsotg:
         Programming view of the DWC_otg controller

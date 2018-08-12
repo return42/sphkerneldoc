@@ -21,7 +21,8 @@ Definition
         RDMA_RESTRACK_PD,
         RDMA_RESTRACK_CQ,
         RDMA_RESTRACK_QP,
-        RDMA_RESTRACK_XRCD,
+        RDMA_RESTRACK_CM_ID,
+        RDMA_RESTRACK_MR,
         RDMA_RESTRACK_MAX
     };
 
@@ -39,8 +40,11 @@ RDMA_RESTRACK_CQ
 RDMA_RESTRACK_QP
     Queue pair (QP)
 
-RDMA_RESTRACK_XRCD
-    XRC domain (XRCD)
+RDMA_RESTRACK_CM_ID
+    Connection Manager ID (CM_ID)
+
+RDMA_RESTRACK_MR
+    Memory Region (MR)
 
 RDMA_RESTRACK_MAX
     Last entry, used for array dclarations
@@ -64,6 +68,7 @@ Definition
     struct rdma_restrack_root {
         struct rw_semaphore rwsem;
         DECLARE_HASHTABLE(hash, RDMA_RESTRACK_HASH_BITS);
+        int (*fill_res_entry)(struct sk_buff *msg, struct rdma_restrack_entry *entry);
     }
 
 .. _`rdma_restrack_root.members`:
@@ -76,6 +81,10 @@ rwsem
 
 hash
     global database for all resources per-device
+
+fill_res_entry
+    driver-specific fill function
+    Allows rdma drivers to add their own restrack attributes.
 
 .. _`rdma_restrack_entry`:
 
@@ -235,10 +244,25 @@ rdma_restrack_put
 
 .. c:function:: int rdma_restrack_put(struct rdma_restrack_entry *res)
 
-    relase resource
+    release resource
 
     :param struct rdma_restrack_entry \*res:
         resource entry
+
+.. _`rdma_restrack_set_task`:
+
+rdma_restrack_set_task
+======================
+
+.. c:function:: void rdma_restrack_set_task(struct rdma_restrack_entry *res, struct task_struct *task)
+
+    set the task for this resource
+
+    :param struct rdma_restrack_entry \*res:
+        resource entry
+
+    :param struct task_struct \*task:
+        task struct
 
 .. This file was automatic generated / don't edit.
 

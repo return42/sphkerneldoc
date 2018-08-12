@@ -17,3 +17,4 @@ clocksource
     timer-of_c
     timer-stm32_c
     timer-ti-32k_c
+    timer-ti-dm_c

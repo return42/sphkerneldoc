@@ -6,9 +6,12 @@
 IDR_INIT
 ========
 
-.. c:function::  IDR_INIT()
+.. c:function::  IDR_INIT( name)
 
     Initialise an IDR.
+
+    :param  name:
+        Name of IDR.
 
 .. _`idr_init.description`:
 
@@ -24,10 +27,10 @@ DEFINE_IDR
 
 .. c:function::  DEFINE_IDR( name)
 
-    Define a statically-allocated IDR
+    Define a statically-allocated IDR.
 
     :param  name:
-        Name of IDR
+        Name of IDR.
 
 .. _`define_idr.description`:
 

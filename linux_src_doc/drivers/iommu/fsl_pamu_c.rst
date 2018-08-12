@@ -197,7 +197,7 @@ get_ome_index
 
 .. c:function:: void get_ome_index(u32 *omi_index, struct device *dev)
 
-    Returns the index in the operation mapping table for device. @\*omi_index: pointer for storing the index value
+    Returns the index in the operation mapping table for device. \ ````\ \*omi_index: pointer for storing the index value
 
     :param u32 \*omi_index:
         *undescribed*

@@ -8,6 +8,7 @@ phy
     :maxdepth: 1
 
     broadcom/index
+    motorola/index
     qualcomm/index
     rockchip/index
     samsung/index

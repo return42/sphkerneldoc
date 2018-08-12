@@ -6,13 +6,10 @@
 acpi_get_hp_hw_control_from_firmware
 ====================================
 
-.. c:function:: int acpi_get_hp_hw_control_from_firmware(struct pci_dev *pdev, u32 flags)
+.. c:function:: int acpi_get_hp_hw_control_from_firmware(struct pci_dev *pdev)
 
     :param struct pci_dev \*pdev:
         *undescribed*
-
-    :param u32 flags:
-        requested control bits for \_OSC
 
 .. _`acpi_get_hp_hw_control_from_firmware.description`:
 

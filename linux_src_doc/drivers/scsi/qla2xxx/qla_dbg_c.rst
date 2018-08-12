@@ -11,7 +11,7 @@ qla2300_fw_dump
     Dumps binary data from the 2300 firmware.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
     :param int hardware_locked:
         Called with the hardware_lock
@@ -26,7 +26,7 @@ qla2100_fw_dump
     Dumps binary data from the 2100/2200 firmware.
 
     :param scsi_qla_host_t \*vha:
-        *undescribed*
+        HA context
 
     :param int hardware_locked:
         Called with the hardware_lock

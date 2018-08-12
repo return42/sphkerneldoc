@@ -55,29 +55,6 @@ to add the page to the [in]active [file\|anon] list is deferred until the
 pagevec is drained. This gives a chance for the caller of \ :c:func:`lru_cache_add`\ 
 have the page added to the active list using \ :c:func:`mark_page_accessed`\ .
 
-.. _`add_page_to_unevictable_list`:
-
-add_page_to_unevictable_list
-============================
-
-.. c:function:: void add_page_to_unevictable_list(struct page *page)
-
-    add a page to the unevictable list
-
-    :param struct page \*page:
-        the page to be added to the unevictable list
-
-.. _`add_page_to_unevictable_list.description`:
-
-Description
------------
-
-Add page directly to its zone's unevictable list.  To avoid races with
-tasks that might be making the page evictable, through eg. munlock,
-munmap or exit, while it's not on the lru, we want to add the page
-while it's locked or otherwise "invisible" to other tasks.  This is
-difficult to do when using the pagevec cache, so bypass that.
-
 .. _`lru_cache_add_active_or_unevictable`:
 
 lru_cache_add_active_or_unevictable
@@ -184,7 +161,7 @@ pagevec_lookup_entries
         The starting entry index
 
     :param unsigned nr_entries:
-        *undescribed*
+        The maximum number of pages
 
     :param pgoff_t \*indices:
         The cache indices corresponding to the entries in \ ``pvec``\ 

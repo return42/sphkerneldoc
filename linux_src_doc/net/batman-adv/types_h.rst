@@ -246,7 +246,7 @@ Definition
 
     struct batadv_hard_iface {
         struct list_head list;
-        s16 if_num;
+        unsigned int if_num;
         char if_status;
         u8 num_bcasts;
         u32 wifi_flags;
@@ -260,7 +260,9 @@ Definition
     #ifdef CONFIG_BATMAN_ADV_BATMAN_V
         struct batadv_hard_iface_bat_v bat_v;
     #endif
+    #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         struct dentry *debug_dir;
+    #endif
         struct hlist_head neigh_list;
         spinlock_t neigh_list_lock;
     }
@@ -1698,8 +1700,8 @@ Definition
 .. code-block:: c
 
     struct batadv_mcast_querier_state {
-        bool exists;
-        bool shadowing;
+        unsigned char exists:1;
+        unsigned char shadowing:1;
     }
 
 .. _`batadv_mcast_querier_state.members`:
@@ -1737,9 +1739,8 @@ Definition
         struct batadv_mcast_querier_state querier_ipv4;
         struct batadv_mcast_querier_state querier_ipv6;
         u8 flags;
-        bool enabled;
-        bool bridged;
-        atomic_t num_disabled;
+        unsigned char enabled:1;
+        unsigned char bridged:1;
         atomic_t num_want_all_unsnoopables;
         atomic_t num_want_all_ipv4;
         atomic_t num_want_all_ipv6;
@@ -1779,9 +1780,6 @@ enabled
 bridged
     whether the soft interface has a bridge on top
 
-num_disabled
-    number of nodes that have no mcast tvlv
-
 num_want_all_unsnoopables
     number of nodes wanting unsnoopable IP traffic
 
@@ -1815,7 +1813,9 @@ Definition
 
     struct batadv_priv_nc {
         struct delayed_work work;
+    #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         struct dentry *debug_dir;
+    #endif
         u8 min_tq;
         u32 max_fwd_delay;
         u32 max_buffer_time;
@@ -1974,7 +1974,7 @@ Definition
         u32 last_sent;
         atomic64_t tot_sent;
         atomic_t dup_acks;
-        bool fast_recovery;
+        unsigned char fast_recovery:1;
         u32 recover;
         u32 rto;
         u32 srtt;
@@ -2237,9 +2237,11 @@ Definition
         atomic_t bcast_seqno;
         atomic_t bcast_queue_left;
         atomic_t batman_queue_left;
-        char num_ifaces;
+        unsigned int num_ifaces;
         struct kobject *mesh_obj;
+    #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         struct dentry *debug_dir;
+    #endif
         struct hlist_head forw_bat_list;
         struct hlist_head forw_bcast_list;
         struct hlist_head tp_list;
@@ -3093,8 +3095,8 @@ Definition
 .. code-block:: c
 
     struct batadv_skb_cb {
-        bool decoded;
-        unsigned int num_bcasts;
+        unsigned char decoded:1;
+        unsigned char num_bcasts;
     }
 
 .. _`batadv_skb_cb.members`:
@@ -3289,8 +3291,8 @@ Definition
 
     struct batadv_algo_orig_ops {
         void (*free)(struct batadv_orig_node *orig_node);
-        int (*add_if)(struct batadv_orig_node *orig_node, int max_if_num);
-        int (*del_if)(struct batadv_orig_node *orig_node, int max_if_num, int del_if_num);
+        int (*add_if)(struct batadv_orig_node *orig_node, unsigned int max_if_num);
+        int (*del_if)(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num);
     #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         void (*print)(struct batadv_priv *priv, struct seq_file *seq, struct batadv_hard_iface *hard_iface);
     #endif

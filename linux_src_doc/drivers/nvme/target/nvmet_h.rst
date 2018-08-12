@@ -35,7 +35,7 @@ Members
 -------
 
 entry
-    List head for holding a list of these elements.
+    Entry into referrals or transport list.
 
 disc_addr
     Address information is stored in a format defined

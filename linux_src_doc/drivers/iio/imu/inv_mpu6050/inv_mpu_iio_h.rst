@@ -31,6 +31,7 @@ Definition
         u8 raw_accl;
         u8 temperature;
         u8 int_enable;
+        u8 int_status;
         u8 pwr_mgmt_1;
         u8 pwr_mgmt_2;
         u8 int_pin_cfg;
@@ -82,6 +83,9 @@ temperature
 int_enable
     Interrupt enable register.
 
+int_status
+    Interrupt status register.
+
 pwr_mgmt_1
     Controls chip's power state and clock source.
 
@@ -121,6 +125,7 @@ Definition
         unsigned int accl_fifo_enable:1;
         unsigned int gyro_fifo_enable:1;
         u16 fifo_rate;
+        u8 user_ctrl;
     }
 
 .. _`inv_mpu6050_chip_config.members`:
@@ -145,6 +150,9 @@ gyro_fifo_enable
 
 fifo_rate
     FIFO update rate.
+
+user_ctrl
+    *undescribed*
 
 .. _`inv_mpu6050_hw`:
 

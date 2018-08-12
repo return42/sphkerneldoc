@@ -138,6 +138,18 @@ This is what a descriptor looks like, from LSB to MSB::
      bits 53-54:    mbz, reserved for use by hardware
      bits 55-63:    group ID, currently unused and set to 0
 
+Starting from Gen11, the upper dword of the descriptor has a new format:
+
+     bits 32-36:    reserved
+     bits 37-47:    SW context ID
+     bits 48:53:    engine instance
+     bit 54:        mbz, reserved for use by hardware
+     bits 55-60:    SW counter
+     bits 61-63:    engine class
+
+engine info, SW context ID and SW counter need to form a unique number
+(Context ID) per lrc.
+
 .. _`intel_logical_ring_cleanup`:
 
 intel_logical_ring_cleanup

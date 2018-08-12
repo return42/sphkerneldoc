@@ -20,10 +20,10 @@ ufshcd_get_intr_mask
 
 .. c:function:: u32 ufshcd_get_intr_mask(struct ufs_hba *hba)
 
-    Get the interrupt bit mask \ ``hba``\  - Pointer to adapter instance
+    Get the interrupt bit mask
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        Pointer to adapter instance
 
 .. _`ufshcd_get_intr_mask.description`:
 
@@ -39,10 +39,10 @@ ufshcd_get_ufs_version
 
 .. c:function:: u32 ufshcd_get_ufs_version(struct ufs_hba *hba)
 
-    Get the UFS version supported by the HBA \ ``hba``\  - Pointer to adapter instance
+    Get the UFS version supported by the HBA
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        Pointer to adapter instance
 
 .. _`ufshcd_get_ufs_version.description`:
 
@@ -80,7 +80,7 @@ ufshcd_get_tr_ocs
     Get the UTRD Overall Command Status
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local command reference block
 
 .. _`ufshcd_get_tr_ocs.description`:
 
@@ -142,6 +142,21 @@ ufshcd_utrl_clear
 .. c:function:: void ufshcd_utrl_clear(struct ufs_hba *hba, u32 pos)
 
     Clear a bit in UTRLCLR register
+
+    :param struct ufs_hba \*hba:
+        per adapter instance
+
+    :param u32 pos:
+        position of the bit to be cleared
+
+.. _`ufshcd_utmrl_clear`:
+
+ufshcd_utmrl_clear
+==================
+
+.. c:function:: void ufshcd_utmrl_clear(struct ufs_hba *hba, u32 pos)
+
+    Clear a bit in UTRMLCLR register
 
     :param struct ufs_hba \*hba:
         per adapter instance
@@ -469,10 +484,10 @@ ufshcd_copy_sense_data
 
 .. c:function:: void ufshcd_copy_sense_data(struct ufshcd_lrb *lrbp)
 
-    Copy sense data in case of check condition \ ``lrb``\  - pointer to local reference block
+    Copy sense data in case of check condition
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local reference block
 
 .. _`ufshcd_copy_query_response`:
 
@@ -485,10 +500,9 @@ ufshcd_copy_query_response
 
     :param struct ufs_hba \*hba:
         per adapter instance
-        \ ``lrb``\  - pointer to local reference block
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local reference block
 
 .. _`ufshcd_hba_capabilities`:
 
@@ -570,7 +584,7 @@ ufshcd_wait_for_uic_cmd
         per adapter instance
 
     :param struct uic_command \*uic_cmd:
-        *undescribed*
+        UIC command
 
 .. _`ufshcd_wait_for_uic_cmd.description`:
 
@@ -636,13 +650,13 @@ ufshcd_map_sg
 
 .. c:function:: int ufshcd_map_sg(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
 
-    Map scatter-gather list to prdt \ ``lrbp``\  - pointer to local reference block
+    Map scatter-gather list to prdt
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per adapter instance
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local reference block
 
 .. _`ufshcd_map_sg.description`:
 
@@ -706,13 +720,13 @@ ufshcd_prepare_utp_scsi_cmd_upiu
 
 .. c:function:: void ufshcd_prepare_utp_scsi_cmd_upiu(struct ufshcd_lrb *lrbp, u32 upiu_flags)
 
-    fills the utp_transfer_req_desc, for scsi commands \ ``lrbp``\  - local reference block pointer \ ``upiu_flags``\  - flags
+    fills the utp_transfer_req_desc, for scsi commands
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        local reference block pointer
 
     :param u32 upiu_flags:
-        *undescribed*
+        flags
 
 .. _`ufshcd_prepare_utp_query_req_upiu`:
 
@@ -739,13 +753,13 @@ ufshcd_comp_devman_upiu
 
 .. c:function:: int ufshcd_comp_devman_upiu(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
 
-    UFS Protocol Information Unit(UPIU) for Device Management Purposes \ ``hba``\  - per adapter instance \ ``lrb``\  - pointer to local reference block
+    UFS Protocol Information Unit(UPIU) for Device Management Purposes
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per adapter instance
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local reference block
 
 .. _`ufshcd_comp_scsi_upiu`:
 
@@ -754,13 +768,13 @@ ufshcd_comp_scsi_upiu
 
 .. c:function:: int ufshcd_comp_scsi_upiu(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
 
-    UFS Protocol Information Unit(UPIU) for SCSI Purposes \ ``hba``\  - per adapter instance \ ``lrb``\  - pointer to local reference block
+    UFS Protocol Information Unit(UPIU) for SCSI Purposes
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per adapter instance
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local reference block
 
 .. _`ufshcd_upiu_wlun_to_scsi_wlun`:
 
@@ -772,7 +786,7 @@ ufshcd_upiu_wlun_to_scsi_wlun
     maps UPIU W-LUN id to SCSI W-LUN ID
 
     :param u8 upiu_wlun_id:
-        *undescribed*
+        UPIU W-LUN id
 
 .. _`ufshcd_upiu_wlun_to_scsi_wlun.description`:
 
@@ -791,7 +805,7 @@ ufshcd_queuecommand
     main entry point for SCSI requests
 
     :param struct Scsi_Host \*host:
-        *undescribed*
+        SCSI host pointer
 
     :param struct scsi_cmnd \*cmd:
         command from SCSI Midlayer
@@ -831,7 +845,7 @@ ufshcd_get_dev_cmd_tag
         per-adapter instance
 
     :param int \*tag_out:
-        *undescribed*
+        pointer to variable with available slot value
 
 .. _`ufshcd_get_dev_cmd_tag.description`:
 
@@ -851,16 +865,16 @@ ufshcd_exec_dev_cmd
 
 .. c:function:: int ufshcd_exec_dev_cmd(struct ufs_hba *hba, enum dev_cmd_type cmd_type, int timeout)
 
-    API for sending device management requests \ ``hba``\  - UFS hba \ ``cmd_type``\  - specifies the type (NOP, Query...) \ ``timeout``\  - time in seconds
+    API for sending device management requests
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        UFS hba
 
     :param enum dev_cmd_type cmd_type:
-        *undescribed*
+        specifies the type (NOP, Query...)
 
     :param int timeout:
-        *undescribed*
+        time in seconds
 
 .. _`ufshcd_exec_dev_cmd.note`:
 
@@ -910,44 +924,21 @@ ufshcd_query_flag
     API function for sending flag query requests
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per-adapter instance
 
     :param enum query_opcode opcode:
-        *undescribed*
+        flag query to perform
 
     :param enum flag_idn idn:
-        *undescribed*
+        flag idn to access
 
     :param bool \*flag_res:
-        *undescribed*
+        the flag value after the query request completes
 
-.. _`ufshcd_query_flag.hba`:
+.. _`ufshcd_query_flag.description`:
 
-hba
----
-
-per-adapter instance
-
-.. _`ufshcd_query_flag.query_opcode`:
-
-query_opcode
-------------
-
-flag query to perform
-
-.. _`ufshcd_query_flag.idn`:
-
-idn
----
-
-flag idn to access
-
-.. _`ufshcd_query_flag.flag_res`:
-
-flag_res
---------
-
-the flag value after the query request completes
+Description
+-----------
 
 Returns 0 for success, non-zero in case of failure
 
@@ -961,64 +952,27 @@ ufshcd_query_attr
     API function for sending attribute requests
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per-adapter instance
 
     :param enum query_opcode opcode:
-        *undescribed*
+        attribute opcode
 
     :param enum attr_idn idn:
-        *undescribed*
+        attribute idn to access
 
     :param u8 index:
-        *undescribed*
+        index field
 
     :param u8 selector:
-        *undescribed*
+        selector field
 
     :param u32 \*attr_val:
-        *undescribed*
+        the attribute value after the query request completes
 
-.. _`ufshcd_query_attr.hba`:
+.. _`ufshcd_query_attr.description`:
 
-hba
----
-
-per-adapter instance
-
-.. _`ufshcd_query_attr.opcode`:
-
-opcode
-------
-
-attribute opcode
-
-.. _`ufshcd_query_attr.idn`:
-
-idn
----
-
-attribute idn to access
-
-.. _`ufshcd_query_attr.index`:
-
-index
------
-
-index field
-
-.. _`ufshcd_query_attr.selector`:
-
-selector
---------
-
-selector field
-
-.. _`ufshcd_query_attr.attr_val`:
-
-attr_val
---------
-
-the attribute value after the query request completes
+Description
+-----------
 
 Returns 0 for success, non-zero in case of failure
 
@@ -1067,74 +1021,30 @@ ufshcd_query_descriptor_retry
     API function for sending descriptor requests
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per-adapter instance
 
     :param enum query_opcode opcode:
-        *undescribed*
+        attribute opcode
 
     :param enum desc_idn idn:
-        *undescribed*
+        attribute idn to access
 
     :param u8 index:
-        *undescribed*
+        index field
 
     :param u8 selector:
-        *undescribed*
+        selector field
 
     :param u8 \*desc_buf:
-        *undescribed*
+        the buffer that contains the descriptor
 
     :param int \*buf_len:
-        *undescribed*
+        length parameter passed to the device
 
-.. _`ufshcd_query_descriptor_retry.hba`:
+.. _`ufshcd_query_descriptor_retry.description`:
 
-hba
----
-
-per-adapter instance
-
-.. _`ufshcd_query_descriptor_retry.opcode`:
-
-opcode
-------
-
-attribute opcode
-
-.. _`ufshcd_query_descriptor_retry.idn`:
-
-idn
----
-
-attribute idn to access
-
-.. _`ufshcd_query_descriptor_retry.index`:
-
-index
------
-
-index field
-
-.. _`ufshcd_query_descriptor_retry.selector`:
-
-selector
---------
-
-selector field
-
-.. _`ufshcd_query_descriptor_retry.desc_buf`:
-
-desc_buf
---------
-
-the buffer that contains the descriptor
-
-.. _`ufshcd_query_descriptor_retry.buf_len`:
-
-buf_len
--------
-
-length parameter passed to the device
+Description
+-----------
 
 Returns 0 for success, non-zero in case of failure.
 The buf_len parameter will contain, on return, the length parameter
@@ -1227,16 +1137,31 @@ Description
 
 Return 0 in case of success, non-zero otherwise
 
-.. _`ascii_std`:
+.. _`ufshcd_read_string_desc`:
 
-ASCII_STD
-=========
+ufshcd_read_string_desc
+=======================
 
-.. c:function::  ASCII_STD()
+.. c:function:: int ufshcd_read_string_desc(struct ufs_hba *hba, int desc_index, u8 *buf, u32 size, bool ascii)
 
     read string descriptor
 
-.. _`ascii_std.description`:
+    :param struct ufs_hba \*hba:
+        pointer to adapter instance
+
+    :param int desc_index:
+        descriptor index
+
+    :param u8 \*buf:
+        pointer to buffer where descriptor would be read
+
+    :param u32 size:
+        size of buf
+
+    :param bool ascii:
+        if true convert from unicode to ascii characters
+
+.. _`ufshcd_read_string_desc.description`:
 
 Description
 -----------
@@ -1346,6 +1271,49 @@ UIC_CMD_DME_LINK_STARTUP command must be issued to Unipro layer,
 in order to initialize the Unipro link startup procedure.
 Once the Unipro links are up, the device connected to the controller
 is detected.
+
+Returns 0 on success, non-zero value on failure
+
+.. _`ufshcd_dme_reset`:
+
+ufshcd_dme_reset
+================
+
+.. c:function:: int ufshcd_dme_reset(struct ufs_hba *hba)
+
+    UIC command for DME_RESET
+
+    :param struct ufs_hba \*hba:
+        per adapter instance
+
+.. _`ufshcd_dme_reset.description`:
+
+Description
+-----------
+
+DME_RESET command is issued in order to reset UniPro stack.
+This function now deal with cold reset.
+
+Returns 0 on success, non-zero value on failure
+
+.. _`ufshcd_dme_enable`:
+
+ufshcd_dme_enable
+=================
+
+.. c:function:: int ufshcd_dme_enable(struct ufs_hba *hba)
+
+    UIC command for DME_ENABLE
+
+    :param struct ufs_hba \*hba:
+        per adapter instance
+
+.. _`ufshcd_dme_enable.description`:
+
+Description
+-----------
+
+DME_ENABLE command is issued in order to enable UniPro stack.
 
 Returns 0 on success, non-zero value on failure
 
@@ -1496,14 +1464,12 @@ ufshcd_complete_dev_init
     checks device readiness
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per-adapter instance
 
-.. _`ufshcd_complete_dev_init.hba`:
+.. _`ufshcd_complete_dev_init.description`:
 
-hba
----
-
-per-adapter instance
+Description
+-----------
 
 Set fDeviceInit flag and poll until device toggles it.
 
@@ -1547,19 +1513,19 @@ ufshcd_hba_stop
     :param bool can_sleep:
         perform sleep or just spin
 
-.. _`ufshcd_hba_enable`:
+.. _`ufshcd_hba_execute_hce`:
 
-ufshcd_hba_enable
-=================
+ufshcd_hba_execute_hce
+======================
 
-.. c:function:: int ufshcd_hba_enable(struct ufs_hba *hba)
+.. c:function:: int ufshcd_hba_execute_hce(struct ufs_hba *hba)
 
     initialize the controller
 
     :param struct ufs_hba \*hba:
         per adapter instance
 
-.. _`ufshcd_hba_enable.description`:
+.. _`ufshcd_hba_execute_hce.description`:
 
 Description
 -----------
@@ -1749,7 +1715,7 @@ ufshcd_scsi_cmd_status
     Update SCSI command result based on SCSI status
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local reference block of completed command
 
     :param int scsi_status:
         SCSI command status
@@ -1774,7 +1740,7 @@ ufshcd_transfer_rsp_status
         per adapter instance
 
     :param struct ufshcd_lrb \*lrbp:
-        *undescribed*
+        pointer to local reference block of completed command
 
 .. _`ufshcd_transfer_rsp_status.description`:
 
@@ -2257,10 +2223,10 @@ ufshcd_eh_host_reset_handler
 
 .. c:function:: int ufshcd_eh_host_reset_handler(struct scsi_cmnd *cmd)
 
-    host reset handler registered to scsi layer \ ``cmd``\  - SCSI command pointer
+    host reset handler registered to scsi layer
 
     :param struct scsi_cmnd \*cmd:
-        *undescribed*
+        SCSI command pointer
 
 .. _`ufshcd_eh_host_reset_handler.description`:
 
@@ -2352,9 +2318,11 @@ field of SSU (START STOP UNIT) command. But this "power condition" field
 will take effect only when its sent to "UFS device" well known logical unit
 hence we require the scsi_device instance to represent this logical unit in
 order for the UFS host driver to send the SSU command for power management.
+
 We also require the scsi_device instance for "RPMB" (Replay Protected Memory
 Block) LU so user space process can control this LU. User space may also
 want to have access to BOOT LU.
+
 This function adds scsi device instances for each of all well known LUs
 (except "REPORT LUNS" LU).
 
@@ -2678,10 +2646,10 @@ ufshcd_remove
 
 .. c:function:: void ufshcd_remove(struct ufs_hba *hba)
 
-    de-allocate SCSI host and host memory space data structure memory \ ``hba``\  - per adapter instance
+    de-allocate SCSI host and host memory space data structure memory
 
     :param struct ufs_hba \*hba:
-        *undescribed*
+        per adapter instance
 
 .. _`ufshcd_dealloc_host`:
 

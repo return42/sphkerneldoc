@@ -585,6 +585,91 @@ that it's possible that we'll trim less than that amount if the xdr_buf is
 too small, or if (for instance) it's all in the head and the parser has
 already read too far into it.
 
+.. _`xdr_stream_decode_opaque`:
+
+xdr_stream_decode_opaque
+========================
+
+.. c:function:: ssize_t xdr_stream_decode_opaque(struct xdr_stream *xdr, void *ptr, size_t size)
+
+    Decode variable length opaque
+
+    :param struct xdr_stream \*xdr:
+        pointer to xdr_stream
+
+    :param void \*ptr:
+        location to store opaque data
+
+    :param size_t size:
+        size of storage buffer \ ``ptr``\ 
+
+.. _`xdr_stream_decode_opaque.return-values`:
+
+Return values
+-------------
+
+  On success, returns size of object stored in *@ptr
+  \ ``-EBADMSG``\  on XDR buffer overflow
+  \ ``-EMSGSIZE``\  on overflow of storage buffer \ ``ptr``\ 
+
+.. _`xdr_stream_decode_opaque_dup`:
+
+xdr_stream_decode_opaque_dup
+============================
+
+.. c:function:: ssize_t xdr_stream_decode_opaque_dup(struct xdr_stream *xdr, void **ptr, size_t maxlen, gfp_t gfp_flags)
+
+    Decode and duplicate variable length opaque
+
+    :param struct xdr_stream \*xdr:
+        pointer to xdr_stream
+
+    :param void \*\*ptr:
+        location to store pointer to opaque data
+
+    :param size_t maxlen:
+        maximum acceptable object size
+
+    :param gfp_t gfp_flags:
+        GFP mask to use
+
+.. _`xdr_stream_decode_opaque_dup.return-values`:
+
+Return values
+-------------
+
+  On success, returns size of object stored in *@ptr
+  \ ``-EBADMSG``\  on XDR buffer overflow
+  \ ``-EMSGSIZE``\  if the size of the object would exceed \ ``maxlen``\ 
+  \ ``-ENOMEM``\  on memory allocation failure
+
+.. _`xdr_stream_decode_string`:
+
+xdr_stream_decode_string
+========================
+
+.. c:function:: ssize_t xdr_stream_decode_string(struct xdr_stream *xdr, char *str, size_t size)
+
+    Decode variable length string
+
+    :param struct xdr_stream \*xdr:
+        pointer to xdr_stream
+
+    :param char \*str:
+        location to store string
+
+    :param size_t size:
+        size of storage buffer \ ``str``\ 
+
+.. _`xdr_stream_decode_string.return-values`:
+
+Return values
+-------------
+
+  On success, returns length of NUL-terminated string stored in *@str
+  \ ``-EBADMSG``\  on XDR buffer overflow
+  \ ``-EMSGSIZE``\  on overflow of storage buffer \ ``str``\ 
+
 .. _`xdr_stream_decode_string_dup`:
 
 xdr_stream_decode_string_dup

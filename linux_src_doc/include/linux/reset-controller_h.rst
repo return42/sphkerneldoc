@@ -41,6 +41,51 @@ deassert
 status
     return the status of the reset line, if supported
 
+.. _`reset_control_lookup`:
+
+struct reset_control_lookup
+===========================
+
+.. c:type:: struct reset_control_lookup
+
+    represents a single lookup entry
+
+.. _`reset_control_lookup.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct reset_control_lookup {
+        struct list_head list;
+        const char *provider;
+        unsigned int index;
+        const char *dev_id;
+        const char *con_id;
+    }
+
+.. _`reset_control_lookup.members`:
+
+Members
+-------
+
+list
+    internal list of all reset lookup entries
+
+provider
+    name of the reset controller device controlling this reset line
+
+index
+    ID of the reset controller in the reset controller device
+
+dev_id
+    name of the device associated with this reset line
+    \ ``con_id``\  name of the reset line (can be NULL)
+
+con_id
+    *undescribed*
+
 .. _`reset_controller_dev`:
 
 struct reset_controller_dev
@@ -62,6 +107,7 @@ Definition
         struct module *owner;
         struct list_head list;
         struct list_head reset_control_head;
+        struct device *dev;
         struct device_node *of_node;
         int of_reset_n_cells;
         int (*of_xlate)(struct reset_controller_dev *rcdev, const struct of_phandle_args *reset_spec);
@@ -84,6 +130,9 @@ list
 
 reset_control_head
     head of internal list of requested reset controls
+
+dev
+    corresponding driver model device struct
 
 of_node
     corresponding device tree node as phandle target

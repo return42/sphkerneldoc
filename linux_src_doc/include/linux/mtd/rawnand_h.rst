@@ -1,6 +1,106 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/mtd/rawnand.h
 
+.. _`onfi_params`:
+
+struct onfi_params
+==================
+
+.. c:type:: struct onfi_params
+
+    ONFI specific parameters that will be reused
+
+.. _`onfi_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct onfi_params {
+        int version;
+        u16 tPROG;
+        u16 tBERS;
+        u16 tR;
+        u16 tCCS;
+        u16 async_timing_mode;
+        u16 vendor_revision;
+        u8 vendor[88];
+    }
+
+.. _`onfi_params.members`:
+
+Members
+-------
+
+version
+    ONFI version (BCD encoded), 0 if ONFI is not supported
+
+tPROG
+    Page program time
+
+tBERS
+    Block erase time
+
+tR
+    Page read time
+
+tCCS
+    Change column setup time
+
+async_timing_mode
+    Supported asynchronous timing mode
+
+vendor_revision
+    Vendor specific revision number
+
+vendor
+    Vendor specific data
+
+.. _`nand_parameters`:
+
+struct nand_parameters
+======================
+
+.. c:type:: struct nand_parameters
+
+    NAND generic parameters from the parameter page
+
+.. _`nand_parameters.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_parameters {
+        char model[100];
+        bool supports_set_get_features;
+        DECLARE_BITMAP(set_feature_list, ONFI_FEATURE_NUMBER);
+        DECLARE_BITMAP(get_feature_list, ONFI_FEATURE_NUMBER);
+        struct onfi_params onfi;
+    }
+
+.. _`nand_parameters.members`:
+
+Members
+-------
+
+model
+    Model name
+
+supports_set_get_features
+    The NAND chip supports setting/getting features
+
+set_feature_list
+    Bitmap of features that can be set
+
+get_feature_list
+    Bitmap of features that can be get
+
+onfi
+    ONFI specific parameters
+
 .. _`nand_id`:
 
 struct nand_id
@@ -552,6 +652,9 @@ type
 timings
     The timing, type according to \ ``type``\ 
 
+timings.sdr
+    Use it when \ ``type``\  is \ ``NAND_SDR_IFACE``\ .
+
 .. _`nand_get_sdr_timings`:
 
 nand_get_sdr_timings
@@ -696,7 +799,13 @@ len
     number of data bytes to move
 
 buf
-    *undescribed*
+    buffer to fill
+
+buf.in
+    buffer to fill when reading from the NAND chip
+
+buf.out
+    buffer to read from when writing to the NAND chip
 
 force_8bit
     force 8-bit access
@@ -818,7 +927,21 @@ type
     the instruction type
 
 ctx
-    *undescribed*
+    extra data associated to the instruction. You'll have to use the
+    appropriate element depending on \ ``type``\ 
+
+ctx.cmd
+    use it if \ ``type``\  is \ ``NAND_OP_CMD_INSTR``\ 
+
+ctx.addr
+    use it if \ ``type``\  is \ ``NAND_OP_ADDR_INSTR``\ 
+
+ctx.data
+    use it if \ ``type``\  is \ ``NAND_OP_DATA_IN_INSTR``\ 
+    or \ ``NAND_OP_DATA_OUT_INSTR``\ 
+
+ctx.waitrdy
+    use it if \ ``type``\  is \ ``NAND_OP_WAITRDY_INSTR``\ 
 
 delay_ns
     delay the controller should apply after the instruction has been
@@ -974,7 +1097,13 @@ optional
     whether this element of the pattern is optional or mandatory
 
 ctx
-    *undescribed*
+    address or data constraint
+
+ctx.addr
+    address constraint (number of cycles)
+
+ctx.data
+    data constraint (data length)
 
 .. _`nand_op_parser_pattern`:
 
@@ -1149,8 +1278,8 @@ Definition
         int (*exec_op)(struct nand_chip *chip,const struct nand_operation *op, bool check_only);
         int (*erase)(struct mtd_info *mtd, int page);
         int (*scan_bbt)(struct mtd_info *mtd);
-        int (*onfi_set_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
-        int (*onfi_get_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
+        int (*set_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
+        int (*get_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
         int (*setup_read_retry)(struct mtd_info *mtd, int retry_mode);
         int (*setup_data_interface)(struct mtd_info *mtd, int chipnr, const struct nand_data_interface *conf);
         int chip_delay;
@@ -1174,12 +1303,7 @@ Definition
         int badblockpos;
         int badblockbits;
         struct nand_id id;
-        int onfi_version;
-        int jedec_version;
-        union {
-            struct nand_onfi_params onfi_params;
-            struct nand_jedec_params jedec_params;
-        } ;
+        struct nand_parameters parameters;
         u16 max_bb_per_die;
         u32 blocks_per_die;
         struct nand_data_interface data_interface;
@@ -1272,11 +1396,11 @@ erase
 scan_bbt
     [REPLACEABLE] function to scan bad block table
 
-onfi_set_features
-    [REPLACEABLE] set the features for ONFI nand
+set_features
+    [REPLACEABLE] set the NAND chip features
 
-onfi_get_features
-    [REPLACEABLE] get the features for ONFI nand
+get_features
+    [REPLACEABLE] get the NAND chip features
 
 setup_read_retry
     [FLASHSPECIFIC] flash (vendor) specific function for
@@ -1369,24 +1493,9 @@ badblockbits
 id
     [INTERN] holds NAND ID
 
-onfi_version
-    [INTERN] holds the chip ONFI version (BCD encoded),
-    non 0 if ONFI supported.
-
-jedec_version
-    [INTERN] holds the chip JEDEC version (BCD encoded),
-    non 0 if JEDEC supported.
-
-{unnamed_union}
-    anonymous
-
-onfi_params
-    [INTERN] holds the ONFI page parameter when ONFI is
-    supported, 0 otherwise.
-
-jedec_params
-    [INTERN] holds the JEDEC parameter page when JEDEC is
-    supported, 0 otherwise.
+parameters
+    [INTERN] holds generic parameters under an easily
+    readable form.
 
 max_bb_per_die
     [INTERN] the max number of bad blocks each die of a
@@ -1441,6 +1550,12 @@ priv
 
 manufacturer
     [INTERN] Contains manufacturer information
+
+manufacturer.desc
+    [INTERN] Contains manufacturer's description
+
+manufacturer.priv
+    [INTERN] Contains manufacturer private information
 
 .. _`nand_flash_dev`:
 
@@ -1533,7 +1648,7 @@ ecc.strength_ds
     \ ``ecc_strength_ds``\  in nand_chip{}.
 
 ecc.step_ds
-    The ECC step required by the \ ``ecc``\ .strength_ds, same as the
+    The ECC step required by the \ ``ecc.strength_ds``\ , same as the
     \ ``ecc_step_ds``\  in nand_chip{}, also from the datasheet.
     For example, the "4bit ECC for each 512Byte" can be set with
     NAND_ECC_INFO(4, 512).

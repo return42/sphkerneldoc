@@ -548,6 +548,58 @@ Return
 
 0 on success; error value otherwise
 
+.. _`zynqmp_runtime_suspend`:
+
+zynqmp_runtime_suspend
+======================
+
+.. c:function:: int __maybe_unused zynqmp_runtime_suspend(struct device *dev)
+
+    Runtime suspend method for the SPI driver
+
+    :param struct device \*dev:
+        Address of the platform_device structure
+
+.. _`zynqmp_runtime_suspend.description`:
+
+Description
+-----------
+
+This function disables the clocks
+
+.. _`zynqmp_runtime_suspend.return`:
+
+Return
+------
+
+Always 0
+
+.. _`zynqmp_runtime_resume`:
+
+zynqmp_runtime_resume
+=====================
+
+.. c:function:: int __maybe_unused zynqmp_runtime_resume(struct device *dev)
+
+    Runtime resume method for the SPI driver
+
+    :param struct device \*dev:
+        Address of the platform_device structure
+
+.. _`zynqmp_runtime_resume.description`:
+
+Description
+-----------
+
+This function enables the clocks
+
+.. _`zynqmp_runtime_resume.return`:
+
+Return
+------
+
+0 on success and error value on error
+
 .. _`zynqmp_qspi_probe`:
 
 zynqmp_qspi_probe

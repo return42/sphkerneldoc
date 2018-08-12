@@ -21,8 +21,10 @@ Description
 Must be used to drop the initial ref on a percpu refcount; must be called
 precisely once before shutdown.
 
-Puts \ ``ref``\  in non percpu mode, then does a \ :c:func:`call_rcu`\  before gathering up the
-percpu counters and dropping the initial ref.
+Switches \ ``ref``\  into atomic mode before gathering up the percpu counters
+and dropping the initial ref.
+
+There are no implied RCU grace periods between kill and release.
 
 .. _`percpu_ref_get_many`:
 

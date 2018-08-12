@@ -811,5 +811,51 @@ concerned with whether it's ever possible for this powerdomain to
 go off while some other part of the chip is active.  This function
 assumes that every powerdomain can go to either ON or INACTIVE.
 
+.. _`pwrdm_save_context`:
+
+pwrdm_save_context
+==================
+
+.. c:function:: int pwrdm_save_context(struct powerdomain *pwrdm, void *unused)
+
+    save powerdomain registers
+
+    :param struct powerdomain \*pwrdm:
+        *undescribed*
+
+    :param void \*unused:
+        *undescribed*
+
+.. _`pwrdm_save_context.description`:
+
+Description
+-----------
+
+Register state is going to be lost due to a suspend or hibernate
+event. Save the powerdomain registers.
+
+.. _`pwrdm_restore_context`:
+
+pwrdm_restore_context
+=====================
+
+.. c:function:: int pwrdm_restore_context(struct powerdomain *pwrdm, void *unused)
+
+    restore powerdomain registers
+
+    :param struct powerdomain \*pwrdm:
+        *undescribed*
+
+    :param void \*unused:
+        *undescribed*
+
+.. _`pwrdm_restore_context.description`:
+
+Description
+-----------
+
+Restore powerdomain control registers after a suspend or resume
+event.
+
 .. This file was automatic generated / don't edit.
 

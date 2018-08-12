@@ -15,4 +15,5 @@ crypto
     ecc_h
     jitterentropy_c
     rsa_helper_c
+    sm4_generic_c
     wp512_c

@@ -73,6 +73,9 @@ Definition
         u8 width;
         const u8 *regs;
         struct clk_regmap clkr;
+        int post_div_shift;
+        const struct clk_div_table *post_div_table;
+        size_t num_post_div;
     }
 
 .. _`clk_alpha_pll_postdiv.members`:
@@ -91,6 +94,15 @@ regs
 
 clkr
     regmap clock handle
+
+post_div_shift
+    shift to differentiate between odd & even post-divider
+
+post_div_table
+    table with PLL odd and even post-divider settings
+
+num_post_div
+    Number of PLL post-divider settings
 
 .. This file was automatic generated / don't edit.
 

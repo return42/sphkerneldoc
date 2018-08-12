@@ -30,7 +30,6 @@ Definition
         struct device_node *phy_node;
         struct mii_bus *mii_bus;
         int last_link;
-        bool has_mdio;
     }
 
 .. _`net_local.members`:
@@ -74,9 +73,6 @@ mii_bus
 
 last_link
     last link status
-
-has_mdio
-    indicates whether MDIO is included in the HW
 
 .. _`xemaclite_enable_interrupts`:
 

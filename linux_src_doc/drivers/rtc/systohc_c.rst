@@ -29,6 +29,7 @@ possible at all, and various other -errno for specific temporary failure
 cases.
 
 -EPROTO is returned if now.tv_nsec is not close enough to \*target_nsec.
+
 If temporary failure is indicated the caller should try again 'soon'
 
 .. This file was automatic generated / don't edit.

@@ -140,5 +140,8 @@ pwron_mask
 channel
     struct containing per channel information.
 
+channel.port
+    which port maps to this channel.
+
 .. This file was automatic generated / don't edit.
 

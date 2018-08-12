@@ -1290,8 +1290,8 @@ INTEGER, BOOLEAN, MENU, INTEGER MENU and BITMASK. For menu controls the
 An error is returned if one of the range arguments is invalid for this
 control type.
 
-This function assumes that the control handler is not locked and will
-take the lock itself.
+The caller is responsible for acquiring the control handler mutex on behalf
+of \ :c:func:`__v4l2_ctrl_modify_range`\ .
 
 .. _`v4l2_ctrl_modify_range`:
 

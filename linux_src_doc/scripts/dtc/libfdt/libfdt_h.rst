@@ -607,6 +607,9 @@ fdt_property structure within the device tree blob at the given
 offset.  If lenp is non-NULL, the length of the property value is
 also returned, in the integer pointed to by lenp.
 
+Note that this code only works on device tree versions >= 16. \ :c:func:`fdt_getprop`\ 
+works on all versions.
+
 .. _`fdt_get_property_by_offset.return`:
 
 Return

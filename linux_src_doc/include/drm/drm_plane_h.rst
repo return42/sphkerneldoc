@@ -27,9 +27,12 @@ Definition
         uint32_t crtc_w, crtc_h;
         uint32_t src_x, src_y;
         uint32_t src_h, src_w;
+        u16 alpha;
         unsigned int rotation;
         unsigned int zpos;
         unsigned int normalized_zpos;
+        enum drm_color_encoding color_encoding;
+        enum drm_color_range color_range;
         struct drm_rect src, dst;
         bool visible;
         struct drm_crtc_commit *commit;
@@ -56,8 +59,15 @@ fb
 
 fence
 
-    Optional fence to wait for before scanning out \ ``fb``\ . Do not write this
-    directly, use \ :c:func:`drm_atomic_set_fence_for_plane`\ 
+    Optional fence to wait for before scanning out \ ``fb``\ . The core atomic
+    code will set this when userspace is using explicit fencing. Do not
+    write this directly for a driver's implicit fence, use
+    \ :c:func:`drm_atomic_set_fence_for_plane`\  to ensure that an explicit fence is
+    preserved.
+
+    Drivers should store any implicit fence in this from their
+    \ :c:type:`drm_plane_helper.prepare_fb <drm_plane_helper>`\  callback. See \ :c:func:`drm_gem_fb_prepare_fb`\ 
+    and \ :c:func:`drm_gem_fb_simple_display_pipe_prepare_fb`\  for suitable helpers.
 
 crtc_x
 
@@ -89,6 +99,9 @@ src_h
 src_w
     width of visible portion of plane (in 16.16)
 
+alpha
+    opacity of the plane
+
 rotation
     rotation of the plane
 
@@ -102,8 +115,16 @@ zpos
 normalized_zpos
     normalized value of zpos: unique, range from 0 to N-1
     where N is the number of active planes for given crtc. Note that
-    the driver must call \ :c:func:`drm_atomic_normalize_zpos`\  to update this before
-    it can be trusted.
+    the driver must set drm_mode_config.normalize_zpos or call
+    \ :c:func:`drm_atomic_normalize_zpos`\  to update this before it can be trusted.
+
+color_encoding
+
+    Color encoding for non RGB formats
+
+color_range
+
+    Color range for non RGB formats
 
 src
     clipped source coordinates of the plane (in 16.16)
@@ -461,8 +482,11 @@ Definition
         unsigned index;
         const struct drm_plane_helper_funcs *helper_private;
         struct drm_plane_state *state;
+        struct drm_property *alpha_property;
         struct drm_property *zpos_property;
         struct drm_property *rotation_property;
+        struct drm_property *color_encoding_property;
+        struct drm_property *color_range_property;
     }
 
 .. _`drm_plane.members`:
@@ -546,11 +570,26 @@ state
     commit operations as implemented in the atomic helpers, see
     \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
 
+alpha_property
+    alpha property for this plane
+
 zpos_property
     zpos property for this plane
 
 rotation_property
     rotation property for this plane
+
+color_encoding_property
+
+    Optional "COLOR_ENCODING" enum property for specifying
+    color encoding for non RGB formats.
+    See \ :c:func:`drm_plane_create_color_properties`\ .
+
+color_range_property
+
+    Optional "COLOR_RANGE" enum property for specifying
+    color range for non RGB formats.
+    See \ :c:func:`drm_plane_create_color_properties`\ .
 
 .. _`drm_plane_index`:
 

@@ -23,12 +23,20 @@ Definition
         u32 module_size;
         void __iomem *module_va;
         int offsets[SYSC_MAX_REGS];
-        struct clk *clocks[SYSC_MAX_CLOCKS];
+        struct clk **clocks;
+        const char **clock_roles;
+        int nr_clocks;
+        struct reset_control *rsts;
         const char *legacy_mode;
         const struct sysc_capabilities *cap;
         struct sysc_config cfg;
+        struct ti_sysc_cookie cookie;
         const char *name;
         u32 revision;
+        bool enabled;
+        bool needs_resume;
+        bool child_needs_resume;
+        struct delayed_work idle_work;
     }
 
 .. _`sysc.members`:
@@ -54,6 +62,15 @@ offsets
 clocks
     clocks used by the interconnect target module
 
+clock_roles
+    clock role names for the found clocks
+
+nr_clocks
+    number of clocks used by the interconnect target module
+
+rsts
+    *undescribed*
+
 legacy_mode
     configured for legacy mode if set
 
@@ -63,11 +80,51 @@ cap
 cfg
     interconnect target module configuration
 
+cookie
+    *undescribed*
+
 name
     name if available
 
 revision
     interconnect target module revision
+
+enabled
+    *undescribed*
+
+needs_resume
+    runtime resume needed on resume from suspend
+
+child_needs_resume
+    *undescribed*
+
+idle_work
+    *undescribed*
+
+.. _`sysc_init_resets`:
+
+sysc_init_resets
+================
+
+.. c:function:: int sysc_init_resets(struct sysc *ddata)
+
+    reset module on init
+
+    :param struct sysc \*ddata:
+        device driver data
+
+.. _`sysc_init_resets.description`:
+
+Description
+-----------
+
+A module can have both OCP softreset control and external rstctrl.
+If more complicated rstctrl resets are needed, please handle these
+directly from the child device driver and map only the module reset
+for the parent interconnect target module device.
+
+Automatic reset of the module on init can be skipped with the
+"ti,no-reset-on-init" device tree property.
 
 .. _`sysc_parse_and_check_child_range`:
 
@@ -202,6 +259,34 @@ sysc_show_registers
 
     :param struct sysc \*ddata:
         device driver data
+
+.. _`sysc_legacy_idle_quirk`:
+
+sysc_legacy_idle_quirk
+======================
+
+.. c:function:: void sysc_legacy_idle_quirk(struct sysc *ddata, struct device *child)
+
+    handle children in omap_device compatible way
+
+    :param struct sysc \*ddata:
+        device driver data
+
+    :param struct device \*child:
+        child device driver
+
+.. _`sysc_legacy_idle_quirk.description`:
+
+Description
+-----------
+
+Allow idle for child devices as done with \_od_runtime_suspend().
+Otherwise many child devices will not idle because of the permanent
+parent usecount set in \ :c:func:`pm_runtime_irq_safe`\ .
+
+Note that the long term solution is to just modify the child device
+drivers to not set \ :c:func:`pm_runtime_irq_safe`\  and then this can be just
+dropped.
 
 .. This file was automatic generated / don't edit.
 

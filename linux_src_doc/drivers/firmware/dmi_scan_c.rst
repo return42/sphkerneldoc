@@ -212,6 +212,27 @@ Description
      On return, year, month and day are guaranteed to be in the
      range of [0,9999], [0,12] and [0,31] respectively.
 
+.. _`dmi_get_bios_year`:
+
+dmi_get_bios_year
+=================
+
+.. c:function:: int dmi_get_bios_year( void)
+
+    get a year out of DMI_BIOS_DATE field
+
+    :param  void:
+        no arguments
+
+.. _`dmi_get_bios_year.description`:
+
+Description
+-----------
+
+     Returns year on success, -ENXIO if DMI is not selected,
+     or a different negative error code if DMI field is not present
+     or not parseable.
+
 .. _`dmi_walk`:
 
 dmi_walk

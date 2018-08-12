@@ -93,15 +93,14 @@ megasas_fire_cmd_fusion
         Adapter soft state
 
     :param union MEGASAS_REQUEST_DESCRIPTOR_UNION \*req_desc:
-        32bit or 64bit Request descriptor
+        64bit Request descriptor
 
 .. _`megasas_fire_cmd_fusion.description`:
 
 Description
 -----------
 
-Perform PCI Write. Ventura supports 32 bit Descriptor.
-Prior to Ventura (12G) MR controller supports 64 bit Descriptor.
+Perform PCI Write.
 
 .. _`megasas_fusion_update_can_queue`:
 

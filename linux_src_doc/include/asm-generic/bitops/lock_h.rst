@@ -21,7 +21,8 @@ test_and_set_bit_lock
 Description
 -----------
 
-This operation is atomic and provides acquire barrier semantics.
+This operation is atomic and provides acquire barrier semantics if
+the returned value is 0.
 It can be used to implement bit locks.
 
 .. _`clear_bit_unlock`:

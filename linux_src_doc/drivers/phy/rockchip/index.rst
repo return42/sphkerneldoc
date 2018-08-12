@@ -8,3 +8,4 @@ rockchip
     :maxdepth: 1
 
     phy-rockchip-inno-usb2_c
+    phy-rockchip-typec_c

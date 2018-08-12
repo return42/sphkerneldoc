@@ -8,5 +8,6 @@ proc
     :maxdepth: 1
 
     base_c
+    proc_net_c
     proc_sysctl_c
     vmcore_c

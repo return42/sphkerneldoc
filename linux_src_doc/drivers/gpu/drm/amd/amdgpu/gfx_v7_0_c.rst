@@ -219,25 +219,6 @@ Description
 
 Emits an hdp flush on the cp.
 
-.. _`gfx_v7_0_ring_emit_hdp_invalidate`:
-
-gfx_v7_0_ring_emit_hdp_invalidate
-=================================
-
-.. c:function:: void gfx_v7_0_ring_emit_hdp_invalidate(struct amdgpu_ring *ring)
-
-    emit an hdp invalidate on the cp
-
-    :param struct amdgpu_ring \*ring:
-        *undescribed*
-
-.. _`gfx_v7_0_ring_emit_hdp_invalidate.description`:
-
-Description
------------
-
-Emits an hdp invalidate on the cp.
-
 .. _`gfx_v7_0_ring_emit_fence_gfx`:
 
 gfx_v7_0_ring_emit_fence_gfx

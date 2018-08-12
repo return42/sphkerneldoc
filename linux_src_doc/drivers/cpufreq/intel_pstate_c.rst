@@ -267,6 +267,11 @@ Definition
         s16 epp_policy;
         s16 epp_default;
         s16 epp_saved;
+        u64 hwp_req_cached;
+        u64 hwp_cap_cached;
+        u64 last_io_update;
+        unsigned int sched_flags;
+        u32 hwp_boost_min;
     }
 
 .. _`cpudata.members`:
@@ -349,6 +354,21 @@ epp_default
 epp_saved
     Saved EPP/EPB during system suspend or CPU offline
     operation
+
+hwp_req_cached
+    Cached value of the last HWP Request MSR
+
+hwp_cap_cached
+    Cached value of the last HWP Capabilities MSR
+
+last_io_update
+    Last time when IO wake flag was set
+
+sched_flags
+    Store scheduler flags for possible cross CPU update
+
+hwp_boost_min
+    Last HWP boosted min performance
 
 .. _`cpudata.description`:
 

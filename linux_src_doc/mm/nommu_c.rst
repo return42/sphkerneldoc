@@ -148,34 +148,6 @@ mapped to userspace without leaking data.
 VM_USERMAP is set on the corresponding VMA so that subsequent calls to
 \ :c:func:`remap_vmalloc_range`\  are permissible.
 
-.. _`alloc_vm_area`:
-
-alloc_vm_area
-=============
-
-.. c:function:: struct vm_struct *alloc_vm_area(size_t size, pte_t **ptes)
-
-    allocate a range of kernel address space
-
-    :param size_t size:
-        size of the area
-
-    :param pte_t \*\*ptes:
-        *undescribed*
-
-.. _`alloc_vm_area.return`:
-
-Return
-------
-
-NULL on failure, vm_struct on success
-
-This function reserves a range of kernel address space, and
-allocates pagetables to map that range.  No actual mappings
-are created.  If the kernel address space is not shared
-between processes, it syncs the pagetable across all
-processes.
-
 .. _`access_remote_vm`:
 
 access_remote_vm

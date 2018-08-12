@@ -21,6 +21,7 @@ thermal
     mtk_thermal_c
     of-thermal_c
     power_allocator_c
+    qcom-spmi-temp-alarm_c
     rockchip_thermal_c
     step_wise_c
     thermal_core_c

@@ -165,6 +165,8 @@ Definition
     #ifdef CONFIG_GPIOLIB_IRQCHIP
         struct gpio_irq_chip irq;
     #endif
+        bool need_valid_mask;
+        unsigned long *valid_mask;
     #if defined(CONFIG_OF_GPIO)
         struct device_node *of_node;
         unsigned int of_gpio_n_cells;
@@ -304,6 +306,15 @@ irq
 
     Integrates interrupt chip functionality with the GPIO chip. Can be
     used to handle IRQs for most practical cases.
+
+need_valid_mask
+
+    If set core allocates \ ``valid_mask``\  with all bits set to one.
+
+valid_mask
+
+    If not \ ``NULL``\  holds bitmask of GPIOs which are valid to be used
+    from the chip.
 
 of_node
 

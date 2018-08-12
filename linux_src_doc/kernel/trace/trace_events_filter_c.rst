@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/trace/trace_events_filter.c
 
+.. _`update_preds`:
+
+update_preds
+============
+
+.. c:function:: void update_preds(struct prog_entry *prog, int N, int invert)
+
+    assign a program entry a label target
+
+    :param struct prog_entry \*prog:
+        The program array
+
+    :param int N:
+        The index of the current entry in \ ``prog``\ 
+
+    :param int invert:
+        *undescribed*
+
+.. _`update_preds.description`:
+
+Description
+-----------
+
+The program entry at \ ``N``\  has a target that points to the index of a program
+entry that can have its target and when_to_branch fields updated.
+Update the current program entry denoted by index \ ``N``\  target field to be
+that of the updated entry. This will denote the entry to update if
+we are processing an "\|\|" after an "&&"
+
 .. _`filter_parse_regex`:
 
 filter_parse_regex
@@ -42,21 +71,22 @@ not returns 1 if buff started with a '!'
 create_filter
 =============
 
-.. c:function:: int create_filter(struct trace_event_call *call, char *filter_str, bool set_str, struct event_filter **filterp)
+.. c:function:: int create_filter(struct trace_event_call *call, char *filter_string, bool set_str, struct event_filter **filterp)
 
     create a filter for a trace_event_call
 
     :param struct trace_event_call \*call:
         trace_event_call to create a filter for
 
-    :param char \*filter_str:
-        filter string
+    :param char \*filter_string:
+        *undescribed*
 
     :param bool set_str:
         remember \ ``filter_str``\  and enable detailed error in filter
 
     :param struct event_filter \*\*filterp:
         out param for created filter (always updated on return)
+        Must be a pointer that references a NULL pointer.
 
 .. _`create_filter.description`:
 

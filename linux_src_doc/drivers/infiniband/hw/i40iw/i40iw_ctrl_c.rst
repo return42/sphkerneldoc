@@ -729,7 +729,7 @@ i40iw_sc_del_local_mac_ipaddr_entry
 
     :param u8 entry_idx:
         index of mac entry
-        @ ignore_ref_count: to force mac adde delete
+        \ ````\  ignore_ref_count: to force mac adde delete
 
     :param u8 ignore_ref_count:
         *undescribed*
@@ -1201,6 +1201,27 @@ i40iw_sc_qp_flush_wqes
 
     :param struct i40iw_qp_flush_info \*info:
         dlush information
+
+    :param u64 scratch:
+        u64 saved to be used during cqp completion
+
+    :param bool post_sq:
+        flag for cqp db to ring
+
+.. _`i40iw_sc_gen_ae`:
+
+i40iw_sc_gen_ae
+===============
+
+.. c:function:: enum i40iw_status_code i40iw_sc_gen_ae(struct i40iw_sc_qp *qp, struct i40iw_gen_ae_info *info, u64 scratch, bool post_sq)
+
+    generate AE, currently uses flush WQE CQP OP
+
+    :param struct i40iw_sc_qp \*qp:
+        sc qp
+
+    :param struct i40iw_gen_ae_info \*info:
+        gen ae information
 
     :param u64 scratch:
         u64 saved to be used during cqp completion

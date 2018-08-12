@@ -1,25 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/usb/dwc2/debugfs.c
 
-.. _`is_enabled`:
+.. _`testmode_write`:
 
-IS_ENABLED
-==========
+testmode_write
+==============
 
-.. c:function::  IS_ENABLED( CONFIG_USB_DWC2_DUAL_ROLE)
+.. c:function:: ssize_t testmode_write(struct file *file, const char __user *ubuf, size_t count, loff_t *ppos)
 
-    Designware USB2 DRD controller debugfs
+    change usb test mode state.
 
-    :param  CONFIG_USB_DWC2_DUAL_ROLE:
-        *undescribed*
+    :param struct file \*file:
+        The  file to write to.
 
-.. _`is_enabled.description`:
+    :param const char __user \*ubuf:
+        The buffer where user wrote.
 
-Description
------------
+    :param size_t count:
+        The ubuf size.
 
-Copyright (C) 2015 Intel Corporation
-Mian Yousaf Kaukab <yousaf.kaukab@intel.com>
+    :param loff_t \*ppos:
+        Unused parameter.
 
 .. _`testmode_show`:
 
@@ -31,10 +32,10 @@ testmode_show
     debugfs: show usb test mode state
 
     :param struct seq_file \*s:
-        *undescribed*
+        The seq file to write to.
 
     :param void \*unused:
-        *undescribed*
+        Unused parameter.
 
 .. _`testmode_show.description`:
 

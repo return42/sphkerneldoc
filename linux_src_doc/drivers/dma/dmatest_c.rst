@@ -28,6 +28,7 @@ Definition
         unsigned int pq_sources;
         int timeout;
         bool noverify;
+        bool norandom;
     }
 
 .. _`dmatest_params.members`:
@@ -63,6 +64,9 @@ timeout
     transfer timeout in msec, -1 for infinite timeout
 
 noverify
+    *undescribed*
+
+norandom
     *undescribed*
 
 .. This file was automatic generated / don't edit.

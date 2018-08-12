@@ -88,6 +88,17 @@ wil_rx_refill
     :param int count:
         *undescribed*
 
+.. _`wil_rx_refill.note`:
+
+Note
+----
+
+we have a single RX queue for servicing all VIFs, but we
+allocate skbs with headroom according to main interface only. This
+means it will not work with monitor interface together with other VIFs.
+Currently we only support monitor interface on its own without other VIFs,
+and we will need to fix this code once we add support.
+
 .. _`reverse_memcmp`:
 
 reverse_memcmp
@@ -193,9 +204,14 @@ is "if unrolling" to optimize the critical path.
 \__wil_update_net_queues
 ========================
 
-.. c:function:: void __wil_update_net_queues(struct wil6210_priv *wil, struct vring *vring, bool check_stop)
+.. c:function:: void __wil_update_net_queues(struct wil6210_priv *wil, struct wil6210_vif *vif, struct vring *vring, bool check_stop)
+
+    It will start/stop net queues of a specific VIF net_device.
 
     :param struct wil6210_priv \*wil:
+        *undescribed*
+
+    :param struct wil6210_vif \*vif:
         *undescribed*
 
     :param struct vring \*vring:
@@ -226,9 +242,9 @@ availability and modified vring has high descriptor availability.
 wil_tx_complete
 ===============
 
-.. c:function:: int wil_tx_complete(struct wil6210_priv *wil, int ringid)
+.. c:function:: int wil_tx_complete(struct wil6210_vif *vif, int ringid)
 
-    :param struct wil6210_priv \*wil:
+    :param struct wil6210_vif \*vif:
         *undescribed*
 
     :param int ringid:

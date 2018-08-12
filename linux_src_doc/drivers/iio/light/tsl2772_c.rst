@@ -1,0 +1,86 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/tsl2772.c
+
+.. _`tsl2772_get_lux`:
+
+tsl2772_get_lux
+===============
+
+.. c:function:: int tsl2772_get_lux(struct iio_dev *indio_dev)
+
+    Reads and calculates current lux value.
+
+    :param struct iio_dev \*indio_dev:
+        pointer to IIO device
+
+.. _`tsl2772_get_lux.description`:
+
+Description
+-----------
+
+The raw ch0 and ch1 values of the ambient light sensed in the last
+integration cycle are read from the device. The raw values are multiplied
+by a device-specific scale factor, and divided by the integration time and
+device gain. The code supports multiple lux equations through the lux table
+coefficients. A lux gain trim is applied to each lux equation, and then the
+maximum lux within the interval 0..65535 is selected.
+
+.. _`tsl2772_get_prox`:
+
+tsl2772_get_prox
+================
+
+.. c:function:: int tsl2772_get_prox(struct iio_dev *indio_dev)
+
+    Reads proximity data registers and updates chip->prox_data.
+
+    :param struct iio_dev \*indio_dev:
+        pointer to IIO device
+
+.. _`tsl2772_defaults`:
+
+tsl2772_defaults
+================
+
+.. c:function:: void tsl2772_defaults(struct tsl2772_chip *chip)
+
+    Populates the device nominal operating parameters with those provided by a 'platform' data struct or with prefined defaults.
+
+    :param struct tsl2772_chip \*chip:
+        pointer to device structure.
+
+.. _`tsl2772_als_calibrate`:
+
+tsl2772_als_calibrate
+=====================
+
+.. c:function:: int tsl2772_als_calibrate(struct iio_dev *indio_dev)
+
+    Obtain single reading and calculate the als_gain_trim.
+
+    :param struct iio_dev \*indio_dev:
+        pointer to IIO device
+
+.. _`tsl2772_invoke_change`:
+
+tsl2772_invoke_change
+=====================
+
+.. c:function:: int tsl2772_invoke_change(struct iio_dev *indio_dev)
+
+    power cycle the device to implement the user parameters
+
+    :param struct iio_dev \*indio_dev:
+        pointer to IIO device
+
+.. _`tsl2772_invoke_change.description`:
+
+Description
+-----------
+
+Obtain and lock both ALS and PROX resources, determine and save device state
+(On/Off), cycle device to implement updated parameter, put device back into
+proper state, and unlock resource.
+
+.. This file was automatic generated / don't edit.
+

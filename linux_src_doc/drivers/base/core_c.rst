@@ -24,6 +24,28 @@ Description
 Check if \ ``target``\  depends on \ ``dev``\  or any device dependent on it (its child or
 its consumer etc).  Return 1 if that is the case or 0 otherwise.
 
+.. _`device_pm_move_to_tail`:
+
+device_pm_move_to_tail
+======================
+
+.. c:function:: void device_pm_move_to_tail(struct device *dev)
+
+    Move set of devices to the end of device lists
+
+    :param struct device \*dev:
+        Device to move
+
+.. _`device_pm_move_to_tail.description`:
+
+Description
+-----------
+
+This is a \ :c:func:`device_reorder_to_tail`\  wrapper taking the requisite locks.
+
+It moves the \ ``dev``\  along with all of its children and all of its consumers
+to the ends of the device_kset and dpm_list, recursively.
+
 .. _`device_link_add`:
 
 device_link_add
@@ -87,7 +109,9 @@ Description
 -----------
 
 The caller must ensure proper synchronization of this function with runtime
-PM.
+PM.  If the link was added multiple times, it needs to be deleted as often.
+Care is required for hotplugged devices:  Their links are purged on removal
+and calling \ :c:func:`device_link_del`\  is then no longer allowed.
 
 .. _`device_links_check_suppliers`:
 
@@ -1270,7 +1294,7 @@ device_move
         the pointer to the struct device to be moved
 
     :param struct device \*new_parent:
-        the new parent of the device (can by NULL)
+        the new parent of the device (can be NULL)
 
     :param enum dpm_order dpm_order:
         how to reorder the dpm_list

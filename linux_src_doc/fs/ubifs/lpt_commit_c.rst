@@ -208,7 +208,7 @@ pnode_lookup
         UBIFS file-system description object
 
     :param int i:
-        pnode number (0 to main_lebs - 1)
+        pnode number (0 to (main_lebs - 1) / UBIFS_LPT_FANOUT))
 
 .. _`pnode_lookup.description`:
 

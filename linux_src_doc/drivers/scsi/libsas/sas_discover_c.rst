@@ -8,7 +8,7 @@ sas_get_port_device
 
 .. c:function:: int sas_get_port_device(struct asd_sas_port *port)
 
-    - Discover devices which caused port creation
+    Discover devices which caused port creation
 
     :param struct asd_sas_port \*port:
         pointer to struct sas_port of interest
@@ -30,10 +30,10 @@ sas_discover_end_dev
 
 .. c:function:: int sas_discover_end_dev(struct domain_device *dev)
 
-    - discover an end device (SSP, etc)
+    discover an end device (SSP, etc)
 
     :param struct domain_device \*dev:
-        *undescribed*
+        pointer to domain device of interest
 
 .. _`sas_discover_end_dev.description`:
 
@@ -49,10 +49,10 @@ sas_discover_domain
 
 .. c:function:: void sas_discover_domain(struct work_struct *work)
 
-    - discover the domain
+    discover the domain
 
     :param struct work_struct \*work:
-        *undescribed*
+        work structure embedded in port domain device.
 
 .. _`sas_discover_domain.note`:
 
@@ -71,10 +71,10 @@ sas_init_disc
 
 .. c:function:: void sas_init_disc(struct sas_discovery *disc, struct asd_sas_port *port)
 
-    - initialize the discovery struct in the port
+    initialize the discovery struct in the port
 
     :param struct sas_discovery \*disc:
-        *undescribed*
+        port discovery structure
 
     :param struct asd_sas_port \*port:
         pointer to struct port

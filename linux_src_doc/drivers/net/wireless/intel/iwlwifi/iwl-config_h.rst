@@ -107,6 +107,99 @@ support_tx_protection
 support_tx_backoff
     Support tx-backoff?
 
+.. _`iwl_csr_params`:
+
+struct iwl_csr_params
+=====================
+
+.. c:type:: struct iwl_csr_params
+
+
+.. _`iwl_csr_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_csr_params {
+        u8 flag_sw_reset;
+        u8 flag_mac_clock_ready;
+        u8 flag_init_done;
+        u8 flag_mac_access_req;
+        u8 flag_val_mac_access_en;
+        u8 flag_master_dis;
+        u8 flag_stop_master;
+        u8 addr_sw_reset;
+        u32 mac_addr0_otp;
+        u32 mac_addr1_otp;
+        u32 mac_addr0_strap;
+        u32 mac_addr1_strap;
+    }
+
+.. _`iwl_csr_params.members`:
+
+Members
+-------
+
+flag_sw_reset
+    reset the device
+
+flag_mac_clock_ready
+    Indicates MAC (ucode processor, etc.) is powered up and can run.
+    Internal resources are accessible.
+
+flag_init_done
+    Host sets this to put device into fully operational
+    D0 power mode. Host resets this after SW_RESET to put device into
+    low power mode.
+
+flag_mac_access_req
+    Host sets this to request and maintain MAC wakeup,
+    to allow host access to device-internal resources. Host must wait for
+    mac_clock_ready (and !GOING_TO_SLEEP) before accessing non-CSR device
+    registers.
+
+flag_val_mac_access_en
+    mac access is enabled
+
+flag_master_dis
+    disable master
+
+flag_stop_master
+    stop master
+
+addr_sw_reset
+    address for resetting the device
+
+mac_addr0_otp
+    first part of MAC address from OTP
+
+mac_addr1_otp
+    second part of MAC address from OTP
+
+mac_addr0_strap
+    first part of MAC address from strap
+
+mac_addr1_strap
+    second part of MAC address from strap
+
+.. _`iwl_csr_params.note`:
+
+NOTE
+----
+
+This does not indicate that the processor is actually running.
+
+This does not indicate that device has completed
+init or post-power-down restore of internal SRAM memory.
+Use CSR_UCODE_DRV_GP1_BIT_MAC_SLEEP as indication that
+SRAM is restored and uCode is in normal operation mode.
+This note is relevant only for pre 5xxx devices.
+
+After device reset, this bit remains "0" until host sets
+INIT_DONE
+
 .. _`iwl_cfg`:
 
 struct iwl_cfg
@@ -133,6 +226,7 @@ Definition
         const struct iwl_pwr_tx_backoff *pwr_tx_backoffs;
         const char *default_nvm_file_C_step;
         const struct iwl_tt_params *thermal_params;
+        const struct iwl_csr_params *csr;
         enum iwl_device_family device_family;
         enum iwl_led_mode led_mode;
         enum iwl_nvm_type nvm_type;
@@ -148,8 +242,7 @@ Definition
         u32 soc_latency;
         u16 nvm_ver;
         u16 nvm_calib_ver;
-        u16 rx_with_siso_diversity:1,bt_shared_single_ant:1,internal_wimax_coex:1,host_interrupt_operation_mode:1,high_temp:1,mac_addr_from_csr:1,lp_xtal_workaround:1,disable_dummy_notification:1,apmg_not_supported:1,mq_rx_supported:1,vht_mu_mimo_supported:1,rf_id:1,integrated:1,use_tfh:1,gen2:1,cdb:1, dbgc_supported:1;
-        u16 tx_cmd_queue_size;
+        u32 rx_with_siso_diversity:1,bt_shared_single_ant:1,internal_wimax_coex:1,host_interrupt_operation_mode:1,high_temp:1,mac_addr_from_csr:1,lp_xtal_workaround:1,disable_dummy_notification:1,apmg_not_supported:1,mq_rx_supported:1,vht_mu_mimo_supported:1,rf_id:1,integrated:1,use_tfh:1,gen2:1,cdb:1, dbgc_supported:1;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
         u8 non_shared_ant;
@@ -161,6 +254,7 @@ Definition
         u8 ucode_api_max;
         u8 ucode_api_min;
         u32 min_umac_error_event_table;
+        u32 extra_phy_cfg_flags;
     }
 
 .. _`iwl_cfg.members`:
@@ -202,6 +296,9 @@ default_nvm_file_C_step
 thermal_params
     *undescribed*
 
+csr
+    csr flags and addresses that are different across devices
+
 device_family
     *undescribed*
 
@@ -212,10 +309,10 @@ nvm_type
     see \ :c:type:`enum iwl_nvm_type <iwl_nvm_type>`\ 
 
 max_data_size
-    The maximal length of the fw data section
+    The maximal length of the fw data section (only DVM)
 
 max_inst_size
-    The maximal length of the fw inst section
+    The maximal length of the fw inst section (only DVM)
 
 features
     hw features, any combination of feature_whitelist
@@ -299,10 +396,6 @@ cdb
 dbgc_supported
     *undescribed*
 
-tx_cmd_queue_size
-    size of the cmd queue. If zero, use the same value as
-    the regular queues
-
 valid_tx_ant
     valid transmit antenna
 
@@ -335,6 +428,9 @@ ucode_api_min
     Lowest version of uCode API supported by driver.
 
 min_umac_error_event_table
+    *undescribed*
+
+extra_phy_cfg_flags
     *undescribed*
 
 .. _`iwl_cfg.description`:

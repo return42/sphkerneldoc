@@ -9,3 +9,4 @@ netfilter
 
     nf_conntrack_seqadj_h
     nf_tables_h
+    nf_tproxy_h

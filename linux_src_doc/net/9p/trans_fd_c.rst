@@ -371,7 +371,7 @@ p9_poll_workfn
     poll worker thread
 
     :param struct work_struct \*work:
-        *undescribed*
+        work queue
 
 .. _`p9_poll_workfn.description`:
 

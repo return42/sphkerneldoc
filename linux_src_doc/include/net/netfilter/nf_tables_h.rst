@@ -101,6 +101,7 @@ Definition
         u32 portid;
         u32 seq;
         u8 family;
+        u8 level;
         bool report;
     }
 
@@ -129,6 +130,9 @@ seq
 
 family
     protocol family
+
+level
+    depth of the chains
 
 report
     notify via unicast netlink message
@@ -317,46 +321,6 @@ lookup
 space
     memory class
 
-.. _`nft_set_type`:
-
-struct nft_set_type
-===================
-
-.. c:type:: struct nft_set_type
-
-    nf_tables set type
-
-.. _`nft_set_type.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct nft_set_type {
-        const struct nft_set_ops *(*select_ops)(const struct nft_ctx *,const struct nft_set_desc *desc, u32 flags);
-        const struct nft_set_ops *ops;
-        struct list_head list;
-        struct module *owner;
-    }
-
-.. _`nft_set_type.members`:
-
-Members
--------
-
-select_ops
-    function to select nft_set_ops
-
-ops
-    default ops, used when no select_ops functions is present
-
-list
-    used internally
-
-owner
-    module reference
-
 .. _`nft_set_ops`:
 
 struct nft_set_ops
@@ -387,9 +351,8 @@ Definition
         bool (*estimate)(const struct nft_set_desc *desc,u32 features, struct nft_set_estimate *est);
         int (*init)(const struct nft_set *set,const struct nft_set_desc *desc, const struct nlattr * const nla[]);
         void (*destroy)(const struct nft_set *set);
+        void (*gc_init)(const struct nft_set *set);
         unsigned int elemsize;
-        u32 features;
-        const struct nft_set_type *type;
     }
 
 .. _`nft_set_ops.members`:
@@ -436,14 +399,51 @@ init
 destroy
     destroy private data of set instance
 
+gc_init
+    *undescribed*
+
 elemsize
     element private size
 
+.. _`nft_set_type`:
+
+struct nft_set_type
+===================
+
+.. c:type:: struct nft_set_type
+
+    nf_tables set type
+
+.. _`nft_set_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nft_set_type {
+        const struct nft_set_ops ops;
+        struct list_head list;
+        struct module *owner;
+        u32 features;
+    }
+
+.. _`nft_set_type.members`:
+
+Members
+-------
+
+ops
+    set ops for this type
+
+list
+    used internally
+
+owner
+    module reference
+
 features
     features supported by the implementation
-
-type
-    *undescribed*
 
 .. _`nft_set`:
 
@@ -464,6 +464,8 @@ Definition
     struct nft_set {
         struct list_head list;
         struct list_head bindings;
+        struct nft_table *table;
+        possible_net_t net;
         char *name;
         u64 handle;
         u32 ktype;
@@ -494,6 +496,12 @@ list
 
 bindings
     list of set bindings
+
+table
+    table this set belongs to
+
+net
+    netnamespace this set belongs to
 
 name
     name of the set
@@ -978,14 +986,17 @@ Definition
 .. code-block:: c
 
     struct nft_chain {
+        struct nft_rule *__rcu *rules_gen_0;
+        struct nft_rule *__rcu *rules_gen_1;
         struct list_head rules;
         struct list_head list;
+        struct rhlist_head rhlhead;
         struct nft_table *table;
         u64 handle;
         u32 use;
-        u16 level;
         u8 flags:6, genmask:2;
         char *name;
+        struct nft_rule **rules_next;
     }
 
 .. _`nft_chain.members`:
@@ -993,10 +1004,19 @@ Definition
 Members
 -------
 
+rules_gen_0
+    *undescribed*
+
+rules_gen_1
+    *undescribed*
+
 rules
     list of rules in the chain
 
 list
+    used internally
+
+rhlhead
     used internally
 
 table
@@ -1008,9 +1028,6 @@ handle
 use
     number of jump references to this chain
 
-level
-    length of longest path to this chain
-
 flags
     bitmask of enum nft_chain_flags
 
@@ -1020,32 +1037,37 @@ genmask
 name
     name of the chain
 
-.. _`nf_chain_type`:
+rules_next
+    *undescribed*
 
-struct nf_chain_type
-====================
+.. _`nft_chain_type`:
 
-.. c:type:: struct nf_chain_type
+struct nft_chain_type
+=====================
+
+.. c:type:: struct nft_chain_type
 
     nf_tables chain type info
 
-.. _`nf_chain_type.definition`:
+.. _`nft_chain_type.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct nf_chain_type {
+    struct nft_chain_type {
         const char *name;
-        enum nft_chain_type type;
+        enum nft_chain_types type;
         int family;
         struct module *owner;
         unsigned int hook_mask;
         nf_hookfn *hooks[NF_MAX_HOOKS];
+        int (*ops_register)(struct net *net, const struct nf_hook_ops *ops);
+        void (*ops_unregister)(struct net *net, const struct nf_hook_ops *ops);
     }
 
-.. _`nf_chain_type.members`:
+.. _`nft_chain_type.members`:
 
 Members
 -------
@@ -1068,6 +1090,12 @@ hook_mask
 hooks
     array of hook functions
 
+ops_register
+    base chain register function
+
+ops_unregister
+    base chain unregister function
+
 .. _`nft_base_chain`:
 
 struct nft_base_chain
@@ -1086,7 +1114,7 @@ Definition
 
     struct nft_base_chain {
         struct nf_hook_ops ops;
-        const struct nf_chain_type *type;
+        const struct nft_chain_type *type;
         u8 policy;
         u8 flags;
         struct nft_stats __percpu *stats;
@@ -1138,6 +1166,7 @@ Definition
 
     struct nft_table {
         struct list_head list;
+        struct rhltable chains_ht;
         struct list_head chains;
         struct list_head sets;
         struct list_head objects;
@@ -1157,8 +1186,11 @@ Members
 list
     used internally
 
-chains
+chains_ht
     chains in the table
+
+chains
+    same, for stable walks
 
 sets
     sets in the table
@@ -1317,7 +1349,7 @@ Definition
         void (*eval)(struct nft_object *obj,struct nft_regs *regs, const struct nft_pktinfo *pkt);
         unsigned int size;
         int (*init)(const struct nft_ctx *ctx,const struct nlattr *const tb[], struct nft_object *obj);
-        void (*destroy)(struct nft_object *obj);
+        void (*destroy)(const struct nft_ctx *ctx, struct nft_object *obj);
         int (*dump)(struct sk_buff *skb,struct nft_object *obj, bool reset);
         const struct nft_object_type *type;
     }

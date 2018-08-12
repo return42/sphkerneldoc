@@ -428,7 +428,7 @@ Return
 rsi_inform_bss_status
 =====================
 
-.. c:function:: void rsi_inform_bss_status(struct rsi_common *common, enum opmode opmode, u8 status, const u8 *addr, u8 qos_enable, u16 aid, struct ieee80211_sta *sta, u16 sta_id, struct ieee80211_vif *vif)
+.. c:function:: void rsi_inform_bss_status(struct rsi_common *common, enum opmode opmode, u8 status, const u8 *addr, u8 qos_enable, u16 aid, struct ieee80211_sta *sta, u16 sta_id, u16 assoc_cap, struct ieee80211_vif *vif)
 
     This function informs about bss status with the help of sta notify params by sending an internal management frame to firmware.
 
@@ -454,6 +454,9 @@ rsi_inform_bss_status
         *undescribed*
 
     :param u16 sta_id:
+        *undescribed*
+
+    :param u16 assoc_cap:
         *undescribed*
 
     :param struct ieee80211_vif \*vif:

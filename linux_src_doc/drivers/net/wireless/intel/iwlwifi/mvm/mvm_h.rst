@@ -157,7 +157,7 @@ Definition
         bool ap_ibss_active;
         bool pm_enabled;
         bool monitor_active;
-        bool low_latency_traffic, low_latency_dbgfs, low_latency_vcmd;
+        u8 low_latency;
         bool ps_disabled;
         struct iwl_mvm_vif_bf_data bf_data;
         struct {
@@ -197,9 +197,11 @@ Definition
     #endif
         enum ieee80211_smps_mode smps_requests[NUM_IWL_MVM_SMPS_REQ];
         u8 uapsd_misbehaving_bssid[ETH_ALEN];
+        struct delayed_work uapsd_nonagg_detected_wk;
         bool csa_countdown;
         bool csa_failed;
         u16 csa_target_freq;
+        bool csa_bcn_pending;
         netdev_features_t features;
     }
 
@@ -249,14 +251,9 @@ monitor_active
     indicates that monitor context is configured, and that the
     interface should get quota etc.
 
-low_latency_traffic
-    indicates low latency traffic was detected
-
-low_latency_dbgfs
-    low latency mode set from debugfs
-
-low_latency_vcmd
-    low latency mode set from vendor command
+low_latency
+    indicates low latency is set, see
+    enum \ :c:type:`struct iwl_mvm_low_latency_cause <iwl_mvm_low_latency_cause>`\  for causes.
 
 ps_disabled
     indicates that this interface requires PS to be disabled
@@ -339,6 +336,9 @@ smps_requests
 uapsd_misbehaving_bssid
     *undescribed*
 
+uapsd_nonagg_detected_wk
+    *undescribed*
+
 csa_countdown
     *undescribed*
 
@@ -346,6 +346,9 @@ csa_failed
     CSA failed to schedule time event, report an error later
 
 csa_target_freq
+    *undescribed*
+
+csa_bcn_pending
     *undescribed*
 
 features
@@ -357,47 +360,6 @@ vifs
 ----
 
 P2P_DEVICE, GO and AP.
-
-.. _`iwl_nvm_section`:
-
-struct iwl_nvm_section
-======================
-
-.. c:type:: struct iwl_nvm_section
-
-    describes an NVM section in memory.
-
-.. _`iwl_nvm_section.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_nvm_section {
-        u16 length;
-        const u8 *data;
-    }
-
-.. _`iwl_nvm_section.members`:
-
-Members
--------
-
-length
-    *undescribed*
-
-data
-    *undescribed*
-
-.. _`iwl_nvm_section.description`:
-
-Description
------------
-
-This struct holds an NVM section read from the NIC using NVM_ACCESS_CMD,
-and saved for later use by the driver. Not all NVM sections are saved
-this way, only the needed ones.
 
 .. _`iwl_mvm_tt_mgmt`:
 

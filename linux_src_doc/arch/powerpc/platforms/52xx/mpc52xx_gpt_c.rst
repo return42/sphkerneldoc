@@ -86,7 +86,7 @@ mpc52xx_gpt_start_timer
         Pointer to gpt private data structure
 
     :param u64 period:
-        period of timer in ns; max. ~130s @ 33MHz IPB clock
+        period of timer in ns; max. ~130s \ ````\  33MHz IPB clock
 
     :param int continuous:
         set to 1 to make timer continuous free running

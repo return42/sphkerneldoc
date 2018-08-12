@@ -34,5 +34,20 @@ brcmf_feat_iovar_int_get
     :param char \*name:
         iovar name.
 
+.. _`brcmf_feat_fwcap_debugfs_read`:
+
+brcmf_feat_fwcap_debugfs_read
+=============================
+
+.. c:function:: int brcmf_feat_fwcap_debugfs_read(struct seq_file *seq, void *data)
+
+    expose firmware capabilities to debugfs.
+
+    :param struct seq_file \*seq:
+        sequence for debugfs entry.
+
+    :param void \*data:
+        raw data pointer.
+
 .. This file was automatic generated / don't edit.
 

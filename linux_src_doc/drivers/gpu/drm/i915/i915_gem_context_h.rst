@@ -36,7 +36,7 @@ Definition
     #define CONTEXT_FORCE_SINGLE_SUBMISSION 5
         unsigned int hw_id;
         u32 user_handle;
-        int priority;
+        struct i915_sched_attr sched;
         u32 ggtt_offset_bias;
         struct intel_context {
             struct i915_vma *state;
@@ -44,7 +44,7 @@ Definition
             u32 *lrc_reg_state;
             u64 lrc_desc;
             int pin_count;
-        } engine[I915_NUM_ENGINES];
+        } __engine[I915_NUM_ENGINES];
         u32 ring_size;
         u32 desc_template;
         atomic_t guilty_count;
@@ -121,20 +121,13 @@ user_handle
     A unique per-file identifier is generated from
     \ :c:type:`drm_i915_file_private.contexts <drm_i915_file_private>`\ .
 
-priority
-    execution and service priority
-    All clients are equal, but some are more equal than others!
-
-    Requests from a context with a greater (more positive) value of
-    \ ``priority``\  will be executed before those with a lower \ ``priority``\ 
-    value, forming a simple QoS.
-
-    The \ :c:type:`drm_i915_private.kernel_context <drm_i915_private>`\  is assigned the lowest priority.
+sched
+    *undescribed*
 
 ggtt_offset_bias
     *undescribed*
 
-engine
+\__engine
     *undescribed*
 
 ring_size

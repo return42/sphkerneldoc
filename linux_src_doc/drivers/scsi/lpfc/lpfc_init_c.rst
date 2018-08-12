@@ -1522,7 +1522,7 @@ worker thread context.
 lpfc_sli4_parse_latt_fault
 ==========================
 
-.. c:function:: uint16_t lpfc_sli4_parse_latt_fault(struct lpfc_hba *phba, struct lpfc_acqe_link *acqe_link)
+.. c:function:: void lpfc_sli4_parse_latt_fault(struct lpfc_hba *phba, struct lpfc_acqe_link *acqe_link)
 
     Parse sli4 link-attention link fault code
 
@@ -1537,16 +1537,7 @@ lpfc_sli4_parse_latt_fault
 Description
 -----------
 
-This routine is to parse the SLI4 link-attention link fault code and
-translate it into the base driver's read link attention mailbox command
-status.
-
-.. _`lpfc_sli4_parse_latt_fault.return`:
-
-Return
-------
-
-Link-attention status in terms of base driver's coding.
+This routine is to parse the SLI4 link-attention link fault code.
 
 .. _`lpfc_sli4_parse_latt_type`:
 
@@ -2683,20 +2674,22 @@ memory map.
 lpfc_sli4_bar1_register_memmap
 ==============================
 
-.. c:function:: void lpfc_sli4_bar1_register_memmap(struct lpfc_hba *phba)
+.. c:function:: void lpfc_sli4_bar1_register_memmap(struct lpfc_hba *phba, uint32_t if_type)
 
     Set up SLI4 BAR1 register memory map.
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
 
+    :param uint32_t if_type:
+        *undescribed*
+
 .. _`lpfc_sli4_bar1_register_memmap.description`:
 
 Description
 -----------
 
-This routine is invoked to set up SLI4 BAR1 control status register (CSR)
-memory map.
+This routine is invoked to set up SLI4 BAR1 register memory map.
 
 .. _`lpfc_sli4_bar2_register_memmap`:
 

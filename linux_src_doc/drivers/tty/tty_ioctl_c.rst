@@ -221,14 +221,14 @@ in some cases where only minimal reconfiguration is supported
 tty_termios_hw_change
 =====================
 
-.. c:function:: int tty_termios_hw_change(struct ktermios *a, struct ktermios *b)
+.. c:function:: int tty_termios_hw_change(const struct ktermios *a, const struct ktermios *b)
 
     check for setting change
 
-    :param struct ktermios \*a:
+    :param const struct ktermios \*a:
         termios
 
-    :param struct ktermios \*b:
+    :param const struct ktermios \*b:
         termios to compare
 
 .. _`tty_termios_hw_change.description`:

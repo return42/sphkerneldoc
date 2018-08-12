@@ -30,20 +30,53 @@ NOTE
 
 must be freed by kvfree (not kfree)
 
+.. _`verify_table_headers`:
+
+verify_table_headers
+====================
+
+.. c:function:: int verify_table_headers(struct table_header **tables, int flags)
+
+    verify that the tables headers are as expected \ ``tables``\  - array of dfa tables to check (NOT NULL)
+
+    :param struct table_header \*\*tables:
+        *undescribed*
+
+    :param int flags:
+        flags controlling what type of accept table are acceptable
+
+.. _`verify_table_headers.description`:
+
+Description
+-----------
+
+Assumes dfa has gone through the first pass verification done by unpacking
+
+.. _`verify_table_headers.note`:
+
+NOTE
+----
+
+this does not valid accept table values
+
+.. _`verify_table_headers.return`:
+
+Return
+------
+
+\ ``0``\  else error code on failure to verify
+
 .. _`verify_dfa`:
 
 verify_dfa
 ==========
 
-.. c:function:: int verify_dfa(struct aa_dfa *dfa, int flags)
+.. c:function:: int verify_dfa(struct aa_dfa *dfa)
 
     verify that transitions and states in the tables are in bounds.
 
     :param struct aa_dfa \*dfa:
         dfa to test  (NOT NULL)
-
-    :param int flags:
-        flags controlling what type of accept table are acceptable
 
 .. _`verify_dfa.description`:
 
@@ -215,7 +248,7 @@ aa_dfa_next
     step one character to the next state in the dfa
 
     :param struct aa_dfa \*dfa:
-        the dfa to tranverse (NOT NULL)
+        the dfa to traverse (NOT NULL)
 
     :param unsigned int state:
         the state to start in
@@ -236,6 +269,123 @@ Return
 ------
 
 state reach after input \ ``c``\ 
+
+.. _`aa_dfa_match_until`:
+
+aa_dfa_match_until
+==================
+
+.. c:function:: unsigned int aa_dfa_match_until(struct aa_dfa *dfa, unsigned int start, const char *str, const char **retpos)
+
+    traverse \ ``dfa``\  until accept state or end of input
+
+    :param struct aa_dfa \*dfa:
+        the dfa to match \ ``str``\  against  (NOT NULL)
+
+    :param unsigned int start:
+        the state of the dfa to start matching in
+
+    :param const char \*str:
+        the null terminated string of bytes to match against the dfa (NOT NULL)
+
+    :param const char \*\*retpos:
+        first character in str after match OR end of string
+
+.. _`aa_dfa_match_until.description`:
+
+Description
+-----------
+
+aa_dfa_match will match \ ``str``\  against the dfa and return the state it
+finished matching in. The final state can be used to look up the accepting
+label, or as the start state of a continuing match.
+
+.. _`aa_dfa_match_until.return`:
+
+Return
+------
+
+final state reached after input is consumed
+
+.. _`aa_dfa_matchn_until`:
+
+aa_dfa_matchn_until
+===================
+
+.. c:function:: unsigned int aa_dfa_matchn_until(struct aa_dfa *dfa, unsigned int start, const char *str, int n, const char **retpos)
+
+    traverse \ ``dfa``\  until accept or \ ``n``\  bytes consumed
+
+    :param struct aa_dfa \*dfa:
+        the dfa to match \ ``str``\  against  (NOT NULL)
+
+    :param unsigned int start:
+        the state of the dfa to start matching in
+
+    :param const char \*str:
+        the string of bytes to match against the dfa  (NOT NULL)
+
+    :param int n:
+        length of the string of bytes to match
+
+    :param const char \*\*retpos:
+        first character in str after match OR str + n
+
+.. _`aa_dfa_matchn_until.description`:
+
+Description
+-----------
+
+aa_dfa_match_len will match \ ``str``\  against the dfa and return the state it
+finished matching in. The final state can be used to look up the accepting
+label, or as the start state of a continuing match.
+
+This function will happily match again the 0 byte and only finishes
+when \ ``n``\  input is consumed.
+
+.. _`aa_dfa_matchn_until.return`:
+
+Return
+------
+
+final state reached after input is consumed
+
+.. _`aa_dfa_leftmatch`:
+
+aa_dfa_leftmatch
+================
+
+.. c:function:: unsigned int aa_dfa_leftmatch(struct aa_dfa *dfa, unsigned int start, const char *str, unsigned int *count)
+
+    traverse \ ``dfa``\  to find state \ ``str``\  stops at
+
+    :param struct aa_dfa \*dfa:
+        the dfa to match \ ``str``\  against  (NOT NULL)
+
+    :param unsigned int start:
+        the state of the dfa to start matching in
+
+    :param const char \*str:
+        the null terminated string of bytes to match against the dfa (NOT NULL)
+
+    :param unsigned int \*count:
+        current count of longest left.
+
+.. _`aa_dfa_leftmatch.description`:
+
+Description
+-----------
+
+aa_dfa_match will match \ ``str``\  against the dfa and return the state it
+finished matching in. The final state can be used to look up the accepting
+label, or as the start state of a continuing match.
+
+.. _`aa_dfa_leftmatch.return`:
+
+Return
+------
+
+final state reached after input is consumed
 
 .. This file was automatic generated / don't edit.
 

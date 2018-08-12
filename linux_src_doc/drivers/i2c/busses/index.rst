@@ -26,9 +26,9 @@ busses
     i2c-octeon-core_h
     i2c-octeon-platdrv_c
     i2c-pnx_c
-    i2c-qup_c
     i2c-rk3x_c
     i2c-st_c
+    i2c-stm32_h
     i2c-stm32f4_c
     i2c-stm32f7_c
     i2c-stu300_c

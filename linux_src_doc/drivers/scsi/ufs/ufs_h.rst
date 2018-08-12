@@ -395,5 +395,17 @@ response
 upiu_res
     query response data
 
+.. _`ufs_is_valid_unit_desc_lun`:
+
+ufs_is_valid_unit_desc_lun
+==========================
+
+.. c:function:: bool ufs_is_valid_unit_desc_lun(u8 lun)
+
+    checks if the given LUN has a unit descriptor
+
+    :param u8 lun:
+        LU number to check
+
 .. This file was automatic generated / don't edit.
 

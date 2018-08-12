@@ -72,6 +72,67 @@ Bits from 4 to 7 - a subset of remote flags - are ensured to be in sync with
 the other nodes in the network. To achieve this goal these flags are included
 in the TT CRC computation.
 
+.. _`batadv_mcast_flags_priv`:
+
+enum batadv_mcast_flags_priv
+============================
+
+.. c:type:: enum batadv_mcast_flags_priv
+
+    Private, own multicast flags
+
+.. _`batadv_mcast_flags_priv.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum batadv_mcast_flags_priv {
+        BATADV_MCAST_FLAGS_BRIDGED,
+        BATADV_MCAST_FLAGS_QUERIER_IPV4_EXISTS,
+        BATADV_MCAST_FLAGS_QUERIER_IPV6_EXISTS,
+        BATADV_MCAST_FLAGS_QUERIER_IPV4_SHADOWING,
+        BATADV_MCAST_FLAGS_QUERIER_IPV6_SHADOWING
+    };
+
+.. _`batadv_mcast_flags_priv.constants`:
+
+Constants
+---------
+
+BATADV_MCAST_FLAGS_BRIDGED
+    There is a bridge on top of the meshinterface.
+
+BATADV_MCAST_FLAGS_QUERIER_IPV4_EXISTS
+    Whether an IGMP querierexists in the mesh
+
+BATADV_MCAST_FLAGS_QUERIER_IPV6_EXISTS
+    Whether an MLD querierexists in the mesh
+
+BATADV_MCAST_FLAGS_QUERIER_IPV4_SHADOWING
+    If an IGMP querierexists, whether it is potentially shadowing multicast listeners
+    (i.e. querier is behind our own bridge segment)
+
+BATADV_MCAST_FLAGS_QUERIER_IPV6_SHADOWING
+    If an MLD querierexists, whether it is potentially shadowing multicast listeners
+    (i.e. querier is behind our own bridge segment)
+
+.. _`batadv_mcast_flags_priv.description`:
+
+Description
+-----------
+
+These are internal, multicast related flags. Currently they describe certain
+multicast related attributes of the segment this originator bridges into the
+mesh.
+
+Those attributes are used to determine the public multicast flags this
+originator is going to announce via TT.
+
+For netlink, if BATADV_MCAST_FLAGS_BRIDGED is unset then all querier
+related flags are undefined.
+
 .. _`batadv_nl_attrs`:
 
 enum batadv_nl_attrs
@@ -124,6 +185,11 @@ Definition
         BATADV_ATTR_BLA_VID,
         BATADV_ATTR_BLA_BACKBONE,
         BATADV_ATTR_BLA_CRC,
+        BATADV_ATTR_DAT_CACHE_IP4ADDRESS,
+        BATADV_ATTR_DAT_CACHE_HWADDRESS,
+        BATADV_ATTR_DAT_CACHE_VID,
+        BATADV_ATTR_MCAST_FLAGS,
+        BATADV_ATTR_MCAST_FLAGS_PRIV,
         __BATADV_ATTR_AFTER_LAST,
         NUM_BATADV_ATTR,
         BATADV_ATTR_MAX
@@ -239,6 +305,21 @@ BATADV_ATTR_BLA_BACKBONE
 BATADV_ATTR_BLA_CRC
     BLA CRC
 
+BATADV_ATTR_DAT_CACHE_IP4ADDRESS
+    Client IPv4 address
+
+BATADV_ATTR_DAT_CACHE_HWADDRESS
+    Client MAC address
+
+BATADV_ATTR_DAT_CACHE_VID
+    VLAN ID
+
+BATADV_ATTR_MCAST_FLAGS
+    Per originator multicast flags
+
+BATADV_ATTR_MCAST_FLAGS_PRIV
+    Private, own multicast flags
+
 \__BATADV_ATTR_AFTER_LAST
     internal use
 
@@ -278,6 +359,8 @@ Definition
         BATADV_CMD_GET_GATEWAYS,
         BATADV_CMD_GET_BLA_CLAIM,
         BATADV_CMD_GET_BLA_BACKBONE,
+        BATADV_CMD_GET_DAT_CACHE,
+        BATADV_CMD_GET_MCAST_FLAGS,
         __BATADV_CMD_AFTER_LAST,
         BATADV_CMD_MAX
     };
@@ -325,6 +408,12 @@ BATADV_CMD_GET_BLA_CLAIM
 
 BATADV_CMD_GET_BLA_BACKBONE
     Query list of bridge loop avoidancebackbones
+
+BATADV_CMD_GET_DAT_CACHE
+    Query list of DAT cache entries
+
+BATADV_CMD_GET_MCAST_FLAGS
+    Query list of multicast flags
 
 \__BATADV_CMD_AFTER_LAST
     internal use

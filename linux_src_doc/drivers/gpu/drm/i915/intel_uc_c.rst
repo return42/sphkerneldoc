@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_uc.c
 
-.. _`intel_uc_sanitize_options`:
+.. _`sanitize_options_early`:
 
-intel_uc_sanitize_options
-=========================
+sanitize_options_early
+======================
 
-.. c:function:: void intel_uc_sanitize_options(struct drm_i915_private *dev_priv)
+.. c:function:: void sanitize_options_early(struct drm_i915_private *dev_priv)
 
     sanitize uC related modparam options
 
     :param struct drm_i915_private \*dev_priv:
         device private
 
-.. _`intel_uc_sanitize_options.description`:
+.. _`sanitize_options_early.description`:
 
 Description
 -----------
@@ -23,6 +23,13 @@ it only if it was initially set to "auto(-1)". Default value for this
 modparam varies between platforms and it is hardcoded in driver code.
 Any other modparam value is only monitored against availability of the
 related hardware or firmware definitions.
+
+In case of "guc_log_level" option this function will attempt to modify
+it only if it was initially set to "auto(-1)" or if initial value was
+"enable(1..4)" on platforms without the GuC. Default value for this
+modparam varies between platforms and is usually set to "disable(0)"
+unless GuC is enabled on given platform and the driver is compiled with
+debug config when this modparam will default to "enable(1..4)".
 
 .. _`intel_uc_init_mmio`:
 

@@ -111,6 +111,44 @@ that all power domains are always enabled. This functions controls the state
 of this little hack. While the initial power domain state is enabled runtime
 pm is effectively disabled.
 
+.. _`gen9_set_dc_state`:
+
+gen9_set_dc_state
+=================
+
+.. c:function:: void gen9_set_dc_state(struct drm_i915_private *dev_priv, uint32_t state)
+
+    set target display C power state
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+    :param uint32_t state:
+        target DC power state
+        - DC_STATE_DISABLE
+        - DC_STATE_EN_UPTO_DC5
+        - DC_STATE_EN_UPTO_DC6
+        - DC_STATE_EN_DC9
+
+.. _`gen9_set_dc_state.description`:
+
+Description
+-----------
+
+Signal to DMC firmware/HW the target DC power state passed in \ ``state``\ .
+DMC/HW can turn off individual display clocks and power rails when entering
+a deeper DC power state (higher in number) and turns these back when exiting
+that state to a shallower power state (lower in number). The HW will decide
+when to actually enter a given state on an on-demand basis, for instance
+depending on the active state of display pipes. The state of display
+registers backed by affected power rails are saved/restored as needed.
+
+Based on the above enabling a deeper DC power state is asynchronous wrt.
+enabling it. Disabling a deeper power state is synchronous: for instance
+setting \ ``DC_STATE_DISABLE``\  won't complete until all HW resources are turned
+back on and register state is restored. This is guaranteed by the MMIO write
+to DC_STATE_EN blocking until the state is restored.
+
 .. _`intel_display_power_get`:
 
 intel_display_power_get
@@ -340,10 +378,18 @@ Description
 -----------
 
 This function grabs a device-level runtime pm reference if the device is
-already in use and ensures that it is powered up.
+already in use and ensures that it is powered up. It is illegal to try
+and access the HW should \ :c:func:`intel_runtime_pm_get_if_in_use`\  report failure.
 
 Any runtime pm reference obtained by this function must have a symmetric
 call to \ :c:func:`intel_runtime_pm_put`\  to release the reference again.
+
+.. _`intel_runtime_pm_get_if_in_use.return`:
+
+Return
+------
+
+True if the wakeref was acquired, or False otherwise.
 
 .. _`intel_runtime_pm_get_noresume`:
 

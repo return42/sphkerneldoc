@@ -30,29 +30,6 @@ Description
 Register a component with automatic unregistration when the device is
 unregistered.
 
-.. _`devm_snd_soc_register_platform`:
-
-devm_snd_soc_register_platform
-==============================
-
-.. c:function:: int devm_snd_soc_register_platform(struct device *dev, const struct snd_soc_platform_driver *platform_drv)
-
-    resource managed platform registration
-
-    :param struct device \*dev:
-        Device used to manage platform
-
-    :param const struct snd_soc_platform_driver \*platform_drv:
-        platform to register
-
-.. _`devm_snd_soc_register_platform.description`:
-
-Description
------------
-
-Register a platform driver with automatic unregistration when the device is
-unregistered.
-
 .. _`devm_snd_soc_register_card`:
 
 devm_snd_soc_register_card

@@ -20,7 +20,7 @@ keystone_timer_config
 
 .. c:function:: int keystone_timer_config(u64 period, int mask)
 
-    configures timer to work in oneshot/periodic modes. @ mask: mask of the mode to configure @ period: cycles number to configure for
+    configures timer to work in oneshot/periodic modes. \ ````\  mask: mask of the mode to configure \ ````\  period: cycles number to configure for
 
     :param u64 period:
         *undescribed*

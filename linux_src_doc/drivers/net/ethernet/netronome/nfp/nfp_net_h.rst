@@ -277,7 +277,7 @@ Definition
         u64 rx_drops;
         u64 hw_csum_rx_ok;
         u64 hw_csum_rx_inner_ok;
-        u64 hw_csum_rx_error;
+        u64 hw_csum_rx_complete;
         struct nfp_net_tx_ring *xdp_ring;
         struct u64_stats_sync tx_sync;
         u64 tx_pkts;
@@ -286,6 +286,7 @@ Definition
         u64 hw_csum_tx_inner;
         u64 tx_gather;
         u64 tx_lso;
+        u64 hw_csum_rx_error;
         u64 rx_replace_buf_alloc_fail;
         u64 tx_errors;
         u64 tx_busy;
@@ -348,8 +349,8 @@ hw_csum_rx_ok
 hw_csum_rx_inner_ok
     Counter of packets where the inner HW checksum was OK
 
-hw_csum_rx_error
-    Counter of packets with bad checksums
+hw_csum_rx_complete
+    Counter of packets with CHECKSUM_COMPLETE reported
 
 xdp_ring
     Pointer to an extra TX ring for XDP
@@ -374,6 +375,9 @@ tx_gather
 
 tx_lso
     Counter of LSO packets sent
+
+hw_csum_rx_error
+    Counter of packets with bad checksums
 
 rx_replace_buf_alloc_fail
     Counter of RX buffer allocation failures
@@ -533,6 +537,7 @@ Definition
     struct nfp_net {
         struct nfp_net_dp dp;
         struct nfp_net_fw_version fw_ver;
+        u32 id;
         u32 cap;
         u32 max_mtu;
         u8 rss_hfunc;
@@ -576,6 +581,7 @@ Definition
         struct list_head vnic_list;
         struct pci_dev *pdev;
         struct nfp_app *app;
+        bool vnic_no_name;
         struct nfp_port *port;
         void *app_priv;
     }
@@ -590,6 +596,9 @@ dp
 
 fw_ver
     Firmware version
+
+id
+    vNIC id within the PF (0 for VFs)
 
 cap
     Capabilities advertised by the Firmware
@@ -719,6 +728,10 @@ pdev
 
 app
     APP handle if available
+
+vnic_no_name
+    For non-port PF vNIC make ndo_get_phys_port_name return
+    -EOPNOTSUPP to keep backwards compatibility (set by app)
 
 port
     Pointer to nfp_port structure if vNIC is a port

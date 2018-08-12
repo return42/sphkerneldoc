@@ -125,13 +125,20 @@ i40e_get_pauseparam
 
 .. c:function:: void i40e_get_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
 
-    Get Flow Control status Return tx/rx-pause status
+    Get Flow Control status
 
     :param struct net_device \*netdev:
-        *undescribed*
+        netdevice structure
 
     :param struct ethtool_pauseparam \*pause:
-        *undescribed*
+        buffer to return pause parameters
+
+.. _`i40e_get_pauseparam.description`:
+
+Description
+-----------
+
+Return tx/rx-pause status
 
 .. _`i40e_set_pauseparam`:
 
@@ -147,6 +154,89 @@ i40e_set_pauseparam
 
     :param struct ethtool_pauseparam \*pause:
         return tx/rx flow control status
+
+.. _`i40e_get_stats_count`:
+
+i40e_get_stats_count
+====================
+
+.. c:function:: int i40e_get_stats_count(struct net_device *netdev)
+
+    return the stats count for a device
+
+    :param struct net_device \*netdev:
+        the netdev to return the count for
+
+.. _`i40e_get_stats_count.description`:
+
+Description
+-----------
+
+Returns the total number of statistics for this netdev. Note that even
+though this is a function, it is required that the count for a specific
+netdev must never change. Basing the count on static values such as the
+maximum number of queues or the device type is ok. However, the API for
+obtaining stats is \*not\* safe against changes based on non-static
+values such as the \*current\* number of queues, or runtime flags.
+
+If a statistic is not always enabled, return it as part of the count
+anyways, always return its string, and report its value as zero.
+
+.. _`i40e_get_ethtool_stats`:
+
+i40e_get_ethtool_stats
+======================
+
+.. c:function:: void i40e_get_ethtool_stats(struct net_device *netdev, struct ethtool_stats *stats, u64 *data)
+
+    copy stat values into supplied buffer
+
+    :param struct net_device \*netdev:
+        the netdev to collect stats for
+
+    :param struct ethtool_stats \*stats:
+        ethtool stats command structure
+
+    :param u64 \*data:
+        ethtool supplied buffer
+
+.. _`i40e_get_ethtool_stats.description`:
+
+Description
+-----------
+
+Copy the stats values for this netdev into the buffer. Expects data to be
+pre-allocated to the size returned by i40e_get_stats_count.. Note that all
+statistics must be copied in a static order, and the count must not change
+for a given netdev. See i40e_get_stats_count for more details.
+
+If a statistic is not currently valid (such as a disabled queue), this
+function reports its value as zero.
+
+.. _`i40e_get_stat_strings`:
+
+i40e_get_stat_strings
+=====================
+
+.. c:function:: void i40e_get_stat_strings(struct net_device *netdev, u8 *data)
+
+    copy stat strings into supplied buffer
+
+    :param struct net_device \*netdev:
+        the netdev to collect strings for
+
+    :param u8 \*data:
+        supplied buffer to copy strings into
+
+.. _`i40e_get_stat_strings.description`:
+
+Description
+-----------
+
+Copy the strings related to stats for this netdev. Expects data to be
+pre-allocated with the size reported by i40e_get_stats_count. Note that the
+strings must be copied in a static order and the total count must not
+change for a given netdev. See i40e_get_stats_count for more details.
 
 .. _`i40e_set_wol`:
 
@@ -369,10 +459,9 @@ i40e_check_mask
 
     :param u64 mask:
         the full mask value
-        \ ``field``\ ; mask of the field to check
 
     :param u64 field:
-        *undescribed*
+        mask of the field to check
 
 .. _`i40e_check_mask.description`:
 
@@ -428,7 +517,7 @@ i40e_fill_rx_flow_user_data
         pointer to rx_flow specification
 
     :param struct i40e_rx_flow_userdef \*data:
-        *undescribed*
+        pointer to return userdef data
 
 .. _`i40e_fill_rx_flow_user_data.description`:
 
@@ -507,7 +596,7 @@ i40e_get_rxnfc
         ethtool rxnfc command
 
     :param u32 \*rule_locs:
-        *undescribed*
+        pointer to store rule data
 
 .. _`i40e_get_rxnfc.description`:
 
@@ -527,10 +616,9 @@ i40e_get_rss_hash_bits
 
     :param struct ethtool_rxnfc \*nfc:
         pointer to user request
-        \ ``i_setc``\  bits currently set
 
     :param u64 i_setc:
-        *undescribed*
+        bits currently set
 
 .. _`i40e_get_rss_hash_bits.description`:
 
@@ -552,7 +640,7 @@ i40e_set_rss_hash_opt
         pointer to the physical function struct
 
     :param struct ethtool_rxnfc \*nfc:
-        *undescribed*
+        ethtool rxnfc command
 
 .. _`i40e_set_rss_hash_opt.description`:
 
@@ -728,10 +816,9 @@ Returns 0 on success, and negative value on error.
 
     :param struct list_head \*flex_pit_list:
         list of flexible src offsets in use
-        #flex_pit_start: index to first entry for this section of the table
 
     :param int flex_pit_start:
-        *undescribed*
+        index to first entry for this section of the table
 
 .. _`__i40e_reprogram_flex_pit.description`:
 
@@ -783,7 +870,7 @@ i40e_flow_str
     Converts a flow_type into a human readable string
 
     :param struct ethtool_rx_flow_spec \*fsp:
-        *undescribed*
+        the flow specification
 
 .. _`i40e_flow_str.description`:
 
@@ -1019,7 +1106,7 @@ i40e_get_channels
     Get the current channels enabled and max supported etc.
 
     :param struct net_device \*dev:
-        *undescribed*
+        network interface device structure
 
     :param struct ethtool_channels \*ch:
         ethtool channels structure
@@ -1044,7 +1131,7 @@ i40e_set_channels
     Set the new channels count.
 
     :param struct net_device \*dev:
-        *undescribed*
+        network interface device structure
 
     :param struct ethtool_channels \*ch:
         ethtool channels structure
@@ -1143,7 +1230,7 @@ i40e_set_rxfh
         hash key
 
     :param const u8 hfunc:
-        *undescribed*
+        hash function to use
 
 .. _`i40e_set_rxfh.description`:
 

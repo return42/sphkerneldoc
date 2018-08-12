@@ -26,6 +26,7 @@ acpi
     osl_c
     pci_root_c
     power_c
+    pptt_c
     processor_core_c
     processor_idle_c
     property_c

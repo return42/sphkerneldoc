@@ -12,7 +12,6 @@ fbdev
     mmp/index
     riva/index
     atmel_lcdfb_c
-    auo_k190x_c
     bw2_c
     cg14_c
     cg3_c

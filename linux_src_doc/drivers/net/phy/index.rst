@@ -7,6 +7,7 @@ phy
 .. toctree::
     :maxdepth: 1
 
+    asix_c
     marvell_c
     mdio-boardinfo_c
     mdio_bus_c

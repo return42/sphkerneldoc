@@ -541,7 +541,7 @@ sdma_v4_0_emit_copy_buffer
 Description
 -----------
 
-Copy GPU buffers using the DMA engine (VEGA10).
+Copy GPU buffers using the DMA engine (VEGA10/12).
 Used by the amdgpu ttm implementation to move pages if
 registered as the asic copy callback.
 
@@ -571,7 +571,7 @@ sdma_v4_0_emit_fill_buffer
 Description
 -----------
 
-Fill GPU buffers using the DMA engine (VEGA10).
+Fill GPU buffers using the DMA engine (VEGA10/12).
 
 .. This file was automatic generated / don't edit.
 

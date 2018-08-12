@@ -587,6 +587,18 @@ buffer is no longer bound to the resource, so \ ``bo``\ :res can be
 used to determine whether there is a need to unbind and whether
 it is safe to unbind.
 
+.. _`vmw_resource_swap_notify`:
+
+vmw_resource_swap_notify
+========================
+
+.. c:function:: void vmw_resource_swap_notify(struct ttm_buffer_object *bo)
+
+    swapout notify callback.
+
+    :param struct ttm_buffer_object \*bo:
+        The buffer object to be swapped out.
+
 .. _`vmw_query_readback_all`:
 
 vmw_query_readback_all

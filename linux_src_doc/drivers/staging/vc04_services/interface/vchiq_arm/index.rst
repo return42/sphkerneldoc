@@ -9,10 +9,8 @@ vchiq_arm
 
     vchiq_2835_arm_c
     vchiq_arm_c
-    vchiq_build_info_h
     vchiq_connected_c
     vchiq_core_c
     vchiq_debugfs_c
     vchiq_shim_c
     vchiq_util_c
-    vchiq_version_c

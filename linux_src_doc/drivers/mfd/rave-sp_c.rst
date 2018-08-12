@@ -234,6 +234,8 @@ Definition
         struct rave_sp_reply *reply;
         const struct rave_sp_variant *variant;
         struct blocking_notifier_head event_notifier_list;
+        const char *part_number_firmware;
+        const char *part_number_bootloader;
     }
 
 .. _`rave_sp.members`:
@@ -264,6 +266,12 @@ variant
 
 event_notifier_list
     Input event notification chain
+
+part_number_firmware
+    Firmware version
+
+part_number_bootloader
+    Bootloader version
 
 .. This file was automatic generated / don't edit.
 

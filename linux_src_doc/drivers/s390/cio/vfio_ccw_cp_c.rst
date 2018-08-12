@@ -24,6 +24,9 @@ Description
 This is the chain length not considering any TICs.
 You need to do a new round for each TIC target.
 
+The program is also validated for absence of not yet supported
+indirect data addressing scenarios.
+
 .. _`ccwchain_calc_length.return`:
 
 Return
@@ -115,6 +118,15 @@ This function translates the guest-physical-address channel program
 and stores the result to ccwchain list. \ ``cp``\  must have been
 initialized by a previous call with \ :c:func:`cp_init`\ . Otherwise, undefined
 behavior occurs.
+
+.. _`cp_prefetch.for-each-chain-composing-the-channel-program`:
+
+For each chain composing the channel program
+--------------------------------------------
+
+- On entry ch_len holds the count of CCWs to be translated.
+- On exit ch_len is adjusted to the count of successfully translated CCWs.
+This allows cp_free to find in ch_len the count of CCWs to free in a chain.
 
 The S/390 CCW Translation APIS (prefixed by 'cp_') are introduced
 as helpers to do ccw chain translation inside the kernel. Basically

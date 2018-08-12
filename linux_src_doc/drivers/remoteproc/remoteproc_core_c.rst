@@ -229,6 +229,18 @@ Allocating memory this way helps utilizing the reserved physical memory
 needed to map it (in case \ ``rproc``\  is using an IOMMU). Reducing the TLB
 pressure is important; it may have a substantial impact on performance.
 
+.. _`rproc_coredump_cleanup`:
+
+rproc_coredump_cleanup
+======================
+
+.. c:function:: void rproc_coredump_cleanup(struct rproc *rproc)
+
+    clean up dump_segments list
+
+    :param struct rproc \*rproc:
+        the remote processor handle
+
 .. _`rproc_resource_cleanup`:
 
 rproc_resource_cleanup
@@ -248,6 +260,59 @@ Description
 
 This function will free all resources acquired for \ ``rproc``\ , and it
 is called whenever \ ``rproc``\  either shuts down or fails to boot.
+
+.. _`rproc_coredump_add_segment`:
+
+rproc_coredump_add_segment
+==========================
+
+.. c:function:: int rproc_coredump_add_segment(struct rproc *rproc, dma_addr_t da, size_t size)
+
+    add segment of device memory to coredump
+
+    :param struct rproc \*rproc:
+        handle of a remote processor
+
+    :param dma_addr_t da:
+        device address
+
+    :param size_t size:
+        size of segment
+
+.. _`rproc_coredump_add_segment.description`:
+
+Description
+-----------
+
+Add device memory to the list of segments to be included in a coredump for
+the remoteproc.
+
+.. _`rproc_coredump_add_segment.return`:
+
+Return
+------
+
+0 on success, negative errno on error.
+
+.. _`rproc_coredump`:
+
+rproc_coredump
+==============
+
+.. c:function:: void rproc_coredump(struct rproc *rproc)
+
+    perform coredump
+
+    :param struct rproc \*rproc:
+        rproc handle
+
+.. _`rproc_coredump.description`:
+
+Description
+-----------
+
+This function will generate an ELF header for the registered segments
+and create a devcoredump device associated with rproc.
 
 .. _`rproc_trigger_recovery`:
 
@@ -563,7 +628,7 @@ Returns 0 on success and -EINVAL if \ ``rproc``\  isn't valid.
 rproc_add_subdev
 ================
 
-.. c:function:: void rproc_add_subdev(struct rproc *rproc, struct rproc_subdev *subdev, int (*probe)(struct rproc_subdev *subdev), void (*remove)(struct rproc_subdev *subdev))
+.. c:function:: void rproc_add_subdev(struct rproc *rproc, struct rproc_subdev *subdev, int (*probe)(struct rproc_subdev *subdev), void (*remove)(struct rproc_subdev *subdev, bool crashed))
 
     add a subdevice to a remoteproc
 
@@ -576,7 +641,7 @@ rproc_add_subdev
     :param int (\*probe)(struct rproc_subdev \*subdev):
         function to call when the rproc boots
 
-    :param void (\*remove)(struct rproc_subdev \*subdev):
+    :param void (\*remove)(struct rproc_subdev \*subdev, bool crashed):
         function to call when the rproc shuts down
 
 .. _`rproc_remove_subdev`:

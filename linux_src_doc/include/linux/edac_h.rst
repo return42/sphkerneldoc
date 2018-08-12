@@ -157,7 +157,8 @@ Definition
         MEM_LRDDR3,
         MEM_DDR4,
         MEM_RDDR4,
-        MEM_LRDDR4
+        MEM_LRDDR4,
+        MEM_NVDIMM
     };
 
 .. _`mem_type.constants`:
@@ -246,6 +247,9 @@ MEM_RDDR4
 
 MEM_LRDDR4
     Load-Reduced DDR4 memory.
+
+MEM_NVDIMM
+    Non-volatile RAM
 
 .. _`edac_type`:
 

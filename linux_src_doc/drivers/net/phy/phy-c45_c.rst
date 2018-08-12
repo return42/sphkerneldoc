@@ -111,7 +111,7 @@ genphy_c45_read_lpa
 
 .. c:function:: int genphy_c45_read_lpa(struct phy_device *phydev)
 
-    read the link partner advertisment and pause
+    read the link partner advertisement and pause
 
     :param struct phy_device \*phydev:
         target phy_device struct
@@ -122,7 +122,7 @@ Description
 -----------
 
 Read the Clause 45 defined base (7.19) and 10G (7.33) status registers,
-filling in the link partner advertisment, pause and asym_pause members
+filling in the link partner advertisement, pause and asym_pause members
 in \ ``phydev``\ .  This assumes that the auto-negotiation MMD is present, and
 the backplane bit (7.48.0) is clear.  Clause 45 PHY drivers are expected
 to fill in the remainder of the link partner advert from vendor registers.

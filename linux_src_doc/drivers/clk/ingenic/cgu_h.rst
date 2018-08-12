@@ -229,6 +229,8 @@ Definition
     struct ingenic_cgu_gate_info {
         unsigned reg;
         u8 bit;
+        bool clear_to_gate;
+        u16 delay_us;
     }
 
 .. _`ingenic_cgu_gate_info.members`:
@@ -241,6 +243,12 @@ reg
 
 bit
     offset of the bit in the register that controls the gate
+
+clear_to_gate
+    if set, the clock is gated when the bit is cleared
+
+delay_us
+    delay in microseconds after which the clock is considered stable
 
 .. _`ingenic_cgu_custom_info`:
 
@@ -424,7 +432,7 @@ Members
 -------
 
 hw
-    see Documentation/clk.txt
+    see Documentation/driver-api/clk.rst
 
 cgu
     a pointer to the CGU data

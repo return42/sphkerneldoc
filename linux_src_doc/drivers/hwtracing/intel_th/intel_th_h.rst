@@ -72,7 +72,7 @@ Definition
 .. code-block:: c
 
     struct intel_th_drvdata {
-        unsigned int tscu_enable : 1;
+        unsigned int tscu_enable : 1, host_mode_only : 1;
     }
 
 .. _`intel_th_drvdata.members`:
@@ -82,6 +82,9 @@ Members
 
 tscu_enable
     device needs SW to enable time stamping unit
+
+host_mode_only
+    device can only operate in 'host debugger' mode
 
 .. _`intel_th_device`:
 

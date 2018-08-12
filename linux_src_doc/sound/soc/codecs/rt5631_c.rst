@@ -6,11 +6,11 @@
 rt5631_write_index
 ==================
 
-.. c:function:: void rt5631_write_index(struct snd_soc_codec *codec, unsigned int reg, unsigned int value)
+.. c:function:: void rt5631_write_index(struct snd_soc_component *component, unsigned int reg, unsigned int value)
 
     write index register of 2nd layer
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param unsigned int reg:
@@ -24,11 +24,11 @@ rt5631_write_index
 rt5631_read_index
 =================
 
-.. c:function:: unsigned int rt5631_read_index(struct snd_soc_codec *codec, unsigned int reg)
+.. c:function:: unsigned int rt5631_read_index(struct snd_soc_component *component, unsigned int reg)
 
     read index register of 2nd layer
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param unsigned int reg:
@@ -39,11 +39,11 @@ rt5631_read_index
 onebit_depop_power_stage
 ========================
 
-.. c:function:: void onebit_depop_power_stage(struct snd_soc_codec *codec, int enable)
+.. c:function:: void onebit_depop_power_stage(struct snd_soc_component *component, int enable)
 
     auto depop in power stage.
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param int enable:
@@ -61,11 +61,11 @@ When power on/off headphone, the depop sequence is done by hardware.
 onebit_depop_mute_stage
 =======================
 
-.. c:function:: void onebit_depop_mute_stage(struct snd_soc_codec *codec, int enable)
+.. c:function:: void onebit_depop_mute_stage(struct snd_soc_component *component, int enable)
 
     auto depop in mute stage.
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param int enable:
@@ -83,11 +83,11 @@ When mute/unmute headphone, the depop sequence is done by hardware.
 depop_seq_power_stage
 =====================
 
-.. c:function:: void depop_seq_power_stage(struct snd_soc_codec *codec, int enable)
+.. c:function:: void depop_seq_power_stage(struct snd_soc_component *component, int enable)
 
     step by step depop sequence in power stage.
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param int enable:
@@ -105,11 +105,11 @@ When power on/off headphone, the depop sequence is done in step by step.
 depop_seq_mute_stage
 ====================
 
-.. c:function:: void depop_seq_mute_stage(struct snd_soc_codec *codec, int enable)
+.. c:function:: void depop_seq_mute_stage(struct snd_soc_component *component, int enable)
 
     step by step depop sequence in mute stage.
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param int enable:

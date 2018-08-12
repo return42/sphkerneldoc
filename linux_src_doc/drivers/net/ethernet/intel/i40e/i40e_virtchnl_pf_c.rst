@@ -12,10 +12,10 @@ i40e_vc_vf_broadcast
         pointer to the PF structure
 
     :param enum virtchnl_ops v_opcode:
-        *undescribed*
+        operation code
 
     :param i40e_status v_retval:
-        *undescribed*
+        return value
 
     :param u8 \*msg:
         pointer to the msg buffer
@@ -201,6 +201,29 @@ Description
 
 return PF relative queue id
 
+.. _`i40e_get_real_pf_qid`:
+
+i40e_get_real_pf_qid
+====================
+
+.. c:function:: u16 i40e_get_real_pf_qid(struct i40e_vf *vf, u16 vsi_id, u16 queue_id)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+    :param u16 vsi_id:
+        vsi id
+
+    :param u16 queue_id:
+        queue number
+
+.. _`i40e_get_real_pf_qid.description`:
+
+Description
+-----------
+
+wrapper function to get pf_queue_id handling ADq code as well
+
 .. _`i40e_config_irq_link_list`:
 
 i40e_config_irq_link_list
@@ -311,13 +334,13 @@ configure rx queue
 i40e_alloc_vsi_res
 ==================
 
-.. c:function:: int i40e_alloc_vsi_res(struct i40e_vf *vf, enum i40e_vsi_type type)
+.. c:function:: int i40e_alloc_vsi_res(struct i40e_vf *vf, u8 idx)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
 
-    :param enum i40e_vsi_type type:
-        type of VSI to allocate
+    :param u8 idx:
+        VSI index, applies only for ADq mode, zero otherwise
 
 .. _`i40e_alloc_vsi_res.description`:
 
@@ -325,6 +348,42 @@ Description
 -----------
 
 alloc VF vsi context & resources
+
+.. _`i40e_map_pf_queues_to_vsi`:
+
+i40e_map_pf_queues_to_vsi
+=========================
+
+.. c:function:: void i40e_map_pf_queues_to_vsi(struct i40e_vf *vf)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+.. _`i40e_map_pf_queues_to_vsi.description`:
+
+Description
+-----------
+
+PF maps LQPs to a VF by programming VSILAN_QTABLE & VPLAN_QTABLE. This
+function takes care of first part VSILAN_QTABLE, mapping pf queues to VSI.
+
+.. _`i40e_map_pf_to_vf_queues`:
+
+i40e_map_pf_to_vf_queues
+========================
+
+.. c:function:: void i40e_map_pf_to_vf_queues(struct i40e_vf *vf)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+.. _`i40e_map_pf_to_vf_queues.description`:
+
+Description
+-----------
+
+PF maps LQPs to a VF by programming VSILAN_QTABLE & VPLAN_QTABLE. This
+function takes care of the second part VPLAN_QTABLE & completes VF mappings.
 
 .. _`i40e_enable_vf_mappings`:
 
@@ -639,7 +698,7 @@ i40e_vc_get_version_msg
         pointer to the VF info
 
     :param u8 \*msg:
-        *undescribed*
+        pointer to the msg buffer
 
 .. _`i40e_vc_get_version_msg.description`:
 
@@ -647,6 +706,18 @@ Description
 -----------
 
 called from the VF to request the API version used by the PF
+
+.. _`i40e_del_qch`:
+
+i40e_del_qch
+============
+
+.. c:function:: void i40e_del_qch(struct i40e_vf *vf)
+
+    delete all the additional VSIs created as a part of ADq
+
+    :param struct i40e_vf \*vf:
+        pointer to VF structure
 
 .. _`i40e_vc_get_vf_resources_msg`:
 
@@ -752,6 +823,29 @@ Description
 called from the VF to configure the rx/tx
 queues
 
+.. _`i40e_validate_queue_map`:
+
+i40e_validate_queue_map
+=======================
+
+.. c:function:: int i40e_validate_queue_map(struct i40e_vf *vf, u16 vsi_id, unsigned long queuemap)
+
+    :param struct i40e_vf \*vf:
+        *undescribed*
+
+    :param u16 vsi_id:
+        vsi id
+
+    :param unsigned long queuemap:
+        Tx or Rx queue map
+
+.. _`i40e_validate_queue_map.description`:
+
+Description
+-----------
+
+check if Tx or Rx queue map is valid
+
 .. _`i40e_vc_config_irq_map_msg`:
 
 i40e_vc_config_irq_map_msg
@@ -775,6 +869,38 @@ Description
 
 called from the VF to configure the irq to
 queue map
+
+.. _`i40e_ctrl_vf_tx_rings`:
+
+i40e_ctrl_vf_tx_rings
+=====================
+
+.. c:function:: int i40e_ctrl_vf_tx_rings(struct i40e_vsi *vsi, unsigned long q_map, bool enable)
+
+    :param struct i40e_vsi \*vsi:
+        the SRIOV VSI being configured
+
+    :param unsigned long q_map:
+        bit map of the queues to be enabled
+
+    :param bool enable:
+        start or stop the queue
+
+.. _`i40e_ctrl_vf_rx_rings`:
+
+i40e_ctrl_vf_rx_rings
+=====================
+
+.. c:function:: int i40e_ctrl_vf_rx_rings(struct i40e_vsi *vsi, unsigned long q_map, bool enable)
+
+    :param struct i40e_vsi \*vsi:
+        the SRIOV VSI being configured
+
+    :param unsigned long q_map:
+        bit map of the queues to be enabled
+
+    :param bool enable:
+        start or stop the queue
 
 .. _`i40e_vc_enable_queues_msg`:
 
@@ -877,23 +1003,30 @@ called from the VF to get vsi stats
 i40e_check_vf_permission
 ========================
 
-.. c:function:: int i40e_check_vf_permission(struct i40e_vf *vf, u8 *macaddr)
+.. c:function:: int i40e_check_vf_permission(struct i40e_vf *vf, struct virtchnl_ether_addr_list *al)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
 
-    :param u8 \*macaddr:
-        pointer to the MAC Address being checked
+    :param struct virtchnl_ether_addr_list \*al:
+        MAC address list from virtchnl
 
 .. _`i40e_check_vf_permission.description`:
 
 Description
 -----------
 
-Check if the VF has permission to add or delete unicast MAC address
-filters and return error code -EPERM if not.  Then check if the
-address filter requested is broadcast or zero and if so return
-an invalid MAC address error code.
+Check that the given list of MAC addresses is allowed. Will return -EPERM
+if any address in the list is not valid. Checks the following conditions:
+
+1) broadcast and zero addresses are never valid
+2) unicast addresses are not allowed if the VMM has administratively set
+the VF MAC address, unless the VF is marked as privileged.
+3) There is enough space to add all the addresses.
+
+Note that to guarantee consistency, it is expected this function be called
+while holding the mac_filter_hash_lock, as otherwise the current number of
+addresses might not be accurate.
 
 .. _`i40e_vc_add_mac_addr_msg`:
 
@@ -1174,12 +1307,133 @@ Description
 
 Disable vlan header stripping for the VF
 
+.. _`i40e_validate_cloud_filter`:
+
+i40e_validate_cloud_filter
+==========================
+
+.. c:function:: int i40e_validate_cloud_filter(struct i40e_vf *vf, struct virtchnl_filter *tc_filter)
+
+    :param struct i40e_vf \*vf:
+        *undescribed*
+
+    :param struct virtchnl_filter \*tc_filter:
+        *undescribed*
+
+.. _`i40e_validate_cloud_filter.description`:
+
+Description
+-----------
+
+This function validates cloud filter programmed as TC filter for ADq
+
+.. _`i40e_find_vsi_from_seid`:
+
+i40e_find_vsi_from_seid
+=======================
+
+.. c:function:: struct i40e_vsi *i40e_find_vsi_from_seid(struct i40e_vf *vf, u16 seid)
+
+    searches for the vsi with the given seid
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+        \ ``seid``\  - seid of the vsi it is searching for
+
+    :param u16 seid:
+        *undescribed*
+
+.. _`i40e_del_all_cloud_filters`:
+
+i40e_del_all_cloud_filters
+==========================
+
+.. c:function:: void i40e_del_all_cloud_filters(struct i40e_vf *vf)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+.. _`i40e_del_all_cloud_filters.description`:
+
+Description
+-----------
+
+This function deletes all cloud filters
+
+.. _`i40e_vc_del_cloud_filter`:
+
+i40e_vc_del_cloud_filter
+========================
+
+.. c:function:: int i40e_vc_del_cloud_filter(struct i40e_vf *vf, u8 *msg)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+    :param u8 \*msg:
+        pointer to the msg buffer
+
+.. _`i40e_vc_del_cloud_filter.description`:
+
+Description
+-----------
+
+This function deletes a cloud filter programmed as TC filter for ADq
+
+.. _`i40e_vc_add_cloud_filter`:
+
+i40e_vc_add_cloud_filter
+========================
+
+.. c:function:: int i40e_vc_add_cloud_filter(struct i40e_vf *vf, u8 *msg)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+    :param u8 \*msg:
+        pointer to the msg buffer
+
+.. _`i40e_vc_add_cloud_filter.description`:
+
+Description
+-----------
+
+This function adds a cloud filter programmed as TC filter for ADq
+
+.. _`i40e_vc_add_qch_msg`:
+
+i40e_vc_add_qch_msg
+===================
+
+.. c:function:: int i40e_vc_add_qch_msg(struct i40e_vf *vf, u8 *msg)
+
+    Add queue channel and enable ADq
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+    :param u8 \*msg:
+        pointer to the msg buffer
+
+.. _`i40e_vc_del_qch_msg`:
+
+i40e_vc_del_qch_msg
+===================
+
+.. c:function:: int i40e_vc_del_qch_msg(struct i40e_vf *vf, u8 *msg)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+    :param u8 \*msg:
+        pointer to the msg buffer
+
 .. _`i40e_vc_process_vf_msg`:
 
 i40e_vc_process_vf_msg
 ======================
 
-.. c:function:: int i40e_vc_process_vf_msg(struct i40e_pf *pf, s16 vf_id, u32 v_opcode, u32 v_retval, u8 *msg, u16 msglen)
+.. c:function:: int i40e_vc_process_vf_msg(struct i40e_pf *pf, s16 vf_id, u32 v_opcode, u32 __always_unused v_retval, u8 *msg, u16 msglen)
 
     :param struct i40e_pf \*pf:
         pointer to the PF structure
@@ -1188,10 +1442,10 @@ i40e_vc_process_vf_msg
         source VF id
 
     :param u32 v_opcode:
-        *undescribed*
+        operation code
 
-    :param u32 v_retval:
-        *undescribed*
+    :param u32 __always_unused v_retval:
+        unused return value code
 
     :param u8 \*msg:
         pointer to the msg buffer
@@ -1312,10 +1566,10 @@ i40e_ndo_set_vf_bw
         VF identifier
 
     :param int min_tx_rate:
-        *undescribed*
+        Minimum Tx rate
 
     :param int max_tx_rate:
-        *undescribed*
+        Maximum Tx rate
 
 .. _`i40e_ndo_set_vf_bw.description`:
 

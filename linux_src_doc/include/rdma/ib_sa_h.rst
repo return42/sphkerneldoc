@@ -1,6 +1,48 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/ib_sa.h
 
+.. _`sa_path_rec_roce`:
+
+struct sa_path_rec_roce
+=======================
+
+.. c:type:: struct sa_path_rec_roce
+
+    RoCE specific portion of the path record entry
+
+.. _`sa_path_rec_roce.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sa_path_rec_roce {
+        bool route_resolved;
+        u8 dmac[ETH_ALEN];
+        int ifindex;
+        struct net *net;
+    }
+
+.. _`sa_path_rec_roce.members`:
+
+Members
+-------
+
+route_resolved
+    When set, it indicates that this route is already
+    resolved for this path record entry.
+
+dmac
+    Destination mac address for the given DGID entry
+    of the path record entry.
+
+ifindex
+    *undescribed*
+
+net
+    *undescribed*
+
 .. _`ib_sa_register_client`:
 
 ib_sa_register_client

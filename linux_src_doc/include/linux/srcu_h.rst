@@ -1,6 +1,56 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/srcu.h
 
+.. _`cleanup_srcu_struct`:
+
+cleanup_srcu_struct
+===================
+
+.. c:function:: void cleanup_srcu_struct(struct srcu_struct *sp)
+
+    deconstruct a sleep-RCU structure
+
+    :param struct srcu_struct \*sp:
+        structure to clean up.
+
+.. _`cleanup_srcu_struct.description`:
+
+Description
+-----------
+
+Must invoke this after you are finished using a given srcu_struct that
+was initialized via \ :c:func:`init_srcu_struct`\ , else you leak memory.
+
+.. _`cleanup_srcu_struct_quiesced`:
+
+cleanup_srcu_struct_quiesced
+============================
+
+.. c:function:: void cleanup_srcu_struct_quiesced(struct srcu_struct *sp)
+
+    deconstruct a quiesced sleep-RCU structure
+
+    :param struct srcu_struct \*sp:
+        structure to clean up.
+
+.. _`cleanup_srcu_struct_quiesced.description`:
+
+Description
+-----------
+
+Must invoke this after you are finished using a given srcu_struct that
+was initialized via \ :c:func:`init_srcu_struct`\ , else you leak memory.  Also,
+all grace-period processing must have completed.
+
+"Completed" means that the last \ :c:func:`synchronize_srcu`\  and
+\ :c:func:`synchronize_srcu_expedited`\  calls must have returned before the call
+to \ :c:func:`cleanup_srcu_struct_quiesced`\ .  It also means that the callback
+from the last \ :c:func:`call_srcu`\  must have been invoked before the call to
+\ :c:func:`cleanup_srcu_struct_quiesced`\ , but you can use \ :c:func:`srcu_barrier`\  to help
+with this last.  Violating these rules will get you a \ :c:func:`WARN_ON`\  splat
+(with high probability, anyway), and will also cause the srcu_struct
+to be leaked.
+
 .. _`srcu_read_lock_held`:
 
 srcu_read_lock_held

@@ -95,16 +95,16 @@ cpufreq_notify_transition
 
 .. c:function:: void cpufreq_notify_transition(struct cpufreq_policy *policy, struct cpufreq_freqs *freqs, unsigned int state)
 
-    call notifier chain and adjust_jiffies on frequency transition.
+    Notify frequency transition and adjust_jiffies.
 
     :param struct cpufreq_policy \*policy:
-        *undescribed*
+        cpufreq policy to enable fast frequency switching for.
 
     :param struct cpufreq_freqs \*freqs:
-        *undescribed*
+        contain details of the frequency update.
 
     :param unsigned int state:
-        *undescribed*
+        set to CPUFREQ_PRECHANGE or CPUFREQ_POSTCHANGE.
 
 .. _`cpufreq_notify_transition.description`:
 

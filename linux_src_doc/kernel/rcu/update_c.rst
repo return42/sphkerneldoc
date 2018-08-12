@@ -273,7 +273,7 @@ Control will return to the caller some time after a full rcu-tasks
 grace period has elapsed, in other words after all currently
 executing rcu-tasks read-side critical sections have elapsed.  These
 read-side critical sections are delimited by calls to \ :c:func:`schedule`\ ,
-\ :c:func:`cond_resched_rcu_qs`\ , idle execution, userspace execution, calls
+\ :c:func:`cond_resched_tasks_rcu_qs`\ , idle execution, userspace execution, calls
 to \ :c:func:`synchronize_rcu_tasks`\ , and (in theory, anyway) \ :c:func:`cond_resched`\ .
 
 This is a very specialized primitive, intended only for a few uses in

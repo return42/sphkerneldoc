@@ -534,7 +534,7 @@ down the line discpline layer. On exit, each tty's ldisc is NULL.
 tty_ldisc_init
 ==============
 
-.. c:function:: void tty_ldisc_init(struct tty_struct *tty)
+.. c:function:: int tty_ldisc_init(struct tty_struct *tty)
 
     ldisc setup for new tty
 

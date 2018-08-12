@@ -29,7 +29,7 @@ rio_destid_reserve
 
 .. c:function:: int rio_destid_reserve(struct rio_net *net, u16 destid)
 
-    Reserve the specivied destID
+    Reserve the specified destID
 
     :param struct rio_net \*net:
         RIO network
@@ -472,7 +472,7 @@ Description
 
 For each enumerated device, ensure that each switch in a system
 has correct routing entries. Add routes for devices that where
-unknown dirung the first enumeration pass through the switch.
+unknown during the first enumeration pass through the switch.
 
 .. _`rio_init_em`:
 

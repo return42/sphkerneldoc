@@ -9,5 +9,4 @@ include
 
     linux/index
     cgs_common_h
-    cgs_linux_h
     kgd_kfd_interface_h

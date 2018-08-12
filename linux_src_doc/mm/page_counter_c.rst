@@ -79,28 +79,72 @@ page_counter_uncharge
     :param unsigned long nr_pages:
         number of pages to uncharge
 
-.. _`page_counter_limit`:
+.. _`page_counter_set_max`:
 
-page_counter_limit
-==================
+page_counter_set_max
+====================
 
-.. c:function:: int page_counter_limit(struct page_counter *counter, unsigned long limit)
+.. c:function:: int page_counter_set_max(struct page_counter *counter, unsigned long nr_pages)
 
-    limit the number of pages allowed
+    set the maximum number of pages allowed
 
     :param struct page_counter \*counter:
         counter
 
-    :param unsigned long limit:
+    :param unsigned long nr_pages:
         limit to set
 
-.. _`page_counter_limit.description`:
+.. _`page_counter_set_max.description`:
 
 Description
 -----------
 
 Returns 0 on success, -EBUSY if the current number of pages on the
 counter already exceeds the specified limit.
+
+The caller must serialize invocations on the same counter.
+
+.. _`page_counter_set_min`:
+
+page_counter_set_min
+====================
+
+.. c:function:: void page_counter_set_min(struct page_counter *counter, unsigned long nr_pages)
+
+    set the amount of protected memory
+
+    :param struct page_counter \*counter:
+        counter
+
+    :param unsigned long nr_pages:
+        value to set
+
+.. _`page_counter_set_min.description`:
+
+Description
+-----------
+
+The caller must serialize invocations on the same counter.
+
+.. _`page_counter_set_low`:
+
+page_counter_set_low
+====================
+
+.. c:function:: void page_counter_set_low(struct page_counter *counter, unsigned long nr_pages)
+
+    set the amount of protected memory
+
+    :param struct page_counter \*counter:
+        counter
+
+    :param unsigned long nr_pages:
+        value to set
+
+.. _`page_counter_set_low.description`:
+
+Description
+-----------
 
 The caller must serialize invocations on the same counter.
 

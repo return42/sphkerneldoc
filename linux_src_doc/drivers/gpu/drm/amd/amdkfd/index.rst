@@ -12,3 +12,4 @@ amdkfd
     kfd_kernel_queue_h
     kfd_mqd_manager_h
     kfd_priv_h
+    kfd_process_c

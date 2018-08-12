@@ -13,6 +13,18 @@ brcmf_feat_attach
     :param struct brcmf_pub \*drvr:
         driver instance.
 
+.. _`brcmf_feat_debugfs_create`:
+
+brcmf_feat_debugfs_create
+=========================
+
+.. c:function:: void brcmf_feat_debugfs_create(struct brcmf_pub *drvr)
+
+    create debugfs entries.
+
+    :param struct brcmf_pub \*drvr:
+        driver instance.
+
 .. _`brcmf_feat_is_enabled`:
 
 brcmf_feat_is_enabled

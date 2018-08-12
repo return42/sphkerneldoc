@@ -184,6 +184,32 @@ driver already.
 This function must be called from process context with no mode
 setting locks held.
 
+.. _`drm_kms_helper_is_poll_worker`:
+
+drm_kms_helper_is_poll_worker
+=============================
+
+.. c:function:: bool drm_kms_helper_is_poll_worker( void)
+
+    is \ ``current``\  task an output poll worker?
+
+    :param  void:
+        no arguments
+
+.. _`drm_kms_helper_is_poll_worker.description`:
+
+Description
+-----------
+
+Determine if \ ``current``\  task is an output poll worker.  This can be used
+to select distinct code paths for output polling versus other contexts.
+
+One use case is to avoid a deadlock between the output poll worker and
+the autosuspend worker wherein the latter waits for polling to finish
+upon calling \ :c:func:`drm_kms_helper_poll_disable`\ , while the former waits for
+runtime suspend to finish upon calling \ :c:func:`pm_runtime_get_sync`\  in a
+connector ->detect hook.
+
 .. _`drm_kms_helper_poll_disable`:
 
 drm_kms_helper_poll_disable

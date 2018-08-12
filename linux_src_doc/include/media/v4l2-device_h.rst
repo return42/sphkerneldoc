@@ -19,9 +19,7 @@ Definition
 
     struct v4l2_device {
         struct device *dev;
-    #if defined(CONFIG_MEDIA_CONTROLLER)
         struct media_device *mdev;
-    #endif
         struct list_head subdevs;
         spinlock_t lock;
         char name[V4L2_DEVICE_NAME_SIZE];
@@ -41,7 +39,7 @@ dev
     pointer to struct device.
 
 mdev
-    pointer to struct media_device
+    pointer to struct media_device, may be NULL.
 
 subdevs
     used to keep track of the registered subdevs

@@ -514,7 +514,7 @@ structure for GEM drivers.
 drm_dev_is_unplugged
 ====================
 
-.. c:function:: int drm_dev_is_unplugged(struct drm_device *dev)
+.. c:function:: bool drm_dev_is_unplugged(struct drm_device *dev)
 
     is a DRM device unplugged
 

@@ -21,6 +21,7 @@ Definition
         struct pwm_chip chip;
         void __iomem *regs;
         struct clk *clks[MTK_CLK_MAX];
+        const struct mtk_pwm_platform_data *soc;
     }
 
 .. _`mtk_pwm_chip.members`:
@@ -36,6 +37,9 @@ regs
 
 clks
     list of clocks
+
+soc
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

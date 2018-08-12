@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/nvme/host/pci.c
 
-.. _`__nvme_submit_cmd`:
+.. _`nvme_submit_cmd`:
 
-\__nvme_submit_cmd
-==================
+nvme_submit_cmd
+===============
 
-.. c:function:: void __nvme_submit_cmd(struct nvme_queue *nvmeq, struct nvme_command *cmd)
+.. c:function:: void nvme_submit_cmd(struct nvme_queue *nvmeq, struct nvme_command *cmd)
 
     Copy a command into a queue and ring the doorbell
 
@@ -15,13 +15,6 @@
 
     :param struct nvme_command \*cmd:
         The command to send
-
-.. _`__nvme_submit_cmd.description`:
-
-Description
------------
-
-Safe to use from interrupt context
 
 .. _`nvme_dif_remap`:
 

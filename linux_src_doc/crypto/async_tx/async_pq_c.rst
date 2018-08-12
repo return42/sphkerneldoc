@@ -62,7 +62,7 @@ async_gen_syndrome
     asynchronously calculate a raid6 syndrome
 
     :param struct page \*\*blocks:
-        source blocks from idx 0..disks-3, P @ disks-2 and Q @ disks-1
+        source blocks from idx 0..disks-3, P \ ````\  disks-2 and Q \ ````\  disks-1
 
     :param unsigned int offset:
         common offset into each block (src and dest) to start transaction
@@ -104,7 +104,7 @@ async_syndrome_val
     asynchronously validate a raid6 syndrome
 
     :param struct page \*\*blocks:
-        source blocks from idx 0..disks-3, P @ disks-2 and Q @ disks-1
+        source blocks from idx 0..disks-3, P \ ````\  disks-2 and Q \ ````\  disks-1
 
     :param unsigned int offset:
         common offset into each block (src and dest) to start transaction

@@ -10,6 +10,7 @@ core
     cache_c
     cgroup_c
     cm_c
+    cma_c
     cq_c
     device_c
     fmr_pool_c

@@ -10,9 +10,11 @@ dma
     bestcomm/index
     ioat/index
     ipu/index
+    mediatek/index
     ppc4xx/index
     qcom/index
     sh/index
+    ti/index
     xilinx/index
     acpi-dma_c
     altera-msgdma_c
@@ -26,7 +28,6 @@ dma
     dmaengine_c
     dmaengine_h
     dmatest_c
-    edma_c
     ep93xx_dma_c
     fsldma_c
     idma64_h
@@ -41,6 +42,7 @@ dma
     st_fdma_h
     ste_dma40_c
     ste_dma40_ll_h
+    stm32-dma_c
     sun4i-dma_c
     virt-dma_c
     virt-dma_h

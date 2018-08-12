@@ -8,10 +8,10 @@ rtw_get_wps_ie
 
 .. c:function:: u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen)
 
-    Search WPS IE from a series of IEs
+    Search WPS IE from a series of ies
 
     :param u8 \*in_ie:
-        Address of IEs to search
+        Address of ies to search
 
     :param uint in_len:
         Length limit from in_ie
@@ -101,7 +101,7 @@ rtw_ieee802_11_parse_elems
     Parse information elements in management frames
 
     :param u8 \*start:
-        Pointer to the start of IEs
+        Pointer to the start of ies
 
     :param uint len:
         Length of IE buffer in octets

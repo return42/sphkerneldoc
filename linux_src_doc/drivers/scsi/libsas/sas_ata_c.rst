@@ -8,7 +8,7 @@ sas_discover_sata
 
 .. c:function:: int sas_discover_sata(struct domain_device *dev)
 
-    - discover an STP/SATA domain device
+    discover an STP/SATA domain device
 
     :param struct domain_device \*dev:
         pointer to struct domain_device of interest

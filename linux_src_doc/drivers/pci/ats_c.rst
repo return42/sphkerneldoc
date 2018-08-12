@@ -67,7 +67,7 @@ pci_enable_pri
 
 .. c:function:: int pci_enable_pri(struct pci_dev *pdev, u32 reqs)
 
-    Enable PRI capability @ pdev: PCI device structure
+    Enable PRI capability \ ````\  pdev: PCI device structure
 
     :param struct pci_dev \*pdev:
         *undescribed*

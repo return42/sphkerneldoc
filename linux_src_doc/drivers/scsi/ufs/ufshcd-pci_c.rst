@@ -11,7 +11,7 @@ ufshcd_pci_suspend
     suspend power management function
 
     :param struct device \*dev:
-        *undescribed*
+        pointer to PCI device handle
 
 .. _`ufshcd_pci_suspend.description`:
 
@@ -31,7 +31,7 @@ ufshcd_pci_resume
     resume power management function
 
     :param struct device \*dev:
-        *undescribed*
+        pointer to PCI device handle
 
 .. _`ufshcd_pci_resume.description`:
 
@@ -60,10 +60,10 @@ ufshcd_pci_remove
 
 .. c:function:: void ufshcd_pci_remove(struct pci_dev *pdev)
 
-    de-allocate PCI/SCSI host and host memory space data structure memory \ ``pdev``\  - pointer to PCI handle
+    de-allocate PCI/SCSI host and host memory space data structure memory
 
     :param struct pci_dev \*pdev:
-        *undescribed*
+        pointer to PCI handle
 
 .. _`ufshcd_pci_probe`:
 

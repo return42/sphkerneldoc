@@ -1047,6 +1047,21 @@ i40iw_destroy_ah
     :param struct ib_ah \*ah:
         pointer to address handle
 
+.. _`i40iw_get_vector_affinity`:
+
+i40iw_get_vector_affinity
+=========================
+
+.. c:function:: const struct cpumask *i40iw_get_vector_affinity(struct ib_device *ibdev, int comp_vector)
+
+    report IRQ affinity mask
+
+    :param struct ib_device \*ibdev:
+        IB device
+
+    :param int comp_vector:
+        completion vector index
+
 .. _`i40iw_init_rdma_device`:
 
 i40iw_init_rdma_device

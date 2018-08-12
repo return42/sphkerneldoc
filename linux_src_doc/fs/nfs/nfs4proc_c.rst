@@ -296,7 +296,7 @@ failed or the state ID is not currently valid.
 nfs41_free_stateid
 ==================
 
-.. c:function:: int nfs41_free_stateid(struct nfs_server *server, const nfs4_stateid *stateid, struct rpc_cred *cred, bool is_recovery)
+.. c:function:: int nfs41_free_stateid(struct nfs_server *server, const nfs4_stateid *stateid, struct rpc_cred *cred, bool privileged)
 
     perform a FREE_STATEID operation
 
@@ -309,8 +309,8 @@ nfs41_free_stateid
     :param struct rpc_cred \*cred:
         credential
 
-    :param bool is_recovery:
-        set to true if this call needs to be privileged
+    :param bool privileged:
+        *undescribed*
 
 .. _`nfs41_free_stateid.note`:
 

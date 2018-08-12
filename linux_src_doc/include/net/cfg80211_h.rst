@@ -1150,6 +1150,7 @@ Definition
         bool control_port;
         __be16 control_port_ethertype;
         bool control_port_no_encrypt;
+        bool control_port_over_nl80211;
         struct key_params *wep_keys;
         int wep_tx_key;
         const u8 *psk;
@@ -1192,6 +1193,10 @@ control_port_ethertype
 control_port_no_encrypt
     TRUE to prevent encryption of control port
     protocol frames.
+
+control_port_over_nl80211
+    TRUE if userspace expects to exchange control
+    port frames over NL80211 instead of the network interface.
 
 wep_keys
     static WEP keys, if not NULL points to an array of
@@ -2121,6 +2126,79 @@ Description
 
 Information about the currently associated BSS
 
+.. _`cfg80211_txq_stats`:
+
+struct cfg80211_txq_stats
+=========================
+
+.. c:type:: struct cfg80211_txq_stats
+
+    TXQ statistics for this TID
+
+.. _`cfg80211_txq_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_txq_stats {
+        u32 filled;
+        u32 backlog_bytes;
+        u32 backlog_packets;
+        u32 flows;
+        u32 drops;
+        u32 ecn_marks;
+        u32 overlimit;
+        u32 overmemory;
+        u32 collisions;
+        u32 tx_bytes;
+        u32 tx_packets;
+        u32 max_flows;
+    }
+
+.. _`cfg80211_txq_stats.members`:
+
+Members
+-------
+
+filled
+    bitmap of flags using the bits of \ :c:type:`enum nl80211_txq_stats <nl80211_txq_stats>`\  to
+    indicate the relevant values in this struct are filled
+
+backlog_bytes
+    total number of bytes currently backlogged
+
+backlog_packets
+    total number of packets currently backlogged
+
+flows
+    number of new flows seen
+
+drops
+    total number of packets dropped
+
+ecn_marks
+    total number of packets marked with ECN CE
+
+overlimit
+    number of drops due to queue space overflow
+
+overmemory
+    number of drops due to memory limit overflow
+
+collisions
+    number of hash collisions
+
+tx_bytes
+    total number of bytes dequeued
+
+tx_packets
+    total number of packets dequeued
+
+max_flows
+    maximum number of flows supported
+
 .. _`cfg80211_tid_stats`:
 
 struct cfg80211_tid_stats
@@ -2143,6 +2221,7 @@ Definition
         u64 tx_msdu;
         u64 tx_msdu_retries;
         u64 tx_msdu_failed;
+        struct cfg80211_txq_stats txq_stats;
     }
 
 .. _`cfg80211_tid_stats.members`:
@@ -2166,6 +2245,9 @@ tx_msdu_retries
 
 tx_msdu_failed
     number of failed transmitted MSDUs
+
+txq_stats
+    TXQ statistics
 
 .. _`station_info`:
 
@@ -2218,7 +2300,9 @@ Definition
         u64 rx_beacon;
         u64 rx_duration;
         u8 rx_beacon_signal_avg;
-        struct cfg80211_tid_stats pertid[IEEE80211_NUM_TIDS + 1];
+        struct cfg80211_tid_stats *pertid;
+        s8 ack_signal;
+        s8 avg_ack_signal;
     }
 
 .. _`station_info.members`:
@@ -2342,6 +2426,14 @@ rx_beacon_signal_avg
 pertid
     per-TID statistics, see \ :c:type:`struct cfg80211_tid_stats <cfg80211_tid_stats>`\ , using the last
     (IEEE80211_NUM_TIDS) index for MSDUs not encapsulated in QoS-MPDUs.
+    Note that this doesn't use the \ ``filled``\  bit, but is used if non-NULL.
+
+ack_signal
+    signal strength (in dBm) of the last ACK frame.
+
+avg_ack_signal
+    average rssi value of ack packet for the no of msdu's has
+    been sent.
 
 .. _`station_info.description`:
 
@@ -2850,6 +2942,7 @@ Definition
         u32 basic_rates;
         struct cfg80211_bitrate_mask beacon_rate;
         bool userspace_handles_dfs;
+        bool control_port_over_nl80211;
     }
 
 .. _`mesh_setup.members`:
@@ -2912,6 +3005,10 @@ userspace_handles_dfs
     whether user space controls DFS operation, i.e.
     changes the channel when a radar is detected. This is required
     to operate on DFS channels.
+
+control_port_over_nl80211
+    TRUE if userspace expects to exchange control
+    port frames over NL80211 instead of the network interface.
 
 .. _`mesh_setup.description`:
 
@@ -3822,7 +3919,8 @@ Definition
     enum cfg80211_assoc_req_flags {
         ASSOC_REQ_DISABLE_HT,
         ASSOC_REQ_DISABLE_VHT,
-        ASSOC_REQ_USE_RRM
+        ASSOC_REQ_USE_RRM,
+        CONNECT_REQ_EXTERNAL_AUTH_SUPPORT
     };
 
 .. _`cfg80211_assoc_req_flags.constants`:
@@ -3838,6 +3936,12 @@ ASSOC_REQ_DISABLE_VHT
 
 ASSOC_REQ_USE_RRM
     Declare RRM capability in this association
+
+CONNECT_REQ_EXTERNAL_AUTH_SUPPORT
+    User space indicates external
+    authentication capability. Drivers can offload authentication to
+    userspace if this flag is set. Only applicable for \ :c:func:`cfg80211_connect`\ 
+    request (connect callback).
 
 .. _`cfg80211_assoc_request`:
 
@@ -4070,6 +4174,7 @@ Definition
         bool channel_fixed;
         bool privacy;
         bool control_port;
+        bool control_port_over_nl80211;
         bool userspace_handles_dfs;
         int mcast_rate[NUM_NL80211_BANDS];
         struct ieee80211_ht_cap ht_capa;
@@ -4121,6 +4226,10 @@ control_port
     sets/clears \ ``NL80211_STA_FLAG_AUTHORIZED``\ . If true, the driver is
     required to assume that the port is unauthorized until authorized by
     user space. Otherwise, port is marked authorized by default.
+
+control_port_over_nl80211
+    TRUE if userspace expects to exchange control
+    port frames over NL80211 instead of the network interface.
 
 userspace_handles_dfs
     whether user space controls DFS operation, i.e.
@@ -4384,7 +4493,9 @@ Definition
 .. code-block:: c
 
     enum cfg80211_connect_params_changed {
-        UPDATE_ASSOC_IES
+        UPDATE_ASSOC_IES,
+        UPDATE_FILS_ERP_INFO,
+        UPDATE_AUTH_TYPE
     };
 
 .. _`cfg80211_connect_params_changed.constants`:
@@ -4394,6 +4505,13 @@ Constants
 
 UPDATE_ASSOC_IES
     Indicates whether association request IEs are updated
+
+UPDATE_FILS_ERP_INFO
+    Indicates that FILS connection parameters (realm,
+    username, erp sequence number and rrk) are updated
+
+UPDATE_AUTH_TYPE
+    Indicates that authentication type is updated
 
 .. _`cfg80211_connect_params_changed.description`:
 
@@ -4425,7 +4543,10 @@ Definition
         WIPHY_PARAM_FRAG_THRESHOLD,
         WIPHY_PARAM_RTS_THRESHOLD,
         WIPHY_PARAM_COVERAGE_CLASS,
-        WIPHY_PARAM_DYN_ACK
+        WIPHY_PARAM_DYN_ACK,
+        WIPHY_PARAM_TXQ_LIMIT,
+        WIPHY_PARAM_TXQ_MEMORY_LIMIT,
+        WIPHY_PARAM_TXQ_QUANTUM
     };
 
 .. _`wiphy_params_flags.constants`:
@@ -4450,6 +4571,15 @@ WIPHY_PARAM_COVERAGE_CLASS
 
 WIPHY_PARAM_DYN_ACK
     dynack has been enabled
+
+WIPHY_PARAM_TXQ_LIMIT
+    TXQ packet limit has been changed
+
+WIPHY_PARAM_TXQ_MEMORY_LIMIT
+    TXQ memory limit has been changed
+
+WIPHY_PARAM_TXQ_QUANTUM
+    TXQ scheduler quantum
 
 .. _`cfg80211_pmksa`:
 
@@ -5473,6 +5603,65 @@ pmk_r0_name
     is not PMK-R0). When pmk_r0_name is not NULL, the pmk field
     holds PMK-R0.
 
+.. _`cfg80211_external_auth_params`:
+
+struct cfg80211_external_auth_params
+====================================
+
+.. c:type:: struct cfg80211_external_auth_params
+
+    Trigger External authentication.
+
+.. _`cfg80211_external_auth_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_external_auth_params {
+        enum nl80211_external_auth_action action;
+        u8 bssid[ETH_ALEN] __aligned(2);
+        struct cfg80211_ssid ssid;
+        unsigned int key_mgmt_suite;
+        u16 status;
+    }
+
+.. _`cfg80211_external_auth_params.members`:
+
+Members
+-------
+
+action
+    action type / trigger for external authentication. Only significant
+    for the authentication request event interface (driver to user space).
+
+bssid
+    BSSID of the peer with which the authentication has
+    to happen. Used by both the authentication request event and
+    authentication response command interface.
+
+ssid
+    SSID of the AP.  Used by both the authentication request event and
+    authentication response command interface.
+
+key_mgmt_suite
+    AKM suite of the respective authentication. Used by the
+    authentication request event interface.
+
+status
+    status code, \ ``WLAN_STATUS_SUCCESS``\  for successful authentication,
+    use \ ``WLAN_STATUS_UNSPECIFIED_FAILURE``\  if user space cannot give you
+    the real status code for failures. Used only for the authentication
+    response command interface (user space to driver).
+
+.. _`cfg80211_external_auth_params.description`:
+
+Description
+-----------
+
+Commonly used across the external auth request and event interfaces.
+
 .. _`cfg80211_ops`:
 
 struct cfg80211_ops
@@ -5592,8 +5781,11 @@ Definition
         void (*del_nan_func)(struct wiphy *wiphy, struct wireless_dev *wdev, u64 cookie);
         int (*nan_change_conf)(struct wiphy *wiphy,struct wireless_dev *wdev,struct cfg80211_nan_conf *conf, u32 changes);
         int (*set_multicast_to_unicast)(struct wiphy *wiphy,struct net_device *dev, const bool enabled);
+        int (*get_txq_stats)(struct wiphy *wiphy,struct wireless_dev *wdev, struct cfg80211_txq_stats *txqstats);
         int (*set_pmk)(struct wiphy *wiphy, struct net_device *dev, const struct cfg80211_pmk_conf *conf);
         int (*del_pmk)(struct wiphy *wiphy, struct net_device *dev, const u8 *aa);
+        int (*external_auth)(struct wiphy *wiphy, struct net_device *dev, struct cfg80211_external_auth_params *params);
+        int (*tx_control_port)(struct wiphy *wiphy,struct net_device *dev,const u8 *buf, size_t len,const u8 *dest, const __be16 proto, const bool noencrypt);
     }
 
 .. _`cfg80211_ops.members`:
@@ -6053,6 +6245,10 @@ nan_change_conf
 set_multicast_to_unicast
     configure multicast to unicast conversion for BSS
 
+get_txq_stats
+    Get TXQ stats for interface or phy. If wdev is \ ``NULL``\ , this
+    function should return phy stats, and interface stats otherwise.
+
 set_pmk
     configure the PMK to be used for offloaded 802.1X 4-Way handshake.
     If not deleted through \ ``del_pmk``\  the PMK remains valid until disconnect
@@ -6062,6 +6258,14 @@ set_pmk
 del_pmk
     delete the previously configured PMK for the given authenticator.
     (invoked with the wireless_dev mutex held)
+
+external_auth
+    indicates result of offloaded authentication processing from
+    user space
+
+tx_control_port
+    TX a control port frame (EAPoL).  The noencrypt parameter
+    tells the driver that the frame should not be encrypted.
 
 .. _`cfg80211_ops.description`:
 
@@ -6564,6 +6768,82 @@ WIPHY_VENDOR_CMD_NEED_RUNNING
     interface/wdev must be up & running
     (must be combined with \ ``_WDEV``\  or \ ``_NETDEV``\ )
 
+.. _`wiphy_opmode_flag`:
+
+enum wiphy_opmode_flag
+======================
+
+.. c:type:: enum wiphy_opmode_flag
+
+    Station's ht/vht operation mode information flags
+
+.. _`wiphy_opmode_flag.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum wiphy_opmode_flag {
+        STA_OPMODE_MAX_BW_CHANGED,
+        STA_OPMODE_SMPS_MODE_CHANGED,
+        STA_OPMODE_N_SS_CHANGED
+    };
+
+.. _`wiphy_opmode_flag.constants`:
+
+Constants
+---------
+
+STA_OPMODE_MAX_BW_CHANGED
+    Max Bandwidth changed
+
+STA_OPMODE_SMPS_MODE_CHANGED
+    SMPS mode changed
+
+STA_OPMODE_N_SS_CHANGED
+    max N_SS (number of spatial streams) changed
+
+.. _`sta_opmode_info`:
+
+struct sta_opmode_info
+======================
+
+.. c:type:: struct sta_opmode_info
+
+    Station's ht/vht operation mode information
+
+.. _`sta_opmode_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sta_opmode_info {
+        u32 changed;
+        enum nl80211_smps_mode smps_mode;
+        enum nl80211_chan_width bw;
+        u8 rx_nss;
+    }
+
+.. _`sta_opmode_info.members`:
+
+Members
+-------
+
+changed
+    contains value from \ :c:type:`enum wiphy_opmode_flag <wiphy_opmode_flag>`\ 
+
+smps_mode
+    New SMPS mode value from \ :c:type:`enum nl80211_smps_mode <nl80211_smps_mode>`\  of a station
+
+bw
+    new max bandwidth value from \ :c:type:`enum nl80211_chan_width <nl80211_chan_width>`\  of a station
+
+rx_nss
+    new rx_nss value of a station
+
 .. _`wiphy_vendor_command`:
 
 struct wiphy_vendor_command
@@ -6742,6 +7022,9 @@ Definition
         u32 bss_select_support;
         u64 cookie_counter;
         u8 nan_supported_bands;
+        u32 txq_limit;
+        u32 txq_memory_limit;
+        u32 txq_quantum;
         char priv[0] __aligned(NETDEV_ALIGN);
     }
 
@@ -7030,6 +7313,15 @@ nan_supported_bands
     bitmap of \ :c:type:`enum nl80211_band <nl80211_band>`\  values.  For instance, for
     NL80211_BAND_2GHZ, bit 0 would be set
     (i.e. BIT(NL80211_BAND_2GHZ)).
+
+txq_limit
+    configuration of internal TX queue frame limit
+
+txq_memory_limit
+    configuration internal TX queue memory limit
+
+txq_quantum
+    configuration of internal TX queue scheduler quantum
 
 priv
     driver private data (sized according to \ :c:func:`wiphy_new`\  parameter)
@@ -7775,7 +8067,7 @@ that do not do the 802.11/802.3 conversion on the device.
 ieee80211_data_to_8023_exthdr
 =============================
 
-.. c:function:: int ieee80211_data_to_8023_exthdr(struct sk_buff *skb, struct ethhdr *ehdr, const u8 *addr, enum nl80211_iftype iftype)
+.. c:function:: int ieee80211_data_to_8023_exthdr(struct sk_buff *skb, struct ethhdr *ehdr, const u8 *addr, enum nl80211_iftype iftype, u8 data_offset)
 
     convert an 802.11 data frame to 802.3
 
@@ -7791,6 +8083,9 @@ ieee80211_data_to_8023_exthdr
 
     :param enum nl80211_iftype iftype:
         the virtual interface type
+
+    :param u8 data_offset:
+        offset of payload after the 802.11 header
 
 .. _`ieee80211_data_to_8023_exthdr.return`:
 
@@ -8249,6 +8544,54 @@ Description
 
 You can use this to map the regulatory request initiator enum to a
 proper string representation.
+
+.. _`internal-regulatory-db-functions`:
+
+Internal regulatory db functions
+================================
+
+
+
+.. _`reg_query_regdb_wmm`:
+
+reg_query_regdb_wmm
+===================
+
+.. c:function:: int reg_query_regdb_wmm(char *alpha2, int freq, u32 *ptr, struct ieee80211_wmm_rule *rule)
+
+    Query internal regulatory db for wmm rule Regulatory self-managed driver can use it to proactively
+
+    :param char \*alpha2:
+        the ISO/IEC 3166 alpha2 wmm rule to be queried.
+
+    :param int freq:
+        the freqency(in MHz) to be queried.
+
+    :param u32 \*ptr:
+        pointer where the regdb wmm data is to be stored (or \ ``NULL``\  if
+        irrelevant). This can be used later for deduplication.
+
+    :param struct ieee80211_wmm_rule \*rule:
+        pointer to store the wmm rule from the regulatory db.
+
+.. _`reg_query_regdb_wmm.description`:
+
+Description
+-----------
+
+Self-managed wireless drivers can use this function to  query
+the internal regulatory database to check whether the given
+ISO/IEC 3166 alpha2 country and freq have wmm rule limitations.
+
+Drivers should check the return value, its possible you can get
+an -ENODATA.
+
+.. _`reg_query_regdb_wmm.return`:
+
+Return
+------
+
+0 on success. -ENODATA.
 
 .. _`cfg80211_scan_done`:
 
@@ -9229,6 +9572,62 @@ This function sends the given \ ``skb``\ , which must have been allocated
 by \ :c:func:`cfg80211_testmode_alloc_event_skb`\ , as an event. It always
 consumes it.
 
+.. _`cfg80211_fils_resp_params`:
+
+struct cfg80211_fils_resp_params
+================================
+
+.. c:type:: struct cfg80211_fils_resp_params
+
+    FILS connection response params
+
+.. _`cfg80211_fils_resp_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_fils_resp_params {
+        const u8 *kek;
+        size_t kek_len;
+        bool update_erp_next_seq_num;
+        u16 erp_next_seq_num;
+        const u8 *pmk;
+        size_t pmk_len;
+        const u8 *pmkid;
+    }
+
+.. _`cfg80211_fils_resp_params.members`:
+
+Members
+-------
+
+kek
+    KEK derived from a successful FILS connection (may be \ ``NULL``\ )
+
+kek_len
+    Length of \ ``fils_kek``\  in octets
+
+update_erp_next_seq_num
+    Boolean value to specify whether the value in
+    \ ``erp_next_seq_num``\  is valid.
+
+erp_next_seq_num
+    The next sequence number to use in ERP message in
+    FILS Authentication. This value should be specified irrespective of the
+    status for a FILS connection.
+
+pmk
+    A new PMK if derived from a successful FILS connection (may be \ ``NULL``\ ).
+
+pmk_len
+    Length of \ ``pmk``\  in octets
+
+pmkid
+    A new PMKID if derived from a successful FILS connection or the PMKID
+    used for this FILS connection (may be \ ``NULL``\ ).
+
 .. _`cfg80211_connect_resp_params`:
 
 struct cfg80211_connect_resp_params
@@ -9253,13 +9652,7 @@ Definition
         size_t req_ie_len;
         const u8 *resp_ie;
         size_t resp_ie_len;
-        const u8 *fils_kek;
-        size_t fils_kek_len;
-        bool update_erp_next_seq_num;
-        u16 fils_erp_next_seq_num;
-        const u8 *pmk;
-        size_t pmk_len;
-        const u8 *pmkid;
+        struct cfg80211_fils_resp_params fils;
         enum nl80211_timeout_reason timeout_reason;
     }
 
@@ -9298,30 +9691,8 @@ resp_ie
 resp_ie_len
     Association response IEs length
 
-fils_kek
-    KEK derived from a successful FILS connection (may be \ ``NULL``\ )
-
-fils_kek_len
-    Length of \ ``fils_kek``\  in octets
-
-update_erp_next_seq_num
-    Boolean value to specify whether the value in
-    \ ``fils_erp_next_seq_num``\  is valid.
-
-fils_erp_next_seq_num
-    The next sequence number to use in ERP message in
-    FILS Authentication. This value should be specified irrespective of the
-    status for a FILS connection.
-
-pmk
-    A new PMK if derived from a successful FILS connection (may be \ ``NULL``\ ).
-
-pmk_len
-    Length of \ ``pmk``\  in octets
-
-pmkid
-    A new PMKID if derived from a successful FILS connection or the PMKID
-    used for this FILS connection (may be \ ``NULL``\ ).
+fils
+    FILS connection response parameters.
 
 timeout_reason
     Reason for connection timeout. This is used when the
@@ -9535,6 +9906,7 @@ Definition
         size_t req_ie_len;
         const u8 *resp_ie;
         size_t resp_ie_len;
+        struct cfg80211_fils_resp_params fils;
     }
 
 .. _`cfg80211_roam_info.members`:
@@ -9562,6 +9934,9 @@ resp_ie
 
 resp_ie_len
     assoc response IEs length
+
+fils
+    FILS related roaming information.
 
 .. _`cfg80211_roamed`:
 
@@ -9707,6 +10082,42 @@ cfg80211_remain_on_channel_expired
 
     :param gfp_t gfp:
         allocation flags
+
+.. _`cfg80211_sinfo_alloc_tid_stats`:
+
+cfg80211_sinfo_alloc_tid_stats
+==============================
+
+.. c:function:: int cfg80211_sinfo_alloc_tid_stats(struct station_info *sinfo, gfp_t gfp)
+
+    allocate per-tid statistics.
+
+    :param struct station_info \*sinfo:
+        the station information
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`cfg80211_sinfo_release_content`:
+
+cfg80211_sinfo_release_content
+==============================
+
+.. c:function:: void cfg80211_sinfo_release_content(struct station_info *sinfo)
+
+    release contents of station info
+
+    :param struct station_info \*sinfo:
+        the station information
+
+.. _`cfg80211_sinfo_release_content.description`:
+
+Description
+-----------
+
+Releases any potentially allocated sub-information of the station
+information, but not the struct itself (since it's typically on
+the stack.)
 
 .. _`cfg80211_new_sta`:
 
@@ -9882,6 +10293,47 @@ This function is called whenever a management frame was requested to be
 transmitted with cfg80211_ops::mgmt_tx() to report the TX status of the
 transmission attempt.
 
+.. _`cfg80211_rx_control_port`:
+
+cfg80211_rx_control_port
+========================
+
+.. c:function:: bool cfg80211_rx_control_port(struct net_device *dev, struct sk_buff *skb, bool unencrypted)
+
+    notification about a received control port frame
+
+    :param struct net_device \*dev:
+        The device the frame matched to
+
+    :param struct sk_buff \*skb:
+        The skbuf with the control port frame.  It is assumed that the skbuf
+        is 802.3 formatted (with 802.3 header).  The skb can be non-linear.
+        This function does not take ownership of the skb, so the caller is
+        responsible for any cleanup.  The caller must also ensure that
+        skb->protocol is set appropriately.
+
+    :param bool unencrypted:
+        Whether the frame was received unencrypted
+
+.. _`cfg80211_rx_control_port.description`:
+
+Description
+-----------
+
+This function is used to inform userspace about a received control port
+frame.  It should only be used if userspace indicated it wants to receive
+control port frames over nl80211.
+
+The frame is the data portion of the 802.3 or 802.11 data frame with all
+network layer headers removed (e.g. the raw EAPoL frame).
+
+.. _`cfg80211_rx_control_port.return`:
+
+Return
+------
+
+\ ``true``\  if the frame was passed to userspace
+
 .. _`cfg80211_cqm_rssi_notify`:
 
 cfg80211_cqm_rssi_notify
@@ -10015,6 +10467,35 @@ Description
 -----------
 
 This function is called when a radar is detected on the current chanenl.
+
+.. _`cfg80211_sta_opmode_change_notify`:
+
+cfg80211_sta_opmode_change_notify
+=================================
+
+.. c:function:: void cfg80211_sta_opmode_change_notify(struct net_device *dev, const u8 *mac, struct sta_opmode_info *sta_opmode, gfp_t gfp)
+
+    STA's ht/vht operation mode change event
+
+    :param struct net_device \*dev:
+        network device
+
+    :param const u8 \*mac:
+        MAC address of a station which opmode got modified
+
+    :param struct sta_opmode_info \*sta_opmode:
+        station's current opmode value
+
+    :param gfp_t gfp:
+        context flags
+
+.. _`cfg80211_sta_opmode_change_notify.description`:
+
+Description
+-----------
+
+Driver should call this function when station's opmode modified via action
+frame.
 
 .. _`cfg80211_cac_event`:
 
@@ -10167,7 +10648,7 @@ for a reason other than not having a subscription.)
 cfg80211_probe_status
 =====================
 
-.. c:function:: void cfg80211_probe_status(struct net_device *dev, const u8 *addr, u64 cookie, bool acked, gfp_t gfp)
+.. c:function:: void cfg80211_probe_status(struct net_device *dev, const u8 *addr, u64 cookie, bool acked, s32 ack_signal, bool is_valid_ack_signal, gfp_t gfp)
 
     notify userspace about probe status
 
@@ -10182,6 +10663,12 @@ cfg80211_probe_status
 
     :param bool acked:
         indicates whether probe was acked or not
+
+    :param s32 ack_signal:
+        signal strength (in dBm) of the ACK frame.
+
+    :param bool is_valid_ack_signal:
+        indicates the ack_signal is valid or not.
 
     :param gfp_t gfp:
         allocation flags
@@ -10873,6 +11360,31 @@ Description
 -----------
 
 This function reports that the a NAN function is terminated.
+
+.. _`cfg80211_external_auth_request`:
+
+cfg80211_external_auth_request
+==============================
+
+.. c:function:: int cfg80211_external_auth_request(struct net_device *netdev, struct cfg80211_external_auth_params *params, gfp_t gfp)
+
+    userspace request for authentication
+
+    :param struct net_device \*netdev:
+        network device
+
+    :param struct cfg80211_external_auth_params \*params:
+        External authentication parameters
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`cfg80211_external_auth_request.return`:
+
+Return
+------
+
+0 on success, < 0 on error
 
 .. This file was automatic generated / don't edit.
 

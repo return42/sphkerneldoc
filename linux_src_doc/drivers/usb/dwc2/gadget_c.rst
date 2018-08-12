@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/usb/dwc2/gadget.c
 
-.. _`our_req`:
-
-our_req
-=======
-
-.. c:function:: struct dwc2_hsotg_req *our_req(struct usb_request *req)
-
-    http://www.samsung.com
-
-    :param struct usb_request \*req:
-        *undescribed*
-
-.. _`our_req.description`:
-
-Description
------------
-
-Copyright 2008 Openmoko, Inc.
-Copyright 2008 Simtec Electronics
-Ben Dooks <ben@simtec.co.uk>
-http://armlinux.simtec.co.uk/
-
-S3C USB2.0 High-speed / OtG driver
-
 .. _`using_dma`:
 
 using_dma
@@ -146,7 +122,7 @@ dwc2_hsotg_tx_fifo_count
     return count of TX FIFOs in device mode
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
 .. _`dwc2_hsotg_tx_fifo_total_depth`:
 
@@ -158,7 +134,7 @@ dwc2_hsotg_tx_fifo_total_depth
     return total FIFO depth available for device mode TX FIFOs
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
 .. _`dwc2_hsotg_tx_fifo_average_depth`:
 
@@ -170,7 +146,7 @@ dwc2_hsotg_tx_fifo_average_depth
     returns average depth of device mode TX FIFOs
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
 .. _`dwc2_hsotg_init_fifo`:
 
@@ -183,6 +159,28 @@ dwc2_hsotg_init_fifo
 
     :param struct dwc2_hsotg \*hsotg:
         The device instance.
+
+.. _`dwc2_hsotg_ep_alloc_request`:
+
+dwc2_hsotg_ep_alloc_request
+===========================
+
+.. c:function:: struct usb_request *dwc2_hsotg_ep_alloc_request(struct usb_ep *ep, gfp_t flags)
+
+    allocate USB rerequest structure
+
+    :param struct usb_ep \*ep:
+        USB endpoint to allocate request for.
+
+    :param gfp_t flags:
+        Allocation flags
+
+.. _`dwc2_hsotg_ep_alloc_request.description`:
+
+Description
+-----------
+
+Allocate a new USB request structure appropriate for the specified endpoint
 
 .. _`is_ep_periodic`:
 
@@ -821,7 +819,7 @@ dwc2_hsotg_set_ep_maxpacket
         The multicount value
 
     :param unsigned int dir_in:
-        *undescribed*
+        True if direction is in.
 
 .. _`dwc2_hsotg_set_ep_maxpacket.description`:
 
@@ -954,7 +952,7 @@ dwc2_gadget_handle_out_token_ep_disabled
     handle DXEPINT_OUTTKNEPDIS
 
     :param struct dwc2_hsotg_ep \*ep:
-        *undescribed*
+        The endpoint on which interrupt is asserted.
 
 .. _`dwc2_gadget_handle_out_token_ep_disabled.description`:
 
@@ -1121,7 +1119,7 @@ dwc2_hsotg_core_init_disconnected
         The device state
 
     :param bool is_usb_reset:
-        *undescribed*
+        Usb resetting flag
 
 .. _`dwc2_hsotg_core_init_disconnected.description`:
 
@@ -1447,7 +1445,7 @@ dwc2_hsotg_initep
         The endpoint number
 
     :param bool dir_in:
-        *undescribed*
+        True if direction is in.
 
 .. _`dwc2_hsotg_initep.description`:
 
@@ -1468,7 +1466,7 @@ dwc2_hsotg_hw_cfg
     read HW configuration registers
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
 .. _`dwc2_hsotg_hw_cfg.description`:
 
@@ -1487,22 +1485,19 @@ dwc2_hsotg_dump
     dump state of the udc
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
 .. _`dwc2_gadget_init`:
 
 dwc2_gadget_init
 ================
 
-.. c:function:: int dwc2_gadget_init(struct dwc2_hsotg *hsotg, int irq)
+.. c:function:: int dwc2_gadget_init(struct dwc2_hsotg *hsotg)
 
     init function for gadget
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
-
-    :param int irq:
-        The IRQ number for the controller.
+        Programming view of the DWC_otg controller
 
 .. _`dwc2_hsotg_remove`:
 
@@ -1514,7 +1509,7 @@ dwc2_hsotg_remove
     remove function for hsotg driver
 
     :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
+        Programming view of the DWC_otg controller
 
 .. _`dwc2_backup_device_registers`:
 
@@ -1533,12 +1528,78 @@ dwc2_backup_device_registers
 dwc2_restore_device_registers
 =============================
 
-.. c:function:: int dwc2_restore_device_registers(struct dwc2_hsotg *hsotg)
+.. c:function:: int dwc2_restore_device_registers(struct dwc2_hsotg *hsotg, int remote_wakeup)
 
     Restore controller device registers. When resuming usb bus, device registers needs to be restored if controller power were disabled.
 
     :param struct dwc2_hsotg \*hsotg:
         Programming view of the DWC_otg controller
+
+    :param int remote_wakeup:
+        Indicates whether resume is initiated by Device or Host.
+
+.. _`dwc2_restore_device_registers.return`:
+
+Return
+------
+
+0 if successful, negative error code otherwise
+
+.. _`dwc2_gadget_init_lpm`:
+
+dwc2_gadget_init_lpm
+====================
+
+.. c:function:: void dwc2_gadget_init_lpm(struct dwc2_hsotg *hsotg)
+
+    Configure the core to support LPM in device mode
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of DWC_otg controller
+
+.. _`dwc2_gadget_enter_hibernation`:
+
+dwc2_gadget_enter_hibernation
+=============================
+
+.. c:function:: int dwc2_gadget_enter_hibernation(struct dwc2_hsotg *hsotg)
+
+    Put controller in Hibernation.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of the DWC_otg controller
+
+.. _`dwc2_gadget_enter_hibernation.description`:
+
+Description
+-----------
+
+Return non-zero if failed to enter to hibernation.
+
+.. _`dwc2_gadget_exit_hibernation`:
+
+dwc2_gadget_exit_hibernation
+============================
+
+.. c:function:: int dwc2_gadget_exit_hibernation(struct dwc2_hsotg *hsotg, int rem_wakeup, int reset)
+
+    This function is for exiting from Device mode hibernation by host initiated resume/reset and device initiated remote-wakeup.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of the DWC_otg controller
+
+    :param int rem_wakeup:
+        indicates whether resume is initiated by Device or Host.
+
+    :param int reset:
+        indicates whether resume is initiated by Reset.
+
+.. _`dwc2_gadget_exit_hibernation.description`:
+
+Description
+-----------
+
+Return non-zero if failed to exit from hibernation.
 
 .. This file was automatic generated / don't edit.
 

@@ -9,6 +9,7 @@ extcon
 
     devres_c
     extcon-adc-jack_c
+    extcon-gpio_c
     extcon-max14577_c
     extcon-max77693_c
     extcon-qcom-spmi-misc_c

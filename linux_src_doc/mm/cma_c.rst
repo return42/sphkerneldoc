@@ -20,7 +20,9 @@ cma_init_reserved_mem
         Order of pages represented by one bit on bitmap.
 
     :param const char \*name:
-        *undescribed*
+        The name of the area. If this parameter is NULL, the name of
+        the area will be set to "cmaN", where N is a running counter of
+        used areas.
 
     :param struct cma \*\*res_cma:
         Pointer to store the created cma region.
@@ -60,7 +62,7 @@ cma_declare_contiguous
         hint about where to place the reserved area
 
     :param const char \*name:
-        *undescribed*
+        The name of the area. See function \ :c:func:`cma_init_reserved_mem`\ 
 
     :param struct cma \*\*res_cma:
         Pointer to store the created cma region.
@@ -97,7 +99,7 @@ cma_alloc
         Requested alignment of pages (in PAGE_SIZE order).
 
     :param gfp_t gfp_mask:
-        *undescribed*
+        GFP mask to use during compaction
 
 .. _`cma_alloc.description`:
 

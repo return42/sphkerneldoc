@@ -700,15 +700,15 @@ queues so marked.
 ofldtxq_stop
 ============
 
-.. c:function:: void ofldtxq_stop(struct sge_uld_txq *q, struct sk_buff *skb)
+.. c:function:: void ofldtxq_stop(struct sge_uld_txq *q, struct fw_wr_hdr *wr)
 
     stop an offload Tx queue that has become full
 
     :param struct sge_uld_txq \*q:
         the queue to stop
 
-    :param struct sk_buff \*skb:
-        the packet causing the queue to become full
+    :param struct fw_wr_hdr \*wr:
+        the Work Request causing the queue to become full
 
 .. _`ofldtxq_stop.description`:
 
@@ -882,6 +882,31 @@ Description
 
 Sends an offload packet.  This is an exported version of \ ``t4_ofld_send``\ ,
 intended for ULDs.
+
+.. _`ofld_xmit_direct`:
+
+ofld_xmit_direct
+================
+
+.. c:function:: int ofld_xmit_direct(struct sge_uld_txq *q, const void *src, unsigned int len)
+
+    copy a WR into offload queue
+
+    :param struct sge_uld_txq \*q:
+        the Tx offload queue
+
+    :param const void \*src:
+        location of WR
+
+    :param unsigned int len:
+        WR length
+
+.. _`ofld_xmit_direct.description`:
+
+Description
+-----------
+
+Copy an immediate WR into an uncontended SGE offload queue.
 
 .. _`t4_crypto_send`:
 

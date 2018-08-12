@@ -7,5 +7,5 @@ core
 .. toctree::
     :maxdepth: 1
 
-    accel/index
+    en/index
     fpga/index

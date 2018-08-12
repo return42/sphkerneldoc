@@ -28,8 +28,6 @@ mach-omap2
     i2c_c
     msdi_c
     omap-mpuss-lowpower_c
-    omap-pm-noop_c
-    omap-pm_h
     omap-secure_c
     omap2-restart_c
     omap3-restart_c

@@ -133,15 +133,15 @@ MFN on success, INTEL_GVT_INVALID_ADDR if failed.
 intel_gvt_hypervisor_enable_page_track
 ======================================
 
-.. c:function:: int intel_gvt_hypervisor_enable_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t)
+.. c:function:: int intel_gvt_hypervisor_enable_page_track(struct intel_vgpu *vgpu, unsigned long gfn)
 
-    set a guest page to write-protected
+    track a guest page
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param struct intel_vgpu_page_track \*t:
-        page track data structure
+    :param unsigned long gfn:
+        the gfn of guest
 
 .. _`intel_gvt_hypervisor_enable_page_track.return`:
 
@@ -155,15 +155,15 @@ Zero on success, negative error code if failed.
 intel_gvt_hypervisor_disable_page_track
 =======================================
 
-.. c:function:: int intel_gvt_hypervisor_disable_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t)
+.. c:function:: int intel_gvt_hypervisor_disable_page_track(struct intel_vgpu *vgpu, unsigned long gfn)
 
-    remove the write-protection of a guest page
+    untrack a guest page
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param struct intel_vgpu_page_track \*t:
-        page track data structure
+    :param unsigned long gfn:
+        the gfn of guest
 
 .. _`intel_gvt_hypervisor_disable_page_track.return`:
 
@@ -249,6 +249,46 @@ Return
 ------
 
 MFN on success, INTEL_GVT_INVALID_ADDR if failed.
+
+.. _`intel_gvt_hypervisor_dma_map_guest_page`:
+
+intel_gvt_hypervisor_dma_map_guest_page
+=======================================
+
+.. c:function:: int intel_gvt_hypervisor_dma_map_guest_page(struct intel_vgpu *vgpu, unsigned long gfn, dma_addr_t *dma_addr)
+
+    setup dma map for guest page
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+    :param unsigned long gfn:
+        *undescribed*
+
+    :param dma_addr_t \*dma_addr:
+        retrieve allocated dma addr
+
+.. _`intel_gvt_hypervisor_dma_map_guest_page.return`:
+
+Return
+------
+
+0 on success, negative error code if failed.
+
+.. _`intel_gvt_hypervisor_dma_unmap_guest_page`:
+
+intel_gvt_hypervisor_dma_unmap_guest_page
+=========================================
+
+.. c:function:: void intel_gvt_hypervisor_dma_unmap_guest_page(struct intel_vgpu *vgpu, dma_addr_t dma_addr)
+
+    cancel dma map for guest page
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+    :param dma_addr_t dma_addr:
+        the mapped dma addr
 
 .. _`intel_gvt_hypervisor_map_gfn_to_mfn`:
 

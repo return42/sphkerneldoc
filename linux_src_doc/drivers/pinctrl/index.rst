@@ -7,6 +7,7 @@ pinctrl
 .. toctree::
     :maxdepth: 1
 
+    actions/index
     aspeed/index
     bcm/index
     freescale/index
@@ -28,8 +29,6 @@ pinctrl
     devicetree_c
     pinconf-generic_c
     pinconf_c
-    pinctrl-adi2_c
-    pinctrl-adi2_h
     pinctrl-at91-pio4_c
     pinctrl-at91_c
     pinctrl-gemini_c
@@ -39,8 +38,6 @@ pinctrl
     pinctrl-single_c
     pinctrl-st_c
     pinctrl-tb10x_c
-    pinctrl-tz1090-pdc_c
-    pinctrl-tz1090_c
     pinctrl-u300_c
     pinctrl-zynq_c
     pinmux_c

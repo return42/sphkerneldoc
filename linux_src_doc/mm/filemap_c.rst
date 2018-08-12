@@ -874,7 +874,7 @@ and schedules an I/O to read in its contents from disk.
 filemap_fault
 =============
 
-.. c:function:: int filemap_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t filemap_fault(struct vm_fault *vmf)
 
     read in file data for page fault handling
 

@@ -7,7 +7,7 @@ include
 .. toctree::
     :maxdepth: 1
 
-    context_h
+    cred_h
     file_h
     label_h
     lib_h
@@ -15,3 +15,4 @@ include
     policy_h
     policy_ns_h
     policy_unpack_h
+    task_h

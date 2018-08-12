@@ -24,7 +24,6 @@ Definition
         struct mlxreg_hotplug_platform_data *plat;
         struct regmap *regmap;
         struct delayed_work dwork_irq;
-        struct delayed_work dwork;
         spinlock_t lock;
         struct device *hwmon;
         struct attribute *mlxreg_hotplug_attr[MLXREG_HOTPLUG_ATTRS_MAX + 1];
@@ -35,6 +34,7 @@ Definition
         u32 mask;
         u32 aggr_cache;
         bool after_probe;
+        u8 not_asserted;
     }
 
 .. _`mlxreg_hotplug_priv_data.members`:
@@ -46,7 +46,7 @@ irq
     platform device interrupt number;
 
 dev
-    *undescribed*
+    basic device;
 
 pdev
     platform device;
@@ -55,12 +55,9 @@ plat
     platform data;
 
 regmap
-    *undescribed*
+    register map handle;
 
 dwork_irq
-    *undescribed*
-
-dwork
     delayed work template;
 
 lock
@@ -91,7 +88,10 @@ aggr_cache
     last value of aggregation register status;
 
 after_probe
-    *undescribed*
+    flag indication probing completion;
+
+not_asserted
+    number of entries in workqueue with no signal assertion;
 
 .. This file was automatic generated / don't edit.
 

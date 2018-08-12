@@ -130,8 +130,9 @@ reservation_object_get_fences_rcu
 Description
 -----------
 
-RETURNS
-Zero or -errno
+Retrieve all fences from the reservation object. If the pointer for the
+exclusive fence is not specified the fence is put into the array of the
+shared fences as well. Returns either zero or -ENOMEM.
 
 .. _`reservation_object_wait_timeout_rcu`:
 

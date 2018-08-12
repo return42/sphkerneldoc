@@ -6,9 +6,12 @@
 fscache_operation_init
 ======================
 
-.. c:function:: void fscache_operation_init(struct fscache_operation *op, fscache_operation_processor_t processor, fscache_operation_cancel_t cancel, fscache_operation_release_t release)
+.. c:function:: void fscache_operation_init(struct fscache_cookie *cookie, struct fscache_operation *op, fscache_operation_processor_t processor, fscache_operation_cancel_t cancel, fscache_operation_release_t release)
 
     Do basic initialisation of an operation
+
+    :param struct fscache_cookie \*cookie:
+        *undescribed*
 
     :param struct fscache_operation \*op:
         The operation to initialise

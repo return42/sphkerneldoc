@@ -89,5 +89,37 @@ vsp
 vsp_pipe
     index of the VSP pipeline feeding video to this CRTC
 
+.. _`rcar_du_crtc_state`:
+
+struct rcar_du_crtc_state
+=========================
+
+.. c:type:: struct rcar_du_crtc_state
+
+    Driver-specific CRTC state
+
+.. _`rcar_du_crtc_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rcar_du_crtc_state {
+        struct drm_crtc_state state;
+        struct vsp1_du_crc_config crc;
+    }
+
+.. _`rcar_du_crtc_state.members`:
+
+Members
+-------
+
+state
+    base DRM CRTC state
+
+crc
+    CRC computation configuration
+
 .. This file was automatic generated / don't edit.
 

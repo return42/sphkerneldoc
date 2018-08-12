@@ -124,11 +124,14 @@ set_voltage_sel
     selector.
 
 get_voltage
-    Return the currently configured voltage for the regulator.
+    Return the currently configured voltage for the regulator;
+    return -ENOTRECOVERABLE if regulator can't be read at
+    bootup and hasn't been set yet.
 
 get_voltage_sel
     Return the currently configured voltage selector for the
-    regulator.
+    regulator; return -ENOTRECOVERABLE if regulator can't
+    be read at bootup and hasn't been set yet.
 
 set_current_limit
     Configure a limit for a current-limited regulator.
@@ -509,6 +512,7 @@ Definition
         struct regmap *regmap;
         bool ena_gpio_initialized;
         int ena_gpio;
+        struct gpio_desc *ena_gpiod;
         unsigned int ena_gpio_invert:1;
         unsigned int ena_gpio_flags;
     }
@@ -542,6 +546,9 @@ ena_gpio_initialized
 
 ena_gpio
     GPIO controlling regulator enable.
+
+ena_gpiod
+    GPIO descriptor controlling regulator enable.
 
 ena_gpio_invert
     Sense for GPIO enable control.

@@ -36,7 +36,7 @@ intel_uc_fw_upload
         uC firmware
 
     :param int (\*xfer)(struct intel_uc_fw \*uc_fw, struct i915_vma \*vma):
-        *undescribed*
+        custom uC firmware loader function
 
 .. _`intel_uc_fw_upload.description`:
 
@@ -44,6 +44,13 @@ Description
 -----------
 
 Loads uC firmware using custom loader and updates internal flags.
+
+.. _`intel_uc_fw_upload.return`:
+
+Return
+------
+
+0 on success, non-zero on failure.
 
 .. _`intel_uc_fw_fini`:
 

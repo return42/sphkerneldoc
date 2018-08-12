@@ -97,8 +97,7 @@ Given
 filesystem with a blocksize of 4096.
 
 \ :c:func:`find_metapath`\  would return a struct metapath structure set to:
-mp_offset = 101342453, mp_height = 3, mp_list[0] = 0, mp_list[1] = 48,
-and mp_list[2] = 165.
+mp_fheight = 3, mp_list[0] = 0, mp_list[1] = 48, and mp_list[2] = 165.
 
 That means that in order to get to the block containing the byte at
 offset 101342453, we would load the indirect block pointed to by pointer
@@ -287,6 +286,44 @@ Return
 
 The length of the extent (minimum of one block)
 
+.. _`gfs2_hole_size`:
+
+gfs2_hole_size
+==============
+
+.. c:function:: int gfs2_hole_size(struct inode *inode, sector_t lblock, u64 len, struct metapath *mp, struct iomap *iomap)
+
+    figure out the size of a hole
+
+    :param struct inode \*inode:
+        The inode
+
+    :param sector_t lblock:
+        The logical starting block number
+
+    :param u64 len:
+        How far to look (in blocks)
+
+    :param struct metapath \*mp:
+        The metapath at lblock
+
+    :param struct iomap \*iomap:
+        The iomap to store the hole size in
+
+.. _`gfs2_hole_size.description`:
+
+Description
+-----------
+
+This function modifies \ ``mp``\ .
+
+.. _`gfs2_hole_size.return`:
+
+Return
+------
+
+errno on error
+
 .. _`gfs2_iomap_alloc`:
 
 gfs2_iomap_alloc
@@ -300,10 +337,10 @@ gfs2_iomap_alloc
         The GFS2 inode
 
     :param struct iomap \*iomap:
-        *undescribed*
+        The iomap structure
 
     :param unsigned flags:
-        *undescribed*
+        iomap flags
 
     :param struct metapath \*mp:
         The metapath, with proper height information calculated
@@ -323,6 +360,13 @@ allocation asking for an extent at a time (if enough contiguous free
 blocks are available, there will only be one request per bmap call)
 and uses the state machine to initialise the blocks in order.
 
+Right now, this function will allocate at most one indirect block
+worth of data -- with a default block size of 4K, that's slightly
+less than 2M.  If this limitation is ever removed to allow huge
+allocations, we would probably still want to limit the iomap size we
+return to avoid stalling other tasks during huge writes; the next
+iomap iteration would then find the blocks already allocated.
+
 .. _`gfs2_iomap_alloc.return`:
 
 Return
@@ -330,37 +374,12 @@ Return
 
 errno on error
 
-.. _`hole_size`:
+.. _`gfs2_iomap_get`:
 
-hole_size
-=========
+gfs2_iomap_get
+==============
 
-.. c:function:: u64 hole_size(struct inode *inode, sector_t lblock, struct metapath *mp)
-
-    figure out the size of a hole
-
-    :param struct inode \*inode:
-        The inode
-
-    :param sector_t lblock:
-        The logical starting block number
-
-    :param struct metapath \*mp:
-        The metapath
-
-.. _`hole_size.return`:
-
-Return
-------
-
-The hole size in bytes
-
-.. _`gfs2_iomap_begin`:
-
-gfs2_iomap_begin
-================
-
-.. c:function:: int gfs2_iomap_begin(struct inode *inode, loff_t pos, loff_t length, unsigned flags, struct iomap *iomap)
+.. c:function:: int gfs2_iomap_get(struct inode *inode, loff_t pos, loff_t length, unsigned flags, struct iomap *iomap, struct metapath *mp)
 
     Map blocks from an inode to disk blocks
 
@@ -379,7 +398,10 @@ gfs2_iomap_begin
     :param struct iomap \*iomap:
         The iomap structure
 
-.. _`gfs2_iomap_begin.return`:
+    :param struct metapath \*mp:
+        The metapath
+
+.. _`gfs2_iomap_get.return`:
 
 Return
 ------
@@ -393,7 +415,7 @@ gfs2_block_map
 
 .. c:function:: int gfs2_block_map(struct inode *inode, sector_t lblock, struct buffer_head *bh_map, int create)
 
-    Map a block from an inode to a disk block
+    Map one or more blocks of an inode to a disk block
 
     :param struct inode \*inode:
         The inode
@@ -412,9 +434,16 @@ gfs2_block_map
 Description
 -----------
 
-Sets \ :c:func:`buffer_mapped`\  if successful, sets \ :c:func:`buffer_boundary`\  if a
-read of metadata will be required before the next block can be
-mapped. Sets \ :c:func:`buffer_new`\  if new blocks were allocated.
+The size of the requested mapping is defined in bh_map->b_size.
+
+Clears buffer_mapped(bh_map) and leaves bh_map->b_size unchanged
+when \ ``lblock``\  is not mapped.  Sets buffer_mapped(bh_map) and
+bh_map->b_size to indicate the size of the mapping when \ ``lblock``\  and
+successive blocks are mapped, up to the requested size.
+
+Sets \ :c:func:`buffer_boundary`\  if a read of metadata will be required
+before the next block can be mapped. Sets \ :c:func:`buffer_new`\  if new
+blocks were allocated.
 
 .. _`gfs2_block_map.return`:
 
@@ -689,7 +718,7 @@ Description
 -----------
 
 The file size can grow, shrink, or stay the same size. This
-is called holding i_mutex and an exclusive glock on the inode
+is called holding i_rwsem and an exclusive glock on the inode
 in question.
 
 .. _`gfs2_setattr_size.return`:

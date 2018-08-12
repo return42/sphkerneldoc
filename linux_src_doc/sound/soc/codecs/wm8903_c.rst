@@ -6,12 +6,12 @@
 wm8903_mic_detect
 =================
 
-.. c:function:: int wm8903_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, int det, int shrt)
+.. c:function:: int wm8903_mic_detect(struct snd_soc_component *component, struct snd_soc_jack *jack, int det, int shrt)
 
     Enable microphone detection via the WM8903 IRQ
 
-    :param struct snd_soc_codec \*codec:
-        WM8903 codec
+    :param struct snd_soc_component \*component:
+        WM8903 component
 
     :param struct snd_soc_jack \*jack:
         jack to report detection events on

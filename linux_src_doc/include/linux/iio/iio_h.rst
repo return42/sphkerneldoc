@@ -317,18 +317,30 @@ scan_index
     from a buffer.
 
 scan_type
-    sign:           's' or 'u' to specify signed or unsigned
-    realbits:       Number of valid bits of data
-    storagebits:    Realbits + padding
-    shift:          Shift right by this before masking out
+    struct describing the scan type
+
+scan_type.sign
+    's' or 'u' to specify signed or unsigned
+
+scan_type.realbits
+    Number of valid bits of data
+
+scan_type.storagebits
+    Realbits + padding
+
+scan_type.shift
+    Shift right by this before masking out
     realbits.
-    repeat:         Number of times real/storage bits
-    repeats. When the repeat element is
-    more than 1, then the type element in
-    sysfs will show a repeat value.
-    Otherwise, the number of repetitions is
-    omitted.
-    endianness:     little or big endian
+
+scan_type.repeat
+    Number of times real/storage bits repeats.
+    When the repeat element is more than 1, then
+    the type element in sysfs will show a repeat
+    value. Otherwise, the number of repetitions
+    is omitted.
+
+scan_type.endianness
+    little or big endian
 
 info_mask_separate
     What information is to be exported that is specific to

@@ -214,7 +214,7 @@ Synchronizes page for reuse by the adapter
 ixgbevf_add_rx_frag
 ===================
 
-.. c:function:: bool ixgbevf_add_rx_frag(struct ixgbevf_ring *rx_ring, struct ixgbevf_rx_buffer *rx_buffer, u16 size, union ixgbe_adv_rx_desc *rx_desc, struct sk_buff *skb)
+.. c:function:: void ixgbevf_add_rx_frag(struct ixgbevf_ring *rx_ring, struct ixgbevf_rx_buffer *rx_buffer, struct sk_buff *skb, unsigned int size)
 
     Add contents of Rx buffer to sk_buff
 
@@ -224,14 +224,11 @@ ixgbevf_add_rx_frag
     :param struct ixgbevf_rx_buffer \*rx_buffer:
         buffer containing page to add
 
-    :param u16 size:
-        *undescribed*
-
-    :param union ixgbe_adv_rx_desc \*rx_desc:
-        descriptor containing length of buffer written by hardware
-
     :param struct sk_buff \*skb:
         sk_buff to place the data into
+
+    :param unsigned int size:
+        size of buffer to be added
 
 .. _`ixgbevf_add_rx_frag.description`:
 
@@ -239,12 +236,6 @@ Description
 -----------
 
 This function will add the data contained in rx_buffer->page to the skb.
-This is done either through a direct copy if the data in the buffer is
-less than the skb header size, otherwise it will just attach the page as
-a frag to the skb.
-
-The function will then update the page offset if necessary and return
-true if the buffer can be reused by the adapter.
 
 .. _`ixgbevf_poll`:
 
@@ -343,29 +334,6 @@ ixgbevf_msix_clean_rings
 
     :param void \*data:
         pointer to our q_vector struct for this interrupt vector
-
-.. _`ixgbevf_map_rings_to_vectors`:
-
-ixgbevf_map_rings_to_vectors
-============================
-
-.. c:function:: int ixgbevf_map_rings_to_vectors(struct ixgbevf_adapter *adapter)
-
-    Maps descriptor rings to vectors
-
-    :param struct ixgbevf_adapter \*adapter:
-        board private structure to initialize
-
-.. _`ixgbevf_map_rings_to_vectors.description`:
-
-Description
------------
-
-This function maps descriptor rings to the queue-specific vectors
-we were allotted through the MSI-X enabling code.  Ideally, we'd have
-one vector per ring/queue, but on a constrained vector budget, we
-group the rings as "efficiently" as possible.  You would add new
-mapping configurations in here.
 
 .. _`ixgbevf_request_msix_irqs`:
 
@@ -603,27 +571,6 @@ and ending with the smallest set of features.  This way large combinations
 can be allocated if they're turned on, and smaller combinations are the
 fallthrough conditions.
 
-.. _`ixgbevf_alloc_queues`:
-
-ixgbevf_alloc_queues
-====================
-
-.. c:function:: int ixgbevf_alloc_queues(struct ixgbevf_adapter *adapter)
-
-    Allocate memory for all rings
-
-    :param struct ixgbevf_adapter \*adapter:
-        board private structure to initialize
-
-.. _`ixgbevf_alloc_queues.description`:
-
-Description
------------
-
-We allocate one ring per queue at run-time since we don't know the
-number of queues at compile-time.  The polling_netdev array is
-intended for Multiqueue, but should work fine with a single queue.
-
 .. _`ixgbevf_set_interrupt_capability`:
 
 ixgbevf_set_interrupt_capability
@@ -643,6 +590,70 @@ Description
 
 Attempt to configure the interrupts using the best available
 capabilities of the hardware and the kernel.
+
+.. _`ixgbevf_alloc_q_vector`:
+
+ixgbevf_alloc_q_vector
+======================
+
+.. c:function:: int ixgbevf_alloc_q_vector(struct ixgbevf_adapter *adapter, int v_idx, int txr_count, int txr_idx, int xdp_count, int xdp_idx, int rxr_count, int rxr_idx)
+
+    Allocate memory for a single interrupt vector
+
+    :param struct ixgbevf_adapter \*adapter:
+        board private structure to initialize
+
+    :param int v_idx:
+        index of vector in adapter struct
+
+    :param int txr_count:
+        number of Tx rings for q vector
+
+    :param int txr_idx:
+        index of first Tx ring to assign
+
+    :param int xdp_count:
+        total number of XDP rings to allocate
+
+    :param int xdp_idx:
+        index of first XDP ring to allocate
+
+    :param int rxr_count:
+        number of Rx rings for q vector
+
+    :param int rxr_idx:
+        index of first Rx ring to assign
+
+.. _`ixgbevf_alloc_q_vector.description`:
+
+Description
+-----------
+
+We allocate one q_vector.  If allocation fails we return -ENOMEM.
+
+.. _`ixgbevf_free_q_vector`:
+
+ixgbevf_free_q_vector
+=====================
+
+.. c:function:: void ixgbevf_free_q_vector(struct ixgbevf_adapter *adapter, int v_idx)
+
+    Free memory allocated for specific interrupt vector
+
+    :param struct ixgbevf_adapter \*adapter:
+        board private structure to initialize
+
+    :param int v_idx:
+        index of vector in adapter struct
+
+.. _`ixgbevf_free_q_vector.description`:
+
+Description
+-----------
+
+This function frees the memory allocated to the q_vector.  In addition if
+NAPI is enabled it will delete any references to the NAPI struct prior
+to freeing the q_vector.
 
 .. _`ixgbevf_alloc_q_vectors`:
 
@@ -941,9 +952,12 @@ Return 0 on success, negative on failure
 ixgbevf_setup_rx_resources
 ==========================
 
-.. c:function:: int ixgbevf_setup_rx_resources(struct ixgbevf_ring *rx_ring)
+.. c:function:: int ixgbevf_setup_rx_resources(struct ixgbevf_adapter *adapter, struct ixgbevf_ring *rx_ring)
 
     allocate Rx resources (Descriptors)
+
+    :param struct ixgbevf_adapter \*adapter:
+        board private structure
 
     :param struct ixgbevf_ring \*rx_ring:
         Rx descriptor ring (for a specific queue) to setup

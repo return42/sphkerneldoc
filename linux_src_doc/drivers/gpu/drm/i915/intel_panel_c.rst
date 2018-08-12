@@ -40,16 +40,16 @@ scale
         value in range [@source_min..@source_max]
 
     :param uint32_t source_min:
-        *undescribed*
+        minimum legal value for \ ``source_val``\ 
 
     :param uint32_t source_max:
-        *undescribed*
+        maximum legal value for \ ``source_val``\ 
 
     :param uint32_t target_min:
-        *undescribed*
+        corresponding target value for \ ``source_min``\ 
 
     :param uint32_t target_max:
-        *undescribed*
+        corresponding target value for \ ``source_max``\ 
 
 .. _`scale.description`:
 

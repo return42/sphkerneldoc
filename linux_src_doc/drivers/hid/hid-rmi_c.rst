@@ -24,8 +24,8 @@ Definition
         wait_queue_head_t wait;
         u8 *writeReport;
         u8 *readReport;
-        int input_report_size;
-        int output_report_size;
+        u32 input_report_size;
+        u32 output_report_size;
         unsigned long flags;
         struct work_struct reset_work;
         struct hid_device *hdev;

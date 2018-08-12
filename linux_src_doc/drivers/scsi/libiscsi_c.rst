@@ -24,10 +24,10 @@ iscsi_prep_data_out_pdu
 Notes
 -----
 
-Initialize Data-Out within this R2T sequence and finds
-proper data_offset within this SCSI command.
+     Initialize Data-Out within this R2T sequence and finds
+     proper data_offset within this SCSI command.
 
-This function is called with connection lock taken.
+     This function is called with connection lock taken.
 
 .. _`iscsi_check_tmf_restrictions`:
 
@@ -225,8 +225,8 @@ The session back_lock must be held.
 
 .. _`__iscsi_complete_pdu`:
 
-\__iscsi_complete_pdu
-=====================
+__iscsi_complete_pdu
+====================
 
 .. c:function:: int __iscsi_complete_pdu(struct iscsi_conn *conn, struct iscsi_hdr *hdr, char *data, int datalen)
 
@@ -315,9 +315,9 @@ iscsi_data_xmit
 Notes
 -----
 
-The function can return -EAGAIN in which case the caller must
-re-schedule it again later or recover. '0' return code means
-successful xmit.
+     The function can return -EAGAIN in which case the caller must
+     re-schedule it again later or recover. '0' return code means
+     successful xmit.
 
 .. _`iscsi_suspend_queue`:
 
@@ -576,12 +576,12 @@ iscsi_conn_teardown
     :param struct iscsi_cls_conn \*cls_conn:
         iscsi class connection
 
-.. _`iscsi_conn_teardown.todo`:
+.. _`iscsi_conn_teardown.description`:
 
-TODO
-----
+Description
+-----------
 
-we may need to make this into a two step process
+TODO: we may need to make this into a two step process
 like scsi-mls remove + put host
 
 .. This file was automatic generated / don't edit.

@@ -174,6 +174,8 @@ This function normally doesn't block and can be called from any context
 but it may block if \ ``confirm_kill``\  is specified and \ ``ref``\  is in the
 process of switching to atomic mode by \ :c:func:`percpu_ref_switch_to_atomic`\ .
 
+There are no implied RCU grace periods between kill and release.
+
 .. _`percpu_ref_reinit`:
 
 percpu_ref_reinit

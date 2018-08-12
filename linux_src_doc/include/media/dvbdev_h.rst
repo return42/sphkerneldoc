@@ -93,6 +93,7 @@ Definition
         struct dvb_device *mfe_dvbdev;
         struct mutex mfe_lock;
     #if defined(CONFIG_MEDIA_CONTROLLER_DVB)
+        struct mutex mdev_lock;
         struct media_device *mdev;
         struct media_entity *conn;
         struct media_pad *conn_pads;
@@ -138,6 +139,9 @@ mfe_dvbdev
 mfe_lock
     Lock to prevent using the other frontends when MFE is
     used.
+
+mdev_lock
+    Protect access to the mdev pointer.
 
 mdev
     pointer to struct media_device, used when the media
@@ -547,6 +551,76 @@ Ancillary function that uses ioctl direction and size to copy from
 userspace. Then, it calls \ ``func``\ , and, if needed, data is copied back
 to userspace.
 
+.. _`dvb_module_probe`:
+
+dvb_module_probe
+================
+
+.. c:function:: struct i2c_client *dvb_module_probe(const char *module_name, const char *name, struct i2c_adapter *adap, unsigned char addr, void *platform_data)
+
+    helper routine to probe an I2C module
+
+    :param const char \*module_name:
+        Name of the I2C module to be probed
+
+    :param const char \*name:
+        Optional name for the I2C module. Used for debug purposes.
+        If \ ``NULL``\ , defaults to \ ``module_name``\ .
+
+    :param struct i2c_adapter \*adap:
+        pointer to \ :c:type:`struct i2c_adapter <i2c_adapter>`\  that describes the I2C adapter where
+        the module will be bound.
+
+    :param unsigned char addr:
+        I2C address of the adapter, in 7-bit notation.
+
+    :param void \*platform_data:
+        Platform data to be passed to the I2C module probed.
+
+.. _`dvb_module_probe.description`:
+
+Description
+-----------
+
+This function binds an I2C device into the DVB core. Should be used by
+all drivers that use I2C bus to control the hardware. A module bound
+with \ :c:func:`dvb_module_probe`\  should use \ :c:func:`dvb_module_release`\  to unbind.
+
+.. _`dvb_module_probe.return`:
+
+Return
+------
+
+     On success, return an \ :c:type:`struct i2c_client <i2c_client>`\ , pointing the the bound
+     I2C device. \ ``NULL``\  otherwise.
+
+.. note::
+
+   In the past, DVB modules (mainly, frontends) were bound via dvb_attach()
+   macro, with does an ugly hack, using I2C low level functions. Such
+   usage is deprecated and will be removed soon. Instead, use this routine.
+
+.. _`dvb_module_release`:
+
+dvb_module_release
+==================
+
+.. c:function:: void dvb_module_release(struct i2c_client *client)
+
+    releases an I2C device allocated with \ :c:func:`dvb_module_probe`\ .
+
+    :param struct i2c_client \*client:
+        pointer to \ :c:type:`struct i2c_client <i2c_client>`\  with the I2C client to be released.
+        can be \ ``NULL``\ .
+
+.. _`dvb_module_release.description`:
+
+Description
+-----------
+
+This function should be used to free all resources reserved by
+\ :c:func:`dvb_module_probe`\  and unbinding the I2C hardware.
+
 .. _`dvb_attach`:
 
 dvb_attach
@@ -568,6 +642,13 @@ This ancillary function loads a frontend module in runtime and runs
 the \ ``FUNCTION``\  function there, with \ ``ARGS``\ .
 As it increments symbol usage cont, at unregister, \ :c:func:`dvb_detach`\ 
 should be called.
+
+.. note::
+
+   In the past, DVB modules (mainly, frontends) were bound via dvb_attach()
+   macro, with does an ugly hack, using I2C low level functions. Such
+   usage is deprecated and will be removed soon. Instead, you should use
+   dvb_module_probe().
 
 .. _`dvb_detach`:
 

@@ -7,9 +7,11 @@ nfp
 .. toctree::
     :maxdepth: 1
 
+    abm/index
     bpf/index
     flower/index
     nfpcore/index
+    nfp_abi_h
     nfp_app_h
     nfp_main_c
     nfp_main_h

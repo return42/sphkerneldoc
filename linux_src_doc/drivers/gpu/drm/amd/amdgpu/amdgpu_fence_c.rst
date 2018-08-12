@@ -48,7 +48,7 @@ Returns the value of the fence read from memory.
 amdgpu_fence_emit
 =================
 
-.. c:function:: int amdgpu_fence_emit(struct amdgpu_ring *ring, struct dma_fence **f)
+.. c:function:: int amdgpu_fence_emit(struct amdgpu_ring *ring, struct dma_fence **f, unsigned flags)
 
     emit a fence on the requested ring
 
@@ -57,6 +57,9 @@ amdgpu_fence_emit
 
     :param struct dma_fence \*\*f:
         resulting fence object
+
+    :param unsigned flags:
+        *undescribed*
 
 .. _`amdgpu_fence_emit.description`:
 

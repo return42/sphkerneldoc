@@ -21,7 +21,9 @@ Definition
         struct device *dev;
         struct pinctrl_dev *pctrl;
         struct gpio_chip chip;
+        struct pinctrl_desc desc;
         struct notifier_block restart_nb;
+        struct irq_chip irq_chip;
         int irq;
         raw_spinlock_t lock;
         DECLARE_BITMAP(dual_edge_irqs, MAX_NR_GPIO);
@@ -44,8 +46,14 @@ pctrl
 chip
     gpiochip handle.
 
+desc
+    *undescribed*
+
 restart_nb
     restart notifier block.
+
+irq_chip
+    *undescribed*
 
 irq
     parent irq for the TLMM irq_chip.

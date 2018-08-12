@@ -65,47 +65,5 @@ Reset the write pointer of the zones contained in the range
 \ ``sector``\ ..@sector+@nr_sectors. Specifying the entire disk sector range
 is valid, but the specified range should not contain conventional zones.
 
-.. _`blkdev_report_zones_ioctl`:
-
-blkdev_report_zones_ioctl
-=========================
-
-.. c:function:: int blkdev_report_zones_ioctl(struct block_device *bdev, fmode_t mode, unsigned int cmd, unsigned long arg)
-
-    Called from blkdev_ioctl.
-
-    :param struct block_device \*bdev:
-        *undescribed*
-
-    :param fmode_t mode:
-        *undescribed*
-
-    :param unsigned int cmd:
-        *undescribed*
-
-    :param unsigned long arg:
-        *undescribed*
-
-.. _`blkdev_reset_zones_ioctl`:
-
-blkdev_reset_zones_ioctl
-========================
-
-.. c:function:: int blkdev_reset_zones_ioctl(struct block_device *bdev, fmode_t mode, unsigned int cmd, unsigned long arg)
-
-    Called from blkdev_ioctl.
-
-    :param struct block_device \*bdev:
-        *undescribed*
-
-    :param fmode_t mode:
-        *undescribed*
-
-    :param unsigned int cmd:
-        *undescribed*
-
-    :param unsigned long arg:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

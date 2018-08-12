@@ -23,7 +23,7 @@ amdgpu_bo_create_reserved
         where to place it
 
     :param struct amdgpu_bo \*\*bo_ptr:
-        resulting BO
+        used to initialize BOs in structures
 
     :param u64 \*gpu_addr:
         GPU addr of the pinned BO
@@ -38,6 +38,13 @@ Description
 
 Allocates and pins a BO for kernel internal use, and returns it still
 reserved.
+
+.. _`amdgpu_bo_create_reserved.note`:
+
+Note
+----
+
+For bo_ptr new BO is only created if bo_ptr points to NULL.
 
 Returns 0 on success, negative error code otherwise.
 
@@ -63,7 +70,7 @@ amdgpu_bo_create_kernel
         where to place it
 
     :param struct amdgpu_bo \*\*bo_ptr:
-        resulting BO
+        used to initialize BOs in structures
 
     :param u64 \*gpu_addr:
         GPU addr of the pinned BO
@@ -77,6 +84,13 @@ Description
 -----------
 
 Allocates and pins a BO for kernel internal use.
+
+.. _`amdgpu_bo_create_kernel.note`:
+
+Note
+----
+
+For bo_ptr new BO is only created if bo_ptr points to NULL.
 
 Returns 0 on success, negative error code otherwise.
 

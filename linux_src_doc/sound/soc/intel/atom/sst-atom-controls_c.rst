@@ -272,14 +272,14 @@ event handler. Each widget (pipe) has multiple algos stored in the algo_list.
 sst_fill_widget_module_info
 ===========================
 
-.. c:function:: int sst_fill_widget_module_info(struct snd_soc_dapm_widget *w, struct snd_soc_platform *platform)
+.. c:function:: int sst_fill_widget_module_info(struct snd_soc_dapm_widget *w, struct snd_soc_component *component)
 
     fill list of gains/algos for the pipe
 
     :param struct snd_soc_dapm_widget \*w:
         *undescribed*
 
-    :param struct snd_soc_platform \*platform:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
 .. _`sst_fill_widget_module_info.description`:
@@ -296,11 +296,11 @@ name. First part of control name contains the pipe name (widget name).
 sst_fill_linked_widgets
 =======================
 
-.. c:function:: void sst_fill_linked_widgets(struct snd_soc_platform *platform, struct sst_ids *ids)
+.. c:function:: void sst_fill_linked_widgets(struct snd_soc_component *component, struct sst_ids *ids)
 
     fill the parent pointer for the linked widget
 
-    :param struct snd_soc_platform \*platform:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
     :param struct sst_ids \*ids:
@@ -311,11 +311,11 @@ sst_fill_linked_widgets
 sst_map_modules_to_pipe
 =======================
 
-.. c:function:: int sst_map_modules_to_pipe(struct snd_soc_platform *platform)
+.. c:function:: int sst_map_modules_to_pipe(struct snd_soc_component *component)
 
     fill algo/gains list for all pipes
 
-    :param struct snd_soc_platform \*platform:
+    :param struct snd_soc_component \*component:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

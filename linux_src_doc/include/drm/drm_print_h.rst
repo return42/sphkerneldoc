@@ -199,26 +199,32 @@ DRM_DEV_ERROR_RATELIMITED
 DRM_DEV_DEBUG
 =============
 
-.. c:function::  DRM_DEV_DEBUG( dev,  fmt,  args...)
+.. c:function::  DRM_DEV_DEBUG( dev,  fmt,  ...)
 
     :param  dev:
         device pointer
 
     :param  fmt:
         \ :c:func:`printf`\  like format string.
+
+    :param ellipsis ellipsis:
+        variable arguments
 
 .. _`drm_dev_debug_ratelimited`:
 
 DRM_DEV_DEBUG_RATELIMITED
 =========================
 
-.. c:function::  DRM_DEV_DEBUG_RATELIMITED( dev,  fmt,  args...)
+.. c:function::  DRM_DEV_DEBUG_RATELIMITED( dev,  fmt,  ...)
 
     :param  dev:
         device pointer
 
     :param  fmt:
         \ :c:func:`printf`\  like format string.
+
+    :param ellipsis ellipsis:
+        variable arguments
 
 .. This file was automatic generated / don't edit.
 

@@ -23,7 +23,8 @@ Definition
         VFL_TYPE_RADIO,
         VFL_TYPE_SUBDEV,
         VFL_TYPE_SDR,
-        VFL_TYPE_TOUCH
+        VFL_TYPE_TOUCH,
+        VFL_TYPE_MAX
     };
 
 .. _`vfl_devnode_type.constants`:
@@ -48,6 +49,9 @@ VFL_TYPE_SDR
 
 VFL_TYPE_TOUCH
     for touch sensors
+
+VFL_TYPE_MAX
+    number of VFL types, must always be last in the enum
 
 .. _`vfl_devnode_direction`:
 
@@ -417,7 +421,6 @@ Definition
         void (*release)(struct video_device *vdev);
         const struct v4l2_ioctl_ops *ioctl_ops;
         DECLARE_BITMAP(valid_ioctls, BASE_VIDIOC_PRIVATE);
-        DECLARE_BITMAP(disable_locking, BASE_VIDIOC_PRIVATE);
         struct mutex *lock;
     }
 
@@ -507,9 +510,6 @@ ioctl_ops
 valid_ioctls
     bitmap with the valid ioctls for this device
 
-disable_locking
-    bitmap with the ioctls that don't require locking
-
 lock
     pointer to \ :c:type:`struct mutex <mutex>`\  serialization lock
 
@@ -526,11 +526,11 @@ Description
 media_entity_to_video_device
 ============================
 
-.. c:function::  media_entity_to_video_device( entity)
+.. c:function::  media_entity_to_video_device( __entity)
 
     Returns a \ :c:type:`struct video_device <video_device>`\  from the \ :c:type:`struct media_entity <media_entity>`\  embedded on it.
 
-    :param  entity:
+    :param  __entity:
         pointer to \ :c:type:`struct media_entity <media_entity>`\ 
 
 .. _`to_video_device`:
@@ -743,25 +743,6 @@ It should be used when the video_device is a static global struct.
 
 .. note::
      Having a static video_device is a dubious construction at best.
-
-.. _`v4l2_is_known_ioctl`:
-
-v4l2_is_known_ioctl
-===================
-
-.. c:function:: bool v4l2_is_known_ioctl(unsigned int cmd)
-
-    Checks if a given cmd is a known V4L ioctl
-
-    :param unsigned int cmd:
-        ioctl command
-
-.. _`v4l2_is_known_ioctl.description`:
-
-Description
------------
-
-returns true if cmd is a known V4L2 ioctl
 
 .. _`v4l2_disable_ioctl`:
 

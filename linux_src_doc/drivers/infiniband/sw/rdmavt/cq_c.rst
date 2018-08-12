@@ -181,12 +181,12 @@ the number of completion entries polled.
 rvt_driver_cq_init
 ==================
 
-.. c:function:: int rvt_driver_cq_init(struct rvt_dev_info *rdi)
+.. c:function:: int rvt_driver_cq_init( void)
 
     Init cq resources on behalf of driver
 
-    :param struct rvt_dev_info \*rdi:
-        rvt dev structure
+    :param  void:
+        no arguments
 
 .. _`rvt_driver_cq_init.return`:
 
@@ -200,12 +200,12 @@ Return
 rvt_cq_exit
 ===========
 
-.. c:function:: void rvt_cq_exit(struct rvt_dev_info *rdi)
+.. c:function:: void rvt_cq_exit( void)
 
     tear down cq reources
 
-    :param struct rvt_dev_info \*rdi:
-        rvt dev structure
+    :param  void:
+        no arguments
 
 .. This file was automatic generated / don't edit.
 

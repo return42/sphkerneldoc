@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct stm32_adc_priv {
-        int irq;
+        int irq[STM32_ADC_MAX_ADCS];
         struct irq_domain *domain;
         struct clk *aclk;
         struct clk *bclk;
@@ -33,7 +33,7 @@ Members
 -------
 
 irq
-    irq for ADC block
+    irq(s) for ADC block
 
 domain
     irq domain reference

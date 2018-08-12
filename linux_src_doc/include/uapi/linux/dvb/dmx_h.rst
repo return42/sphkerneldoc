@@ -369,6 +369,53 @@ base
 stc
     output: stc in \ ``base``\  * 90 kHz units.
 
+.. _`dmx_buffer_flags`:
+
+enum dmx_buffer_flags
+=====================
+
+.. c:type:: enum dmx_buffer_flags
+
+    DMX memory-mapped buffer flags
+
+.. _`dmx_buffer_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dmx_buffer_flags {
+        DMX_BUFFER_FLAG_HAD_CRC32_DISCARD,
+        DMX_BUFFER_FLAG_TEI,
+        DMX_BUFFER_PKT_COUNTER_MISMATCH,
+        DMX_BUFFER_FLAG_DISCONTINUITY_DETECTED,
+        DMX_BUFFER_FLAG_DISCONTINUITY_INDICATOR
+    };
+
+.. _`dmx_buffer_flags.constants`:
+
+Constants
+---------
+
+DMX_BUFFER_FLAG_HAD_CRC32_DISCARD
+    Indicates that the Kernel discarded one or more frames due to wrong
+    CRC32 checksum.
+
+DMX_BUFFER_FLAG_TEI
+    Indicates that the Kernel has detected a Transport Error indicator
+    (TEI) on a filtered pid.
+
+DMX_BUFFER_PKT_COUNTER_MISMATCH
+    Indicates that the Kernel has detected a packet counter mismatch
+    on a filtered pid.
+
+DMX_BUFFER_FLAG_DISCONTINUITY_DETECTED
+    Indicates that the Kernel has detected one or more frame discontinuity.
+
+DMX_BUFFER_FLAG_DISCONTINUITY_INDICATOR
+    Received at least one packet with a frame discontinuity indicator.
+
 .. _`dmx_buffer`:
 
 struct dmx_buffer
@@ -390,6 +437,8 @@ Definition
         __u32 bytesused;
         __u32 offset;
         __u32 length;
+        __u32 flags;
+        __u32 count;
     }
 
 .. _`dmx_buffer.members`:
@@ -411,6 +460,14 @@ offset
 length
     size in bytes of the buffer
 
+flags
+    bit array of buffer flags as defined by \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
+    Filled only at \ :c:type:`struct DMX_DQBUF <DMX_DQBUF>`\ .
+
+count
+    monotonic counter for filled buffers. Helps to identify
+    data stream loses. Filled only at \ :c:type:`struct DMX_DQBUF <DMX_DQBUF>`\ .
+
 .. _`dmx_buffer.description`:
 
 Description
@@ -418,6 +475,9 @@ Description
 
 Contains data exchanged by application and driver using one of the streaming
 I/O methods.
+
+Please notice that, for \ :c:type:`struct DMX_QBUF <DMX_QBUF>`\ , only \ ``index``\  should be filled.
+On \ :c:type:`struct DMX_DQBUF <DMX_DQBUF>`\  calls, all fields will be filled by the Kernel.
 
 .. _`dmx_requestbuffers`:
 

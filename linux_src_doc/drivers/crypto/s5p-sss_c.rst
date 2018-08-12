@@ -310,14 +310,14 @@ fallback
 s5p_set_dma_hashdata
 ====================
 
-.. c:function:: void s5p_set_dma_hashdata(struct s5p_aes_dev *dev, struct scatterlist *sg)
+.. c:function:: void s5p_set_dma_hashdata(struct s5p_aes_dev *dev, const struct scatterlist *sg)
 
     start DMA with sg
 
     :param struct s5p_aes_dev \*dev:
         device
 
-    :param struct scatterlist \*sg:
+    :param const struct scatterlist \*sg:
         scatterlist ready to DMA transmit
 
 .. _`s5p_hash_rx`:
@@ -358,14 +358,14 @@ s5p_hash_read_msg
 s5p_hash_write_ctx_iv
 =====================
 
-.. c:function:: void s5p_hash_write_ctx_iv(struct s5p_aes_dev *dd, struct s5p_hash_reqctx *ctx)
+.. c:function:: void s5p_hash_write_ctx_iv(struct s5p_aes_dev *dd, const struct s5p_hash_reqctx *ctx)
 
     write IV for next partial/finup op.
 
     :param struct s5p_aes_dev \*dd:
         device
 
-    :param struct s5p_hash_reqctx \*ctx:
+    :param const struct s5p_hash_reqctx \*ctx:
         request context
 
 .. _`s5p_hash_write_iv`:

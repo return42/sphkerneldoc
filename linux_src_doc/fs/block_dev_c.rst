@@ -378,7 +378,7 @@ resize.
 check_disk_size_change
 ======================
 
-.. c:function:: void check_disk_size_change(struct gendisk *disk, struct block_device *bdev)
+.. c:function:: void check_disk_size_change(struct gendisk *disk, struct block_device *bdev, bool verbose)
 
     checks for disk size change and adjusts bdev size.
 
@@ -388,13 +388,17 @@ check_disk_size_change
     :param struct block_device \*bdev:
         struct bdev to adjust.
 
+    :param bool verbose:
+        if \ ``true``\  log a message about a size change if there is any
+
 .. _`check_disk_size_change.description`:
 
 Description
 -----------
 
 This routine checks to see if the bdev size does not match the disk size
-and adjusts it if it differs.
+and adjusts it if it differs. When shrinking the bdev size, its all caches
+are freed.
 
 .. _`revalidate_disk`:
 

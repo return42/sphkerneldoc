@@ -74,6 +74,18 @@ amdgpu_bo_gpu_accessible
     :param struct amdgpu_bo \*bo:
         *undescribed*
 
+.. _`amdgpu_bo_in_cpu_visible_vram`:
+
+amdgpu_bo_in_cpu_visible_vram
+=============================
+
+.. c:function:: bool amdgpu_bo_in_cpu_visible_vram(struct amdgpu_bo *bo)
+
+    check if BO is (partly) in visible VRAM
+
+    :param struct amdgpu_bo \*bo:
+        *undescribed*
+
 .. _`amdgpu_bo_explicit_sync`:
 
 amdgpu_bo_explicit_sync

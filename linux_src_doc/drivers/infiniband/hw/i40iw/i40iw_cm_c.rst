@@ -432,7 +432,7 @@ i40iw_schedule_cm_timer
 
 .. c:function:: int i40iw_schedule_cm_timer(struct i40iw_cm_node *cm_node, struct i40iw_puda_buf *sqbuf, enum i40iw_timer_type type, int send_retrans, int close_when_complete)
 
-    @@cm_node: connection's node
+    \ ````\ @cm_node: connection's node
 
     :param struct i40iw_cm_node \*cm_node:
         *undescribed*
@@ -485,6 +485,21 @@ i40iw_handle_close_entry
 
     :param u32 rem_node:
         flag for remove cm_node
+
+.. _`i40iw_build_timer_list`:
+
+i40iw_build_timer_list
+======================
+
+.. c:function:: void i40iw_build_timer_list(struct list_head *timer_list, struct list_head *hte)
+
+    Add cm_nodes to timer list
+
+    :param struct list_head \*timer_list:
+        ptr to timer list
+
+    :param struct list_head \*hte:
+        ptr to accelerated or non-accelerated list
 
 .. _`i40iw_cm_timer_tick`:
 
@@ -542,7 +557,7 @@ i40iw_send_fin
 i40iw_find_node
 ===============
 
-.. c:function:: struct i40iw_cm_node *i40iw_find_node(struct i40iw_cm_core *cm_core, u16 rem_port, u32 *rem_addr, u16 loc_port, u32 *loc_addr, bool add_refcnt)
+.. c:function:: struct i40iw_cm_node *i40iw_find_node(struct i40iw_cm_core *cm_core, u16 rem_port, u32 *rem_addr, u16 loc_port, u32 *loc_addr, bool add_refcnt, bool accelerated_list)
 
     find a cm node that matches the reference cm node
 
@@ -563,6 +578,9 @@ i40iw_find_node
 
     :param bool add_refcnt:
         flag to increment refcount of cm_node
+
+    :param bool accelerated_list:
+        flag for accelerated vs non-accelerated list to search
 
 .. _`i40iw_find_listener`:
 
@@ -603,23 +621,35 @@ i40iw_add_hte_node
     :param struct i40iw_cm_node \*cm_node:
         connection's node
 
+.. _`i40iw_find_port`:
+
+i40iw_find_port
+===============
+
+.. c:function:: bool i40iw_find_port(struct list_head *hte, u16 port)
+
+    find port that matches reference port
+
+    :param struct list_head \*hte:
+        ptr to accelerated or non-accelerated list
+
+    :param u16 port:
+        *undescribed*
+
 .. _`i40iw_port_in_use`:
 
 i40iw_port_in_use
 =================
 
-.. c:function:: bool i40iw_port_in_use(struct i40iw_cm_core *cm_core, u16 port, bool active_side)
+.. c:function:: bool i40iw_port_in_use(struct i40iw_cm_core *cm_core, u16 port)
 
     determine if port is in use
 
     :param struct i40iw_cm_core \*cm_core:
-        *undescribed*
+        cm's core
 
     :param u16 port:
         port number
-
-    :param bool active_side:
-        flag for listener side vs active side
 
 .. _`i40iw_del_multiple_qhash`:
 

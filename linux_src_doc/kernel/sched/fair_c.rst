@@ -67,7 +67,7 @@ call \ :c:func:`update_tg_load_avg`\  when this function returns true.
 attach_entity_load_avg
 ======================
 
-.. c:function:: void attach_entity_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
+.. c:function:: void attach_entity_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se, int flags)
 
     attach this entity to its cfs_rq load avg
 
@@ -76,6 +76,9 @@ attach_entity_load_avg
 
     :param struct sched_entity \*se:
         sched_entity to attach
+
+    :param int flags:
+        *undescribed*
 
 .. _`attach_entity_load_avg.description`:
 
@@ -163,6 +166,60 @@ For regular NOHZ, this reduces to:
 
 see \ :c:func:`decay_load_misses`\ . For NOHZ_FULL we get to subtract and add the extra
 term.
+
+.. _`cpu_util`:
+
+cpu_util
+========
+
+.. c:function:: unsigned long cpu_util(int cpu)
+
+    :param int cpu:
+        the CPU to get the utilization of
+
+.. _`cpu_util.description`:
+
+Description
+-----------
+
+The unit of the return value must be the one of capacity so we can compare
+the utilization with the capacity of the CPU that is available for CFS task
+(ie cpu_capacity).
+
+cfs_rq.avg.util_avg is the sum of running time of runnable tasks plus the
+recent utilization of currently non-runnable tasks on a CPU. It represents
+the amount of utilization of a CPU in the range [0..capacity_orig] where
+capacity_orig is the cpu_capacity available at the highest frequency
+(arch_scale_freq_capacity()).
+The utilization of a CPU converges towards a sum equal to or less than the
+current capacity (capacity_curr <= capacity_orig) of the CPU because it is
+the running time on this CPU scaled by capacity_curr.
+
+The estimated utilization of a CPU is defined to be the maximum between its
+cfs_rq.avg.util_avg and the sum of the estimated utilization of the tasks
+currently RUNNABLE on that CPU.
+This allows to properly represent the expected utilization of a CPU which
+has just got a big task running since a long sleep period. At the same time
+however it preserves the benefits of the "blocked utilization" in
+describing the potential for other tasks waking up on the same CPU.
+
+Nevertheless, cfs_rq.avg.util_avg can be higher than capacity_curr or even
+higher than capacity_orig because of unfortunate rounding in
+cfs.avg.util_avg or just after migrating tasks and new task wakeups until
+the average stabilizes with the new running time. We need to check that the
+utilization stays within the range of [0..capacity_orig] and cap it if
+necessary. Without utilization capping, a group could be seen as overloaded
+(CPU0 utilization at 121% + CPU1 utilization at 80%) whereas CPU1 has 20% of
+available capacity. We allow utilization to overshoot capacity_curr (but not
+capacity_orig) as it useful for predicting the capacity required after task
+migrations (scheduler-driven DVFS).
+
+.. _`cpu_util.return`:
+
+Return
+------
+
+the (estimated) utilization for the specified CPU
 
 .. _`get_sd_load_idx`:
 

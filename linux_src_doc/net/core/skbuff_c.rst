@@ -1537,6 +1537,49 @@ individual segments, including Layer4 headers (TCP/UDP).
 
 The MAC/L2 or network (IP, IPv6) headers are not accounted for.
 
+.. _`skb_gso_network_seglen`:
+
+skb_gso_network_seglen
+======================
+
+.. c:function:: unsigned int skb_gso_network_seglen(const struct sk_buff *skb)
+
+    Return length of individual segments of a gso packet
+
+    :param const struct sk_buff \*skb:
+        GSO skb
+
+.. _`skb_gso_network_seglen.description`:
+
+Description
+-----------
+
+skb_gso_network_seglen is used to determine the real size of the
+individual segments, including Layer3 (IP, IPv6) and L4 headers (TCP/UDP).
+
+The MAC/L2 header is not accounted for.
+
+.. _`skb_gso_mac_seglen`:
+
+skb_gso_mac_seglen
+==================
+
+.. c:function:: unsigned int skb_gso_mac_seglen(const struct sk_buff *skb)
+
+    Return length of individual segments of a gso packet
+
+    :param const struct sk_buff \*skb:
+        GSO skb
+
+.. _`skb_gso_mac_seglen.description`:
+
+Description
+-----------
+
+skb_gso_mac_seglen is used to determine the real size of the
+individual segments, including MAC/L2, Layer3 (IP, IPv6) and L4
+headers (TCP/UDP).
+
 .. _`skb_gso_size_check`:
 
 skb_gso_size_check
@@ -1576,14 +1619,14 @@ We might want to check
 
 This is a helper to do that correctly considering GSO_BY_FRAGS.
 
-.. _`skb_gso_validate_mtu`:
+.. _`skb_gso_validate_network_len`:
 
-skb_gso_validate_mtu
-====================
+skb_gso_validate_network_len
+============================
 
-.. c:function:: bool skb_gso_validate_mtu(const struct sk_buff *skb, unsigned int mtu)
+.. c:function:: bool skb_gso_validate_network_len(const struct sk_buff *skb, unsigned int mtu)
 
-    Return in case such skb fits a given MTU
+    Will a split GSO skb fit into a given MTU?
 
     :param const struct sk_buff \*skb:
         GSO skb
@@ -1591,13 +1634,14 @@ skb_gso_validate_mtu
     :param unsigned int mtu:
         MTU to validate against
 
-.. _`skb_gso_validate_mtu.description`:
+.. _`skb_gso_validate_network_len.description`:
 
 Description
 -----------
 
-skb_gso_validate_mtu validates if a given skb will fit a wanted MTU
-once split.
+skb_gso_validate_network_len validates if a given skb will fit a
+wanted MTU once split. It considers L3 headers, L4 headers, and the
+payload.
 
 .. _`skb_gso_validate_mac_len`:
 

@@ -129,15 +129,12 @@ remove_from_lpt_heap
 lpt_heap_replace
 ================
 
-.. c:function:: void lpt_heap_replace(struct ubifs_info *c, struct ubifs_lprops *old_lprops, struct ubifs_lprops *new_lprops, int cat)
+.. c:function:: void lpt_heap_replace(struct ubifs_info *c, struct ubifs_lprops *new_lprops, int cat)
 
     replace lprops in a category heap.
 
     :param struct ubifs_info \*c:
         UBIFS file-system description object
-
-    :param struct ubifs_lprops \*old_lprops:
-        LEB properties to replace
 
     :param struct ubifs_lprops \*new_lprops:
         LEB properties with which to replace

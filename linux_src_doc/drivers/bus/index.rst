@@ -7,6 +7,7 @@ bus
 .. toctree::
     :maxdepth: 1
 
+    fsl-mc/index
     arm-cci_c
     mips_cdmm_c
     omap_l3_noc_c

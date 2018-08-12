@@ -383,9 +383,9 @@ that were obtained will be freed before returning to the caller.
 
 Returns 0 if all clocks specified in clk_bulk_data table are obtained
 successfully, or valid \ :c:func:`IS_ERR`\  condition containing errno.
-The implementation uses \ ``dev``\  and \ ``clk_bulk_data``\ .id to determine the
+The implementation uses \ ``dev``\  and \ ``clk_bulk_data.id``\  to determine the
 clock consumer, and thereby the clock producer.
-The clock returned is stored in each \ ``clk_bulk_data``\ .clk field.
+The clock returned is stored in each \ ``clk_bulk_data.clk``\  field.
 
 Drivers must assume that the clock source is not enabled.
 

@@ -30,5 +30,38 @@ routine simply calls \__acpi_unmap_table() to get the job done.  Since
 \__acpi_unmap_table() is an \__init function, the \__ref annotation is needed
 here.
 
+.. _`acpi_release_memory`:
+
+acpi_release_memory
+===================
+
+.. c:function:: acpi_status acpi_release_memory(acpi_handle handle, struct resource *res, u32 level)
+
+    Release any mappings done to a memory region
+
+    :param acpi_handle handle:
+        Handle to namespace node
+
+    :param struct resource \*res:
+        Memory resource
+
+    :param u32 level:
+        A level that terminates the search
+
+.. _`acpi_release_memory.description`:
+
+Description
+-----------
+
+Walks through \ ``handle``\  and unmaps all SystemMemory Operation Regions that
+overlap with \ ``res``\  and that have already been activated (mapped).
+
+This is a helper that allows drivers to place special requirements on memory
+region that may overlap with operation regions, primarily allowing them to
+safely map the region as non-cached memory.
+
+The unmapped Operation Regions will be automatically remapped next time they
+are called, so the drivers do not need to do anything else.
+
 .. This file was automatic generated / don't edit.
 

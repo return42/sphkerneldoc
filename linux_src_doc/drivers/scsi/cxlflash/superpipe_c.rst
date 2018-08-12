@@ -577,6 +577,10 @@ CXL process element (context id) lookup fails (a case that should
 theoretically never occur), every call into this routine results
 in a complete freeing of a context.
 
+Detaching the LUN is typically an \ :c:func:`ioctl`\  operation and the underlying
+code assumes that ioctl_rwsem has been acquired as a reader. To support
+that design point, the semaphore is acquired and released around detach.
+
 .. _`cxlflash_cxl_release.return`:
 
 Return

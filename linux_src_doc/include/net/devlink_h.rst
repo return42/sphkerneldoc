@@ -463,39 +463,6 @@ headers
 headers_count
     *undescribed*
 
-.. _`devlink_resource_ops`:
-
-struct devlink_resource_ops
-===========================
-
-.. c:type:: struct devlink_resource_ops
-
-    resource ops
-
-.. _`devlink_resource_ops.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct devlink_resource_ops {
-        u64 (*occ_get)(struct devlink *devlink);
-        int (*size_validate)(struct devlink *devlink, u64 size, struct netlink_ext_ack *extack);
-    }
-
-.. _`devlink_resource_ops.members`:
-
-Members
--------
-
-occ_get
-    get the occupied size
-
-size_validate
-    validate the size of the resource before update, reload
-    is needed for changes to take place
-
 .. _`devlink_resource_size_params`:
 
 struct devlink_resource_size_params
@@ -559,10 +526,11 @@ Definition
         u64 size_new;
         bool size_valid;
         struct devlink_resource *parent;
-        struct devlink_resource_size_params *size_params;
+        struct devlink_resource_size_params size_params;
         struct list_head list;
         struct list_head resource_list;
-        const struct devlink_resource_ops *resource_ops;
+        devlink_resource_occ_get_t *occ_get;
+        void *occ_get_priv;
     }
 
 .. _`devlink_resource.members`:
@@ -598,8 +566,11 @@ list
 resource_list
     list of child resources
 
-resource_ops
-    resource ops
+occ_get
+    *undescribed*
+
+occ_get_priv
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

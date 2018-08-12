@@ -88,12 +88,12 @@ Specifically, the sample rate and the data format.
 sta350_set_bias_level
 =====================
 
-.. c:function:: int sta350_set_bias_level(struct snd_soc_codec *codec, enum snd_soc_bias_level level)
+.. c:function:: int sta350_set_bias_level(struct snd_soc_component *component, enum snd_soc_bias_level level)
 
     DAPM callback
 
-    :param struct snd_soc_codec \*codec:
-        the codec device
+    :param struct snd_soc_component \*component:
+        the component device
 
     :param enum snd_soc_bias_level level:
         DAPM power level
@@ -103,8 +103,8 @@ sta350_set_bias_level
 Description
 -----------
 
-This is called by ALSA to put the codec into low power mode
-or to wake it up.  If the codec is powered off completely
+This is called by ALSA to put the component into low power mode
+or to wake it up.  If the component is powered off completely
 all registers must be restored after power on.
 
 .. This file was automatic generated / don't edit.

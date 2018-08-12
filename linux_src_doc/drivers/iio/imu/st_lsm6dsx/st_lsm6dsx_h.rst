@@ -43,6 +43,46 @@ fifo_diff
 th_wl
     FIFO threshold word length.
 
+.. _`st_lsm6dsx_hw_ts_settings`:
+
+struct st_lsm6dsx_hw_ts_settings
+================================
+
+.. c:type:: struct st_lsm6dsx_hw_ts_settings
+
+    ST IMU hw timer settings
+
+.. _`st_lsm6dsx_hw_ts_settings.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct st_lsm6dsx_hw_ts_settings {
+        struct st_lsm6dsx_reg timer_en;
+        struct st_lsm6dsx_reg hr_timer;
+        struct st_lsm6dsx_reg fifo_en;
+        struct st_lsm6dsx_reg decimator;
+    }
+
+.. _`st_lsm6dsx_hw_ts_settings.members`:
+
+Members
+-------
+
+timer_en
+    Hw timer enable register info (addr + mask).
+
+hr_timer
+    Hw timer resolution register info (addr + mask).
+
+fifo_en
+    Hw timer FIFO enable register info (addr + mask).
+
+decimator
+    Hw timer FIFO decimator register info (addr + mask).
+
 .. _`st_lsm6dsx_settings`:
 
 struct st_lsm6dsx_settings
@@ -65,6 +105,7 @@ Definition
         enum st_lsm6dsx_hw_id id[ST_LSM6DSX_MAX_ID];
         struct st_lsm6dsx_reg decimator[ST_LSM6DSX_MAX_ID];
         struct st_lsm6dsx_fifo_ops fifo_ops;
+        struct st_lsm6dsx_hw_ts_settings ts_settings;
     }
 
 .. _`st_lsm6dsx_settings.members`:
@@ -86,6 +127,9 @@ decimator
 
 fifo_ops
     Sensor hw FIFO parameters.
+
+ts_settings
+    Hw timer related settings.
 
 .. _`st_lsm6dsx_sensor`:
 
@@ -112,8 +156,7 @@ Definition
         u16 watermark;
         u8 sip;
         u8 decimator;
-        s64 delta_ts;
-        s64 ts;
+        s64 ts_ref;
     }
 
 .. _`st_lsm6dsx_sensor.members`:
@@ -145,11 +188,8 @@ sip
 decimator
     FIFO decimation factor.
 
-delta_ts
-    Delta time between two consecutive interrupts.
-
-ts
-    Latest timestamp from the interrupt handler.
+ts_ref
+    Sensor timestamp reference for hw one.
 
 .. _`st_lsm6dsx_hw`:
 
@@ -175,6 +215,7 @@ Definition
         struct mutex conf_lock;
         enum st_lsm6dsx_fifo_mode fifo_mode;
         u8 enable_mask;
+        u8 ts_sip;
         u8 sip;
         u8 *buff;
         struct iio_dev *iio_devs[ST_LSM6DSX_ID_MAX];
@@ -207,8 +248,11 @@ fifo_mode
 enable_mask
     Enabled sensor bitmask.
 
+ts_sip
+    Total number of timestamp samples in a given pattern.
+
 sip
-    Total number of samples (acc/gyro) in a given pattern.
+    Total number of samples (acc/gyro/ts) in a given pattern.
 
 buff
     Device read buffer.

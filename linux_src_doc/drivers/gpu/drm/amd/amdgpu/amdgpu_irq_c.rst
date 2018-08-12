@@ -45,65 +45,6 @@ Execute scheduled gpu reset (cayman+).
 This function is called when the irq handler
 thinks we need a gpu reset.
 
-.. _`amdgpu_irq_preinstall`:
-
-amdgpu_irq_preinstall
-=====================
-
-.. c:function:: void amdgpu_irq_preinstall(struct drm_device *dev)
-
-    drm irq preinstall callback
-
-    :param struct drm_device \*dev:
-        drm dev pointer
-
-.. _`amdgpu_irq_preinstall.description`:
-
-Description
------------
-
-Gets the hw ready to enable irqs (all asics).
-This function disables all interrupt sources on the GPU.
-
-.. _`amdgpu_irq_postinstall`:
-
-amdgpu_irq_postinstall
-======================
-
-.. c:function:: int amdgpu_irq_postinstall(struct drm_device *dev)
-
-    drm irq preinstall callback
-
-    :param struct drm_device \*dev:
-        drm dev pointer
-
-.. _`amdgpu_irq_postinstall.description`:
-
-Description
------------
-
-Handles stuff to be done after enabling irqs (all asics).
-Returns 0 on success.
-
-.. _`amdgpu_irq_uninstall`:
-
-amdgpu_irq_uninstall
-====================
-
-.. c:function:: void amdgpu_irq_uninstall(struct drm_device *dev)
-
-    drm irq uninstall callback
-
-    :param struct drm_device \*dev:
-        drm dev pointer
-
-.. _`amdgpu_irq_uninstall.description`:
-
-Description
------------
-
-This function disables all interrupt sources on the GPU (all asics).
-
 .. _`amdgpu_irq_handler`:
 
 amdgpu_irq_handler

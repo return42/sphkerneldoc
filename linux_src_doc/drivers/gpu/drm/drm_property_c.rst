@@ -31,14 +31,14 @@ IOCTL and in the get/set property IOCTL.
 drm_property_create
 ===================
 
-.. c:function:: struct drm_property *drm_property_create(struct drm_device *dev, int flags, const char *name, int num_values)
+.. c:function:: struct drm_property *drm_property_create(struct drm_device *dev, u32 flags, const char *name, int num_values)
 
     create a new property type
 
     :param struct drm_device \*dev:
         drm device
 
-    :param int flags:
+    :param u32 flags:
         flags specifying the property type
 
     :param const char \*name:
@@ -69,14 +69,14 @@ A pointer to the newly created property on success, NULL on failure.
 drm_property_create_enum
 ========================
 
-.. c:function:: struct drm_property *drm_property_create_enum(struct drm_device *dev, int flags, const char *name, const struct drm_prop_enum_list *props, int num_values)
+.. c:function:: struct drm_property *drm_property_create_enum(struct drm_device *dev, u32 flags, const char *name, const struct drm_prop_enum_list *props, int num_values)
 
     create a new enumeration property type
 
     :param struct drm_device \*dev:
         drm device
 
-    :param int flags:
+    :param u32 flags:
         flags specifying the property type
 
     :param const char \*name:
@@ -113,14 +113,14 @@ A pointer to the newly created property on success, NULL on failure.
 drm_property_create_bitmask
 ===========================
 
-.. c:function:: struct drm_property *drm_property_create_bitmask(struct drm_device *dev, int flags, const char *name, const struct drm_prop_enum_list *props, int num_props, uint64_t supported_bits)
+.. c:function:: struct drm_property *drm_property_create_bitmask(struct drm_device *dev, u32 flags, const char *name, const struct drm_prop_enum_list *props, int num_props, uint64_t supported_bits)
 
     create a new bitmask property type
 
     :param struct drm_device \*dev:
         drm device
 
-    :param int flags:
+    :param u32 flags:
         flags specifying the property type
 
     :param const char \*name:
@@ -160,14 +160,14 @@ A pointer to the newly created property on success, NULL on failure.
 drm_property_create_range
 =========================
 
-.. c:function:: struct drm_property *drm_property_create_range(struct drm_device *dev, int flags, const char *name, uint64_t min, uint64_t max)
+.. c:function:: struct drm_property *drm_property_create_range(struct drm_device *dev, u32 flags, const char *name, uint64_t min, uint64_t max)
 
     create a new unsigned ranged property type
 
     :param struct drm_device \*dev:
         drm device
 
-    :param int flags:
+    :param u32 flags:
         flags specifying the property type
 
     :param const char \*name:
@@ -204,14 +204,14 @@ A pointer to the newly created property on success, NULL on failure.
 drm_property_create_signed_range
 ================================
 
-.. c:function:: struct drm_property *drm_property_create_signed_range(struct drm_device *dev, int flags, const char *name, int64_t min, int64_t max)
+.. c:function:: struct drm_property *drm_property_create_signed_range(struct drm_device *dev, u32 flags, const char *name, int64_t min, int64_t max)
 
     create a new signed ranged property type
 
     :param struct drm_device \*dev:
         drm device
 
-    :param int flags:
+    :param u32 flags:
         flags specifying the property type
 
     :param const char \*name:
@@ -248,14 +248,14 @@ A pointer to the newly created property on success, NULL on failure.
 drm_property_create_object
 ==========================
 
-.. c:function:: struct drm_property *drm_property_create_object(struct drm_device *dev, int flags, const char *name, uint32_t type)
+.. c:function:: struct drm_property *drm_property_create_object(struct drm_device *dev, u32 flags, const char *name, uint32_t type)
 
     create a new object property type
 
     :param struct drm_device \*dev:
         drm device
 
-    :param int flags:
+    :param u32 flags:
         flags specifying the property type
 
     :param const char \*name:
@@ -289,14 +289,14 @@ A pointer to the newly created property on success, NULL on failure.
 drm_property_create_bool
 ========================
 
-.. c:function:: struct drm_property *drm_property_create_bool(struct drm_device *dev, int flags, const char *name)
+.. c:function:: struct drm_property *drm_property_create_bool(struct drm_device *dev, u32 flags, const char *name)
 
     create a new boolean property type
 
     :param struct drm_device \*dev:
         drm device
 
-    :param int flags:
+    :param u32 flags:
         flags specifying the property type
 
     :param const char \*name:
@@ -326,15 +326,12 @@ A pointer to the newly created property on success, NULL on failure.
 drm_property_add_enum
 =====================
 
-.. c:function:: int drm_property_add_enum(struct drm_property *property, int index, uint64_t value, const char *name)
+.. c:function:: int drm_property_add_enum(struct drm_property *property, uint64_t value, const char *name)
 
     add a possible value to an enumeration property
 
     :param struct drm_property \*property:
         enumeration property to change
-
-    :param int index:
-        index of the new enumeration
 
     :param uint64_t value:
         value of the new enumeration

@@ -24,7 +24,7 @@ ladder_do_selection
 ladder_select_state
 ===================
 
-.. c:function:: int ladder_select_state(struct cpuidle_driver *drv, struct cpuidle_device *dev)
+.. c:function:: int ladder_select_state(struct cpuidle_driver *drv, struct cpuidle_device *dev, bool *dummy)
 
     selects the next state to enter
 
@@ -33,6 +33,9 @@ ladder_select_state
 
     :param struct cpuidle_device \*dev:
         the CPU
+
+    :param bool \*dummy:
+        not used
 
 .. _`ladder_enable_device`:
 

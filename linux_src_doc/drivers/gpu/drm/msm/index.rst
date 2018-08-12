@@ -7,6 +7,5 @@ msm
 .. toctree::
     :maxdepth: 1
 
-    mdp/index
-    msm_atomic_c
+    disp/index
     msm_gem_shrinker_c

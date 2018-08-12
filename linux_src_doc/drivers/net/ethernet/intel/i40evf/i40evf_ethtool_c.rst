@@ -107,7 +107,7 @@ i40evf_get_priv_flags
     report device private flags
 
     :param struct net_device \*netdev:
-        *undescribed*
+        network interface device structure
 
 .. _`i40evf_get_priv_flags.description`:
 
@@ -130,7 +130,7 @@ i40evf_set_priv_flags
     set private flags
 
     :param struct net_device \*netdev:
-        *undescribed*
+        network interface device structure
 
     :param u32 flags:
         bit flags to be set
@@ -332,7 +332,7 @@ i40evf_set_itr_per_queue
     set ITR values for specific queue
 
     :param struct i40evf_adapter \*adapter:
-        *undescribed*
+        the VF adapter struct to set values for
 
     :param struct ethtool_coalesce \*ec:
         coalesce settings from ethtool
@@ -435,7 +435,7 @@ i40evf_get_rxnfc
         ethtool rxnfc command
 
     :param u32 \*rule_locs:
-        *undescribed*
+        pointer to store rule locations
 
 .. _`i40evf_get_rxnfc.description`:
 
@@ -548,7 +548,7 @@ i40evf_get_rxfh
         hash key
 
     :param u8 \*hfunc:
-        *undescribed*
+        hash function in use
 
 .. _`i40evf_get_rxfh.description`:
 
@@ -576,7 +576,7 @@ i40evf_set_rxfh
         hash key
 
     :param const u8 hfunc:
-        *undescribed*
+        hash function to use
 
 .. _`i40evf_set_rxfh.description`:
 

@@ -334,6 +334,148 @@ change the result of the wait condition.
 The function returns 0 if \ ``condition``\  became true, -ERESTARTSYS if it was
 interrupted by a signal, or -ETIME if the timeout elapsed.
 
+.. _`wait_event_idle`:
+
+wait_event_idle
+===============
+
+.. c:function::  wait_event_idle( wq_head,  condition)
+
+    wait for a condition without contributing to system load
+
+    :param  wq_head:
+        the waitqueue to wait on
+
+    :param  condition:
+        a C expression for the event to wait for
+
+.. _`wait_event_idle.description`:
+
+Description
+-----------
+
+The process is put to sleep (TASK_IDLE) until the
+\ ``condition``\  evaluates to true.
+The \ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
+
+\ :c:func:`wake_up`\  has to be called after changing any variable that could
+change the result of the wait condition.
+
+.. _`wait_event_idle_exclusive`:
+
+wait_event_idle_exclusive
+=========================
+
+.. c:function::  wait_event_idle_exclusive( wq_head,  condition)
+
+    wait for a condition with contributing to system load
+
+    :param  wq_head:
+        the waitqueue to wait on
+
+    :param  condition:
+        a C expression for the event to wait for
+
+.. _`wait_event_idle_exclusive.description`:
+
+Description
+-----------
+
+The process is put to sleep (TASK_IDLE) until the
+\ ``condition``\  evaluates to true.
+The \ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
+
+The process is put on the wait queue with an WQ_FLAG_EXCLUSIVE flag
+set thus if other processes wait on the same list, when this
+process is woken further processes are not considered.
+
+\ :c:func:`wake_up`\  has to be called after changing any variable that could
+change the result of the wait condition.
+
+.. _`wait_event_idle_timeout`:
+
+wait_event_idle_timeout
+=======================
+
+.. c:function::  wait_event_idle_timeout( wq_head,  condition,  timeout)
+
+    sleep without load until a condition becomes true or a timeout elapses
+
+    :param  wq_head:
+        the waitqueue to wait on
+
+    :param  condition:
+        a C expression for the event to wait for
+
+    :param  timeout:
+        timeout, in jiffies
+
+.. _`wait_event_idle_timeout.description`:
+
+Description
+-----------
+
+The process is put to sleep (TASK_IDLE) until the
+\ ``condition``\  evaluates to true. The \ ``condition``\  is checked each time
+the waitqueue \ ``wq_head``\  is woken up.
+
+\ :c:func:`wake_up`\  has to be called after changing any variable that could
+change the result of the wait condition.
+
+.. _`wait_event_idle_timeout.return`:
+
+Return
+------
+
+0 if the \ ``condition``\  evaluated to \ ``false``\  after the \ ``timeout``\  elapsed,
+1 if the \ ``condition``\  evaluated to \ ``true``\  after the \ ``timeout``\  elapsed,
+or the remaining jiffies (at least 1) if the \ ``condition``\  evaluated
+to \ ``true``\  before the \ ``timeout``\  elapsed.
+
+.. _`wait_event_idle_exclusive_timeout`:
+
+wait_event_idle_exclusive_timeout
+=================================
+
+.. c:function::  wait_event_idle_exclusive_timeout( wq_head,  condition,  timeout)
+
+    sleep without load until a condition becomes true or a timeout elapses
+
+    :param  wq_head:
+        the waitqueue to wait on
+
+    :param  condition:
+        a C expression for the event to wait for
+
+    :param  timeout:
+        timeout, in jiffies
+
+.. _`wait_event_idle_exclusive_timeout.description`:
+
+Description
+-----------
+
+The process is put to sleep (TASK_IDLE) until the
+\ ``condition``\  evaluates to true. The \ ``condition``\  is checked each time
+the waitqueue \ ``wq_head``\  is woken up.
+
+The process is put on the wait queue with an WQ_FLAG_EXCLUSIVE flag
+set thus if other processes wait on the same list, when this
+process is woken further processes are not considered.
+
+\ :c:func:`wake_up`\  has to be called after changing any variable that could
+change the result of the wait condition.
+
+.. _`wait_event_idle_exclusive_timeout.return`:
+
+Return
+------
+
+0 if the \ ``condition``\  evaluated to \ ``false``\  after the \ ``timeout``\  elapsed,
+1 if the \ ``condition``\  evaluated to \ ``true``\  after the \ ``timeout``\  elapsed,
+or the remaining jiffies (at least 1) if the \ ``condition``\  evaluated
+to \ ``true``\  before the \ ``timeout``\  elapsed.
+
 .. _`wait_event_interruptible_locked`:
 
 wait_event_interruptible_locked

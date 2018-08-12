@@ -1667,7 +1667,10 @@ Definition
         __u32 flow_type;
         __u64 data;
         struct ethtool_rx_flow_spec fs;
-        __u32 rule_cnt;
+        union {
+            __u32 rule_cnt;
+            __u32 rss_context;
+        } ;
         __u32 rule_locs[0];
     }
 
@@ -1690,8 +1693,14 @@ data
 fs
     Flow classification rule
 
+{unnamed_union}
+    anonymous
+
 rule_cnt
     Number of rules to be affected
+
+rss_context
+    RSS context to be affected
 
 rule_locs
     Array of used rule locations
@@ -1703,7 +1712,9 @@ Description
 
 For \ ``ETHTOOL_GRXFH``\  and \ ``ETHTOOL_SRXFH``\ , \ ``data``\  is a bitmask indicating
 the fields included in the flow hash, e.g. \ ``RXH_IP_SRC``\ .  The following
-structure fields must not be used.
+structure fields must not be used, except that if \ ``flow_type``\  includes
+the \ ``FLOW_RSS``\  flag, then \ ``rss_context``\  determines which RSS context to
+act on.
 
 For \ ``ETHTOOL_GRXRINGS``\ , \ ``data``\  is set to the number of RX rings/queues
 on return.
@@ -1715,7 +1726,9 @@ driver supports any special location values.  If that flag is not
 set in \ ``data``\  then special location values should not be used.
 
 For \ ``ETHTOOL_GRXCLSRULE``\ , \ ``fs``\ .@location specifies the location of an
-existing rule on entry and \ ``fs``\  contains the rule on return.
+existing rule on entry and \ ``fs``\  contains the rule on return; if
+\ ``fs``\ .@flow_type includes the \ ``FLOW_RSS``\  flag, then \ ``rss_context``\  is
+filled with the RSS context ID associated with the rule.
 
 For \ ``ETHTOOL_GRXCLSRLALL``\ , \ ``rule_cnt``\  specifies the array size of the
 user buffer for \ ``rule_locs``\  on entry.  On return, \ ``data``\  is the size
@@ -1726,7 +1739,11 @@ must use the second parameter to \ :c:func:`get_rxnfc`\  instead of \ ``rule_loc
 For \ ``ETHTOOL_SRXCLSRLINS``\ , \ ``fs``\  specifies the rule to add or update.
 \ ``fs``\ .@location either specifies the location to use or is a special
 location value with \ ``RX_CLS_LOC_SPECIAL``\  flag set.  On return,
-\ ``fs``\ .@location is the actual rule location.
+\ ``fs``\ .@location is the actual rule location.  If \ ``fs``\ .@flow_type
+includes the \ ``FLOW_RSS``\  flag, \ ``rss_context``\  is the RSS context ID to
+use for flow spreading traffic which matches this rule.  The value
+from the rxfh indirection table will be added to \ ``fs``\ .@ring_cookie
+to choose which ring to deliver to.
 
 For \ ``ETHTOOL_SRXCLSRLDEL``\ , \ ``fs``\ .@location specifies the location of an
 existing rule on entry.
@@ -1826,7 +1843,11 @@ cmd
     Specific command number - \ ``ETHTOOL_GRSSH``\  or \ ``ETHTOOL_SRSSH``\ 
 
 rss_context
-    RSS context identifier.
+    RSS context identifier.  Context 0 is the default for normal
+    traffic; other contexts can be referenced as the destination for RX flow
+    classification rules.  \ ``ETH_RXFH_CONTEXT_ALLOC``\  is used with command
+    \ ``ETHTOOL_SRSSH``\  to allocate a new RSS context; on return this field will
+    contain the ID of the newly allocated context.
 
 indir_size
     On entry, the array size of the user buffer for the
@@ -1863,7 +1884,8 @@ For \ ``ETHTOOL_GRSSH``\ , a \ ``indir_size``\  and key_size of zero means that 
 size should be returned.  For \ ``ETHTOOL_SRSSH``\ , an \ ``indir_size``\  of
 \ ``ETH_RXFH_INDIR_NO_CHANGE``\  means that indir table setting is not requested
 and a \ ``indir_size``\  of zero means the indir table should be reset to default
-values. An hfunc of zero means that hash function setting is not requested.
+values (if \ ``rss_context``\  == 0) or that the RSS context should be deleted.
+An hfunc of zero means that hash function setting is not requested.
 
 .. _`ethtool_rx_ntuple_flow_spec`:
 

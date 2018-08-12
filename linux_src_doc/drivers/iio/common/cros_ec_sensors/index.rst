@@ -8,4 +8,3 @@ cros_ec_sensors
     :maxdepth: 1
 
     cros_ec_sensors_core_c
-    cros_ec_sensors_core_h

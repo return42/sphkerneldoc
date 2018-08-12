@@ -59,7 +59,7 @@ Definition
         u8 ap_bssid[ETH_ALEN];
         s8 bcn_freq_off;
         u8 bcn_phy_mode;
-        int avg_rssi;
+        struct ewma_rssi avg_rssi;
         u8 agc_save;
         struct mt7601u_freq_cal freq_cal;
         bool tssi_read_trig;
@@ -141,7 +141,8 @@ ee
     *undescribed*
 
 vendor_req_mutex
-    protects \ ``vend_buf``\ , ensures atomicity of split writes.
+    protects \ ``vend_buf``\ , ensures atomicity of read/write
+    accesses
 
 vend_buf
     *undescribed*

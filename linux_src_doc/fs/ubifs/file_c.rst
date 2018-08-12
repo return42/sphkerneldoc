@@ -275,14 +275,14 @@ granularity, they are not updated. This is an optimization.
 ubifs_update_time
 =================
 
-.. c:function:: int ubifs_update_time(struct inode *inode, struct timespec *time, int flags)
+.. c:function:: int ubifs_update_time(struct inode *inode, struct timespec64 *time, int flags)
 
     update time of inode.
 
     :param struct inode \*inode:
         inode to update
 
-    :param struct timespec \*time:
+    :param struct timespec64 \*time:
         *undescribed*
 
     :param int flags:

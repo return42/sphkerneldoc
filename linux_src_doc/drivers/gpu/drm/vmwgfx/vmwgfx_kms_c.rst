@@ -388,6 +388,8 @@ vmw_framebuffer_pin
 
 .. c:function:: int vmw_framebuffer_pin(struct vmw_framebuffer *vfb)
 
+    display system.
+
     :param struct vmw_framebuffer \*vfb:
         *undescribed*
 
@@ -506,38 +508,6 @@ us to assign a value to mode->crtc_clock so that
 
 RETURNS
 Zero for success or -errno
-
-.. _`vmw_kms_atomic_commit`:
-
-vmw_kms_atomic_commit
-=====================
-
-.. c:function:: int vmw_kms_atomic_commit(struct drm_device *dev, struct drm_atomic_state *state, bool nonblock)
-
-    Perform an atomic state commit
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param struct drm_atomic_state \*state:
-        the driver state object
-
-    :param bool nonblock:
-        Whether nonblocking behaviour is requested
-
-.. _`vmw_kms_atomic_commit.description`:
-
-Description
------------
-
-This is a simple wrapper around \ :c:func:`drm_atomic_helper_commit`\  for
-us to clear the nonblocking value.
-
-Nonblocking commits currently cause synchronization issues
-for vmwgfx.
-
-RETURNS
-Zero for success or negative error code on failure.
 
 .. _`vmw_get_vblank_counter`:
 
@@ -712,7 +682,7 @@ vmw_kms_helper_dirty
 vmw_kms_helper_buffer_prepare
 =============================
 
-.. c:function:: int vmw_kms_helper_buffer_prepare(struct vmw_private *dev_priv, struct vmw_dma_buffer *buf, bool interruptible, bool validate_as_mob)
+.. c:function:: int vmw_kms_helper_buffer_prepare(struct vmw_private *dev_priv, struct vmw_dma_buffer *buf, bool interruptible, bool validate_as_mob, bool for_cpu_blit)
 
     Reserve and validate a buffer object before command submission.
 
@@ -729,6 +699,9 @@ vmw_kms_helper_buffer_prepare
         Whether the buffer should be validated as a MOB. If false,
         The buffer will be validated as a GMR. Already pinned buffers will not be
         validated.
+
+    :param bool for_cpu_blit:
+        *undescribed*
 
 .. _`vmw_kms_helper_buffer_prepare.description`:
 
@@ -794,12 +767,12 @@ vmw_kms_helper_buffer_finish
 vmw_kms_helper_resource_revert
 ==============================
 
-.. c:function:: void vmw_kms_helper_resource_revert(struct vmw_resource *res)
+.. c:function:: void vmw_kms_helper_resource_revert(struct vmw_validation_ctx *ctx)
 
     Undo the actions of vmw_kms_helper_resource_prepare.
 
-    :param struct vmw_resource \*res:
-        Pointer to the resource. Typically a surface.
+    :param struct vmw_validation_ctx \*ctx:
+        *undescribed*
 
 .. _`vmw_kms_helper_resource_revert.description`:
 
@@ -814,7 +787,7 @@ vmw_kms_helper_resource_prepare.
 vmw_kms_helper_resource_prepare
 ===============================
 
-.. c:function:: int vmw_kms_helper_resource_prepare(struct vmw_resource *res, bool interruptible)
+.. c:function:: int vmw_kms_helper_resource_prepare(struct vmw_resource *res, bool interruptible, struct vmw_validation_ctx *ctx)
 
     Reserve and validate a resource before command submission.
 
@@ -823,6 +796,9 @@ vmw_kms_helper_resource_prepare
 
     :param bool interruptible:
         Whether to perform waits as interruptible.
+
+    :param struct vmw_validation_ctx \*ctx:
+        *undescribed*
 
 .. _`vmw_kms_helper_resource_prepare.description`:
 
@@ -838,12 +814,12 @@ interrupted by a signal.
 vmw_kms_helper_resource_finish
 ==============================
 
-.. c:function:: void vmw_kms_helper_resource_finish(struct vmw_resource *res, struct vmw_fence_obj **out_fence)
+.. c:function:: void vmw_kms_helper_resource_finish(struct vmw_validation_ctx *ctx, struct vmw_fence_obj **out_fence)
 
     Unreserve and fence a resource after kms command submission.
 
-    :param struct vmw_resource \*res:
-        Pointer to the resource. Typically a surface.
+    :param struct vmw_validation_ctx \*ctx:
+        *undescribed*
 
     :param struct vmw_fence_obj \*\*out_fence:
         Optional pointer to a fence pointer. If non-NULL, a
@@ -1006,6 +982,59 @@ when drm_mode_set_crtcinfo is called as part of the configuration setting
 causes it to return incorrect crtc dimensions causing severe problems in
 the vmwgfx modesetting. So explicitly clear that member before calling
 into drm_atomic_helper_set_config.
+
+.. _`vmw_kms_suspend`:
+
+vmw_kms_suspend
+===============
+
+.. c:function:: int vmw_kms_suspend(struct drm_device *dev)
+
+    Save modesetting state and turn modesetting off.
+
+    :param struct drm_device \*dev:
+        Pointer to the drm device
+
+.. _`vmw_kms_suspend.return`:
+
+Return
+------
+
+0 on success. Negative error code on failure.
+
+.. _`vmw_kms_resume`:
+
+vmw_kms_resume
+==============
+
+.. c:function:: int vmw_kms_resume(struct drm_device *dev)
+
+    Re-enable modesetting and restore state
+
+    :param struct drm_device \*dev:
+        Pointer to the drm device
+
+.. _`vmw_kms_resume.return`:
+
+Return
+------
+
+0 on success. Negative error code on failure.
+
+State is resumed from a previous \ :c:func:`vmw_kms_suspend`\ . It's illegal
+to call this function without a previous \ :c:func:`vmw_kms_suspend`\ .
+
+.. _`vmw_kms_lost_device`:
+
+vmw_kms_lost_device
+===================
+
+.. c:function:: void vmw_kms_lost_device(struct drm_device *dev)
+
+    Notify kms that modesetting capabilities will be lost
+
+    :param struct drm_device \*dev:
+        Pointer to the drm device
 
 .. This file was automatic generated / don't edit.
 

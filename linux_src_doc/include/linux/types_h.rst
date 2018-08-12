@@ -70,7 +70,7 @@ This guarantee is important for few reasons
 -------------------------------------------
 
 - future \ :c:func:`call_rcu_lazy`\  will make use of lower bits in the pointer;
-- the structure shares storage spacer in struct page with \ ``compound_head``\ ,
+- the structure shares storage space in struct page with \ ``compound_head``\ ,
 which encode \ :c:func:`PageTail`\  in bit 0. The guarantee is needed to avoid
 false-positive \ :c:func:`PageTail`\ .
 

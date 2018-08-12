@@ -205,7 +205,7 @@ get the total capacity by doing a report zones.
 sd_zbc_check_zone_size
 ======================
 
-.. c:function:: int sd_zbc_check_zone_size(struct scsi_disk *sdkp)
+.. c:function:: s64 sd_zbc_check_zone_size(struct scsi_disk *sdkp)
 
     Check the device zone sizes
 
@@ -220,24 +220,30 @@ Description
 Check that all zones of the device are equal. The last zone can however
 be smaller. The zone size must also be a power of two number of LBAs.
 
+Returns the zone size in number of blocks upon success or an error code
+upon failure.
+
 .. _`sd_zbc_alloc_zone_bitmap`:
 
 sd_zbc_alloc_zone_bitmap
 ========================
 
-.. c:function:: unsigned long *sd_zbc_alloc_zone_bitmap(struct scsi_disk *sdkp)
+.. c:function:: unsigned long *sd_zbc_alloc_zone_bitmap(u32 nr_zones, int numa_node)
 
     Allocate a zone bitmap (one bit per zone).
 
-    :param struct scsi_disk \*sdkp:
-        The disk of the bitmap
+    :param u32 nr_zones:
+        Number of zones to allocate space for.
+
+    :param int numa_node:
+        NUMA node to allocate the memory from.
 
 .. _`sd_zbc_get_seq_zones`:
 
 sd_zbc_get_seq_zones
 ====================
 
-.. c:function:: sector_t sd_zbc_get_seq_zones(struct scsi_disk *sdkp, unsigned char *buf, unsigned int buflen, unsigned long *seq_zones_bitmap)
+.. c:function:: sector_t sd_zbc_get_seq_zones(struct scsi_disk *sdkp, unsigned char *buf, unsigned int buflen, u32 zone_shift, unsigned long *seq_zones_bitmap)
 
     Parse report zones reply to identify sequential zones
 
@@ -248,10 +254,13 @@ sd_zbc_get_seq_zones
         report reply buffer
 
     :param unsigned int buflen:
-        *undescribed*
+        length of \ ``buf``\ 
+
+    :param u32 zone_shift:
+        logarithm base 2 of the number of blocks in a zone
 
     :param unsigned long \*seq_zones_bitmap:
-        *undescribed*
+        bitmap of sequential zones to set
 
 .. _`sd_zbc_get_seq_zones.description`:
 
@@ -269,12 +278,18 @@ Return the LBA after the last zone reported.
 sd_zbc_setup_seq_zones_bitmap
 =============================
 
-.. c:function:: int sd_zbc_setup_seq_zones_bitmap(struct scsi_disk *sdkp)
+.. c:function:: unsigned long *sd_zbc_setup_seq_zones_bitmap(struct scsi_disk *sdkp, u32 zone_shift, u32 nr_zones)
 
-    Initialize the disk seq zone bitmap.
+    Initialize a seq zone bitmap.
 
     :param struct scsi_disk \*sdkp:
         target disk
+
+    :param u32 zone_shift:
+        logarithm base 2 of the number of blocks in a zone
+
+    :param u32 nr_zones:
+        number of zones to set up a seq zone bitmap for
 
 .. _`sd_zbc_setup_seq_zones_bitmap.description`:
 

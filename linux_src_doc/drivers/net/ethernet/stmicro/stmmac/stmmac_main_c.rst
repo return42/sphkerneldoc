@@ -976,27 +976,6 @@ Description
 
 this masks the MMC irq, in fact, the counters are managed in SW.
 
-.. _`stmmac_selec_desc_mode`:
-
-stmmac_selec_desc_mode
-======================
-
-.. c:function:: void stmmac_selec_desc_mode(struct stmmac_priv *priv)
-
-    to select among: normal/alternate/extend descriptors
-
-    :param struct stmmac_priv \*priv:
-        driver private structure
-
-.. _`stmmac_selec_desc_mode.description`:
-
-Description
------------
-
-select the Enhanced/Alternate or Normal descriptors.
-In case of Enhanced/Alternate, it checks if the extended descriptors are
-supported by the HW capability register.
-
 .. _`stmmac_get_hw_features`:
 
 stmmac_get_hw_features

@@ -614,7 +614,7 @@ Definition
         int (*stop)(struct rproc *rproc);
         void (*kick)(struct rproc *rproc, int vqid);
         void * (*da_to_va)(struct rproc *rproc, u64 da, int len);
-        int (*load_rsc_table)(struct rproc *rproc, const struct firmware *fw);
+        int (*parse_fw)(struct rproc *rproc, const struct firmware *fw);
         struct resource_table *(*find_loaded_rsc_table)( struct rproc *rproc, const struct firmware *fw);
         int (*load)(struct rproc *rproc, const struct firmware *fw);
         int (*sanity_check)(struct rproc *rproc, const struct firmware *fw);
@@ -638,8 +638,8 @@ kick
 da_to_va
     optional platform hook to perform address translations
 
-load_rsc_table
-    load resource table from firmware image
+parse_fw
+    *undescribed*
 
 find_loaded_rsc_table
     find the loaded resouce table
@@ -761,6 +761,46 @@ the elements should be always something sane.
 
 Feel free to add more types when needed.
 
+.. _`rproc_dump_segment`:
+
+struct rproc_dump_segment
+=========================
+
+.. c:type:: struct rproc_dump_segment
+
+    segment info from ELF header
+
+.. _`rproc_dump_segment.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rproc_dump_segment {
+        struct list_head node;
+        dma_addr_t da;
+        size_t size;
+        loff_t offset;
+    }
+
+.. _`rproc_dump_segment.members`:
+
+Members
+-------
+
+node
+    list node related to the rproc segment list
+
+da
+    device address of the segment
+
+size
+    size of the segment
+
+offset
+    *undescribed*
+
 .. _`rproc`:
 
 struct rproc
@@ -807,6 +847,7 @@ Definition
         size_t table_sz;
         bool has_iommu;
         bool auto_boot;
+        struct list_head dump_segments;
     }
 
 .. _`rproc.members`:
@@ -901,6 +942,9 @@ has_iommu
 auto_boot
     *undescribed*
 
+dump_segments
+    list of segments in the firmware
+
 .. _`rproc_subdev`:
 
 struct rproc_subdev
@@ -920,7 +964,7 @@ Definition
     struct rproc_subdev {
         struct list_head node;
         int (*probe)(struct rproc_subdev *subdev);
-        void (*remove)(struct rproc_subdev *subdev);
+        void (*remove)(struct rproc_subdev *subdev, bool crashed);
     }
 
 .. _`rproc_subdev.members`:
@@ -935,7 +979,8 @@ probe
     probe function, called as the rproc is started
 
 remove
-    remove function, called as the rproc is stopped
+    remove function, called as the rproc is being stopped, the \ ``crashed``\ 
+    parameter indicates if this originates from the a recovery
 
 .. _`rproc_vring`:
 

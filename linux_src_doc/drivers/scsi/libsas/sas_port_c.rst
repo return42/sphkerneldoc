@@ -8,7 +8,7 @@ sas_form_port
 
 .. c:function:: void sas_form_port(struct asd_sas_phy *phy)
 
-    - add this phy to a port
+    add this phy to a port
 
     :param struct asd_sas_phy \*phy:
         the phy of interest
@@ -28,13 +28,13 @@ sas_deform_port
 
 .. c:function:: void sas_deform_port(struct asd_sas_phy *phy, int gone)
 
-    - remove this phy from the port it belongs to
+    remove this phy from the port it belongs to
 
     :param struct asd_sas_phy \*phy:
         the phy of interest
 
     :param int gone:
-        *undescribed*
+        whether or not the PHY is gone
 
 .. _`sas_deform_port.description`:
 

@@ -206,6 +206,11 @@ Definition
     struct mbm_state {
         u64 chunks;
         u64 prev_msr;
+        u64 chunks_bw;
+        u64 prev_bw_msr;
+        u32 prev_bw;
+        u32 delta_bw;
+        bool delta_comp;
     }
 
 .. _`mbm_state.members`:
@@ -216,8 +221,27 @@ Members
 chunks
     Total data moved (multiply by rdt_group.mon_scale to get bytes)
     \ ``prev_msr``\     Value of IA32_QM_CTR for this RMID last time we read it
+    \ ``chunks_bw``\    Total local data moved. Used for bandwidth calculation
 
 prev_msr
+    *undescribed*
+
+chunks_bw
+    *undescribed*
+
+prev_bw_msr
+    Value of previous IA32_QM_CTR for bandwidth counting
+    \ ``prev_bw``\      The most recent bandwidth in MBps
+    \ ``delta_bw``\     Difference between the current and previous bandwidth
+    \ ``delta_comp``\   Indicates whether to compute the delta_bw
+
+prev_bw
+    *undescribed*
+
+delta_bw
+    *undescribed*
+
+delta_comp
     *undescribed*
 
 .. _`rdt_domain`:
@@ -248,6 +272,7 @@ Definition
         int mbm_work_cpu;
         int cqm_work_cpu;
         u32 *ctrl_val;
+        u32 *mbps_val;
         u32 new_ctrl;
         bool have_new_ctrl;
     }
@@ -289,6 +314,9 @@ cqm_work_cpu
 
 ctrl_val
     array of cache or mem ctrl values (indexed by CLOSID)
+
+mbps_val
+    When mba_sc is enabled, this holds the bandwidth in MBps
 
 new_ctrl
     new ctrl value to be loaded
@@ -400,6 +428,7 @@ Definition
         u32 min_bw;
         u32 bw_gran;
         u32 delay_linear;
+        bool mba_sc;
         u32 *mb_map;
     }
 
@@ -420,6 +449,9 @@ bw_gran
 
 delay_linear
     True if memory B/W delay is in linear scale
+
+mba_sc
+    True if MBA software controller(mba_sc) is enabled
 
 mb_map
     Mapping of memory B/W percentage to memory B/W delay

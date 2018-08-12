@@ -141,6 +141,7 @@ Definition
         unsigned stereo_allowed :1;
         unsigned universal_planes:1;
         unsigned atomic:1;
+        unsigned aspect_ratio_allowed:1;
         unsigned is_master:1;
         struct drm_master *master;
         struct pid *pid;
@@ -188,6 +189,11 @@ universal_planes
 
 atomic
     True if client understands atomic properties.
+
+aspect_ratio_allowed
+
+    True, if client can handle picture aspect ratios, and has requested
+    to pass this information along with the mode.
 
 is_master
 
@@ -258,7 +264,7 @@ blobs
     User-created blob properties; this retains a reference on the
     property.
 
-    Protected by \ ``drm_mode_config``\ .blob_lock;
+    Protected by \ ``drm_mode_config.blob_lock``\ ;
 
 event_wait
     Waitqueue for new events added to \ ``event_list``\ .
@@ -342,26 +348,6 @@ Returns true if this is an open file of the render node, i.e.
 \ :c:type:`drm_file.minor <drm_file>`\  of \ ``file_priv``\  is a render minor.
 
 See also the :ref:`section on render nodes <drm_render_node>`.
-
-.. _`drm_is_control_client`:
-
-drm_is_control_client
-=====================
-
-.. c:function:: bool drm_is_control_client(const struct drm_file *file_priv)
-
-    is this an open file of the control node
-
-    :param const struct drm_file \*file_priv:
-        DRM file
-
-.. _`drm_is_control_client.description`:
-
-Description
------------
-
-Control nodes are deprecated and in the process of getting removed from the
-DRM userspace API. Do not ever use!
 
 .. This file was automatic generated / don't edit.
 

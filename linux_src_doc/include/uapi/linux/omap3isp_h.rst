@@ -107,7 +107,14 @@ Definition
 .. code-block:: c
 
     struct omap3isp_stat_data {
+    #ifdef __KERNEL__
+        struct {
+            __s64 tv_sec;
+            __s64 tv_usec;
+        } ts;
+    #else
         struct timeval ts;
+    #endif
         void __user *buf;
         __u32 buf_size;
         __u16 frame_number;
@@ -119,6 +126,9 @@ Definition
 
 Members
 -------
+
+ts
+    Timestamp of returned framestats.
 
 ts
     Timestamp of returned framestats.

@@ -129,6 +129,7 @@ Definition
         int usecount;
         int forcewake_count;
         struct list_head node;
+        u32 context;
     }
 
 .. _`clockdomain.members`:
@@ -178,6 +179,9 @@ forcewake_count
 node
     list_head to link all clockdomains together
 
+context
+    *undescribed*
+
 .. _`clockdomain.description`:
 
 Description
@@ -220,6 +224,8 @@ Definition
         void (*clkdm_deny_idle)(struct clockdomain *clkdm);
         int (*clkdm_clk_enable)(struct clockdomain *clkdm);
         int (*clkdm_clk_disable)(struct clockdomain *clkdm);
+        int (*clkdm_save_context)(struct clockdomain *clkdm);
+        int (*clkdm_restore_context)(struct clockdomain *clkdm);
     }
 
 .. _`clkdm_ops.members`:
@@ -268,6 +274,12 @@ clkdm_clk_enable
 
 clkdm_clk_disable
     Put the clkdm in right state for a clock disable
+
+clkdm_save_context
+    Save the current clkdm context
+
+clkdm_restore_context
+    Restore the clkdm context
 
 .. This file was automatic generated / don't edit.
 

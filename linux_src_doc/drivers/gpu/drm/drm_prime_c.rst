@@ -1,6 +1,110 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_prime.c
 
+.. _`drm_gem_map_attach`:
+
+drm_gem_map_attach
+==================
+
+.. c:function:: int drm_gem_map_attach(struct dma_buf *dma_buf, struct device *target_dev, struct dma_buf_attachment *attach)
+
+    dma_buf attach implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to attach device to
+
+    :param struct device \*target_dev:
+        not used
+
+    :param struct dma_buf_attachment \*attach:
+        buffer attachment data
+
+.. _`drm_gem_map_attach.description`:
+
+Description
+-----------
+
+Allocates \ :c:type:`struct drm_prime_attachment <drm_prime_attachment>`\  and calls \ :c:type:`drm_driver.gem_prime_pin <drm_driver>`\  for
+device specific attachment. This can be used as the \ :c:type:`dma_buf_ops.attach <dma_buf_ops>`\ 
+callback.
+
+Returns 0 on success, negative error code on failure.
+
+.. _`drm_gem_map_detach`:
+
+drm_gem_map_detach
+==================
+
+.. c:function:: void drm_gem_map_detach(struct dma_buf *dma_buf, struct dma_buf_attachment *attach)
+
+    dma_buf detach implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to detach from
+
+    :param struct dma_buf_attachment \*attach:
+        attachment to be detached
+
+.. _`drm_gem_map_detach.description`:
+
+Description
+-----------
+
+Cleans up \ :c:type:`struct dma_buf_attachment <dma_buf_attachment>`\ . This can be used as the \ :c:type:`dma_buf_ops.detach <dma_buf_ops>`\ 
+callback.
+
+.. _`drm_gem_map_dma_buf`:
+
+drm_gem_map_dma_buf
+===================
+
+.. c:function:: struct sg_table *drm_gem_map_dma_buf(struct dma_buf_attachment *attach, enum dma_data_direction dir)
+
+    map_dma_buf implementation for GEM
+
+    :param struct dma_buf_attachment \*attach:
+        attachment whose scatterlist is to be returned
+
+    :param enum dma_data_direction dir:
+        direction of DMA transfer
+
+.. _`drm_gem_map_dma_buf.description`:
+
+Description
+-----------
+
+Calls \ :c:type:`drm_driver.gem_prime_get_sg_table <drm_driver>`\  and then maps the scatterlist. This
+can be used as the \ :c:type:`dma_buf_ops.map_dma_buf <dma_buf_ops>`\  callback.
+
+Returns sg_table containing the scatterlist to be returned; returns ERR_PTR
+on error. May return -EINTR if it is interrupted by a signal.
+
+.. _`drm_gem_unmap_dma_buf`:
+
+drm_gem_unmap_dma_buf
+=====================
+
+.. c:function:: void drm_gem_unmap_dma_buf(struct dma_buf_attachment *attach, struct sg_table *sgt, enum dma_data_direction dir)
+
+    unmap_dma_buf implementation for GEM
+
+    :param struct dma_buf_attachment \*attach:
+        attachment to unmap buffer from
+
+    :param struct sg_table \*sgt:
+        scatterlist info of the buffer to unmap
+
+    :param enum dma_data_direction dir:
+        direction of DMA transfer
+
+.. _`drm_gem_unmap_dma_buf.description`:
+
+Description
+-----------
+
+Not implemented. The unmap is done at \ :c:func:`drm_gem_map_detach`\ .  This can be
+used as the \ :c:type:`dma_buf_ops.unmap_dma_buf <dma_buf_ops>`\  callback.
+
 .. _`drm_gem_dmabuf_export`:
 
 drm_gem_dmabuf_export
@@ -49,6 +153,170 @@ Generic release function for dma_bufs exported as PRIME buffers. GEM drivers
 must use this in their dma_buf ops structure as the release callback.
 \ :c:func:`drm_gem_dmabuf_release`\  should be used in conjunction with
 \ :c:func:`drm_gem_dmabuf_export`\ .
+
+.. _`drm_gem_dmabuf_vmap`:
+
+drm_gem_dmabuf_vmap
+===================
+
+.. c:function:: void *drm_gem_dmabuf_vmap(struct dma_buf *dma_buf)
+
+    dma_buf vmap implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to be mapped
+
+.. _`drm_gem_dmabuf_vmap.description`:
+
+Description
+-----------
+
+Sets up a kernel virtual mapping. This can be used as the \ :c:type:`dma_buf_ops.vmap <dma_buf_ops>`\ 
+callback.
+
+Returns the kernel virtual address.
+
+.. _`drm_gem_dmabuf_vunmap`:
+
+drm_gem_dmabuf_vunmap
+=====================
+
+.. c:function:: void drm_gem_dmabuf_vunmap(struct dma_buf *dma_buf, void *vaddr)
+
+    dma_buf vunmap implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to be unmapped
+
+    :param void \*vaddr:
+        the virtual address of the buffer
+
+.. _`drm_gem_dmabuf_vunmap.description`:
+
+Description
+-----------
+
+Releases a kernel virtual mapping. This can be used as the
+\ :c:type:`dma_buf_ops.vunmap <dma_buf_ops>`\  callback.
+
+.. _`drm_gem_dmabuf_kmap_atomic`:
+
+drm_gem_dmabuf_kmap_atomic
+==========================
+
+.. c:function:: void *drm_gem_dmabuf_kmap_atomic(struct dma_buf *dma_buf, unsigned long page_num)
+
+    map_atomic implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to be mapped
+
+    :param unsigned long page_num:
+        page number within the buffer
+
+.. _`drm_gem_dmabuf_kmap_atomic.description`:
+
+Description
+-----------
+
+Not implemented. This can be used as the \ :c:type:`dma_buf_ops.map_atomic <dma_buf_ops>`\  callback.
+
+.. _`drm_gem_dmabuf_kunmap_atomic`:
+
+drm_gem_dmabuf_kunmap_atomic
+============================
+
+.. c:function:: void drm_gem_dmabuf_kunmap_atomic(struct dma_buf *dma_buf, unsigned long page_num, void *addr)
+
+    unmap_atomic implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to be unmapped
+
+    :param unsigned long page_num:
+        page number within the buffer
+
+    :param void \*addr:
+        virtual address of the buffer
+
+.. _`drm_gem_dmabuf_kunmap_atomic.description`:
+
+Description
+-----------
+
+Not implemented. This can be used as the \ :c:type:`dma_buf_ops.unmap_atomic <dma_buf_ops>`\  callback.
+
+.. _`drm_gem_dmabuf_kmap`:
+
+drm_gem_dmabuf_kmap
+===================
+
+.. c:function:: void *drm_gem_dmabuf_kmap(struct dma_buf *dma_buf, unsigned long page_num)
+
+    map implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to be mapped
+
+    :param unsigned long page_num:
+        page number within the buffer
+
+.. _`drm_gem_dmabuf_kmap.description`:
+
+Description
+-----------
+
+Not implemented. This can be used as the \ :c:type:`dma_buf_ops.map <dma_buf_ops>`\  callback.
+
+.. _`drm_gem_dmabuf_kunmap`:
+
+drm_gem_dmabuf_kunmap
+=====================
+
+.. c:function:: void drm_gem_dmabuf_kunmap(struct dma_buf *dma_buf, unsigned long page_num, void *addr)
+
+    unmap implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to be unmapped
+
+    :param unsigned long page_num:
+        page number within the buffer
+
+    :param void \*addr:
+        virtual address of the buffer
+
+.. _`drm_gem_dmabuf_kunmap.description`:
+
+Description
+-----------
+
+Not implemented. This can be used as the \ :c:type:`dma_buf_ops.unmap <dma_buf_ops>`\  callback.
+
+.. _`drm_gem_dmabuf_mmap`:
+
+drm_gem_dmabuf_mmap
+===================
+
+.. c:function:: int drm_gem_dmabuf_mmap(struct dma_buf *dma_buf, struct vm_area_struct *vma)
+
+    dma_buf mmap implementation for GEM
+
+    :param struct dma_buf \*dma_buf:
+        buffer to be mapped
+
+    :param struct vm_area_struct \*vma:
+        virtual address range
+
+.. _`drm_gem_dmabuf_mmap.description`:
+
+Description
+-----------
+
+Provides memory mapping for the buffer. This can be used as the
+\ :c:type:`dma_buf_ops.mmap <dma_buf_ops>`\  callback.
+
+Returns 0 on success or a negative error code on failure.
 
 .. _`prime-helpers`:
 
@@ -243,7 +511,7 @@ importers address space for use with dma_buf itself.
 drm_prime_sg_to_page_addr_arrays
 ================================
 
-.. c:function:: int drm_prime_sg_to_page_addr_arrays(struct sg_table *sgt, struct page **pages, dma_addr_t *addrs, int max_pages)
+.. c:function:: int drm_prime_sg_to_page_addr_arrays(struct sg_table *sgt, struct page **pages, dma_addr_t *addrs, int max_entries)
 
     convert an sg table into a page array
 
@@ -251,12 +519,12 @@ drm_prime_sg_to_page_addr_arrays
         scatter-gather table to convert
 
     :param struct page \*\*pages:
-        array of page pointers to store the page array in
+        optional array of page pointers to store the page array in
 
     :param dma_addr_t \*addrs:
         optional array to store the dma bus address of each page
 
-    :param int max_pages:
+    :param int max_entries:
         size of both the passed-in arrays
 
 .. _`drm_prime_sg_to_page_addr_arrays.description`:

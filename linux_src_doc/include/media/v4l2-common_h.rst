@@ -323,35 +323,6 @@ size :math:`width * height` will be a multiple of :math:`2^{salign}`.
    #. If you only want to adjust downward, specify a maximum that's the
       same as the initial value.
 
-.. _`v4l2_find_nearest_format`:
-
-v4l2_find_nearest_format
-========================
-
-.. c:function:: const struct v4l2_frmsize_discrete *v4l2_find_nearest_format(const struct v4l2_frmsize_discrete *sizes, const size_t num_sizes, s32 width, s32 height)
-
-    find the nearest format size among a discrete set of resolutions.
-
-    :param const struct v4l2_frmsize_discrete \*sizes:
-        array of \ :c:type:`struct v4l2_frmsize_discrete <v4l2_frmsize_discrete>`\  image sizes.
-
-    :param const size_t num_sizes:
-        length of \ ``sizes``\  array.
-
-    :param s32 width:
-        desired width.
-
-    :param s32 height:
-        desired height.
-
-.. _`v4l2_find_nearest_format.description`:
-
-Description
------------
-
-Finds the closest resolution to minimize the width and height differences
-between what requested and the supported resolutions.
-
 .. _`v4l2_get_timestamp`:
 
 v4l2_get_timestamp
@@ -363,6 +334,42 @@ v4l2_get_timestamp
 
     :param struct timeval \*tv:
         pointer to \ :c:type:`struct timeval <timeval>`\  to be filled.
+
+.. _`v4l2_g_parm_cap`:
+
+v4l2_g_parm_cap
+===============
+
+.. c:function:: int v4l2_g_parm_cap(struct video_device *vdev, struct v4l2_subdev *sd, struct v4l2_streamparm *a)
+
+    helper routine for vidioc_g_parm to fill this in by calling the g_frame_interval op of the given subdev. It only works for V4L2_BUF_TYPE_VIDEO_CAPTURE(_MPLANE), hence the _cap in the function name.
+
+    :param struct video_device \*vdev:
+        the struct video_device pointer. Used to determine the device caps.
+
+    :param struct v4l2_subdev \*sd:
+        the sub-device pointer.
+
+    :param struct v4l2_streamparm \*a:
+        the VIDIOC_G_PARM argument.
+
+.. _`v4l2_s_parm_cap`:
+
+v4l2_s_parm_cap
+===============
+
+.. c:function:: int v4l2_s_parm_cap(struct video_device *vdev, struct v4l2_subdev *sd, struct v4l2_streamparm *a)
+
+    helper routine for vidioc_s_parm to fill this in by calling the s_frame_interval op of the given subdev. It only works for V4L2_BUF_TYPE_VIDEO_CAPTURE(_MPLANE), hence the _cap in the function name.
+
+    :param struct video_device \*vdev:
+        the struct video_device pointer. Used to determine the device caps.
+
+    :param struct v4l2_subdev \*sd:
+        the sub-device pointer.
+
+    :param struct v4l2_streamparm \*a:
+        the VIDIOC_S_PARM argument.
 
 .. This file was automatic generated / don't edit.
 

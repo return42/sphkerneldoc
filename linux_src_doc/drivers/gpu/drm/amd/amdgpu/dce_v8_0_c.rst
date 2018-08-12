@@ -1,28 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
 
-.. _`dce_v8_0_vblank_wait`:
-
-dce_v8_0_vblank_wait
-====================
-
-.. c:function:: void dce_v8_0_vblank_wait(struct amdgpu_device *adev, int crtc)
-
-    vblank wait asic callback.
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param int crtc:
-        crtc to wait for vblank on
-
-.. _`dce_v8_0_vblank_wait.description`:
-
-Description
------------
-
-Wait for vblank on the requested crtc (evergreen+).
-
 .. _`dce_v8_0_page_flip`:
 
 dce_v8_0_page_flip

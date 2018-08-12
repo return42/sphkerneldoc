@@ -21,9 +21,10 @@ Definition
         struct tasklet_struct tasklet;
         struct i915_priolist default_priolist;
         bool no_priolist;
-        u32 __iomem *elsp;
+        u32 __iomem *submit_reg;
+        u32 __iomem *ctrl_reg;
         struct execlist_port {
-            struct drm_i915_gem_request *request_count;
+            struct i915_request *request_count;
     #define EXECLIST_COUNT_BITS 2
     #define port_request(p) ptr_mask_bits((p)->request_count, EXECLIST_COUNT_BITS)
     #define port_count(p) ptr_unmask_bits((p)->request_count, EXECLIST_COUNT_BITS)
@@ -40,11 +41,13 @@ Definition
     #define EXECLISTS_ACTIVE_PREEMPT 1
     #define EXECLISTS_ACTIVE_HWACK 2
         unsigned int port_mask;
+        int queue_priority;
         struct rb_root queue;
         struct rb_node *first;
         unsigned int fw_domains;
         unsigned int csb_head;
         bool csb_use_mmio;
+        u32 preempt_complete_status;
     }
 
 .. _`intel_engine_execlists.members`:
@@ -61,8 +64,12 @@ default_priolist
 no_priolist
     priority lists disabled
 
-elsp
-    the ExecList Submission Port register
+submit_reg
+    gen-specific execlist submission registerset to the ExecList Submission Port (elsp) register pre-Gen11 and to
+    the ExecList Submission Queue Contents register array for Gen11+
+
+ctrl_reg
+    the enhanced execlists control register, used to load thesubmit queue on the HW and to request preemptions to idle
 
 port
     execlist port states
@@ -84,6 +91,13 @@ active
 port_mask
     number of execlist ports - 1
 
+queue_priority
+    Highest pending priority.
+    When we add requests into the queue, or adjust the priority of
+    executing requests, we compute the maximum priority of those
+    pending requests. We can then use this value to determine if
+    we need to preempt the executing requests to service the queue.
+
 queue
     queue of requests, in priority lists
 
@@ -98,6 +112,9 @@ csb_head
 
 csb_use_mmio
     access csb through mmio, instead of hwsp
+
+preempt_complete_status
+    expected CSB upon completing preemption
 
 .. _`intel_engine_execlists.description`:
 

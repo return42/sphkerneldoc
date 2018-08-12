@@ -57,7 +57,7 @@ i40evf_get_tx_pending
     how many Tx descriptors not processed
 
     :param struct i40e_ring \*ring:
-        *undescribed*
+        the ring of descriptors
 
     :param bool in_sw:
         is tx_pending being checked in SW or HW
@@ -145,31 +145,32 @@ i40evf_force_wb
     :param struct i40e_q_vector \*q_vector:
         the vector  on which to force writeback
 
-.. _`i40e_set_new_dynamic_itr`:
+.. _`i40e_update_itr`:
 
-i40e_set_new_dynamic_itr
-========================
+i40e_update_itr
+===============
 
-.. c:function:: bool i40e_set_new_dynamic_itr(struct i40e_ring_container *rc)
+.. c:function:: void i40e_update_itr(struct i40e_q_vector *q_vector, struct i40e_ring_container *rc)
 
-    Find new ITR level
+    update the dynamic ITR value based on statistics
+
+    :param struct i40e_q_vector \*q_vector:
+        structure containing interrupt and ring information
 
     :param struct i40e_ring_container \*rc:
         structure containing ring performance data
 
-.. _`i40e_set_new_dynamic_itr.description`:
+.. _`i40e_update_itr.description`:
 
 Description
 -----------
 
-Returns true if ITR changed, false if not
-
-Stores a new ITR value based on packets and byte counts during
-the last interrupt.  The advantage of per interrupt computation
-is faster updates and more accurate ITR for the current traffic
-pattern.  Constants in this function were computed based on
-theoretical maximum wire speed and thresholds were set based on
-testing data as well as attempting to minimize response time
+Stores a new ITR value based on packets and byte
+counts during the last interrupt.  The advantage of per interrupt
+computation is faster updates and more accurate ITR for the current
+traffic pattern.  Constants in this function were computed
+based on theoretical maximum wire speed and thresholds were set based
+on testing data as well as attempting to minimize response time
 while increasing bulk throughput.
 
 .. _`i40evf_setup_tx_descriptors`:
@@ -391,10 +392,10 @@ i40e_rx_hash
         specific descriptor
 
     :param struct sk_buff \*skb:
-        *undescribed*
+        skb currently being received and modified
 
     :param u8 rx_ptype:
-        *undescribed*
+        Rx packet type
 
 .. _`i40evf_process_skb_fields`:
 
@@ -662,7 +663,7 @@ Description
 -----------
 
 This function will clean up the contents of the rx_buffer.  It will
-either recycle the bufer or unmap it and free the associated resources.
+either recycle the buffer or unmap it and free the associated resources.
 
 .. _`i40e_is_non_eop`:
 

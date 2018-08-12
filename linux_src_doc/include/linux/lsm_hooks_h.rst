@@ -112,6 +112,7 @@ Definition
         void (*cred_free)(struct cred *cred);
         int (*cred_prepare)(struct cred *new, const struct cred *old, gfp_t gfp);
         void (*cred_transfer)(struct cred *new, const struct cred *old);
+        void (*cred_getsecid)(const struct cred *c, u32 *secid);
         int (*kernel_act_as)(struct cred *new, u32 secid);
         int (*kernel_create_files_as)(struct cred *new, struct inode *inode);
         int (*kernel_module_request)(char *kmod_name);
@@ -130,29 +131,29 @@ Definition
         int (*task_setscheduler)(struct task_struct *p);
         int (*task_getscheduler)(struct task_struct *p);
         int (*task_movememory)(struct task_struct *p);
-        int (*task_kill)(struct task_struct *p, struct siginfo *info, int sig, u32 secid);
+        int (*task_kill)(struct task_struct *p, struct siginfo *info, int sig, const struct cred *cred);
         int (*task_prctl)(int option, unsigned long arg2, unsigned long arg3, unsigned long arg4, unsigned long arg5);
         void (*task_to_inode)(struct task_struct *p, struct inode *inode);
         int (*ipc_permission)(struct kern_ipc_perm *ipcp, short flag);
         void (*ipc_getsecid)(struct kern_ipc_perm *ipcp, u32 *secid);
         int (*msg_msg_alloc_security)(struct msg_msg *msg);
         void (*msg_msg_free_security)(struct msg_msg *msg);
-        int (*msg_queue_alloc_security)(struct msg_queue *msq);
-        void (*msg_queue_free_security)(struct msg_queue *msq);
-        int (*msg_queue_associate)(struct msg_queue *msq, int msqflg);
-        int (*msg_queue_msgctl)(struct msg_queue *msq, int cmd);
-        int (*msg_queue_msgsnd)(struct msg_queue *msq, struct msg_msg *msg, int msqflg);
-        int (*msg_queue_msgrcv)(struct msg_queue *msq, struct msg_msg *msg,struct task_struct *target, long type, int mode);
-        int (*shm_alloc_security)(struct shmid_kernel *shp);
-        void (*shm_free_security)(struct shmid_kernel *shp);
-        int (*shm_associate)(struct shmid_kernel *shp, int shmflg);
-        int (*shm_shmctl)(struct shmid_kernel *shp, int cmd);
-        int (*shm_shmat)(struct shmid_kernel *shp, char __user *shmaddr, int shmflg);
-        int (*sem_alloc_security)(struct sem_array *sma);
-        void (*sem_free_security)(struct sem_array *sma);
-        int (*sem_associate)(struct sem_array *sma, int semflg);
-        int (*sem_semctl)(struct sem_array *sma, int cmd);
-        int (*sem_semop)(struct sem_array *sma, struct sembuf *sops, unsigned nsops, int alter);
+        int (*msg_queue_alloc_security)(struct kern_ipc_perm *msq);
+        void (*msg_queue_free_security)(struct kern_ipc_perm *msq);
+        int (*msg_queue_associate)(struct kern_ipc_perm *msq, int msqflg);
+        int (*msg_queue_msgctl)(struct kern_ipc_perm *msq, int cmd);
+        int (*msg_queue_msgsnd)(struct kern_ipc_perm *msq, struct msg_msg *msg, int msqflg);
+        int (*msg_queue_msgrcv)(struct kern_ipc_perm *msq, struct msg_msg *msg,struct task_struct *target, long type, int mode);
+        int (*shm_alloc_security)(struct kern_ipc_perm *shp);
+        void (*shm_free_security)(struct kern_ipc_perm *shp);
+        int (*shm_associate)(struct kern_ipc_perm *shp, int shmflg);
+        int (*shm_shmctl)(struct kern_ipc_perm *shp, int cmd);
+        int (*shm_shmat)(struct kern_ipc_perm *shp, char __user *shmaddr, int shmflg);
+        int (*sem_alloc_security)(struct kern_ipc_perm *sma);
+        void (*sem_free_security)(struct kern_ipc_perm *sma);
+        int (*sem_associate)(struct kern_ipc_perm *sma, int semflg);
+        int (*sem_semctl)(struct kern_ipc_perm *sma, int cmd);
+        int (*sem_semop)(struct kern_ipc_perm *sma, struct sembuf *sops, unsigned nsops, int alter);
         int (*netlink_send)(struct sock *sk, struct sk_buff *skb);
         void (*d_instantiate)(struct dentry *dentry, struct inode *inode);
         int (*getprocattr)(struct task_struct *p, char *name, char **value);
@@ -170,6 +171,7 @@ Definition
         int (*unix_may_send)(struct socket *sock, struct socket *other);
         int (*socket_create)(int family, int type, int protocol, int kern);
         int (*socket_post_create)(struct socket *sock, int family, int type, int protocol, int kern);
+        int (*socket_socketpair)(struct socket *socka, struct socket *sockb);
         int (*socket_bind)(struct socket *sock, struct sockaddr *address, int addrlen);
         int (*socket_connect)(struct socket *sock, struct sockaddr *address, int addrlen);
         int (*socket_listen)(struct socket *sock, int backlog);
@@ -202,6 +204,9 @@ Definition
         int (*tun_dev_attach_queue)(void *security);
         int (*tun_dev_attach)(struct sock *sk, void *security);
         int (*tun_dev_open)(void *security);
+        int (*sctp_assoc_request)(struct sctp_endpoint *ep, struct sk_buff *skb);
+        int (*sctp_bind_connect)(struct sock *sk, int optname, struct sockaddr *address, int addrlen);
+        void (*sctp_sk_clone)(struct sctp_endpoint *ep, struct sock *sk, struct sock *newsk);
     #endif
     #ifdef CONFIG_SECURITY_INFINIBAND
         int (*ib_pkey_access)(void *sec, u64 subnet_prefix, u16 pkey);
@@ -920,6 +925,11 @@ cred_transfer
     \ ``old``\  points to the original credentials.
     Transfer data from original creds to new creds
 
+cred_getsecid
+    Retrieve the security identifier of the cred structure \ ``c``\ 
+    \ ``c``\  contains the credentials, secid will be placed into \ ``secid``\ .
+    In case of failure, \ ``secid``\  will be set to zero.
+
 kernel_act_as
     Set the credentials for a kernel service to act as (subjective context).
     \ ``new``\  points to the credentials to be modified.
@@ -1061,7 +1071,8 @@ task_kill
     \ ``p``\  contains the task_struct for process.
     \ ``info``\  contains the signal information.
     \ ``sig``\  contains the signal value.
-    \ ``secid``\  contains the sid of the process where the signal originated
+    \ ``cred``\  contains the cred of the process where the signal originated, or
+    NULL if the current task is the originator.
     Return 0 if permission is granted.
 
 task_prctl
@@ -1338,6 +1349,12 @@ socket_post_create
     \ ``protocol``\  contains the requested protocol.
     \ ``kern``\  set to 1 if a kernel socket.
 
+socket_socketpair
+    Check permissions before creating a fresh pair of sockets.
+    \ ``socka``\  contains the first socket structure.
+    \ ``sockb``\  contains the second socket structure.
+    Return 0 if permission is granted and the connection was established.
+
 socket_bind
     Check permission before socket protocol layer bind operation is
     performed and the socket \ ``sock``\  is bound to the address specified in the
@@ -1526,6 +1543,33 @@ tun_dev_open
     This hook can be used by the module to update any security state
     associated with the TUN device's security structure.
     \ ``security``\  pointer to the TUN devices's security structure.
+
+sctp_assoc_request
+    Passes the \ ``ep``\  and \ ``chunk``\ ->skb of the association INIT packet to
+    the security module.
+    \ ``ep``\  pointer to sctp endpoint structure.
+    \ ``skb``\  pointer to skbuff of association packet.
+    Return 0 on success, error on failure.
+
+sctp_bind_connect
+    Validiate permissions required for each address associated with sock
+    \ ``sk``\ . Depending on \ ``optname``\ , the addresses will be treated as either
+    for a connect or bind service. The \ ``addrlen``\  is calculated on each
+    ipv4 and ipv6 address using sizeof(struct sockaddr_in) or
+    sizeof(struct sockaddr_in6).
+    \ ``sk``\  pointer to sock structure.
+    \ ``optname``\  name of the option to validate.
+    \ ``address``\  list containing one or more ipv4/ipv6 addresses.
+    \ ``addrlen``\  total length of address(s).
+    Return 0 on success, error on failure.
+
+sctp_sk_clone
+    Called whenever a new socket is created by accept(2) (i.e. a TCP
+    style socket) or when a socket is 'peeled off' e.g userspace
+    calls sctp_peeloff(3).
+    \ ``ep``\  pointer to current sctp endpoint structure.
+    \ ``sk``\  pointer to current sock structure.
+    \ ``sk``\  pointer to new sock structure.
 
 ib_pkey_access
     Check permission to access a pkey when modifing a QP.
@@ -1746,6 +1790,8 @@ using only the socket layer hooks, since we need to know the actual target
 socket, which is not looked up until we are inside the af_unix code.
 
 Security hooks for socket operations.
+
+Security hooks for SCTP
 
 Security hooks for Infiniband
 

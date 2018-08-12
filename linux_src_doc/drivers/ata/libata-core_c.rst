@@ -2561,14 +2561,14 @@ LOCKING
 ata_qc_complete_multiple
 ========================
 
-.. c:function:: int ata_qc_complete_multiple(struct ata_port *ap, u32 qc_active)
+.. c:function:: int ata_qc_complete_multiple(struct ata_port *ap, u64 qc_active)
 
     Complete multiple qcs successfully
 
     :param struct ata_port \*ap:
         port in question
 
-    :param u32 qc_active:
+    :param u64 qc_active:
         new qc_active mask
 
 .. _`ata_qc_complete_multiple.description`:

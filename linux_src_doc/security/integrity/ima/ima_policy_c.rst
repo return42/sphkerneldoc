@@ -6,7 +6,7 @@
 ima_match_rules
 ===============
 
-.. c:function:: bool ima_match_rules(struct ima_rule_entry *rule, struct inode *inode, enum ima_hooks func, int mask)
+.. c:function:: bool ima_match_rules(struct ima_rule_entry *rule, struct inode *inode, const struct cred *cred, u32 secid, enum ima_hooks func, int mask)
 
     determine whether an inode matches the measure rule.
 
@@ -15,6 +15,12 @@ ima_match_rules
 
     :param struct inode \*inode:
         a pointer to an inode
+
+    :param const struct cred \*cred:
+        a pointer to a credentials structure for user validation
+
+    :param u32 secid:
+        the secid of the task to be validated
 
     :param enum ima_hooks func:
         LIM hook identifier
@@ -34,12 +40,19 @@ Returns true on rule match, false on failure.
 ima_match_policy
 ================
 
-.. c:function:: int ima_match_policy(struct inode *inode, enum ima_hooks func, int mask, int flags, int *pcr)
+.. c:function:: int ima_match_policy(struct inode *inode, const struct cred *cred, u32 secid, enum ima_hooks func, int mask, int flags, int *pcr)
 
     decision based on LSM and other conditions
 
     :param struct inode \*inode:
         pointer to an inode for which the policy decision is being made
+
+    :param const struct cred \*cred:
+        pointer to a credentials structure for which the policy decision is
+        being made
+
+    :param u32 secid:
+        LSM secid of the task to be validated
 
     :param enum ima_hooks func:
         IMA hook identifier

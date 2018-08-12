@@ -20,7 +20,6 @@ Definition
     struct jit_ctx {
         const struct bpf_prog *skf;
         int stack_size;
-        int tmp_offset;
         u32 idx;
         u32 flags;
         u32 *offsets;
@@ -41,9 +40,6 @@ skf
 
 stack_size
     eBPF stack size
-
-tmp_offset
-    eBPF \ ``$sp``\  offset to 8-byte temporary memory
 
 idx
     Instruction index

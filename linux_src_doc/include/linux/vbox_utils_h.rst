@@ -16,46 +16,6 @@
     :param  2:
         *undescribed*
 
-.. _`vbg_req_alloc`:
-
-vbg_req_alloc
-=============
-
-.. c:function:: void *vbg_req_alloc(size_t len, enum vmmdev_request_type req_type)
-
-    :param size_t len:
-        Size of memory block required for the request.
-
-    :param enum vmmdev_request_type req_type:
-        The generic request type.
-
-.. _`vbg_req_alloc.return`:
-
-Return
-------
-
-the allocated memory
-
-.. _`vbg_req_perform`:
-
-vbg_req_perform
-===============
-
-.. c:function:: int vbg_req_perform(struct vbg_dev *gdev, void *req)
-
-    :param struct vbg_dev \*gdev:
-        The Guest extension device.
-
-    :param void \*req:
-        Pointer to the request structure.
-
-.. _`vbg_req_perform.return`:
-
-Return
-------
-
-VBox status code
-
 .. _`vbg_status_code_to_errno`:
 
 vbg_status_code_to_errno

@@ -469,7 +469,7 @@ Definition
         void (*reclaim)(struct iwl_trans *trans, int queue, int ssn, struct sk_buff_head *skbs);
         bool (*txq_enable)(struct iwl_trans *trans, int queue, u16 ssn,const struct iwl_trans_txq_scd_cfg *cfg, unsigned int queue_wdg_timeout);
         void (*txq_disable)(struct iwl_trans *trans, int queue, bool configure_scd);
-        int (*txq_alloc)(struct iwl_trans *trans,struct iwl_tx_queue_cfg_cmd *cmd,int cmd_id, unsigned int queue_wdg_timeout);
+        int (*txq_alloc)(struct iwl_trans *trans,struct iwl_tx_queue_cfg_cmd *cmd,int cmd_id, int size, unsigned int queue_wdg_timeout);
         void (*txq_free)(struct iwl_trans *trans, int queue);
         void (*txq_set_shared_mode)(struct iwl_trans *trans, u32 txq_id, bool shared);
         int (*wait_tx_queues_empty)(struct iwl_trans *trans, u32 txq_bm);
@@ -829,6 +829,8 @@ Definition
         int command_groups_size;
         bool wide_cmd_header;
         u8 num_rx_queues;
+        size_t iml_len;
+        u8 *iml;
         struct kmem_cache *dev_cmd_pool;
         char dev_cmd_pool_name[50];
         struct dentry *dbgfs_dir;
@@ -916,6 +918,12 @@ wide_cmd_header
 num_rx_queues
     number of RX queues allocated by the transport;
     the transport must set this before calling \ :c:func:`iwl_drv_start`\ 
+
+iml_len
+    the length of the image loader
+
+iml
+    a pointer to the image loader itself
 
 dev_cmd_pool
     pool for Tx cmd allocation - for internal use only.

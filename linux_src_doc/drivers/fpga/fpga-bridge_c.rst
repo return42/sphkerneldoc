@@ -76,7 +76,7 @@ fpga_bridge_get
         parent device that fpga bridge was registered with
 
     :param struct fpga_image_info \*info:
-        *undescribed*
+        fpga manager info
 
 .. _`fpga_bridge_get.description`:
 
@@ -220,14 +220,14 @@ Get an exclusive reference to the bridge and and it to the list.
 
 Return 0 for success, error code from \ :c:func:`fpga_bridge_get`\  othewise.
 
-.. _`fpga_bridge_register`:
+.. _`fpga_bridge_create`:
 
-fpga_bridge_register
-====================
+fpga_bridge_create
+==================
 
-.. c:function:: int fpga_bridge_register(struct device *dev, const char *name, const struct fpga_bridge_ops *br_ops, void *priv)
+.. c:function:: struct fpga_bridge *fpga_bridge_create(struct device *dev, const char *name, const struct fpga_bridge_ops *br_ops, void *priv)
 
-    register a fpga bridge driver
+    create and initialize a struct fpga_bridge
 
     :param struct device \*dev:
         FPGA bridge device from pdev
@@ -241,6 +241,37 @@ fpga_bridge_register
     :param void \*priv:
         FPGA bridge private data
 
+.. _`fpga_bridge_create.return`:
+
+Return
+------
+
+struct fpga_bridge or NULL
+
+.. _`fpga_bridge_free`:
+
+fpga_bridge_free
+================
+
+.. c:function:: void fpga_bridge_free(struct fpga_bridge *bridge)
+
+    free a fpga bridge and its id
+
+    :param struct fpga_bridge \*bridge:
+        FPGA bridge struct created by fpga_bridge_create
+
+.. _`fpga_bridge_register`:
+
+fpga_bridge_register
+====================
+
+.. c:function:: int fpga_bridge_register(struct fpga_bridge *bridge)
+
+    register a fpga bridge
+
+    :param struct fpga_bridge \*bridge:
+        FPGA bridge struct created by fpga_bridge_create
+
 .. _`fpga_bridge_register.return`:
 
 Return
@@ -253,12 +284,12 @@ Return
 fpga_bridge_unregister
 ======================
 
-.. c:function:: void fpga_bridge_unregister(struct device *dev)
+.. c:function:: void fpga_bridge_unregister(struct fpga_bridge *bridge)
 
-    unregister a fpga bridge driver
+    unregister and free a fpga bridge
 
-    :param struct device \*dev:
-        FPGA bridge device from pdev
+    :param struct fpga_bridge \*bridge:
+        FPGA bridge struct created by fpga_bridge_create
 
 .. This file was automatic generated / don't edit.
 

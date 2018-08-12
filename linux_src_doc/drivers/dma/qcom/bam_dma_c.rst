@@ -51,7 +51,7 @@ bam_chan_init_hw
         bam channel
 
     :param enum dma_transfer_direction dir:
-        *undescribed*
+        DMA transfer direction
 
 .. _`bam_chan_init_hw.description`:
 
@@ -157,7 +157,7 @@ bam_dma_terminate_all
     terminate all transactions on a channel
 
     :param struct dma_chan \*chan:
-        *undescribed*
+        bam dma channel
 
 .. _`bam_dma_terminate_all.description`:
 
@@ -277,10 +277,10 @@ bam_start_dma
 
 .. c:function:: void bam_start_dma(struct bam_chan *bchan)
 
-    start next transaction \ ``bchan``\  - bam dma channel
+    start next transaction
 
     :param struct bam_chan \*bchan:
-        *undescribed*
+        bam dma channel
 
 .. _`dma_tasklet`:
 

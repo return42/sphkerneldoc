@@ -58,7 +58,7 @@ automatically free the MT slots when the device is destroyed.
 input_mt_report_slot_state
 ==========================
 
-.. c:function:: void input_mt_report_slot_state(struct input_dev *dev, unsigned int tool_type, bool active)
+.. c:function:: bool input_mt_report_slot_state(struct input_dev *dev, unsigned int tool_type, bool active)
 
     report contact state
 
@@ -81,6 +81,8 @@ ABS_MT_TOOL_TYPE. If active is true and the slot is currently
 inactive, or if the tool type is changed, a new tracking id is
 assigned to the slot. The tool type is only reported if the
 corresponding absbit field is set.
+
+Returns true if contact is active.
 
 .. _`input_mt_report_finger_count`:
 

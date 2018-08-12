@@ -6,7 +6,7 @@
 qib_map_page
 ============
 
-.. c:function:: dma_addr_t qib_map_page(struct pci_dev *hwdev, struct page *page, unsigned long offset, size_t size, int direction)
+.. c:function:: int qib_map_page(struct pci_dev *hwdev, struct page *page, dma_addr_t *daddr)
 
     a safety wrapper around \ :c:func:`pci_map_page`\ 
 
@@ -16,13 +16,7 @@ qib_map_page
     :param struct page \*page:
         *undescribed*
 
-    :param unsigned long offset:
-        *undescribed*
-
-    :param size_t size:
-        *undescribed*
-
-    :param int direction:
+    :param dma_addr_t \*daddr:
         *undescribed*
 
 .. _`qib_map_page.description`:

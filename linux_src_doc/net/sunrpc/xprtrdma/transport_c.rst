@@ -83,6 +83,44 @@ disconnect and retry to connect. This drives full
 detection of the network path, and retransmissions of
 all pending RPCs.
 
+.. _`xprt_rdma_alloc_slot`:
+
+xprt_rdma_alloc_slot
+====================
+
+.. c:function:: void xprt_rdma_alloc_slot(struct rpc_xprt *xprt, struct rpc_task *task)
+
+    allocate an rpc_rqst
+
+    :param struct rpc_xprt \*xprt:
+        controlling RPC transport
+
+    :param struct rpc_task \*task:
+        RPC task requesting a fresh rpc_rqst
+
+.. _`xprt_rdma_alloc_slot.tk_status-values`:
+
+tk_status values
+----------------
+
+\ ``0``\  if task->tk_rqstp points to a fresh rpc_rqst
+\ ``-EAGAIN``\  if no rpc_rqst is available; queued on backlog
+
+.. _`xprt_rdma_free_slot`:
+
+xprt_rdma_free_slot
+===================
+
+.. c:function:: void xprt_rdma_free_slot(struct rpc_xprt *xprt, struct rpc_rqst *rqst)
+
+    release an rpc_rqst
+
+    :param struct rpc_xprt \*xprt:
+        controlling RPC transport
+
+    :param struct rpc_rqst \*rqst:
+        rpc_rqst to release
+
 .. _`xprt_rdma_allocate`:
 
 xprt_rdma_allocate
@@ -168,7 +206,8 @@ Return
 
 \ ``0``\  if the RPC message has been sent
 \ ``-ENOTCONN``\  if the caller should reconnect and call again
-\ ``-ENOBUFS``\  if the caller should call again later
+\ ``-EAGAIN``\  if the caller should call again
+\ ``-ENOBUFS``\  if the caller should call again after a delay
 \ ``-EIO``\  if a permanent error occurred and the request was not
 sent. Do not try to send this message again.
 

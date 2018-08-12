@@ -101,7 +101,7 @@ Zero for success or -errno
 drm_atomic_helper_check_plane_state
 ===================================
 
-.. c:function:: int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_state, const struct drm_crtc_state *crtc_state, const struct drm_rect *clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled)
+.. c:function:: int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_state, const struct drm_crtc_state *crtc_state, int min_scale, int max_scale, bool can_position, bool can_update_disabled)
 
     Check plane state for validity
 
@@ -110,9 +110,6 @@ drm_atomic_helper_check_plane_state
 
     :param const struct drm_crtc_state \*crtc_state:
         crtc state to check
-
-    :param const struct drm_rect \*clip:
-        integer clipping coordinates
 
     :param int min_scale:
         minimum \ ``src``\ :@dest scaling factor in 16.16 fixed point
@@ -211,9 +208,14 @@ Drivers without such needs can directly use this as their
 This just wraps the two parts of the state checking for planes and modeset
 state in the default order: First it calls \ :c:func:`drm_atomic_helper_check_modeset`\ 
 and then \ :c:func:`drm_atomic_helper_check_planes`\ . The assumption is that the
-\ ``drm_plane_helper_funcs``\ .atomic_check and \ ``drm_crtc_helper_funcs``\ .atomic_check
+\ ``drm_plane_helper_funcs.atomic_check``\  and \ ``drm_crtc_helper_funcs.atomic_check``\ 
 functions depend upon an updated adjusted_mode.clock to e.g. properly compute
 watermarks.
+
+Note that zpos normalization will add all enable planes to the state which
+might not desired for some drivers.
+For example enable/disable of a cursor plane which have fixed zpos value
+would trigger all other enabled planes to be forced to the state change.
 
 .. _`drm_atomic_helper_check.return`:
 

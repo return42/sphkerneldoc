@@ -39,8 +39,7 @@ appropriate X.509 certificate, or:
 
 (\*) -EBADMSG if some part of the message was invalid, or:
 
-(\*) 0 if no signature chains were found to be blacklisted or to contain
-unsupported crypto, or:
+(\*) 0 if a signature chain passed verification, or:
 
 (\*) -EKEYREJECTED if a blacklisted key was encountered, or:
 

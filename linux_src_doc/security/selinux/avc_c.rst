@@ -24,11 +24,14 @@ avc_dump_av
 avc_dump_query
 ==============
 
-.. c:function:: void avc_dump_query(struct audit_buffer *ab, u32 ssid, u32 tsid, u16 tclass)
+.. c:function:: void avc_dump_query(struct audit_buffer *ab, struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass)
 
     Display a SID pair and a class in human-readable form.
 
     :param struct audit_buffer \*ab:
+        *undescribed*
+
+    :param struct selinux_state \*state:
         *undescribed*
 
     :param u32 ssid:
@@ -64,9 +67,12 @@ Initialize the access vector cache.
 avc_lookup
 ==========
 
-.. c:function:: struct avc_node *avc_lookup(u32 ssid, u32 tsid, u16 tclass)
+.. c:function:: struct avc_node *avc_lookup(struct selinux_avc *avc, u32 ssid, u32 tsid, u16 tclass)
 
     Look up an AVC entry.
+
+    :param struct selinux_avc \*avc:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier
@@ -93,9 +99,12 @@ Otherwise, this function returns NULL.
 avc_insert
 ==========
 
-.. c:function:: struct avc_node *avc_insert(u32 ssid, u32 tsid, u16 tclass, struct av_decision *avd, struct avc_xperms_node *xp_node)
+.. c:function:: struct avc_node *avc_insert(struct selinux_avc *avc, u32 ssid, u32 tsid, u16 tclass, struct av_decision *avd, struct avc_xperms_node *xp_node)
 
     Insert an AVC entry.
+
+    :param struct selinux_avc \*avc:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier
@@ -186,7 +195,10 @@ exists to add the callback.
 avc_update_node
 ===============
 
-.. c:function:: int avc_update_node(u32 event, u32 perms, u8 driver, u8 xperm, u32 ssid, u32 tsid, u16 tclass, u32 seqno, struct extended_perms_decision *xpd, u32 flags)
+.. c:function:: int avc_update_node(struct selinux_avc *avc, u32 event, u32 perms, u8 driver, u8 xperm, u32 ssid, u32 tsid, u16 tclass, u32 seqno, struct extended_perms_decision *xpd, u32 flags)
+
+    :param struct selinux_avc \*avc:
+        *undescribed*
 
     :param u32 event:
         Updating event
@@ -233,21 +245,24 @@ will release later by RCU.
 avc_flush
 =========
 
-.. c:function:: void avc_flush( void)
+.. c:function:: void avc_flush(struct selinux_avc *avc)
 
     Flush the cache
 
-    :param  void:
-        no arguments
+    :param struct selinux_avc \*avc:
+        *undescribed*
 
 .. _`avc_ss_reset`:
 
 avc_ss_reset
 ============
 
-.. c:function:: int avc_ss_reset(u32 seqno)
+.. c:function:: int avc_ss_reset(struct selinux_avc *avc, u32 seqno)
 
     Flush the cache and revalidate migrated permissions.
+
+    :param struct selinux_avc \*avc:
+        *undescribed*
 
     :param u32 seqno:
         policy sequence number
@@ -257,9 +272,12 @@ avc_ss_reset
 avc_has_perm_noaudit
 ====================
 
-.. c:function:: int avc_has_perm_noaudit(u32 ssid, u32 tsid, u16 tclass, u32 requested, unsigned flags, struct av_decision *avd)
+.. c:function:: int avc_has_perm_noaudit(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass, u32 requested, unsigned int flags, struct av_decision *avd)
 
     Check permissions but perform no auditing.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier
@@ -273,7 +291,7 @@ avc_has_perm_noaudit
     :param u32 requested:
         requested permissions, interpreted based on \ ``tclass``\ 
 
-    :param unsigned flags:
+    :param unsigned int flags:
         AVC_STRICT or 0
 
     :param struct av_decision \*avd:
@@ -300,9 +318,12 @@ should be released for the auditing.
 avc_has_perm
 ============
 
-.. c:function:: int avc_has_perm(u32 ssid, u32 tsid, u16 tclass, u32 requested, struct common_audit_data *auditdata)
+.. c:function:: int avc_has_perm(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass, u32 requested, struct common_audit_data *auditdata)
 
     Check permissions and perform any appropriate auditing.
+
+    :param struct selinux_state \*state:
+        *undescribed*
 
     :param u32 ssid:
         source security identifier

@@ -31,6 +31,7 @@ Definition
         bool swseq_reg;
         bool swseq_erase;
         bool erase_64k;
+        u8 atomic_preopcode;
         u8 opcodes[8];
     }
 
@@ -77,6 +78,9 @@ swseq_erase
 
 erase_64k
     64k erase supported
+
+atomic_preopcode
+    Holds preopcode when atomic sequence is requested
 
 opcodes
     Opcodes which are supported. This are programmed by BIOS

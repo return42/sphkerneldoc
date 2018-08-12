@@ -85,7 +85,8 @@ fb_info
     framebuffer to which console is remapped on switching
 
 pwr_state
-    current power state
+    current power state if manual power control is used.
+    For driver power control, call \ :c:func:`vga_switcheroo_pwr_state`\ .
 
 ops
     client callbacks
@@ -112,8 +113,7 @@ Description
 -----------
 
 Registered client. A client can be either a GPU or an audio device on a GPU.
-For audio clients, the \ ``fb_info``\ , \ ``active``\  and \ ``driver_power_control``\  members
-are bogus.
+For audio clients, the \ ``fb_info``\  and \ ``active``\  members are bogus.
 
 .. _`vgasr_priv`:
 
@@ -329,8 +329,8 @@ vga_switcheroo_register_audio_client
 Description
 -----------
 
-Register audio client (audio device on a GPU). The power state of the
-client is assumed to be ON. Beforehand, \ :c:func:`vga_switcheroo_client_probe_defer`\ 
+Register audio client (audio device on a GPU). The client is assumed
+to use runtime PM. Beforehand, \ :c:func:`vga_switcheroo_client_probe_defer`\ 
 shall be called to ensure that all prerequisites are met.
 
 .. _`vga_switcheroo_register_audio_client.return`:
@@ -589,11 +589,6 @@ This mode is the default on Nvidia HybridPower/Optimus and ATI PowerXpress.
 Specifying nouveau.runpm=0, radeon.runpm=0 or amdgpu.runpm=0 on the kernel
 command line disables it.
 
-When the driver decides to power up or down, it notifies vga_switcheroo
-thereof so that it can (a) power the audio device on the GPU up or down,
-and (b) update its internal power state representation for the device.
-This is achieved by \ :c:func:`vga_switcheroo_set_dynamic_switch`\ .
-
 After the GPU has been suspended, the handler needs to be called to cut
 power to the GPU. Likewise it needs to reinstate power before the GPU
 can resume. This is achieved by \ :c:func:`vga_switcheroo_init_domain_pm_ops`\ ,
@@ -601,39 +596,14 @@ which augments the GPU's suspend/resume functions by the requisite
 calls to the handler.
 
 When the audio device resumes, the GPU needs to be woken. This is achieved
-by \ :c:func:`vga_switcheroo_init_domain_pm_optimus_hdmi_audio`\ , which augments the
-audio device's resume function.
+by a PCI quirk which calls \ :c:func:`device_link_add`\  to declare a dependency on the
+GPU. That way, the GPU is kept awake whenever and as long as the audio
+device is in use.
 
 On muxed machines, if the mux is initially switched to the discrete GPU,
 the user ends up with a black screen when the GPU powers down after boot.
 As a workaround, the mux is forced to the integrated GPU on runtime suspend,
 cf. https://bugs.freedesktop.org/show_bug.cgi?id=75917
-
-.. _`vga_switcheroo_set_dynamic_switch`:
-
-vga_switcheroo_set_dynamic_switch
-=================================
-
-.. c:function:: void vga_switcheroo_set_dynamic_switch(struct pci_dev *pdev, enum vga_switcheroo_state dynamic)
-
-    helper for driver power control
-
-    :param struct pci_dev \*pdev:
-        client pci device
-
-    :param enum vga_switcheroo_state dynamic:
-        new power state
-
-.. _`vga_switcheroo_set_dynamic_switch.description`:
-
-Description
------------
-
-Helper for GPUs whose power state is controlled by the driver's runtime pm.
-When the driver decides to power up or down, it notifies vga_switcheroo
-thereof using this helper so that it can (a) power the audio device on
-the GPU up or down, and (b) update its internal power state representation
-for the device.
 
 .. _`vga_switcheroo_init_domain_pm_ops`:
 
@@ -661,38 +631,6 @@ power to the GPU. Likewise it needs to reinstate power before the GPU
 can resume. To this end, this helper augments the suspend/resume functions
 by the requisite calls to the handler. It needs only be called on platforms
 where the power switch is separate to the device being powered down.
-
-.. _`vga_switcheroo_init_domain_pm_optimus_hdmi_audio`:
-
-vga_switcheroo_init_domain_pm_optimus_hdmi_audio
-================================================
-
-.. c:function:: int vga_switcheroo_init_domain_pm_optimus_hdmi_audio(struct device *dev, struct dev_pm_domain *domain)
-
-    helper for driver power control
-
-    :param struct device \*dev:
-        audio client device
-
-    :param struct dev_pm_domain \*domain:
-        power domain
-
-.. _`vga_switcheroo_init_domain_pm_optimus_hdmi_audio.description`:
-
-Description
------------
-
-Helper for GPUs whose power state is controlled by the driver's runtime pm.
-When the audio device resumes, the GPU needs to be woken. This helper
-augments the audio device's resume function to do that.
-
-.. _`vga_switcheroo_init_domain_pm_optimus_hdmi_audio.return`:
-
-Return
-------
-
-0 on success, -EINVAL if no power management operations are
-defined for this device.
 
 .. This file was automatic generated / don't edit.
 

@@ -1,14 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_drv.h
 
-.. _`_wait_for`:
+.. _`__wait_for`:
 
-\_wait_for
-==========
+\__wait_for
+===========
 
-.. c:function::  _wait_for( COND,  US,  Wmin,  Wmax)
+.. c:function::  __wait_for( OP,  COND,  US,  Wmin,  Wmax)
 
-    magic (register) wait macro
+    magic wait macro
+
+    :param  OP:
+        *undescribed*
 
     :param  COND:
         *undescribed*
@@ -22,15 +25,15 @@
     :param  Wmax:
         *undescribed*
 
-.. _`_wait_for.description`:
+.. _`__wait_for.description`:
 
 Description
 -----------
 
-Does the right thing for modeset paths when run under kdgb or similar atomic
-contexts. Note that it's important that we check the condition again after
-having timed out, since the timeout could be due to preemption or similar and
-we've never had a chance to check the condition before the timeout.
+Macro to help avoid open coding check/wait/timeout patterns. Note that it's
+important that we check the condition again after having timed out, since the
+timeout could be due to preemption or similar and we've never had a chance to
+check the condition before the timeout.
 
 .. _`disable_rpm_wakeref_asserts`:
 

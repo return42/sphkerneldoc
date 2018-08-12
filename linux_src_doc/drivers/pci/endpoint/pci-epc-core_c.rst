@@ -214,7 +214,7 @@ Invoke to map CPU address with PCI address.
 pci_epc_clear_bar
 =================
 
-.. c:function:: void pci_epc_clear_bar(struct pci_epc *epc, u8 func_no, int bar)
+.. c:function:: void pci_epc_clear_bar(struct pci_epc *epc, u8 func_no, struct pci_epf_bar *epf_bar)
 
     reset the BAR
 
@@ -224,8 +224,8 @@ pci_epc_clear_bar
     :param u8 func_no:
         the endpoint function number in the EPC device
 
-    :param int bar:
-        the BAR number that has to be reset
+    :param struct pci_epf_bar \*epf_bar:
+        the struct epf_bar that contains the BAR information
 
 .. _`pci_epc_clear_bar.description`:
 
@@ -239,7 +239,7 @@ Invoke to reset the BAR of the endpoint device.
 pci_epc_set_bar
 ===============
 
-.. c:function:: int pci_epc_set_bar(struct pci_epc *epc, u8 func_no, enum pci_barno bar, dma_addr_t bar_phys, size_t size, int flags)
+.. c:function:: int pci_epc_set_bar(struct pci_epc *epc, u8 func_no, struct pci_epf_bar *epf_bar)
 
     configure BAR in order for host to assign PCI addr space
 
@@ -249,17 +249,8 @@ pci_epc_set_bar
     :param u8 func_no:
         the endpoint function number in the EPC device
 
-    :param enum pci_barno bar:
-        the BAR number that has to be configured
-
-    :param dma_addr_t bar_phys:
-        *undescribed*
-
-    :param size_t size:
-        the size of the addr space
-
-    :param int flags:
-        specify memory allocation/io allocation/32bit address/64 bit address
+    :param struct pci_epf_bar \*epf_bar:
+        the struct epf_bar that contains the BAR information
 
 .. _`pci_epc_set_bar.description`:
 

@@ -172,6 +172,39 @@ asking full domain reset versus reset for all available individual engines.
 
 Returns 0 on success, nonzero on error.
 
+.. _`gen11_reset_engines`:
+
+gen11_reset_engines
+===================
+
+.. c:function:: int gen11_reset_engines(struct drm_i915_private *dev_priv, unsigned engine_mask)
+
+    reset individual engines
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
+
+    :param unsigned engine_mask:
+        mask of \ :c:func:`intel_ring_flag`\  engines or ALL_ENGINES for full reset
+
+.. _`gen11_reset_engines.description`:
+
+Description
+-----------
+
+This function will reset the individual engines that are set in engine_mask.
+If you provide ALL_ENGINES as mask, full global domain reset will be issued.
+
+.. _`gen11_reset_engines.note`:
+
+Note
+----
+
+It is responsibility of the caller to handle the difference between
+asking full domain reset versus reset for all available individual engines.
+
+Returns 0 on success, nonzero on error.
+
 .. _`__intel_wait_for_register_fw`:
 
 __intel_wait_for_register_fw
@@ -222,12 +255,12 @@ the wait to be slow).
 
 Returns 0 if the register matches the desired condition, or -ETIMEOUT.
 
-.. _`intel_wait_for_register`:
+.. _`__intel_wait_for_register`:
 
-intel_wait_for_register
-=======================
+__intel_wait_for_register
+=========================
 
-.. c:function:: int intel_wait_for_register(struct drm_i915_private *dev_priv, i915_reg_t reg, u32 mask, u32 value, unsigned int timeout_ms)
+.. c:function:: int __intel_wait_for_register(struct drm_i915_private *dev_priv, i915_reg_t reg, u32 mask, u32 value, unsigned int fast_timeout_us, unsigned int slow_timeout_ms, u32 *out_value)
 
     wait until register matches expected state
 
@@ -243,10 +276,16 @@ intel_wait_for_register
     :param u32 value:
         :
 
-    :param unsigned int timeout_ms:
-        timeout in millisecond
+    :param unsigned int fast_timeout_us:
+        fast timeout in microsecond for atomic/tight wait
 
-.. _`intel_wait_for_register.description`:
+    :param unsigned int slow_timeout_ms:
+        slow timeout in millisecond
+
+    :param u32 \*out_value:
+        optional placeholder to hold registry value
+
+.. _`__intel_wait_for_register.description`:
 
 Description
 -----------

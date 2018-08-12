@@ -133,7 +133,7 @@ usage->usage_{type,code}
 hid_input_report
 ================
 
-.. c:function:: int hid_input_report(struct hid_device *hid, int type, u8 *data, int size, int interrupt)
+.. c:function:: int hid_input_report(struct hid_device *hid, int type, u8 *data, u32 size, int interrupt)
 
     report data from lower layer (usb, bt...)
 
@@ -146,7 +146,7 @@ hid_input_report
     :param u8 \*data:
         report contents
 
-    :param int size:
+    :param u32 size:
         size of data parameter
 
     :param int interrupt:
@@ -222,7 +222,7 @@ Description
 
 Tell underlying HW to start delivering events from the device.
 This function should be called sometime after successful call
-to \ :c:func:`hid_hiw_start`\ .
+to \ :c:func:`hid_hw_start`\ .
 
 .. _`hid_hw_close`:
 

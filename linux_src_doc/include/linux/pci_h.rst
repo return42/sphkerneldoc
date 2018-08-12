@@ -525,20 +525,5 @@ Walk upwards from \ ``pdev``\  and check for each encountered bridge if it's par
 of a Thunderbolt controller.  Reaching the host bridge means \ ``pdev``\  is not
 Thunderbolt-attached.  (But rather soldered to the mainboard usually.)
 
-.. _`pci_uevent_ers`:
-
-pci_uevent_ers
-==============
-
-.. c:function:: void pci_uevent_ers(struct pci_dev *pdev, enum pci_ers_result err_type)
-
-    emit a uevent during recovery path of pci device
-
-    :param struct pci_dev \*pdev:
-        pci device to check
-
-    :param enum pci_ers_result err_type:
-        type of error event
-
 .. This file was automatic generated / don't edit.
 

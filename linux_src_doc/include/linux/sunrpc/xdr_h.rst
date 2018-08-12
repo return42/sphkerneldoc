@@ -85,6 +85,32 @@ Return values
 On success, returns length in bytes of XDR buffer consumed
 \ ``-EMSGSIZE``\  on XDR buffer overflow
 
+.. _`xdr_stream_encode_opaque_inline`:
+
+xdr_stream_encode_opaque_inline
+===============================
+
+.. c:function:: ssize_t xdr_stream_encode_opaque_inline(struct xdr_stream *xdr, void **ptr, size_t len)
+
+    Encode opaque xdr data
+
+    :param struct xdr_stream \*xdr:
+        pointer to xdr_stream
+
+    :param void \*\*ptr:
+        pointer to void pointer
+
+    :param size_t len:
+        size of object
+
+.. _`xdr_stream_encode_opaque_inline.return-values`:
+
+Return values
+-------------
+
+On success, returns length in bytes of XDR buffer consumed
+\ ``-EMSGSIZE``\  on XDR buffer overflow
+
 .. _`xdr_stream_encode_opaque_fixed`:
 
 xdr_stream_encode_opaque_fixed
@@ -130,6 +156,32 @@ xdr_stream_encode_opaque
         size of object pointed to by \ ``ptr``\ 
 
 .. _`xdr_stream_encode_opaque.return-values`:
+
+Return values
+-------------
+
+On success, returns length in bytes of XDR buffer consumed
+\ ``-EMSGSIZE``\  on XDR buffer overflow
+
+.. _`xdr_stream_encode_uint32_array`:
+
+xdr_stream_encode_uint32_array
+==============================
+
+.. c:function:: ssize_t xdr_stream_encode_uint32_array(struct xdr_stream *xdr, const __u32 *array, size_t array_size)
+
+    Encode variable length array of integers
+
+    :param struct xdr_stream \*xdr:
+        pointer to xdr_stream
+
+    :param const __u32 \*array:
+        array of integers
+
+    :param size_t array_size:
+        number of elements in \ ``array``\ 
+
+.. _`xdr_stream_encode_uint32_array.return-values`:
 
 Return values
 -------------
@@ -222,6 +274,33 @@ Return values
 On success, returns size of object stored in \*@ptr
 \ ``-EBADMSG``\  on XDR buffer overflow
 \ ``-EMSGSIZE``\  if the size of the object would exceed \ ``maxlen``\ 
+
+.. _`xdr_stream_decode_uint32_array`:
+
+xdr_stream_decode_uint32_array
+==============================
+
+.. c:function:: ssize_t xdr_stream_decode_uint32_array(struct xdr_stream *xdr, __u32 *array, size_t array_size)
+
+    Decode variable length array of integers
+
+    :param struct xdr_stream \*xdr:
+        pointer to xdr_stream
+
+    :param __u32 \*array:
+        location to store the integer array or NULL
+
+    :param size_t array_size:
+        number of elements to store
+
+.. _`xdr_stream_decode_uint32_array.return-values`:
+
+Return values
+-------------
+
+On success, returns number of elements stored in \ ``array``\ 
+\ ``-EBADMSG``\  on XDR buffer overflow
+\ ``-EMSGSIZE``\  if the size of the array exceeds \ ``array_size``\ 
 
 .. This file was automatic generated / don't edit.
 

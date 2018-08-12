@@ -14,7 +14,7 @@ i40e_client_get_params
         the VSI with the message
 
     :param struct i40e_params \*params:
-        *undescribed*
+        client param struct
 
 .. _`i40e_notify_client_of_vf_msg`:
 
@@ -307,7 +307,7 @@ i40e_client_setup_qvlist
         Client pointer.
 
     :param struct i40e_qvlist_info \*qvlist_info:
-        *undescribed*
+        queue and vector list
 
 .. _`i40e_client_setup_qvlist.description`:
 
@@ -330,7 +330,7 @@ i40e_client_request_reset
         Client pointer.
 
     :param u32 reset_level:
-        *undescribed*
+        reset level
 
 .. _`i40e_client_update_vsi_ctxt`:
 

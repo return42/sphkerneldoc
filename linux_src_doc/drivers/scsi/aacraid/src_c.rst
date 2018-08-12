@@ -230,6 +230,27 @@ aac_src_init
     :param struct aac_dev \*dev:
         device to configure
 
+.. _`aac_src_soft_reset`:
+
+aac_src_soft_reset
+==================
+
+.. c:function:: int aac_src_soft_reset(struct aac_dev *dev)
+
+    perform soft reset to speed up access
+
+    :param struct aac_dev \*dev:
+        device to configure
+
+.. _`aac_src_soft_reset.assumptions`:
+
+Assumptions
+-----------
+
+That the controller is in a state where we can
+bring it back to life with an init struct. We can only use
+fast sync commands, as the timeout is 5 seconds.
+
 .. _`aac_srcv_init`:
 
 aac_srcv_init

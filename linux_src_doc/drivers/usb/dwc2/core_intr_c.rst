@@ -79,5 +79,29 @@ This handler responds by turning on bus power. If the DWC_otg controller is
 in low power mode, this handler brings the controller out of low power mode
 before turning on bus power.
 
+.. _`dwc2_wakeup_from_lpm_l1`:
+
+dwc2_wakeup_from_lpm_l1
+=======================
+
+.. c:function:: void dwc2_wakeup_from_lpm_l1(struct dwc2_hsotg *hsotg)
+
+    Exit the device from LPM L1 state
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of DWC_otg controller
+
+.. _`dwc2_handle_lpm_intr`:
+
+dwc2_handle_lpm_intr
+====================
+
+.. c:function:: void dwc2_handle_lpm_intr(struct dwc2_hsotg *hsotg)
+
+    GINTSTS_LPMTRANRCVD Interrupt handler
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of DWC_otg controller
+
 .. This file was automatic generated / don't edit.
 

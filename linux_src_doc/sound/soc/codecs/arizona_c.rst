@@ -6,11 +6,11 @@
 arizona_set_output_mode
 =======================
 
-.. c:function:: int arizona_set_output_mode(struct snd_soc_codec *codec, int output, bool diff)
+.. c:function:: int arizona_set_output_mode(struct snd_soc_component *component, int output, bool diff)
 
     Set the mode of the specified output
 
-    :param struct snd_soc_codec \*codec:
+    :param struct snd_soc_component \*component:
         Device to configure
 
     :param int output:

@@ -8,4 +8,3 @@ samsung
     :maxdepth: 1
 
     exynos_tmu_c
-    exynos_tmu_h

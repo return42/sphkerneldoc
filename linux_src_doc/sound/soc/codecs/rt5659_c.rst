@@ -6,12 +6,12 @@
 rt5659_headset_detect
 =====================
 
-.. c:function:: int rt5659_headset_detect(struct snd_soc_codec *codec, int jack_insert)
+.. c:function:: int rt5659_headset_detect(struct snd_soc_component *component, int jack_insert)
 
     Detect headset.
 
-    :param struct snd_soc_codec \*codec:
-        SoC audio codec device.
+    :param struct snd_soc_component \*component:
+        SoC audio component device.
 
     :param int jack_insert:
         Jack insert or not.

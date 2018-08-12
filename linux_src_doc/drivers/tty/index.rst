@@ -12,7 +12,6 @@ tty
     serial/index
     vt/index
     ehv_bytechan_c
-    metag_da_c
     mips_ejtag_fdc_c
     n_gsm_c
     n_hdlc_c

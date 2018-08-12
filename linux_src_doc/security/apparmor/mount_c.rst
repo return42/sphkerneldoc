@@ -44,7 +44,7 @@ audit_mount
         name of trans (MAYBE NULL)
 
     :param unsigned long flags:
-        filesystem idependent mount flags
+        filesystem independent mount flags
 
     :param const void \*data:
         filesystem mount flags

@@ -359,7 +359,7 @@ dwc2_hs_pmap_unschedule
         QH for the periodic transfer.
 
     :param int index:
-        *undescribed*
+        Transfer index
 
 .. _`dwc2_uframe_schedule_split`:
 
@@ -563,7 +563,7 @@ dwc2_unreserve_timer_fn
     Timer function to release periodic reservation
 
     :param struct timer_list \*t:
-        *undescribed*
+        Address to a qh unreserve_work.
 
 .. _`dwc2_unreserve_timer_fn.description`:
 
@@ -709,7 +709,7 @@ dwc2_hcd_qh_create
         to initialize the QH
 
     :param gfp_t mem_flags:
-        *undescribed*
+        Flags for allocating memory.
 
 .. _`dwc2_hcd_qh_create.return`:
 

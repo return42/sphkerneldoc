@@ -45,13 +45,13 @@ cpupri_set
 
 .. c:function:: void cpupri_set(struct cpupri *cp, int cpu, int newpri)
 
-    update the cpu priority setting
+    update the CPU priority setting
 
     :param struct cpupri \*cp:
         The cpupri context
 
     :param int cpu:
-        The target cpu
+        The target CPU
 
     :param int newpri:
         The priority (INVALID-RT99) to assign to this CPU

@@ -87,7 +87,7 @@ ci_requests_show
 dbg_create_files
 ================
 
-.. c:function:: int dbg_create_files(struct ci_hdrc *ci)
+.. c:function:: void dbg_create_files(struct ci_hdrc *ci)
 
     initializes the attribute interface
 

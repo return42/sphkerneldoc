@@ -658,7 +658,7 @@ Returns false otherwise. Note that two NULL clks are treated as matching.
 clk_debug_register
 ==================
 
-.. c:function:: int clk_debug_register(struct clk_core *core)
+.. c:function:: void clk_debug_register(struct clk_core *core)
 
     add a clk node to the debugfs clk directory
 

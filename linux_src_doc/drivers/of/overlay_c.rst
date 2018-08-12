@@ -51,6 +51,7 @@ Definition
     struct overlay_changeset {
         int id;
         struct list_head ovcs_list;
+        const void *fdt;
         struct device_node *overlay_tree;
         int count;
         struct fragment *fragments;
@@ -64,10 +65,13 @@ Members
 -------
 
 id
-    *undescribed*
+    changeset identifier
 
 ovcs_list
     list on which we are located
+
+fdt
+    FDT that was unflattened to create \ ``overlay_tree``\ 
 
 overlay_tree
     expanded device tree that contains the fragment nodes
@@ -83,6 +87,43 @@ symbols_fragment
 
 cset
     changeset to apply fragments to live device tree
+
+.. _`of_overlay_notifier_register`:
+
+of_overlay_notifier_register
+============================
+
+.. c:function:: int of_overlay_notifier_register(struct notifier_block *nb)
+
+    Register notifier for overlay operations
+
+    :param struct notifier_block \*nb:
+        Notifier block to register
+
+.. _`of_overlay_notifier_register.description`:
+
+Description
+-----------
+
+Register for notification on overlay operations on device tree nodes. The
+reported actions definied by \ ``of_reconfig_change``\ . The notifier callback
+furthermore receives a pointer to the affected device tree node.
+
+Note that a notifier callback is not supposed to store pointers to a device
+tree node or its content beyond \ ``OF_OVERLAY_POST_REMOVE``\  corresponding to the
+respective node it received.
+
+.. _`of_overlay_notifier_unregister`:
+
+of_overlay_notifier_unregister
+==============================
+
+.. c:function:: int of_overlay_notifier_unregister(struct notifier_block *nb)
+
+    Unregister notifier for overlay operations
+
+    :param struct notifier_block \*nb:
+        Notifier block to unregister
 
 .. _`add_changeset_property`:
 
@@ -153,10 +194,28 @@ a phandle, the overlay node is not allowed to have a phandle.
 If \ ``node``\  has child nodes, add the children recursively via
 \ :c:func:`build_changeset_next_level`\ .
 
-.. _`add_changeset_node.note`:
+.. _`add_changeset_node.note_1`:
 
-NOTE
-----
+NOTE_1
+------
+
+A live devicetree created from a flattened device tree (FDT) will
+not contain the full path in node->full_name.  Thus an overlay
+created from an FDT also will not contain the full path in
+node->full_name.  However, a live devicetree created from Open
+Firmware may have the full path in node->full_name.
+
+\ :c:func:`add_changeset_node`\  follows the FDT convention and does not include
+the full path in node->full_name.  Even though it expects the overlay
+to not contain the full path, it uses \ :c:func:`kbasename`\  to remove the
+full path should it exist.  It also uses \ :c:func:`kbasename`\  in comparisons
+to nodes in the live devicetree so that it can apply an overlay to
+a live devicetree created from Open Firmware.
+
+.. _`add_changeset_node.note_2`:
+
+NOTE_2
+------
 
 Multiple mods of created nodes not supported.
 If more than one fragment contains a node that does not already exist
@@ -238,12 +297,15 @@ invalid overlay in \ ``ovcs``\ ->fragments[].
 init_overlay_changeset
 ======================
 
-.. c:function:: int init_overlay_changeset(struct overlay_changeset *ovcs, struct device_node *tree)
+.. c:function:: int init_overlay_changeset(struct overlay_changeset *ovcs, const void *fdt, struct device_node *tree)
 
-    initialize overlay changeset from overlay tree \ ``ovcs``\         Overlay changeset to build
+    initialize overlay changeset from overlay tree
 
     :param struct overlay_changeset \*ovcs:
-        *undescribed*
+        Overlay changeset to build
+
+    :param const void \*fdt:
+        the FDT that was unflattened to create \ ``tree``\ 
 
     :param struct device_node \*tree:
         Contains all the overlay fragments and overlay fixup nodes
@@ -259,59 +321,6 @@ nodes and the \__symbols_\_ node.  Any other top level node will be ignored.
 
 Returns 0 on success, -ENOMEM if memory allocation failure, -EINVAL if error
 detected in \ ``tree``\ , or -ENOSPC if \ :c:func:`idr_alloc`\  error.
-
-.. _`of_overlay_apply`:
-
-of_overlay_apply
-================
-
-.. c:function:: int of_overlay_apply(struct device_node *tree, int *ovcs_id)
-
-    Create and apply an overlay changeset
-
-    :param struct device_node \*tree:
-        Expanded overlay device tree
-
-    :param int \*ovcs_id:
-        Pointer to overlay changeset id
-
-.. _`of_overlay_apply.description`:
-
-Description
------------
-
-Creates and applies an overlay changeset.
-
-If an error occurs in a pre-apply notifier, then no changes are made
-to the device tree.
-
-A non-zero return value will not have created the changeset if error is from:
-- parameter checks
-- building the changeset
-- overlay changeset pre-apply notifier
-
-If an error is returned by an overlay changeset pre-apply notifier
-then no further overlay changeset pre-apply notifier will be called.
-
-A non-zero return value will have created the changeset if error is from:
-- overlay changeset entry notifier
-- overlay changeset post-apply notifier
-
-If an error is returned by an overlay changeset post-apply notifier
-then no further overlay changeset post-apply notifier will be called.
-
-If more than one notifier returns an error, then the last notifier
-error to occur is returned.
-
-If an error occurred while applying the overlay changeset, then an
-attempt is made to revert any changes that were made to the
-device tree.  If there were any errors during the revert attempt
-then the state of the device tree can not be determined, and any
-following attempt to apply or remove an overlay changeset will be
-refused.
-
-Returns 0 on success, or a negative error number.  Overlay changeset
-id is returned to \*ovcs_id.
 
 .. _`of_overlay_remove`:
 
@@ -331,7 +340,7 @@ Description
 -----------
 
 Removes an overlay if it is permissible.  \ ``ovcs_id``\  was previously returned
-by \ :c:func:`of_overlay_apply`\ .
+by \ :c:func:`of_overlay_fdt_apply`\ .
 
 If an error occurred while attempting to revert the overlay changeset,
 then an attempt is made to re-apply any changeset entry that was

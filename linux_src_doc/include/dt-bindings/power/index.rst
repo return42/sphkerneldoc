@@ -7,5 +7,6 @@ power
 .. toctree::
     :maxdepth: 1
 
+    rk3228-power_h
     rk3288-power_h
     rk3328-power_h

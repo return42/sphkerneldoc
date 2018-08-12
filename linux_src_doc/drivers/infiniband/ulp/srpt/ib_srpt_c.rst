@@ -841,15 +841,21 @@ CH_DRAINING.
 srpt_cm_req_recv
 ================
 
-.. c:function:: int srpt_cm_req_recv(struct ib_cm_id *cm_id, u8 port_num, __be16 pkey, const struct srp_login_req *req, const char *src_addr)
+.. c:function:: int srpt_cm_req_recv(struct srpt_device *const sdev, struct ib_cm_id *ib_cm_id, struct rdma_cm_id *rdma_cm_id, u8 port_num, __be16 pkey, const struct srp_login_req *req, const char *src_addr)
 
     process the event IB_CM_REQ_RECEIVED
 
-    :param struct ib_cm_id \*cm_id:
-        IB/CM connection identifier.
+    :param struct srpt_device \*const sdev:
+        HCA through which the login request was received.
+
+    :param struct ib_cm_id \*ib_cm_id:
+        IB/CM connection identifier in case of IB/CM.
+
+    :param struct rdma_cm_id \*rdma_cm_id:
+        RDMA/CM connection identifier in case of RDMA/CM.
 
     :param u8 port_num:
-        Port through which the IB/CM REQ message was received.
+        Port through which the REQ message was received.
 
     :param __be16 pkey:
         P_Key of the incoming connection.
@@ -858,7 +864,8 @@ srpt_cm_req_recv
         SRP login request.
 
     :param const char \*src_addr:
-        GID of the port that submitted the login request.
+        GID (IB/CM) or IP address (RDMA/CM) of the port that submitted
+        the login request.
 
 .. _`srpt_cm_req_recv.description`:
 
@@ -866,7 +873,7 @@ Description
 -----------
 
 Ownership of the cm_id is transferred to the target session if this
-functions returns zero. Otherwise the caller remains the owner of cm_id.
+function returns zero. Otherwise the caller remains the owner of cm_id.
 
 .. _`srpt_cm_rtu_recv`:
 
@@ -885,8 +892,8 @@ srpt_cm_rtu_recv
 Description
 -----------
 
-An IB_CM_RTU_RECEIVED message indicates that the connection is established
-and that the recipient may begin transmitting (RTU = ready to use).
+An RTU (ready to use) message indicates that the connection has been
+established and that the recipient may begin transmitting.
 
 .. _`srpt_cm_handler`:
 

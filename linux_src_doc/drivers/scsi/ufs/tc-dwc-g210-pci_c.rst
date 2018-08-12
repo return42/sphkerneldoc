@@ -20,10 +20,10 @@ tc_dwc_g210_pci_remove
 
 .. c:function:: void tc_dwc_g210_pci_remove(struct pci_dev *pdev)
 
-    de-allocate PCI/SCSI host and host memory space data structure memory \ ``pdev``\  - pointer to PCI handle
+    de-allocate PCI/SCSI host and host memory space data structure memory
 
     :param struct pci_dev \*pdev:
-        *undescribed*
+        pointer to PCI handle
 
 .. _`tc_dwc_g210_pci_probe`:
 

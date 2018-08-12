@@ -851,14 +851,14 @@ Return
 batadv_orig_hash_add_if
 =======================
 
-.. c:function:: int batadv_orig_hash_add_if(struct batadv_hard_iface *hard_iface, int max_if_num)
+.. c:function:: int batadv_orig_hash_add_if(struct batadv_hard_iface *hard_iface, unsigned int max_if_num)
 
     Add interface to originators in orig_hash
 
     :param struct batadv_hard_iface \*hard_iface:
         hard interface to add (already slave of the soft interface)
 
-    :param int max_if_num:
+    :param unsigned int max_if_num:
         new number of interfaces
 
 .. _`batadv_orig_hash_add_if.return`:
@@ -873,14 +873,14 @@ Return
 batadv_orig_hash_del_if
 =======================
 
-.. c:function:: int batadv_orig_hash_del_if(struct batadv_hard_iface *hard_iface, int max_if_num)
+.. c:function:: int batadv_orig_hash_del_if(struct batadv_hard_iface *hard_iface, unsigned int max_if_num)
 
     Remove interface from originators in orig_hash
 
     :param struct batadv_hard_iface \*hard_iface:
         hard interface to remove (still slave of the soft interface)
 
-    :param int max_if_num:
+    :param unsigned int max_if_num:
         new number of interfaces
 
 .. _`batadv_orig_hash_del_if.return`:

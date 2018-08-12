@@ -7,6 +7,7 @@ firmware
 .. toctree::
     :maxdepth: 1
 
+    arm_scmi/index
     efi/index
     meson/index
     dcdbas_c

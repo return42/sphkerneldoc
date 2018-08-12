@@ -140,14 +140,14 @@ Description
 lease_get_mtime
 ===============
 
-.. c:function:: void lease_get_mtime(struct inode *inode, struct timespec *time)
+.. c:function:: void lease_get_mtime(struct inode *inode, struct timespec64 *time)
 
     update modified time of an inode with exclusive lease
 
     :param struct inode \*inode:
         the inode
 
-    :param struct timespec \*time:
+    :param struct timespec64 \*time:
         pointer to a timespec which contains the last modified time
 
 .. _`lease_get_mtime.description`:

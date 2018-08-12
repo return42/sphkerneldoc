@@ -19,8 +19,8 @@ Definition
 
     struct pci_epc_ops {
         int (*write_header)(struct pci_epc *epc, u8 func_no, struct pci_epf_header *hdr);
-        int (*set_bar)(struct pci_epc *epc, u8 func_no,enum pci_barno bar, dma_addr_t bar_phys, size_t size, int flags);
-        void (*clear_bar)(struct pci_epc *epc, u8 func_no, enum pci_barno bar);
+        int (*set_bar)(struct pci_epc *epc, u8 func_no, struct pci_epf_bar *epf_bar);
+        void (*clear_bar)(struct pci_epc *epc, u8 func_no, struct pci_epf_bar *epf_bar);
         int (*map_addr)(struct pci_epc *epc, u8 func_no, phys_addr_t addr, u64 pci_addr, size_t size);
         void (*unmap_addr)(struct pci_epc *epc, u8 func_no, phys_addr_t addr);
         int (*set_msi)(struct pci_epc *epc, u8 func_no, u8 interrupts);
@@ -139,6 +139,7 @@ Definition
         u8 max_functions;
         struct config_group *group;
         spinlock_t lock;
+        unsigned int features;
     }
 
 .. _`pci_epc.members`:
@@ -166,6 +167,9 @@ group
 
 lock
     spinlock to protect pci_epc ops
+
+features
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,3 +10,4 @@ sound
     asequencer_h
     compress_offload_h
     compress_params_h
+    skl-tplg-interface_h

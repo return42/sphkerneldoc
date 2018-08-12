@@ -64,7 +64,7 @@ error code.
 ip6_sk_dst_lookup_flow
 ======================
 
-.. c:function:: struct dst_entry *ip6_sk_dst_lookup_flow(struct sock *sk, struct flowi6 *fl6, const struct in6_addr *final_dst)
+.. c:function:: struct dst_entry *ip6_sk_dst_lookup_flow(struct sock *sk, struct flowi6 *fl6, const struct in6_addr *final_dst, bool connected)
 
     perform socket cached route lookup on flow
 
@@ -77,6 +77,9 @@ ip6_sk_dst_lookup_flow
     :param const struct in6_addr \*final_dst:
         final destination address for ipsec lookup
 
+    :param bool connected:
+        whether \ ``sk``\  is connected or not
+
 .. _`ip6_sk_dst_lookup_flow.description`:
 
 Description
@@ -86,6 +89,9 @@ This function performs a route lookup on the given flow with the
 possibility of using the cached route in the socket if it is valid.
 It will take the socket dst lock when operating on the dst cache.
 As a result, this function can only be used in process context.
+
+In addition, for a connected socket, cache the dst in the socket
+if the current cache is not valid.
 
 It returns a valid dst pointer on success, or a pointer encoded
 error code.

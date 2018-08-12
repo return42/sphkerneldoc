@@ -1785,7 +1785,6 @@ Definition
         struct list_head replay_list;
         struct list_head replay_buds;
         unsigned long long cs_sqnum;
-        unsigned long long replay_sqnum;
         struct list_head unclean_leb_list;
         struct ubifs_mst_node *rcvrd_mst_node;
         struct rb_root size_tree;
@@ -2395,9 +2394,6 @@ replay_buds
 
 cs_sqnum
     sequence number of first node in the log (commit start node)
-
-replay_sqnum
-    sequence number of node currently being replayed
 
 unclean_leb_list
     LEBs to recover when re-mounting R/O mounted FS to R/W

@@ -161,6 +161,27 @@ zcrypt_msgtype6_modexpo_crt
     :param struct ica_rsa_modexpo_crt \*crt:
         pointer to the modexpoc_crt request buffer
 
+.. _`get_cprb_fc`:
+
+get_cprb_fc
+===========
+
+.. c:function:: unsigned int get_cprb_fc(struct ica_xcRB *xcRB, struct ap_message *ap_msg, unsigned int *func_code, unsigned short **dom)
+
+    Extracting the fc requires to copy the cprb from userspace. So this function allocates memory and needs an ap_msg prepared by the caller with \ :c:func:`ap_init_message`\ . Also the caller has to make sure \ :c:func:`ap_release_message`\  is always called even on failure.
+
+    :param struct ica_xcRB \*xcRB:
+        *undescribed*
+
+    :param struct ap_message \*ap_msg:
+        *undescribed*
+
+    :param unsigned int \*func_code:
+        *undescribed*
+
+    :param unsigned short \*\*dom:
+        *undescribed*
+
 .. _`zcrypt_msgtype6_send_cprb`:
 
 zcrypt_msgtype6_send_cprb
@@ -178,6 +199,24 @@ zcrypt_msgtype6_send_cprb
         pointer to the send_cprb request buffer
 
     :param struct ap_message \*ap_msg:
+        *undescribed*
+
+.. _`get_ep11cprb_fc`:
+
+get_ep11cprb_fc
+===============
+
+.. c:function:: unsigned int get_ep11cprb_fc(struct ep11_urb *xcrb, struct ap_message *ap_msg, unsigned int *func_code)
+
+    Extracting the fc requires to copy the ep11 cprb from userspace. So this function allocates memory and needs an ap_msg prepared by the caller with \ :c:func:`ap_init_message`\ . Also the caller has to make sure \ :c:func:`ap_release_message`\  is always called even on failure.
+
+    :param struct ep11_urb \*xcrb:
+        *undescribed*
+
+    :param struct ap_message \*ap_msg:
+        *undescribed*
+
+    :param unsigned int \*func_code:
         *undescribed*
 
 .. _`zcrypt_msgtype6_send_ep11_cprb`:

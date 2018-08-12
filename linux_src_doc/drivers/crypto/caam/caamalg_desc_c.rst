@@ -194,7 +194,7 @@ cnstr_shdsc_aead_givencap
 cnstr_shdsc_gcm_encap
 =====================
 
-.. c:function:: void cnstr_shdsc_gcm_encap(u32 * const desc, struct alginfo *cdata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_gcm_encap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, unsigned int icvsize, const bool is_qi)
 
     gcm encapsulation shared descriptor
 
@@ -205,15 +205,21 @@ cnstr_shdsc_gcm_encap
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
 
+    :param unsigned int ivsize:
+        initialization vector size
+
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_gcm_decap`:
 
 cnstr_shdsc_gcm_decap
 =====================
 
-.. c:function:: void cnstr_shdsc_gcm_decap(u32 * const desc, struct alginfo *cdata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_gcm_decap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, unsigned int icvsize, const bool is_qi)
 
     gcm decapsulation shared descriptor
 
@@ -224,15 +230,21 @@ cnstr_shdsc_gcm_decap
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
 
+    :param unsigned int ivsize:
+        initialization vector size
+
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_rfc4106_encap`:
 
 cnstr_shdsc_rfc4106_encap
 =========================
 
-.. c:function:: void cnstr_shdsc_rfc4106_encap(u32 * const desc, struct alginfo *cdata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_rfc4106_encap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, unsigned int icvsize, const bool is_qi)
 
     IPSec ESP gcm encapsulation shared descriptor (non-protocol).
 
@@ -243,15 +255,21 @@ cnstr_shdsc_rfc4106_encap
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
 
+    :param unsigned int ivsize:
+        initialization vector size
+
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_rfc4106_decap`:
 
 cnstr_shdsc_rfc4106_decap
 =========================
 
-.. c:function:: void cnstr_shdsc_rfc4106_decap(u32 * const desc, struct alginfo *cdata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_rfc4106_decap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, unsigned int icvsize, const bool is_qi)
 
     IPSec ESP gcm decapsulation shared descriptor (non-protocol).
 
@@ -262,15 +280,21 @@ cnstr_shdsc_rfc4106_decap
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
 
+    :param unsigned int ivsize:
+        initialization vector size
+
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_rfc4543_encap`:
 
 cnstr_shdsc_rfc4543_encap
 =========================
 
-.. c:function:: void cnstr_shdsc_rfc4543_encap(u32 * const desc, struct alginfo *cdata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_rfc4543_encap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, unsigned int icvsize, const bool is_qi)
 
     IPSec ESP gmac encapsulation shared descriptor (non-protocol).
 
@@ -281,15 +305,21 @@ cnstr_shdsc_rfc4543_encap
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
 
+    :param unsigned int ivsize:
+        initialization vector size
+
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_rfc4543_decap`:
 
 cnstr_shdsc_rfc4543_decap
 =========================
 
-.. c:function:: void cnstr_shdsc_rfc4543_decap(u32 * const desc, struct alginfo *cdata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_rfc4543_decap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, unsigned int icvsize, const bool is_qi)
 
     IPSec ESP gmac decapsulation shared descriptor (non-protocol).
 
@@ -300,8 +330,14 @@ cnstr_shdsc_rfc4543_decap
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
 
+    :param unsigned int ivsize:
+        initialization vector size
+
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_ablkcipher_encap`:
 

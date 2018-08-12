@@ -106,7 +106,7 @@ hardware requires this to be done before a page flip.
 intel_psr_invalidate
 ====================
 
-.. c:function:: void intel_psr_invalidate(struct drm_i915_private *dev_priv, unsigned frontbuffer_bits)
+.. c:function:: void intel_psr_invalidate(struct drm_i915_private *dev_priv, unsigned frontbuffer_bits, enum fb_op_origin origin)
 
     Invalidade PSR
 
@@ -115,6 +115,9 @@ intel_psr_invalidate
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
+
+    :param enum fb_op_origin origin:
+        which operation caused the invalidate
 
 .. _`intel_psr_invalidate.description`:
 

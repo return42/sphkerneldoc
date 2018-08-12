@@ -244,24 +244,17 @@ Returns
 0, if a MAC address has been set for the card's netdevice
 a return code, for various error conditions
 
-.. _`qeth_recover_features`:
+.. _`qeth_enable_hw_features`:
 
-qeth_recover_features
-=====================
+qeth_enable_hw_features
+=======================
 
-.. c:function:: void qeth_recover_features(struct net_device *dev)
+.. c:function:: void qeth_enable_hw_features(struct net_device *dev)
 
-    Restore device features after recovery
+    (Re-)Enable HW functions for device features
 
     :param struct net_device \*dev:
-        the recovering net_device
-
-.. _`qeth_recover_features.description`:
-
-Description
------------
-
-Caller must hold rtnl lock.
+        a net_device
 
 .. This file was automatic generated / don't edit.
 

@@ -36,6 +36,7 @@ net
     netlink_h
     nl802154_h
     nsh_h
+    page_pool_h
     pkt_cls_h
     regulatory_h
     rtnetlink_h

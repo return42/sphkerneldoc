@@ -32,6 +32,17 @@ scmd_eh_abort_handler
     :param struct work_struct \*work:
         command to be aborted.
 
+.. _`scmd_eh_abort_handler.note`:
+
+Note
+----
+
+this function must be called only for a command that has timed out.
+Because the block layer marks a request as complete before it calls
+\ :c:func:`scsi_times_out`\ , a .scsi_done() call from the LLD for a command that has
+timed out do not have any effect. Hence it is safe to call
+\ :c:func:`scsi_finish_command`\  from this function.
+
 .. _`scsi_abort_command`:
 
 scsi_abort_command

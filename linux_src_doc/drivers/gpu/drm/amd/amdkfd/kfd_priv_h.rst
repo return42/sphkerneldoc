@@ -152,9 +152,10 @@ Definition
         uint32_t queue_percent;
         uint32_t *read_ptr;
         uint32_t *write_ptr;
-        uint32_t __iomem *doorbell_ptr;
+        void __iomem *doorbell_ptr;
         uint32_t doorbell_off;
         bool is_interop;
+        bool is_evicted;
         bool is_active;
         unsigned int vmid;
         uint32_t sdma_engine_id;
@@ -220,8 +221,13 @@ is_interop
     Defines if this is a interop queue. Interop queue means that
     the queue can access both graphics and compute resources.
 
+is_evicted
+    Defines if the queue is evicted. Only active queues
+    are evicted, rendering them inactive.
+
 is_active
-    Defines if the queue is active or not.
+    Defines if the queue is active or not. \ ``is_active``\  and
+    \ ``is_evicted``\  are protected by the DQM lock.
 
 vmid
     If the scheduling mode is no cp scheduling the field defines the vmid
@@ -290,6 +296,7 @@ Definition
         uint32_t pipe;
         uint32_t queue;
         unsigned int sdma_id;
+        unsigned int doorbell_id;
         struct kfd_process *process;
         struct kfd_dev *device;
     }
@@ -326,6 +333,9 @@ queue
     Used only in no cp scheduliong mode and identifies the queue's slot.
 
 sdma_id
+    *undescribed*
+
+doorbell_id
     *undescribed*
 
 process

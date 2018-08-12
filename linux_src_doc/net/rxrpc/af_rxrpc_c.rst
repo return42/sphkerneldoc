@@ -6,7 +6,7 @@
 rxrpc_kernel_begin_call
 =======================
 
-.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, s64 tx_total_len, gfp_t gfp, rxrpc_notify_rx_t notify_rx, bool upgrade)
+.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, s64 tx_total_len, gfp_t gfp, rxrpc_notify_rx_t notify_rx, bool upgrade, unsigned int debug_id)
 
     Allow a kernel service to begin a call
 
@@ -33,6 +33,9 @@ rxrpc_kernel_begin_call
 
     :param bool upgrade:
         Request service upgrade for call
+
+    :param unsigned int debug_id:
+        The debug ID for tracing to be assigned to the call
 
 .. _`rxrpc_kernel_begin_call.description`:
 

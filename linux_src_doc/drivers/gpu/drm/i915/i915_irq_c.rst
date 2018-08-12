@@ -178,32 +178,12 @@ Doesn't actually do anything except notify userspace. As a consequence of
 this event, userspace should try to remap the bad rows since statistically
 it is likely the same row is more likely to go bad again.
 
-.. _`i915_reset_device`:
-
-i915_reset_device
-=================
-
-.. c:function:: void i915_reset_device(struct drm_i915_private *dev_priv)
-
-    do process context error handling work
-
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
-
-.. _`i915_reset_device.description`:
-
-Description
------------
-
-Fire an error uevent so userspace can see that a hang or error
-was detected.
-
 .. _`i915_handle_error`:
 
 i915_handle_error
 =================
 
-.. c:function:: void i915_handle_error(struct drm_i915_private *dev_priv, u32 engine_mask, const char *fmt,  ...)
+.. c:function:: void i915_handle_error(struct drm_i915_private *dev_priv, u32 engine_mask, unsigned long flags, const char *fmt,  ...)
 
     handle a gpu error
 
@@ -212,6 +192,9 @@ i915_handle_error
 
     :param u32 engine_mask:
         mask representing engines that are hung
+
+    :param unsigned long flags:
+        control flags
 
     :param const char \*fmt:
         Error message format string

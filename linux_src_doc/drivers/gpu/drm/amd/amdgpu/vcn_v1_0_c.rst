@@ -158,15 +158,12 @@ Let the VCN memory controller know it's offsets
 vcn_v1_0_disable_clock_gating
 =============================
 
-.. c:function:: void vcn_v1_0_disable_clock_gating(struct amdgpu_device *adev, bool sw)
+.. c:function:: void vcn_v1_0_disable_clock_gating(struct amdgpu_device *adev)
 
     disable VCN clock gating
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
-
-    :param bool sw:
-        enable SW clock gating
 
 .. _`vcn_v1_0_disable_clock_gating.description`:
 
@@ -180,15 +177,12 @@ Disable clock gating for VCN block
 vcn_v1_0_enable_clock_gating
 ============================
 
-.. c:function:: void vcn_v1_0_enable_clock_gating(struct amdgpu_device *adev, bool sw)
+.. c:function:: void vcn_v1_0_enable_clock_gating(struct amdgpu_device *adev)
 
     enable VCN clock gating
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
-
-    :param bool sw:
-        enable SW clock gating
 
 .. _`vcn_v1_0_enable_clock_gating.description`:
 
@@ -357,25 +351,6 @@ Description
 -----------
 
 Write a fence and a trap command to the ring.
-
-.. _`vcn_v1_0_dec_ring_emit_hdp_invalidate`:
-
-vcn_v1_0_dec_ring_emit_hdp_invalidate
-=====================================
-
-.. c:function:: void vcn_v1_0_dec_ring_emit_hdp_invalidate(struct amdgpu_ring *ring)
-
-    emit an hdp invalidate
-
-    :param struct amdgpu_ring \*ring:
-        amdgpu_ring pointer
-
-.. _`vcn_v1_0_dec_ring_emit_hdp_invalidate.description`:
-
-Description
------------
-
-Emits an hdp invalidate.
 
 .. _`vcn_v1_0_dec_ring_emit_ib`:
 

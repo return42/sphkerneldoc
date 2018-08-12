@@ -54,17 +54,17 @@ sync_pt_create
     creates a sync pt
 
     :param struct sync_timeline \*obj:
-        *undescribed*
+        parent sync_timeline
 
     :param unsigned int value:
-        *undescribed*
+        value of the fence
 
 .. _`sync_pt_create.description`:
 
 Description
 -----------
 
-Creates a new sync_pt as a child of \ ``parent``\ .  \ ``size``\  bytes will be
+Creates a new sync_pt (fence) as a child of \ ``parent``\ .  \ ``size``\  bytes will be
 allocated allowing for implementation specific data to be kept after
 the generic sync_timeline struct. Returns the sync_pt object or
 NULL in case of error.

@@ -83,27 +83,28 @@ Description
 Returns the scsi_cmnd result field if a command was executed, or a negative
 Linux error code if we didn't get that far.
 
-.. _`__scsi_error_from_host_byte`:
+.. _`scsi_result_to_blk_status`:
 
-__scsi_error_from_host_byte
-===========================
+scsi_result_to_blk_status
+=========================
 
-.. c:function:: blk_status_t __scsi_error_from_host_byte(struct scsi_cmnd *cmd, int result)
+.. c:function:: blk_status_t scsi_result_to_blk_status(struct scsi_cmnd *cmd, int result)
 
-    translate SCSI error code into errno
+    translate a SCSI result code into blk_status_t
 
     :param struct scsi_cmnd \*cmd:
-        SCSI command (unused)
+        SCSI command
 
     :param int result:
         scsi error code
 
-.. _`__scsi_error_from_host_byte.description`:
+.. _`scsi_result_to_blk_status.description`:
 
 Description
 -----------
 
-Translate SCSI error code into block errors.
+Translate a SCSI result code into a blk_status_t value. May reset the host
+byte of \ ``cmd``\ ->result.
 
 .. _`scsi_initialize_rq`:
 

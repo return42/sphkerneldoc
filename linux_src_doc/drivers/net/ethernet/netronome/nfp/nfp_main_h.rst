@@ -63,6 +63,7 @@ Definition
         u8 __iomem *vf_cfg_mem;
         struct nfp_cpp_area *vfcfg_tbl2_area;
         u8 __iomem *vfcfg_tbl2;
+        const struct nfp_rtsym *mbox;
         struct msix_entry *irq_entries;
         unsigned int limit_vfs;
         unsigned int num_vfs;
@@ -84,6 +85,8 @@ Definition
         struct list_head ports;
         struct workqueue_struct *wq;
         struct work_struct port_refresh_work;
+        struct nfp_shared_buf *shared_bufs;
+        unsigned int num_shared_bufs;
         struct mutex lock;
     }
 
@@ -127,6 +130,9 @@ vfcfg_tbl2_area
 
 vfcfg_tbl2
     Pointer to mapped VF config table
+
+mbox
+    RTSym of per-PCI PF mailbox (under devlink lock)
 
 irq_entries
     Array of MSI-X entries for all vNICs
@@ -190,6 +196,12 @@ wq
 
 port_refresh_work
     Work entry for taking netdevs out
+
+shared_bufs
+    Array of shared buffer structures if FW has any SBs
+
+num_shared_bufs
+    Number of elements in \ ``shared_bufs``\ 
 
 lock
     Protects all fields which may change after probe

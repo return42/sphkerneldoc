@@ -403,5 +403,28 @@ Description
 Returned switch has reference count increased so the caller needs to
 call \ :c:func:`tb_switch_put`\  when done with the switch.
 
+.. _`tb_switch_find_by_route`:
+
+tb_switch_find_by_route
+=======================
+
+.. c:function:: struct tb_switch *tb_switch_find_by_route(struct tb *tb, u64 route)
+
+    Find switch by route string
+
+    :param struct tb \*tb:
+        Domain the switch belongs
+
+    :param u64 route:
+        Route string to look for
+
+.. _`tb_switch_find_by_route.description`:
+
+Description
+-----------
+
+Returned switch has reference count increased so the caller needs to
+call \ :c:func:`tb_switch_put`\  when done with the switch.
+
 .. This file was automatic generated / don't edit.
 

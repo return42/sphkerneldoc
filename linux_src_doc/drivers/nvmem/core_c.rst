@@ -1,6 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/nvmem/core.c
 
+.. _`nvmem_add_cells`:
+
+nvmem_add_cells
+===============
+
+.. c:function:: int nvmem_add_cells(struct nvmem_device *nvmem, const struct nvmem_cell_info *info, int ncells)
+
+    Add cell information to an nvmem device
+
+    :param struct nvmem_device \*nvmem:
+        nvmem device to add cells to.
+
+    :param const struct nvmem_cell_info \*info:
+        nvmem cell info to add to the device
+
+    :param int ncells:
+        number of cells in info
+
+.. _`nvmem_add_cells.return`:
+
+Return
+------
+
+0 or negative error code on failure.
+
 .. _`nvmem_register`:
 
 nvmem_register
@@ -34,6 +59,51 @@ nvmem_unregister
         Pointer to previously registered nvmem device.
 
 .. _`nvmem_unregister.return`:
+
+Return
+------
+
+Will be an negative on error or a zero on success.
+
+.. _`devm_nvmem_register`:
+
+devm_nvmem_register
+===================
+
+.. c:function:: struct nvmem_device *devm_nvmem_register(struct device *dev, const struct nvmem_config *config)
+
+    Register a managed nvmem device for given nvmem_config. Also creates an binary entry in /sys/bus/nvmem/devices/dev-name/nvmem
+
+    :param struct device \*dev:
+        Device that uses the nvmem device.
+
+    :param const struct nvmem_config \*config:
+        nvmem device configuration with which nvmem device is created.
+
+.. _`devm_nvmem_register.return`:
+
+Return
+------
+
+Will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer to nvmem_device
+on success.
+
+.. _`devm_nvmem_unregister`:
+
+devm_nvmem_unregister
+=====================
+
+.. c:function:: int devm_nvmem_unregister(struct device *dev, struct nvmem_device *nvmem)
+
+    Unregister previously registered managed nvmem device.
+
+    :param struct device \*dev:
+        Device that uses the nvmem device.
+
+    :param struct nvmem_device \*nvmem:
+        Pointer to previously registered nvmem device.
+
+.. _`devm_nvmem_unregister.return`:
 
 Return
 ------

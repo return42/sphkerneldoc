@@ -17,6 +17,7 @@ usb
     otg-fsm_h
     otg_h
     pd_h
-    phy_h
+    role_h
     tcpm_h
+    typec_mux_h
     wusb_h
