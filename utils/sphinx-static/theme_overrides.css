@@ -29,7 +29,7 @@ div[class^="highlight"] pre {
         font-weight: 700;
         font-family: "Lucida Grande",Arial,Verdana,sans-serif;
     }
-    
+
     .wy-nav-content {
         background-color: #fff;
         background-image: url("../_static/background.png");
@@ -47,7 +47,7 @@ div[class^="highlight"] pre {
         border-color: #e1e1ed;
         background-color: cornsilk;
     }
-    
+
     /* remove border from API prototypes */
     .rst-content dl:not(.docutils) dt {border: none; }
     .rst-content dl:not(.docutils) dl dt {border: none; }

@@ -15,7 +15,7 @@ FONTSIZE  := 11
 #export DOCCLASS  := darmarITArticle
 export DOCCLASS  := manual
 
-srctree ?= /share/linux-docs-next
+srctree ?= /share/linux
 export srctree
 
 # External programs used
@@ -154,9 +154,6 @@ help:
 	$(Q)echo
 	$(Q)echo "   Use 'make srctree=<kernel-src>' to point to kernel's"
 	$(Q)echo "   sources (default $(srctree))"
-	$(Q)echo
-	$(Q)echo "   It's recommended to use docs-next from lwn:"
-	$(Q)echo "      git git://git.lwn.net/linux.git docs-next"
 	$(Q)echo
 	$(Q)echo "make V=0|1 [targets] 0 => quiet build (default), 1 => verbose build"
 	$(Q)echo "make V=2   [targets] 2 => give reason for rebuild of target"

@@ -2,14 +2,20 @@
 INSTALL
 =======
 
-If you try to compile this POC by your own, please consider that you need a copy
-of the Jon's docs-next and in the ``Makefile`` set ``srctree`` to the copy. The
-default is:
 
-.. code-block:: make
+If you try to compile this POC by your own, consider that you need a local copy
+of the Linux Kernel source tree e.g.::
 
-   srctree=/share/linux-docs-next
-   export srctree
+  git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+
+If you wan't to be up-to-date with ``/Documentation`` you can fetch Jon's
+docs-next branch::
+
+    git://git.lwn.net/linux.git docs-next
+
+To point to your local copy, run Makefile targets with environment e.g.::
+
+   make srctree=/to/your/linux
 
 If you want to build simple HTML representations with the 'books*.html' Makefile
 targets, the minimum (python) requirements will be installed automatically (see

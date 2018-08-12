@@ -11,10 +11,12 @@
 import sys
 import os
 from os.path import join as pathjoin
-from os.path import abspath, dirname, splitext, basename, exists
+from os.path import abspath, dirname, splitext, basename
 from glob import glob
 import sphinx
 from sphinx.util.osutil import make_filename
+
+import sphinx_rtd_theme
 
 # compiling src.html needs to extend the recursion limit:
 sys.setrecursionlimit(3000)
@@ -62,7 +64,7 @@ def loadConfig(namespace):
     config_file = os.environ.get("SPHINX_CONF", None)
     if (config_file is not None
         and os.path.normpath(namespace["__file__"]) != os.path.normpath(config_file) ):
-        config_file = os.path.abspath(config_file)
+        config_file = abspath(config_file)
 
         if os.path.isfile(config_file):
             sys.stdout.write("load additional sphinx-config: %s\n" % config_file)
@@ -179,7 +181,7 @@ master_doc = 'index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '_tex', 'sphinx-static']
+exclude_patterns = ['_build', '_tex' ]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -194,7 +196,7 @@ keep_warnings = False
 todo_include_todos = True
 
 primary_domain = 'c'
-highlight_language = 'guess'
+highlight_language = 'none'
 
 # ------------------------------------------------------------------------------
 # Options of the kernel-doc parser
@@ -251,11 +253,11 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = pathjoin(BASE_FOLDER, "_tex", "logo.png")
+html_logo = 'darmarIT_logo_128.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -265,7 +267,7 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = [pathjoin(BASE_FOLDER,'sphinx-static')]
+html_static_path = ["utils/sphinx-static"]
 
 html_context = {
     'css_files': [
