@@ -4,7 +4,7 @@
 .. _linux-doc-intro-site:
 
 ================================================================================
-                          Linux Kernel's documentation
+Linux Kernel documentation
 ================================================================================
 
 .. hint::
@@ -12,6 +12,15 @@
    See :ref:`[ref] <concept-thematic-areas>` about the concept behind this
    intro page. About man page see :ref:`[ref] <concept-man-pages>`.
 
+Licensing documentation
+-----------------------
+
+The following describes the license of the Linux kernel source code
+(GPLv2), how to properly mark the license of individual files in the source
+tree, as well as links to the full license text.
+
+* `Linux kernel licensing rules <books/process/license-rules/index>`_
+  (`pdf <books/license-rules/pdf>`__, `man <license-rules/pdf>`__)
 
 User-oriented documentation
 ---------------------------
@@ -52,6 +61,13 @@ merged much easier.
 
 * `Kernel Hacking Guides <books/kernel-hacking/index.html>`_
   (`pdf <books/kernel-hacking/pdf>`__, `man <books/kernel-hacking/man>`__)
+
+* `Linux Tracing Technologies <books/trace/index.html>`_
+  (`pdf <books/trace/pdf>`__, `man <books/trace/man>`__)
+
+* `Kernel Maintainer Handbook <books/maintainer/index.html>`_
+  (`pdf <books/maintainer/pdf>`__, `man <books/maintainer/man>`__)
+
 
 The following is a part of this POC it is not, of "what" the kernel community
 has unified / take it as a *prospect* ;-)
@@ -98,6 +114,9 @@ needed).
 * `Linux Filesystems API <books/filesystems/index.html>`_
   (`pdf <books/filesystems/pdf>`__, `man <books/filesystems/man>`__)
 
+* `Linux Memory Management Documentation <books/vnm/index.html>`_
+  (`pdf <books/vm/pdf>`__, `man <books/vm/man>`__)
+
 
 Architecture-specific documentation
 -----------------------------------
@@ -112,20 +131,20 @@ implementation.
 Korean translations
 -------------------
 
-* FIXME: not yet `Korean translations <books/translations/ko_KR/index.html>`_
+* FIXME: not yet in this POC `Korean translations <books/translations/ko_KR/index.html>`_
   (`pdf <books/translations/ko_KR/pdf>`__, `man <books/translations/ko_KR/man>`__)
 
 
 Chinese translations
 --------------------
 
-* FIXME: not yet `Chinese translations <books/translations/zh_CN/index.html>`_
+* FIXME: not yet in this POC `Chinese translations <books/translations/zh_CN/index.html>`_
   (`pdf <books/translations/zh_CN/pdf>`__, `man <books/translations/zh_CN/man>`__)
 
 
 Japanese translations
 ---------------------
 
-* FIXME: not yet `Japanese translations <books/translations/ja_JP/index.html>`_
+* FIXME: not yet in this POC `Japanese translations <books/translations/ja_JP/index.html>`_
   (`pdf <books/translations/ja_JP/pdf>`__, `man <books/translations/ja_JP/man>`__)
 
