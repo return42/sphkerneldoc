@@ -276,6 +276,35 @@ PHONY += $(KERNEL_BOOKS_LATEX)
 $(KERNEL_BOOKS_LATEX): sphinx-doc texlive | $(DIST_BOOKS)
 	$(call cmd,latex,$(patsubst books/%.latex,%,$@),$(KERNEL_FOLDER))
 
+
+# ------------------------------------------------------------------------------
+# zero build workflow
+# ------------------------------------------------------------------------------
+
+ZERO_BUILD_DEST := ./0_build
+KERNEL_0_BUILD = $(patsubst %,books/%.zero, $(KERNEL_BOOKS))
+
+quiet_cmd_zero = $(shell echo "$2" | tr '[:lower:]' '[:upper:]')  $@ --> file://$(abspath $(ZERO_BUILD_DEST))
+      cmd_zero = SPHINX_CONF=$(abspath $(KERNEL_FOLDER)/$3/conf.py) \
+	$(SPHINXBUILD) \
+	$(ALLSPHINXOPTS) \
+	-b $2 \
+	-c $(obj) \
+	-d $(CACHE_BOOKS)/$3 \
+	$(abspath $(KERNEL_FOLDER)/$3) \
+	$(abspath $(ZERO_BUILD_DEST)/$3)
+
+
+PHONY += $(KERNEL_0_BUILD)
+$(KERNEL_0_BUILD): sphinx-doc | $(DIST_BOOKS)
+	$(call cmd,zero,xml,$(patsubst books/%.zero,%,$@),0_build,)
+
+zero.clean:
+	rm -rf $(ZERO_BUILD_DEST)
+
+PHONY += zero
+zero: $(KERNEL_0_BUILD)
+
 # ------------------------------------------------------------------------------
 # intro page
 # ------------------------------------------------------------------------------
