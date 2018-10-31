@@ -9,7 +9,7 @@ if [[ -z "${REPO_ROOT}" ]]; then
     while([ -h "${REPO_ROOT}" ]); do
         REPO_ROOT=`readlink "${REPO_ROOT}"`
     done
-    REPO_ROOT=$(cd ${REPO_ROOT}/.. && pwd -P )
+    REPO_ROOT=$(cd ${REPO_ROOT}/../.. && pwd -P )
 fi
 
 
