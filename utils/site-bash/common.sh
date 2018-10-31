@@ -739,23 +739,47 @@ merge3FilesWithEmacs(){
     emacs -nw --no-desktop --eval "\
 (progn \
   (setq ediff-quit-hook 'kill-emacs)   \
-  (ediff-merge-files-with-ancestor \"$1\" \"$2\" \"$3\" nil \"$4\"))  \
-"
-    #emacsclient -nw --eval "(ediff-merge-files-with-ancestor \"$1\" \"$2\" \"$3\" nil \"$4\")"
+  (ediff-merge-files-with-ancestor \"$1\" \"$2\" \"$3\" nil \"$4\"))"
 }
 
 # ----------------------------------------------------------------------------
 merge2FilesWithEmacs(){
 # ----------------------------------------------------------------------------
-    #set -x
+
+    # usage:
+    #
+    #    merge2FilesWithEmacs file-A file-B merge-buffer-file
+
     emacs -nw --no-desktop --eval "\
 (progn \
   (setq ediff-quit-hook 'kill-emacs)   \
-  (ediff-merge-files \"$1\" \"$2\" nil \"$3\"))  \
-"
-    #emacsclient -nw --eval "(ediff-merge-files \"$1\" \"$2\" nil \"$3\")"
-    #set +x
+  (ediff-merge-files \"$1\" \"$2\" nil \"$3\"))"
 }
+
+# ----------------------------------------------------------------------------
+merge3FilesWithMeld(){
+# ----------------------------------------------------------------------------
+
+    # usage:
+    #
+    #    merge3FilesWithMeld {mine} {yours} {ancestor} {merged}
+
+    # meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+    meld "$1" "$3" "$2" --output "$4"
+
+}
+
+# ----------------------------------------------------------------------------
+merge2FilesWithMeld(){
+# ----------------------------------------------------------------------------
+
+    # usage:
+    #
+    #    merge2FilesWithMeld {my-file} {your-file} {merged-file}
+
+    meld "$1" "$2" --output "$3"
+}
+
 
 # ----------------------------------------------------------------------------
 cmp3Files() {
@@ -1420,18 +1444,25 @@ TEMPLATES_InstallOrMerge() {
     # Installiert die angegebene Datei aus dem ${TEMPLATES} Ordner, sofern diese
     # am Zielort nicht bereits existiert. Im Falle, dass die Datei im Ziel
     # bereits existiert oder es eine Sicherung im ${CONFIG}-Ordner gibt, wird
-    # ein Merge durchgeführt.
+    # ein Merge durchgeführt. Mit dem Schalter --eval wird die Template Datei
+    # vorher noch evaluiert (``echo "$(cat ${TEMPLATES}${dst})"``)
     #
     # usage:
     #
-    #     TEMPLATES_InstallOrMerge {file} [{owner} [{group} [{chmod}]]]
+    #     TEMPLATES_InstallOrMerge [--eval] {file} [{owner} [{group} [{chmod}]]]
     #
     #     TEMPLATES_InstallOrMerge /etc/updatedb.conf root root 644
 
+    local do_eval=0
+    if [[ "$1" == "--eval" ]]; then
+        do_eval=1; shift
+    fi
     local dst="${1}"
     local owner=${2-$(id -un)}
     local group=${3-$(id -gn)}
     local chmod=${4-755}
+
+    info_msg "install: ${dst}"
 
     if [[ ! -f "${CONFIG}${dst}" && ! -f "${TEMPLATES}${dst}" ]] ; then
         err_msg "none of this (source) files exists"
@@ -1441,14 +1472,26 @@ TEMPLATES_InstallOrMerge() {
         waitKEY
         return 42
     fi
-    echo
-    info_msg "install: ${dst}"
-    if [[ -f "${dst}" ]] ; then
-        info_msg "file allready exists on this host"
-    fi
-    info_msg "determine template file(s)"
 
-    if [[ -f "${dst}" && -f "${CONFIG}${dst}" && -f "${TEMPLATES}${dst}" ]] ; then
+    local template_file="${TEMPLATES}${dst}"
+    if [[ "$do_eval" == "1" ]]; then
+        info_msg "BUILD template ${BRed}${template_file}${_color_Off}"
+        if [[ -f "${TEMPLATES}${dst}" ]] ; then
+            template_file="${CACHE}${dst}"
+            mkdir -p $(dirname "${template_file}")
+            eval "echo \"$(cat ${TEMPLATES}${dst})\"" > "${template_file}"
+        else
+            err_msg "  FAILED ${template_file}"
+            return 42
+        fi
+    fi
+
+    if [[ -f "${dst}" ]] ; then
+        info_msg "file ${dst} allready exists on this host"
+    fi
+    info_msg "examine <prefix>${dst} file(s)"
+
+    if [[ -f "${dst}" && -f "${CONFIG}${dst}" && -f "${template_file}" ]] ; then
 
         # Es existieren alle drei Dateien (Ziel, TEMPLATES u. CONFIG).  Es wird
         # ein Merge aller drei Dateien durchgeführt. Als "gemeinsammer Vorfahre"
@@ -1469,7 +1512,7 @@ TEMPLATES_InstallOrMerge() {
 
         while true; do
 
-            merge3Files "${dst}" "${TEMPLATES}${dst}" "${CONFIG}${dst}"
+            merge3Files "${dst}" "${template_file}" "${CONFIG}${dst}"
             exitCode=$?
 
             if [[ $exitCode == 0 ]]; then
@@ -1488,7 +1531,7 @@ TEMPLATES_InstallOrMerge() {
             fi
         done
 
-    elif [[ -f "${dst}" && -f "${TEMPLATES}${dst}" ]] ; then
+    elif [[ -f "${dst}" && -f "${template_file}" ]] ; then
 
         # Die Zieldatei existiert, es gibt ein TEMPLATE aber es gibt keine
         # Sicherung
@@ -1498,7 +1541,7 @@ TEMPLATES_InstallOrMerge() {
 
         while true; do
 
-            merge2Files "${dst}" "${TEMPLATES}${dst}"
+            merge2Files "${dst}" "${template_file}"
             exitCode=$?
 
             if [[ $exitCode == 0 ]]; then
@@ -1546,7 +1589,7 @@ TEMPLATES_InstallOrMerge() {
             fi
         done
 
-    elif [[ ! -f "${dst}" && -f "${CONFIG}${dst}" && -f "${TEMPLATES}${dst}"  ]] ; then
+    elif [[ ! -f "${dst}" && -f "${CONFIG}${dst}" && -f "${template_file}"  ]] ; then
 
         # Die Zieldatei existiert NICHT, aber es gibt eine CONFIG-Sicherung und
         # die TEMPLATES Datei. Es wird ein Merge von TEMPLATES nach CONFIG
@@ -1557,7 +1600,7 @@ TEMPLATES_InstallOrMerge() {
 
         while true; do
 
-            merge2Files "${TEMPLATES}${dst}" "${CONFIG}${dst}" "${dst}"
+            merge2Files "${template_file}" "${CONFIG}${dst}" "${dst}"
             exitCode=$?
 
             if [[ $exitCode == 0 ]]; then
@@ -1575,11 +1618,11 @@ TEMPLATES_InstallOrMerge() {
         sudo install -v -o "${owner}" -g "${group}" -m "${chmod}" "${CONFIG}${dst}" "${dst}"
 
 
-    elif [[ ! -f "${dst}" && -f "${TEMPLATES}${dst}" ]] ; then
+    elif [[ ! -f "${dst}" && -f "${template_file}" ]] ; then
         # Die Zieldatei existiert NICHT, es gibt ein TEMPLATE aber es gibt KEINE
         # Sicherung
         echo
-        sudo install -v -o "${owner}" -g "${group}" -m "${chmod}" "${TEMPLATES}${dst}" "${dst}"
+        sudo install -v -o "${owner}" -g "${group}" -m "${chmod}" "${template_file}" "${dst}"
 
     elif [[ ! -f "${dst}" && -f "${CONFIG}${dst}" ]] ; then
         # Die Zieldatei existiert NICHT, es gibt KEIN TEMPLATE aber es gibt eine
@@ -1718,7 +1761,7 @@ if [[ -z "${APACHE_MODS_AVAILABE}" ]]; then
 fi
 if [[ -z "${APACHE_CONF_AVAILABE}" ]]; then
     APACHE_CONF_AVAILABE="${APACHE_SETUP}/conf-available"
-   # APACHE_CONF_ENABLED="${APACHE_SETUP}/conf-enabled"
+    # APACHE_CONF_ENABLED="${APACHE_SETUP}/conf-enabled"
 fi
 
 # ----------------------------------------------------------------------------
@@ -1732,14 +1775,19 @@ APACHE_install_site() {
     #
     # usage:
     #
-    #   APACHE_install_site <apache-sites.conf-filename>
+    #   APACHE_install_site [--eval] <apache-sites.conf-filename>
     #
     #   APACHE_install_site phpvirtualbox
+
+    local do_eval=""
+    if [[ "$1" == "--eval" ]]; then
+        do_eval=$1; shift
+    fi
 
     local CONF
     for CONF in $*; do
         CONF=${CONF%.conf}.conf
-        TEMPLATES_InstallOrMerge "${APACHE_SITES_AVAILABE}/${CONF}" root root 644
+        TEMPLATES_InstallOrMerge $do_eval "${APACHE_SITES_AVAILABE}/${CONF}" root root 644
     done
     sudo a2ensite -q "$@"
     APACHE_reload
